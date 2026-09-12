@@ -161,11 +161,17 @@ const updateUser = asyncHandler(async (req, res) => {
     }
     user.email = email;
   }
+  // A role change must invalidate existing sessions: the role is baked into the
+  // JWT, so without this the user keeps their old permissions until the token
+  // expires — including after a demotion.
+  let mustRevokeSessions = false;
+
   if (role) {
     const allowedRoles = ['student', 'trainer', 'teacher', 'social', 'reception', 'clo', 'admin', 'cto', 'engineer', 'client'];
     if (!allowedRoles.includes(role)) {
       throw new BadRequestError(`Invalid role: ${role}`);
     }
+    if (user.role !== role) mustRevokeSessions = true;
     user.role = role;
   }
   if (phone !== undefined) {
@@ -175,6 +181,11 @@ const updateUser = asyncHandler(async (req, res) => {
   // Update password if provided
   if (password) {
     user.passwordHash = await bcrypt.hash(password, 10);
+    mustRevokeSessions = true;
+  }
+
+  if (mustRevokeSessions) {
+    user.tokenVersion = (user.tokenVersion ?? 0) + 1;
   }
 
   await user.save();

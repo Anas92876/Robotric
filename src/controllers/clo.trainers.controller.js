@@ -252,6 +252,8 @@ exports.updateTrainer = asyncHandler(async (req, res) => {
     // Update password if provided
     if (password) {
       trainer.passwordHash = await bcrypt.hash(password, 10);
+      // End any session still running under the old password.
+      trainer.tokenVersion = (trainer.tokenVersion ?? 0) + 1;
     }
 
     await trainer.save();

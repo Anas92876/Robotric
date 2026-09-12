@@ -14,6 +14,47 @@ function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
+// Clear the transient secrets for one flow. `user.auth` is select:false, so
+// these are only ever touched on documents fetched with .select('+auth').
+function clearPasswordChange(user) {
+  if (!user.auth) return;
+  user.auth.passwordOTP = undefined;
+  user.auth.passwordOTPExpiry = undefined;
+  user.auth.passwordOTPAttempts = undefined;
+  user.auth.pendingPasswordHash = undefined;
+}
+
+function clearEmailChange(user) {
+  if (!user.auth) return;
+  user.auth.emailOTP = undefined;
+  user.auth.emailOTPExpiry = undefined;
+  user.auth.emailOTPAttempts = undefined;
+  user.auth.pendingEmail = undefined;
+}
+
+function clearForgotPassword(user) {
+  if (!user.auth) return;
+  user.auth.forgotOTP = undefined;
+  user.auth.forgotOTPExpiry = undefined;
+  user.auth.forgotOTPAttempts = undefined;
+}
+
+// Web clients authenticate by cookie, mobile by Bearer token. Extracted so the
+// password-change flow can reissue a session with the same semantics as login.
+function setAuthCookie(req, res, token) {
+  if (req.headers['x-platform'] === 'mobile') return;
+  const isProduction = process.env.NODE_ENV === "production";
+  const isCrossSite = process.env.CLIENT_ORIGIN && process.env.CLIENT_ORIGIN !== "http://localhost:5173";
+  res.cookie("token", token, {
+    httpOnly: true,
+    sameSite: (isProduction || isCrossSite) ? "none" : (process.env.COOKIE_SAMESITE || "lax"),
+    secure: process.env.COOKIE_SECURE === "true" || isProduction,
+    maxAge: 7 * 24 * 3600 * 1000,
+    domain: process.env.COOKIE_DOMAIN || undefined,
+    path: "/",
+  });
+}
+
 /**
  * Helper: Get both English and Arabic names from Lead database
  */
@@ -55,7 +96,7 @@ const login = asyncHandler(async (req, res) => {
   const { email, password } = value;
   logger.logDB('findOne', 'User', { email });
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select('+passwordHash');
   if (!user) {
     logger.logSecurity('login_failed', { email, reason: 'user_not_found' });
     throw new UnauthorizedError('Invalid credentials', 'INVALID_CREDENTIALS');
@@ -81,7 +122,15 @@ const login = asyncHandler(async (req, res) => {
   }
 
   const { name, nameAr } = await getNamesFromLead(user);
-  const token = signJwt({ id: user._id, role: user.role, name: name, email: user.email });
+  const token = signJwt({
+    id: user._id,
+    role: user.role,
+    name: name,
+    email: user.email,
+    // Compared against the stored value on every authenticated request so a
+    // session can be revoked before the token expires.
+    tokenVersion: user.tokenVersion ?? 0,
+  });
   const isMobile = req.headers['x-platform'] === 'mobile';
 
   logger.logAuth('login', { id: user._id, email: user.email, role: user.role, platform: isMobile ? 'mobile' : 'web' });
@@ -185,7 +234,7 @@ const requestPasswordChange = asyncHandler(async (req, res) => {
   if (error) throw new ValidationError(error.message);
 
   const { currentPassword, newPassword } = value;
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id).select('+passwordHash +auth');
   if (!user) throw new NotFoundError('User');
 
   const ok = await bcrypt.compare(currentPassword, user.passwordHash);
@@ -198,11 +247,12 @@ const requestPasswordChange = asyncHandler(async (req, res) => {
   const expiry = new Date(Date.now() + 10 * 60 * 1000);
   const newHash = await bcrypt.hash(newPassword, 10);
 
-  user.profile = {
-    ...(user.profile || {}),
+  user.auth = {
+    ...(user.auth ? user.auth.toObject() : {}),
     passwordOTP: otp,
     passwordOTPExpiry: expiry,
     pendingPasswordHash: newHash,
+    passwordOTPAttempts: 0,
   };
   await user.save();
 
@@ -220,39 +270,53 @@ const confirmPasswordChange = asyncHandler(async (req, res) => {
   const { otp } = req.body;
   if (!otp) throw new ValidationError('OTP is required');
 
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id).select('+passwordHash +auth');
   if (!user) throw new NotFoundError('User');
 
-  const profile = user.profile || {};
-  if (!profile.passwordOTP || !profile.passwordOTPExpiry || !profile.pendingPasswordHash) {
+  const auth = user.auth || {};
+  if (!auth.passwordOTP || !auth.passwordOTPExpiry || !auth.pendingPasswordHash) {
     throw new ValidationError('No pending password change. Please request a new code.');
   }
 
-  if (new Date() > new Date(profile.passwordOTPExpiry)) {
-    user.profile = { ...profile, passwordOTP: undefined, passwordOTPExpiry: undefined, pendingPasswordHash: undefined, passwordOTPAttempts: undefined };
+  if (new Date() > new Date(auth.passwordOTPExpiry)) {
+    clearPasswordChange(user);
     await user.save();
     throw new ValidationError('OTP has expired. Please request a new code.');
   }
 
-  const attempts = (profile.passwordOTPAttempts || 0) + 1;
-  if (profile.passwordOTP !== otp.toString().trim()) {
+  const attempts = (auth.passwordOTPAttempts || 0) + 1;
+  if (auth.passwordOTP !== otp.toString().trim()) {
     logger.logSecurity('change_password_wrong_otp', { userId: user._id, attempts });
     if (attempts >= 5) {
-      user.profile = { ...profile, passwordOTP: undefined, passwordOTPExpiry: undefined, pendingPasswordHash: undefined, passwordOTPAttempts: undefined };
+      clearPasswordChange(user);
       await user.save();
       throw new ValidationError('Too many incorrect attempts. Please request a new code.');
     }
-    user.profile = { ...profile, passwordOTPAttempts: attempts };
+    user.auth.passwordOTPAttempts = attempts;
     await user.save();
     throw new ValidationError('Invalid OTP');
   }
 
-  user.passwordHash = profile.pendingPasswordHash;
-  user.profile = { ...profile, passwordOTP: undefined, passwordOTPExpiry: undefined, pendingPasswordHash: undefined, passwordOTPAttempts: undefined };
+  user.passwordHash = auth.pendingPasswordHash;
+  clearPasswordChange(user);
+  // Changing the password must end every other session immediately.
+  user.tokenVersion = (user.tokenVersion ?? 0) + 1;
   await user.save();
 
+  // The caller's own token was just invalidated along with the rest, so issue a
+  // replacement rather than signing them out of the session they are using.
+  const { name } = await getNamesFromLead(user);
+  const token = signJwt({
+    id: user._id,
+    role: user.role,
+    name,
+    email: user.email,
+    tokenVersion: user.tokenVersion,
+  });
+  setAuthCookie(req, res, token);
+
   logger.logAuth('change_password_success', { userId: user._id });
-  res.json({ success: true, message: 'Password changed successfully' });
+  res.json({ success: true, message: 'Password changed successfully', data: { token } });
 });
 
 // ─── Change Email (authenticated) ───────────────────────────────────────────
@@ -270,7 +334,7 @@ const requestEmailChange = asyncHandler(async (req, res) => {
   if (error) throw new ValidationError(error.message);
 
   const { newEmail } = value;
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id).select('+auth');
   if (!user) throw new NotFoundError('User');
 
   const existing = await User.findOne({ email: newEmail });
@@ -282,11 +346,12 @@ const requestEmailChange = asyncHandler(async (req, res) => {
   const otp = generateOTP();
   const expiry = new Date(Date.now() + 10 * 60 * 1000);
 
-  user.profile = {
-    ...(user.profile || {}),
+  user.auth = {
+    ...(user.auth ? user.auth.toObject() : {}),
     emailOTP: otp,
     emailOTPExpiry: expiry,
     pendingEmail: newEmail,
+    emailOTPAttempts: 0,
   };
   await user.save();
 
@@ -304,42 +369,43 @@ const confirmEmailChange = asyncHandler(async (req, res) => {
   const { otp } = req.body;
   if (!otp) throw new ValidationError('OTP is required');
 
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id).select('+auth');
   if (!user) throw new NotFoundError('User');
 
-  const profile = user.profile || {};
-  if (!profile.emailOTP || !profile.emailOTPExpiry || !profile.pendingEmail) {
+  const auth = user.auth || {};
+  if (!auth.emailOTP || !auth.emailOTPExpiry || !auth.pendingEmail) {
     throw new ValidationError('No pending email change. Please request a new code.');
   }
 
-  if (new Date() > new Date(profile.emailOTPExpiry)) {
-    user.profile = { ...profile, emailOTP: undefined, emailOTPExpiry: undefined, pendingEmail: undefined, emailOTPAttempts: undefined };
+  if (new Date() > new Date(auth.emailOTPExpiry)) {
+    clearEmailChange(user);
     await user.save();
     throw new ValidationError('OTP has expired. Please request a new code.');
   }
 
-  const attempts = (profile.emailOTPAttempts || 0) + 1;
-  if (profile.emailOTP !== otp.toString().trim()) {
+  const attempts = (auth.emailOTPAttempts || 0) + 1;
+  if (auth.emailOTP !== otp.toString().trim()) {
     logger.logSecurity('change_email_wrong_otp', { userId: user._id, attempts });
     if (attempts >= 5) {
-      user.profile = { ...profile, emailOTP: undefined, emailOTPExpiry: undefined, pendingEmail: undefined, emailOTPAttempts: undefined };
+      clearEmailChange(user);
       await user.save();
       throw new ValidationError('Too many incorrect attempts. Please request a new code.');
     }
-    user.profile = { ...profile, emailOTPAttempts: attempts };
+    user.auth.emailOTPAttempts = attempts;
     await user.save();
     throw new ValidationError('Invalid OTP');
   }
 
-  const alreadyTaken = await User.findOne({ email: profile.pendingEmail });
+  const pendingEmail = auth.pendingEmail;
+  const alreadyTaken = await User.findOne({ email: pendingEmail });
   if (alreadyTaken) {
-    user.profile = { ...profile, emailOTP: undefined, emailOTPExpiry: undefined, pendingEmail: undefined, emailOTPAttempts: undefined };
+    clearEmailChange(user);
     await user.save();
     throw new ValidationError('That email address is no longer available. Please request a new change.');
   }
 
-  user.email = profile.pendingEmail;
-  user.profile = { ...profile, emailOTP: undefined, emailOTPExpiry: undefined, pendingEmail: undefined, emailOTPAttempts: undefined };
+  user.email = pendingEmail;
+  clearEmailChange(user);
   await user.save();
 
   logger.logAuth('change_email_success', { userId: user._id, newEmail: user.email });
@@ -369,7 +435,7 @@ const requestForgotPassword = asyncHandler(async (req, res) => {
   const { email } = value;
   const GENERIC = 'If that email is registered, a verification code has been sent to it.';
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select('+auth');
   if (!user) {
     logger.logSecurity('forgot_password_email_not_found', { email });
     return res.json({ success: true, message: GENERIC });
@@ -378,8 +444,8 @@ const requestForgotPassword = asyncHandler(async (req, res) => {
   const otp = generateOTP();
   const expiry = new Date(Date.now() + 10 * 60 * 1000);
 
-  user.profile = {
-    ...(user.profile || {}),
+  user.auth = {
+    ...(user.auth ? user.auth.toObject() : {}),
     forgotOTP: otp,
     forgotOTPExpiry: expiry,
     forgotOTPAttempts: 0,
@@ -402,35 +468,38 @@ const confirmForgotPassword = asyncHandler(async (req, res) => {
 
   const { email, otp, newPassword } = value;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select('+auth');
   if (!user) throw new ValidationError('Invalid or expired code. Please request a new one.');
 
-  const profile = user.profile || {};
-  if (!profile.forgotOTP || !profile.forgotOTPExpiry) {
+  const auth = user.auth || {};
+  if (!auth.forgotOTP || !auth.forgotOTPExpiry) {
     throw new ValidationError('No pending reset request. Please request a new code.');
   }
 
-  if (new Date() > new Date(profile.forgotOTPExpiry)) {
-    user.profile = { ...profile, forgotOTP: undefined, forgotOTPExpiry: undefined, forgotOTPAttempts: undefined };
+  if (new Date() > new Date(auth.forgotOTPExpiry)) {
+    clearForgotPassword(user);
     await user.save();
     throw new ValidationError('Code has expired. Please request a new one.');
   }
 
-  const attempts = (profile.forgotOTPAttempts || 0) + 1;
-  if (profile.forgotOTP !== otp.toString().trim()) {
+  const attempts = (auth.forgotOTPAttempts || 0) + 1;
+  if (auth.forgotOTP !== otp.toString().trim()) {
     logger.logSecurity('forgot_password_wrong_otp', { userId: user._id, attempts });
     if (attempts >= 5) {
-      user.profile = { ...profile, forgotOTP: undefined, forgotOTPExpiry: undefined, forgotOTPAttempts: undefined };
+      clearForgotPassword(user);
       await user.save();
       throw new ValidationError('Too many incorrect attempts. Please request a new code.');
     }
-    user.profile = { ...profile, forgotOTPAttempts: attempts };
+    user.auth.forgotOTPAttempts = attempts;
     await user.save();
     throw new ValidationError('Invalid code. Please try again.');
   }
 
   user.passwordHash = await bcrypt.hash(newPassword, 10);
-  user.profile = { ...profile, forgotOTP: undefined, forgotOTPExpiry: undefined, forgotOTPAttempts: undefined };
+  clearForgotPassword(user);
+  // A reset is the one case where killing every existing session matters most:
+  // if an attacker held a token, this is what removes their access.
+  user.tokenVersion = (user.tokenVersion ?? 0) + 1;
   await user.save();
 
   logger.logAuth('forgot_password_success', { userId: user._id });

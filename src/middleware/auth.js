@@ -1,6 +1,7 @@
 const { verifyJwt } = require("../utils/jwt");
+const User = require("../models/User");
 
-function requireAuth(req, res, next) {
+async function requireAuth(req, res, next) {
   // Check for token in multiple places:
   // 1. Cookie (for web browsers)
   // 2. Authorization header (for mobile apps)
@@ -37,11 +38,47 @@ function requireAuth(req, res, next) {
     });
   }
 
+  // Token signature is valid, but a valid signature is not the same as a valid
+  // session. Without this check a token stays usable for its full 7-day life
+  // even after the password is changed or the account is disabled, and there is
+  // no way to log anyone out server-side.
+  //
+  // Tokens issued before tokenVersion existed carry no such claim; they are
+  // treated as version 0 so live sessions are not invalidated by this change.
+  const userId = decoded.id || decoded._id;
+  try {
+    const current = await User.findById(userId).select("tokenVersion").lean();
+
+    if (!current) {
+      return res.status(401).json({
+        success: false,
+        error: {
+          message: "Account no longer exists",
+          code: "ACCOUNT_NOT_FOUND",
+          statusCode: 401
+        }
+      });
+    }
+
+    if ((decoded.tokenVersion ?? 0) !== (current.tokenVersion ?? 0)) {
+      return res.status(401).json({
+        success: false,
+        error: {
+          message: "Session has been revoked. Please sign in again.",
+          code: "TOKEN_REVOKED",
+          statusCode: 401
+        }
+      });
+    }
+  } catch (err) {
+    return next(err);
+  }
+
   // Ensure both `id`, `_id`, and `userId` are available for compatibility
   req.user = {
     ...decoded,
-    _id: decoded.id || decoded._id,
-    userId: decoded.id || decoded._id
+    _id: userId,
+    userId: userId
   };
   next();
 }
