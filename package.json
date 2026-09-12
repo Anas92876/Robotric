@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "seed:admin": "node scripts/seedAdmin.js",
-    "test": "jest --testPathPatterns=src/tests"
+    "seed:admin": "node src/scripts/seedUsers.js",
+    "test": "jest --testPathPatterns=src/tests",
+    "test:watch": "jest --watch --testPathPatterns=src/tests",
+    "lint:deps": "depcruise src index.js --config .dependency-cruiser.js",
+    "routes:snapshot": "node scripts/route-parity.js --write",
+    "routes:check": "node scripts/route-parity.js"
   },
   "keywords": [],
   "author": "Wael Alhamad",

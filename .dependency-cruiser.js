@@ -1,6 +1,63 @@
 /** @type {import('dependency-cruiser').IConfiguration} */
 module.exports = {
   forbidden: [
+    // ── Project architecture rules ────────────────────────────────────────
+    // These are the rules that keep the refresh from regressing. Everything
+    // below them is dependency-cruiser's stock advice.
+    {
+      name: 'no-dead-repository-layer',
+      severity: 'error',
+      comment:
+        'src/repositories/ is 31 byte-identical copy-pasted CRUD wrappers. No ' +
+        'controller imports it; only the seven services listed below do, and ' +
+        'the whole layer is deleted during the module restructure.\n' +
+        'This is a ratchet: the existing seven are grandfathered so CI stays ' +
+        'green, but nothing NEW may depend on the layer. As each service is ' +
+        'migrated in Phase 3, delete its line from the exception list — when ' +
+        'the list is empty, so is src/repositories/.',
+      from: {
+        pathNot:
+          '^src/repositories|' +
+          '^src/services/(' +
+          'session|' +
+          'clo\\.sessions|' +
+          'clo\\.attendance|' +
+          'student\\.attendance|' +
+          'student\\.modules|' +
+          'trainer\\.attendance' +
+          ')\\.service\\.js$',
+      },
+      to: { path: '^src/repositories' },
+    },
+    {
+      name: 'no-controller-to-controller',
+      severity: 'error',
+      comment:
+        'One controller importing another is how the role-duplicated logic ' +
+        'spread in the first place. Shared behaviour belongs in a service.',
+      from: { path: '^src/controllers' },
+      to: { path: '^src/controllers' },
+    },
+    {
+      name: 'no-model-to-controller',
+      severity: 'error',
+      comment:
+        'Models must not reach upward into controllers. A model that needs ' +
+        'application logic is a service in disguise.',
+      from: { path: '^src/models' },
+      to: { path: '^(src/controllers|src/routes)' },
+    },
+    {
+      name: 'no-route-to-model',
+      severity: 'warn',
+      comment:
+        'Route files should wire middleware to controllers, not query the ' +
+        'database. Three of them currently do; they are cleaned up in Phase 3.',
+      from: { path: '^src/routes' },
+      to: { path: '^src/models' },
+    },
+
+    // ── dependency-cruiser defaults ───────────────────────────────────────
     {
       name: 'no-circular',
       severity: 'warn',
@@ -88,7 +145,8 @@ module.exports = {
         "That's problematic as the package either (1) won't be available on live (2 - worse) will be " +
         "available on live with an non-guaranteed version. Fix it by adding the package to the dependencies " +
         "in your package.json.",
-      from: {},
+      // Tests and build scripts legitimately use devDependencies.
+      from: { pathNot: '\\.(test|spec)\\.[jt]s$|^scripts/' },
       to: {
         dependencyTypes: [
           'npm-no-pkg',
