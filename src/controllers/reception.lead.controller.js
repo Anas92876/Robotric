@@ -10,6 +10,7 @@
  */
 
 const Lead = require('../models/Lead');
+const { parsePagination } = require('../utils/http');
 const User = require('../models/User');
 const Course = require('../models/Course');
 
@@ -59,7 +60,7 @@ exports.getAllLeads = async (req, res) => {
     }
 
     // Pagination
-    const skip = (parseInt(page) - 1) * parseInt(limit);
+    const { page: safePage, limit: safeLimit, skip } = parsePagination(req.query);
 
     // Build sort
     const allowedSortFields = ['leadDate', 'createdAt', 'fullName'];
@@ -76,7 +77,7 @@ exports.getAllLeads = async (req, res) => {
         .sort({ fullName: sortDir })
         .collation({ locale: 'ar' })
         .skip(skip)
-        .limit(parseInt(limit));
+        .limit(safeLimit);
     } else if (sortField === 'leadDate') {
       // Use aggregation to push null leadDates to the end (asc) or beginning (desc)
       leads = await Lead.aggregate([
@@ -90,7 +91,7 @@ exports.getAllLeads = async (req, res) => {
         },
         { $sort: { _leadDateSort: sortDir } },
         { $skip: skip },
-        { $limit: parseInt(limit) }
+        { $limit: safeLimit }
       ]);
 
       // Re-populate after aggregation
@@ -104,7 +105,7 @@ exports.getAllLeads = async (req, res) => {
         .populate('convertedToStudent', 'name email')
         .sort({ [sortField]: sortDir })
         .skip(skip)
-        .limit(parseInt(limit));
+        .limit(safeLimit);
     }
 
     const total = await Lead.countDocuments(filter);
@@ -113,9 +114,9 @@ exports.getAllLeads = async (req, res) => {
       leads,
       pagination: {
         total,
-        page: parseInt(page),
-        pages: Math.ceil(total / parseInt(limit)),
-        limit: parseInt(limit)
+        page: safePage,
+        pages: Math.ceil(total / safeLimit),
+        limit: safeLimit
       }
     });
   } catch (error) {
@@ -554,19 +555,19 @@ exports.setLeadWaiting = async (req, res) => {
  */
 exports.getWaitingLeads = async (req, res) => {
   try {
-    const { courseId, page = 1, limit = 50 } = req.query;
+    const { courseId } = req.query;
 
     const filter = { status: 'waiting' };
     if (courseId) filter['waitingInfo.courseId'] = courseId;
 
-    const skip = (parseInt(page) - 1) * parseInt(limit);
+    const { page: safePage, limit: safeLimit, skip } = parsePagination(req.query, { defaultLimit: 50 });
 
     const leads = await Lead.find(filter)
       .populate('convertedToStudent', 'name email')
       .populate('waitingInfo.courseId', 'title price')
       .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(parseInt(limit));
+      .limit(safeLimit);
 
     const total = await Lead.countDocuments(filter);
 
@@ -574,9 +575,9 @@ exports.getWaitingLeads = async (req, res) => {
       leads,
       pagination: {
         total,
-        page: parseInt(page),
-        pages: Math.ceil(total / parseInt(limit)),
-        limit: parseInt(limit)
+        page: safePage,
+        pages: Math.ceil(total / safeLimit),
+        limit: safeLimit
       }
     });
   } catch (error) {

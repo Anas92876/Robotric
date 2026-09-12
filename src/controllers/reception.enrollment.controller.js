@@ -9,6 +9,7 @@
  */
 
 const Enrollment = require('../models/Enrollment');
+const { parsePagination } = require('../utils/http');
 const Course = require('../models/Course');
 const User = require('../models/User');
 const Group = require('../models/Group');
@@ -23,7 +24,8 @@ const { createAndEmitNotification } = require('../services/webNotification.servi
  */
 const getAllEnrollments = async (req, res) => {
   try {
-    const { course, student, status, paymentStatus, hasDiscount, transportationFilter, page = 1, limit = 20 } = req.query;
+    const { course, student, status, paymentStatus, hasDiscount, transportationFilter } = req.query;
+    const { page: safePage, limit: safeLimit, skip } = parsePagination(req.query);
 
     // Build query
     const query = {};
@@ -55,8 +57,8 @@ const getAllEnrollments = async (req, res) => {
           success: true,
           data: [],
           pagination: {
-            page: parseInt(page),
-            limit: parseInt(limit),
+            page: safePage,
+            limit: safeLimit,
             total: 0,
             pages: 0
           }
@@ -107,15 +109,13 @@ const getAllEnrollments = async (req, res) => {
       }
     }
 
-    const skip = (parseInt(page) - 1) * parseInt(limit);
-
     // Fetch enrollments with populated fields
     const enrollments = await Enrollment.find(query)
       .populate('student', 'name email')
       .populate('course', 'title price type bundlePrice')
       .sort({ enrolledAt: -1 })
       .skip(skip)
-      .limit(parseInt(limit));
+      .limit(safeLimit);
 
     const total = await Enrollment.countDocuments(query);
 
@@ -123,10 +123,10 @@ const getAllEnrollments = async (req, res) => {
       success: true,
       data: enrollments,
       pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
+        page: safePage,
+        limit: safeLimit,
         total,
-        pages: Math.ceil(total / parseInt(limit))
+        pages: Math.ceil(total / safeLimit)
       }
     });
   } catch (error) {

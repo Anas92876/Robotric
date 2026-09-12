@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { parsePagination } = require('../utils/http');
 const User = require('../models/User');
 const Enrollment = require('../models/Enrollment');
 const Payment = require('../models/Payment');
@@ -50,7 +51,7 @@ const getDashboardStats = asyncHandler(async (req, res) => {
  * @access  Private/Reception
  */
 const getAllUsers = asyncHandler(async (req, res) => {
-  const { role, search, page = 1, limit = 20 } = req.query;
+  const { role, search } = req.query;
 
   const query = {};
 
@@ -67,13 +68,13 @@ const getAllUsers = asyncHandler(async (req, res) => {
     ];
   }
 
-  const skip = (parseInt(page) - 1) * parseInt(limit);
+  const { page: safePage, limit: safeLimit, skip } = parsePagination(req.query);
 
   const users = await User.find(query)
     .select('-passwordHash')
     .sort({ createdAt: -1 })
     .skip(skip)
-    .limit(parseInt(limit));
+    .limit(safeLimit);
 
   const total = await User.countDocuments(query);
 
@@ -81,10 +82,10 @@ const getAllUsers = asyncHandler(async (req, res) => {
     success: true,
     data: users,
     pagination: {
-      page: parseInt(page),
-      limit: parseInt(limit),
+      page: safePage,
+      limit: safeLimit,
       total,
-      pages: Math.ceil(total / parseInt(limit))
+      pages: Math.ceil(total / safeLimit)
     }
   });
 });
@@ -235,7 +236,7 @@ const deleteUser = asyncHandler(async (req, res) => {
  * @access  Private/Reception
  */
 const getRecentEnrollments = asyncHandler(async (req, res) => {
-  const { limit = 10 } = req.query;
+  const { limit: safeLimit } = parsePagination(req.query, { defaultLimit: 10 });
 
   // Get enrollments from last 7 days
   const sevenDaysAgo = new Date();
@@ -247,7 +248,7 @@ const getRecentEnrollments = asyncHandler(async (req, res) => {
     .populate('student', 'name email')
     .populate('course', 'title')
     .sort({ enrolledAt: -1 })
-    .limit(parseInt(limit));
+    .limit(safeLimit);
 
   res.status(200).json({
     success: true,
@@ -261,7 +262,7 @@ const getRecentEnrollments = asyncHandler(async (req, res) => {
  * @access  Private/Reception
  */
 const getRecentActivities = asyncHandler(async (req, res) => {
-  const { limit = 20 } = req.query;
+  const { limit: safeLimit } = parsePagination(req.query, { defaultLimit: 20 });
 
   // Combine and format activities
   const activities = [];
@@ -273,7 +274,7 @@ const getRecentActivities = asyncHandler(async (req, res) => {
       .populate('course', 'title')
       .populate('issuedBy', 'name')
       .sort({ createdAt: -1 })
-      .limit(parseInt(limit))
+      .limit(safeLimit)
       .lean();
 
     // Add payment activities
@@ -306,7 +307,7 @@ const getRecentActivities = asyncHandler(async (req, res) => {
     })
       .select('fullName convertedAt')
       .sort({ convertedAt: -1 })
-      .limit(parseInt(limit))
+      .limit(safeLimit)
       .lean();
 
     // Add lead conversion activities
@@ -333,7 +334,7 @@ const getRecentActivities = asyncHandler(async (req, res) => {
       .populate('student', 'name')
       .populate('course', 'title')
       .sort({ createdAt: -1 })
-      .limit(parseInt(limit))
+      .limit(safeLimit)
       .lean();
 
     // Add enrollment activities (only for enrollments created in last 7 days)

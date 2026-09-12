@@ -65,4 +65,34 @@ async function findOwnedTrip(req, res, { transitionTo = null } = {}) {
   return trip;
 }
 
-module.exports = { asyncRoute, fail, ok, findOwnedTrip };
+/**
+ * Parse and clamp pagination parameters from a query string.
+ *
+ * Roughly two dozen list endpoints read `limit` straight from req.query with a
+ * default but no ceiling, so `?limit=999999` returned the whole collection —
+ * and with 617 populate() calls across the codebase, a single such request can
+ * pull a very large object graph into memory.
+ *
+ * Callers that already return `{ page, limit, total, pages }` metadata keep the
+ * same response shape; only absurd limits change behaviour.
+ *
+ *   const { page, limit, skip } = parsePagination(req.query);
+ *
+ * @param {object} query            req.query
+ * @param {object} [options]
+ * @param {number} [options.defaultLimit=20]
+ * @param {number} [options.maxLimit=200]
+ */
+function parsePagination(query = {}, { defaultLimit = 20, maxLimit = 200 } = {}) {
+  const rawPage = Number.parseInt(query.page, 10);
+  const rawLimit = Number.parseInt(query.limit, 10);
+
+  const page = Number.isFinite(rawPage) && rawPage > 0 ? rawPage : 1;
+
+  let limit = Number.isFinite(rawLimit) && rawLimit > 0 ? rawLimit : defaultLimit;
+  if (limit > maxLimit) limit = maxLimit;
+
+  return { page, limit, skip: (page - 1) * limit };
+}
+
+module.exports = { asyncRoute, fail, ok, findOwnedTrip, parsePagination };
