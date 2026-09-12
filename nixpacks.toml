@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["chromium"]
+dependsOn = []
+
+[phases.install]
+cmds = ["npm ci --prefer-offline"]
+cacheDirectories = ["/root/.npm", "node_modules"]
+
+[variables]
+CHROME_BIN = "/run/current-system/sw/bin/chromium"
+PUPPETEER_SKIP_DOWNLOAD = "true"
+NPM_CONFIG_CACHE = "/root/.npm"
