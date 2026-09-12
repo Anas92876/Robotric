@@ -87,7 +87,16 @@ const EnrollmentSchema = new mongoose.Schema({
         ref: 'Payment',
         default: null
       }
-    }]
+    }],
+    // recordPayment has always written this, but it was never declared, so
+    // Mongoose's strict mode discarded it on every save. Declared now so the
+    // write actually lands. (The companion field it also wrote,
+    // payment.paymentHistory, was removed instead of declared: Receipt already
+    // records every payment and is indexed for exactly that query.)
+    lastPaymentDate: {
+      type: Date,
+      default: null
+    }
   },
   attendance: {
     totalSessions: {

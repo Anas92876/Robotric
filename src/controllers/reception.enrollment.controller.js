@@ -753,16 +753,15 @@ const recordPayment = async (req, res) => {
           'payment.paidAmount': paymentAmount,
           'payment.remainingAmount': -paymentAmount
         },
-        $set: { 'payment.lastPaymentDate': now },
-        $push: {
-          'payment.paymentHistory': {
-            amount: paymentAmount,
-            date: now,
-            method: paymentMethod || 'cash',
-            notes: notes || '',
-            receivedBy: req.user.id
-          }
-        }
+        // The previous code also pushed onto payment.paymentHistory. That field
+        // is not declared in EnrollmentSchema, and Mongoose runs strict by
+        // default, so every write to it was silently discarded — the history
+        // has never existed. It is also redundant: a Receipt is created for
+        // every payment below, and Receipt is indexed on
+        // { enrollment, createdAt }, which is the real audit trail.
+        // Removed rather than declared, so there is one record of a payment
+        // instead of two that can disagree.
+        $set: { 'payment.lastPaymentDate': now }
       },
       { new: true }
     )

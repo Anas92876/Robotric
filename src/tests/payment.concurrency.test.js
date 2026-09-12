@@ -34,7 +34,6 @@ beforeEach(async () => {
 
 const studentId = new mongoose.Types.ObjectId();
 const courseId = new mongoose.Types.ObjectId();
-const staffId = new mongoose.Types.ObjectId();
 
 async function makeEnrollment(total = 1000, paid = 0) {
   return Enrollment.create({
@@ -44,7 +43,6 @@ async function makeEnrollment(total = 1000, paid = 0) {
       totalAmount: total,
       paidAmount: paid,
       remainingAmount: total - paid,
-      paymentHistory: [],
     },
   });
 }
@@ -68,15 +66,6 @@ function applyPayment(enrollmentId, amount) {
         'payment.remainingAmount': -amount,
       },
       $set: { 'payment.lastPaymentDate': now },
-      $push: {
-        'payment.paymentHistory': {
-          amount,
-          date: now,
-          method: 'cash',
-          notes: '',
-          receivedBy: staffId,
-        },
-      },
     },
     { new: true }
   );
@@ -94,7 +83,7 @@ describe('recordPayment concurrency', () => {
     const after = await Enrollment.findById(enrollment._id).lean();
     expect(after.payment.paidAmount).toBe(700);
     expect(after.payment.remainingAmount).toBe(300);
-    expect(after.payment.paymentHistory).toHaveLength(2);
+    expect(after.payment.lastPaymentDate).toBeInstanceOf(Date);
   });
 
   test('ten simultaneous payments all land', async () => {
@@ -107,7 +96,6 @@ describe('recordPayment concurrency', () => {
     const after = await Enrollment.findById(enrollment._id).lean();
     expect(after.payment.paidAmount).toBe(1000);
     expect(after.payment.remainingAmount).toBe(0);
-    expect(after.payment.paymentHistory).toHaveLength(10);
   });
 
   test('a payment that would exceed the total is rejected, not clamped', async () => {
