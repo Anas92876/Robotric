@@ -69,6 +69,9 @@ try {
 // Rate limiting middleware
 const { apiLimiter } = require('./src/middleware/rateLimiting');
 
+// Auth guards (used by the gated diagnostics endpoint below)
+const { requireAuth, requireRoles } = require('./src/middleware/auth');
+
 const app = express();
 
 // Apply security middleware (Helmet headers, NoSQL injection protection)
@@ -355,18 +358,12 @@ app.use(morgan("dev"));
 // Apply global rate limiter to all API routes
 app.use("/api", apiLimiter);
 
-// Simple test endpoint (NO DB) - BEFORE DB middleware
-app.get("/test", (req, res) => {
-  res.json({
-    status: "Server is running!",
-    timestamp: new Date().toISOString(),
-    env: {
-      NODE_ENV: process.env.NODE_ENV,
-      HAS_MONGO_URI: !!process.env.MONGO_URI,
-      MONGO_URI_PREFIX: process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 20) + "..." : "NOT SET",
-      VERCEL: process.env.VERCEL
-    }
-  });
+// Liveness probe — MUST stay above the DB middleware.
+// The platform restarts the container when this fails, so it must not depend
+// on MongoDB; otherwise a brief database blip becomes a restart loop.
+// Deliberately exposes nothing about the environment or its configuration.
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
 // DB Connection Middleware for Vercel (ensures connection before each request)
@@ -393,78 +390,28 @@ app.use(async (req, res, next) => {
   }
 });
 
-// Root endpoint - Status UI
+// Root endpoint.
+// Previously rendered a status page exposing NODE_ENV, whether MONGO_URI and
+// JWT_SECRET were set, and the live database connection state to anyone who
+// asked. That is infrastructure reconnaissance; it now says nothing.
 app.get("/", (req, res) => {
-  const hasMongoUri = !!process.env.MONGO_URI;
-  const hasJwtSecret = !!process.env.JWT_SECRET;
-  const nodeEnv = process.env.NODE_ENV || 'not set';
-  const isMongoConnected = mongoose.connection.readyState === 1;
-
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Robotric Server Status</title>
-      <style>
-        body { font-family: Arial; padding: 40px; background: #0f172a; color: #e2e8f0; }
-        .container { max-width: 600px; margin: 0 auto; }
-        h1 { color: #38bdf8; }
-        .status { padding: 15px; margin: 10px 0; border-radius: 8px; }
-        .success { background: #065f46; border-left: 4px solid #10b981; }
-        .error { background: #7f1d1d; border-left: 4px solid #ef4444; }
-        .warning { background: #78350f; border-left: 4px solid #f59e0b; }
-        .info { background: #1e3a8a; border-left: 4px solid #3b82f6; }
-        code { background: #1e293b; padding: 2px 6px; border-radius: 4px; }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>🤖 Robotric Server Status</h1>
-
-        <div class="status ${nodeEnv === 'production' ? 'success' : 'warning'}">
-          <strong>Environment:</strong> ${nodeEnv}
-        </div>
-
-        <div class="status ${hasMongoUri ? 'success' : 'error'}">
-          <strong>MongoDB URI:</strong> ${hasMongoUri ? '✓ Configured' : '✗ Missing'}
-        </div>
-
-        <div class="status ${hasJwtSecret ? 'success' : 'error'}">
-          <strong>JWT Secret:</strong> ${hasJwtSecret ? '✓ Configured' : '✗ Missing'}
-        </div>
-
-        <div class="status ${isMongoConnected ? 'success' : 'error'}">
-          <strong>MongoDB Connection:</strong> ${isMongoConnected ? '✓ Connected' : '✗ Not Connected'}
-          <br><small>ReadyState: ${mongoose.connection.readyState} (0=disconnected, 1=connected, 2=connecting, 3=disconnecting)</small>
-        </div>
-
-        <div class="status info">
-          <strong>Server Time:</strong> ${new Date().toISOString()}
-        </div>
-
-        <div class="status info">
-          <strong>Vercel:</strong> ${process.env.VERCEL === '1' ? 'Yes (Serverless)' : 'No (Local)'}
-        </div>
-
-        <hr style="border-color: #334155; margin: 30px 0;">
-
-        <div style="text-align: center;">
-          <a href="/api/health" style="color: #38bdf8; text-decoration: none;">Test Health Endpoint →</a>
-        </div>
-      </div>
-    </body>
-    </html>
-  `);
+  res.type("text/plain").send("Robotric API");
 });
 
-// Health endpoint (no DB needed)
-app.get("/api/health", (req, res) => {
-  res.json({
-    status: "ok",
-    mongodb: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
-    timestamp: new Date().toISOString()
-  });
-});
+// Readiness / diagnostics — reports infrastructure state, so it is gated.
+// The public liveness probe is /api/health, registered above the DB middleware.
+app.get(
+  "/api/health/deep",
+  requireAuth,
+  requireRoles("admin", "superadmin", "cto"),
+  (req, res) => {
+    res.json({
+      status: "ok",
+      mongodb: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
+      timestamp: new Date().toISOString()
+    });
+  }
+);
 
 // Routes
 // Inject io into services that need to emit
