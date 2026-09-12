@@ -714,51 +714,76 @@ const recordPayment = async (req, res) => {
     const { id } = req.params;
     const { amount, paymentMethod, notes, paymentCurrency, amountInSP } = req.body;
 
-    if (!amount || amount <= 0) {
+    // parseFloat accepts "12abc" as 12 and " " as NaN; validate the parsed
+    // number rather than the raw input.
+    const paymentAmount = parseFloat(amount);
+    if (!Number.isFinite(paymentAmount) || paymentAmount <= 0) {
       return res.status(400).json({
         success: false,
         message: 'Valid payment amount is required'
       });
     }
 
-    const enrollment = await Enrollment.findById(id)
+    // This used to read the enrollment, compute paidAmount + amount in Node,
+    // check it against the total, then write the result back. Two payments
+    // recorded at the same time both read the same starting balance and the
+    // second write silently overwrote the first, losing a payment.
+    //
+    // The balance check now lives in the query filter, so MongoDB evaluates it
+    // against the stored document at write time and applies the increment
+    // atomically. A concurrent second payment either fits (and is applied on
+    // top) or matches nothing (and is rejected).
+    //
+    // remainingAmount is decremented in the same operation: the pre('save')
+    // hook that normally derives it does not run for findOneAndUpdate, and
+    // keeping both in one atomic update is what makes them agree.
+    const now = new Date();
+    const enrollment = await Enrollment.findOneAndUpdate(
+      {
+        _id: id,
+        $expr: {
+          $lte: [
+            { $add: ['$payment.paidAmount', paymentAmount] },
+            '$payment.totalAmount'
+          ]
+        }
+      },
+      {
+        $inc: {
+          'payment.paidAmount': paymentAmount,
+          'payment.remainingAmount': -paymentAmount
+        },
+        $set: { 'payment.lastPaymentDate': now },
+        $push: {
+          'payment.paymentHistory': {
+            amount: paymentAmount,
+            date: now,
+            method: paymentMethod || 'cash',
+            notes: notes || '',
+            receivedBy: req.user.id
+          }
+        }
+      },
+      { new: true }
+    )
       .populate('student', 'name email')
       .populate('course', 'title price');
 
     if (!enrollment) {
-      return res.status(404).json({
-        success: false,
-        message: 'Enrollment not found'
-      });
-    }
-
-    // Check if payment would exceed total amount
-    const newPaidAmount = enrollment.payment.paidAmount + parseFloat(amount);
-    if (newPaidAmount > enrollment.payment.totalAmount) {
+      // Nothing matched: either the enrollment is gone, or this payment would
+      // push the balance past the total. Distinguish the two for the caller.
+      const existing = await Enrollment.findById(id).select('payment.remainingAmount').lean();
+      if (!existing) {
+        return res.status(404).json({
+          success: false,
+          message: 'Enrollment not found'
+        });
+      }
       return res.status(400).json({
         success: false,
-        message: `Payment amount exceeds remaining balance. Remaining: $${enrollment.payment.remainingAmount}`
+        message: `Payment amount exceeds remaining balance. Remaining: ${existing.payment.remainingAmount}`
       });
     }
-
-    // Update payment information
-    enrollment.payment.paidAmount = newPaidAmount;
-    enrollment.payment.remainingAmount = enrollment.payment.totalAmount - newPaidAmount;
-    enrollment.payment.lastPaymentDate = new Date();
-
-    // Add to payment history
-    if (!enrollment.payment.paymentHistory) {
-      enrollment.payment.paymentHistory = [];
-    }
-    enrollment.payment.paymentHistory.push({
-      amount: parseFloat(amount),
-      date: new Date(),
-      method: paymentMethod || 'cash',
-      notes: notes || '',
-      receivedBy: req.user.id
-    });
-
-    await enrollment.save();
 
     // Create web notification for payment
     try {
@@ -1340,74 +1365,112 @@ const recordTransportationPayment = async (req, res) => {
     const { id } = req.params;
     const { amount, paymentMethod, notes } = req.body;
 
-    if (!amount || amount <= 0) {
+    // parseFloat accepts "12abc" as 12 and " " as NaN; validate the parsed
+    // number rather than the raw input.
+    const paymentAmount = parseFloat(amount);
+    if (!Number.isFinite(paymentAmount) || paymentAmount <= 0) {
       return res.status(400).json({
         success: false,
         message: 'Valid payment amount is required'
       });
     }
 
-    const enrollment = await Enrollment.findById(id)
-      .populate('student', 'name email')
-      .populate('course', 'title price');
+    // Same lost-update race as recordPayment, but this handler also reallocates
+    // the installment array, which no single atomic operator can express. So it
+    // uses compare-and-swap instead: read the current balance, compute the new
+    // state, then write only if the balance is still what we read. If another
+    // payment landed in between, the filter matches nothing and we retry from
+    // fresh state rather than overwriting it.
+    const MAX_ATTEMPTS = 3;
+    let enrollment = null;
+    let conflict = false;
 
-    if (!enrollment) {
-      return res.status(404).json({
-        success: false,
-        message: 'Enrollment not found'
-      });
-    }
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+      const current = await Enrollment.findById(id);
 
-    // Check if transportation is enabled
-    if (!enrollment.transportation || !enrollment.transportation.enabled) {
-      return res.status(400).json({
-        success: false,
-        message: 'Transportation is not enabled for this enrollment'
-      });
-    }
+      if (!current) {
+        return res.status(404).json({
+          success: false,
+          message: 'Enrollment not found'
+        });
+      }
 
-    // Check if payment would exceed total amount
-    const newPaidAmount = enrollment.transportation.paidAmount + parseFloat(amount);
-    if (newPaidAmount > enrollment.transportation.totalAmount) {
-      return res.status(400).json({
-        success: false,
-        message: `Payment amount exceeds remaining balance. Remaining: ${enrollment.transportation.remainingAmount.toLocaleString()} S.P.`
-      });
-    }
+      if (!current.transportation || !current.transportation.enabled) {
+        return res.status(400).json({
+          success: false,
+          message: 'Transportation is not enabled for this enrollment'
+        });
+      }
 
-    // Update transportation payment information
-    enrollment.transportation.paidAmount = newPaidAmount;
-    enrollment.transportation.remainingAmount = enrollment.transportation.totalAmount - newPaidAmount;
+      const observedPaid = current.transportation.paidAmount;
+      const newPaidAmount = observedPaid + paymentAmount;
 
-    // Update installment status if applicable
-    const paymentAmount = parseFloat(amount);
-    let remainingToAllocate = paymentAmount;
-    
-    for (const installment of enrollment.transportation.installments) {
-      if (installment.status === 'pending' && remainingToAllocate > 0) {
-        if (remainingToAllocate >= installment.amount) {
-          installment.status = 'paid';
-          installment.paidDate = new Date();
-          remainingToAllocate -= installment.amount;
-        } else {
-          // Partial payment - create a new installment for remaining
-          const remainingAmount = installment.amount - remainingToAllocate;
-          installment.amount = remainingToAllocate;
-          installment.status = 'paid';
-          installment.paidDate = new Date();
-          
-          // Add remaining as new installment
-          enrollment.transportation.installments.push({
-            amount: remainingAmount,
-            dueDate: installment.dueDate,
-            status: 'pending'
-          });
-          remainingToAllocate = 0;
+      if (newPaidAmount > current.transportation.totalAmount) {
+        return res.status(400).json({
+          success: false,
+          message: `Payment amount exceeds remaining balance. Remaining: ${current.transportation.remainingAmount.toLocaleString()} S.P.`
+        });
+      }
+
+      // Allocate the payment across pending installments, oldest first.
+      const installments = current.transportation.installments.map((i) =>
+        (typeof i.toObject === 'function' ? i.toObject() : { ...i })
+      );
+      let remainingToAllocate = paymentAmount;
+      const extraInstallments = [];
+
+      for (const installment of installments) {
+        if (installment.status === 'pending' && remainingToAllocate > 0) {
+          if (remainingToAllocate >= installment.amount) {
+            installment.status = 'paid';
+            installment.paidDate = new Date();
+            remainingToAllocate -= installment.amount;
+          } else {
+            // Partial payment — the unpaid remainder becomes its own installment
+            const remainder = installment.amount - remainingToAllocate;
+            installment.amount = remainingToAllocate;
+            installment.status = 'paid';
+            installment.paidDate = new Date();
+
+            extraInstallments.push({
+              amount: remainder,
+              dueDate: installment.dueDate,
+              status: 'pending'
+            });
+            remainingToAllocate = 0;
+          }
         }
       }
+
+      const result = await Enrollment.updateOne(
+        { _id: id, 'transportation.paidAmount': observedPaid },
+        {
+          $set: {
+            'transportation.paidAmount': newPaidAmount,
+            'transportation.remainingAmount': current.transportation.totalAmount - newPaidAmount,
+            'transportation.installments': [...installments, ...extraInstallments]
+          }
+        }
+      );
+
+      if (result.matchedCount === 1) {
+        conflict = false;
+        break;
+      }
+
+      conflict = true;
     }
 
-    await enrollment.save();
+    if (conflict) {
+      return res.status(409).json({
+        success: false,
+        message: 'Another payment was recorded at the same time. Please review the balance and try again.'
+      });
+    }
+
+    enrollment = await Enrollment.findById(id)
+      .populate('student', 'name email')
+      .populate('course', 'title price');
 
     // ========== AUTO-GENERATE TRANSPORTATION RECEIPT ==========
     const Receipt = require('../models/Receipt');
