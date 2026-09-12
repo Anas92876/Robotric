@@ -1,4 +1,5 @@
 const multer = require('multer');
+const { withVerification } = require('./fileValidation');
 
 // Client task-request media: image, video, or voice recording.
 // One file per request (see supabaseMedia.service.js for why uploads are sequential,
@@ -24,11 +25,27 @@ function kindOf(mimetype) {
   return null;
 }
 
+// Extensions accepted per category, paired with ALLOWED_MIME above. The
+// mimetype alone is client-controlled, so the extension must agree too; the
+// magic-byte check in verifyUploadedFiles then confirms the actual contents.
+const ALLOWED_EXT = {
+  image: ['jpg', 'jpeg', 'png', 'webp'],
+  video: ['mp4', 'mov', 'webm'],
+  audio: ['webm', 'mp4', 'm4a', 'mp3', 'ogg', 'oga'],
+};
+
 const fileFilter = (req, file, cb) => {
   const kind = kindOf(file.mimetype);
   if (!kind) {
     return cb(new Error(`Unsupported file type: ${file.mimetype}`), false);
   }
+
+  const parts = String(file.originalname || '').toLowerCase().split('.');
+  const ext = parts.length > 1 ? parts.pop() : '';
+  if (!ALLOWED_EXT[kind].includes(ext)) {
+    return cb(new Error(`File extension ".${ext}" does not match type ${file.mimetype}`), false);
+  }
+
   cb(null, true);
 };
 
@@ -41,7 +58,8 @@ const upload = multer({
   limits: { fileSize: MAX_BYTES.video, files: 1 },
 });
 
-module.exports = upload;
+module.exports = withVerification(upload);
 module.exports.kindOf = kindOf;
+module.exports.ALLOWED_EXT = ALLOWED_EXT;
 module.exports.ALLOWED_MIME = ALLOWED_MIME;
 module.exports.MAX_BYTES = MAX_BYTES;
