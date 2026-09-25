@@ -9,17 +9,10 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  # .npmrc cannot carry this: modern npm treats an unknown key there as an npm
-  # config and never passes it to package install scripts, so every install
-  # downloads ~150MB of Chromium. Railway gets the same variable from
-  # nixpacks.toml; CI gets it here.
-  PUPPETEER_SKIP_DOWNLOAD: "true"
-
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
@@ -32,26 +25,19 @@ jobs:
       - name: Install
         run: npm ci --no-audit --no-fund
 
-      # Cheap and independent, so each step reports on its own rather than
-      # hiding behind the first failure.
       - name: Typecheck
-        run: npx tsc --noEmit
-        continue-on-error: true   # advisory until Phase 3 converts real modules
+        run: npm run typecheck
 
       - name: Lint
-        run: npx eslint . --max-warnings=0
-        continue-on-error: true   # advisory until the existing violations clear
+        run: npm run lint
 
-      - name: Architecture boundaries
-        run: npm run lint:deps
+      # Tests run on in-process Postgres (PGlite): no database service needed.
+      - name: Tests
+        run: npm test
 
-      # The guard that matters most: the web and Expo clients are fixed, so the
-      # API surface must not move. Fails on any route added, removed or renamed.
+      # Fails if the new app serves a route the old API never had.
       - name: Route parity
         run: npm run routes:check
 
-      - name: Tests
-        run: npm test
-        env:
-          NODE_ENV: test
-          JWT_SECRET: ci-only-secret-not-used-anywhere-else-0123456789
+      - name: Migrations are up to date with the schema
+        run: npx drizzle-kit check
