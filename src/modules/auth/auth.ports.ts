@@ -11,17 +11,10 @@ export interface DisplayNames {
   nameAr: string | null;
 }
 
-/**
- * Old behaviour: English/Arabic names come from the matching CRM lead.
- * Real implementation arrives with the leads module (phase 3).
- */
+/** English/Arabic names come from the CRM lead (see LeadDisplayNameResolver). */
 export interface DisplayNameResolver {
-  resolve(user: Pick<User, 'name' | 'email'>): Promise<DisplayNames>;
+  resolve(user: Pick<User, 'id' | 'name' | 'email'>): Promise<DisplayNames>;
 }
-
-export const plainDisplayNames: DisplayNameResolver = {
-  resolve: async (user) => ({ name: user.name, nameAr: null }),
-};
 
 /**
  * Old behaviour: a student whose every enrollment is inactive cannot log in.

@@ -23,6 +23,19 @@ export function cloRoutes({ guards, controllers: c }: Container): Router {
   r.post('/courses/:bundleId/sub-courses', c.courses.addSubCourse);
   r.delete('/courses/:bundleId/sub-courses/:courseId', c.courses.removeSubCourse);
 
+  // Groups
+  r.get('/groups', c.cloGroups.list);
+  r.get('/groups/:id', c.cloGroups.details);
+  r.post('/groups', c.cloGroups.create);
+  r.put('/groups/:id', c.cloGroups.update);
+  r.delete('/groups/:id', c.cloGroups.delete);
+  r.put('/groups/:id/status', c.cloGroups.setStatus);
+  r.post('/groups/:id/assign-trainer', c.cloGroups.assignTrainer);
+  r.get('/groups/:id/students', c.cloGroups.students);
+  r.post('/groups/:id/students', c.cloGroups.addStudent);
+  r.delete('/groups/:id/students/:studentId', c.cloGroups.removeStudent);
+  r.patch('/groups/:id/board', c.cloGroups.toggleBoard);
+
   // Interests
   r.get('/interests', c.interests.list);
   r.get('/interests/:id', c.interests.get);

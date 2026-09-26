@@ -1,4 +1,5 @@
-import { and, eq, getTableColumns, sql } from 'drizzle-orm';
+import { and, asc, eq, getTableColumns, ilike, notInArray, or, sql } from 'drizzle-orm';
+import { escapeLike } from '../../shared/db/like';
 import type { DbExecutor } from '../../shared/db/client';
 import { type NewUserRow, type OtpPurpose, type UserOtpRow, type UserRow, userOtps, users } from './users.table';
 
@@ -19,6 +20,10 @@ export interface UserRepository {
   /** Sets a new password hash and bumps tokenVersion; returns the new version. */
   replacePassword(id: string, passwordHash: string): Promise<number>;
   updateEmail(id: string, email: string): Promise<void>;
+  /** Returns the updated user, or null if no such user. */
+  setAssignedCompetition(id: string, competitionId: string | null): Promise<User | null>;
+  /** Students by name/email, alphabetical, optionally excluding some ids. */
+  searchStudents(search: string | undefined, excludeIds: string[], limit: number): Promise<{ id: string; name: string; email: string }[]>;
 }
 
 export interface OtpRecord {
@@ -92,6 +97,31 @@ export class DrizzleUserRepository implements UserRepository {
 
   async updateEmail(id: string, email: string): Promise<void> {
     await this.db.update(users).set({ email: normalizeEmail(email) }).where(eq(users.id, id));
+  }
+
+  searchStudents(search: string | undefined, excludeIds: string[], limit: number) {
+    const s = search ? `%${escapeLike(search)}%` : null;
+    return this.db
+      .select({ id: users.id, name: users.name, email: users.email })
+      .from(users)
+      .where(
+        and(
+          eq(users.role, 'student'),
+          s ? or(ilike(users.name, s), ilike(users.email, s)) : undefined,
+          excludeIds.length ? notInArray(users.id, excludeIds) : undefined,
+        ),
+      )
+      .orderBy(asc(users.name))
+      .limit(limit);
+  }
+
+  async setAssignedCompetition(id: string, competitionId: string | null): Promise<User | null> {
+    const [row] = await this.db
+      .update(users)
+      .set({ assignedCompetitionId: competitionId })
+      .where(eq(users.id, id))
+      .returning(publicColumns);
+    return row ?? null;
   }
 }
 

@@ -12,6 +12,7 @@ import type { EmailSender } from '../../src/shared/email/email.sender';
 import type { OtpEmailKind } from '../../src/shared/email/otp-email.template';
 import { logger } from '../../src/shared/logger';
 import type { FileStorage, StoredFile, UploadInput } from '../../src/shared/storage/file-storage';
+import type { PdfRenderer } from '../../src/shared/pdf/pdf-renderer';
 
 /** Captures outgoing emails so tests can read the OTP that was "sent". */
 export class FakeEmailSender implements EmailSender {
@@ -48,6 +49,15 @@ export class MemoryFileStorage implements FileStorage {
   }
 }
 
+/** Returns a tiny fake PDF and remembers the HTML it was asked to render. */
+export class FakePdfRenderer implements PdfRenderer {
+  readonly rendered: string[] = [];
+  async render(html: string): Promise<Buffer> {
+    this.rendered.push(html);
+    return Buffer.from('%PDF-1.4 fake');
+  }
+}
+
 /** Reversible "hash" so tests don't pay bcrypt's cost on every call. */
 export const fastHasher: PasswordHasher = {
   hash: async (plain) => `hashed:${plain}`,
@@ -59,6 +69,7 @@ export interface TestContext {
   db: Database;
   email: FakeEmailSender;
   storage: MemoryFileStorage;
+  pdf: FakePdfRenderer;
   close: () => Promise<void>;
 }
 
@@ -71,8 +82,9 @@ export async function createTestApp(): Promise<TestContext> {
 
   const email = new FakeEmailSender();
   const storage = new MemoryFileStorage();
-  const adapters: Adapters = { db, email, storage, hasher: fastHasher, logger };
+  const pdf = new FakePdfRenderer();
+  const adapters: Adapters = { db, email, storage, hasher: fastHasher, pdf, logger };
   const app = createApp(createContainer(env, adapters));
 
-  return { app, db, email, storage, close: () => client.close() };
+  return { app, db, email, storage, pdf, close: () => client.close() };
 }

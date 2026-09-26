@@ -3,7 +3,7 @@
 Read this file first when you come back. It explains the goal, what is
 finished, where we stopped, and exactly how to continue.
 
-Last updated: 2026-09-26
+Last updated: 2026-09-26 (evening)
 
 ---
 
@@ -40,21 +40,32 @@ every response shape stays exactly the same (including `_id`).
 |---|---|---|
 | 0 | Foundation (TypeScript, database, tests, security, errors) | ✅ Done |
 | 1 | Identity: **auth** (login, logout, me, change password/email, forgot password) | ✅ Done |
-| 1 | Identity: user management, settings, app version | ⏳ **Not done yet** |
+| 1 | Identity: settings (exchange rate, app version), assign a competition to a user | ✅ Done |
 | 2 | Catalog: courses & bundles, interests, subscription plans, training page content | ✅ Done |
-| 3 | CRM: leads, contacts, contact history, events, job applications, contact form | ⏳ Next |
-| 4 | Groups, enrollments, payments, receipts, user subscriptions | ⏳ |
-| 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, gallery, documents, boards | ⏳ |
+| 3 | CRM: leads, contact history, calendar events, website contact form, job applications | ✅ Done |
+| 4 | Groups, enrollments, payments, receipts (PDF), student payments (read-only), hour packages, private session requests | ✅ Done |
+| 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, gallery, documents, boards | ⏳ **Next** |
 | 6 | Competitions, teams, parts, stock, orders, projects, posts, images | ⏳ |
 | 7 | CTO internal work, engineer, client portal | ⏳ |
 | 8 | Transport | ⏳ |
 | 9 | Chat & notifications (WebSockets on hold) | ⏳ |
 | 10 | Finish: delete `legacy/`, final checks, deploy | ⏳ |
 
-**Numbers:** 43 of 503 old routes are rebuilt. 30 automatic tests pass.
+**Numbers:** 137 of 503 old routes are rebuilt. 73 automatic tests pass.
 
-**Next step when you return:** finish Phase 1 (user management, settings,
-app version), then Phase 3 (CRM).
+**Next step when you return:** Phase 5 (teaching: course modules, sessions,
+attendance, quizzes, assignments, tasks, resources, evaluations,
+certificates, gallery, documents, boards).
+
+### Business decisions made along the way
+
+- **Students never pay in the app.** Payments are recorded at the company by
+  reception only. The old student "initiate / confirm payment" endpoints let a
+  student mark their own payment as paid with any transaction number; they now
+  always refuse. Students can still *see* their payments, balance and receipts.
+- **Receipt PDFs are not stored as files.** They are rendered from the saved
+  receipt data each time someone downloads them (works on Vercel). Locally
+  this uses the Chrome installed on the computer; on Vercel a bundled Chromium.
 
 ---
 
@@ -135,7 +146,17 @@ Robotrick-Backend-main/
         ├── courses/
         ├── interests/
         ├── subscription-plans/
-        └── training-content/
+        ├── training-content/
+        ├── settings/
+        ├── leads/
+        ├── events/
+        ├── contact-history/
+        ├── contacts/
+        ├── job-applications/
+        ├── groups/
+        ├── enrollments/
+        ├── receipts/
+        └── subscriptions/
 ```
 
 Every feature module has the same files (this is the SOLID fix):
@@ -149,6 +170,10 @@ Every feature module has the same files (this is the SOLID fix):
 | `*.controller.ts` | Reads the request, calls the service, sends the response |
 | `*.ports.ts` | Small interfaces for things another module will provide later |
 
+When one change touches several tables (for example, converting a lead
+creates a user AND updates the lead), the service uses a **unit of work**
+(`src/shared/db/unit-of-work.ts`): everything is saved together or nothing is.
+
 ---
 
 ## 7. Temporary gaps (filled automatically when later phases are built)
@@ -156,11 +181,11 @@ Every feature module has the same files (this is the SOLID fix):
 These show "zero/empty" today only because the feature they depend on is not
 rebuilt yet. They are wired in `src/container.ts` with a comment `→ phase X`.
 
-- Login returns `nameAr: null` → fixed in Phase 3 (leads).
-- A student with all enrollments inactive can still log in → fixed in Phase 4.
-- Course statistics show 0 groups / 0 enrollments → fixed in Phases 4–5.
-- Deleting a subscription plan does not check active subscriptions → Phase 4.
 - A course's `modules` list is empty → Phase 5.
+- Group sessions / attendance numbers show 0 (progress, average attendance,
+  next session) → Phase 5.
+- Notifications to students (enrollment, payment, reminders) are not sent yet,
+  and group chat membership is not updated → Phase 9.
 
 ---
 
@@ -170,8 +195,7 @@ Open Claude Code in this folder and paste this:
 
 > Read START_HERE.md and REWRITE_PLAN.md. We are rewriting the backend from
 > legacy/ (JS + MongoDB) to TypeScript + PostgreSQL (Drizzle, Supabase).
-> Continue from where we stopped: finish Phase 1 (user management, settings,
-> app version), then Phase 3. Keep routes and responses identical to the old
+> Continue from where we stopped: Phase 5 (teaching). Keep routes and responses identical to the old
 > API, follow the same module structure, ignore WebSockets, run tests,
 > typecheck, lint and routes:check after each module, and update
 > START_HERE.md at the end.
@@ -189,11 +213,12 @@ Open Claude Code in this folder and paste this:
 
 ---
 
-## 9. Nothing is committed yet
+## 9. Git
 
-All work is saved in the files and **staged** in git, but not committed.
-If you want a safe save point, run:
+Phases 0–2 are committed (`4c0c8e8`). Phases 1 (rest), 3 and 4 are saved in
+the files but **not committed yet**. Ask Claude to commit, or run:
 
 ```
-git commit -m "Rewrite: foundation, auth, catalog (phases 0-2)"
+git add -A
+git commit -m "Rewrite: settings, CRM, groups, enrollments, payments (phases 1, 3, 4)"
 ```

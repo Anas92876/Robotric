@@ -106,3 +106,11 @@ export function createUploader(policy: UploadPolicy): Uploader {
     array: (field, maxCount) => [parser.array(field, maxCount), verifyBytes],
   };
 }
+
+export const PDF_POLICY: UploadPolicy = {
+  mimes: ['application/pdf'],
+  extensions: ['pdf'],
+  label: 'PDF',
+  maxBytes: 25 * 1024 * 1024,
+  maxFiles: 1,
+};

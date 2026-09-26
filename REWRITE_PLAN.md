@@ -79,24 +79,44 @@ present in the parity report.
 | Phase | Status | Notes |
 |---|---|---|
 | 0 Foundation | ✅ Done | Typecheck, lint, build OK |
-| 1 Identity | 🟡 Auth done | All 9 `/api/auth/*` routes. User management, settings, app version still to do |
+| 1 Identity | ✅ Done | 9 `/api/auth/*` routes; exchange rate; app version (public + admin); superadmin assigns a competition to a user |
 | 2 Catalog | ✅ Done | 32 routes: CLO courses/bundles, interests, subscription plans, training content; reception interests + active plans; public training content |
-| 3–10 | ⏳ | |
+| 3 CRM | ✅ Done | 26 routes: leads (incl. convert, waiting list, status history), contact history (auto calendar event), events, contact form, job applications (PDF CV) |
+| 4 Enrollment & money | ✅ Done | 63 routes: CLO + trainer groups; reception enrollments (single, bundle, from waiting list), course & transportation payments, receipts (PDF on download), student payments (read-only), hour packages, private session requests & reports |
+| 5–10 | ⏳ | Phase 5 next |
 
-Tests: 30 passing. Route parity: `npm run routes:check` → 43 / 503 legacy routes served.
+Tests: 73 passing. Route parity: `npm run routes:check` → 137 / 503 legacy routes served.
+
+Note: the old reception job-application admin handlers (list/update/delete/CV download) were never mounted in the old app, so they are not ported either.
 
 Live on Supabase: tables migrated; buckets `pdf`, `client-media` (private) and `images` (public, website images).
 
 Temporary gaps, closed when the owning module lands (each is a small interface with a stand-in, wired in `src/container.ts`):
-- Login/`me` return `nameAr: null`: Arabic names come from CRM leads (phase 3).
-- The "all enrollments inactive → student can't log in" rule returns with enrollments (phase 4).
-- Course list stats, course details (groups/trainers/enrollments), course statistics, and the
-  "has groups/enrollments" checks on delete/archive report zero until groups & enrollments exist (phases 4–5).
-- Deleting a subscription plan does not yet check active user subscriptions (phase 4).
 - A course's `modules` list is `[]` until course modules are ported (phase 5).
+- Group session/attendance figures (progress, average attendance, next session, per-student attendance)
+  are zero until sessions & attendance exist (phase 5) — `groups.ports.ts`.
+- Student notifications (enrollment, payment, reminders) and group-chat membership are no-ops until
+  phase 9 — `enrollments.ports.ts`, `groups.ports.ts`.
 
 Deliberate changes from the old API (safer; response shapes unchanged):
 - Every error body has both `message` and `error.message`.
 - Invalid ids return 404 instead of 500.
 - Training-page images moved from Cloudinary to the public Supabase `images` bucket.
 - Search text is matched literally (the old code passed it into a regex).
+- Leads: creating without a status now defaults to `interest` (the old default `new` was invalid and made the save fail);
+  a lead already converted to a student cannot be converted again (the old check tested an impossible status).
+- Converting a lead / setting it to waiting creates the account and updates the lead in one transaction.
+- Login display names prefer the lead that was converted into the account, then fall back to a same-name lead.
+- Deleting a contact-history entry removes its calendar event in the same transaction.
+- **Student online payments disabled** (business decision): `POST /api/student/payments/initiate` and
+  `/:id/confirm` always answer 403 `PAYMENTS_AT_RECEPTION`; they let a student mark their own payment
+  as paid. Payments are recorded by reception only.
+- Groups: adding a student now enforces `maxStudents` everywhere (the CLO endpoint checked a field that
+  did not exist); the CLO add no longer fails with a 500 after adding the student (it tried to create an
+  enrollment with wrong field names); group "enrollments" counts now reflect real enrollments (always 0 before).
+- Enrollments, payments and receipts: a payment and its receipt are one transaction; receipt numbers come
+  from an atomic per-year counter (no duplicates); remaining amounts are always `total − paid`; deleting a
+  bundle enrollment cascades to its sub-enrollments, so orphans can no longer block re-enrollment.
+- Receipt PDFs are rendered on download (Puppeteer; `@sparticuz/chromium` on Vercel) — nothing on disk.
+- Session reports: deducting hours, saving the report and closing the request are one transaction (the old
+  code could deduct hours and then fail to save a report with a PDF); `pdfUrl` is now a working signed link.

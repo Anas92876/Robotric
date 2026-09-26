@@ -23,6 +23,8 @@ export interface CourseFilter {
   category?: string;
   search?: string;
   type?: string;
+  /** Hide courses of this type (e.g. bundles on the enrollment form). */
+  excludeType?: string;
   /** Sub-courses are hidden unless asked for; they appear nested under their bundle. */
   includeSubCourses?: boolean;
   sortBy?: CourseSortField;
@@ -68,6 +70,7 @@ export class DrizzleCourseRepository implements CourseRepository {
           f.status ? sql`${courses.status}::text = ${f.status}` : undefined,
           f.category ? eq(courses.category, f.category) : undefined,
           f.type ? sql`${courses.type}::text = ${f.type}` : undefined,
+          f.excludeType ? sql`${courses.type}::text <> ${f.excludeType}` : undefined,
           search ? or(ilike(courses.title, search), ilike(courses.description, search)) : undefined,
           f.includeSubCourses ? undefined : isNull(courses.parentBundleId),
         ),

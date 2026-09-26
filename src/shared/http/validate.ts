@@ -4,9 +4,10 @@ import { ValidationError } from './errors';
 /**
  * Parses untrusted input against a zod schema. On failure throws a 400 whose
  * message is the first problem's message — schemas carry the exact wording
- * the old API used — and whose `errors` lists every field problem.
+ * the old API used — and whose `errors` lists every field problem. Pass
+ * `summary` for endpoints that answered with one generic message instead.
  */
-export function parse<S extends z.ZodType>(schema: S, input: unknown): z.infer<S> {
+export function parse<S extends z.ZodType>(schema: S, input: unknown, summary?: string): z.infer<S> {
   const result = schema.safeParse(input ?? {});
   if (result.success) return result.data;
 
@@ -14,7 +15,7 @@ export function parse<S extends z.ZodType>(schema: S, input: unknown): z.infer<S
     field: issue.path.join('.'),
     message: issue.message,
   }));
-  throw new ValidationError(errors[0]?.message ?? 'Validation failed', errors);
+  throw new ValidationError(summary ?? errors[0]?.message ?? 'Validation failed', errors);
 }
 
 /**
