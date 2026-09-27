@@ -30,10 +30,13 @@ export function createDatabase(url: string): { db: Database; close: () => Promis
   const pool = new Pool({
     connectionString: url,
     max: 5,
-    // Close idle connections ourselves, before the network or the pooler drops them
-    // silently (the next query on a dropped one fails with "Connection terminated").
-    idleTimeoutMillis: 10_000,
+    // Opening a connection (TLS + sign-in) costs a few round trips to the database, so
+    // idle connections are kept for a while and reused. TCP keep-alive probes every
+    // 10 s stop routers/VPNs from silently dropping them (the next query on a dropped
+    // connection fails with "Connection terminated").
+    idleTimeoutMillis: 300_000,
     keepAlive: true,
+    keepAliveInitialDelayMillis: 10_000,
     // A short connect timeout makes a dropped connection fail fast instead of hanging a request.
     connectionTimeoutMillis: 10_000,
   });
