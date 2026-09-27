@@ -22,33 +22,12 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
   const [currentThumbnailUrl, setCurrentThumbnailUrl] = useState<string | null>(null);
   const [fallbackAttempted, setFallbackAttempted] = useState(false);
 
-  // Generate thumbnail URL from cloudinaryUrl if thumbnailUrl is missing or fails
+  // Photos are private: the backend sends short-lived signed links in thumbnailUrl
+  // and cloudinaryUrl (the old field names). Use them as they are; the lists are
+  // reloaded to get fresh links.
   const getThumbnailUrl = (useFallback = false) => {
-    // First try: Use thumbnailUrl if available and not using fallback
-    if (!useFallback && image.thumbnailUrl) {
-      const cleanUrl = image.thumbnailUrl.trim();
-      console.log('[GalleryImageCard] Using thumbnailUrl:', cleanUrl, 'for image:', image._id);
-      return cleanUrl;
-    }
-    
-    // Fallback: Generate thumbnail from cloudinaryUrl
-    if (image.cloudinaryUrl) {
-      if (image.cloudinaryUrl.includes('res.cloudinary.com')) {
-        // Insert transformation before the filename
-        // This creates a 300x300 cropped thumbnail with auto quality and format
-        const generated = image.cloudinaryUrl.replace(
-          '/upload/',
-          '/upload/w_300,h_300,c_fill,q_auto,f_auto/'
-        );
-        console.log('[GalleryImageCard] Generated thumbnail from cloudinaryUrl:', generated, 'for image:', image._id);
-        return generated;
-      }
-      console.log('[GalleryImageCard] Using cloudinaryUrl directly:', image.cloudinaryUrl, 'for image:', image._id);
-      return image.cloudinaryUrl;
-    }
-    
-    console.warn('[GalleryImageCard] No thumbnailUrl or cloudinaryUrl available for image:', image._id);
-    return null;
+    if (!useFallback && image.thumbnailUrl) return image.thumbnailUrl.trim();
+    return image.cloudinaryUrl || null;
   };
 
   // Initialize thumbnail URL on mount and when image changes

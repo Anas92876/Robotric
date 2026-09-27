@@ -13,6 +13,7 @@ export interface Part {
   usedQty?: number;
   damagedQty?: number;
   reservedQty?: number;
+  imageUrl?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -76,8 +77,10 @@ export const useInventoryData = () => {
         availableQty: part.availableQty || 0,
         usedQty: part.usedQty || 0,
         damagedQty: part.damagedQty || 0,
-        totalQty: (part.availableQty || 0) + (part.usedQty || 0) + (part.damagedQty || 0),
-        imageUrl: `/api/images/by/part/${part._id}`
+        // Ordered items are reserved (not available) until the order is fulfilled,
+        // but they are still in stock, so they count in the total.
+        totalQty: (part.availableQty || 0) + (part.reservedQty || 0) + (part.usedQty || 0) + (part.damagedQty || 0),
+        imageUrl: part.imageUrl || `/api/images/by/part/${part._id}`
       }));
 
       setParts(partsData);

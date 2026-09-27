@@ -14,6 +14,25 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, AlertTriangle } from 'lucide-react';
 import { Modal, Button, Input } from '../ui';
 import type { User, CreateUserRequest, UpdateUserRequest } from '../../hooks/reception/useReceptionUsers';
+import { useAuth } from '../../providers/AuthProvider';
+import { UserRole } from '../../types/auth.types';
+
+/**
+ * Roles reception can assign. Privileged ones (admin, CLO, CTO) can only be
+ * managed by an admin — the backend refuses anyone else (PRIVILEGED_ROLE).
+ */
+const ROLE_OPTIONS: { value: string; label: string; privileged?: boolean }[] = [
+  { value: 'student', label: '👨‍🎓 Student' },
+  { value: 'trainer', label: '👨‍🏫 Trainer' },
+  { value: 'teacher', label: '👨‍🏫 Teacher' },
+  { value: 'social', label: '📱 Social (Content Creator)' },
+  { value: 'reception', label: '📝 Reception' },
+  { value: 'clo', label: '📊 CLO (Chief Learning Officer)', privileged: true },
+  { value: 'admin', label: '⚙️ Admin', privileged: true },
+  { value: 'cto', label: '💻 CTO', privileged: true },
+  { value: 'engineer', label: '🔧 Programmer' },
+  { value: 'client', label: '🤝 Client' },
+];
 
 /**
  * Props for UserForm component
@@ -58,6 +77,9 @@ export const UserForm: React.FC<UserFormProps> = ({
   user,
   mode,
 }) => {
+  const { user: currentUser } = useAuth();
+  const canManagePrivileged = currentUser?.role === UserRole.ADMIN || currentUser?.role === UserRole.SUPERADMIN;
+
   // Form state
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -350,16 +372,11 @@ export const UserForm: React.FC<UserFormProps> = ({
               errors.role ? 'border-red-500' : 'border-primary/20'
             } text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
           >
-            <option value="student">👨‍🎓 Student</option>
-            <option value="trainer">👨‍🏫 Trainer</option>
-            <option value="teacher">👨‍🏫 Teacher</option>
-            <option value="social">📱 Social (Content Creator)</option>
-            <option value="reception">📝 Reception</option>
-            <option value="clo">📊 CLO (Chief Learning Officer)</option>
-            <option value="admin">⚙️ Admin</option>
-            <option value="cto">💻 CTO</option>
-            <option value="engineer">🔧 Programmer</option>
-            <option value="client">🤝 Client</option>
+            {ROLE_OPTIONS.filter((o) => !o.privileged || canManagePrivileged || o.value === formData.role).map((o) => (
+              <option key={o.value} value={o.value} disabled={o.privileged && !canManagePrivileged}>
+                {o.label}
+              </option>
+            ))}
           </select>
           {errors.role && (
             <p className="text-red-400 text-sm mt-1">{errors.role}</p>
