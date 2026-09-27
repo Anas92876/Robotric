@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
-import { ROUTES } from '../constants/routes.constants';
+import { redirectToLogin } from './publicSite';
 
 // Define the shape of the error response from the API
 export interface ApiErrorResponse {
@@ -111,21 +111,7 @@ const createApiClient = (): AxiosInstance => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         
-        // Don't redirect to login if user is on public pages (home, login, register, service pages, gallery)
-        const publicPaths = [
-          ROUTES.HOME,
-          ROUTES.LOGIN,
-          ROUTES.REGISTER,
-          '/services/training',
-          '/services/technical-projects',
-          '/services/3d-printing',
-          '/gallery'
-        ];
-        const isOnPublicPage = publicPaths.includes(window.location.pathname);
-
-        if (!isOnPublicPage && window.location.pathname !== ROUTES.LOGIN) {
-          window.location.href = ROUTES.LOGIN;
-        }
+        redirectToLogin();
       }
 
       return Promise.reject(error);

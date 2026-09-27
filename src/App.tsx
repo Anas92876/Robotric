@@ -11,6 +11,8 @@ import { ChatWidget } from "./components/chat/ChatWidget";
 import { lazyImport } from "./utils/lazyImport";
 import { ToastProvider } from "./components/ui/Toast";
 import { loadDashboardTranslations } from "./i18n";
+import { ExternalRedirect } from "./components/auth/ExternalRedirect";
+import { publicSite } from "./lib/publicSite";
 
 /**
  * Layout wrapper that provides Socket context and Chat widget to authenticated users
@@ -29,22 +31,6 @@ const SocketProviderLayout = () => {
   );
 };
 
-// Public pages
-const Home = lazyImport(() => import("./pages/public/Home"));
-const AboutPage = lazyImport(() => import("./pages/public/AboutPage"));
-const BlogPage = lazyImport(() => import("./pages/public/BlogPage"));
-const BlogPostDetail = lazyImport(() => import("./pages/public/BlogPostDetail"));
-const ContactPage = lazyImport(() => import("./pages/public/ContactPage"));
-const GalleryPage = lazyImport(() => import("./pages/public/GalleryPage"));
-const JoinUsPage = lazyImport(() => import("./pages/public/JoinUsPage"));
-const JobPositionPage = lazyImport(() => import("./pages/public/JobPositionPage"));
-const ServicesPage = lazyImport(() => import("./pages/public/ServicesPage"));
-import DownloadApp from "./pages/public/DownloadApp";
-
-// Auth pages
-const Login = lazyImport(() => import("./pages/auth/Login"));
-const Register = lazyImport(() => import("./pages/auth/Register"));
-
 // Common (shared authenticated) pages
 const Dashboard = lazyImport(() => import("./pages/common/Dashboard"));
 const Orders = lazyImport(() => import("./pages/common/Orders"));
@@ -53,18 +39,7 @@ const Competitions = lazyImport(() => import("./pages/common/Competitions"));
 const Teams = lazyImport(() => import("./pages/common/Teams"));
 const Posts = lazyImport(() => import("./pages/common/Posts"));
 const Inventory = lazyImport(() => import("./pages/common/Inventory"));
-const ComponentShowcase = lazyImport(() => import("./pages/common/ComponentShowcase"));
 const NotFound = lazyImport(() => import("./pages/common/NotFound"));
-
-// Service pages
-const TrainingPage = lazyImport(() => import("./pages/services/TrainingPage"));
-const ProgramDetailPage = lazyImport(() => import("./pages/services/ProgramDetailPage"));
-const DepartmentDetailPage = lazyImport(() => import("./pages/services/DepartmentDetailPage"));
-const TechnicalProjectsPage = lazyImport(() => import("./pages/services/TechnicalProjectsPage"));
-const TechnicalConsultationPage = lazyImport(() => import("./pages/services/TechnicalConsultationPage"));
-const CurriculumDesignPage = lazyImport(() => import("./pages/services/CurriculumDesignPage"));
-const ThreeDPrintingPage = lazyImport(() => import("./pages/services/ThreeDPrintingPage"));
-const StemLabSetupPage = lazyImport(() => import("./pages/services/StemLabSetupPage"));
 
 // Student pages
 const StudentDashboard = lazyImport(() => import("./pages/student/StudentDashboard"));
@@ -88,8 +63,6 @@ const StudentEvaluations = lazyImport(() => import("./pages/student/StudentEvalu
 const StudentCertificates = lazyImport(() => import("./pages/student/StudentCertificates"));
 const StudentDocuments = lazyImport(() => import("./pages/student/StudentDocuments"));
 const StudentMissionPlanner = lazyImport(() => import("./pages/student/StudentMissionPlanner"));
-const CertificateVerify = lazyImport(() => import("./pages/public/CertificateVerify"));
-import CertPreview from "./pages/public/CertPreview";
 
 // Trainer pages
 const TrainerDashboard = lazyImport(() => import("./pages/trainer/TrainerDashboard"));
@@ -215,7 +188,7 @@ const ProtectedRoute = () => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />;
+    return <ExternalRedirect to={publicSite.login()} />;
   }
 
   // Redirect students to student dashboard if they try to access regular dashboard
@@ -483,41 +456,8 @@ const App = () => {
         <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
         <Routes>
-          {/* Public routes - NO MainLayout (no sidebar/navbar) */}
-          <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.LOGIN} element={<Login />} />
-          {/* Redirect old forgot-password URL to login — flow is now inline */}
-          <Route path="/forgot-password" element={<Navigate to={ROUTES.LOGIN} replace />} />
-          {/* Redirect old login URL to new one */}
-          <Route path="/a7f9b2e4c1d8e3f6a9b0c2d5e7f1a3b8d6c9e2f4a1b7c3d9e5f8a2b4c6d1e3f7" element={<Navigate to={ROUTES.LOGIN} replace />} />
-          {/* Register route hidden - only admins can create accounts via user management */}
-          {/* <Route path={ROUTES.REGISTER} element={<Register />} /> */}
-          <Route path="/showcase" element={<ComponentShowcase />} />
-
-          {/* Service pages */}
-          <Route path="/services/training" element={<TrainingPage />} />
-          <Route path="/services/training/yearround/:deptIndex" element={<DepartmentDetailPage />} />
-          <Route path="/services/training/:trackId/:programIndex" element={<ProgramDetailPage />} />
-          <Route path="/services/technical-projects" element={<TechnicalProjectsPage />} />
-          <Route path="/services/technical-consultation" element={<TechnicalConsultationPage />} />
-          <Route path="/services/curriculum-design" element={<CurriculumDesignPage />} />
-          <Route path="/services/3d-printing" element={<ThreeDPrintingPage />} />
-          <Route path="/services/stem-lab-setup" element={<StemLabSetupPage />} />
-
-          {/* Gallery page */}
-          <Route path="/gallery" element={<GalleryPage />} />
-
-          {/* Download App */}
-          <Route path="/download-app" element={<DownloadApp />} />
-
-          {/* Public pages */}
-          <Route path={ROUTES.ABOUT} element={<AboutPage />} />
-          <Route path={ROUTES.SERVICES} element={<ServicesPage />} />
-          <Route path={ROUTES.BLOG} element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostDetail />} />
-          <Route path={ROUTES.JOIN_US} element={<JoinUsPage />} />
-          <Route path={ROUTES.JOIN_US_POSITION} element={<JobPositionPage />} />
-          <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+          {/* The public site (home, services, login…) is the Next.js app on the same domain */}
+          <Route path="/" element={<ExternalRedirect to={publicSite.home()} />} />
 
           {/* Protected routes - WITH MainLayout (includes sidebar/navbar) */}
           <Route element={<ProtectedRoute />}>
@@ -666,10 +606,6 @@ const App = () => {
               </Route>
             </Route>
           </Route>
-
-          {/* Public certificate verification — no auth required */}
-          <Route path="/verify/:certNumber" element={<CertificateVerify />} />
-          <Route path="/cert-preview" element={<CertPreview />} />
 
           {/* 404 - Not Found */}
           <Route path="*" element={<NotFound />} />

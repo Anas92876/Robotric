@@ -1,6 +1,27 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+/**
+ * This app is the private dashboard. The public site (home, services, /en/login…)
+ * is a separate Next.js app served on the same domain. Only these paths belong
+ * to the dashboard; the production rewrites must list the same ones.
+ */
+const DASHBOARD_PATHS = [
+  "dashboard", "student", "trainer", "reception", "clo", "cto-internal", "engineer", "client", "admin",
+  "orders", "projects", "competitions", "teams", "posts", "inventory", "my-tasks", "my-hours",
+  "settings", "profile", "notifications",
+  "dash-assets", // this app's built files and images
+  "odom-map", // the standalone field map tool
+];
+
+// Vite's own dev-server paths — never forwarded
+const VITE_DEV_PATHS = ["src", "node_modules", "@vite", "@id", "@fs", "@react-refresh", "__vite_ping"];
+
+const PUBLIC_SITE_DEV_URL = process.env.PUBLIC_SITE_DEV_URL || "http://localhost:3100";
+const API_DEV_URL = "http://localhost:4889";
+const escape = (p: string) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const ownPaths = [...DASHBOARD_PATHS, ...VITE_DEV_PATHS, "api", "socket.io"].map(escape).join("|");
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -9,40 +30,47 @@ export default defineConfig({
     port: 3000, // Changed from 5173 to avoid permission issue
     proxy: {
       "/api": {
-        target: "http://localhost:4889",
+        target: API_DEV_URL,
         changeOrigin: true,
       },
       "/socket.io": {
-        target: "http://localhost:4889",
+        target: API_DEV_URL,
         changeOrigin: true,
         ws: true,
+      },
+      // Next.js live reload for the public site
+      "/_next/webpack-hmr": {
+        target: PUBLIC_SITE_DEV_URL,
+        ws: true,
+      },
+      // Everything that isn't a dashboard path is the public Next.js site, so in
+      // development both apps share one origin (and one login), like production.
+      [`^/(?!(?:${ownPaths})(?:[/?#]|$))`]: {
+        target: PUBLIC_SITE_DEV_URL,
       },
     },
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react/jsx-runtime', '@tanstack/react-query', 'framer-motion'],
-    exclude: ['@react-three/drei', '@react-three/fiber', 'three', 'jspdf', 'html2canvas'],
+    exclude: ['jspdf', 'html2canvas'],
   },
   resolve: {
-    // Ensure single React instance - critical fix for Spline forwardRef error
     dedupe: ['react', 'react-dom', 'framer-motion'],
   },
   build: {
-    // Exclude heavy lazy chunks from <link rel="modulepreload"> injection.
-    // Without this, Vite injects modulepreload for ALL chunks including
-    // chunk-spline (1.39 MB), chunk-socket, chunk-pdf on every page load.
+    // Built files live under /dash-assets/ so they never clash with the public site's files
+    assetsDir: 'dash-assets',
+    // Exclude heavy lazy chunks from <link rel="modulepreload"> injection,
+    // so they only load on the pages that need them.
     modulePreload: {
       polyfill: true,
       resolveDependencies: (_filename, deps) => {
         return deps.filter(
           (dep) =>
-            !dep.includes('spline') &&
-            !dep.includes('three') &&
             !dep.includes('socket') &&
             !dep.includes('pdf') &&
             !dep.includes('cert') &&
             !dep.includes('html2canvas') &&
-            !dep.includes('moment') &&
             !dep.includes('calendar')
         );
       },
@@ -60,19 +88,11 @@ export default defineConfig({
             id.includes('react-router')
           ) return undefined;
 
-          // Heavy dashboard-only libs — isolated so public pages never load them
+          // Heavy page-specific libs — isolated so other pages never load them
           if (id.includes('pdfjs-dist') || id.includes('react-pdf')) return 'chunk-pdf';
           if (id.includes('jspdf') || id.includes('html2canvas')) return 'chunk-cert';
           if (id.includes('react-big-calendar')) return 'chunk-calendar';
-          if (id.includes('moment')) return 'chunk-moment';
           if (id.includes('socket.io-client') || id.includes('engine.io-client')) return 'chunk-socket';
-
-          // 3D / Spline — desktop hero only, lazy loaded
-          if (id.includes('@splinetool')) return 'chunk-spline';
-          if (id.includes('three') || id.includes('@react-three')) return 'chunk-three';
-
-          // Animation — keep framer-motion in vendor to avoid cross-chunk exports race
-          // if (id.includes('framer-motion')) return 'chunk-framer';
 
           // Small UI utils
           if (id.includes('lucide-react') || id.includes('clsx') || id.includes('tailwind-merge')) return 'chunk-ui';
@@ -88,30 +108,16 @@ export default defineConfig({
     // Reduce chunk size warnings
     chunkSizeWarningLimit: 1000,
     minify: 'esbuild',
-    esbuildOptions: {
-      drop: ['console', 'debugger'],
-    },
     commonjsOptions: {
       include: [/node_modules/],
       transformMixedEsModules: true,
     },
-    // Alternative: Use terser with React-safe settings
-    // minify: 'terser',
-    // terserOptions: {
-    //   compress: {
-    //     drop_console: true,
-    //     drop_debugger: true,
-    //     pure_funcs: ['console.log', 'console.info', 'console.debug'],
-    //     passes: 1, // Reduce passes to avoid React 19 issues
-    //   },
-    //   mangle: {
-    //     safari10: true,
-    //     reserved: ['Activity', 'React', 'ReactDOM'],
-    //   },
-    // },
     // Enable source maps only for debugging
     sourcemap: false,
     // Target modern browsers for smaller bundles
     target: 'esnext',
+  },
+  esbuild: {
+    drop: ['console', 'debugger'],
   },
 });

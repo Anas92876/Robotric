@@ -8,6 +8,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getApiUrl, joinUrl } from '../../utils/apiUrl';
+import { redirectToLogin } from '../../lib/publicSite';
 
 const API_URL = getApiUrl();
 
@@ -108,11 +109,7 @@ export const useChatList = () => {
         if (errorMsg === 'Unauthorized' || errorMsg === 'Invalid token') {
           setError('Your session has expired. Please log in again.');
           // Optionally redirect to login
-          if (window.location.pathname !== '/login') {
-            setTimeout(() => {
-              window.location.href = '/login';
-            }, 2000);
-          }
+          setTimeout(redirectToLogin, 2000);
         } else {
           setError(errorMsg);
         }

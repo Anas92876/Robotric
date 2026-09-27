@@ -5,6 +5,7 @@ import type { AuthState } from '../types/auth.types';
 import { UserRole } from '../types/auth.types';
 import { ROUTES } from '../constants/routes.constants';
 import { api } from '../lib/api';
+import { redirectToPublicHome } from '../lib/publicSite';
 
 type AuthContextType = {
   user: User | null;
@@ -188,8 +189,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         error: null,
       });
       
-      // إعادة توجيه للصفحة الرئيسية
-      navigate(ROUTES.HOME);
+      // إعادة توجيه للصفحة الرئيسية (الموقع العام)
+      redirectToPublicHome();
     }
   };
 

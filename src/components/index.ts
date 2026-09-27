@@ -9,8 +9,6 @@ export * from './layout/MobileNavItem';
 export * from './layout/AdminHeader';
 
 // Auth guards
-export * from './auth/RequireAuth';
-export * from './auth/RequireRole';
 
 // UI
 export * from './ui/PDFViewer';

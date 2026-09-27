@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "../../providers/AuthProvider";
-import { api } from "../../lib/api";
-import { useNavigate } from "react-router-dom";
 
 interface User {
   id: string;
@@ -17,8 +15,7 @@ interface UserDropdownProps {
 export default function UserDropdown({ user }: UserDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { refresh } = useAuth();
-  const navigate = useNavigate();
+  const { logout } = useAuth();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -51,9 +48,7 @@ export default function UserDropdown({ user }: UserDropdownProps) {
   const handleLogout = async () => {
     setIsLoading(true);
     try {
-      await api.post("/auth/logout");
-      await refresh();
-      navigate("/");
+      await logout();
       setIsOpen(false);
     } catch (error) {
       console.error("Logout failed:", error);

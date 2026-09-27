@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import {
@@ -7,7 +6,6 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { useAuth } from '../../providers';
-import { ROUTES } from '../../constants/routes.constants';
 import { NotificationCenter } from '../notifications/NotificationCenter';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 
@@ -21,12 +19,10 @@ interface TopNavProps {
  */
 export const TopNav: React.FC<TopNavProps> = ({ onMenuClick }) => {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
   const { t, i18n } = useTranslation('dashboardCommon');
   const isRTL = i18n.language === 'ar';
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   // Handle scroll effect
   useEffect(() => {
@@ -48,11 +44,6 @@ export const TopNav: React.FC<TopNavProps> = ({ onMenuClick }) => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  // Don't show on auth or public pages
-  if ([ROUTES.LOGIN, ROUTES.REGISTER, ROUTES.HOME, '/forgot-password'].includes(location.pathname)) {
-    return null;
-  }
 
   return (
     <motion.header

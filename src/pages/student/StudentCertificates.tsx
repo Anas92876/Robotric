@@ -14,6 +14,7 @@ import {
   Award, Download, FileText, ImageIcon, AlertCircle, RefreshCw, ExternalLink,
 } from 'lucide-react';
 import { api } from '../../lib/api';
+import { publicSite } from '../../lib/publicSite';
 import { useTranslation } from 'react-i18next';
 import { CertificateA4, CertificateSquare, type CertData } from '../../components/certificate/CertificateRenderer';
 import { useCertificateDownload } from '../../hooks/useCertificateDownload';
@@ -144,7 +145,7 @@ function CertCard({ cert }: { cert: CertRecord }) {
 
         {/* Verify link */}
         <a
-          href={`/verify/${cert.certificateNumber}`}
+          href={publicSite.verifyCertificate(cert.certificateNumber)}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-1.5 w-full text-xs py-1.5 rounded-lg hover:bg-[#003300]/4 transition-colors"

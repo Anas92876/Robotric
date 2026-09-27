@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import type { ReactNode } from "react";
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "../providers";
-import { ROUTES } from "../constants/routes.constants";
+import { redirectToLogin } from "../lib/publicSite";
 import { Sidebar } from "../components/navigation/Sidebar";
 import { TopNav } from "../components/navigation/TopNav";
 import { StudentMobileNav } from "../components/navigation/StudentMobileNav";
@@ -25,21 +25,13 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { t, i18n } = useTranslation('dashboardCommon');
   const isRTL = i18n.language === 'ar';
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   // Redirect to login if not authenticated
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      // Only redirect if we're not already on the login page
-      if (location.pathname !== ROUTES.LOGIN) {
-        navigate(ROUTES.LOGIN, {
-          replace: true,
-          state: { from: location },
-        });
-      }
+      redirectToLogin();
     }
-  }, [isAuthenticated, isLoading, navigate, location]);
+  }, [isAuthenticated, isLoading]);
 
   // Show loading state while checking authentication - using light theme
   if (isLoading) {

@@ -80,9 +80,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             className="flex h-20 items-center justify-center border-b px-4 py-3"
             style={{ borderColor: '#cccc99' + '30' }}
           >
-            <Link to={ROUTES.HOME} className="flex items-center justify-center group w-full">
+            <Link to={ROUTES.DASHBOARD} className="flex items-center justify-center group w-full">
               <img
-                src="/logo.png"
+                src="/dash-assets/logo.png"
                 alt="Robotrick Logo"
                 className="h-16 w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
