@@ -5,6 +5,7 @@ import { useTeamsData, type Team } from '../../hooks';
 import { LoadingState, Alert, Button, CardComponent, Badge } from '../../components/ui';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { TeamFormModal } from '../../components/competitions/TeamFormModal';
 
 export default function Teams() {
   const { i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
@@ -14,6 +15,8 @@ export default function Teams() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [competitionFilter, setCompetitionFilter] = useState('all');
+  // null = closed, 'new' = create, a team = edit
+  const [formFor, setFormFor] = useState<Team | 'new' | null>(null);
   const canManage = user?.role === 'admin' || user?.role === 'superadmin';
 
   const filteredTeams = useMemo(() => {
@@ -63,7 +66,7 @@ export default function Teams() {
           <Button variant="ghost" size="sm" leftIcon={<RefreshCw className="w-4 h-4" />} onClick={refetch}>
             Refresh
           </Button>
-          {canManage && <Button variant="primary" size="sm" leftIcon={<Plus className="w-4 h-4" />}>New Team</Button>}
+          {canManage && <Button variant="primary" size="sm" leftIcon={<Plus className="w-4 h-4" />} onClick={() => setFormFor('new')}>New Team</Button>}
         </div>
       </div>
 
@@ -156,7 +159,7 @@ export default function Teams() {
                 {team.description && <p className="text-sm text-gray-400 mb-4">{team.description}</p>}
                 {canManage && (
                   <div className="flex gap-2 pt-4 border-t border-gray-700">
-                    <Button variant="ghost" size="sm" leftIcon={<Edit2 className="w-4 h-4" />}>Edit</Button>
+                    <Button variant="ghost" size="sm" leftIcon={<Edit2 className="w-4 h-4" />} onClick={() => setFormFor(team)}>Edit</Button>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -173,6 +176,14 @@ export default function Teams() {
           ))}
         </div>
       )}
+
+      <TeamFormModal
+        isOpen={formFor !== null}
+        onClose={() => setFormFor(null)}
+        team={formFor === 'new' ? null : formFor}
+        competitions={competitions}
+        onSubmit={(data) => (formFor && formFor !== 'new' ? actions.update(formFor._id, { name: data.name, members: data.members }) : actions.create(data))}
+      />
     </motion.div>
   );
 }

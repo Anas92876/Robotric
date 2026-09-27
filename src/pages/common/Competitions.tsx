@@ -5,6 +5,8 @@ import { useCompetitionsData } from '../../hooks';
 import { LoadingState, Alert, Button, CardComponent, Badge } from '../../components/ui';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { CompetitionFormModal } from '../../components/competitions/CompetitionFormModal';
+import type { Competition } from '../../hooks/common/useCompetitionsData';
 
 type StatusFilter = 'all' | 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
 
@@ -16,6 +18,8 @@ export default function Competitions() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  // null = closed, 'new' = create, a competition = edit
+  const [formFor, setFormFor] = useState<Competition | 'new' | null>(null);
   const canManage = user?.role === 'admin' || user?.role === 'superadmin';
 
   const filteredCompetitions = useMemo(() => {
@@ -82,7 +86,7 @@ export default function Competitions() {
             Refresh
           </Button>
           {canManage && (
-            <Button variant="primary" size="sm" leftIcon={<Plus className="w-4 h-4" />}>
+            <Button variant="primary" size="sm" leftIcon={<Plus className="w-4 h-4" />} onClick={() => setFormFor('new')}>
               New Competition
             </Button>
           )}
@@ -210,7 +214,7 @@ export default function Competitions() {
                 </div>
                 {canManage && (
                   <div className="flex gap-2 pt-4 border-t border-gray-700">
-                    <Button variant="ghost" size="sm" leftIcon={<Edit2 className="w-4 h-4" />}>Edit</Button>
+                    <Button variant="ghost" size="sm" leftIcon={<Edit2 className="w-4 h-4" />} onClick={() => setFormFor(comp)}>Edit</Button>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -227,6 +231,13 @@ export default function Competitions() {
           ))}
         </div>
       )}
+
+      <CompetitionFormModal
+        isOpen={formFor !== null}
+        onClose={() => setFormFor(null)}
+        competition={formFor === 'new' ? null : formFor}
+        onSubmit={(data) => (formFor && formFor !== 'new' ? actions.update(formFor._id, data) : actions.create(data))}
+      />
     </motion.div>
   );
 }
