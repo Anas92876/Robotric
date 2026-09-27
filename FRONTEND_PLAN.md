@@ -55,6 +55,90 @@ port 3100, so everything looks like one site.
 - The production build now really removes `console.*` calls. The old setting was
   invalid and did nothing.
 
+## Linking plan (dashboard ↔ new backend)
+
+Run `npm run api:check` to compare every API call in `src/` with the routes the
+backend serves. Result on 2026-09-27:
+
+| | Count |
+|---|---|
+| API calls in the dashboard | 447 (384 distinct) |
+| Match a backend route exactly | **433** |
+| Chat / notifications (postponed on purpose) | 5 |
+| Look wrong, but are fine (query string glued to the path, or a variable base path) | 4 |
+| **Real mismatches** | 5 (below) |
+
+The login contract already matches: `POST /auth/login` returns `data.token` plus the
+user, and both this app and the new login page read it that way. Errors keep
+`message` and `error.message`, and `lib/api.ts` reads both.
+
+### L1 — Fix the real mismatches
+
+1. **Session report:** `services/subscription.service.ts:377` calls
+   `GET /reception/session-requests/:id/report`. The backend route is
+   `GET /subscriptions/session-requests/:id/report`. This was already broken with the
+   old backend.
+2. **Engineer submission panel:** `components/cto/SubmissionPanel.tsx:57` calls
+   `GET /engineer/tasks/:id`, which never existed; only the list exists. Either add that
+   route to the backend or read the task from the list.
+3. **Trainer groups:** `hooks/trainer/useTrainerGroups.ts:140,163` still has trainer
+   create and update calls (`POST/PUT /trainer/groups`). Groups are CLO-only now;
+   delete the dead code.
+4. **Register:** `providers/AuthProvider.tsx:152` calls `POST /auth/register`, which is
+   removed (registration happens at the company). Delete `register()`. The new
+   design's **sign-up page calls it too**, so it can't work: hide it.
+5. **Student payments:** `pages/student/StudentPayments.tsx` still has "pay now"
+   (`/student/payments/initiate` and `/confirm`), which now returns 403 (students never
+   pay in the app). Make the page read-only: history and receipts.
+
+### L2 — One way to reach the backend
+
+- `lib/api.ts` uses `VITE_API_BASE` (default `/api`, same domain, which is right).
+- `utils/apiUrl.ts`, `hooks/common/useApi.ts`, `lib/socket.ts` and
+  `services/socket.service.ts` use `VITE_API_URL` with `localhost:4889` or `:5000`
+  fallbacks.
+- Make everything use `lib/api.ts` and delete the rest.
+- Production: the public-site project also rewrites `/api/*` to the backend, so the
+  browser always talks to its own domain (no CORS, and the login cookie works).
+
+### L3 — Switch off what the backend doesn't have yet
+
+- **Sockets:** `SocketContext`, `lib/socket.ts`, `services/socket.service.ts`,
+  `useRealtimeUpdates` and `AdminDashboard` connect to `/socket.io`, which doesn't
+  exist. They would retry forever. Remove the provider for now.
+- **Chat:** hide `ChatWidget` and the chat hooks.
+- **Notifications:** hide the notification bell (`NotificationCenter`, `useWebNotifications`)
+  and the reception notifications page (`/reception/notifications`, which calls
+  `/reception/notifications/send`).
+
+### L4 — Screens that must follow the new backend rules
+
+- **Reception user form** (`components/reception/UserForm.tsx:358`): offers CLO / Admin /
+  CTO roles, but only admins may create those now (the backend returns 403
+  `PRIVILEGED_ROLE`). Show those roles to admins only.
+- **Gallery and project photos:** these are private now, and each link expires after a
+  short time. Don't cache links; reload them.
+  `components/gallery/GalleryImageCard.tsx` builds Cloudinary thumbnails; remove that
+  (the files are on Supabase now).
+- **Inventory:** stock is now reserved when an order is placed and released on
+  reject/cancel. Check that the stock screens show "available" and "reserved" correctly.
+- **Deleting things still in use** (a part used in orders, a driver with students,
+  a user with history) now returns 409 with a clear message. Show that message.
+- **Uploads over about 4 MB** will fail on Vercel. Big PDFs need direct upload to
+  Supabase (backend phase 10).
+
+### L5 — Check it running (contract smoke test)
+
+The route list only proves that the paths exist. It doesn't prove that each screen
+reads the right fields. So:
+
+1. Run the backend locally with the seed accounts.
+2. Sign in as each role and call every GET the dashboard uses. Record any 4xx or 5xx.
+3. Compare the fields each page reads with what comes back.
+4. Then click through every page for each role and fix what breaks.
+
+Only after L1–L5 does the dashboard **redesign** start (see the clean-up list below).
+
 ## Open questions for the owner
 
 - **Sign up:** the new design has a sign-up page, but registration happens at the
