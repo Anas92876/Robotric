@@ -35,7 +35,6 @@ export default function Footer({ lang, c }: { lang: Locale; c: Content }) {
                 <li><Link href={`${base}/join-us`}>{s.nav.joinUs}</Link></li>
                 <li><Link href={`${base}/verify`}>{s.footer.verify}</Link></li>
                 <li><Link href={`${base}/login`}>{s.nav.login}</Link></li>
-                <li><Link href={`${base}/signup`}>{s.nav.signup}</Link></li>
               </ul>
             </div>
             <div>

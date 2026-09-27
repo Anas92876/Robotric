@@ -240,7 +240,6 @@ export function LoginForm({ t, lang, apiBase, dashboardUrl }: { t: T; lang: stri
       </div>
 
       <button className="btn btn--primary btn--lg btn--block" type="submit" disabled={busy || welcome}>{busy ? t.signingIn : t.signIn}</button>
-      <p className="auth-form__switch">{t.noAccount} <Link className="text-link" href={`/${lang}/signup`}>{t.createOne}</Link></p>
       <p className="auth-form__terms">{t.signInTerms}</p>
     </form>
   );

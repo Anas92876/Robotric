@@ -94,7 +94,6 @@ export default function Header({ lang, nav, services, servicesFooter }: HeaderPr
             <Link className="nav__link" href={`${base}/join-us`} aria-current={current(isCurrent('join-us'))}>{nav.joinUs}</Link>
             <Link className="nav__link" href={`${base}/contact`} aria-current={current(isCurrent('contact'))}>{nav.contact}</Link>
             <Link className="nav__link nav__mobile-only" href={`${base}/login`}>{nav.login}</Link>
-            <Link className="nav__link nav__mobile-only" href={`${base}/signup`}>{nav.signup}</Link>
           </nav>
           <div className="nav__actions">
             <Link className="lang-switch" href={otherLangHref} hrefLang={lang === 'en' ? 'ar' : 'en'} lang={lang === 'en' ? 'ar' : 'en'}>{nav.otherLang}</Link>

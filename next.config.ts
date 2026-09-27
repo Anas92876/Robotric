@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
       { source: '/services', destination: '/en#services', permanent: true },
       { source: '/blog/:slug', destination: '/en/blog', permanent: true },
       { source: '/download-app', destination: '/en', permanent: false },
+      // Accounts are created at the academy; there is no public sign-up
+      { source: '/:lang(en|ar)/signup', destination: '/:lang/login', permanent: false },
     ];
   },
 };
