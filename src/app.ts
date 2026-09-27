@@ -6,6 +6,9 @@ import { createCors } from './shared/http/cors';
 import { createErrorHandler, notFoundHandler } from './shared/http/error-handler';
 import { authRoutes } from './modules/auth/auth.routes';
 import { cloRoutes } from './routes/clo.routes';
+import { competitionRoutes, teamRoutes } from './routes/competition.routes';
+import { clientRoutes, ctoInternalRoutes, engineerRoutes } from './routes/work.routes';
+import { imageRoutes, inventoryProjectRoutes, orderRoutes, partRoutes, postRoutes, stockRoutes } from './routes/inventory.routes';
 import { adminVersionRoutes, appVersionRoutes, usersRoutes } from './routes/platform.routes';
 import { contactFormRoutes, jobsRoutes, publicRoutes } from './routes/public.routes';
 import { receptionRoutes } from './routes/reception.routes';
@@ -91,6 +94,17 @@ export function createApp(c: Container): Express {
   app.use('/api/student/payments', studentPaymentRoutes(c));
   app.use('/api/subscriptions', studentSubscriptionRoutes(c));
   app.use('/api/users', usersRoutes(c));
+  app.use('/api/competitions', competitionRoutes(c));
+  app.use('/api/teams', teamRoutes(c));
+  app.use('/api/images', imageRoutes(c));
+  app.use('/api/parts', partRoutes(c));
+  app.use('/api/stock', stockRoutes(c));
+  app.use('/api/orders', orderRoutes(c));
+  app.use('/api/projects', inventoryProjectRoutes(c));
+  app.use('/api/posts', postRoutes(c));
+  app.use('/api/cto/internal', ctoInternalRoutes(c));
+  app.use('/api/engineer', engineerRoutes(c));
+  app.use('/api/client', clientRoutes(c));
   app.use('/api/app-version', appVersionRoutes(c));
   app.use('/api/admin/settings/version', adminVersionRoutes(c));
 

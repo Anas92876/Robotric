@@ -44,15 +44,46 @@ every response shape stays exactly the same (including `_id`).
 | 2 | Catalog: courses & bundles, interests, subscription plans, training page content | ✅ Done |
 | 3 | CRM: leads, contact history, calendar events, website contact form, job applications | ✅ Done |
 | 4 | Groups, enrollments, payments, receipts (PDF), student payments (read-only), hour packages, private session requests | ✅ Done |
-| 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, student projects, gallery, documents, boards, student course pages, all dashboards, CLO trainers, reception users & job applications | ✅ Done (not committed yet) |
-| 6 | Competitions, teams, parts, stock, orders, inventory projects, posts, images | ⏳ **Next** |
-| 7 | CTO internal work, engineer, client portal | ⏳ |
-| 8 | Transport | ⏳ |
+| 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, student projects, gallery, documents, boards, student course pages, all dashboards, CLO trainers, reception users & job applications | ✅ Done (commit `119650e`) |
+| 6 | Competitions, teams, judging, parts, stock, orders, inventory projects, posts, images | ✅ Done (not committed yet) |
+| 7 | CTO internal work, engineer, client portal, work hours | ✅ Done (not committed yet) |
+| 8 | Transport | ⏳ **Next** |
 | 9 | Chat & notifications (WebSockets on hold) | ⏳ |
 | 10 | Finish: delete `legacy/`, final checks, deploy | ⏳ |
 
-**Numbers:** 331 of 503 old routes are rebuilt. 119 automatic tests pass
-(typecheck and lint clean). Migrations 0000–0014 are applied to Supabase.
+**Numbers:** 432 of 503 old routes are rebuilt. 128 automatic tests pass
+(typecheck and lint clean). Migrations 0000–0016 are applied to Supabase.
+
+⚠️ **Big uploads on Vercel:** Vercel refuses request bodies over ~4.5 MB, so on
+Vercel any larger upload (resource PDFs up to 25 MB, client videos up to 300 MB,
+documents …) will fail. The fix is "direct upload": the app asks the backend for
+a signed upload link and sends the file straight to Supabase. Decide before
+launch; locally everything works as is.
+
+### Phase 7 changes you should know about
+
+- Task attachments and engineer screenshots are in the public images bucket
+  (they were public Cloudinary links); client videos/voice notes stay private.
+- Someone can only be clocked in once at a time (enforced by the database).
+- A CTO status change to "done" now records the completion time (used for scores).
+- Moving a project that has its own sub-projects is refused (it would nest two levels).
+
+### Phase 6 changes you should know about
+
+- **Stock is now counted correctly.** Before, placing an order *added* to the
+  available stock and fulfilling never removed anything. Now: ordering moves
+  the quantity from available to reserved; rejecting/cancelling moves it back;
+  fulfilling removes it from reserved. Orders only move pending → approved →
+  fulfilled (or rejected/cancelled while open); stock can't go below zero.
+- Uploaded images (part photos etc.) go to the public `images` bucket instead
+  of the server disk (which Vercel wipes). `/api/images/...` redirects to the
+  file; thumbnails show the full image (the old resizing always failed).
+- Judges: a team must belong to the competition, and a judge scores each team once.
+  Team limits (`maxTeams`) are now enforced.
+- Posts: editing a published post keeps its original publish date; duplicate slugs → 409.
+- Inventory "projects" (`/api/projects`, parts lists) are separate from graded
+  student projects now.
+- A part used in orders can't be deleted (409), instead of leaving broken orders.
 
 **State (2026-09-27, midday):** Phase 5 is finished and live-checked on
 Supabase (CLO dashboard, analytics, trainers, resources, gallery, projects,
@@ -66,10 +97,9 @@ function region to Tokyo (`hnd1`) so each query is fast; from far away every
 query costs ~0.5 s (the dashboard took 4–6 s from Syria).
 
 **Next step when you return:**
-1. Commit Phase 5 if not yet done (Claude shows the message first).
-2. Start Phase 6 (competitions, teams, parts, stock, orders, inventory
-   projects, posts, images). Run `npx tsx scripts/route-parity.ts --list-missing`
-   to see what is left.
+1. Commit Phases 6–7 if not yet done (Claude shows the message first).
+2. Continue with Phase 8 (transport), then 9 (chat & notifications), then 10 (finish).
+3. Run `npx tsx scripts/route-parity.ts --list-missing` to see what is left.
 
 ### Phase 5 changes you should know about (differences from the old API)
 

@@ -92,6 +92,22 @@ import { BoardService } from './modules/boards/boards.service';
 import { StudentCourseController } from './modules/student-courses/student-courses.controller';
 import { StudentCourseService } from './modules/student-courses/student-courses.service';
 import { UserAdminService } from './modules/users/user-admin.service';
+import { CompetitionController, TeamController } from './modules/competitions/competitions.controller';
+import { DrizzleCompetitionRepository } from './modules/competitions/competitions.repository';
+import { CompetitionService } from './modules/competitions/competitions.service';
+import { ImageController } from './modules/images/images.controller';
+import { DrizzleImageRepository } from './modules/images/images.repository';
+import { ImageService } from './modules/images/images.service';
+import { InventoryProjectController, OrderController, PartController, StockController } from './modules/inventory/inventory.controller';
+import { DrizzleInventoryRepository } from './modules/inventory/inventory.repository';
+import { InventoryService } from './modules/inventory/inventory.service';
+import { PostController } from './modules/posts/posts.controller';
+import { DrizzlePostRepository } from './modules/posts/posts.repository';
+import { PostService } from './modules/posts/posts.service';
+import { ClientController, CtoWorkController, EngineerController } from './modules/internal-work/internal-work.controller';
+import { DrizzleInternalWorkRepository } from './modules/internal-work/internal-work.repository';
+import { InternalWorkService, silentWorkNotifier } from './modules/internal-work/internal-work.service';
+import { CtoAnalyticsService, WorkSessionService } from './modules/internal-work/work-time.service';
 import { CloDashboardController, CloTrainerController, ReceptionDashboardController, StudentDashboardController, TrainerDashboardController } from './modules/dashboards/dashboards.controller';
 import { DrizzleDashboardRepository } from './modules/dashboards/dashboards.repository';
 import { CloDashboardService, CloTrainerService, ReceptionDashboardService, StudentDashboardService, TrainerDashboardService } from './modules/dashboards/dashboards.service';
@@ -193,6 +209,17 @@ export interface Container {
     trainerDashboard: TrainerDashboardController;
     studentDashboard: StudentDashboardController;
     receptionDashboard: ReceptionDashboardController;
+    competitions: CompetitionController;
+    teams: TeamController;
+    images: ImageController;
+    parts: PartController;
+    stock: StockController;
+    orders: OrderController;
+    inventoryProjects: InventoryProjectController;
+    posts: PostController;
+    ctoWork: CtoWorkController;
+    engineer: EngineerController;
+    client: ClientController;
   };
 }
 
@@ -426,6 +453,19 @@ export function createContainer(env: Env, a: Adapters): Container {
     new DrizzleAssignmentRepository(a.db),
     receiptRepo,
   );
+  const competitionService = new CompetitionService(new DrizzleCompetitionRepository(a.db), users);
+  const imageService = new ImageService(new DrizzleImageRepository(a.db), a.storage, env.SUPABASE_IMAGES_BUCKET);
+  const inventoryService = new InventoryService(new DrizzleInventoryRepository(a.db));
+  // Internal work (CTO, engineers, clients)
+  const workRepo = new DrizzleInternalWorkRepository(a.db);
+  const internalWork = new InternalWorkService(
+    workRepo,
+    a.storage,
+    env.SUPABASE_IMAGES_BUCKET,
+    env.SUPABASE_CLIENT_MEDIA_BUCKET,
+    silentWorkNotifier, // → notifications (phase 9)
+  );
+  const workHours = new WorkSessionService(workRepo);
 
   // Hour packages and private sessions
   const subscriptionUow = new DrizzleUnitOfWork(a.db, (tx) => ({
@@ -498,6 +538,17 @@ export function createContainer(env: Env, a: Adapters): Container {
       trainerDashboard: new TrainerDashboardController(trainerDashboard),
       studentDashboard: new StudentDashboardController(studentDashboard),
       receptionDashboard: new ReceptionDashboardController(new ReceptionDashboardService(dashboardRepo)),
+      competitions: new CompetitionController(competitionService),
+      teams: new TeamController(competitionService),
+      images: new ImageController(imageService),
+      parts: new PartController(inventoryService, imageService),
+      stock: new StockController(inventoryService),
+      orders: new OrderController(inventoryService),
+      inventoryProjects: new InventoryProjectController(inventoryService),
+      posts: new PostController(new PostService(new DrizzlePostRepository(a.db))),
+      ctoWork: new CtoWorkController(internalWork, workHours, new CtoAnalyticsService(workRepo)),
+      engineer: new EngineerController(internalWork, workHours),
+      client: new ClientController(internalWork),
     },
   };
 }

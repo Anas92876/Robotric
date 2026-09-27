@@ -47,6 +47,8 @@ function fromKnownError(err: unknown): AppError | null {
     if (e.code === '23505') return new AppError('Resource already exists', 409, 'CONFLICT');
     // Postgres foreign_key_violation: referenced record does not exist.
     if (e.code === '23503') return new AppError('Referenced resource does not exist', 400, 'INVALID_REFERENCE');
+    // Postgres restrict_violation: other records still use this one.
+    if (e.code === '23001') return new AppError('This record is still in use and cannot be deleted', 409, 'IN_USE');
   }
   return null;
 }

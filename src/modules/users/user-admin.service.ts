@@ -33,9 +33,11 @@ const updateSchema = z.object({
 });
 
 const notFound = () => new AppError('User not found', 404, 'NOT_FOUND');
+/** Postgres refused because other rows still point here (foreign key or RESTRICT). */
 const isForeignKeyError = (err: unknown): boolean => {
   const e = err as { code?: string; cause?: { code?: string } };
-  return e?.code === '23503' || e?.cause?.code === '23503';
+  const code = e?.cause?.code ?? e?.code;
+  return code === '23503' || code === '23001';
 };
 
 /** Staff account management from the reception desk (/api/reception/users). */

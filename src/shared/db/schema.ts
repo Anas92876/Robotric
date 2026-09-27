@@ -32,3 +32,8 @@ export * from '../../modules/student-projects/student-projects.table';
 export * from '../../modules/gallery/gallery.table';
 export * from '../../modules/documents/documents.table';
 export * from '../../modules/boards/boards.table';
+export * from '../../modules/competitions/competitions.table';
+export * from '../../modules/images/images.table';
+export * from '../../modules/inventory/inventory.table';
+export * from '../../modules/posts/posts.table';
+export * from '../../modules/internal-work/internal-work.table';

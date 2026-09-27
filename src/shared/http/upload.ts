@@ -123,6 +123,15 @@ export const PDF_POLICY: UploadPolicy = {
   maxFiles: 1,
 };
 
+/** Client request media: photos, videos (e.g. iPhone .mov) and voice notes. Per-kind size limits are checked by the service. */
+export const CLIENT_MEDIA_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/webm', 'audio/mp4', 'audio/x-m4a', 'audio/mpeg', 'audio/ogg'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp', 'mp4', 'mov', 'webm', 'm4a', 'mp3', 'ogg', 'oga'],
+  label: 'images, MP4/MOV/WebM video, or audio',
+  maxBytes: 300 * 1024 * 1024,
+  maxFiles: 1,
+};
+
 /** WRO documents: a scan or a photo. */
 export const DOCUMENT_POLICY: UploadPolicy = {
   mimes: ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'],
