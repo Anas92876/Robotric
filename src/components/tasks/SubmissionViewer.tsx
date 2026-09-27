@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Answer, Question, ImageAnswer } from '../../hooks/student/useTasks';
+import { type Answer, type Question, type ImageAnswer } from '../../hooks/student/useTasks';
 import { CardComponent, CardBody, Badge, Button } from '../ui';
 import { CheckCircle, XCircle, X, ZoomIn, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';

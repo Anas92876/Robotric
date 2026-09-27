@@ -10,7 +10,6 @@ export * from './common/useTeamsData';
 export * from './common/useCompetitionsData';
 export * from './common/useFileUpload';
 export * from './common/useExchangeRate';
-export * from './common/useBlogPosts';
 export * from './common/usePDFViewer';
 export * from './common/useIntersectionObserver';
 export * from './common/useLazyBackground';

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { api } from '../../lib/api';
-import { GalleryImage } from '../student/useStudentGallery';
+import { type GalleryImage } from '../student/useStudentGallery';
 
 export interface ReceptionGalleryGroup {
   _id: string;

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { api } from '../../lib/api';
-import { StudentProject } from '../student/useStudentProjects';
+import { type StudentProject } from '../student/useStudentProjects';
 
 export interface ProjectFilters {
   courseId?: string;

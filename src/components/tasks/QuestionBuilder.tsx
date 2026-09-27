@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Plus, Trash2, GripVertical, X } from 'lucide-react';
-import { Question } from '../../hooks/student/useTasks';
+import { type Question } from '../../hooks/student/useTasks';
 import { Button, CardComponent, CardBody, Badge } from '../ui';
 import { motion, Reorder } from 'framer-motion';
 

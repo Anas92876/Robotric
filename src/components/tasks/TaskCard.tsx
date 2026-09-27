@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, CheckCircle, AlertCircle, FileText } from 'lucide-react';
-import { Task } from '../../hooks/student/useTasks';
+import { type Task } from '../../hooks/student/useTasks';
 import { Badge, CardComponent, CardBody } from '../ui';
 import { motion } from 'framer-motion';
 

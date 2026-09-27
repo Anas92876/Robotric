@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Upload, X, Image as ImageIcon } from 'lucide-react';
-import { Question, Answer, ImageAnswer } from '../../hooks/student/useTasks';
+import { type Question, type Answer, type ImageAnswer } from '../../hooks/student/useTasks';
 import { CardComponent, CardBody, Button, Badge } from '../ui';
 
 interface ImageQuestionProps {

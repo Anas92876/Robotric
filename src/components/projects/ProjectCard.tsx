@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Calendar, Award, Code, FileText, User } from 'lucide-react';
-import { StudentProject } from '../../hooks/student/useStudentProjects';
+import { type StudentProject } from '../../hooks/student/useStudentProjects';
 import { Badge, CardComponent, CardBody } from '../ui';
 import { motion } from 'framer-motion';
 

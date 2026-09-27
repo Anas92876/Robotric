@@ -17,7 +17,7 @@ import {
   Archive,
 } from "lucide-react";
 import { useTrainerTasks } from "../../hooks";
-import { TaskSubmission } from "../../hooks/trainer/useTrainerTasks";
+import { type TaskSubmission } from "../../hooks/trainer/useTrainerTasks";
 import { api } from "../../lib/api";
 import {
   CardComponent,

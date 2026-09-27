@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { api } from '../../lib/api';
-import { StudentProject, ProjectImage } from '../student/useStudentProjects';
+import { type StudentProject, type ProjectImage } from '../student/useStudentProjects';
 
 export interface CreateProjectData {
   studentId: string;

@@ -1,4 +1,4 @@
-import { lazy, ComponentType, LazyExoticComponent } from 'react';
+import { lazy, type ComponentType, type LazyExoticComponent } from 'react';
 
 /**
  * retryLazy is a utility to retry a lazy import module if it fails.

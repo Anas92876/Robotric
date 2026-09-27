@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Image as ImageIcon, X } from 'lucide-react';
-import { GalleryImage } from '../../hooks/student/useStudentGallery';
+import { type GalleryImage } from '../../hooks/student/useStudentGallery';
 import { CardComponent, CardBody, Badge, Button } from '../ui';
 import { motion } from 'framer-motion';
 

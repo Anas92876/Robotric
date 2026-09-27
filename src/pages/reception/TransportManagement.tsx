@@ -10,7 +10,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import {
   useTransportManagement,
-  DriverStudent, TransportTrip,
+  type DriverStudent, type TransportTrip,
 } from '../../hooks/reception/useTransportManagement';
 
 type Tab = 'students' | 'drivers' | 'trips';

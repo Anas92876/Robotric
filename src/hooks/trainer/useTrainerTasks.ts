@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { api } from '../../lib/api';
-import { Question, Task } from '../student/useTasks';
+import { type Question, type Task } from '../student/useTasks';
 
 export interface CreateQuestionData {
   questionText: string;

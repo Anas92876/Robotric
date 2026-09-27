@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { api } from '../../lib/api';
-import { Task } from '../student/useTasks';
+import { type Task } from '../student/useTasks';
 
 export interface TaskFilters {
   courseId?: string;

@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { api } from '../../lib/api';
-import { useTransportManagement, TransportPricing, DriverRateTier } from '../../hooks/reception/useTransportManagement';
+import { useTransportManagement, type TransportPricing, type DriverRateTier } from '../../hooks/reception/useTransportManagement';
 
 type Tab = 'pricing' | 'earnings' | 'feedback';
 

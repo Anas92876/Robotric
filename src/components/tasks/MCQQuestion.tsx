@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Question, Answer } from '../../hooks/student/useTasks';
+import { type Question, type Answer } from '../../hooks/student/useTasks';
 import { CardComponent, CardBody } from '../ui';
 
 interface MCQQuestionProps {

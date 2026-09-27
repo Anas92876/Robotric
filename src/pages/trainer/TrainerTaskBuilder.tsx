@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Save, FileText, AlertCircle } from "lucide-react";
-import { useTrainerTasks, CreateTaskData } from "../../hooks";
+import { useTrainerTasks, type CreateTaskData } from "../../hooks";
 import { useTrainerGroups } from "../../hooks/trainer/useTrainerGroups";
 import { QuestionBuilder } from "../../components/tasks/QuestionBuilder";
-import { Question } from "../../hooks/student/useTasks";
+import { type Question } from "../../hooks/student/useTasks";
 import { useTranslation } from 'react-i18next';
 import {
   Button,

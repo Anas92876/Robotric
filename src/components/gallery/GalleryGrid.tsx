@@ -1,5 +1,5 @@
 import React from 'react';
-import { GalleryImage } from '../../hooks/student/useStudentGallery';
+import { type GalleryImage } from '../../hooks/student/useStudentGallery';
 import { GalleryImageCard } from './GalleryImageCard';
 import { motion } from 'framer-motion';
 

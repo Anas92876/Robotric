@@ -14,7 +14,7 @@ import {
   X,
   Archive,
 } from "lucide-react";
-import { useTasks, Answer } from "../../hooks";
+import { useTasks, type Answer } from "../../hooks";
 import {
   CardComponent,
   CardBody,

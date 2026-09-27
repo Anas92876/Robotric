@@ -90,51 +90,52 @@ user, and both this app and the new login page read it that way. Errors keep
 `npm run api:check` now reports only the 4 known false alarms and the 5 postponed
 chat/notification calls.
 
-### L2 — One way to reach the backend
+### L2 — One way to reach the backend ✅ Done
 
-- `lib/api.ts` uses `VITE_API_BASE` (default `/api`, same domain, which is right).
-- `utils/apiUrl.ts`, `hooks/common/useApi.ts`, `lib/socket.ts` and
-  `services/socket.service.ts` use `VITE_API_URL` with `localhost:4889` or `:5000`
-  fallbacks.
-- Make everything use `lib/api.ts` and delete the rest.
-- Production: the public-site project also rewrites `/api/*` to the backend, so the
-  browser always talks to its own domain (no CORS, and the login cookie works).
+- `lib/api.ts` (`VITE_API_BASE`, default `/api` on the same domain) is the only
+  client. `useApi.ts` and `utils/apiUrl.ts` are gone. `.env.example` documents the one
+  setting.
+- The public site now calls `/api` from the browser too, and its `next.config.ts`
+  rewrites that to the backend (`NEXT_PUBLIC_API_BASE`). There's no CORS, and both
+  apps share the login. Pages that fetch on the server (jobs, certificate check) still
+  use the full URL. For local work, `.env.local` points at `http://localhost:4889/api`.
 
-### L3 — Switch off what the backend doesn't have yet
+### L3 — Switch off what the backend doesn't have yet ✅ Done
 
-- **Sockets:** `SocketContext`, `lib/socket.ts`, `services/socket.service.ts`,
-  `useRealtimeUpdates` and `AdminDashboard` connect to `/socket.io`, which doesn't
-  exist. They would retry forever. Remove the provider for now.
-- **Chat:** hide `ChatWidget` and the chat hooks.
-- **Notifications:** hide the notification bell (`NotificationCenter`, `useWebNotifications`)
-  and the reception notifications page (`/reception/notifications`, which calls
-  `/reception/notifications/send`).
+Removed (restore from commit `27bfc2b` when the realtime phase starts):
+- the socket provider and client
+- the chat widget and chat hooks
+- the notification bell
+- the reception notifications page and its sidebar link
+- the live-update hooks (dashboard, orders, projects, competitions, teams,
+  inventory) and the admin dashboard's socket listeners
 
-### L4 — Screens that must follow the new backend rules
+`socket.io-client` and `js-cookie` are uninstalled.
 
-- **Reception user form** (`components/reception/UserForm.tsx:358`): offers CLO / Admin /
-  CTO roles, but only admins may create those now (the backend returns 403
-  `PRIVILEGED_ROLE`). Show those roles to admins only.
-- **Gallery and project photos:** these are private now, and each link expires after a
-  short time. Don't cache links; reload them.
-  `components/gallery/GalleryImageCard.tsx` builds Cloudinary thumbnails; remove that
-  (the files are on Supabase now).
-- **Inventory:** stock is now reserved when an order is placed and released on
-  reject/cancel. Check that the stock screens show "available" and "reserved" correctly.
-- **Deleting things still in use** (a part used in orders, a driver with students,
-  a user with history) now returns 409 with a clear message. Show that message.
-- **Uploads over about 4 MB** will fail on Vercel. Big PDFs need direct upload to
-  Supabase (backend phase 10).
+### L4 — Screens that must follow the new backend rules ✅ Done
 
-### L5 — Check it running (contract smoke test)
+- **Reception user form:** the admin, CLO and CTO roles are shown only to admins
+  (other users see them disabled when editing such an account).
+- **Gallery card:** uses the signed links as they are; the Cloudinary thumbnail
+  rewriting is gone.
+- **Inventory:** reserved (ordered) items count in the total, and the parts list's
+  `imageUrl` is used.
+- **409 "still in use" messages** already show: `lib/api.ts` puts every backend
+  error message into a pop-up.
+- **Uploads over about 4 MB** remain a backend phase 10 item (direct upload to
+  Supabase).
 
-The route list only proves that the paths exist. It doesn't prove that each screen
-reads the right fields. So:
+### L5 — Check it running
 
-1. Run the backend locally with the seed accounts.
-2. Sign in as each role and call every GET the dashboard uses. Record any 4xx or 5xx.
-3. Compare the fields each page reads with what comes back.
-4. Then click through every page for each role and fix what breaks.
+1. ✅ Backend runs locally with the seed accounts (`<role>@robotrick.test`).
+2. ✅ Signed in as each role, every GET the dashboard makes without an ID was
+   called: 91 of 92 return 200. The other one, `enrollments/check`, needs
+   parameters, and the form always sends them.
+   This check found two **backend** bugs, both fixed in backend commit `8d06112`:
+   - The server froze: the database driver's pipelining through Supabase's pooler
+     hung parallel queries, and then everything else.
+   - Leads stats crashed on a date passed inside raw SQL.
+3. ⏳ Every page opened in headless Chrome as its role. Results are in the section below.
 
 Only after L1–L5 does the dashboard **redesign** start (see the clean-up list below).
 

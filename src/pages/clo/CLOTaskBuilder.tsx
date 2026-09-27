@@ -2,10 +2,10 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Save, FileText, AlertCircle } from "lucide-react";
-import { useCLOTasks, CreateCLOTaskData, GroupSession } from "../../hooks/clo/useCLOTasks";
+import { useCLOTasks, type CreateCLOTaskData, type GroupSession } from "../../hooks/clo/useCLOTasks";
 import { useCLOGroups } from "../../hooks/clo/useCLOGroups";
 import { QuestionBuilder } from "../../components/tasks/QuestionBuilder";
-import { Question } from "../../hooks/student/useTasks";
+import { type Question } from "../../hooks/student/useTasks";
 import { useTranslation } from 'react-i18next';
 import { formatDate } from "../../utils/dateTime";
 import {

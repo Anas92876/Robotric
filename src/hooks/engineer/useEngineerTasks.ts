@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { api } from '../../lib/api';
-import { InternalProject, InternalTask } from '../cto/useCTOProjects';
+import { type InternalProject, type InternalTask } from '../cto/useCTOProjects';
 
 export interface TaskFilters {
   status?: 'todo' | 'in_progress' | 'done';
