@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import { SITE } from './lib/config';
+import { dashboardRewrites } from './lib/dashboard';
 
 const nextConfig: NextConfig = {
   images: {
@@ -9,9 +10,15 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: 'https', hostname: 'res.cloudinary.com', pathname: '/dsvawmwpf/**' }],
   },
 
-  // The browser calls the backend on this same domain (see SITE.browserApiBase)
+  // This site is the front door for the whole domain:
+  //  - /api/* goes to the backend, so the browser never calls another domain (see SITE.browserApiBase)
+  //  - the private dashboard's paths go to the dashboard app (lib/dashboard.ts)
   async rewrites() {
-    return [{ source: '/api/:path*', destination: `${SITE.apiBase}/:path*` }];
+    return {
+      beforeFiles: [{ source: '/api/:path*', destination: `${SITE.apiBase}/:path*` }, ...dashboardRewrites()],
+      afterFiles: [],
+      fallback: [],
+    };
   },
 
   // Keep links to the old robotrick.net URLs working (they had no language prefix)

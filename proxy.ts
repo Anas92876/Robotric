@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { LOCALES, DEFAULT_LOCALE } from './lib/i18n-config';
+import { isDashboardPath } from './lib/dashboard';
 
 // Visitors without a language in the URL are sent to /en/... or /ar/... based on their browser language.
 function pickLocale(request: NextRequest) {
@@ -13,6 +14,8 @@ function pickLocale(request: NextRequest) {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  // Dashboard paths have no language prefix; next.config.ts forwards them to the dashboard app
+  if (isDashboardPath(pathname)) return;
   const hasLocale = LOCALES.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
   if (hasLocale) return;
   request.nextUrl.pathname = `/${pickLocale(request)}${pathname === '/' ? '' : pathname}`;
