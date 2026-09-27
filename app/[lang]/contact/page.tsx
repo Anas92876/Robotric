@@ -47,7 +47,7 @@ export default async function ContactPage({ params }: PageProps<'/[lang]/contact
         <div className="container">
           <div className="split split--top">
             <Suspense>
-              <ContactForm labels={{ form: hc.form, validation: hc.validation }} apiBase={SITE.apiBase} waNumber={SITE.whatsapp} waHello={s.common.whatsappHello} />
+              <ContactForm labels={{ form: hc.form, validation: hc.validation }} apiBase={SITE.browserApiBase} waNumber={SITE.whatsapp} waHello={s.common.whatsappHello} />
             </Suspense>
             <iframe className="map" title={hc.visitTitle} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={`${SITE.mapEmbed}&hl=${lang}`} />
           </div>

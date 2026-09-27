@@ -98,7 +98,7 @@ export default async function JobPage({ params }: PageProps<'/[lang]/join-us/[sl
               </div>
             </aside>
           </div>
-          {job.whatsapp ? null : <JobApplyForm labels={t.form} apiBase={SITE.apiBase} position={job.titleEn || title} />}
+          {job.whatsapp ? null : <JobApplyForm labels={t.form} apiBase={SITE.browserApiBase} position={job.titleEn || title} />}
         </div>
       </section>
     </>

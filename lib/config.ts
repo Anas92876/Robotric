@@ -14,6 +14,9 @@ export const SITE = {
   url: absoluteUrl(process.env.NEXT_PUBLIC_SITE_URL, 'https://www.robotrick.net'),
   // The backend robotrick.net uses today. Paths below are relative to it (it already ends in /api).
   apiBase: absoluteUrl(process.env.NEXT_PUBLIC_API_BASE, 'https://robotrick-backend-production.up.railway.app/api'),
+  // What the browser calls: same domain, so no CORS and the dashboard shares the session.
+  // next.config.ts rewrites /api/* to apiBase (in development the dashboard's dev server does too).
+  browserApiBase: '/api',
   // Where the existing dashboard app lives ('' = same domain). After sign-in, students go to /student, staff to /dashboard.
   dashboardUrl: env(process.env.NEXT_PUBLIC_DASHBOARD_URL, '').replace(/\/$/, ''),
   gaId: env(process.env.NEXT_PUBLIC_GA_ID, ''), // current GA4 property: G-JZZ5RPMDBG — set once the owner confirms reuse

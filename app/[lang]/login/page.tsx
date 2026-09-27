@@ -18,7 +18,7 @@ export default async function LoginPage({ params }: PageProps<'/[lang]/login'>) 
   return (
     <AuthShell lang={lang} c={c}>
       <Suspense>
-        <LoginForm t={text} lang={lang} apiBase={SITE.apiBase} dashboardUrl={SITE.dashboardUrl} />
+        <LoginForm t={text} lang={lang} apiBase={SITE.browserApiBase} dashboardUrl={SITE.dashboardUrl} />
       </Suspense>
     </AuthShell>
   );

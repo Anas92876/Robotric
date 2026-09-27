@@ -33,7 +33,7 @@ export default async function ConsultationPage({ params }: PageProps<'/[lang]/te
               </ul>
             </div>
             <Suspense>
-              <ContactForm labels={{ form: hc.form, validation: hc.validation }} apiBase={SITE.apiBase} waNumber={SITE.whatsapp} waHello={s.common.whatsappHello}
+              <ContactForm labels={{ form: hc.form, validation: hc.validation }} apiBase={SITE.browserApiBase} waNumber={SITE.whatsapp} waHello={s.common.whatsappHello}
                 heading={p.heroCta.bookConsultation} submitLabel={p.heroCta.bookConsultation} defaultSubject="consultation" idPrefix="tc" />
             </Suspense>
           </div>

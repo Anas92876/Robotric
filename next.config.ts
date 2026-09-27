@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { SITE } from './lib/config';
 
 const nextConfig: NextConfig = {
   images: {
@@ -6,6 +7,11 @@ const nextConfig: NextConfig = {
     qualities: [70, 80],
     // Job photos are uploaded through the dashboard to Cloudinary
     remotePatterns: [{ protocol: 'https', hostname: 'res.cloudinary.com', pathname: '/dsvawmwpf/**' }],
+  },
+
+  // The browser calls the backend on this same domain (see SITE.browserApiBase)
+  async rewrites() {
+    return [{ source: '/api/:path*', destination: `${SITE.apiBase}/:path*` }];
   },
 
   // Keep links to the old robotrick.net URLs working (they had no language prefix)
