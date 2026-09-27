@@ -1,7 +1,8 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle } from 'drizzle-orm/node-postgres';
 import type { PgDatabase, PgQueryResultHKT, PgTransaction } from 'drizzle-orm/pg-core';
 import type { ExtractTablesWithRelations } from 'drizzle-orm';
-import postgres from 'postgres';
+import { Pool } from 'pg';
+import { logger } from '../logger';
 import * as schema from './schema';
 
 export type Schema = typeof schema;
@@ -17,26 +18,27 @@ export type Transaction = PgTransaction<PgQueryResultHKT, Schema, ExtractTablesW
 export type DbExecutor = Database | Transaction;
 
 /**
- * Connects with postgres.js. Works with any Postgres provider:
+ * Connects with node-postgres (pg). Works with any Postgres provider:
  *  - Supabase: use the transaction-pooler URL (port 6543).
  *  - Neon: use the pooled connection string.
- * `prepare: false` is required by transaction-mode poolers (PgBouncer/Supavisor).
+ * pg runs one query at a time per connection and gives each transaction its own
+ * connection. (postgres.js pipelined queries on busy connections, and Supabase's
+ * transaction pooler lost them: parallel queries hung the whole server.)
  * A small pool suits serverless, where each instance handles few requests.
  */
 export function createDatabase(url: string): { db: Database; close: () => Promise<void> } {
-  // `max_pipeline` is a real postgres.js option (default 100) that its types don't declare.
-  const options: postgres.Options<Record<string, never>> & { max_pipeline: number } = {
-    prepare: false,
+  const pool = new Pool({
+    connectionString: url,
     max: 5,
-    idle_timeout: 20,
+    // Close idle connections ourselves, before the network or the pooler drops them
+    // silently (the next query on a dropped one fails with "Connection terminated").
+    idleTimeoutMillis: 10_000,
+    keepAlive: true,
     // A short connect timeout makes a dropped connection fail fast instead of hanging a request.
-    connect_timeout: 10,
-    // Never send a query on a connection that is still busy. Supabase's transaction pooler
-    // loses pipelined queries, so parallel queries (Promise.all) that shared a connection
-    // hung forever and took the whole pool down with them.
-    max_pipeline: 0,
-  };
-  const client = postgres(url, options);
-  const db = drizzle(client, { schema }) as unknown as Database;
-  return { db, close: () => client.end() };
+    connectionTimeoutMillis: 10_000,
+  });
+  // The pooler closes idle connections; without a listener that error would crash the process.
+  pool.on('error', (err) => logger.warn({ err }, 'Idle database connection closed'));
+  const db = drizzle(pool, { schema }) as unknown as Database;
+  return { db, close: () => pool.end() };
 }

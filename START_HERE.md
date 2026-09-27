@@ -110,9 +110,13 @@ pool size) and connections time out after 10 s instead of hanging.
 *pipelines*: it sends a new query on a connection that is still busy. Supabase's
 transaction pooler loses those queries, so any request that ran more queries at
 once than there are connections hung forever, and then the whole server hung.
-Fixed in `src/shared/db/client.ts` with `max_pipeline: 0`. With that setting,
-the dashboard link check passes 91 of 92 calls; the other one is a check that
-needs parameters.
+Turning pipelining off (`max_pipeline: 0`) stopped the hangs but broke every
+transaction (a postgres.js quirk), so the backend now uses **node-postgres
+(`pg`)** instead. It never pipelines and gives each transaction its own
+connection (`src/shared/db/client.ts`). Checked on Supabase: repeated parallel
+batches, 7 queries at once, and transactions next to other queries all pass,
+and the dashboard link check passes 91 of 92 calls (the other one is a check
+that needs parameters).
 Also fixed: the leads stats query sent a JS `Date` inside raw SQL, which the real
 driver rejects (the in-memory test database accepts it, so tests didn't catch it).
 
