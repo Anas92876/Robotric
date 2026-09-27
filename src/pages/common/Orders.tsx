@@ -16,7 +16,6 @@ import {
 import { useAuth } from '../../providers/AuthProvider';
 import {
   useOrdersData,
-  useOrdersRealtimeUpdates,
   type Order
 } from '../../hooks';
 import { LoadingState, Alert, Button, Badge, CardComponent } from '../../components/ui';
@@ -33,9 +32,6 @@ export default function Orders() {
   const { orders, stats, isLoading, error, refetch, actions } = useOrdersData();
   const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
   const isRTL = i18n.language === 'ar';
-
-  // Real-time updates
-  useOrdersRealtimeUpdates(refetch);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');

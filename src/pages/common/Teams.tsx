@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Users, Plus, Edit2, Trash2, AlertCircle, RefreshCw, Filter } from 'lucide-react';
 import { useAuth } from '../../providers/AuthProvider';
-import { useTeamsData, useTeamsRealtimeUpdates, type Team } from '../../hooks';
+import { useTeamsData, type Team } from '../../hooks';
 import { LoadingState, Alert, Button, CardComponent, Badge } from '../../components/ui';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 export default function Teams() {
   const { user } = useAuth();
   const { teams, competitions, stats, isLoading, error, refetch, actions } = useTeamsData();
-  useTeamsRealtimeUpdates(refetch);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [competitionFilter, setCompetitionFilter] = useState('all');

@@ -6,8 +6,6 @@ import { ROUTES } from "./constants/routes.constants";
 import { UserRole } from "./types/auth.types";
 import MainLayout from "./layouts/MainLayout";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
-import { SocketProvider } from "./providers/SocketContext";
-import { ChatWidget } from "./components/chat/ChatWidget";
 import { lazyImport } from "./utils/lazyImport";
 import { ToastProvider } from "./components/ui/Toast";
 import { loadDashboardTranslations } from "./i18n";
@@ -15,20 +13,15 @@ import { ExternalRedirect } from "./components/auth/ExternalRedirect";
 import { publicSite } from "./lib/publicSite";
 
 /**
- * Layout wrapper that provides Socket context and Chat widget to authenticated users
- * Also lazy-loads dashboard translations since this only renders for authenticated users
+ * Layout for signed-in users. Also lazy-loads dashboard translations, since only
+ * signed-in users need them. (Chat and live updates return with the mobile phase.)
  */
-const SocketProviderLayout = () => {
+const DashboardLayout = () => {
   useEffect(() => {
     loadDashboardTranslations();
   }, []);
 
-  return (
-    <SocketProvider>
-      <MainLayout />
-      <ChatWidget />
-    </SocketProvider>
-  );
+  return <MainLayout />;
 };
 
 // Common (shared authenticated) pages
@@ -95,7 +88,6 @@ const SessionRequests = lazyImport(() => import("./pages/reception/SessionReques
 const SessionReports = lazyImport(() => import("./pages/reception/SessionReports"));
 const ContactManagement = lazyImport(() => import("./pages/reception/ContactManagement"));
 const ReceptionGallery = lazyImport(() => import("./pages/reception/ReceptionGallery"));
-const NotificationManagement = lazyImport(() => import("./pages/reception/NotificationManagement"));
 const JobApplications = lazyImport(() => import("./pages/reception/JobApplications"));
 const TransportManagement = lazyImport(() => import("./pages/reception/TransportManagement"));
 
@@ -460,7 +452,7 @@ const App = () => {
 
           {/* Protected routes - WITH MainLayout (includes sidebar/navbar) */}
           <Route element={<ProtectedRoute />}>
-            <Route element={<SocketProviderLayout />}>
+            <Route element={<DashboardLayout />}>
               {/* Regular Dashboard (Non-students) */}
               <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
               <Route path={ROUTES.ORDERS} element={<Orders />} />
@@ -533,7 +525,6 @@ const App = () => {
                 <Route path="/reception/session-reports" element={<SessionReports />} />
                 <Route path="/reception/contacts" element={<ContactManagement />} />
                 <Route path="/reception/gallery" element={<ReceptionGallery />} />
-                <Route path="/reception/notifications" element={<NotificationManagement />} />
                 <Route path="/reception/job-applications" element={<JobApplications />} />
                 <Route path="/reception/transport" element={<TransportManagement />} />
               </Route>

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { api } from "../../lib/api";
-import { socket } from "../../lib/socket";
 import Posts from "../common/Posts";
 import Projects from "../common/Projects";
 import Teams from "../common/Teams";
@@ -38,7 +37,8 @@ function Dashboard() {
     lowStockParts: 0,
     totalParts: 0,
   });
-  const [alerts, setAlerts] = useState<string[]>([]);
+  // Live low-stock alerts came over sockets; they return with the realtime phase.
+  const [alerts] = useState<string[]>([]);
   const [ordersByDay, setOrdersByDay] = useState<number[]>([]);
   const [topParts, setTopParts] = useState<{ name: string; count: number }[]>(
     []
@@ -116,28 +116,6 @@ function Dashboard() {
     };
 
     loadStats();
-
-    const onStockLow = (p: {
-      partName?: string;
-      partId: string;
-      availableQty: number;
-      reorderPoint?: number;
-    }) => {
-      setAlerts((prev) =>
-        [
-          `Low stock: ${p.partName || p.partId} (${p.availableQty} available)`,
-          ...prev,
-        ].slice(0, 5)
-      );
-    };
-
-    socket.emit("admin:join");
-    socket.on("stock:low", onStockLow);
-
-    return () => {
-      socket.emit("admin:leave");
-      socket.off("stock:low", onStockLow);
-    };
   }, []);
 
   const statCards = [
@@ -388,18 +366,8 @@ function OrdersManagement() {
   const [filter, setFilter] = useState<string>("all");
 
   useEffect(() => {
+    // Live order updates return with the realtime phase.
     loadOrders();
-
-    const onNew = () => loadOrders();
-    const onUpdate = () => loadOrders();
-
-    socket.on("order:new", onNew);
-    socket.on("order:update", onUpdate);
-
-    return () => {
-      socket.off("order:new", onNew);
-      socket.off("order:update", onUpdate);
-    };
   }, []);
 
   async function loadOrders() {

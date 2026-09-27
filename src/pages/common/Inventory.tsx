@@ -19,7 +19,6 @@ import { useAuth } from '../../providers/AuthProvider';
 import { PartFormModal } from '../../components/parts/PartFormModal';
 import {
   useInventoryData,
-  useInventoryRealtimeUpdates,
   type PartWithStock,
   type BoxGroup
 } from '../../hooks';
@@ -35,9 +34,6 @@ type ViewMode = 'parts' | 'boxes';
 export default function Inventory() {
   const { user } = useAuth();
   const { parts, stats, isLoading, error, refetch } = useInventoryData();
-
-  // Real-time updates
-  useInventoryRealtimeUpdates(refetch);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');

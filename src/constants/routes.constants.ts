@@ -24,7 +24,6 @@ import {
   ListTodo,
   Image as ImageIcon,
   BarChart3,
-  Bell,
   Star,
   Award,
   AlarmClock,
@@ -353,13 +352,6 @@ export const NAV_ITEMS: NavItem[] = [
     title: "Gallery",
     path: "/reception/gallery",
     icon: React.createElement(ImageIcon, { className: "w-5 h-5" }),
-    roles: [UserRole.RECEPTION],
-  },
-  {
-    id: "reception-notifications",
-    title: "Notifications",
-    path: "/reception/notifications",
-    icon: React.createElement(Bell, { className: "w-5 h-5" }),
     roles: [UserRole.RECEPTION],
   },
   {

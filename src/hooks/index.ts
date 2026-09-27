@@ -1,21 +1,14 @@
 export { useAuth } from '../providers/AuthProvider';
 
 // Common hooks
-export * from './common/useApi';
 export * from './common/useDebounce';
 export * from './common/useDashboardStats';
-export * from './common/useRealtimeUpdates';
 export * from './common/useInventoryData';
 export * from './common/useOrdersData';
 export * from './common/useProjectsData';
 export * from './common/useTeamsData';
 export * from './common/useCompetitionsData';
 export * from './common/useFileUpload';
-export * from './common/useNotifications';
-export * from './common/useWebNotifications';
-export * from './common/useGroupChat';
-export * from './common/usePrivateChat';
-export * from './common/useChatList';
 export * from './common/useExchangeRate';
 export * from './common/useBlogPosts';
 export * from './common/usePDFViewer';

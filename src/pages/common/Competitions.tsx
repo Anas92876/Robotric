@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Trophy, Plus, Edit2, Trash2, AlertCircle, RefreshCw, Filter, Calendar, MapPin } from 'lucide-react';
 import { useAuth } from '../../providers/AuthProvider';
-import { useCompetitionsData, useCompetitionsRealtimeUpdates } from '../../hooks';
+import { useCompetitionsData } from '../../hooks';
 import { LoadingState, Alert, Button, CardComponent, Badge } from '../../components/ui';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,6 @@ type StatusFilter = 'all' | 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
 export default function Competitions() {
   const { user } = useAuth();
   const { competitions, stats, isLoading, error, refetch, actions } = useCompetitionsData();
-  useCompetitionsRealtimeUpdates(refetch);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');

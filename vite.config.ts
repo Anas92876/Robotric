@@ -20,7 +20,7 @@ const VITE_DEV_PATHS = ["src", "node_modules", "@vite", "@id", "@fs", "@react-re
 const PUBLIC_SITE_DEV_URL = process.env.PUBLIC_SITE_DEV_URL || "http://localhost:3100";
 const API_DEV_URL = "http://localhost:4889";
 const escape = (p: string) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const ownPaths = [...DASHBOARD_PATHS, ...VITE_DEV_PATHS, "api", "socket.io"].map(escape).join("|");
+const ownPaths = [...DASHBOARD_PATHS, ...VITE_DEV_PATHS, "api"].map(escape).join("|");
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -32,11 +32,6 @@ export default defineConfig({
       "/api": {
         target: API_DEV_URL,
         changeOrigin: true,
-      },
-      "/socket.io": {
-        target: API_DEV_URL,
-        changeOrigin: true,
-        ws: true,
       },
       // Next.js live reload for the public site
       "/_next/webpack-hmr": {
@@ -67,7 +62,6 @@ export default defineConfig({
       resolveDependencies: (_filename, deps) => {
         return deps.filter(
           (dep) =>
-            !dep.includes('socket') &&
             !dep.includes('pdf') &&
             !dep.includes('cert') &&
             !dep.includes('html2canvas') &&
@@ -92,7 +86,6 @@ export default defineConfig({
           if (id.includes('pdfjs-dist') || id.includes('react-pdf')) return 'chunk-pdf';
           if (id.includes('jspdf') || id.includes('html2canvas')) return 'chunk-cert';
           if (id.includes('react-big-calendar')) return 'chunk-calendar';
-          if (id.includes('socket.io-client') || id.includes('engine.io-client')) return 'chunk-socket';
 
           // Small UI utils
           if (id.includes('lucide-react') || id.includes('clsx') || id.includes('tailwind-merge')) return 'chunk-ui';

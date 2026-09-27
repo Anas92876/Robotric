@@ -6,7 +6,6 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { useAuth } from '../../providers';
-import { NotificationCenter } from '../notifications/NotificationCenter';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 
 interface TopNavProps {
@@ -82,13 +81,10 @@ export const TopNav: React.FC<TopNavProps> = ({ onMenuClick }) => {
             </motion.button>
           </div>
 
-          {/* Right section: Language switcher, Notifications and User Menu */}
+          {/* Right section: Language switcher and User Menu */}
           <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Language Switcher */}
             <LanguageSwitcher variant="desktop" />
-
-            {/* Notifications Center */}
-            <NotificationCenter maxNotifications={10} />
 
             {/* User Menu */}
             <div className="relative" data-user-menu>

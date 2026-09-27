@@ -3,7 +3,7 @@ import { ShoppingCart, Briefcase, Users, Activity, Package, AlertCircle, Refresh
 import { useAuth } from "../../providers/AuthProvider";
 import { ROUTES } from "../../constants/routes.constants";
 import { StatsCard, CardComponent, Badge, LoadingState, Alert, Button } from "../../components/ui";
-import { useDashboardStats, useDashboardRealtimeUpdates } from "../../hooks";
+import { useDashboardStats } from "../../hooks";
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 
@@ -12,9 +12,6 @@ export default function Dashboard() {
   const { stats, recentActivity, isLoading, error, refetch } = useDashboardStats();
   const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
   const isRTL = i18n.language === 'ar';
-
-  // Real-time updates
-  useDashboardRealtimeUpdates(refetch);
 
   const quickActions = [
     {

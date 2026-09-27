@@ -18,7 +18,6 @@ import {
 import { useAuth } from '../../providers/AuthProvider';
 import {
   useProjectsData,
-  useProjectsRealtimeUpdates,
   type Project,
   type Part,
   type ProjectPart
@@ -35,9 +34,6 @@ type StatusFilter = 'all' | 'planning' | 'active' | 'completed' | 'archived';
 export default function Projects() {
   const { user } = useAuth();
   const { projects, parts, stats, isLoading, error, refetch, actions } = useProjectsData();
-
-  // Real-time updates
-  useProjectsRealtimeUpdates(refetch);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');

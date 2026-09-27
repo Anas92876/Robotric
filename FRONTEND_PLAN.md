@@ -72,24 +72,23 @@ The login contract already matches: `POST /auth/login` returns `data.token` plus
 user, and both this app and the new login page read it that way. Errors keep
 `message` and `error.message`, and `lib/api.ts` reads both.
 
-### L1 — Fix the real mismatches
+### L1 — Fix the real mismatches ✅ Done
 
-1. **Session report:** `services/subscription.service.ts:377` calls
-   `GET /reception/session-requests/:id/report`. The backend route is
-   `GET /subscriptions/session-requests/:id/report`. This was already broken with the
-   old backend.
-2. **Engineer submission panel:** `components/cto/SubmissionPanel.tsx:57` calls
-   `GET /engineer/tasks/:id`, which never existed; only the list exists. Either add that
-   route to the backend or read the task from the list.
-3. **Trainer groups:** `hooks/trainer/useTrainerGroups.ts:140,163` still has trainer
-   create and update calls (`POST/PUT /trainer/groups`). Groups are CLO-only now;
-   delete the dead code.
-4. **Register:** `providers/AuthProvider.tsx:152` calls `POST /auth/register`, which is
-   removed (registration happens at the company). Delete `register()`. The new
-   design's **sign-up page calls it too**, so it can't work: hide it.
-5. **Student payments:** `pages/student/StudentPayments.tsx` still has "pay now"
-   (`/student/payments/initiate` and `/confirm`), which now returns 403 (students never
-   pay in the app). Make the page read-only: history and receipts.
+1. **Session report:** reception's "View report" called a route only students have.
+   It now picks the report from `/reception/session-reports`, which it already loads.
+   This was broken with the old backend too.
+2. **Engineer submission panel:** it called `GET /engineer/tasks/:id`, which never
+   existed. It now uses the submission that every task list already includes.
+3. **Trainer groups:** removed the trainer create, edit and delete group code, plus
+   `TrainerCreateGroup` and `EditGroupModal`. Groups are CLO-only.
+4. **Register:** removed `register()` from `AuthProvider`. In the new design, the
+   sign-up page is hidden: `/en/signup` and `/ar/signup` go to login, and the links
+   are gone. `SignupForm` is kept.
+5. **Student payments:** removed the pay and confirm code and both payment modals.
+   The page shows history and receipts only.
+
+`npm run api:check` now reports only the 4 known false alarms and the 5 postponed
+chat/notification calls.
 
 ### L2 — One way to reach the backend
 
@@ -141,8 +140,6 @@ Only after L1–L5 does the dashboard **redesign** start (see the clean-up list 
 
 ## Open questions for the owner
 
-- **Sign up:** the new design has a sign-up page, but registration happens at the
-  company. Hide it?
 - **Google Maps key:** it's written in `src/pages/reception/TransportManagement.tsx`.
   Restrict it in Google Cloud to robotrick.net and localhost, and move it to `.env`.
 
