@@ -1,8 +1,11 @@
 import type { Request, Response } from 'express';
 import { z } from 'zod';
 import { AppError } from '../../shared/http/errors';
+import { parsePagination } from '../../shared/http/pagination';
+import { currentUser } from '../../shared/http/request-user';
 import { parse } from '../../shared/http/validate';
-import type { UserRepository } from './users.repository';
+import type { UserAdminService } from './user-admin.service';
+import type { User, UserRepository } from './users.repository';
 
 const assignCompetitionBody = z.object({
   competitionId: z.string({ error: '"competitionId" must be a string' }).nullish(),
@@ -28,5 +31,49 @@ export class UsersController {
       name: user.name,
       assignedCompetitionId: user.assignedCompetitionId,
     });
+  };
+}
+
+/** The user without secrets (password hash, token version). */
+export function userDoc(u: User) {
+  return {
+    _id: u.id,
+    email: u.email,
+    name: u.name,
+    role: u.role,
+    assignedCompetitionId: u.assignedCompetitionId,
+    profile: u.profile ?? {},
+    isHourly: u.isHourly,
+    createdAt: u.createdAt,
+    updatedAt: u.updatedAt,
+  };
+}
+
+type IdReq = Request<{ id: string }>;
+
+/** /api/reception/users — account management from the front desk. */
+export class ReceptionUsersController {
+  constructor(private readonly users: UserAdminService) {}
+
+  list = async (req: Request, res: Response) => {
+    const q = req.query as Record<string, string | undefined>;
+    const page = parsePagination(q);
+    const { rows, total } = await this.users.list(q, page);
+    res.json({ success: true, data: rows.map(userDoc), pagination: { page: page.page, limit: page.limit, total, pages: Math.ceil(total / page.limit) } });
+  };
+
+  create = async (req: Request, res: Response) => {
+    const user = await this.users.create(currentUser(req).role, req.body);
+    res.status(201).json({ success: true, message: 'User created successfully', data: userDoc(user) });
+  };
+
+  update = async (req: IdReq, res: Response) => {
+    const user = await this.users.update(currentUser(req).role, req.params.id, req.body);
+    res.json({ success: true, message: 'User updated successfully', data: userDoc(user) });
+  };
+
+  delete = async (req: IdReq, res: Response) => {
+    await this.users.delete(currentUser(req).role, req.params.id);
+    res.json({ success: true, message: 'User deleted permanently' });
   };
 }

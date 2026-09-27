@@ -21,6 +21,8 @@ export interface FileStorage {
   publicUrl(file: StoredFile): string;
   /** A time-limited URL the client can download from. */
   signedUrl(file: StoredFile, expiresInSeconds?: number): Promise<string>;
+  /** Reads a stored file's bytes (used to stream private PDFs). */
+  download(file: StoredFile): Promise<Buffer>;
   /** Best effort: failures are logged, never thrown. */
   remove(file: StoredFile): Promise<void>;
 }

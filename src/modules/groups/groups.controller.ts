@@ -142,6 +142,7 @@ export class CloGroupController {
       success: true,
       data: items.map(({ group, summary }) => ({
         ...groupDoc(group, { course: 'basic', trainer: 'withProfile', students: 'basic' }),
+        progress: liveProgress(summary),
         stats: {
           studentsCount: group.members.length,
           // Every group member is enrolled in the group's course. (The old
@@ -160,6 +161,7 @@ export class CloGroupController {
       success: true,
       data: {
         ...groupDoc(group, { course: 'withDuration', trainer: 'withProfile', students: 'withProfile' }),
+        progress: liveProgress(summary),
         enrollments: enrollments.map((e) => ({ _id: e.id, studentId: e.studentId, status: e.status, enrollmentDate: e.enrolledAt, progress: e.progress })),
         recentAttendance,
         stats: {

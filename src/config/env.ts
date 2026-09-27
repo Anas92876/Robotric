@@ -23,6 +23,8 @@ const schema = z.object({
   JWT_EXPIRES_IN: z.string().default('7d'),
 
   CLIENT_ORIGIN: z.string().default('http://localhost:5173'),
+  /** This API's public URL (used as the video player's origin); defaults to the request's host. */
+  BACKEND_URL: z.string().url().optional(),
   COOKIE_DOMAIN: z.string().optional(),
   COOKIE_SECURE: booleanString,
   COOKIE_SAMESITE: z.enum(['lax', 'strict', 'none']).default('lax'),

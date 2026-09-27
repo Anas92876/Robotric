@@ -9,8 +9,26 @@ import { cloRoutes } from './routes/clo.routes';
 import { adminVersionRoutes, appVersionRoutes, usersRoutes } from './routes/platform.routes';
 import { contactFormRoutes, jobsRoutes, publicRoutes } from './routes/public.routes';
 import { receptionRoutes } from './routes/reception.routes';
-import { trainerGroupRoutes } from './routes/trainer.routes';
-import { studentPaymentRoutes, studentSubscriptionRoutes } from './routes/student.routes';
+import { trainerAttendanceRoutes, trainerGroupRoutes, trainerQuizRoutes, trainerSessionRoutes, trainerBoardRoutes, trainerDashboardRoutes, trainerEvaluationRoutes, trainerGalleryRoutes, trainerProjectRoutes, trainerResourceRoutes, trainerTaskRoutes } from './routes/trainer.routes';
+import {
+  studentAssignmentRoutes,
+  studentAttendanceRoutes,
+  studentModuleRoutes,
+  studentPaymentRoutes,
+  studentQuizRoutes,
+  studentSubscriptionRoutes,
+  studentTaskRoutes,
+  studentResourceRoutes,
+  studentSessionRoutes,
+  studentCertificateRoutes,
+  publicCertificateRoutes,
+  studentProjectRoutes,
+  studentGalleryRoutes,
+  studentDocumentRoutes,
+  studentBoardRoutes,
+  studentCourseRoutes,
+  studentDashboardRoutes,
+} from './routes/student.routes';
 
 /** Builds the Express app from a wired container. No I/O happens here. */
 export function createApp(c: Container): Express {
@@ -45,6 +63,31 @@ export function createApp(c: Container): Express {
   app.use('/api/clo', cloRoutes(c));
   app.use('/api/reception', receptionRoutes(c));
   app.use('/api/trainer/groups', trainerGroupRoutes(c));
+  app.use('/api/trainer/sessions', trainerSessionRoutes(c));
+  app.use('/api/trainer/attendance', trainerAttendanceRoutes(c));
+  app.use('/api/student/attendance', studentAttendanceRoutes(c));
+  app.use('/api/trainer/quizzes', trainerQuizRoutes(c));
+  app.use('/api/student/modules', studentModuleRoutes(c));
+  app.use('/api/student/quizzes', studentQuizRoutes(c));
+  app.use('/api/student/assignments', studentAssignmentRoutes(c));
+  app.use('/api/trainer/tasks', trainerTaskRoutes(c));
+  app.use('/api/student/tasks', studentTaskRoutes(c));
+  app.use('/api/trainer/resources', trainerResourceRoutes(c));
+  app.use('/api/student/resources', studentResourceRoutes(c));
+  app.use('/api/trainer/evaluations', trainerEvaluationRoutes(c));
+  app.use('/api/student/sessions', studentSessionRoutes(c));
+  app.use('/api/student/certificates', studentCertificateRoutes(c));
+  app.use('/api/certificates', publicCertificateRoutes(c));
+  app.use('/api/trainer/projects', trainerProjectRoutes(c));
+  app.use('/api/trainer/gallery', trainerGalleryRoutes(c));
+  app.use('/api/student/projects', studentProjectRoutes(c));
+  app.use('/api/student/gallery', studentGalleryRoutes(c));
+  app.use('/api/student/documents', studentDocumentRoutes(c));
+  app.use('/api/student/board', studentBoardRoutes(c));
+  app.use('/api/student/courses', studentCourseRoutes(c));
+  app.use('/api/student/dashboard', studentDashboardRoutes(c));
+  app.use('/api/trainer/dashboard', trainerDashboardRoutes(c));
+  app.use('/api/trainer/board', trainerBoardRoutes(c));
   app.use('/api/student/payments', studentPaymentRoutes(c));
   app.use('/api/subscriptions', studentSubscriptionRoutes(c));
   app.use('/api/users', usersRoutes(c));

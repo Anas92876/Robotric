@@ -25,10 +25,10 @@ function subCourseSummary(c: CourseWithInstructor, extra: 'description+category'
 
 /**
  * A full course document. `bundleCourses` is either populated summaries or
- * plain ids, depending on the endpoint, exactly as before. `modules` stays
- * empty until the modules feature is ported (phase 5).
+ * plain ids, depending on the endpoint, exactly as before; `modules` lists the
+ * course's module ids in order.
  */
-function courseDoc(c: CourseWithInstructor, bundleCourses: unknown[]) {
+function courseDoc(c: CourseWithInstructor, bundleCourses: unknown[], modules: string[] = []) {
   return {
     _id: c.id,
     title: c.title,
@@ -45,7 +45,7 @@ function courseDoc(c: CourseWithInstructor, bundleCourses: unknown[]) {
     endDate: c.endDate,
     maxStudents: c.maxStudents,
     enrolledStudents: c.enrolledStudents,
-    modules: [] as string[],
+    modules,
     syllabus: c.syllabus,
     prerequisites: c.prerequisites,
     objectives: c.objectives,
@@ -64,15 +64,24 @@ function courseDoc(c: CourseWithInstructor, bundleCourses: unknown[]) {
 
 type IdParam = Request<{ id: string }>;
 
+/** Module ids per course, in order (course-modules feature). */
+export interface ModuleIdsReader {
+  idsByCourse(courseIds: string[]): Promise<Map<string, string[]>>;
+}
+
 export class CourseController {
-  constructor(private readonly courses: CourseService) {}
+  constructor(
+    private readonly courses: CourseService,
+    private readonly modules: ModuleIdsReader,
+  ) {}
 
   list = async (req: Request, res: Response) => {
     const items = await this.courses.list(parse(listQuery, req.query));
+    const modules = await this.modules.idsByCourse(items.map((i) => i.course.id));
     res.json({
       success: true,
       data: items.map(({ course, subCourses, stats }) => ({
-        ...courseDoc(course, subCourses.map((s) => subCourseSummary(s))),
+        ...courseDoc(course, subCourses.map((s) => subCourseSummary(s)), modules.get(course.id)),
         stats,
       })),
     });
@@ -87,7 +96,7 @@ export class CourseController {
     res.json({
       success: true,
       data: {
-        course: courseDoc(course, subCourseIds),
+        course: courseDoc(course, subCourseIds, (await this.modules.idsByCourse([course.id])).get(course.id)),
         groups,
         trainers,
         enrollments,

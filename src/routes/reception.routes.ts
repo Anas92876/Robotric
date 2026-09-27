@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import type { Container } from '../container';
-import { createUploader, PDF_POLICY } from '../shared/http/upload';
+import { createUploader, IMAGE_POLICY, PDF_POLICY } from '../shared/http/upload';
 
 export const RECEPTION_ROLES = ['reception', 'admin', 'superadmin'] as const;
 
@@ -9,6 +9,29 @@ export function receptionRoutes({ guards, controllers: c }: Container): Router {
   const r = Router();
 
   r.use(guards.requireAuth, guards.allowRoles(RECEPTION_ROLES, 'Access denied. Reception privileges required.'));
+
+  // Dashboard
+  r.get('/dashboard', c.receptionDashboard.stats);
+  r.get('/recent-activities', c.receptionDashboard.recentActivities);
+
+  // Staff accounts
+  r.get('/users', c.receptionUsers.list);
+  r.post('/users', c.receptionUsers.create);
+  r.put('/users/:id', c.receptionUsers.update);
+  r.delete('/users/:id', c.receptionUsers.delete);
+
+  // Job applications from the careers form
+  r.get('/job-applications', c.jobApplications.list);
+  r.get('/job-applications/:id', c.jobApplications.get);
+  r.put('/job-applications/:id', c.jobApplications.update);
+  r.delete('/job-applications/:id', c.jobApplications.delete);
+  r.get('/job-applications/:id/cv', c.jobApplications.cv);
+
+  // Gallery (class moments)
+  r.get('/gallery/groups', c.receptionGallery.groups);
+  r.post('/gallery/moments', createUploader(IMAGE_POLICY).single('image'), c.receptionGallery.moment);
+  r.get('/gallery/group/:groupId', c.receptionGallery.group);
+  r.delete('/gallery/:imageId', c.receptionGallery.delete);
 
   r.get('/interests', c.interests.list);
   r.get('/subscription-plans/active', c.subscriptionPlans.listActive);

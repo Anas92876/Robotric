@@ -44,6 +44,11 @@ export class MemoryFileStorage implements FileStorage {
   async signedUrl(f: StoredFile): Promise<string> {
     return `https://storage.test/signed/${this.key(f)}`;
   }
+  async download(f: StoredFile): Promise<Buffer> {
+    const body = this.files.get(this.key(f));
+    if (!body) throw new Error(`No stored file ${this.key(f)}`);
+    return body;
+  }
   async remove(f: StoredFile): Promise<void> {
     this.files.delete(this.key(f));
   }

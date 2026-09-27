@@ -3,9 +3,19 @@ import type { Logger } from '../logger';
 import { ServiceUnavailableError } from '../http/errors';
 
 /** Turns an HTML page into a PDF. Swappable (Puppeteer today, a PDF API tomorrow). */
+/** `document`: A4 portrait with margins (receipts). `landscape`: full-bleed A4 landscape (certificates). */
+export type PdfLayout = 'document' | 'landscape';
+
 export interface PdfRenderer {
-  render(html: string): Promise<Buffer>;
+  render(html: string, layout?: PdfLayout): Promise<Buffer>;
 }
+
+const LANDSCAPE_OPTIONS = {
+  format: 'A4' as const,
+  landscape: true,
+  margin: { top: '0', bottom: '0', left: '0', right: '0' },
+  printBackground: true,
+};
 
 const PDF_OPTIONS = {
   format: 'A4' as const,
@@ -41,13 +51,16 @@ export class PuppeteerPdfRenderer implements PdfRenderer {
     return puppeteer.launch({ executablePath, headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] });
   }
 
-  async render(html: string): Promise<Buffer> {
+  async render(html: string, layout: PdfLayout = 'document'): Promise<Buffer> {
     const browser = await this.launch();
     try {
       const page = await browser.newPage();
-      await page.setViewport({ width: 794, height: 1123, deviceScaleFactor: 1 });
+      if (layout === 'landscape') await page.setViewport({ width: 1123, height: 794, deviceScaleFactor: 2 });
+      else await page.setViewport({ width: 794, height: 1123, deviceScaleFactor: 1 });
       await page.setContent(html, { waitUntil: 'load', timeout: 30000 });
-      return Buffer.from(await page.pdf(PDF_OPTIONS));
+      // Certificates use web fonts; print only once they have loaded.
+      if (layout === 'landscape') await page.evaluate('document.fonts.ready');
+      return Buffer.from(await page.pdf(layout === 'landscape' ? LANDSCAPE_OPTIONS : PDF_OPTIONS));
     } catch (err) {
       this.logger.error({ err }, 'PDF rendering failed');
       throw err;

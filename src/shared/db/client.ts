@@ -24,7 +24,8 @@ export type DbExecutor = Database | Transaction;
  * A small pool suits serverless, where each instance handles few requests.
  */
 export function createDatabase(url: string): { db: Database; close: () => Promise<void> } {
-  const client = postgres(url, { prepare: false, max: 5, idle_timeout: 20 });
+  // A short connect timeout makes a dropped connection fail fast instead of hanging a request.
+  const client = postgres(url, { prepare: false, max: 5, idle_timeout: 20, connect_timeout: 10 });
   const db = drizzle(client, { schema }) as unknown as Database;
   return { db, close: () => client.end() };
 }

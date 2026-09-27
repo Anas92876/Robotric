@@ -44,18 +44,55 @@ every response shape stays exactly the same (including `_id`).
 | 2 | Catalog: courses & bundles, interests, subscription plans, training page content | ✅ Done |
 | 3 | CRM: leads, contact history, calendar events, website contact form, job applications | ✅ Done |
 | 4 | Groups, enrollments, payments, receipts (PDF), student payments (read-only), hour packages, private session requests | ✅ Done |
-| 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, gallery, documents, boards | ⏳ **Next** |
-| 6 | Competitions, teams, parts, stock, orders, projects, posts, images | ⏳ |
+| 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, student projects, gallery, documents, boards, student course pages, all dashboards, CLO trainers, reception users & job applications | ✅ Done (not committed yet) |
+| 6 | Competitions, teams, parts, stock, orders, inventory projects, posts, images | ⏳ **Next** |
 | 7 | CTO internal work, engineer, client portal | ⏳ |
 | 8 | Transport | ⏳ |
 | 9 | Chat & notifications (WebSockets on hold) | ⏳ |
 | 10 | Finish: delete `legacy/`, final checks, deploy | ⏳ |
 
-**Numbers:** 137 of 503 old routes are rebuilt. 73 automatic tests pass.
+**Numbers:** 331 of 503 old routes are rebuilt. 119 automatic tests pass
+(typecheck and lint clean). Migrations 0000–0014 are applied to Supabase.
 
-**Next step when you return:** Phase 5 (teaching: course modules, sessions,
-attendance, quizzes, assignments, tasks, resources, evaluations,
-certificates, gallery, documents, boards).
+**State (2026-09-27, midday):** Phase 5 is finished and live-checked on
+Supabase (CLO dashboard, analytics, trainers, resources, gallery, projects,
+evaluations; a real certificate PDF renders correctly with local Chrome).
+The live check found that firing ~15 queries at once stalls on the Supabase
+transaction pooler, so the CLO dashboard now queries in batches of ≤ 5 (the
+pool size) and connections time out after 10 s instead of hanging.
+
+⚠️ **Deploy note:** the database is in Tokyo (`ap-northeast-1`). Set the Vercel
+function region to Tokyo (`hnd1`) so each query is fast; from far away every
+query costs ~0.5 s (the dashboard took 4–6 s from Syria).
+
+**Next step when you return:**
+1. Commit Phase 5 if not yet done (Claude shows the message first).
+2. Start Phase 6 (competitions, teams, parts, stock, orders, inventory
+   projects, posts, images). Run `npx tsx scripts/route-parity.ts --list-missing`
+   to see what is left.
+
+### Phase 5 changes you should know about (differences from the old API)
+
+- **Students cannot enroll themselves** (`POST /api/student/courses/:id/enroll`
+  → 403 `ENROLLMENT_AT_RECEPTION`), same rule as payments.
+- **Reception can no longer create admin/CLO/CTO accounts or promote anyone to
+  them** (the old API even let reception make itself admin). Admins still can.
+  ⚠️ Tell Claude if reception really must do this.
+- Trainer evaluation endpoints are now staff-only (students could use them before).
+- Private files: WRO documents (national IDs!), gallery photos, project photos
+  are private now and served with short-lived links (they were public before).
+- Web PDF viewer one-time tokens are stored in the database (the old in-memory
+  store breaks on Vercel).
+- Certificate artwork is embedded in the backend (the old code read it from the
+  frontend folder). Fixed "wish he" → "wish him" on the certificate.
+- Fixed old bugs: certificate "issued" count, course-popularity / attendance
+  trends / top-trainer attendance (always empty or 0 before), reception
+  recent-activities (always crashed), trainer schedule "attendance marked",
+  quiz answers and YouTube id leaking in the student session list, "2 months"
+  course duration read as 2 hours.
+- Trainer dashboard evaluation/resource figures now come from student
+  evaluations and assigned resources (the old sources were never filled).
+- Deactivating a trainer (CLO) only labels them inactive; it does not block sign-in (same as before).
 
 ### Business decisions made along the way
 
@@ -181,11 +218,9 @@ creates a user AND updates the lead), the service uses a **unit of work**
 These show "zero/empty" today only because the feature they depend on is not
 rebuilt yet. They are wired in `src/container.ts` with a comment `→ phase X`.
 
-- A course's `modules` list is empty → Phase 5.
-- Group sessions / attendance numbers show 0 (progress, average attendance,
-  next session) → Phase 5.
-- Notifications to students (enrollment, payment, reminders) are not sent yet,
-  and group chat membership is not updated → Phase 9.
+- Notifications (enrollment, payment, sessions, quizzes, tasks, resources,
+  evaluations, projects) are not sent yet, and group chat membership is not
+  updated → Phase 9. `POST /api/reception/notifications/send` → Phase 9.
 
 ---
 
@@ -195,7 +230,8 @@ Open Claude Code in this folder and paste this:
 
 > Read START_HERE.md and REWRITE_PLAN.md. We are rewriting the backend from
 > legacy/ (JS + MongoDB) to TypeScript + PostgreSQL (Drizzle, Supabase).
-> Continue from where we stopped: Phase 5 (teaching). Keep routes and responses identical to the old
+> Continue from where we stopped (see "State when we stopped" in section 3):
+> commit Phase 5 after I approve, then Phase 6. Keep routes and responses identical to the old
 > API, follow the same module structure, ignore WebSockets, run tests,
 > typecheck, lint and routes:check after each module, and update
 > START_HERE.md at the end.

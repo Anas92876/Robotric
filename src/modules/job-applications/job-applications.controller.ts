@@ -1,7 +1,9 @@
 import type { Request, Response } from 'express';
 import { z } from 'zod';
+import { parsePagination } from '../../shared/http/pagination';
+import { currentUser } from '../../shared/http/request-user';
 import { parse } from '../../shared/http/validate';
-import type { JobApplicationService } from './job-applications.service';
+import type { JobApplication, JobApplicationService } from './job-applications.service';
 import { AVAILABILITY, EXPERIENCE_LEVELS } from './job-applications.table';
 
 const REQUIRED = 'Full name, phone, and position are required';
@@ -68,4 +70,38 @@ export class JobApplicationController {
       data: { id: app.id, fullName: app.fullName, position: app.position, hasCv: Boolean(app.cvUrl), createdAt: app.createdAt },
     });
   };
+
+  // ---- Reception: /api/reception/job-applications ----
+
+  list = async (req: Request, res: Response) => {
+    const q = req.query as Record<string, string | undefined>;
+    const page = parsePagination(q);
+    const { rows, total, stats, positions } = await this.applications.list(q, page);
+    res.json({ success: true, data: rows.map(applicationDoc), pagination: { total, page: page.page, pages: Math.ceil(total / page.limit), limit: page.limit }, stats, positions });
+  };
+
+  get = async (req: IdReq, res: Response) => {
+    res.json({ success: true, data: applicationDoc(await this.applications.get(req.params.id)) });
+  };
+
+  update = async (req: IdReq, res: Response) => {
+    const app = await this.applications.update(req.params.id, currentUser(req).id, (req.body ?? {}) as Record<string, unknown>);
+    res.json({ success: true, message: 'Application updated successfully', data: applicationDoc(app) });
+  };
+
+  delete = async (req: IdReq, res: Response) => {
+    await this.applications.delete(req.params.id);
+    res.json({ success: true, message: 'Application deleted successfully' });
+  };
+
+  cv = async (req: IdReq, res: Response) => {
+    res.json({ success: true, data: await this.applications.cvLink(req.params.id) });
+  };
+}
+
+type IdReq = Request<{ id: string }>;
+
+function applicationDoc(a: JobApplication) {
+  const { id, reviewedById, reviewedBy, ...rest } = a;
+  return { _id: id, ...rest, reviewedBy: reviewedBy ? { _id: reviewedBy.id, name: reviewedBy.name, email: reviewedBy.email } : reviewedById };
 }

@@ -43,6 +43,8 @@ export interface CourseRepository {
   /** Detaches every sub-course of a bundle. */
   detachAllFrom(bundleId: string): Promise<void>;
   delete(id: string): Promise<void>;
+  /** Ids of courses whose named instructor is this user. */
+  idsWithInstructor(userId: string): Promise<string[]>;
 }
 
 const instructor = alias(users, 'instructor');
@@ -120,5 +122,10 @@ export class DrizzleCourseRepository implements CourseRepository {
 
   async delete(id: string): Promise<void> {
     await this.db.delete(courses).where(eq(courses.id, id));
+  }
+
+  async idsWithInstructor(userId: string): Promise<string[]> {
+    const rows = await this.db.select({ id: courses.id }).from(courses).where(eq(courses.instructorId, userId));
+    return rows.map((r) => r.id);
   }
 }

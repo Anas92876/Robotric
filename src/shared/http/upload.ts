@@ -17,6 +17,12 @@ const SIGNATURES: Record<string, Signature[]> = {
   'image/gif': [[0x47, 0x49, 0x46, 0x38]],
   'image/webp': [[0x52, 0x49, 0x46, 0x46, null, null, null, null, 0x57, 0x45, 0x42, 0x50]],
   'application/pdf': [[0x25, 0x50, 0x44, 0x46]],
+  // Legacy Office (.doc) is an OLE2 compound file; .docx is a zip container.
+  'application/msword': [[0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
+    [0x50, 0x4b, 0x03, 0x04],
+    [0x50, 0x4b, 0x05, 0x06],
+  ],
   'application/zip': [
     [0x50, 0x4b, 0x03, 0x04],
     [0x50, 0x4b, 0x05, 0x06],
@@ -53,6 +59,8 @@ const extensionOf = (filename: string): string => {
 };
 
 export function bufferMatchesMime(buffer: Buffer, mime: string): boolean {
+  // Plain text has no signature; accept it only if it contains no NUL bytes (i.e. is not binary).
+  if (normalizeMime(mime) === 'text/plain') return !buffer.includes(0);
   const candidates = SIGNATURES[normalizeMime(mime)];
   if (!candidates) return false;
   return candidates.some((sig) => buffer.length >= sig.length && sig.every((byte, i) => byte === null || buffer[i] === byte));
@@ -113,4 +121,42 @@ export const PDF_POLICY: UploadPolicy = {
   label: 'PDF',
   maxBytes: 25 * 1024 * 1024,
   maxFiles: 1,
+};
+
+/** WRO documents: a scan or a photo. */
+export const DOCUMENT_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp', 'pdf'],
+  label: 'JPEG, PNG, WebP, PDF',
+  maxBytes: 10 * 1024 * 1024,
+  maxFiles: 1,
+};
+
+export const ASSIGNMENT_POLICY: UploadPolicy = {
+  mimes: [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'text/plain',
+    'image/jpeg',
+    'image/png',
+    'application/zip',
+    'application/x-zip-compressed',
+    'application/vnd.rar',
+    'application/x-rar-compressed',
+  ],
+  extensions: ['pdf', 'doc', 'docx', 'txt', 'jpg', 'jpeg', 'png', 'zip', 'rar'],
+  label: 'PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR',
+  maxBytes: 10 * 1024 * 1024,
+  maxFiles: 10,
+};
+
+/** Task submissions: image answers plus optional zip/rar attachments. */
+export const TASK_SUBMISSION_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/png', 'image/webp', 'application/zip', 'application/x-zip-compressed', 'application/vnd.rar', 'application/x-rar-compressed'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp', 'zip', 'rar'],
+  label: 'JPEG, PNG, WebP, ZIP, RAR',
+  maxBytes: 15 * 1024 * 1024,
+  // Files are buffered in memory: 10 × 15 MB caps one request's RAM use (old limit).
+  maxFiles: 10,
 };

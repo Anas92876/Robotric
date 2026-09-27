@@ -1,4 +1,4 @@
-import { and, asc, eq, getTableColumns, ilike, notInArray, or, sql } from 'drizzle-orm';
+import { and, asc, count, desc, eq, getTableColumns, ilike, ne, notInArray, or, sql, type SQL } from 'drizzle-orm';
 import { escapeLike } from '../../shared/db/like';
 import type { DbExecutor } from '../../shared/db/client';
 import { type NewUserRow, type OtpPurpose, type UserOtpRow, type UserRow, userOtps, users } from './users.table';
@@ -24,6 +24,22 @@ export interface UserRepository {
   setAssignedCompetition(id: string, competitionId: string | null): Promise<User | null>;
   /** Students by name/email, alphabetical, optionally excluding some ids. */
   searchStudents(search: string | undefined, excludeIds: string[], limit: number): Promise<{ id: string; name: string; email: string }[]>;
+  list(filter: UserFilter, page: { limit: number; offset: number }): Promise<User[]>;
+  count(filter: UserFilter): Promise<number>;
+  emailTakenByOther(email: string, userId: string): Promise<boolean>;
+  /** Updates profile fields; `bumpTokenVersion` signs the user out everywhere. */
+  update(id: string, patch: Partial<Pick<NewUserRow, 'name' | 'email' | 'role' | 'profile' | 'passwordHash'>>, bumpTokenVersion: boolean): Promise<User | null>;
+  delete(id: string): Promise<void>;
+}
+
+export interface UserFilter {
+  role?: string;
+  search?: string;
+}
+
+function userWhere(f: UserFilter): SQL | undefined {
+  const s = f.search ? `%${escapeLike(f.search)}%` : null;
+  return and(f.role ? sql`${users.role}::text = ${f.role}` : undefined, s ? or(ilike(users.name, s), ilike(users.email, s)) : undefined);
 }
 
 export interface OtpRecord {
@@ -113,6 +129,37 @@ export class DrizzleUserRepository implements UserRepository {
       )
       .orderBy(asc(users.name))
       .limit(limit);
+  }
+
+  async list(f: UserFilter, page: { limit: number; offset: number }) {
+    return this.db.select(publicColumns).from(users).where(userWhere(f)).orderBy(desc(users.createdAt)).limit(page.limit).offset(page.offset);
+  }
+
+  async count(f: UserFilter) {
+    const [row] = await this.db.select({ n: count() }).from(users).where(userWhere(f));
+    return row?.n ?? 0;
+  }
+
+  async emailTakenByOther(email: string, userId: string) {
+    const [row] = await this.db
+      .select({ id: users.id })
+      .from(users)
+      .where(and(eq(users.email, normalizeEmail(email)), ne(users.id, userId)))
+      .limit(1);
+    return Boolean(row);
+  }
+
+  async update(id: string, patch: Partial<Pick<NewUserRow, 'name' | 'email' | 'role' | 'profile' | 'passwordHash'>>, bumpTokenVersion: boolean) {
+    const [row] = await this.db
+      .update(users)
+      .set({ ...patch, ...(patch.email ? { email: normalizeEmail(patch.email) } : {}), ...(bumpTokenVersion ? { tokenVersion: sql`${users.tokenVersion} + 1` } : {}) })
+      .where(eq(users.id, id))
+      .returning(publicColumns);
+    return row ?? null;
+  }
+
+  async delete(id: string) {
+    await this.db.delete(users).where(eq(users.id, id));
   }
 
   async setAssignedCompetition(id: string, competitionId: string | null): Promise<User | null> {

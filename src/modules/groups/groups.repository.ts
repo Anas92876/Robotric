@@ -73,6 +73,8 @@ export interface GroupRepository {
   /** The student's group in a course, if any. */
   groupOfStudentInCourse(studentId: string, courseId: string): Promise<Group | null>;
   countsByCourse(courseIds: string[]): Promise<Map<string, CourseGroupCounts>>;
+  /** Ids of every group the student belongs to. */
+  groupIdsOfStudent(studentId: string): Promise<string[]>;
 }
 
 export class DrizzleGroupRepository implements GroupRepository {
@@ -227,6 +229,11 @@ export class DrizzleGroupRepository implements GroupRepository {
       .where(eq(groups.courseId, courseId))
       .limit(1);
     return row ? DrizzleGroupRepository.merge(row) : null;
+  }
+
+  async groupIdsOfStudent(studentId: string): Promise<string[]> {
+    const rows = await this.db.select({ id: groupStudents.groupId }).from(groupStudents).where(eq(groupStudents.studentId, studentId));
+    return rows.map((r) => r.id);
   }
 
   async countsByCourse(courseIds: string[]): Promise<Map<string, CourseGroupCounts>> {

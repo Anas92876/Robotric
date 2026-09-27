@@ -26,6 +26,10 @@ export interface RateLimiters {
   auth: RateLimitRequestHandler;
   /** OTP and password flows: 3 per hour in production. */
   strict: RateLimitRequestHandler;
+  /** Resource PDF uploads: 30 per 15 minutes in production. */
+  resourceUpload: RateLimitRequestHandler;
+  /** Resource viewer links: 30 per minute in production. */
+  resourceViewer: RateLimitRequestHandler;
 }
 
 export function createRateLimiters(isProduction: boolean): RateLimiters {
@@ -39,5 +43,7 @@ export function createRateLimiters(isProduction: boolean): RateLimiters {
     strict: limiter(isProduction ? 3 : 50, 'Too many attempts for this sensitive operation. Please try again in 1 hour.', {
       windowMs: ONE_HOUR,
     }),
+    resourceUpload: limiter(isProduction ? 30 : 1000, 'Too many uploads, please try again later'),
+    resourceViewer: limiter(isProduction ? 30 : 1000, 'Too many requests, please slow down', { windowMs: 60 * 1000 }),
   };
 }

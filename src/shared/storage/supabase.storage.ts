@@ -75,6 +75,15 @@ export class SupabaseFileStorage implements FileStorage {
     return data.signedUrl;
   }
 
+  async download({ bucket, path }: StoredFile): Promise<Buffer> {
+    const { data, error } = await this.client.storage.from(bucket).download(path);
+    if (error || !data) {
+      this.logger.error({ bucket, path, err: error?.message }, 'Storage download failed');
+      throw new AppError('Failed to download resource', 500, 'DOWNLOAD_FAILED');
+    }
+    return Buffer.from(await data.arrayBuffer());
+  }
+
   async remove({ bucket, path }: StoredFile): Promise<void> {
     const { error } = await this.client.storage.from(bucket).remove([path]);
     if (error) this.logger.warn({ bucket, path, err: error.message }, 'Storage delete failed');
@@ -93,6 +102,9 @@ export class UnconfiguredFileStorage implements FileStorage {
     this.fail();
   }
   async signedUrl(): Promise<string> {
+    this.fail();
+  }
+  async download(): Promise<Buffer> {
     this.fail();
   }
   async remove(): Promise<void> {

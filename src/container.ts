@@ -31,7 +31,7 @@ import { TrainingContentService } from './modules/training-content/training-cont
 import { SettingsController } from './modules/settings/settings.controller';
 import { DrizzleSettingsRepository } from './modules/settings/settings.repository';
 import { SettingsService } from './modules/settings/settings.service';
-import { UsersController } from './modules/users/users.controller';
+import { ReceptionUsersController, UsersController } from './modules/users/users.controller';
 import { DrizzleUnitOfWork } from './shared/db/unit-of-work';
 import { ContactHistoryController } from './modules/contact-history/contact-history.controller';
 import { DrizzleContactHistoryRepository } from './modules/contact-history/contact-history.repository';
@@ -49,7 +49,53 @@ import { LeadController } from './modules/leads/leads.controller';
 import { DrizzleLeadRepository } from './modules/leads/leads.repository';
 import { LeadService } from './modules/leads/leads.service';
 import { CloGroupController, TrainerGroupController } from './modules/groups/groups.controller';
-import { noGroupActivity, noGroupChat } from './modules/groups/groups.ports';
+import { noGroupChat } from './modules/groups/groups.ports';
+import { AttendanceController } from './modules/attendance/attendance.controller';
+import { DrizzleAttendanceRepository } from './modules/attendance/attendance.repository';
+import { AttendanceService } from './modules/attendance/attendance.service';
+import { SessionGroupActivity } from './modules/sessions/group-activity';
+import { SessionController } from './modules/sessions/sessions.controller';
+import { DrizzleSessionRepository } from './modules/sessions/sessions.repository';
+import { SessionService, silentSessionNotifier } from './modules/sessions/sessions.service';
+import { StudentAssignmentController } from './modules/assignments/assignments.controller';
+import { DrizzleAssignmentRepository } from './modules/assignments/assignments.repository';
+import { AssignmentService } from './modules/assignments/assignments.service';
+import { StudentModuleController } from './modules/course-modules/course-modules.controller';
+import { DrizzleCourseModuleRepository, DrizzleModuleProgressRepository } from './modules/course-modules/course-modules.repository';
+import { CourseModuleService } from './modules/course-modules/course-modules.service';
+import { StudentQuizController, TrainerQuizController } from './modules/quizzes/quizzes.controller';
+import { DrizzleQuizRepository } from './modules/quizzes/quizzes.repository';
+import { QuizService, silentQuizNotifier } from './modules/quizzes/quizzes.service';
+import { TaskController } from './modules/tasks/tasks.controller';
+import { DrizzleTaskRepository } from './modules/tasks/tasks.repository';
+import { silentTaskNotifier, TaskService } from './modules/tasks/tasks.service';
+import { CloResourceController, StudentResourceController, TrainerResourceController } from './modules/resources/resources.controller';
+import { DrizzleResourceRepository } from './modules/resources/resources.repository';
+import { ResourceService, silentResourceNotifier } from './modules/resources/resources.service';
+import { CloEvaluationController, EvaluationCriteriaController, StudentEvaluationController, TrainerEvaluationController } from './modules/evaluations/evaluations.controller';
+import { DrizzleEvaluationRepository } from './modules/evaluations/evaluations.repository';
+import { CertificateController } from './modules/certificates/certificates.controller';
+import { DrizzleCertificateRepository } from './modules/certificates/certificates.repository';
+import { CertificateService } from './modules/certificates/certificates.service';
+import { CloProjectController, StudentProjectController, TrainerProjectController } from './modules/student-projects/student-projects.controller';
+import { DrizzleStudentProjectRepository } from './modules/student-projects/student-projects.repository';
+import { silentProjectNotifier, StudentProjectService } from './modules/student-projects/student-projects.service';
+import { CloGalleryController, ReceptionGalleryController, StudentGalleryController, TrainerGalleryController } from './modules/gallery/gallery.controller';
+import { DrizzleGalleryRepository } from './modules/gallery/gallery.repository';
+import { GalleryService } from './modules/gallery/gallery.service';
+import { CloDocumentController, StudentDocumentController } from './modules/documents/documents.controller';
+import { DrizzleDocumentRepository } from './modules/documents/documents.repository';
+import { DocumentService } from './modules/documents/documents.service';
+import { BoardController } from './modules/boards/boards.controller';
+import { DrizzleBoardRepository } from './modules/boards/boards.repository';
+import { BoardService } from './modules/boards/boards.service';
+import { StudentCourseController } from './modules/student-courses/student-courses.controller';
+import { StudentCourseService } from './modules/student-courses/student-courses.service';
+import { UserAdminService } from './modules/users/user-admin.service';
+import { CloDashboardController, CloTrainerController, ReceptionDashboardController, StudentDashboardController, TrainerDashboardController } from './modules/dashboards/dashboards.controller';
+import { DrizzleDashboardRepository } from './modules/dashboards/dashboards.repository';
+import { CloDashboardService, CloTrainerService, ReceptionDashboardService, StudentDashboardService, TrainerDashboardService } from './modules/dashboards/dashboards.service';
+import { EvaluationService, silentEvaluationNotifier } from './modules/evaluations/evaluations.service';
 import { DrizzleGroupRepository } from './modules/groups/groups.repository';
 import { GroupService } from './modules/groups/groups.service';
 import { EnrollmentPaymentService } from './modules/enrollments/enrollment-payments.service';
@@ -113,6 +159,40 @@ export interface Container {
     studentPayments: StudentPaymentController;
     receptionSubscriptions: ReceptionSubscriptionController;
     studentSubscriptions: StudentSubscriptionController;
+    trainerSessions: SessionController;
+    cloSessions: SessionController;
+    attendance: AttendanceController;
+    studentModules: StudentModuleController;
+    trainerQuizzes: TrainerQuizController;
+    studentQuizzes: StudentQuizController;
+    studentAssignments: StudentAssignmentController;
+    tasks: TaskController;
+    cloResources: CloResourceController;
+    studentResources: StudentResourceController;
+    trainerResources: TrainerResourceController;
+    evaluationCriteria: EvaluationCriteriaController;
+    trainerEvaluations: TrainerEvaluationController;
+    cloEvaluations: CloEvaluationController;
+    studentEvaluations: StudentEvaluationController;
+    certificates: CertificateController;
+    trainerProjects: TrainerProjectController;
+    studentProjects: StudentProjectController;
+    cloProjects: CloProjectController;
+    trainerGallery: TrainerGalleryController;
+    receptionGallery: ReceptionGalleryController;
+    studentGallery: StudentGalleryController;
+    cloGallery: CloGalleryController;
+    studentDocuments: StudentDocumentController;
+    cloDocuments: CloDocumentController;
+    trainerBoard: BoardController;
+    studentBoard: BoardController;
+    studentCourses: StudentCourseController;
+    receptionUsers: ReceptionUsersController;
+    cloDashboard: CloDashboardController;
+    cloTrainers: CloTrainerController;
+    trainerDashboard: TrainerDashboardController;
+    studentDashboard: StudentDashboardController;
+    receptionDashboard: ReceptionDashboardController;
   };
 }
 
@@ -137,6 +217,9 @@ export function createContainer(env: Env, a: Adapters): Container {
   const userSubscriptionRepo = new DrizzleUserSubscriptionRepository(a.db);
   const sessionRequestRepo = new DrizzleSessionRequestRepository(a.db);
   const planRepo = new DrizzleSubscriptionPlanRepository(a.db);
+  const sessionRepo = new DrizzleSessionRepository(a.db);
+  const attendanceRepo = new DrizzleAttendanceRepository(a.db);
+  const moduleRepo = new DrizzleCourseModuleRepository(a.db);
   /** Repositories bound to one transaction, for multi-table enrollment changes. */
   const enrollmentUow = new DrizzleUnitOfWork(a.db, (tx) => ({
     enrollments: new DrizzleEnrollmentRepository(tx),
@@ -220,7 +303,7 @@ export function createContainer(env: Env, a: Adapters): Container {
     groupRepo,
     courseRepo,
     users,
-    noGroupActivity, // → sessions & attendance (phase 5)
+    new SessionGroupActivity(sessionRepo, attendanceRepo),
     {
       forStudentsInCourse: async (studentIds, courseId) => {
         const rows = await enrollmentRepo.forStudentsInCourse(studentIds, courseId);
@@ -236,6 +319,113 @@ export function createContainer(env: Env, a: Adapters): Container {
   // Money
   const enrollmentPayments = new EnrollmentPaymentService(enrollmentRepo, enrollmentUow, silentNotifier, a.logger);
   const receipts = new ReceiptService(receiptRepo, a.pdf, displayNames);
+
+  // Teaching: sessions and attendance
+  const sessionService = new SessionService(
+    sessionRepo,
+    groupRepo,
+    { sheetIdFor: async (sessionId) => (await attendanceRepo.findBySession(sessionId))?.id ?? null },
+    silentSessionNotifier, // → notifications (phase 9)
+    a.logger,
+  );
+  const attendanceService = new AttendanceService(attendanceRepo, sessionRepo, groupRepo, enrollmentRepo);
+
+  // Teaching: modules, quizzes, assignments
+  const courseModules = new CourseModuleService(
+    moduleRepo,
+    new DrizzleModuleProgressRepository(a.db),
+    enrollmentRepo,
+    new DrizzleUnitOfWork(a.db, (tx) => ({
+      modules: new DrizzleCourseModuleRepository(tx),
+      progress: new DrizzleModuleProgressRepository(tx),
+      enrollments: new DrizzleEnrollmentRepository(tx),
+    })),
+  );
+  const quizService = new QuizService(
+    new DrizzleQuizRepository(a.db),
+    {
+      findById: async (id) => {
+        const c = await courseRepo.findById(id);
+        return c ? { id: c.id, instructorId: c.instructorId } : null;
+      },
+      idsWithInstructor: (userId) => courseRepo.idsWithInstructor(userId),
+    },
+    groupRepo,
+    moduleRepo,
+    enrollmentRepo,
+    silentQuizNotifier, // → notifications (phase 9)
+    a.logger,
+  );
+  const assignmentService = new AssignmentService(new DrizzleAssignmentRepository(a.db), enrollmentRepo, a.storage, env.SUPABASE_BUCKET);
+  const taskService = new TaskService(
+    new DrizzleTaskRepository(a.db),
+    groupRepo,
+    sessionRepo,
+    a.storage,
+    env.SUPABASE_BUCKET,
+    silentTaskNotifier, // → notifications (phase 9)
+    a.logger,
+  );
+  const resourceService = new ResourceService(
+    new DrizzleResourceRepository(a.db),
+    groupRepo,
+    sessionRepo,
+    courseRepo,
+    a.storage,
+    env.SUPABASE_BUCKET,
+    silentResourceNotifier, // → notifications (phase 9)
+  );
+  const evaluationService = new EvaluationService(
+    new DrizzleEvaluationRepository(a.db),
+    groupRepo,
+    sessionRepo,
+    courseRepo,
+    silentEvaluationNotifier, // → notifications (phase 9)
+  );
+  const certificateService = new CertificateService(new DrizzleCertificateRepository(a.db), groupRepo, courseRepo, leadRepo, a.pdf);
+  const studentProjectRepo = new DrizzleStudentProjectRepository(a.db);
+  const studentProjectService = new StudentProjectService(
+    studentProjectRepo,
+    groupRepo,
+    a.storage,
+    env.SUPABASE_BUCKET,
+    silentProjectNotifier, // → notifications (phase 9)
+  );
+  const galleryService = new GalleryService(new DrizzleGalleryRepository(a.db), groupRepo, studentProjectRepo, a.storage, env.SUPABASE_BUCKET);
+  const documentService = new DocumentService(new DrizzleDocumentRepository(a.db), a.storage, env.SUPABASE_BUCKET);
+  const boardService = new BoardService(new DrizzleBoardRepository(a.db), groupRepo);
+  const studentCourseService = new StudentCourseService(
+    enrollmentRepo,
+    groupRepo,
+    sessionRepo,
+    courseRepo,
+    new DrizzleAttendanceRepository(a.db),
+    new DrizzleCertificateRepository(a.db),
+    new DrizzleEvaluationRepository(a.db),
+    new DrizzleQuizRepository(a.db),
+    new DrizzleResourceRepository(a.db),
+    new DrizzleTaskRepository(a.db),
+    env.JWT_SECRET,
+  );
+  // Dashboards (read-only figures across features)
+  const dashboardRepo = new DrizzleDashboardRepository(a.db);
+  const trainerDashboard = new TrainerDashboardService(
+    groupRepo,
+    sessionRepo,
+    attendanceRepo,
+    new DrizzleEvaluationRepository(a.db),
+    new DrizzleResourceRepository(a.db),
+    new SessionGroupActivity(sessionRepo, attendanceRepo),
+    dashboardRepo,
+  );
+  const studentDashboard = new StudentDashboardService(
+    enrollmentRepo,
+    courseRepo,
+    studentCourseService,
+    new DrizzleQuizRepository(a.db),
+    new DrizzleAssignmentRepository(a.db),
+    receiptRepo,
+  );
 
   // Hour packages and private sessions
   const subscriptionUow = new DrizzleUnitOfWork(a.db, (tx) => ({
@@ -255,7 +445,7 @@ export function createContainer(env: Env, a: Adapters): Container {
     limiters: createRateLimiters(isProduction),
     controllers: {
       auth: new AuthController(auth, cookie),
-      courses: new CourseController(courses),
+      courses: new CourseController(courses, moduleRepo),
       interests: new InterestController(interests),
       subscriptionPlans: new SubscriptionPlanController(plans),
       trainingContent: new TrainingContentController(trainingContent),
@@ -274,6 +464,40 @@ export function createContainer(env: Env, a: Adapters): Container {
       studentPayments: new StudentPaymentController(receipts, enrollmentRepo),
       receptionSubscriptions: new ReceptionSubscriptionController(userSubscriptions, sessionRequests),
       studentSubscriptions: new StudentSubscriptionController(userSubscriptions, sessionRequests),
+      trainerSessions: new SessionController(sessionService, groupRepo, 'trainer'),
+      cloSessions: new SessionController(sessionService, groupRepo, 'clo'),
+      attendance: new AttendanceController(attendanceService),
+      studentModules: new StudentModuleController(courseModules),
+      trainerQuizzes: new TrainerQuizController(quizService),
+      studentQuizzes: new StudentQuizController(quizService),
+      studentAssignments: new StudentAssignmentController(assignmentService),
+      tasks: new TaskController(taskService),
+      cloResources: new CloResourceController(resourceService),
+      studentResources: new StudentResourceController(resourceService),
+      trainerResources: new TrainerResourceController(resourceService),
+      evaluationCriteria: new EvaluationCriteriaController(evaluationService),
+      trainerEvaluations: new TrainerEvaluationController(evaluationService),
+      cloEvaluations: new CloEvaluationController(evaluationService),
+      studentEvaluations: new StudentEvaluationController(evaluationService),
+      certificates: new CertificateController(certificateService),
+      trainerProjects: new TrainerProjectController(studentProjectService),
+      studentProjects: new StudentProjectController(studentProjectService),
+      cloProjects: new CloProjectController(studentProjectService),
+      trainerGallery: new TrainerGalleryController(galleryService),
+      receptionGallery: new ReceptionGalleryController(galleryService),
+      studentGallery: new StudentGalleryController(galleryService),
+      cloGallery: new CloGalleryController(galleryService),
+      studentDocuments: new StudentDocumentController(documentService),
+      cloDocuments: new CloDocumentController(documentService),
+      trainerBoard: new BoardController(boardService, 'trainer'),
+      studentBoard: new BoardController(boardService, 'member'),
+      studentCourses: new StudentCourseController(studentCourseService, env.BACKEND_URL, env.CLIENT_ORIGIN),
+      receptionUsers: new ReceptionUsersController(new UserAdminService(users, a.hasher)),
+      cloDashboard: new CloDashboardController(new CloDashboardService(dashboardRepo, groupRepo, courseRepo)),
+      cloTrainers: new CloTrainerController(new CloTrainerService(dashboardRepo, users, groupRepo, courseRepo, a.hasher)),
+      trainerDashboard: new TrainerDashboardController(trainerDashboard),
+      studentDashboard: new StudentDashboardController(studentDashboard),
+      receptionDashboard: new ReceptionDashboardController(new ReceptionDashboardService(dashboardRepo)),
     },
   };
 }
