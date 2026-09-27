@@ -24,8 +24,19 @@ export type DbExecutor = Database | Transaction;
  * A small pool suits serverless, where each instance handles few requests.
  */
 export function createDatabase(url: string): { db: Database; close: () => Promise<void> } {
-  // A short connect timeout makes a dropped connection fail fast instead of hanging a request.
-  const client = postgres(url, { prepare: false, max: 5, idle_timeout: 20, connect_timeout: 10 });
+  // `max_pipeline` is a real postgres.js option (default 100) that its types don't declare.
+  const options: postgres.Options<Record<string, never>> & { max_pipeline: number } = {
+    prepare: false,
+    max: 5,
+    idle_timeout: 20,
+    // A short connect timeout makes a dropped connection fail fast instead of hanging a request.
+    connect_timeout: 10,
+    // Never send a query on a connection that is still busy. Supabase's transaction pooler
+    // loses pipelined queries, so parallel queries (Promise.all) that shared a connection
+    // hung forever and took the whole pool down with them.
+    max_pipeline: 0,
+  };
+  const client = postgres(url, options);
   const db = drizzle(client, { schema }) as unknown as Database;
   return { db, close: () => client.end() };
 }

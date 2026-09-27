@@ -227,6 +227,10 @@ export class DrizzleLeadRepository implements LeadRepository {
   async stats(now: Date): Promise<LeadStats> {
     const weekAgo = new Date(now);
     weekAgo.setDate(weekAgo.getDate() - 7);
+    // Raw sql`` values skip the column's date mapping, and the Postgres driver
+    // rejects Date objects — pass ISO strings (PGlite in the tests accepts both).
+    const since = weekAgo.toISOString();
+    const nowIso = now.toISOString();
     const [row] = await this.db
       .select({
         total: count(),
@@ -234,8 +238,8 @@ export class DrizzleLeadRepository implements LeadRepository {
         waiting: sql<number>`count(*) filter (where ${leads.status} = 'waiting')`.mapWith(Number),
         student: sql<number>`count(*) filter (where ${leads.status} = 'student')`.mapWith(Number),
         blacklist: sql<number>`count(*) filter (where ${leads.status} = 'blacklist')`.mapWith(Number),
-        recentLeads: sql<number>`count(*) filter (where ${leads.createdAt} >= ${weekAgo})`.mapWith(Number),
-        needsFollowUp: sql<number>`count(*) filter (where ${leads.status} = 'interest' and ${leads.nextFollowUpDate} <= ${now})`.mapWith(Number),
+        recentLeads: sql<number>`count(*) filter (where ${leads.createdAt} >= ${since})`.mapWith(Number),
+        needsFollowUp: sql<number>`count(*) filter (where ${leads.status} = 'interest' and ${leads.nextFollowUpDate} <= ${nowIso})`.mapWith(Number),
       })
       .from(leads);
     return row ?? { total: 0, interest: 0, waiting: 0, student: 0, blacklist: 0, recentLeads: 0, needsFollowUp: 0 };

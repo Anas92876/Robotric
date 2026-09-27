@@ -106,6 +106,16 @@ The live check found that firing ~15 queries at once stalls on the Supabase
 transaction pooler, so the CLO dashboard now queries in batches of ≤ 5 (the
 pool size) and connections time out after 10 s instead of hanging.
 
+**Root cause found (2026-09-27, evening):** the database driver (postgres.js)
+*pipelines*: it sends a new query on a connection that is still busy. Supabase's
+transaction pooler loses those queries, so any request that ran more queries at
+once than there are connections hung forever, and then the whole server hung.
+Fixed in `src/shared/db/client.ts` with `max_pipeline: 0`. With that setting,
+the dashboard link check passes 91 of 92 calls; the other one is a check that
+needs parameters.
+Also fixed: the leads stats query sent a JS `Date` inside raw SQL, which the real
+driver rejects (the in-memory test database accepts it, so tests didn't catch it).
+
 ⚠️ **Deploy note:** the database is in Tokyo (`ap-northeast-1`). Set the Vercel
 function region to Tokyo (`hnd1`) so each query is fast; from far away every
 query costs ~0.5 s (the dashboard took 4–6 s from Syria).
