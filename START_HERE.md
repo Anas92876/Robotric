@@ -173,7 +173,7 @@ query costs ~0.5 s (the dashboard took 4–6 s from Syria).
   - `client-media` — private (client uploads)
   - `images` — **public** (website images)
 - All secrets are in the `.env` file (never share it, never commit it):
-  `C:\Users\Admin\Desktop\Robotric\Robotrick-Backend-main\.env`
+  `C:\Users\Admin\Desktop\Robotric_Project\Robotric_backend\.env`
 
 ⚠️ **Security to-do before going live:** the database password and the
 secret key were pasted in the chat. Before launch, reset both in Supabase
@@ -216,7 +216,7 @@ browser → you should see `{"status":"ok", ...}`.
 ## 6. How the code is organised
 
 ```
-Robotrick-Backend-main/
+Robotric_backend/
 ├── START_HERE.md          ← this file
 ├── REWRITE_PLAN.md        ← detailed plan + list of temporary gaps
 ├── .env                   ← secrets (never commit)
@@ -297,7 +297,7 @@ Open Claude Code in this folder and paste this:
 ### The steps we follow for each feature
 
 1. Read the old code in `legacy/src` (routes, controller, model).
-2. Check how the frontend uses it (`../Robotrick-Frontend-main`).
+2. Check how the frontend uses it (`../Robotric_Frontend_Dashboard`; the public site is `../Robotric_Frontend_Public`).
 3. Write `table → repository → service → schemas → controller`.
 4. Add the routes in `src/routes/...` and connect it in `src/container.ts`.
 5. `npm run db:generate` (new migration), then write tests.
