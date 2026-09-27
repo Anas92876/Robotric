@@ -1,6 +1,6 @@
 # Robotrick — public website (Next.js)
 
-Built with **Next.js 16** (App Router), **React 19** and **TypeScript**. The design follows `../DESIGN.md`. Brand colors, fonts and business facts come from `../All Data Needed/`. All page text comes from the live robotrick.net and is stored in `content/en` and `content/ar`.
+Built with **Next.js 16** (App Router), **React 19** and **TypeScript**. The design follows `../Design_Reference/DESIGN.md`. Brand colors, fonts and business facts come from `../Design_Reference/All Data Needed/`. All page text comes from the live robotrick.net and is stored in `content/en` and `content/ar`.
 
 ## Run it
 
