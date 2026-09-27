@@ -45,14 +45,28 @@ every response shape stays exactly the same (including `_id`).
 | 3 | CRM: leads, contact history, calendar events, website contact form, job applications | ✅ Done |
 | 4 | Groups, enrollments, payments, receipts (PDF), student payments (read-only), hour packages, private session requests | ✅ Done |
 | 5 | Teaching: course modules, sessions, attendance, quizzes, assignments, tasks, resources, evaluations, certificates, student projects, gallery, documents, boards, student course pages, all dashboards, CLO trainers, reception users & job applications | ✅ Done (commit `119650e`) |
-| 6 | Competitions, teams, judging, parts, stock, orders, inventory projects, posts, images | ✅ Done (not committed yet) |
-| 7 | CTO internal work, engineer, client portal, work hours | ✅ Done (not committed yet) |
-| 8 | Transport | ⏳ **Next** |
-| 9 | Chat & notifications (WebSockets on hold) | ⏳ |
+| 6 | Competitions, teams, judging, parts, stock, orders, inventory projects, posts, images | ✅ Done (commit `f5f02c2`) |
+| 7 | CTO internal work, engineer, client portal, work hours | ✅ Done (commit `f5f02c2`) |
+| 8 | Transport: drivers, seats & fares, trips, driver app, student app, feedback, management | ✅ Done (not committed yet) |
+| 9 | Chat & notifications (WebSockets on hold) | ⏳ **Next** |
 | 10 | Finish: delete `legacy/`, final checks, deploy | ⏳ |
 
-**Numbers:** 432 of 503 old routes are rebuilt. 128 automatic tests pass
-(typecheck and lint clean). Migrations 0000–0016 are applied to Supabase.
+**Numbers:** 479 of 503 old routes are rebuilt. 131 automatic tests pass
+(typecheck and lint clean). Migrations 0000–0017 are applied to Supabase.
+Left: chat & notifications (23 routes, phase 9) and a deep health check (phase 10).
+
+### Phase 8 changes you should know about
+
+- The daily trip generator is a service now; reception can still run it with
+  `POST /api/reception/transport/trips/generate`. The automatic 00:01 run
+  (it was a timer inside the server, which Vercel does not keep running)
+  comes back in phase 10 as a Vercel Cron call.
+- The academy location is stored in the app settings (no server memory cache).
+- Safety rules in the database: one active seat per student, one active fare
+  setting, one trip in progress per driver.
+- Road distances use Google Maps when `GOOGLE_MAPS_API_KEY` is set (it is, and it
+  works); otherwise straight line × 1.35. Tests never call Google.
+- A driver with past trips can't be deleted (409) instead of leaving broken history.
 
 ⚠️ **Big uploads on Vercel:** Vercel refuses request bodies over ~4.5 MB, so on
 Vercel any larger upload (resource PDFs up to 25 MB, client videos up to 300 MB,
@@ -97,8 +111,8 @@ function region to Tokyo (`hnd1`) so each query is fast; from far away every
 query costs ~0.5 s (the dashboard took 4–6 s from Syria).
 
 **Next step when you return:**
-1. Commit Phases 6–7 if not yet done (Claude shows the message first).
-2. Continue with Phase 8 (transport), then 9 (chat & notifications), then 10 (finish).
+1. Commit Phase 8 if not yet done (Claude shows the message first).
+2. Continue with Phase 9 (chat & notifications), then 10 (finish).
 3. Run `npx tsx scripts/route-parity.ts --list-missing` to see what is left.
 
 ### Phase 5 changes you should know about (differences from the old API)

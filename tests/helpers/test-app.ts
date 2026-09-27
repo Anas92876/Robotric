@@ -89,7 +89,8 @@ export async function createTestApp(): Promise<TestContext> {
   const storage = new MemoryFileStorage();
   const pdf = new FakePdfRenderer();
   const adapters: Adapters = { db, email, storage, hasher: fastHasher, pdf, logger };
-  const app = createApp(createContainer(env, adapters));
+  // Tests never call outside services (e.g. Google Maps), whatever .env holds.
+  const app = createApp(createContainer({ ...env, GOOGLE_MAPS_API_KEY: undefined }, adapters));
 
   return { app, db, email, storage, pdf, close: () => client.close() };
 }

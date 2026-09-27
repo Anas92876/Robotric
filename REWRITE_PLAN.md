@@ -86,9 +86,10 @@ present in the parity report.
 | 5 Teaching | ✅ Done (uncommitted) | 194 routes: sessions, attendance, course modules, quizzes, assignments, tasks, resources (one-time PDF tokens in DB), evaluations + criteria, certificates (PDF), student projects, gallery, WRO documents, boards, student courses/sessions/video, trainer/student/CLO/reception dashboards, CLO analytics & trainers, reception users & job applications. Migrations 0007–0014 applied to Supabase. See START_HERE.md §3 for behaviour changes. |
 | 6 Competitions & store | ✅ Done | 44 routes: competitions, teams, judge scoring & rankings, parts, stock (levels/stats/history/adjust), orders (reserve → fulfil, fixed stock maths), inventory projects, posts, images (public bucket + redirects). Migration 0015 applied. |
 | 7 Internal work | ✅ Done | 57 routes: CTO projects/sub-projects/tasks/attachments/analytics/employee of the month, engineer tasks/sub-tasks/submissions/extensions, clock-in/out work hours, client portal with media. Migration 0016 applied. |
-| 8–10 | ⏳ | Phase 8 (transport) next |
+| 8 Transport | ✅ Done | 47 routes: reception seats/drivers/trips/fares/academy location, trip generator, management pricing/earnings/overview/feedback, driver app (route optimisation, live location, pickups, earnings), student app (status, history, feedback, estimates). Migration 0017 applied. |
+| 9–10 | ⏳ | Phase 9 (chat & notifications) next |
 
-Tests: 128 passing. Route parity: `npm run routes:check` → 432 / 503 legacy routes served.
+Tests: 131 passing. Route parity: `npm run routes:check` → 479 / 503 legacy routes served.
 
 Note: the old reception job-application admin handlers (list/update/delete/CV download) were never mounted in the old app, so they are not ported either.
 

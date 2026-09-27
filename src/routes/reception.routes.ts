@@ -10,6 +10,27 @@ export function receptionRoutes({ guards, controllers: c }: Container): Router {
 
   r.use(guards.requireAuth, guards.allowRoles(RECEPTION_ROLES, 'Access denied. Reception privileges required.'));
 
+  // Transport
+  const t = c.receptionTransport;
+  r.get('/transport/students', t.students);
+  r.post('/transport/students', t.assign);
+  r.post('/transport/students/status-by-students', t.lookup);
+  r.get('/transport/pending-assignment-count', t.pendingCount);
+  r.patch('/transport/students/:id', t.updateStudent);
+  r.delete('/transport/students/:id', t.removeStudent);
+  r.post('/transport/cost-estimate', t.estimate);
+  r.get('/transport/academy-location', t.academy);
+  r.patch('/transport/academy-location', t.setAcademy);
+  r.get('/transport/drivers', t.drivers);
+  r.post('/transport/drivers', t.createDriver);
+  r.patch('/transport/drivers/:id', t.updateDriver);
+  r.delete('/transport/drivers/:id', t.removeDriver);
+  r.get('/transport/trips', t.trips);
+  r.post('/transport/trips', t.createTrip);
+  r.post('/transport/trips/generate', t.generate);
+  r.patch('/transport/trips/:id', t.updateTrip);
+  r.delete('/transport/trips/:id', t.removeTrip);
+
   // Dashboard
   r.get('/dashboard', c.receptionDashboard.stats);
   r.get('/recent-activities', c.receptionDashboard.recentActivities);

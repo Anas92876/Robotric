@@ -14,6 +14,9 @@ export const appSettings = pgTable(
     minimumAppVersion: varchar('minimum_app_version', { length: 20 }).notNull().default('1.0.0'),
     forceUpdate: boolean('force_update').notNull().default(false),
     updateMessage: text('update_message').notNull().default(''),
+    /** The academy's map position, used for transport distances (null = the built-in default). */
+    academyLat: doublePrecision('academy_lat'),
+    academyLng: doublePrecision('academy_lng'),
     ...timestamps(),
   },
   (t) => [uniqueIndex('app_settings_key_unique').on(t.key)],
@@ -21,5 +24,5 @@ export const appSettings = pgTable(
 
 export type AppSettingsRow = typeof appSettings.$inferSelect;
 export type AppSettingsUpdate = Partial<
-  Pick<AppSettingsRow, 'usdToSypExchangeRate' | 'minimumAppVersion' | 'forceUpdate' | 'updateMessage'>
+  Pick<AppSettingsRow, 'usdToSypExchangeRate' | 'minimumAppVersion' | 'forceUpdate' | 'updateMessage' | 'academyLat' | 'academyLng'>
 >;

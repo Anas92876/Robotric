@@ -37,3 +37,4 @@ export * from '../../modules/images/images.table';
 export * from '../../modules/inventory/inventory.table';
 export * from '../../modules/posts/posts.table';
 export * from '../../modules/internal-work/internal-work.table';
+export * from '../../modules/transport/transport.table';

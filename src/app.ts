@@ -8,6 +8,7 @@ import { authRoutes } from './modules/auth/auth.routes';
 import { cloRoutes } from './routes/clo.routes';
 import { competitionRoutes, teamRoutes } from './routes/competition.routes';
 import { clientRoutes, ctoInternalRoutes, engineerRoutes } from './routes/work.routes';
+import { driverTransportRoutes, managementTransportRoutes, studentTransportRoutes } from './routes/transport.routes';
 import { imageRoutes, inventoryProjectRoutes, orderRoutes, partRoutes, postRoutes, stockRoutes } from './routes/inventory.routes';
 import { adminVersionRoutes, appVersionRoutes, usersRoutes } from './routes/platform.routes';
 import { contactFormRoutes, jobsRoutes, publicRoutes } from './routes/public.routes';
@@ -105,6 +106,9 @@ export function createApp(c: Container): Express {
   app.use('/api/cto/internal', ctoInternalRoutes(c));
   app.use('/api/engineer', engineerRoutes(c));
   app.use('/api/client', clientRoutes(c));
+  app.use('/api/management/transport', managementTransportRoutes(c));
+  app.use('/api/driver/transport', driverTransportRoutes(c));
+  app.use('/api/student/transport', studentTransportRoutes(c));
   app.use('/api/app-version', appVersionRoutes(c));
   app.use('/api/admin/settings/version', adminVersionRoutes(c));
 

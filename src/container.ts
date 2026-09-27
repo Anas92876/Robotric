@@ -108,6 +108,11 @@ import { ClientController, CtoWorkController, EngineerController } from './modul
 import { DrizzleInternalWorkRepository } from './modules/internal-work/internal-work.repository';
 import { InternalWorkService, silentWorkNotifier } from './modules/internal-work/internal-work.service';
 import { CtoAnalyticsService, WorkSessionService } from './modules/internal-work/work-time.service';
+import { DriverController, ManagementTransportController, ReceptionTransportController, StudentTransportController } from './modules/transport/transport.controller';
+import { DrizzleTransportRepository } from './modules/transport/transport.repository';
+import { DriverService, StudentTransportService } from './modules/transport/transport-riders.service';
+import { silentTransportNotifier, TransportService } from './modules/transport/transport.service';
+import { estimateRouter, GoogleRoadRouter } from './modules/transport/transport-math';
 import { CloDashboardController, CloTrainerController, ReceptionDashboardController, StudentDashboardController, TrainerDashboardController } from './modules/dashboards/dashboards.controller';
 import { DrizzleDashboardRepository } from './modules/dashboards/dashboards.repository';
 import { CloDashboardService, CloTrainerService, ReceptionDashboardService, StudentDashboardService, TrainerDashboardService } from './modules/dashboards/dashboards.service';
@@ -220,6 +225,10 @@ export interface Container {
     ctoWork: CtoWorkController;
     engineer: EngineerController;
     client: ClientController;
+    receptionTransport: ReceptionTransportController;
+    managementTransport: ManagementTransportController;
+    driverTransport: DriverController;
+    studentTransport: StudentTransportController;
   };
 }
 
@@ -466,6 +475,14 @@ export function createContainer(env: Env, a: Adapters): Container {
     silentWorkNotifier, // → notifications (phase 9)
   );
   const workHours = new WorkSessionService(workRepo);
+  // Transport
+  const transport = new TransportService(
+    new DrizzleTransportRepository(a.db),
+    new DrizzleSettingsRepository(a.db),
+    env.GOOGLE_MAPS_API_KEY ? new GoogleRoadRouter(env.GOOGLE_MAPS_API_KEY) : estimateRouter,
+    a.hasher,
+    silentTransportNotifier, // → notifications (phase 9)
+  );
 
   // Hour packages and private sessions
   const subscriptionUow = new DrizzleUnitOfWork(a.db, (tx) => ({
@@ -549,6 +566,10 @@ export function createContainer(env: Env, a: Adapters): Container {
       ctoWork: new CtoWorkController(internalWork, workHours, new CtoAnalyticsService(workRepo)),
       engineer: new EngineerController(internalWork, workHours),
       client: new ClientController(internalWork),
+      receptionTransport: new ReceptionTransportController(transport),
+      managementTransport: new ManagementTransportController(transport),
+      driverTransport: new DriverController(new DriverService(transport)),
+      studentTransport: new StudentTransportController(new StudentTransportService(transport)),
     },
   };
 }
