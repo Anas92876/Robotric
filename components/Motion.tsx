@@ -165,8 +165,9 @@ function initMotion(): () => void {
       el.addEventListener('pointermove', move); el.addEventListener('pointerleave', leave);
       cleanups.push(() => { el.removeEventListener('pointermove', move); el.removeEventListener('pointerleave', leave); });
     });
+    // No class is added here: changing a button before React hydrates it causes a
+    // hydration mismatch (globals.css targets these buttons directly).
     document.querySelectorAll<HTMLElement>('.btn--lg, .nav .btn--primary').forEach((b) => {
-      b.classList.add('is-magnet');
       const move = (e: PointerEvent) => {
         const r = b.getBoundingClientRect();
         b.style.setProperty('--bx', `${((e.clientX - r.left - r.width / 2) * 0.25).toFixed(1)}px`);

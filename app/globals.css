@@ -688,7 +688,9 @@ main { position: relative; z-index: 0; }
   .motion a.feature:hover, .motion .proof:hover, .motion .card:not(.form):not(.card--flat):hover {
     background-image: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .6), transparent 45%);
   }
-  .motion .btn.is-magnet { translate: var(--bx, 0) var(--by, 0); transition: translate .25s var(--ease-out), background .2s, color .2s; }
+  /* Magnetic buttons: Motion.tsx sets --bx/--by on hover. Targeted here instead of via
+     a class added at load, which changed buttons before React hydrated them. */
+  .motion :is(.btn--lg, .nav .btn--primary) { translate: var(--bx, 0) var(--by, 0); transition: translate .25s var(--ease-out), background .2s, color .2s; }
 }
 
 /* ---- Nav hides on scroll down, returns on scroll up -------------------- */
