@@ -39,49 +39,10 @@ export default defineConfig({
   build: {
     // Built files live under /dash-assets/ so they never clash with the public site's files
     assetsDir: 'dash-assets',
-    // Exclude heavy lazy chunks from <link rel="modulepreload"> injection,
-    // so they only load on the pages that need them.
-    modulePreload: {
-      polyfill: true,
-      resolveDependencies: (_filename, deps) => {
-        return deps.filter(
-          (dep) =>
-            !dep.includes('pdf') &&
-            !dep.includes('cert') &&
-            !dep.includes('html2canvas') &&
-            !dep.includes('calendar')
-        );
-      },
-    },
-    // Optimize chunk splitting
-    rollupOptions: {
-      output: {
-        manualChunks: (id) => {
-          if (!id.includes('node_modules')) return undefined;
-
-          // React core — keep in main bundle
-          if (
-            id.includes('react/') || id.includes('react\\') ||
-            id.includes('react-dom/') || id.includes('react-dom\\') ||
-            id.includes('react-router')
-          ) return undefined;
-
-          // Heavy page-specific libs — isolated so other pages never load them
-          if (id.includes('pdfjs-dist') || id.includes('react-pdf')) return 'chunk-pdf';
-          if (id.includes('jspdf') || id.includes('html2canvas')) return 'chunk-cert';
-          if (id.includes('react-big-calendar')) return 'chunk-calendar';
-
-          // Small UI utils
-          if (id.includes('lucide-react') || id.includes('clsx') || id.includes('tailwind-merge')) return 'chunk-ui';
-
-          // i18n
-          if (id.includes('i18next') || id.includes('react-i18next')) return 'chunk-i18n';
-
-          // Everything else
-          return 'chunk-vendor';
-        },
-      },
-    },
+    // No manual chunks: every page is lazy-loaded, and Vite's own splitting gives each
+    // page just the libraries it uses. (Hand-made chunks — one big "vendor" file plus
+    // named ones — tied them together, so the first page downloaded the certificate
+    // PDF tools and every other page's libraries.)
     // Reduce chunk size warnings
     chunkSizeWarningLimit: 1000,
     minify: 'esbuild',

@@ -48,6 +48,11 @@ i18n
     interpolation: {
       escapeValue: false,
     },
+    // Dashboard translations are added after the first render (loadDashboardTranslations);
+    // re-render components when they arrive instead of leaving the raw keys on screen.
+    react: {
+      bindI18nStore: 'added',
+    },
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
@@ -72,55 +77,23 @@ export const updateHtmlAttributes = (lng?: string) => {
   }
 };
 
-// Lazy-load dashboard translations — only needed when user is authenticated
-export const loadDashboardTranslations = async () => {
-  const lang = i18n.language === 'ar' ? 'ar' : 'en';
-  const langs = ['en', 'ar'];
+// Dashboard translations are loaded lazily, and only for the language in use
+// (the Arabic files are complete, so nobody needs both). Switching language
+// loads the other one then.
+const DASHBOARD_NAMESPACES = ['dashboardNav', 'dashboardCommon', 'dashboardStudent', 'dashboardTrainer', 'dashboardReception', 'dashboardCLO', 'dashboardAdmin'];
+const dashboardLocaleFiles = import.meta.glob<{ default: Record<string, unknown> }>('./locales/*/dashboard*.json');
+let dashboardTranslationsWanted = false;
 
-  const namespaces = ['dashboardNav', 'dashboardCommon', 'dashboardStudent', 'dashboardTrainer', 'dashboardReception', 'dashboardCLO', 'dashboardAdmin'];
-
-  const alreadyLoaded = namespaces.every(ns => i18n.hasResourceBundle('en', ns));
-  if (alreadyLoaded) return;
-
-  const [
-    enNav, arNav,
-    enCommon, arCommon,
-    enStudent, arStudent,
-    enTrainer, arTrainer,
-    enReception, arReception,
-    enCLO, arCLO,
-    enAdmin, arAdmin,
-  ] = await Promise.all([
-    import('./locales/en/dashboardNav.json'),
-    import('./locales/ar/dashboardNav.json'),
-    import('./locales/en/dashboardCommon.json'),
-    import('./locales/ar/dashboardCommon.json'),
-    import('./locales/en/dashboardStudent.json'),
-    import('./locales/ar/dashboardStudent.json'),
-    import('./locales/en/dashboardTrainer.json'),
-    import('./locales/ar/dashboardTrainer.json'),
-    import('./locales/en/dashboardReception.json'),
-    import('./locales/ar/dashboardReception.json'),
-    import('./locales/en/dashboardCLO.json'),
-    import('./locales/ar/dashboardCLO.json'),
-    import('./locales/en/dashboardAdmin.json'),
-    import('./locales/ar/dashboardAdmin.json'),
-  ]);
-
-  i18n.addResourceBundle('en', 'dashboardNav', enNav.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardNav', arNav.default, true, true);
-  i18n.addResourceBundle('en', 'dashboardCommon', enCommon.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardCommon', arCommon.default, true, true);
-  i18n.addResourceBundle('en', 'dashboardStudent', enStudent.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardStudent', arStudent.default, true, true);
-  i18n.addResourceBundle('en', 'dashboardTrainer', enTrainer.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardTrainer', arTrainer.default, true, true);
-  i18n.addResourceBundle('en', 'dashboardReception', enReception.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardReception', arReception.default, true, true);
-  i18n.addResourceBundle('en', 'dashboardCLO', enCLO.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardCLO', arCLO.default, true, true);
-  i18n.addResourceBundle('en', 'dashboardAdmin', enAdmin.default, true, true);
-  i18n.addResourceBundle('ar', 'dashboardAdmin', arAdmin.default, true, true);
+export const loadDashboardTranslations = async (lng: string = i18n.language) => {
+  dashboardTranslationsWanted = true;
+  const lang = lng === 'ar' ? 'ar' : 'en';
+  const missing = DASHBOARD_NAMESPACES.filter((ns) => !i18n.hasResourceBundle(lang, ns));
+  await Promise.all(
+    missing.map(async (ns) => {
+      const file = await dashboardLocaleFiles[`./locales/${lang}/${ns}.json`]();
+      i18n.addResourceBundle(lang, ns, file.default, true, true);
+    }),
+  );
 };
 
 // Inject Arabic font stylesheet only for Arabic locale.
@@ -142,6 +115,7 @@ const loadArabicFonts = () => {
 i18n.on('languageChanged', (lng) => {
   updateHtmlAttributes(lng);
   if (lng === 'ar') loadArabicFonts();
+  if (dashboardTranslationsWanted) void loadDashboardTranslations(lng);
 });
 
 // Initialize on load
