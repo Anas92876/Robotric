@@ -2,53 +2,30 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 /**
- * This app is the private dashboard. The public site (home, services, /en/login…)
- * is a separate Next.js app served on the same domain. Only these paths belong
- * to the dashboard; the production rewrites must list the same ones.
+ * This app is the private dashboard. The public Next.js site is the front door for
+ * the whole domain (http://localhost:3000 in development): it serves the public
+ * pages and forwards the dashboard's paths here. The list of dashboard paths lives
+ * in the public site's lib/dashboard.ts.
+ *
+ * Always open http://localhost:3000, not this server's port — the login is shared
+ * only on the same address.
  */
-const DASHBOARD_PATHS = [
-  "dashboard", "student", "trainer", "reception", "clo", "cto-internal", "engineer", "client", "admin",
-  "orders", "projects", "competitions", "teams", "posts", "inventory", "my-tasks", "my-hours",
-  "settings", "profile", "notifications",
-  "dash-assets", // this app's built files and images
-  "odom-map", // the standalone field map tool
-];
-
-// Vite's own dev-server paths — never forwarded
-const VITE_DEV_PATHS = ["src", "node_modules", "@vite", "@id", "@fs", "@react-refresh", "__vite_ping"];
-
-const PUBLIC_SITE_DEV_URL = process.env.PUBLIC_SITE_DEV_URL || "http://localhost:3100";
-const API_DEV_URL = "http://localhost:4889";
-const escape = (p: string) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const ownPaths = [...DASHBOARD_PATHS, ...VITE_DEV_PATHS, "api"].map(escape).join("|");
+const DEV_PORT = 5173;
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
     host: 'localhost',
-    port: 3000, // Changed from 5173 to avoid permission issue
+    port: DEV_PORT,
+    strictPort: true,
+    // Pages are served through the front door on :3000, but live reload connects here directly
+    hmr: { clientPort: DEV_PORT },
     proxy: {
+      // Only used when this server is opened directly; through :3000 the front door forwards /api
       "/api": {
-        target: API_DEV_URL,
+        target: "http://localhost:4889",
         changeOrigin: true,
-      },
-      // Next.js live reload for the public site
-      "/_next/webpack-hmr": {
-        target: PUBLIC_SITE_DEV_URL,
-        ws: true,
-        // A reset on the socket to Next.js (e.g. a tab closed mid-reload) has no
-        // error handler by default and crashes the whole dev server.
-        configure: (proxy) => {
-          proxy.on("open", (proxySocket) => {
-            proxySocket.on("error", (err) => console.warn(`[next-hmr proxy] ${err.message}`));
-          });
-        },
-      },
-      // Everything that isn't a dashboard path is the public Next.js site, so in
-      // development both apps share one origin (and one login), like production.
-      [`^/(?!(?:${ownPaths})(?:[/?#]|$))`]: {
-        target: PUBLIC_SITE_DEV_URL,
       },
     },
   },

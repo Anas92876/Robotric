@@ -11,8 +11,9 @@ Next.js app in `C:\Users\Admin\Desktop\robo-design\robotrick-next`.
 | `/`, `/en/...`, `/ar/...`, and every other path | Public site (Next.js) |
 | `/dashboard`, `/student`, `/trainer`, `/reception`, `/clo`, `/cto-internal`, `/engineer`, `/client`, `/admin`, `/orders`, `/projects`, `/competitions`, `/teams`, `/posts`, `/inventory`, `/my-tasks`, `/my-hours`, `/settings`, `/profile`, `/notifications`, `/dash-assets/...`, `/odom-map/...` | Dashboard (this app) |
 
-- The list lives in `vite.config.ts` (`DASHBOARD_PATHS`). Keep it in sync with the
-  production rewrites.
+- The public site is the **front door** for the whole domain. It forwards the
+  dashboard paths to this app. The list lives in the public site's `lib/dashboard.ts`
+  (`DASHBOARD_PATHS`); add new top-level dashboard routes there.
 - Both apps are on one domain, so they share the login (`token` and `user` in the
   browser's localStorage).
 - Not signed in → the dashboard sends you to `/en/login` (or `/ar/login`).
@@ -21,25 +22,37 @@ Next.js app in `C:\Users\Admin\Desktop\robo-design\robotrick-next`.
 
 ### Run both on your computer
 
-```bash
-# 1. public site (port 3100)
-cd C:\Users\Admin\Desktop\robo-design\robotrick-next
-npx next dev -p 3100
+Three terminals:
 
-# 2. dashboard (port 3000) — open http://localhost:3000
+```bash
+# 1. backend (port 4889)
+cd C:\Users\Admin\Desktop\Robotric\Robotrick-Backend-main
+npm run dev
+
+# 2. dashboard (port 5173, behind the front door)
 cd C:\Users\Admin\Desktop\Robotric\Robotrick-Frontend-main
+npm run dev
+
+# 3. public site = front door (port 3000) — open http://localhost:3000
+cd C:\Users\Admin\Desktop\robo-design\robotrick-next
 npm run dev
 ```
 
-Always open **http://localhost:3000**. The dashboard forwards the public pages to
-port 3100, so everything looks like one site.
+Always open **http://localhost:3000**. The public site serves its own pages, sends
+`/api` to the backend and forwards dashboard paths to the dashboard on 5173. Don't
+open 5173 directly: the login is only shared on the same address.
+
+Accounts: `<role>@robotrick.test` from the backend seed (the password is in the
+backend's `src/shared/db/seed.ts`). Demo data: in the backend, run
+`npx tsx scripts/demo-data.ts`; `--remove` deletes it.
 
 ### Deploying later (2 repos, 2 Vercel projects, one domain)
 
 - **Public site project (owns robotrick.net)**
-  - Add rewrites that send the dashboard paths above to the dashboard project.
-  - Exclude those paths from its `proxy.ts` matcher; otherwise it adds `/en` in front of them.
-  - Add the dashboard paths to `Disallow` in its `robots.ts`.
+  - Already forwards the dashboard paths (`lib/dashboard.ts`, `next.config.ts`),
+    skips them in `proxy.ts`, and keeps them out of `robots.txt`.
+  - Set `DASHBOARD_ORIGIN` to the dashboard deployment's URL, and
+    `NEXT_PUBLIC_API_BASE` to the backend.
 - **Dashboard project**
   - `vercel.json` already sends every page to `index.html`.
   - The dashboard's pages say `noindex`, so Google won't index them.
