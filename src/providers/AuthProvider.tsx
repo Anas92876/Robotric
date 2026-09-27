@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { User, LoginRequest, RegisterRequest } from '../types/auth.types';
+import type { User, LoginRequest } from '../types/auth.types';
 import type { AuthState } from '../types/auth.types';
 import { UserRole } from '../types/auth.types';
 import { ROUTES } from '../constants/routes.constants';
@@ -13,7 +13,6 @@ type AuthContextType = {
   isLoading: boolean;
   error: string | null;
   login: (credentials: LoginRequest) => Promise<void>;
-  register: (userData: RegisterRequest) => Promise<void>;
   logout: () => void;
   refreshUser: () => Promise<void>;
 };
@@ -143,31 +142,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   /**
-   * Handle user registration
-   */
-  const register = async (userData: RegisterRequest) => {
-    try {
-      setState(prev => ({ ...prev, isLoading: true, error: null }));
-      
-      await api.post('/auth/register', userData);
-      
-      // After successful registration, log the user in
-      await login({
-        email: userData.email,
-        password: userData.password,
-      });
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'Registration failed. Please try again.';
-      setState(prev => ({
-        ...prev,
-        isLoading: false,
-        error: errorMessage,
-      }));
-      throw new Error(errorMessage);
-    }
-  };
-
-  /**
    * Handle user logout
    */
   const logout = async () => {
@@ -202,7 +176,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isLoading: state.isLoading,
         error: state.error,
         login,
-        register,
         logout,
         refreshUser,
       }}

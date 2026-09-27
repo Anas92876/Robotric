@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
@@ -36,8 +36,8 @@ const emptySubmission: Submission = { images: [], links: [], note: "" };
 
 export default function SubmissionPanel({ taskId, mode, initialSubmission }: SubmissionPanelProps) {
   const [open, setOpen] = useState(false);
+  // Every task list the panel is opened from already includes the submission.
   const [submission, setSubmission] = useState<Submission>(initialSubmission || emptySubmission);
-  const [fetched, setFetched] = useState(!!initialSubmission);
 
   const [uploading, setUploading] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -51,22 +51,6 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
   const [savingNote, setSavingNote] = useState(false);
 
   const [uploadError, setUploadError] = useState("");
-
-  const fetchSubmission = useCallback(async () => {
-    try {
-      const res = await api.get(`/engineer/tasks/${taskId}`);
-      const sub = res.data.data?.submission || emptySubmission;
-      setSubmission(sub);
-      setNote(sub.note || "");
-      setFetched(true);
-    } catch {
-      setFetched(true);
-    }
-  }, [taskId]);
-
-  useEffect(() => {
-    if (open && !fetched) fetchSubmission();
-  }, [open, fetched, fetchSubmission]);
 
   const handleImageUpload = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
@@ -149,7 +133,7 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
         <Paperclip className="w-3.5 h-3.5 flex-shrink-0" />
         <span className="font-medium">
           {isEmployee ? "My Submission" : "Submission"}
-          {fetched && hasContent && (
+          {hasContent && (
             <span className="ml-1.5 px-1.5 py-0.5 rounded-full bg-[#003300]/10 text-[#003300]/60">
               {submission.images.length + submission.links.length}
             </span>

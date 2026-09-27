@@ -370,20 +370,12 @@ export const createSessionReport = async (
 };
 
 /**
- * Get session report
+ * Get the report of one session request (reception).
+ * Reception has no single-report endpoint, so it is picked from the full list.
  */
 export const getSessionReport = async (sessionId: string): Promise<SessionReport | null> => {
-  try {
-    const response = await api.get<{ success: boolean; data: SessionReport }>(
-      `/reception/session-requests/${sessionId}/report`
-    );
-    return response.data.data;
-  } catch (error: any) {
-    if (error.response?.status === 404) {
-      return null;
-    }
-    throw error;
-  }
+  const reports = await getAllSessionReports();
+  return reports.find((r) => r.sessionRequestId === sessionId) ?? null;
 };
 
 /**

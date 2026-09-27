@@ -20,8 +20,6 @@ import {
 } from "lucide-react";
 import { usePayments } from "../../hooks";
 import { Button, Alert, useToast } from "../../components/ui";
-import PaymentInitiationModal from "../../components/payments/PaymentInitiationModal";
-import PaymentConfirmationModal from "../../components/payments/PaymentConfirmationModal";
 import { useTranslation } from "react-i18next";
 
 const TEXT_PRIMARY   = "#003300";
@@ -221,15 +219,12 @@ function PaymentRow({
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function StudentPayments() {
   const { courseId } = useParams<{ courseId: string }>();
-  const { payments, summary, isLoading, error, refetch, downloadReceipt, initiatePayment, confirmPayment } = usePayments(courseId);
+  const { payments, summary, isLoading, error, refetch, downloadReceipt } = usePayments(courseId);
   const { t, i18n } = useTranslation(["dashboardCommon", "dashboardStudent"]);
   const isRTL = i18n.language === "ar";
   const toast = useToast();
 
   const [downloadingReceipt, setDownloadingReceipt] = useState<string | null>(null);
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [pendingPayment, setPendingPayment] = useState<any>(null);
 
   const handleDownloadReceipt = async (paymentId: string) => {
     try {
@@ -239,28 +234,6 @@ export default function StudentPayments() {
       toast.error(t("dashboardCommon:error"), t("dashboardCommon:tryAgain"));
     } finally {
       setDownloadingReceipt(null);
-    }
-  };
-
-  const handleInitiatePayment = async (data: any) => {
-    try {
-      const payment = await initiatePayment(data);
-      setPendingPayment(payment);
-      setIsPaymentModalOpen(false);
-      setIsConfirmModalOpen(true);
-    } catch (err: any) {
-      toast.error(t("dashboardCommon:error"), err.message || t("dashboardCommon:errorMessage"));
-    }
-  };
-
-  const handleConfirmPayment = async (paymentId: string, transactionId: string) => {
-    try {
-      await confirmPayment(paymentId, transactionId);
-      setPendingPayment(null);
-      setIsConfirmModalOpen(false);
-      toast.success(t("dashboardCommon:successMessage"), "Payment confirmed successfully!");
-    } catch (err: any) {
-      toast.error(t("dashboardCommon:error"), err.message || t("dashboardCommon:errorMessage"));
     }
   };
 
@@ -490,27 +463,6 @@ export default function StudentPayments() {
         </div>
       </motion.div>
 
-      {/* ── Modals ── */}
-      {isPaymentModalOpen && (
-        <PaymentInitiationModal
-          isOpen={isPaymentModalOpen}
-          onClose={() => setIsPaymentModalOpen(false)}
-          onSubmit={handleInitiatePayment}
-          enrollmentId="placeholder-enrollment-id"
-          remainingAmount={summary?.remainingAmount || 0}
-          courseName="Current Course"
-        />
-      )}
-      {isConfirmModalOpen && pendingPayment && (
-        <PaymentConfirmationModal
-          isOpen={isConfirmModalOpen}
-          onClose={() => { setIsConfirmModalOpen(false); setPendingPayment(null); }}
-          onConfirm={handleConfirmPayment}
-          paymentId={pendingPayment._id}
-          amount={pendingPayment.amount}
-          paymentMethod={pendingPayment.paymentMethod}
-        />
-      )}
     </motion.div>
   );
 }

@@ -87,9 +87,6 @@ interface UseTrainerGroupsReturn {
   error: string | null;
   refetch: (filters?: GroupFilters) => Promise<void>;
   getGroupById: (groupId: string) => Promise<TrainerGroup | null>;
-  createGroup: (groupData: Partial<TrainerGroup>) => Promise<TrainerGroup | null>;
-  updateGroup: (groupId: string, updates: Partial<TrainerGroup>) => Promise<TrainerGroup | null>;
-  deleteGroup: (groupId: string, permanent?: boolean) => Promise<boolean>;
   addStudent: (groupId: string, studentId: string) => Promise<boolean>;
   removeStudent: (groupId: string, studentId: string) => Promise<boolean>;
 }
@@ -132,82 +129,7 @@ export const useTrainerGroups = (initialFilters?: GroupFilters): UseTrainerGroup
     }
   }, []);
 
-  /**
-   * Create new group
-   */
-  const createGroup = useCallback(async (groupData: Partial<TrainerGroup>): Promise<TrainerGroup | null> => {
-    try {
-      const response = await api.post('/trainer/groups', groupData);
-      const newGroup = response.data.data;
-
-      // Add to local state
-      setGroups(prev => [newGroup, ...prev]);
-
-      return newGroup;
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'Failed to create group';
-      setError(errorMessage);
-      console.error('Error creating group:', err);
-      return null;
-    }
-  }, []);
-
-  /**
-   * Update existing group
-   */
-  const updateGroup = useCallback(async (
-    groupId: string,
-    updates: Partial<TrainerGroup>
-  ): Promise<TrainerGroup | null> => {
-    try {
-      const response = await api.put(`/trainer/groups/${groupId}`, updates);
-      const updatedGroup = response.data.data;
-
-      // Update local state
-      setGroups(prev =>
-        prev.map(group => (group._id === groupId ? updatedGroup : group))
-      );
-
-      return updatedGroup;
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'Failed to update group';
-      setError(errorMessage);
-      console.error('Error updating group:', err);
-      return null;
-    }
-  }, []);
-
-  /**
-   * Delete group (soft or hard delete)
-   */
-  const deleteGroup = useCallback(async (groupId: string, permanent = false): Promise<boolean> => {
-    try {
-      const url = permanent
-        ? `/trainer/groups/${groupId}?permanent=true`
-        : `/trainer/groups/${groupId}`;
-
-      await api.delete(url);
-
-      // Remove from or update local state
-      if (permanent) {
-        setGroups(prev => prev.filter(group => group._id !== groupId));
-      } else {
-        // Update status to archived
-        setGroups(prev =>
-          prev.map(group =>
-            group._id === groupId ? { ...group, status: 'archived' as const } : group
-          )
-        );
-      }
-
-      return true;
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'Failed to delete group';
-      setError(errorMessage);
-      console.error('Error deleting group:', err);
-      return false;
-    }
-  }, []);
+  // Groups are created, edited and deleted by the CLO only.
 
   /**
    * Add student to group
@@ -280,9 +202,6 @@ export const useTrainerGroups = (initialFilters?: GroupFilters): UseTrainerGroup
     error,
     refetch: fetchGroups,
     getGroupById,
-    createGroup,
-    updateGroup,
-    deleteGroup,
     addStudent,
     removeStudent
   };

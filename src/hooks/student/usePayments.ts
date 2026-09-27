@@ -49,13 +49,6 @@ export interface PaymentSummary {
   };
 }
 
-export interface InitiatePaymentData {
-  enrollmentId: string;
-  amount: number;
-  paymentMethod: 'cash' | 'card' | 'bank_transfer';
-  installmentNumber?: number;
-}
-
 interface UsePaymentsReturn {
   payments: Payment[];
   summary: PaymentSummary | null;
@@ -63,8 +56,6 @@ interface UsePaymentsReturn {
   error: string | null;
   refetch: () => Promise<void>;
   downloadReceipt: (paymentId: string) => Promise<void>;
-  initiatePayment: (data: InitiatePaymentData) => Promise<any>;
-  confirmPayment: (paymentId: string, transactionId: string) => Promise<void>;
 }
 
 export const usePayments = (courseId?: string): UsePaymentsReturn => {
@@ -155,29 +146,6 @@ export const usePayments = (courseId?: string): UsePaymentsReturn => {
     }
   }, []);
 
-  const initiatePayment = useCallback(async (data: InitiatePaymentData) => {
-    try {
-      const response = await api.post('/student/payments/initiate', data);
-      // Refresh payments after initiating
-      await fetchPayments();
-      return response.data.data;
-    } catch (err: any) {
-      console.error('Error initiating payment:', err);
-      throw new Error(err.response?.data?.message || 'Failed to initiate payment');
-    }
-  }, [fetchPayments]);
-
-  const confirmPayment = useCallback(async (paymentId: string, transactionId: string) => {
-    try {
-      await api.post(`/student/payments/${paymentId}/confirm`, { transactionId });
-      // Refresh payments after confirmation
-      await fetchPayments();
-    } catch (err: any) {
-      console.error('Error confirming payment:', err);
-      throw new Error(err.response?.data?.message || 'Failed to confirm payment');
-    }
-  }, [fetchPayments]);
-
   return {
     payments,
     summary,
@@ -185,7 +153,5 @@ export const usePayments = (courseId?: string): UsePaymentsReturn => {
     error,
     refetch: fetchPayments,
     downloadReceipt,
-    initiatePayment,
-    confirmPayment,
   };
 };
