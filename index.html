@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZZ5RPMDBG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JZZ5RPMDBG');
+    </script>
+
+    <!-- Primary Meta Tags (overridden per-page by react-helmet-async) -->
+    <title>Robotrick | Robotics & Technology Company in Syria</title>
+    <meta name="description" content="Robotrick is a professional robotics and technology company in Aleppo, Syria. We provide robotics training, technical projects, 3D printing, STEM lab setup, and technical consultation." />
+    <meta name="keywords" content="robotics, technology, Syria, Aleppo, arduino, AI, 3D printing, STEM, technical projects, consultation" />
+    <meta name="author" content="Robotrick" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#003300" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.robotrick.net" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hrefLang="en" href="https://www.robotrick.net" />
+    <link rel="alternate" hrefLang="ar" href="https://www.robotrick.net/ar" />
+    <link rel="alternate" hrefLang="x-default" href="https://www.robotrick.net" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Robotrick" />
+    <meta property="og:url" content="https://www.robotrick.net" />
+    <meta property="og:title" content="Robotrick | Robotics & Technology Company in Syria" />
+    <meta property="og:description" content="Robotrick is a professional robotics and technology company in Aleppo, Syria. We provide robotics training, technical projects, 3D printing, STEM lab setup, and technical consultation." />
+    <meta property="og:image" content="https://www.robotrick.net/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@robotrick_net" />
+    <meta name="twitter:title" content="Robotrick | Robotics & Technology Company in Syria" />
+    <meta name="twitter:description" content="Robotrick is a professional robotics and technology company in Aleppo, Syria." />
+    <meta name="twitter:image" content="https://www.robotrick.net/og-image.jpg" />
+
+    <!-- Organization JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Robotrick",
+      "url": "https://www.robotrick.net",
+      "logo": "https://www.robotrick.net/images/header/header-logo-en.webp",
+      "description": "Professional robotics and technology company in Aleppo, Syria",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Aleppo",
+        "addressCountry": "SY"
+      },
+      "sameAs": ["https://twitter.com/robotrick_net"]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts: Inter only — loaded statically for all visitors.
+         Cairo & Tajawal (Arabic) are injected by JS only when lang === 'ar'.
+         This saves ~150–200 KB of font data for English visitors. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Preload header logo (critical — first paint) -->
+    <link rel="preload" as="image" href="/images/header/header-logo-en.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Preload mobile LCP: robot image (shown on screens < 1024px) -->
+    <link rel="preload" as="image" href="/lori.webp" type="image/webp" fetchpriority="high" media="(max-width: 1023px)" />
+
+    <!-- Preload desktop LCP: hero placeholder shown while Spline 3D scene loads.
+         Replace /images/hero-desktop-preview.webp with your actual screenshot.
+         Screens >= 1024px only — matches the lg:block Spline container. -->
+    <link rel="preload" as="image" href="/images/hero-desktop-preview.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)" />
+
+    <!-- Inline critical CSS: paints the shell skeleton before any JS executes.
+         Eliminates blank white screen on slow connections. -->
+    <style>
+      /* Font-face fallback metrics — eliminates CLS when Inter loads.
+         size-adjust matches Inter's character width so text doesn't reflow. */
+      @font-face {
+        font-family: 'Inter-Fallback';
+        src: local('Arial');
+        ascent-override: 90%;
+        descent-override: 22%;
+        line-gap-override: 0%;
+        size-adjust: 107%;
+      }
+      @font-face {
+        font-family: 'Cairo-Fallback';
+        src: local('Arial');
+        ascent-override: 88%;
+        descent-override: 20%;
+        line-gap-override: 0%;
+        size-adjust: 110%;
+      }
+
+      /* Shell skeleton — visible until React mounts and replaces #root content */
+      html, body { margin: 0; padding: 0; background: #ffffff; }
+      #app-shell {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        font-family: 'Inter', 'Inter-Fallback', system-ui, sans-serif;
+      }
+      #app-shell-nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 72px;
+        background: #003300;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        z-index: 50;
+      }
+      #app-shell-logo {
+        height: 40px;
+        width: auto;
+      }
+      #app-shell-hero {
+        flex: 1;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f9fafb 0%, #f0fdf4 100%);
+        padding-top: 72px;
+      }
+      #app-shell-spinner {
+        width: 48px;
+        height: 48px;
+        border: 3px solid #cccc99;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: shell-spin 0.8s linear infinite;
+      }
+      @keyframes shell-spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Static shell: paints instantly before JS loads.
+           React replaces all of this when it mounts. -->
+      <div id="app-shell">
+        <nav id="app-shell-nav">
+          <img
+            id="app-shell-logo"
+            src="/images/header/header-logo-en.webp"
+            width="150"
+            height="40"
+            alt="Robotrick"
+          />
+        </nav>
+        <div id="app-shell-hero">
+          <div id="app-shell-spinner"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

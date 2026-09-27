@@ -1,0 +1,48 @@
+User-agent: *
+
+# Block all dashboard and internal routes
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /student
+Disallow: /trainer
+Disallow: /reception
+Disallow: /clo
+Disallow: /cto-internal
+Disallow: /engineer
+Disallow: /orders
+Disallow: /projects
+Disallow: /competitions
+Disallow: /teams
+Disallow: /posts
+Disallow: /inventory
+Disallow: /settings
+Disallow: /profile
+Disallow: /notifications
+
+# Block authentication pages
+Disallow: /wa-login-page-for-robotrick
+Disallow: /login
+Disallow: /register
+
+# Block component showcase (internal)
+Disallow: /showcase
+
+# Allow all public pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /services/training
+Allow: /services/technical-projects
+Allow: /services/technical-consultation
+Allow: /services/curriculum-design
+Allow: /services/3d-printing
+Allow: /services/stem-lab-setup
+Allow: /blog
+Allow: /blog/
+Allow: /contact
+Allow: /gallery
+Allow: /join-us
+Allow: /download-app
+
+# Sitemap
+Sitemap: https://www.robotrick.net/sitemap.xml

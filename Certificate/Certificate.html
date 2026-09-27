@@ -1,0 +1,528 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>RoboTrick · Certificate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#003300;
+    --green-2:#0a4a1f;
+    --beige:#cccc99;
+    --beige-2:#e8e6cf;
+    --paper:#eeecdf;
+    --gold:#b8962e;
+    --ink:#1d2a1d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Inter',sans-serif;
+    background:#2a2a26;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:32px 16px 80px;
+    gap:20px;
+  }
+
+  /* ===== Controls ===== */
+  .controls{
+    width:min(1123px,100%);
+    background:#1c1c1a;
+    color:#e8e6cf;
+    border:1px solid #3a3a35;
+    border-radius:10px;
+    padding:18px 22px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px 18px;
+    font-size:13px;
+  }
+  .controls h2{
+    grid-column:1/-1;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    letter-spacing:.08em;
+    font-size:18px;
+    color:#cccc99;
+    display:flex;align-items:center;gap:12px;
+  }
+  .controls h2 span{flex:1;height:1px;background:#3a3a35}
+  .controls label{display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a8a898}
+  .controls input, .controls textarea{
+    font-family:inherit;font-size:13px;
+    background:#0f0f0d;border:1px solid #3a3a35;color:#e8e6cf;
+    padding:8px 10px;border-radius:6px;outline:none;
+  }
+  .controls input:focus,.controls textarea:focus{border-color:#cccc99}
+  .controls textarea{min-height:72px;resize:vertical;grid-column:1/-1}
+  .controls .actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .controls button{
+    font-family:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    background:#cccc99;color:#003300;border:0;padding:10px 16px;border-radius:6px;
+    cursor:pointer;font-weight:600;
+  }
+  .controls button.secondary{background:transparent;color:#cccc99;border:1px solid #3a3a35}
+  .controls .hint{grid-column:1/-1;color:#7a7a70;font-size:11px;line-height:1.5}
+  .controls code{background:#0f0f0d;padding:2px 6px;border-radius:3px;color:#cccc99}
+
+  /* ===== Certificate ===== */
+  .cert-stage{
+    display:flex;
+    justify-content:center;
+    width:100%;
+  }
+  .cert-wrap{
+    width:1123px;
+    height:794px;
+    background:var(--paper);
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5), 0 10px 25px -10px rgba(0,0,0,.3);
+    overflow:hidden;
+    transform-origin:top center;
+    flex-shrink:0;
+  }
+
+  /* paper texture */
+  .cert-wrap::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(90deg, rgba(0,51,0,.012) 0 1px, transparent 1px 60px),
+      repeating-linear-gradient(0deg, rgba(0,51,0,.012) 0 1px, transparent 1px 60px);
+    background-size: 400px 400px, 60px 60px, 60px 60px;
+    mix-blend-mode: multiply;
+  }
+
+  /* outer/inner border frames removed */
+
+  /* corner ornaments — image based */
+  .corner{
+    position:absolute;pointer-events:none;
+    width:680px;
+    height:auto;
+  }
+  .corner.tl{top:0;left:0;transform:scaleX(-1)}
+  .corner.tr{top:0;right:0;}
+  .corner.bl{display:none}
+  .corner.br{display:none}
+
+  /* bottom corner images */
+  .bottom-corner{
+    position:absolute;bottom:0;pointer-events:none;
+    width:440px;height:auto;
+    mix-blend-mode:multiply;
+    z-index:3;
+  }
+  .bottom-corner.left{left:0;transform:scaleX(-1);}
+  .bottom-corner.right{right:0;}
+
+  /* ===== Content grid ===== */
+  .cert{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 30px 100px 55px;
+    text-align:center;
+    z-index:2;
+    overflow:hidden;
+  }
+
+  .brand{
+    display:flex;align-items:center;justify-content:center;
+    height:100px;
+    flex-shrink:0;
+    margin-bottom:6px;
+  }
+  .brand-logo{
+    height:70px !important;
+    width:auto !important;
+    min-height:70px;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
+    filter: drop-shadow(0 1px 2px rgba(0,51,0,.15));
+  }
+
+  .title-block{
+    margin-top:4px;
+    flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+  }
+  .title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:72px;
+    letter-spacing:.16em;
+    color:var(--green);
+    line-height:1;
+    text-align:center;
+  }
+  .subtitle{
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    letter-spacing:.44em;
+    font-size:15px;
+    color:var(--gold);
+    padding:0 10px;
+    text-align:center;
+  }
+
+  .eyebrow{
+    margin-top:10px;
+    flex-shrink:0;
+    font-size:17px;
+    color:var(--ink);
+    letter-spacing:.03em;
+    text-align:center;
+  }
+  .eyebrow b{color:var(--green);font-weight:700;letter-spacing:.06em}
+
+  .name{
+    margin-top:8px;
+    flex-shrink:0;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:50px;
+    letter-spacing:.03em;
+    color:#003300;
+    text-transform:uppercase;
+    line-height:1;
+    padding:0;
+    white-space:nowrap;
+    overflow:visible;
+    max-width:100%;
+    -webkit-text-stroke:0.5px #003300;
+    text-align:center;
+  }
+  .name.shrink{font-size:42px;letter-spacing:.02em}
+  .name.shrink2{font-size:36px;letter-spacing:.01em}
+
+  .body{
+    margin:10px auto 0;
+    max-width:820px;
+    font-size:13.5px;
+    line-height:1.6;
+    color:#2d3a2d;
+    text-align:center;
+  }
+  .body .hl{color:var(--green);font-weight:600}
+
+  /* ===== Footer: signatures + seal ===== */
+  .bottom-section{
+    margin-top:18px;
+    width:100%;
+    flex-shrink:0;
+  }
+  .footer{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:end;
+    gap:20px;
+    padding-bottom:8px;
+    z-index:4;
+    flex-shrink:0;
+  }
+  .sig{
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .sig .line{
+    width:260px;max-width:100%;height:2px;background:var(--gold);
+    position:relative;
+    margin-top:0;
+  }
+  .sig .sig-img{
+    height:90px;
+    width:260px;
+    object-fit:contain;
+    object-position:center bottom;
+    margin-bottom:2px;
+  }
+  .sig .sig-name{
+    font-family:'Inter',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.12em;color:var(--green);
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .divider{
+    width:60%;max-width:500px;
+    height:1px;
+    margin:16px auto 14px;
+    background:linear-gradient(to right, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+    opacity:.7;
+    flex-shrink:0;
+  }
+    font-size:13px;color:#5a6450;letter-spacing:.05em;
+  }
+
+  /* Seal / medallion (center bottom) */
+  .seal{
+    width:120px;height:120px;position:relative;
+    display:grid;place-items:center;
+    margin-bottom:0;
+  }
+  .seal .stamp-img{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+  }
+
+
+
+  /* id strip */
+  .meta{
+    position:absolute;left:440px;right:440px;bottom:20px;
+    display:flex;justify-content:center;gap:20px;
+    font-size:9px;letter-spacing:.1em;color:var(--green);opacity:.75;
+    font-weight:600;text-transform:uppercase;
+    z-index:5;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+
+  /* ===== Print ===== */
+  @page{size:A4 landscape;margin:0}
+  @media print{
+    body{background:#fff;padding:0;gap:0}
+    .controls{display:none}
+    .cert-stage{height:794px !important}
+    .cert-wrap{
+      width:1123px !important;
+      height:794px !important;
+      box-shadow:none;
+      transform:none !important;
+      margin:0 !important;
+    }
+  }
+
+
+</style>
+</head>
+<body>
+
+<div class="controls" id="controls">
+  <h2>Certificate Generator <span></span> <span style="flex:0;color:#7a7a70;font-weight:400;letter-spacing:.04em;font-size:11px;text-transform:none">fill fields or pass ?name=&course=&date=&id=</span></h2>
+
+  <label>Recipient Name
+    <input id="f-name" value="Taim Nawwar Yousef" />
+  </label>
+  <label>Training Name
+    <input id="f-course" value="Robotics Fundamentals" />
+  </label>
+  <label>Training Hours
+    <input id="f-hours" value="40" />
+  </label>
+  <label>Certificate Type
+    <input id="f-type" value="of Completion" />
+  </label>
+  <label>Issuing Company Line
+    <input id="f-issuer" value="This is to certify that:" />
+  </label>
+  <label>Date
+    <input id="f-date" value="April 19, 2026" />
+  </label>
+  <label>Certificate ID
+    <input id="f-id" value="RT-2026-03147" />
+  </label>
+  <label>Signer 1 — Name
+    <input id="f-s1name" value="Eng. Nour Aldien Alhoot" />
+  </label>
+  <label>Signer 1 — Role
+    <input id="f-s1role" value="Chief Executive Officer" />
+  </label>
+
+  <label>Signer 2 — Name
+    <input id="f-s2name" value="Eng. Fedaa Afdal" />
+  </label>
+  <label>Signer 2 — Role
+    <input id="f-s2role" value="Head of Training" />
+  </label>
+
+
+  <label style="grid-column:1/-1">Body Paragraph
+    <textarea id="f-body">has successfully completed the [Training Name] course, totaling [Number of Hours] training hours at RoboTrick.
+
+During this program, he/she demonstrated outstanding technical proficiency and completed all assigned projects with exceptional creativity. We are proud of his/her commitment and wish him/her a distinguished and innovative technical future.
+
+RoboTrick Management</textarea>
+  </label>
+
+  <div class="actions">
+    <button onclick="window.print()">Print / Save PDF</button>
+    <button class="secondary" onclick="copyShareLink()">Copy shareable URL</button>
+    <button class="secondary" onclick="resetDemo()">Reset to demo</button>
+  </div>
+  <div class="hint">
+    <b style="color:#cccc99">Auto-generation:</b> Your courses platform can build a URL like
+    <code>Certificate.html?name=John%20Doe&course=Robotics%20Fundamentals&hours=40&date=2026-04-19&id=RT-2026-00042</code>
+    and fields fill automatically. Supported params: <code>name</code>, <code>course</code>, <code>hours</code>, <code>date</code>, <code>id</code>, <code>s1name</code>, <code>s1role</code>, <code>s2name</code>, <code>s2role</code>.
+  </div>
+</div>
+
+<div class="cert-stage" id="cert-stage">
+<div class="cert-wrap" id="cert">
+
+<!-- original geometric corner ornaments -->
+  <img class="corner tl" src="assets/corner.png" alt="" />
+  <img class="corner tr" src="assets/corner.png" alt="" />
+
+  <!-- bottom wings -->
+  <img class="bottom-corner left" src="assets/bottom-corner.png" alt="" />
+  <img class="bottom-corner right" src="assets/bottom-corner.png" alt="" />
+
+
+
+  <!-- Main content -->
+  <div class="cert">
+    <div class="brand">
+      <img src="assets/logo.png" alt="RoboTrick" class="brand-logo" style="height:90px;width:auto;display:block;" />
+    </div>
+
+    <div class="title-block">
+      <div class="title">CERTIFICATE</div>
+      <div class="subtitle" id="v-type">of Completion</div>
+    </div>
+
+    <div class="eyebrow" id="v-issuer">This is to certify that:</div>
+
+    <div class="name" id="v-name">TAIM NAWWAR YOUSEF</div>
+
+    <div class="body" id="v-body">has successfully completed the <span id="v-course">Robotics Fundamentals</span> course, totaling <span id="v-hours">40</span> training hours at RoboTrick.<br><br>During this program, he/she demonstrated outstanding technical proficiency and completed all assigned projects with exceptional creativity. We are proud of his/her commitment and wish him/her a distinguished and innovative technical future.<br><br>RoboTrick Management</div>
+
+    <!-- Bottom section: divider + footer -->
+    <div class="bottom-section">
+      <div class="divider"></div>
+      <div class="footer">
+        <div class="sig">
+          <img src="assets/sig1-nour.png" alt="Signature" class="sig-img" />
+          <div class="line"></div>
+          <div class="sig-name" id="v-s1name">ENG. NOUR ALDIEN ALHOOT</div>
+          <div class="sig-role" id="v-s1role">Chief Executive Officer</div>
+        </div>
+        <div class="seal">
+          <img src="assets/stamp-new.png" alt="RoboTrick Seal" class="stamp-img" style="width: 120px; height: 120px; object-fit: contain" />
+        </div>
+        <div class="sig">
+          <img src="assets/sig2.png" alt="Signature" class="sig-img" />
+          <div class="line"></div>
+          <div class="sig-name" id="v-s2name">ENG. FEDAA AFDAL</div>
+          <div class="sig-role" id="v-s2role">Head of Training</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span id="v-id">ID · RT-2026-03147</span>
+    <span id="v-date">ISSUED · APRIL 19, 2026</span>
+  </div>
+
+</div><!-- /cert-wrap -->
+</div><!-- /cert-stage -->
+
+<script>
+  function scaleCert(){
+    const stage = document.getElementById('cert-stage');
+    const wrap = document.getElementById('cert');
+    if(!stage||!wrap) return;
+    const maxW = stage.parentElement.clientWidth;
+    const scale = Math.min(maxW / 1123, 1);
+    wrap.style.transform = 'scale('+scale+')';
+    const scaledH = 794 * scale;
+    stage.style.height = scaledH + 'px';
+    wrap.style.marginBottom = (scaledH - 794) + 'px';
+  }
+  scaleCert();
+  window.addEventListener('resize', scaleCert);
+
+  const FIELDS = {
+    name: { el:'v-name', form:'f-name', transform: v => v.toUpperCase() },
+    course:{ el:'v-course', form:'f-course' },
+    hours: { el:'v-hours', form:'f-hours' },
+    type: { el:'v-type', form:'f-type', transform: v => v.toUpperCase() },
+    issuer:{ el:'v-issuer', form:'f-issuer' },
+    body: { el:'v-body', form:'f-body' },
+    date: { el:'v-date', form:'f-date', transform: v => 'ISSUED · ' + v.toUpperCase() },
+    id:   { el:'v-id',   form:'f-id',   transform: v => 'ID · ' + v.toUpperCase() },
+    s1name:{ el:'v-s1name', form:'f-s1name', transform: v => v.toUpperCase() },
+    s1role:{ el:'v-s1role', form:'f-s1role' },
+
+    s2name:{ el:'v-s2name', form:'f-s2name', transform: v => v.toUpperCase() },
+    s2role:{ el:'v-s2role', form:'f-s2role' },
+
+  };
+
+  function fitName(){
+    const el = document.getElementById('v-name');
+    if(!el) return;
+    el.classList.remove('shrink','shrink2');
+    // allow layout
+    const wrap = el.parentElement;
+    const available = wrap.clientWidth;
+    if(el.scrollWidth > available){
+      el.classList.add('shrink');
+      if(el.scrollWidth > available){
+        el.classList.add('shrink2');
+      }
+    }
+  }
+
+  function applyField(key, value){
+    const cfg = FIELDS[key]; if(!cfg) return;
+    const el = document.getElementById(cfg.el);
+    if(!el) return;
+    el.textContent = cfg.transform ? cfg.transform(value) : value;
+    if(key === 'name') requestAnimationFrame(fitName);
+  }
+
+  // 1) URL params take first priority (for platform auto-generation)
+  const params = new URLSearchParams(location.search);
+  Object.keys(FIELDS).forEach(k=>{
+    if(params.has(k)){
+      const v = params.get(k);
+      const input = document.getElementById(FIELDS[k].form);
+      if(input) input.value = v;
+      applyField(k, v);
+    }
+  });
+
+  // 2) Live-update from form
+  Object.keys(FIELDS).forEach(k=>{
+    const input = document.getElementById(FIELDS[k].form);
+    if(!input) return;
+    input.addEventListener('input', e=> applyField(k, e.target.value));
+    // initial sync (in case no URL param)
+    if(!params.has(k)) applyField(k, input.value);
+  });
+
+  function copyShareLink(){
+    const p = new URLSearchParams();
+    Object.keys(FIELDS).forEach(k=>{
+      const input = document.getElementById(FIELDS[k].form);
+      if(input && input.value) p.set(k, input.value);
+    });
+    const url = location.origin + location.pathname + '?' + p.toString();
+    navigator.clipboard.writeText(url).then(()=>{
+      alert('Shareable URL copied to clipboard.\n\n'+url);
+    }, ()=>{ prompt('Copy this URL:', url); });
+  }
+
+  function resetDemo(){ location.href = location.pathname; }
+
+  // fit name after initial render + after fonts load
+  window.addEventListener('load', ()=> requestAnimationFrame(fitName));
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(()=> requestAnimationFrame(fitName));
+  }
+  window.addEventListener('resize', fitName);
+</script>
+
+</body>
+</html>

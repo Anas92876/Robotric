@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+
+  <!-- ============================================
+       HOME
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.robotrick.net/og-image.jpg</image:loc>
+      <image:title>Robotrick — Robotics &amp; Technology Company in Syria</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================
+       ABOUT
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/about" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ============================================
+       SERVICES — Hub
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- SERVICES — Training -->
+  <url>
+    <loc>https://www.robotrick.net/services/training</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services/training" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services/training" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services/training" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICES — Technical Projects -->
+  <url>
+    <loc>https://www.robotrick.net/services/technical-projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services/technical-projects" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services/technical-projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services/technical-projects" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICES — Technical Consultation -->
+  <url>
+    <loc>https://www.robotrick.net/services/technical-consultation</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services/technical-consultation" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services/technical-consultation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services/technical-consultation" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICES — Curriculum Design -->
+  <url>
+    <loc>https://www.robotrick.net/services/curriculum-design</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services/curriculum-design" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services/curriculum-design" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services/curriculum-design" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICES — 3D Printing -->
+  <url>
+    <loc>https://www.robotrick.net/services/3d-printing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services/3d-printing" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services/3d-printing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services/3d-printing" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICES — STEM Lab Setup -->
+  <url>
+    <loc>https://www.robotrick.net/services/stem-lab-setup</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/services/stem-lab-setup" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/services/stem-lab-setup" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/services/stem-lab-setup" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ============================================
+       BLOG
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/blog" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/blog" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================
+       GALLERY
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/gallery</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/gallery" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/gallery" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ============================================
+       CONTACT
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/contact" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================
+       JOIN US
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/join-us</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/join-us" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/join-us" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/join-us" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ============================================
+       DOWNLOAD APP
+  ============================================ -->
+  <url>
+    <loc>https://www.robotrick.net/download-app</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.robotrick.net/download-app" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.robotrick.net/ar/download-app" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.robotrick.net/download-app" />
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
