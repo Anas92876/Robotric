@@ -187,6 +187,10 @@ Only after L1–L5 does the dashboard **redesign** start (see the clean-up list 
    namespaces (`home`, `training`) into the dashboard namespaces, then delete the
    public ones.
 8. **One date library** (keep date-fns or dayjs).
-9. **Split the 1.1 MB vendor bundle.**
+9. ✅ **Split the 1.1 MB vendor bundle.** Done: no manual chunks, and translations load
+   for one language only. Lighthouse (mobile, Slow 4G, production build) went 62 → 85.
+   Next wins: the 207 KB start file (animations and icons load on every page), and
+   faster API answers (Vercel in Tokyo next to the database). Always measure the
+   production build (`npm run build` then `npx vite preview`), never the dev server.
 10. **Hide chat and notifications** until the mobile phase.
 11. **Link to the new backend.**
