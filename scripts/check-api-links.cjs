@@ -1,11 +1,11 @@
 // Checks every API call in the dashboard against the backend's routes.
-//   node scripts/check-api-links.cjs            (backend expected at ../Robotrick-Backend-main)
+//   node scripts/check-api-links.cjs            (backend expected at ../Robotric_backend)
 //   BACKEND_DIR=path node scripts/check-api-links.cjs
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const FE = path.join(__dirname, '..', 'src');
-const BE = process.env.BACKEND_DIR || path.join(__dirname, '..', '..', 'Robotrick-Backend-main');
+const BE = process.env.BACKEND_DIR || path.join(__dirname, '..', '..', 'Robotric_backend');
 
 // ---- backend: legacy routes minus the ones not ported ----
 const legacy = JSON.parse(fs.readFileSync(BE + '/scripts/legacy-routes.json', 'utf8'));
