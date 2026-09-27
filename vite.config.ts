@@ -37,6 +37,13 @@ export default defineConfig({
       "/_next/webpack-hmr": {
         target: PUBLIC_SITE_DEV_URL,
         ws: true,
+        // A reset on the socket to Next.js (e.g. a tab closed mid-reload) has no
+        // error handler by default and crashes the whole dev server.
+        configure: (proxy) => {
+          proxy.on("open", (proxySocket) => {
+            proxySocket.on("error", (err) => console.warn(`[next-hmr proxy] ${err.message}`));
+          });
+        },
       },
       // Everything that isn't a dashboard path is the public Next.js site, so in
       // development both apps share one origin (and one login), like production.

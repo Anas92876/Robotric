@@ -32,6 +32,8 @@ type StatusFilter = 'all' | 'planning' | 'active' | 'completed' | 'archived';
  * Premium Projects Management Page
  */
 export default function Projects() {
+  const { i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
+  const isRTL = i18n.language === 'ar';
   const { user } = useAuth();
   const { projects, parts, stats, isLoading, error, refetch, actions } = useProjectsData();
 
@@ -50,8 +52,6 @@ export default function Projects() {
       const matchesSearch = !searchQuery ||
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description?.toLowerCase().includes(searchQuery.toLowerCase());
-  const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
-  const isRTL = i18n.language === 'ar';
 
       const matchesStatus = statusFilter === 'all' || project.status === statusFilter;
 

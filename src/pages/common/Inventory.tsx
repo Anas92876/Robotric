@@ -32,6 +32,8 @@ type ViewMode = 'parts' | 'boxes';
  * Professional Inventory Management Page
  */
 export default function Inventory() {
+  const { i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
+  const isRTL = i18n.language === 'ar';
   const { user } = useAuth();
   const { parts, stats, isLoading, error, refetch } = useInventoryData();
 
@@ -100,8 +102,6 @@ export default function Inventory() {
         part.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (part.partNumber || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
         (part.group || '').toLowerCase().includes(searchQuery.toLowerCase());
-  const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
-  const isRTL = i18n.language === 'ar';
       
       const matchesCategory = selectedCategory === 'all' || part.category === selectedCategory;
       const matchesGroup = selectedGroup === 'all' || (part.group || '') === selectedGroup;

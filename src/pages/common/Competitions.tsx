@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 type StatusFilter = 'all' | 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
 
 export default function Competitions() {
+  const { i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
+  const isRTL = i18n.language === 'ar';
   const { user } = useAuth();
   const { competitions, stats, isLoading, error, refetch, actions } = useCompetitionsData();
 
@@ -21,8 +23,6 @@ export default function Competitions() {
       const matchesSearch = !searchQuery ||
         comp.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         comp.description?.toLowerCase().includes(searchQuery.toLowerCase());
-  const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
-  const isRTL = i18n.language === 'ar';
       const matchesStatus = statusFilter === 'all' || comp.status === statusFilter;
       return matchesSearch && matchesStatus;
     });

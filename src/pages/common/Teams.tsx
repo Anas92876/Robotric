@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 export default function Teams() {
+  const { i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
+  const isRTL = i18n.language === 'ar';
   const { user } = useAuth();
   const { teams, competitions, stats, isLoading, error, refetch, actions } = useTeamsData();
 
@@ -17,8 +19,6 @@ export default function Teams() {
   const filteredTeams = useMemo(() => {
     return teams.filter(team => {
       const matchesSearch = !searchQuery || team.name.toLowerCase().includes(searchQuery.toLowerCase());
-  const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
-  const isRTL = i18n.language === 'ar';
       const compId = typeof team.competitionId === 'string' ? team.competitionId : team.competitionId?._id;
       const matchesComp = competitionFilter === 'all' || compId === competitionFilter;
       return matchesSearch && matchesComp;

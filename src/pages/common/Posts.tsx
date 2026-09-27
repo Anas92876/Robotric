@@ -15,6 +15,8 @@ type Post = {
 };
 
 export default function Posts() {
+  const { i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
+  const isRTL = i18n.language === 'ar';
   const { user } = useAuth();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -72,8 +74,6 @@ export default function Posts() {
 
   const paged = useMemo(() => {
     const start = (page - 1) * pageSize;
-  const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardAdmin']);
-  const isRTL = i18n.language === 'ar';
     return visible.slice(start, start + pageSize);
   }, [visible, page]);
 
