@@ -80,7 +80,8 @@ export const useInventoryData = () => {
         // Ordered items are reserved (not available) until the order is fulfilled,
         // but they are still in stock, so they count in the total.
         totalQty: (part.availableQty || 0) + (part.reservedQty || 0) + (part.usedQty || 0) + (part.damagedQty || 0),
-        imageUrl: part.imageUrl || `/api/images/by/part/${part._id}`
+        // Only parts with a photo have an imageUrl; asking for the others costs a 404 each
+        imageUrl: part.imageUrl
       }));
 
       setParts(partsData);

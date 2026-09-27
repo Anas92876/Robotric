@@ -527,18 +527,20 @@ const PartCard: React.FC<PartCardProps> = ({ part, onEdit, onDelete, onViewStock
 
       {/* Part Image */}
       <div className="aspect-square bg-gray-800/50 rounded-xl mb-4 overflow-hidden border border-gray-700/50">
-        <img
-          src={part.imageUrl}
-          alt={part.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-            if (target.nextElementSibling) {
-              (target.nextElementSibling as HTMLElement).classList.remove('hidden');
-            }
-          }}
-        />
+        {part.imageUrl && (
+          <img
+            src={part.imageUrl}
+            alt={part.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              if (target.nextElementSibling) {
+                (target.nextElementSibling as HTMLElement).classList.remove('hidden');
+              }
+            }}
+          />
+        )}
         <div className={`w-full h-full flex items-center justify-center ${part.imageUrl ? 'hidden' : ''}`}>
           <Package className="w-12 h-12 text-gray-500" />
         </div>
@@ -749,18 +751,20 @@ const BoxDetailsModal: React.FC<{
               <div key={part._id} className="bg-gray-800/50 border border-gray-700/50 rounded-xl p-4">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 bg-gray-800 rounded-lg overflow-hidden border border-gray-600">
-                    <img
-                      src={part.imageUrl}
-                      alt={part.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        if (target.nextElementSibling) {
-                          (target.nextElementSibling as HTMLElement).classList.remove('hidden');
-                        }
-                      }}
-                    />
+                    {part.imageUrl && (
+                      <img
+                        src={part.imageUrl}
+                        alt={part.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          if (target.nextElementSibling) {
+                            (target.nextElementSibling as HTMLElement).classList.remove('hidden');
+                          }
+                        }}
+                      />
+                    )}
                     <div className={`w-full h-full flex items-center justify-center ${part.imageUrl ? 'hidden' : ''}`}>
                       <Package className="w-4 h-4 text-gray-500" />
                     </div>
