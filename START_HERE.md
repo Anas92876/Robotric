@@ -173,7 +173,7 @@ query costs ~0.5 s (the dashboard took 4–6 s from Syria).
   - `client-media` — private (client uploads)
   - `images` — **public** (website images)
 - All secrets are in the `.env` file (never share it, never commit it):
-  `C:\Users\Admin\Desktop\Robotric_Project\Robotric_backend\.env`
+  `C:\Users\Admin\Desktop\Robotric\Robotric_backend\.env`
 
 ⚠️ **Security to-do before going live:** the database password and the
 secret key were pasted in the chat. Before launch, reset both in Supabase
