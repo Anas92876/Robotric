@@ -75,11 +75,15 @@ In components, use `<Icon name="…" />`. To add an icon, import it in `lib/icon
 - **Vercel:** import the folder and deploy. No settings are needed.
 - **Any Node host:** run `npm run build`, then `npm start`.
 
-## Content decisions to confirm with the owner
+## Content decisions
 
-- **Students trained:** the live site shows two different numbers (2,200+ and 2,600+), so the count is left out.
+Decided by the owner (2026-09-28):
+- **Students trained:** kept hidden until there is one exact, verified number (the old site showed both 2,200+ and 2,600+).
+- **Testimonials:** kept hidden; real quotes (with names and permission) can be added later.
+- **Google Analytics:** on, reusing the old site's property `G-JZZ5RPMDBG` so the visitor history stays in one place. Production builds only; the private dashboard is never tracked.
+
+Still to confirm:
 - **Years of experience:** calculated from the 2022 founding year.
-- **Testimonials:** not shown, because they are unverified.
 - **English FAQ:** answers 1 and 4 are aligned with the Arabic version.
 - **Achievements:** taken from `All Data Needed/02`.
 - **Robotics Trainer job:** some duties and perks exist only in Arabic in the dashboard. Fill in the English fields there.
