@@ -1,0 +1,90 @@
+/*
+ * Robotrick design tokens for the dashboard — the same brand system as the public
+ * site (Robotric_Frontend_Public/app/globals.css, Design_Reference/DESIGN.md):
+ * cream canvas, forest-green ink, gold accents, pastel tint cards, Inter + Cairo.
+ *
+ * Tailwind v4 turns each token into utilities: --color-ink → text-ink / bg-ink /
+ * border-ink, --radius-card → rounded-card, --shadow-card → shadow-card…
+ * The names are new on purpose, so pages that aren't redesigned yet don't change.
+ */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/dash-assets/fonts/inter-latin.woff2') format('woff2');
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/dash-assets/fonts/cairo-arabic.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@theme {
+  /* ---- Brand ------------------------------------------------------------ */
+  --color-ink: #003300;          /* text, primary buttons, structure */
+  --color-ink-deep: #001a00;     /* hover on primary, dark surfaces */
+  --color-gold: #cccc99;         /* accent: badges, highlights, text on dark */
+  --color-cream: #ffffcc;        /* warm highlight */
+
+  /* ---- Surfaces --------------------------------------------------------- */
+  --color-canvas: #f5f5dc;       /* page background (parchment) */
+  --color-paper: #ffffff;        /* cards, tables, dialogs */
+  --color-line: rgb(0 51 0 / 0.12);
+  --color-line-strong: rgb(0 51 0 / 0.2);
+
+  /* ---- Text ------------------------------------------------------------- */
+  --color-ink-2: #475a47;        /* body copy */
+  --color-ink-3: #5f6e5b;        /* secondary */
+  --color-ink-4: #7d8a78;        /* captions, placeholders */
+
+  /* ---- Pastel tints (stat cards, section accents) ----------------------- */
+  --color-tint-leaf: #e1ebd2;
+  --color-tint-khaki: #ececcf;
+  --color-tint-moss: #d5e2c3;
+  --color-tint-sand: #f1ecd6;
+  --color-tint-sage: #e7eed8;
+  --color-tint-straw: #f4f1c4;
+  --color-tint-fern: #dce6cf;
+
+  /* ---- Status (readable on white; each has a soft background) ----------- */
+  --color-success: #1e7a3c;
+  --color-success-soft: #e3f1e6;
+  --color-warning: #8a5a00;
+  --color-warning-soft: #fbf0d6;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbe4e1;
+  --color-info: #1f4e79;
+  --color-info-soft: #e1ecf6;
+
+  /* ---- Type ------------------------------------------------------------- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: 'Cairo', 'Tajawal', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius-input: 12px;
+  --radius-card: 14px;
+  --radius-feature: 22px;
+  --radius-pill: 999px;
+
+  --shadow-card:
+    rgb(0 51 0 / 0.04) 0 12px 12px -6px,
+    rgb(0 51 0 / 0.04) 0 6px 6px -3px,
+    rgb(0 51 0 / 0.04) 0 3px 3px -1.5px,
+    rgb(0 51 0 / 0.08) 0 1px 1px -0.5px,
+    rgb(0 51 0 / 0.05) 0 0 0 1px;
+  --shadow-pop: 0 24px 48px -12px rgb(0 26 0 / 0.25), 0 0 0 1px rgb(0 51 0 / 0.06);
+}
+
+/* Arabic pages use Cairo, like the public site */
+[dir='rtl'] .rt-app, .rt-app [dir='rtl'] {
+  font-family: var(--font-arabic);
+}
+
+/* Focus ring shared by every interactive element in the new kit */
+@utility focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(204 204 153 / 0.7);
+}
