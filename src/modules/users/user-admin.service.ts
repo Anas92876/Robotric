@@ -6,8 +6,8 @@ import { parse } from '../../shared/http/validate';
 import type { User, UserFilter, UserRepository } from './users.repository';
 import type { UserRole } from './users.table';
 
-/** Roles reception could assign in the old API. */
-export const ASSIGNABLE_ROLES = ['student', 'trainer', 'teacher', 'social', 'reception', 'clo', 'admin', 'cto', 'engineer', 'client'] as const;
+/** Roles that can be given from User Management (drivers are added from the transport page). */
+export const ASSIGNABLE_ROLES = ['student', 'trainer', 'teacher', 'social', 'reception', 'clo', 'admin', 'cto', 'engineer', 'client', 'judge', 'editor', 'organizer'] as const;
 /**
  * Accounts only an admin may create, edit or promote to. The old API let
  * reception create admins and even promote themselves; now only admins can.
@@ -30,7 +30,15 @@ const updateSchema = z.object({
   role: role.optional(),
   phone,
   password: z.string().min(6, '"password" length must be at least 6 characters long').optional(),
+  /** "inactive" disables the account: sign-in is refused and current sessions end. */
+  status: z.enum(['active', 'inactive'], { error: '"status" must be "active" or "inactive"' }).optional(),
 });
+
+/** Who is making the change. */
+export interface Actor {
+  id: string;
+  role: string;
+}
 
 const notFound = () => new AppError('User not found', 404, 'NOT_FOUND');
 /** Postgres refused because other rows still point here (foreign key or RESTRICT). */
@@ -43,7 +51,7 @@ const isForeignKeyError = (err: unknown): boolean => {
 /** Staff account management from the reception desk (/api/reception/users). */
 export class UserAdminService {
   constructor(
-    private readonly users: Pick<UserRepository, 'list' | 'count' | 'findById' | 'emailExists' | 'emailTakenByOther' | 'create' | 'update' | 'delete'>,
+    private readonly users: Pick<UserRepository, 'list' | 'count' | 'findById' | 'emailExists' | 'emailTakenByOther' | 'create' | 'update' | 'delete' | 'hasLearningHistory'>,
     private readonly hasher: PasswordHasher,
   ) {}
 
@@ -54,7 +62,8 @@ export class UserAdminService {
   }
 
   async list(q: Record<string, string | undefined>, page: { limit: number; offset: number }) {
-    const filter: UserFilter = { role: q.role || undefined, search: q.search || undefined };
+    const status = q.status === 'active' || q.status === 'inactive' ? q.status : undefined;
+    const filter: UserFilter = { role: q.role || undefined, search: q.search || undefined, status };
     const [rows, total] = await Promise.all([this.users.list(filter, page), this.users.count(filter)]);
     return { rows, total };
   }
@@ -72,38 +81,66 @@ export class UserAdminService {
     });
   }
 
-  /** A role or password change signs the user out everywhere (the role lives in their token). */
-  async update(actorRole: string, id: string, body: unknown): Promise<User> {
+  /**
+   * A role or password change, or disabling the account, signs the user out
+   * everywhere (the role lives in their token; sign-in refuses inactive accounts).
+   */
+  async update(actor: Actor, id: string, body: unknown): Promise<User> {
     const user = isValidId(id) ? await this.users.findById(id) : null;
     if (!user) throw notFound();
     const input = parse(updateSchema, body);
-    this.guard(actorRole, user.role);
-    this.guard(actorRole, input.role);
+    this.guard(actor.role, user.role);
+    this.guard(actor.role, input.role);
+    if (input.status === 'inactive' && id === actor.id) throw new BadRequestError('You cannot disable your own account', 'SELF_DISABLE');
     if (input.email && (await this.users.emailTakenByOther(input.email, id))) throw new ConflictError('Email already in use');
     const roleChanged = Boolean(input.role && input.role !== user.role);
+    const disabling = input.status === 'inactive' && user.profile?.status !== 'inactive';
+    const profileChanged = input.phone !== undefined || input.status !== undefined;
     const updated = await this.users.update(
       id,
       {
         ...(input.name && { name: input.name }),
         ...(input.email && { email: input.email }),
         ...(input.role && { role: input.role as UserRole }),
-        ...(input.phone !== undefined && { profile: { ...(user.profile ?? {}), phone: input.phone ?? '' } }),
+        ...(profileChanged && {
+          profile: {
+            ...(user.profile ?? {}),
+            ...(input.phone !== undefined && { phone: input.phone ?? '' }),
+            ...(input.status && { status: input.status }),
+          },
+        }),
         ...(input.password && { passwordHash: await this.hasher.hash(input.password) }),
       },
-      roleChanged || Boolean(input.password),
+      roleChanged || Boolean(input.password) || disabling,
     );
     return updated!;
   }
 
-  async delete(actorRole: string, id: string): Promise<void> {
+  /**
+   * Admins may delete any account except their own; admin accounts only a
+   * superadmin may delete. Accounts with history (enrollments, payments,
+   * sessions…) can't be deleted — they are disabled instead.
+   */
+  async delete(actor: Actor, id: string): Promise<void> {
     const user = isValidId(id) ? await this.users.findById(id) : null;
     if (!user) throw notFound();
-    if (user.role === 'admin' || user.role === 'clo') throw new BadRequestError('Cannot delete admin or CLO users');
-    this.guard(actorRole, user.role);
+    if (id === actor.id) throw new BadRequestError('You cannot delete your own account', 'SELF_DELETE');
+    if ((user.role === 'admin' || user.role === 'superadmin') && actor.role !== 'superadmin') {
+      throw new ForbiddenError('Only a superadmin can delete admin accounts', 'PRIVILEGED_ROLE');
+    }
+    this.guard(actor.role, user.role);
+    const inUse = () =>
+      new ConflictError(
+        'This user is linked to other records (for example enrollments, payments or sessions) and cannot be deleted. Disable the account instead.',
+        'USER_IN_USE',
+      );
+    // A student's enrollments, payments, attendance… would be deleted with the account,
+    // so any such history blocks the delete; staff links are refused by the database.
+    if (await this.users.hasLearningHistory(id)) throw inUse();
     try {
       await this.users.delete(id);
     } catch (err) {
-      if (isForeignKeyError(err)) throw new ConflictError('This user is still linked to other records (for example sessions they teach) and cannot be deleted', 'USER_IN_USE');
+      if (isForeignKeyError(err)) throw inUse();
       throw err;
     }
   }

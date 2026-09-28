@@ -68,12 +68,14 @@ export class ReceptionUsersController {
   };
 
   update = async (req: IdReq, res: Response) => {
-    const user = await this.users.update(currentUser(req).role, req.params.id, req.body);
+    const me = currentUser(req);
+    const user = await this.users.update({ id: me.id, role: me.role }, req.params.id, req.body);
     res.json({ success: true, message: 'User updated successfully', data: userDoc(user) });
   };
 
   delete = async (req: IdReq, res: Response) => {
-    await this.users.delete(currentUser(req).role, req.params.id);
+    const me = currentUser(req);
+    await this.users.delete({ id: me.id, role: me.role }, req.params.id);
     res.json({ success: true, message: 'User deleted permanently' });
   };
 }

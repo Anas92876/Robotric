@@ -2,6 +2,10 @@ import { and, asc, count, desc, eq, getTableColumns, ilike, ne, notInArray, or, 
 import { escapeLike } from '../../shared/db/like';
 import type { DbExecutor } from '../../shared/db/client';
 import { type NewUserRow, type OtpPurpose, type UserOtpRow, type UserRow, userOtps, users } from './users.table';
+import { enrollments, payments } from '../enrollments/enrollments.table';
+import { attendanceRecords } from '../attendance/attendance.table';
+import { certificates } from '../certificates/certificates.table';
+import { sessionRequests, userSubscriptions } from '../subscriptions/subscriptions.table';
 
 /** A user as the rest of the app sees it: never includes the password hash. */
 export type User = Omit<UserRow, 'passwordHash'>;
@@ -30,16 +34,25 @@ export interface UserRepository {
   /** Updates profile fields; `bumpTokenVersion` signs the user out everywhere. */
   update(id: string, patch: Partial<Pick<NewUserRow, 'name' | 'email' | 'role' | 'profile' | 'passwordHash'>>, bumpTokenVersion: boolean): Promise<User | null>;
   delete(id: string): Promise<void>;
+  /** True if a student has enrollments, payments, attendance, certificates, subscriptions or session requests. */
+  hasLearningHistory(id: string): Promise<boolean>;
 }
 
 export interface UserFilter {
   role?: string;
   search?: string;
+  /** "inactive" = disabled accounts; "active" = everyone else (no status counts as active). */
+  status?: 'active' | 'inactive';
 }
 
 function userWhere(f: UserFilter): SQL | undefined {
   const s = f.search ? `%${escapeLike(f.search)}%` : null;
-  return and(f.role ? sql`${users.role}::text = ${f.role}` : undefined, s ? or(ilike(users.name, s), ilike(users.email, s)) : undefined);
+  const inactive = sql`coalesce(${users.profile}->>'status', '') = 'inactive'`;
+  return and(
+    f.role ? sql`${users.role}::text = ${f.role}` : undefined,
+    s ? or(ilike(users.name, s), ilike(users.email, s)) : undefined,
+    f.status === 'inactive' ? inactive : f.status === 'active' ? sql`not (${inactive})` : undefined,
+  );
 }
 
 export interface OtpRecord {
@@ -160,6 +173,27 @@ export class DrizzleUserRepository implements UserRepository {
 
   async delete(id: string) {
     await this.db.delete(users).where(eq(users.id, id));
+  }
+
+  async hasLearningHistory(id: string): Promise<boolean> {
+    // These rows are deleted along with the user (ON DELETE CASCADE), so they are
+    // checked before a delete instead of relying on a foreign-key refusal.
+    // Compared with the id value, not ${users.id}: in a one-table query Drizzle writes
+    // columns without their table name, which would bind to the subquery's own table.
+    const [row] = await this.db
+      .select({
+        found: sql<boolean>`(
+          exists (select 1 from ${enrollments} where ${enrollments.studentId} = ${id})
+          or exists (select 1 from ${payments} where ${payments.studentId} = ${id})
+          or exists (select 1 from ${attendanceRecords} where ${attendanceRecords.studentId} = ${id})
+          or exists (select 1 from ${certificates} where ${certificates.studentId} = ${id})
+          or exists (select 1 from ${userSubscriptions} where ${userSubscriptions.userId} = ${id})
+          or exists (select 1 from ${sessionRequests} where ${sessionRequests.userId} = ${id})
+        )`,
+      })
+      .from(users)
+      .where(eq(users.id, id));
+    return Boolean(row?.found);
   }
 
   async setAssignedCompetition(id: string, competitionId: string | null): Promise<User | null> {
