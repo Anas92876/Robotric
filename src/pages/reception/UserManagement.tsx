@@ -29,6 +29,8 @@ const UserManagement: React.FC = () => {
   const isRTL = i18n.language === 'ar';
   const { user: me } = useAuth();
   const currentUser = me ? { id: me._id || me.id, role: me.role } : null;
+  // Admin accounts are only listed to admins (the backend leaves them out for everyone else)
+  const isAdminViewer = me?.role === 'admin' || me?.role === 'superadmin';
 
   // Get users data and CRUD functions from hook
   const {
@@ -293,8 +295,12 @@ const UserManagement: React.FC = () => {
                 <option value="judge" className="bg-white">Judges</option>
                 <option value="editor" className="bg-white">Editors</option>
                 <option value="organizer" className="bg-white">Organizers</option>
-                <option value="admin" className="bg-white">Admins</option>
-                <option value="superadmin" className="bg-white">Super Admins</option>
+                {isAdminViewer && (
+                  <>
+                    <option value="admin" className="bg-white">Admins</option>
+                    <option value="superadmin" className="bg-white">Super Admins</option>
+                  </>
+                )}
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                 <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
