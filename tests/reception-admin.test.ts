@@ -93,6 +93,23 @@ describe('reception user management', () => {
     expect((await api().post('/api/reception/users').set(rec).send({ name: 'Judy Judge', email: 'judge2@x.com', password: 'secret1', role: 'judge' })).status).toBe(201);
   });
 
+  it('never shows admin or superadmin accounts to reception', async () => {
+    await signIn(t, 'superadmin');
+    const emails = async (headers: Record<string, string>, query = '') =>
+      ((await api().get(`/api/reception/users?limit=100${query}`).set(headers)).body.data as { email: string; role: string }[]).map((u) => u.role);
+
+    const seenByReception = await emails(rec);
+    expect(seenByReception).not.toContain('admin');
+    expect(seenByReception).not.toContain('superadmin');
+    // Not even when asking for them by role
+    expect(await emails(rec, '&role=admin')).toEqual([]);
+    expect((await api().get('/api/reception/users?role=superadmin').set(rec)).body.pagination.total).toBe(0);
+
+    const seenByAdmin = await emails(admin);
+    expect(seenByAdmin).toContain('admin');
+    expect(seenByAdmin).toContain('superadmin');
+  });
+
   it('lets admins manage managers, with guards against locking themselves out', async () => {
     const me = await signIn(t, 'admin');
     const superadmin = (await signIn(t, 'superadmin')).headers;

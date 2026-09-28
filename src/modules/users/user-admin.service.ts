@@ -13,6 +13,7 @@ export const ASSIGNABLE_ROLES = ['student', 'trainer', 'teacher', 'social', 'rec
  * reception create admins and even promote themselves; now only admins can.
  */
 const PRIVILEGED: readonly string[] = ['admin', 'superadmin', 'clo', 'cto'];
+const ADMIN_ROLES = ['admin', 'superadmin'] as const;
 const isAdmin = (role: string) => role === 'admin' || role === 'superadmin';
 
 const role = z.enum(ASSIGNABLE_ROLES, { error: (i) => `Invalid role: ${String(i.input)}` });
@@ -61,9 +62,15 @@ export class UserAdminService {
     }
   }
 
-  async list(q: Record<string, string | undefined>, page: { limit: number; offset: number }) {
+  /** Admin and superadmin accounts are listed only to admins (reception never sees their details). */
+  async list(actorRole: string, q: Record<string, string | undefined>, page: { limit: number; offset: number }) {
     const status = q.status === 'active' || q.status === 'inactive' ? q.status : undefined;
-    const filter: UserFilter = { role: q.role || undefined, search: q.search || undefined, status };
+    const filter: UserFilter = {
+      role: q.role || undefined,
+      search: q.search || undefined,
+      status,
+      excludeRoles: isAdmin(actorRole) ? undefined : ADMIN_ROLES,
+    };
     const [rows, total] = await Promise.all([this.users.list(filter, page), this.users.count(filter)]);
     return { rows, total };
   }

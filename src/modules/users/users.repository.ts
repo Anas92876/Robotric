@@ -43,6 +43,8 @@ export interface UserFilter {
   search?: string;
   /** "inactive" = disabled accounts; "active" = everyone else (no status counts as active). */
   status?: 'active' | 'inactive';
+  /** Roles left out of the result entirely (e.g. admin accounts, for non-admins). */
+  excludeRoles?: readonly string[];
 }
 
 function userWhere(f: UserFilter): SQL | undefined {
@@ -52,6 +54,7 @@ function userWhere(f: UserFilter): SQL | undefined {
     f.role ? sql`${users.role}::text = ${f.role}` : undefined,
     s ? or(ilike(users.name, s), ilike(users.email, s)) : undefined,
     f.status === 'inactive' ? inactive : f.status === 'active' ? sql`not (${inactive})` : undefined,
+    f.excludeRoles?.length ? notInArray(sql`${users.role}::text`, [...f.excludeRoles]) : undefined,
   );
 }
 

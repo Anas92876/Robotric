@@ -58,7 +58,7 @@ export class ReceptionUsersController {
   list = async (req: Request, res: Response) => {
     const q = req.query as Record<string, string | undefined>;
     const page = parsePagination(q);
-    const { rows, total } = await this.users.list(q, page);
+    const { rows, total } = await this.users.list(currentUser(req).role, q, page);
     res.json({ success: true, data: rows.map(userDoc), pagination: { page: page.page, limit: page.limit, total, pages: Math.ceil(total / page.limit) } });
   };
 
