@@ -2,9 +2,9 @@
 
 This app is now **the private dashboard only**. The public website (home, services,
 gallery, blog, join us, contact, certificate check, login, sign up) is the separate
-Next.js app in `C:\Users\Admin\Desktop\Robotric_Project\Robotric_Frontend_Public`.
+Next.js app in `C:\Users\Admin\Desktop\Robotric\Robotric_Frontend_Public`.
 
-Everything lives in `C:\Users\Admin\Desktop\Robotric_Project`:
+Everything lives in `C:\Users\Admin\Desktop\Robotric`:
 
 | Folder | What it is |
 |---|---|
@@ -35,15 +35,15 @@ Three terminals:
 
 ```bash
 # 1. backend (port 4889)
-cd C:\Users\Admin\Desktop\Robotric_Project\Robotric_backend
+cd C:\Users\Admin\Desktop\Robotric\Robotric_backend
 npm run dev
 
 # 2. dashboard (port 5173, behind the front door)
-cd C:\Users\Admin\Desktop\Robotric_Project\Robotric_Frontend_Dashboard
+cd C:\Users\Admin\Desktop\Robotric\Robotric_Frontend_Dashboard
 npm run dev
 
 # 3. public site = front door (port 3000) — open http://localhost:3000
-cd C:\Users\Admin\Desktop\Robotric_Project\Robotric_Frontend_Public
+cd C:\Users\Admin\Desktop\Robotric\Robotric_Frontend_Public
 npm run dev
 ```
 
