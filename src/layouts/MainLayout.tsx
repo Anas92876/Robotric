@@ -1,89 +1,69 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "../providers";
 import { redirectToLogin } from "../lib/publicSite";
-import { Sidebar } from "../components/navigation/Sidebar";
-import { TopNav } from "../components/navigation/TopNav";
 import { StudentMobileNav } from "../components/navigation/StudentMobileNav";
-import { LoadingState } from "../components/ui";
 import { UserRole } from "../types/auth.types";
+import { useWroAccess } from "../hooks/student/useWroAccess";
+import { navigationFor } from "../app/navigation";
+import { AppSidebar } from "../app/shell/AppSidebar";
+import { AppTopbar } from "../app/shell/AppTopbar";
 
 interface MainLayoutProps {
   children?: ReactNode;
 }
 
 /**
- * Main application layout component that includes the sidebar, top navigation,
- * and main content area. This layout is used for all authenticated routes.
- * Updated to use consistent light theme styling matching the Home page design.
+ * The frame of every signed-in page: menu (per role, from app/navigation.ts),
+ * top bar, and the page itself on the cream canvas.
  */
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const { isAuthenticated, isLoading, user } = useAuth();
-  const { t, i18n } = useTranslation('dashboardCommon');
-  const isRTL = i18n.language === 'ar';
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const { isAuthenticated, isLoading, user, logout } = useAuth();
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const isStudent = user?.role === UserRole.STUDENT;
+  const { wroAccess } = useWroAccess(isAuthenticated && isStudent);
+  const sections = useMemo(() => navigationFor(user?.role, { wroAccess }), [user?.role, wroAccess]);
 
   // Redirect to login if not authenticated
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      redirectToLogin();
-    }
+    if (!isLoading && !isAuthenticated) redirectToLogin();
   }, [isAuthenticated, isLoading]);
 
-  // Show loading state while checking authentication - using light theme
   if (isLoading) {
     return (
-      <div className="flex h-screen w-full items-center justify-center" style={{ backgroundColor: '#cccc99' }}>
-        <LoadingState type="spinner" text={t('loading')} />
+      <div className="grid h-screen w-full place-items-center bg-canvas">
+        <div className="size-10 animate-spin rounded-full border-[3px] border-ink border-t-transparent" aria-label="Loading" />
       </div>
     );
   }
+  if (!isAuthenticated || !user) return null;
 
-  // Show nothing if not authenticated (will be redirected by the effect above)
-  if (!isAuthenticated) {
-    return null;
-  }
+  const homePath = sections[0]?.items[0]?.path ?? "/dashboard";
 
   return (
     <>
-    {/* Keep <html dir> in sync for all dashboard pages (no SEO component here) */}
-    <Helmet>
-      <html lang={isRTL ? 'ar' : 'en'} dir={isRTL ? 'rtl' : 'ltr'} />
-    </Helmet>
-    <div
-      className={`relative min-h-screen ${isRTL ? 'font-arabic' : ''}`}
-      dir={isRTL ? 'rtl' : 'ltr'}
-      style={{ backgroundColor: '#cccc99' }}
-    >
-      {/* Sidebar - self-positioned fixed element; pointer-events managed inside Sidebar */}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-      {/* Main area: margin for sidebar, vertical stack */}
-      <div className={`flex flex-col min-h-screen transition-all duration-300 w-full lg:w-[calc(100%-16rem)] ${isRTL ? 'mr-0 lg:mr-64' : 'ml-0 lg:ml-64'}`}>
-        {/* Top Navigation - sticky at top */}
-        <div className="flex-shrink-0 sticky top-0 z-20">
-          <TopNav onMenuClick={() => setSidebarOpen(true)} />
+      {/* Keep <html dir/lang> in sync for all dashboard pages */}
+      <Helmet>
+        <html lang={isRTL ? "ar" : "en"} dir={isRTL ? "rtl" : "ltr"} />
+      </Helmet>
+      <div className="rt-app min-h-screen bg-canvas text-ink" dir={isRTL ? "rtl" : "ltr"}>
+        <AppSidebar sections={sections} user={{ name: user.name, role: user.role }} homePath={homePath} onSignOut={logout} open={menuOpen} onClose={closeMenu} />
+        <div className="flex min-h-screen flex-col lg:ps-64">
+          <AppTopbar onMenu={() => setMenuOpen(true)} />
+          <main className={`flex-1 px-4 py-6 sm:px-6 lg:px-8 ${isStudent ? "pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-8" : ""}`}>
+            <div className="mx-auto max-w-7xl">{children || <Outlet />}</div>
+          </main>
+          {isStudent && <StudentMobileNav />}
         </div>
-
-        {/* Content - scrollable, takes all available space, padding for spacing */}
-        <main className={`flex-1 overflow-y-auto p-3 sm:p-4 md:p-5 lg:p-6 ${
-          user?.role === UserRole.STUDENT
-            ? 'pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-6'
-            : ''
-        }`} style={{ backgroundColor: '#cccc99' }}>
-          <div className="mx-auto max-w-7xl">{children || <Outlet />}</div>
-        </main>
-
-        {/* Student Mobile Bottom Navigation */}
-        {user?.role === UserRole.STUDENT && <StudentMobileNav />}
       </div>
-    </div>
     </>
   );
 };
 
-// Ensure proper default export
 export default MainLayout;

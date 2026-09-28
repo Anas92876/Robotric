@@ -114,13 +114,6 @@
 
   /* Custom CSS Variables - Robotrick Brand (Vibrant Modern) */
   :root {
-    --color-background: #ffffff;
-    --color-surface: #f8fafc; /* Slate 50 */
-    --color-primary: #15803d; /* Green 700 - Vibrant but accessible */
-    --color-primary-dark: #14532d; /* Green 900 */
-    --color-secondary: #dcfce7; /* Green 100 */
-    --color-secondary-dark: #bbf7d0;
-    --color-accent: #16a34a; /* Green 600 - Bright for buttons/highlights */
     --color-text-primary: #0f172a; /* Slate 900 */
     --color-text-secondary: #475569; /* Slate 600 */
     --color-border: #e2e8f0;
@@ -298,43 +291,6 @@
     font-weight: 500;
     background-color: #f3f4f6;
     color: #374151;
-  }
-
-  /* Professional Theme Colors */
-  .bg-background {
-    background-color: var(--color-background);
-  }
-
-  .bg-surface {
-    background-color: var(--color-surface);
-  }
-
-  .text-primary {
-    color: var(--color-primary);
-  }
-
-  .bg-primary {
-    background-color: var(--color-primary);
-  }
-
-  .bg-primary-dark {
-    background-color: var(--color-primary-dark);
-  }
-
-  .text-secondary {
-    color: var(--color-secondary);
-  }
-
-  .bg-secondary {
-    background-color: var(--color-secondary);
-  }
-
-  .border-primary {
-    border-color: var(--color-primary);
-  }
-
-  .border-secondary {
-    border-color: var(--color-secondary);
   }
 
   /* Navigation Link Animation */

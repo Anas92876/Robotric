@@ -76,6 +76,16 @@
     rgb(0 51 0 / 0.08) 0 1px 1px -0.5px,
     rgb(0 51 0 / 0.05) 0 0 0 1px;
   --shadow-pop: 0 24px 48px -12px rgb(0 26 0 / 0.25), 0 0 0 1px rgb(0 51 0 / 0.06);
+
+  /* ---- Legacy names (pages not yet redesigned) -------------------------- */
+  /* Old pages use primary/secondary/accent; map them to the brand until each
+     page moves to the ink/gold tokens above. */
+  --color-primary: #003300;
+  --color-primary-dark: #001a00;
+  --color-accent: #2d5a27;
+  --color-secondary: #ffffcc;
+  --color-background: #ffffff;
+  --color-surface: #f5f5dc;
 }
 
 /* Arabic pages use Cairo, like the public site */
