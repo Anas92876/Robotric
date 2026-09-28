@@ -11,7 +11,7 @@
  */
 
 import React from 'react';
-import { Edit2, Trash2, Mail, Calendar, GraduationCap, Users, Shield, Clipboard, Crown, Scale, PenTool, Target } from 'lucide-react';
+import { Edit2, Trash2, Mail, Calendar, GraduationCap, Users, Shield, Clipboard, Crown, Scale, PenTool, Target, Ban, CheckCircle2 } from 'lucide-react';
 import { Badge, Button } from '../ui';
 import type { User } from '../../hooks/reception/useReceptionUsers';
 
@@ -22,8 +22,30 @@ interface UserTableProps {
   users: User[];
   onEdit: (user: User) => void;
   onDelete: (user: User) => void;
+  /** Disable an active account or enable a disabled one. */
+  onToggleStatus: (user: User) => void;
+  /** Who is signed in — the buttons follow the backend's rules for this person. */
+  currentUser: { id: string; role: string } | null;
   isLoading?: boolean;
 }
+
+const PRIVILEGED = ['admin', 'superadmin', 'clo', 'cto'];
+const isAdminRole = (role?: string) => role === 'admin' || role === 'superadmin';
+
+/** Mirrors the backend: only admins touch privileged accounts, nobody disables or deletes themselves,
+ *  and only a superadmin deletes an admin. */
+const permissionsFor = (user: User, me: { id: string; role: string } | null) => {
+  const isSelf = !!me && (user._id === me.id || user.id === me.id);
+  const canManage = !PRIVILEGED.includes(user.role) || isAdminRole(me?.role);
+  return {
+    canEdit: canManage,
+    canToggle: canManage && !isSelf,
+    canDelete: canManage && !isSelf && (!isAdminRole(user.role) || me?.role === 'superadmin'),
+    isSelf,
+  };
+};
+
+const isDisabled = (user: User) => user.profile?.status === 'inactive';
 
 /**
  * Get badge variant based on user role
@@ -85,6 +107,12 @@ const getRoleDisplayName = (role: string): string => {
     reception: 'Reception',
     admin: 'Admin',
     superadmin: 'Super Admin',
+    clo: 'CLO',
+    cto: 'CTO',
+    engineer: 'Programmer',
+    client: 'Client',
+    social: 'Social',
+    driver: 'Driver',
     judge: 'Judge',
     editor: 'Editor',
     organizer: 'Organizer',
@@ -111,6 +139,8 @@ export const UserTable: React.FC<UserTableProps> = ({
   users,
   onEdit,
   onDelete,
+  onToggleStatus,
+  currentUser,
   isLoading = false,
 }) => {
   /**
@@ -144,6 +174,9 @@ export const UserTable: React.FC<UserTableProps> = ({
               Role
             </th>
             <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+              Status
+            </th>
+            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
               Joined
             </th>
             <th className="text-right py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
@@ -154,7 +187,10 @@ export const UserTable: React.FC<UserTableProps> = ({
 
         {/* Table Body */}
         <tbody className="divide-y divide-primary/5">
-          {users.map((user) => (
+          {users.map((user) => {
+            const can = permissionsFor(user, currentUser);
+            const disabled = isDisabled(user);
+            return (
             <tr
               key={user._id || user.id}
               className="hover:bg-primary/5 transition-colors duration-150"
@@ -193,6 +229,13 @@ export const UserTable: React.FC<UserTableProps> = ({
                 </Badge>
               </td>
 
+              {/* Status Column */}
+              <td className="py-4 px-4">
+                <Badge variant={disabled ? 'error' : 'success'} className="w-fit">
+                  {disabled ? 'Disabled' : 'Active'}
+                </Badge>
+              </td>
+
               {/* Joined Date Column */}
               <td className="py-4 px-4">
                 <div className="flex items-center gap-2 text-[#003300]/60 text-sm">
@@ -211,27 +254,47 @@ export const UserTable: React.FC<UserTableProps> = ({
                     leftIcon={<Edit2 className="w-4 h-4" />}
                     onClick={() => onEdit(user)}
                     className="text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50"
+                    disabled={!can.canEdit}
+                    title={can.canEdit ? 'Edit user' : 'Only an admin can manage admin, CLO and CTO accounts'}
                   >
                     Edit
                   </Button>
 
+                  {/* Disable / Enable: blocks sign-in but keeps all history */}
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    leftIcon={disabled ? <CheckCircle2 className="w-4 h-4" /> : <Ban className="w-4 h-4" />}
+                    onClick={() => onToggleStatus(user)}
+                    className={disabled ? 'text-green-700 hover:text-green-800 hover:bg-green-50' : 'text-amber-700 hover:text-amber-800 hover:bg-amber-50'}
+                    disabled={!can.canToggle}
+                    title={can.isSelf ? 'You cannot disable your own account' : disabled ? 'Allow this person to sign in again' : 'Block sign-in, keep all history'}
+                  >
+                    {disabled ? 'Enable' : 'Disable'}
+                  </Button>
+
                   {/* Delete Button */}
-                  {/* Note: Admin and CLO users cannot be deleted (backend validation) */}
                   <Button
                     variant="ghost"
                     size="sm"
                     leftIcon={<Trash2 className="w-4 h-4" />}
                     onClick={() => onDelete(user)}
                     className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                    disabled={user.role === 'admin' || user.role === 'clo'}
-                    title={user.role === 'admin' || user.role === 'clo' ? 'Admin and CLO users cannot be deleted' : 'Delete user permanently'}
+                    disabled={!can.canDelete}
+                    title={
+                      can.isSelf ? 'You cannot delete your own account'
+                        : !can.canDelete && isAdminRole(user.role) ? 'Only a superadmin can delete admin accounts'
+                        : !can.canDelete ? 'Only an admin can manage admin, CLO and CTO accounts'
+                        : 'Delete permanently (accounts with history can only be disabled)'
+                    }
                   >
                     Delete
                   </Button>
                 </div>
               </td>
             </tr>
-          ))}
+            );
+          })}
         </tbody>
       </table>
     </div>

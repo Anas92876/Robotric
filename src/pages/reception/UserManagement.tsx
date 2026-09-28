@@ -6,7 +6,8 @@
  * - Search and filter by role, name, email
  * - Create new users (students/trainers)
  * - Edit existing users
- * - Delete users permanently
+ * - Disable / enable accounts (blocks sign-in, keeps all history)
+ * - Delete accounts that have no history
  * - Pagination
  *
  * REDESIGNED: Matching Teacher/Student dashboard UI/UX style
@@ -20,11 +21,14 @@ import { useReceptionUsers } from '../../hooks';
 import type { User } from '../../hooks/reception/useReceptionUsers';
 import { UserTable } from '../../components/reception/UserTable';
 import { UserForm } from '../../components/reception/UserForm';
-import { LoadingState, Alert, Button, Input, Modal, CardComponent, CardBody, StatsCard } from '../../components/ui';
+import { LoadingState, Alert, Button, Input, Modal, CardComponent, CardBody, StatsCard, ConfirmDialog } from '../../components/ui';
+import { useAuth } from '../../providers/AuthProvider';
 
 const UserManagement: React.FC = () => {
   const { t, i18n } = useTranslation(['dashboardCommon', 'dashboardReception']);
   const isRTL = i18n.language === 'ar';
+  const { user: me } = useAuth();
+  const currentUser = me ? { id: me._id || me.id, role: me.role } : null;
 
   // Get users data and CRUD functions from hook
   const {
@@ -45,6 +49,9 @@ const UserManagement: React.FC = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  // Account being disabled/enabled (confirmation dialog)
+  const [statusTarget, setStatusTarget] = useState<User | null>(null);
+  const [isChangingStatus, setIsChangingStatus] = useState(false);
 
   // Local filter states
   const [searchInput, setSearchInput] = useState('');
@@ -147,6 +154,23 @@ const UserManagement: React.FC = () => {
 
 
   /**
+   * Disable or enable an account (after confirmation). Disabling signs the person out at once.
+   */
+  const handleToggleStatus = async () => {
+    if (!statusTarget) return;
+    const next = statusTarget.profile?.status === 'inactive' ? 'active' : 'inactive';
+    setIsChangingStatus(true);
+    try {
+      await updateUser(statusTarget._id || statusTarget.id!, { status: next });
+      setStatusTarget(null);
+    } catch (error) {
+      console.error('Failed to change account status:', error);
+    } finally {
+      setIsChangingStatus(false);
+    }
+  };
+
+  /**
    * Handle page change
    */
   const handlePageChange = (newPage: number) => {
@@ -236,7 +260,7 @@ const UserManagement: React.FC = () => {
                 className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="active" className="bg-white">Active Users</option>
-                <option value="inactive" className="bg-white">Inactive Users</option>
+                <option value="inactive" className="bg-white">Disabled Users</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                 <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -260,7 +284,17 @@ const UserManagement: React.FC = () => {
                 <option value="trainer" className="bg-white">Trainers</option>
                 <option value="teacher" className="bg-white">Teachers</option>
                 <option value="reception" className="bg-white">Reception</option>
+                <option value="clo" className="bg-white">CLO</option>
+                <option value="cto" className="bg-white">CTO</option>
+                <option value="engineer" className="bg-white">Programmers</option>
+                <option value="client" className="bg-white">Clients</option>
+                <option value="social" className="bg-white">Social</option>
+                <option value="driver" className="bg-white">Drivers</option>
+                <option value="judge" className="bg-white">Judges</option>
+                <option value="editor" className="bg-white">Editors</option>
+                <option value="organizer" className="bg-white">Organizers</option>
                 <option value="admin" className="bg-white">Admins</option>
+                <option value="superadmin" className="bg-white">Super Admins</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                 <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,6 +363,8 @@ const UserManagement: React.FC = () => {
                   users={users}
                   onEdit={handleEditClick}
                   onDelete={handleDeleteClick}
+                  onToggleStatus={setStatusTarget}
+                  currentUser={currentUser}
                   isLoading={isLoading}
                 />
 
@@ -410,11 +446,9 @@ const UserManagement: React.FC = () => {
               <p className="text-sm text-white/60">
                 This will <strong>permanently delete</strong> the user account for <strong>{selectedUser?.name}</strong>. This action cannot be undone.
               </p>
-              {(['admin', 'clo', 'cto'].includes(selectedUser?.role || '')) && (
-                <p className="text-sm text-yellow-400 mt-2">
-                  ⚠️ Note: Admin, CLO, and CTO users cannot be deleted.
-                </p>
-              )}
+              <p className="text-sm text-yellow-600 mt-2">
+                Accounts with history (enrollments, payments, attendance, sessions…) can't be deleted — use <strong>Disable</strong> instead, which blocks sign-in and keeps the records.
+              </p>
             </div>
           </div>
 
@@ -439,6 +473,22 @@ const UserManagement: React.FC = () => {
           </div>
         </div>
       </Modal>
+
+      {/* Disable / Enable Confirmation */}
+      <ConfirmDialog
+        isOpen={statusTarget !== null}
+        onClose={() => setStatusTarget(null)}
+        onConfirm={handleToggleStatus}
+        isLoading={isChangingStatus}
+        variant={statusTarget?.profile?.status === 'inactive' ? 'info' : 'warning'}
+        title={statusTarget?.profile?.status === 'inactive' ? 'Enable account' : 'Disable account'}
+        description={
+          statusTarget?.profile?.status === 'inactive'
+            ? `${statusTarget?.name} will be able to sign in again.`
+            : `${statusTarget?.name} will be signed out now and can't sign in until the account is enabled again. All their records are kept.`
+        }
+        confirmText={statusTarget?.profile?.status === 'inactive' ? 'Enable' : 'Disable'}
+      />
     </motion.div>
   );
 };

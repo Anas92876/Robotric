@@ -31,6 +31,9 @@ import {
   FileCheck,
   Compass,
   Timer,
+  Shield,
+  UserCog,
+  Cpu,
 } from "lucide-react";
 import { UserRole } from "../types/auth.types";
 import type { NavItem } from "../types/common.types";
@@ -89,6 +92,43 @@ export const NAV_ITEMS: NavItem[] = [
     path: ROUTES.DASHBOARD,
     icon: React.createElement(Home, { className: "w-5 h-5" }),
     roles: [UserRole.ADMIN, UserRole.SUPERADMIN, UserRole.TEAM_LEAD, UserRole.MEMBER, UserRole.JUDGE, UserRole.EDITOR, UserRole.ORGANIZER],
+  },
+
+  // Administration (admin + superadmin): accounts, and the areas they're allowed to manage
+  {
+    id: "admin-panel",
+    title: "Admin Panel",
+    path: "/admin",
+    icon: React.createElement(Shield, { className: "w-5 h-5" }),
+    roles: [UserRole.ADMIN, UserRole.SUPERADMIN],
+  },
+  {
+    id: "admin-users",
+    title: "User Management",
+    path: "/reception/users",
+    icon: React.createElement(UserCog, { className: "w-5 h-5" }),
+    roles: [UserRole.ADMIN, UserRole.SUPERADMIN],
+  },
+  {
+    id: "admin-reception",
+    title: "Reception",
+    path: "/reception",
+    icon: React.createElement(ClipboardCheck, { className: "w-5 h-5" }),
+    roles: [UserRole.ADMIN, UserRole.SUPERADMIN],
+  },
+  {
+    id: "admin-learning",
+    title: "Learning (CLO)",
+    path: "/clo",
+    icon: React.createElement(GraduationCap, { className: "w-5 h-5" }),
+    roles: [UserRole.ADMIN, UserRole.SUPERADMIN],
+  },
+  {
+    id: "admin-technical",
+    title: "Technical (CTO)",
+    path: "/cto-internal/dashboard",
+    icon: React.createElement(Cpu, { className: "w-5 h-5" }),
+    roles: [UserRole.ADMIN, UserRole.SUPERADMIN],
   },
 
   // Student Dashboard

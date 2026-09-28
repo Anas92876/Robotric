@@ -69,6 +69,8 @@ export interface UpdateUserRequest {
   password?: string;
   role?: string;
   phone?: string;
+  /** "inactive" disables the account (sign-in refused, signed out at once). */
+  status?: 'active' | 'inactive';
 }
 
 /**

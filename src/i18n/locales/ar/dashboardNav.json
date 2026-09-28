@@ -1,5 +1,10 @@
 {
   "dashboard": "لوحة التحكم",
+  "admin-panel": "لوحة المدير",
+  "admin-users": "إدارة المستخدمين",
+  "admin-reception": "الاستقبال",
+  "admin-learning": "التعليم (CLO)",
+  "admin-technical": "التقنية (CTO)",
   "student-dashboard": "لوحتي",
   "student-courses": "دوراتي",
   "student-payments": "المدفوعات",

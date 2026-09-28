@@ -1,5 +1,10 @@
 {
   "dashboard": "Dashboard",
+  "admin-panel": "Admin Panel",
+  "admin-users": "User Management",
+  "admin-reception": "Reception",
+  "admin-learning": "Learning (CLO)",
+  "admin-technical": "Technical (CTO)",
   "student-dashboard": "My Dashboard",
   "student-courses": "My Courses",
   "student-payments": "Payments",

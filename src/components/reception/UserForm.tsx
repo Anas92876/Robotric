@@ -32,6 +32,9 @@ const ROLE_OPTIONS: { value: string; label: string; privileged?: boolean }[] = [
   { value: 'cto', label: '💻 CTO', privileged: true },
   { value: 'engineer', label: '🔧 Programmer' },
   { value: 'client', label: '🤝 Client' },
+  { value: 'judge', label: '⚖️ Judge (competitions)' },
+  { value: 'editor', label: '✍️ Editor' },
+  { value: 'organizer', label: '🎯 Organizer (competitions)' },
 ];
 
 /**
