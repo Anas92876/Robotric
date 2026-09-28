@@ -24,5 +24,5 @@
     "noEmit": true
   },
   "include": ["src", "tests", "scripts", "api", "drizzle.config.ts", "vitest.config.mts"],
-  "exclude": ["node_modules", "dist", "legacy"]
+  "exclude": ["node_modules", "dist"]
 }

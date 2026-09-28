@@ -49,7 +49,7 @@ every response shape stays exactly the same (including `_id`).
 | 7 | CTO internal work, engineer, client portal, work hours | ✅ Done (commit `f5f02c2`) |
 | 8 | Transport: drivers, seats & fares, trips, driver app, student app, feedback, management | ✅ Done (not committed yet) |
 | 9 | Chat & notifications (WebSockets on hold) | ⏳ **Next** |
-| 10 | Finish: delete `legacy/`, final checks, deploy | ⏳ |
+| 10 | Finish: ~~delete `legacy/`~~ ✅ (kept in git at `2a0e5bc`), final checks, deploy | ⏳ |
 
 **Numbers:** 479 of 503 old routes are rebuilt. 131 automatic tests pass
 (typecheck and lint clean). Migrations 0000–0017 are applied to Supabase.
@@ -220,7 +220,6 @@ Robotric_backend/
 ├── START_HERE.md          ← this file
 ├── REWRITE_PLAN.md        ← detailed plan + list of temporary gaps
 ├── .env                   ← secrets (never commit)
-├── legacy/                ← OLD JavaScript code, only for reference. Not run.
 ├── drizzle/               ← database migration files (SQL)
 ├── api/index.ts           ← Vercel entry
 ├── scripts/
@@ -287,7 +286,7 @@ rebuilt yet. They are wired in `src/container.ts` with a comment `→ phase X`.
 Open Claude Code in this folder and paste this:
 
 > Read START_HERE.md and REWRITE_PLAN.md. We are rewriting the backend from
-> legacy/ (JS + MongoDB) to TypeScript + PostgreSQL (Drizzle, Supabase).
+> the old JS + MongoDB code (git history, commit 2a0e5bc, folder legacy/) to TypeScript + PostgreSQL (Drizzle, Supabase).
 > Continue from where we stopped (see "State when we stopped" in section 3):
 > commit Phase 5 after I approve, then Phase 6. Keep routes and responses identical to the old
 > API, follow the same module structure, ignore WebSockets, run tests,
@@ -296,7 +295,8 @@ Open Claude Code in this folder and paste this:
 
 ### The steps we follow for each feature
 
-1. Read the old code in `legacy/src` (routes, controller, model).
+1. Read the old code (deleted from the folder, kept in git): `git show 2a0e5bc:legacy/src/<path>`, or
+   bring the whole folder back with `git checkout 2a0e5bc -- legacy` (routes, controller, model).
 2. Check how the frontend uses it (`../Robotric_Frontend_Dashboard`; the public site is `../Robotric_Frontend_Public`).
 3. Write `table → repository → service → schemas → controller`.
 4. Add the routes in `src/routes/...` and connect it in `src/container.ts`.

@@ -23,6 +23,8 @@ const SEED_PASSWORD = process.env.SEED_PASSWORD ?? 'Password123';
 const MANIFEST = path.join(__dirname, '.demo-data.json');
 const DEMO_DOMAIN = 'demo.robotrick.test';
 
+// API responses are read loosely here (the shape differs per route); this is a dev script.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Json = Record<string, any>;
 interface Created { role: string; deletePath: string; label: string }
 
