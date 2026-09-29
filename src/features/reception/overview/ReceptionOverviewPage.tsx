@@ -22,7 +22,7 @@ export default function ReceptionOverviewPage() {
 
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
-      <Panel className="space-y-5 p-3 sm:p-4">
+      <div className="min-w-0 space-y-5">
         <WelcomeBanner name={user?.name ?? ''} />
 
         {stats.isError && (
@@ -55,7 +55,7 @@ export default function ReceptionOverviewPage() {
           <PanelTitle title={t('overview.recentEnrollments')} link={{ to: '/reception/enrollments', label: t('overview.viewAll') }} />
           <RecentEnrollmentsTable rows={recent.data ?? []} loading={recent.isLoading} />
         </div>
-      </Panel>
+      </div>
 
       <aside className="space-y-5">
         <TodayPanel events={events.data ?? []} leads={leads.data} />
