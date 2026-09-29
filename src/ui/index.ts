@@ -5,6 +5,7 @@
  */
 export { Button, type ButtonProps } from './Button';
 export { Card, CardHeader } from './Card';
+export { Panel, PanelTitle } from './Panel';
 export { Badge, type BadgeTone } from './Badge';
 export { Field, TextInput, SelectInput, TextArea } from './Field';
 export { StatCard, type Tint } from './StatCard';

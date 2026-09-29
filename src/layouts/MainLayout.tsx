@@ -37,7 +37,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   if (isLoading) {
     return (
-      <div className="grid h-screen w-full place-items-center bg-canvas">
+      <div className="grid h-screen w-full place-items-center bg-paper">
         <div className="size-10 animate-spin rounded-full border-[3px] border-ink border-t-transparent" aria-label="Loading" />
       </div>
     );
@@ -52,12 +52,12 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Helmet>
         <html lang={isRTL ? "ar" : "en"} dir={isRTL ? "rtl" : "ltr"} />
       </Helmet>
-      <div className="rt-app min-h-screen bg-canvas text-ink" dir={isRTL ? "rtl" : "ltr"}>
+      <div className="rt-app min-h-screen bg-paper text-ink" dir={isRTL ? "rtl" : "ltr"}>
         <AppSidebar sections={sections} user={{ name: user.name, role: user.role }} homePath={homePath} onSignOut={logout} open={menuOpen} onClose={closeMenu} />
         <div className="flex min-h-screen flex-col lg:ps-64">
-          <AppTopbar onMenu={() => setMenuOpen(true)} />
-          <main className={`flex-1 px-4 py-6 sm:px-6 lg:px-8 ${isStudent ? "pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-8" : ""}`}>
-            <div className="mx-auto max-w-7xl">{children || <Outlet />}</div>
+          <AppTopbar sections={sections} userName={user.name} onMenu={() => setMenuOpen(true)} />
+          <main className={`flex-1 px-4 pb-8 pt-2 sm:px-6 lg:px-8 ${isStudent ? "pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-8" : ""}`}>
+            <div className="mx-auto max-w-[1440px]">{children || <Outlet />}</div>
           </main>
           {isStudent && <StudentMobileNav />}
         </div>

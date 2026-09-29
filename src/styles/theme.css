@@ -31,7 +31,8 @@
 
   /* ---- Surfaces --------------------------------------------------------- */
   --color-canvas: #f5f5dc;       /* page background (parchment) */
-  --color-paper: #ffffff;        /* cards, tables, dialogs */
+  --color-paper: #ffffff;        /* page, cards, tables, dialogs */
+  --color-rail: #f4f4ec;         /* sidebar and quiet fills */
   --color-line: rgb(0 51 0 / 0.12);
   --color-line-strong: rgb(0 51 0 / 0.2);
 
@@ -67,6 +68,7 @@
   --radius-input: 12px;
   --radius-card: 14px;
   --radius-feature: 22px;
+  --radius-panel: 20px;          /* large bordered page sections */
   --radius-pill: 999px;
 
   --shadow-card:

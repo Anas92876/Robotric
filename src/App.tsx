@@ -78,7 +78,7 @@ const TrainerResources = lazyImport(() => import("./pages/trainer/TrainerResourc
 const TrainerGroupBoard = lazyImport(() => import("./pages/trainer/TrainerGroupBoard"));
 
 // Reception pages
-const ReceptionDashboard = lazyImport(() => import("./pages/reception/ReceptionDashboard"));
+const ReceptionDashboard = lazyImport(() => import("./features/reception/overview/ReceptionOverviewPage"));
 const UserManagement = lazyImport(() => import("./pages/reception/UserManagement"));
 const EnrollmentManagement = lazyImport(() => import("./pages/reception/EnrollmentManagement"));
 const LeadManagement = lazyImport(() => import("./pages/reception/LeadManagement"));

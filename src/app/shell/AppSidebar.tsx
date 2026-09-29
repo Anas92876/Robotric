@@ -16,7 +16,7 @@ interface AppSidebarProps {
   onClose: () => void;
 }
 
-/** The dashboard menu: logo, sections of links, and the signed-in person. */
+/** The dashboard menu: logo, a flat list of links, and the signed-in person's card. */
 export function AppSidebar({ sections, user, homePath, onSignOut, open, onClose }: AppSidebarProps) {
   const { t, i18n } = useTranslation('dashboardNav');
   const { pathname } = useLocation();
@@ -32,40 +32,46 @@ export function AppSidebar({ sections, user, homePath, onSignOut, open, onClose 
       <div
         aria-hidden
         onClick={onClose}
-        className={cn('fixed inset-0 z-40 bg-ink-deep/30 backdrop-blur-[1px] transition-opacity lg:hidden', open ? 'opacity-100' : 'pointer-events-none opacity-0')}
+        className={cn('fixed inset-0 z-40 bg-ink-deep/30 transition-opacity lg:hidden', open ? 'opacity-100' : 'pointer-events-none opacity-0')}
       />
       <aside
         className={cn(
-          'fixed inset-y-0 start-0 z-50 flex w-72 max-w-[85vw] flex-col border-e border-line bg-paper transition-transform duration-200',
+          'fixed inset-y-0 start-0 z-50 flex w-72 max-w-[85vw] flex-col bg-rail transition-transform duration-200',
           'lg:z-30 lg:w-64',
           // Off-screen only below lg; on large screens the menu always shows
           !open && 'max-lg:ltr:-translate-x-full max-lg:rtl:translate-x-full',
         )}
       >
-        <div className="flex h-16 shrink-0 items-center justify-between gap-2 px-5">
+        <div className="flex h-20 shrink-0 items-center justify-between gap-2 px-7">
           <Link to={homePath} className="rounded-md focus-visible:focus-ring" aria-label="Robotrick">
             <BrandLogo lang={lang} />
           </Link>
-          <button type="button" onClick={onClose} aria-label={t('shell.closeMenu')} className="grid size-9 place-items-center rounded-full text-ink-3 hover:bg-ink/5 lg:hidden">
+          <button type="button" onClick={onClose} aria-label={t('shell.closeMenu')} className="grid size-9 place-items-center rounded-full text-ink-3 hover:bg-paper lg:hidden">
             <X className="size-5" />
           </button>
         </div>
 
-        <nav aria-label={t('shell.mainNav')} className="flex-1 space-y-5 overflow-y-auto px-3 pb-6 pt-2">
+        <nav aria-label={t('shell.mainNav')} className="flex-1 space-y-3 overflow-y-auto px-4 pb-4 pt-2">
           {sections.map((s) => (
             <SidebarSection key={s.id} section={s} current={current} />
           ))}
         </nav>
 
-        <div className="border-t border-line p-3">
-          <div className="flex items-center gap-3 rounded-card px-2 py-2">
-            <div className="grid size-9 shrink-0 place-items-center rounded-full bg-gold font-semibold text-ink">{user.name.charAt(0).toUpperCase()}</div>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-ink">{user.name}</p>
-              <p className="truncate text-xs text-ink-3">{t(`role.${user.role}`, ROLE_LABELS[user.role] ?? user.role)}</p>
+        {/* The signed-in person, as a solid card (the reference's promo card spot) */}
+        <div className="p-4 pt-8">
+          <div className="relative rounded-feature bg-ink px-4 pb-4 pt-9 text-center">
+            <div className="absolute -top-7 start-1/2 grid size-14 place-items-center rounded-full bg-gold text-xl font-semibold text-ink ring-4 ring-rail ltr:-translate-x-1/2 rtl:translate-x-1/2">
+              {user.name.charAt(0).toUpperCase()}
             </div>
-            <button type="button" onClick={onSignOut} aria-label={t('shell.signOut')} title={t('shell.signOut')} className="grid size-9 place-items-center rounded-full text-ink-3 hover:bg-danger-soft hover:text-danger focus-visible:focus-ring">
-              <LogOut className="size-[18px] rtl:rotate-180" />
+            <p className="truncate font-semibold text-cream">{user.name}</p>
+            <p className="truncate text-xs text-gold">{t(`role.${user.role}`, ROLE_LABELS[user.role] ?? user.role)}</p>
+            <button
+              type="button"
+              onClick={onSignOut}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-input bg-paper px-3 py-2.5 text-sm font-medium text-ink hover:bg-cream focus-visible:focus-ring"
+            >
+              <LogOut className="size-4 rtl:rotate-180" aria-hidden />
+              {t('shell.signOut')}
             </button>
           </div>
         </div>
@@ -82,27 +88,25 @@ function SidebarSection({ section, current }: { section: NavSection; current?: s
     if (containsCurrent) setExpanded(true);
   }, [containsCurrent]);
 
-  const title = t(`section.${section.id}`, section.label);
   const listId = `nav-${section.id}`;
 
   return (
     <div>
-      {section.collapsible ? (
+      {/* Only fold-out groups (admin departments) get a heading; plain groups are a flat list */}
+      {section.collapsible && (
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
           aria-expanded={expanded}
           aria-controls={listId}
-          className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-4 hover:text-ink"
+          className="flex w-full items-center justify-between rounded-md px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-ink-4 hover:text-ink"
         >
-          {title}
+          {t(`section.${section.id}`, section.label)}
           <ChevronDown className={cn('size-4 transition-transform', expanded && 'rotate-180')} />
         </button>
-      ) : (
-        <p className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-4">{title}</p>
       )}
       {expanded && (
-        <ul id={listId} className="mt-1 space-y-0.5">
+        <ul id={listId} className="space-y-1">
           {section.items.map((item) => {
             const active = item.path === current;
             const Icon = item.icon;
@@ -112,11 +116,11 @@ function SidebarSection({ section, current }: { section: NavSection; current?: s
                   to={item.path}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
-                    'flex items-center gap-3 rounded-input px-3 py-2 text-sm transition-colors focus-visible:focus-ring',
-                    active ? 'bg-ink font-medium text-white' : 'text-ink-2 hover:bg-tint-sage hover:text-ink',
+                    'flex items-center gap-3.5 rounded-input px-4 py-2.5 text-[15px] transition-colors focus-visible:focus-ring',
+                    active ? 'bg-ink font-medium text-white' : 'text-ink-3 hover:bg-paper hover:text-ink',
                   )}
                 >
-                  <Icon className={cn('size-[18px] shrink-0', active ? 'text-gold' : 'text-ink-3')} aria-hidden />
+                  <Icon className={cn('size-5 shrink-0', active ? 'text-white' : 'text-ink-4')} aria-hidden />
                   <span className="truncate">{t(item.id, item.label)}</span>
                 </Link>
               </li>
