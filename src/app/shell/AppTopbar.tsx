@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Menu as HMenu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, LogOut, Menu, Search } from 'lucide-react';
+import { Check, ChevronDown, Globe, LogOut, Menu, Search } from 'lucide-react';
 import { updateHtmlAttributes } from '../../i18n';
 import { cn } from '../../lib/utils';
 import { ROLE_LABELS, type NavLink, type NavSection } from '../navigation';
@@ -127,7 +127,7 @@ function PageSearch({ sections }: { sections: NavSection[] }) {
   );
 }
 
-/** Two-option language switch; the active language is the filled one. */
+/** Globe button with the current language; opens a menu to pick English or Arabic. */
 function LanguageSwitch() {
   const { t, i18n } = useTranslation('dashboardNav');
   const current = i18n.language === 'ar' ? 'ar' : 'en';
@@ -137,29 +137,37 @@ function LanguageSwitch() {
     updateHtmlAttributes(lang);
   };
   const options = [
-    { lang: 'en' as const, label: 'EN', name: 'English' },
-    { lang: 'ar' as const, label: 'ع', name: 'العربية' },
+    { lang: 'en' as const, code: 'EN', name: 'English' },
+    { lang: 'ar' as const, code: 'AR', name: 'العربية' },
   ];
 
   return (
-    <div role="group" aria-label={t('shell.language')} className="flex h-11 shrink-0 items-center gap-0.5 rounded-pill border border-line bg-rail p-1">
-      {options.map((o) => (
-        <button
-          key={o.lang}
-          type="button"
-          lang={o.lang}
-          onClick={() => choose(o.lang)}
-          aria-pressed={current === o.lang}
-          title={o.name}
-          className={cn(
-            'grid h-full min-w-10 place-items-center rounded-pill px-2.5 text-sm font-semibold transition-colors focus-visible:focus-ring',
-            current === o.lang ? 'bg-ink text-cream shadow-card' : 'text-ink-3 hover:text-ink',
-          )}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
+    <HMenu as="div" className="relative shrink-0">
+      <MenuButton
+        aria-label={t('shell.language')}
+        className="flex h-11 items-center gap-2 rounded-pill border border-line bg-paper px-3.5 text-sm font-semibold text-ink transition-colors hover:border-line-strong focus-visible:focus-ring data-[open]:border-ink"
+      >
+        <Globe className="size-[18px] text-ink-3" aria-hidden />
+        <span className="hidden sm:inline">{current === 'ar' ? 'AR' : 'EN'}</span>
+        <ChevronDown className="size-4 text-ink-4 transition-transform in-data-[open]:rotate-180" aria-hidden />
+      </MenuButton>
+      <MenuItems anchor="bottom end" className="z-40 w-48 rounded-card border border-line bg-paper p-1.5 shadow-pop [--anchor-gap:8px] focus:outline-none">
+        {options.map((o) => (
+          <MenuItem key={o.lang}>
+            <button
+              type="button"
+              lang={o.lang}
+              onClick={() => choose(o.lang)}
+              className="flex w-full items-center gap-3 rounded-input px-3 py-2.5 text-sm text-ink data-[focus]:bg-rail"
+            >
+              <span className="grid h-6 w-8 place-items-center rounded-md bg-rail text-[11px] font-bold tracking-wide text-ink-2">{o.code}</span>
+              <span className="flex-1 text-start font-medium">{o.name}</span>
+              {current === o.lang && <Check className="size-4 text-ink" aria-hidden />}
+            </button>
+          </MenuItem>
+        ))}
+      </MenuItems>
+    </HMenu>
   );
 }
 
