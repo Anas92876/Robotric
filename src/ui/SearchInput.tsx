@@ -29,7 +29,7 @@ export function SearchInput({ value, onChange, placeholder, delay = 350, 'aria-l
         onChange={(e) => setText(e.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel ?? placeholder}
-        className="h-11 w-full rounded-input border border-line-strong bg-paper ps-10 pe-9 text-[15px] text-ink placeholder:text-ink-4 focus:border-ink focus:focus-ring [&::-webkit-search-cancel-button]:hidden"
+        className="h-11 w-full rounded-input border border-line-strong bg-paper ps-10 pe-9 text-[15px] rtl:text-base text-ink placeholder:text-ink-4 focus:border-ink focus:focus-ring [&::-webkit-search-cancel-button]:hidden"
       />
       {text && (
         <button type="button" onClick={() => { setText(''); onChange(''); }} aria-label="Clear" className="absolute end-2.5 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-full text-ink-4 hover:bg-ink/5 hover:text-ink">

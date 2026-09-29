@@ -3,7 +3,7 @@ import { cn } from '../lib/utils';
 
 /** Shared look of every text box, select and text area. */
 const control =
-  'w-full rounded-input border border-line-strong bg-paper px-3.5 text-[15px] text-ink placeholder:text-ink-4 ' +
+  'w-full rounded-input border border-line-strong bg-paper px-3.5 text-[15px] rtl:text-base text-ink placeholder:text-ink-4 ' +
   'transition-[border-color,box-shadow] duration-150 focus:border-ink focus:focus-ring ' +
   'disabled:cursor-not-allowed disabled:bg-tint-sand disabled:text-ink-3 aria-[invalid=true]:border-danger';
 

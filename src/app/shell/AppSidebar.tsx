@@ -117,7 +117,7 @@ function SidebarSection({ section, current }: { section: NavSection; current?: s
                   to={item.path}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
-                    'flex items-center gap-3 rounded-input px-3.5 py-2 text-sm transition-colors focus-visible:focus-ring',
+                    'flex items-center gap-3 rounded-input px-3.5 py-2 text-sm leading-5 transition-colors focus-visible:focus-ring',
                     active ? 'bg-ink font-medium text-white' : 'text-ink-3 hover:bg-paper hover:text-ink',
                   )}
                 >

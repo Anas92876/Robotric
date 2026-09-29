@@ -12,7 +12,7 @@ export function useFormat() {
   return useMemo(() => {
     const dateFmt = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric' });
     const dayMonthFmt = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' });
-    const timeFmt = new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit' });
+    const timeFmt = new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
     // Plain "$" in both languages (Arabic Intl currency format prints "US$")
     const numberFmt = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
     const toDate = (d: string | Date) => (typeof d === 'string' ? new Date(d) : d);

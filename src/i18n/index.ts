@@ -96,33 +96,15 @@ export const loadDashboardTranslations = async (lng: string = i18n.language) => 
   );
 };
 
-// Inject Arabic font stylesheet only for Arabic locale.
-// Skipping this for English visitors saves ~150–200 KB of font data.
-const ARABIC_FONT_URL =
-  'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap';
-
-let arabicFontsLoaded = false;
-const loadArabicFonts = () => {
-  if (arabicFontsLoaded || typeof document === 'undefined') return;
-  arabicFontsLoaded = true;
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = ARABIC_FONT_URL;
-  document.head.appendChild(link);
-};
-
 // Listen to language changes
 i18n.on('languageChanged', (lng) => {
   updateHtmlAttributes(lng);
-  if (lng === 'ar') loadArabicFonts();
   if (dashboardTranslationsWanted) void loadDashboardTranslations(lng);
 });
 
 // Initialize on load
 if (typeof window !== 'undefined') {
   updateHtmlAttributes();
-  // Load Arabic fonts immediately if user's saved language is Arabic
-  if (i18n.language === 'ar') loadArabicFonts();
 }
 
 export default i18n;

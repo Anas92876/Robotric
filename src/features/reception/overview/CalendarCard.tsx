@@ -5,7 +5,10 @@ import { cn } from '../../../lib/utils';
 import { useFormat } from '../../../app/format';
 import type { CalendarEvent } from './api';
 
-const sameDay = (a: Date, b: Date) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+/** Short Arabic day names, Sunday first (index = Date.getDay()). */
+const AR_DAYS = ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'];
+
+const sameDay =(a: Date, b: Date) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 
 /** Month grid with event dots, and the events of the picked day (or the rest of the month) below it. */
 export function CalendarCard({ events, loading }: { events: CalendarEvent[]; loading: boolean }) {
@@ -19,9 +22,11 @@ export function CalendarCard({ events, loading }: { events: CalendarEvent[]; loa
   // Week starts on Saturday in Arabic (Syria), Monday in English
   const weekStart = isAr ? 6 : 1;
   const weekdays = useMemo(() => {
+    // Arabic single letters (ح ن ث…) are hard to read, so Arabic uses short day words
+    if (isAr) return Array.from({ length: 7 }, (_, i) => AR_DAYS[(weekStart + i) % 7]);
     const base = new Date(2024, 0, 7); // a Sunday
     return Array.from({ length: 7 }, (_, i) => f.custom(new Date(base.getFullYear(), 0, 7 + ((weekStart + i) % 7)), { weekday: 'narrow' }));
-  }, [f, weekStart]);
+  }, [f, weekStart, isAr]);
 
   const days = useMemo(() => {
     const lead = (month.getDay() - weekStart + 7) % 7;
@@ -56,7 +61,7 @@ export function CalendarCard({ events, loading }: { events: CalendarEvent[]; loa
         </div>
         <div className="grid grid-cols-7 gap-y-1 text-center">
           {weekdays.map((w, i) => (
-            <span key={i} className="pb-1 text-[11px] font-medium text-ink-4">
+            <span key={i} className="truncate pb-1 text-[11px] font-medium text-ink-4 rtl:text-[10px]">
               {w}
             </span>
           ))}

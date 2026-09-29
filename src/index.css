@@ -507,13 +507,13 @@ select option {
   direction: rtl;
   text-align: right;
   /* Apply Cairo font to every RTL-scoped element — covers both <html dir="rtl"> and the layout root div */
-  font-family: 'Cairo', 'Cairo-Fallback', Arial, sans-serif;
+  font-family: 'Cairo', 'Inter', 'Cairo-Fallback', Arial, sans-serif;
 }
 
 /* Also cover the case where <html dir="rtl"> is set by react-helmet */
 html[dir="rtl"] body,
 html[dir="rtl"] {
-  font-family: 'Cairo', 'Cairo-Fallback', Arial, sans-serif;
+  font-family: 'Cairo', 'Inter', 'Cairo-Fallback', Arial, sans-serif;
 }
 
 /* RTL-specific adjustments */

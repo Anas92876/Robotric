@@ -104,7 +104,7 @@ function LatestEnrollment({ enrollment, loading }: { enrollment?: RecentEnrollme
       <div className="flex min-w-48 flex-1 items-center gap-3">
         <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-base font-semibold text-cream">{name.charAt(0).toUpperCase()}</span>
         <div className="min-w-0">
-          <p className="text-[11px] font-medium uppercase tracking-wide text-ink-3">{t('overview.latestEnrollment')}</p>
+          <p className="text-[11px] rtl:text-xs font-medium uppercase tracking-wide text-ink-3">{t('overview.latestEnrollment')}</p>
           <p className="truncate font-semibold text-ink">{name}</p>
           <p className="truncate text-xs text-ink-3">{enrollment.course?.title ?? '—'}</p>
         </div>
@@ -144,7 +144,7 @@ function LeadsPipeline({ stats, loading }: { stats?: LeadStats; loading: boolean
         <p className="text-2xl font-semibold tabular-nums text-ink">{stats.total}</p>
       </div>
       <div className="min-w-0 flex-1">
-        <div className="mb-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ink-3">
+        <div className="mb-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[11px] rtl:text-xs text-ink-3">
           {parts.map((p) => (
             <span key={p.key} className="inline-flex items-center gap-1.5">
               <span className={cn('size-2 rounded-full', p.bar)} aria-hidden />
@@ -221,7 +221,7 @@ function RecentEnrollmentsTable({ rows, loading }: { rows: RecentEnrollment[]; l
                   )}
                 </td>
                 <td className="px-2 py-3">
-                  <span className={cn('inline-block rounded-input px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide', STATUS_STYLE[r.status] ?? 'bg-rail text-ink-2')}>
+                  <span className={cn('inline-block rounded-input px-3 py-1.5 text-[11px] rtl:text-xs font-semibold uppercase tracking-wide', STATUS_STYLE[r.status] ?? 'bg-rail text-ink-2')}>
                     {t(`overview.statuses.${r.status}`, r.status)}
                   </span>
                 </td>
