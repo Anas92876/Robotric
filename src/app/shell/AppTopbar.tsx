@@ -1,29 +1,25 @@
 import { useMemo, useRef, useState } from 'react';
+import { Menu as HMenu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Menu, Search } from 'lucide-react';
+import { ChevronDown, LogOut, Menu, Search } from 'lucide-react';
 import { updateHtmlAttributes } from '../../i18n';
 import { cn } from '../../lib/utils';
-import type { NavLink, NavSection } from '../navigation';
+import { ROLE_LABELS, type NavLink, type NavSection } from '../navigation';
 
 interface AppTopbarProps {
   sections: NavSection[];
-  userName: string;
+  user: { name: string; email?: string; role: string };
+  onSignOut: () => void;
   onMenu: () => void;
 }
 
-/** Top bar: today's date, page search, language switch and the person's avatar. */
-export function AppTopbar({ sections, userName, onMenu }: AppTopbarProps) {
+/** Top bar: today's date, page search, language switch and the account menu. */
+export function AppTopbar({ sections, user, onSignOut, onMenu }: AppTopbarProps) {
   const { t, i18n } = useTranslation('dashboardNav');
   const isAr = i18n.language === 'ar';
-  const next = isAr ? 'en' : 'ar';
   const locale = isAr ? 'ar-SY-u-nu-latn' : 'en-GB';
   const now = new Date();
-
-  const switchLanguage = () => {
-    void i18n.changeLanguage(next);
-    updateHtmlAttributes(next);
-  };
 
   return (
     <header className="sticky top-0 z-20 bg-paper/95 backdrop-blur supports-[backdrop-filter]:bg-paper/80">
@@ -41,19 +37,8 @@ export function AppTopbar({ sections, userName, onMenu }: AppTopbarProps) {
           <PageSearch sections={sections} />
         </div>
 
-        <button
-          type="button"
-          onClick={switchLanguage}
-          lang={next}
-          aria-label={t('shell.switchLanguage')}
-          title={t('shell.switchLanguage')}
-          className="grid size-11 shrink-0 place-items-center rounded-full bg-rail text-sm font-semibold text-ink hover:bg-tint-sand focus-visible:focus-ring"
-        >
-          {isAr ? 'EN' : 'ع'}
-        </button>
-        <div aria-hidden className="grid size-11 shrink-0 place-items-center rounded-full bg-gold text-base font-semibold text-ink">
-          {userName.charAt(0).toUpperCase()}
-        </div>
+        <LanguageSwitch />
+        <AccountMenu user={user} onSignOut={onSignOut} />
       </div>
     </header>
   );
@@ -139,5 +124,91 @@ function PageSearch({ sections }: { sections: NavSection[] }) {
         </ul>
       )}
     </div>
+  );
+}
+
+/** Two-option language switch; the active language is the filled one. */
+function LanguageSwitch() {
+  const { t, i18n } = useTranslation('dashboardNav');
+  const current = i18n.language === 'ar' ? 'ar' : 'en';
+  const choose = (lang: 'en' | 'ar') => {
+    if (lang === current) return;
+    void i18n.changeLanguage(lang);
+    updateHtmlAttributes(lang);
+  };
+  const options = [
+    { lang: 'en' as const, label: 'EN', name: 'English' },
+    { lang: 'ar' as const, label: 'ع', name: 'العربية' },
+  ];
+
+  return (
+    <div role="group" aria-label={t('shell.language')} className="flex h-11 shrink-0 items-center gap-0.5 rounded-pill border border-line bg-rail p-1">
+      {options.map((o) => (
+        <button
+          key={o.lang}
+          type="button"
+          lang={o.lang}
+          onClick={() => choose(o.lang)}
+          aria-pressed={current === o.lang}
+          title={o.name}
+          className={cn(
+            'grid h-full min-w-10 place-items-center rounded-pill px-2.5 text-sm font-semibold transition-colors focus-visible:focus-ring',
+            current === o.lang ? 'bg-ink text-cream shadow-card' : 'text-ink-3 hover:text-ink',
+          )}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+const initials = (name: string) =>
+  name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w.charAt(0).toUpperCase())
+    .join('');
+
+/** The signed-in person: initials, name and role; opens a menu with the email and sign out. */
+function AccountMenu({ user, onSignOut }: { user: { name: string; email?: string; role: string }; onSignOut: () => void }) {
+  const { t } = useTranslation('dashboardNav');
+  const role = t(`role.${user.role}`, ROLE_LABELS[user.role] ?? user.role);
+
+  return (
+    <HMenu as="div" className="relative shrink-0">
+      <MenuButton className="flex h-11 items-center gap-2.5 rounded-pill border border-line bg-paper p-1 pe-1 transition-colors hover:border-line-strong focus-visible:focus-ring data-[open]:border-ink md:pe-3">
+        <span className="relative grid size-9 place-items-center rounded-full bg-ink text-xs font-semibold tracking-wide text-cream">
+          {initials(user.name)}
+          <span aria-hidden className="absolute -bottom-0.5 -end-0.5 size-3 rounded-full bg-success ring-2 ring-paper" />
+        </span>
+        <span className="hidden min-w-0 text-start leading-tight md:block">
+          <span className="block max-w-36 truncate text-sm font-semibold text-ink">{user.name}</span>
+          <span className="block max-w-36 truncate text-xs text-ink-4">{role}</span>
+        </span>
+        <ChevronDown className="hidden size-4 text-ink-4 md:block" aria-hidden />
+        <span className="sr-only">{t('shell.account')}</span>
+      </MenuButton>
+      <MenuItems
+        anchor="bottom end"
+        className="z-40 mt-2 w-64 rounded-card border border-line bg-paper p-1.5 shadow-pop [--anchor-gap:8px] focus:outline-none"
+      >
+        <div className="flex items-center gap-3 px-3 py-2.5">
+          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-gold text-sm font-semibold text-ink">{initials(user.name)}</span>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-semibold text-ink">{user.name}</p>
+            {user.email && <p className="truncate text-xs text-ink-4">{user.email}</p>}
+          </div>
+        </div>
+        <div className="my-1 h-px bg-line" />
+        <MenuItem>
+          <button type="button" onClick={onSignOut} className="flex w-full items-center gap-2.5 rounded-input px-3 py-2.5 text-sm font-medium text-danger data-[focus]:bg-danger-soft">
+            <LogOut className="size-4 rtl:rotate-180" aria-hidden />
+            {t('shell.signOut')}
+          </button>
+        </MenuItem>
+      </MenuItems>
+    </HMenu>
   );
 }

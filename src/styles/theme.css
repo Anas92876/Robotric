@@ -69,6 +69,14 @@
   --radius-card: 14px;
   --radius-feature: 22px;
   --radius-panel: 20px;          /* large bordered page sections */
+
+  /* ---- Motion --------------------------------------------------------- */
+  /* Lori bobs gently (uses the translate property so a mirrored scale still works) */
+  --animate-lori: lori-bob 3.4s ease-in-out infinite;
+  @keyframes lori-bob {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+  }
   --radius-pill: 999px;
 
   --shadow-card:

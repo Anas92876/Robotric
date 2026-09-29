@@ -55,7 +55,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <div className="rt-app min-h-screen bg-paper text-ink" dir={isRTL ? "rtl" : "ltr"}>
         <AppSidebar sections={sections} user={{ name: user.name, role: user.role }} homePath={homePath} onSignOut={logout} open={menuOpen} onClose={closeMenu} />
         <div className="flex min-h-screen flex-col lg:ps-64">
-          <AppTopbar sections={sections} userName={user.name} onMenu={() => setMenuOpen(true)} />
+          <AppTopbar sections={sections} user={{ name: user.name, email: user.email, role: user.role }} onSignOut={logout} onMenu={() => setMenuOpen(true)} />
           <main className={`flex-1 px-4 pb-8 pt-2 sm:px-6 lg:px-8 ${isStudent ? "pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-8" : ""}`}>
             <div className="mx-auto max-w-[1440px]">{children || <Outlet />}</div>
           </main>
