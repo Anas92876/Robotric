@@ -281,7 +281,7 @@ function StudentCard({ summary, isRTL, onFetchStudentDocs, onUpdateStatus, onDow
         {/* Avatar */}
         <div
           className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm text-white"
-          style={{ background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)' }}
+          style={{ background: '#003300' }}
         >
           {summary.student.name.charAt(0).toUpperCase()}
         </div>
@@ -462,9 +462,7 @@ export default function CLOStudentDocuments() {
             <h1
               className="text-4xl font-bold mb-2"
               style={{
-                background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: '#003300',
                 backgroundClip: 'text',
               }}
             >

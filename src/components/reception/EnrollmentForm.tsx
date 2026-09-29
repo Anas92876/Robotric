@@ -730,20 +730,20 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
             <div key={step} className="flex items-center flex-1">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                  step === currentStep
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md'
-                    : step < currentStep
-                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-md'
-                    : 'bg-gray-200 text-[#003300]/40'
-                }`}
+ step === currentStep
+ ?'bg-cyan-500 text-white shadow-md'
+ : step < currentStep
+ ?'bg-green-500 text-white shadow-md'
+ :'bg-gray-200 text-[#003300]/40'
+ }`}
               >
                 {step < currentStep ? '✓' : step}
               </div>
               {step < 4 && (
                 <div
                   className={`flex-1 h-1 mx-2 ${
-                    step < currentStep ? 'bg-gradient-to-r from-green-500 to-emerald-500' : 'bg-gray-200'
-                  }`}
+ step < currentStep ?'bg-green-500':'bg-gray-200'
+ }`}
                 ></div>
               )}
             </div>
@@ -1328,7 +1328,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
             </div>
 
             {/* Summary */}
-            <div className="p-4 bg-gradient-to-br from-primary/5 to-[#cccc99]/10 border border-primary/20 rounded-lg space-y-3">
+            <div className="p-4 bg-primary/5 border border-primary/20 rounded-lg space-y-3">
               <p className="text-base font-semibold text-[#003300] mb-3 pb-2 border-b border-primary/20">Enrollment Summary</p>
               <div className="grid grid-cols-1 gap-2">
                 <div className="flex justify-between items-center">
@@ -1447,7 +1447,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 type="button"
                 variant="primary"
                 onClick={handleNext}
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+                className="bg-cyan-500 hover:bg-cyan-600"
               >
                 Next
               </Button>
@@ -1457,7 +1457,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 type="submit"
                 variant="primary"
                 disabled={isSubmitting || !isReadyToSubmit}
-                className={`bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 ${!isReadyToSubmit ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`bg-green-500 hover:bg-green-600 ${!isReadyToSubmit ?'opacity-50 cursor-not-allowed':''}`}
                 title={!isReadyToSubmit ? "Component initializing..." : "Submit Enrollment"}
               >
                 {isSubmitting ? 'Creating...' : 'Create Enrollment'}

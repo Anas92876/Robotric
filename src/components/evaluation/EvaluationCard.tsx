@@ -66,7 +66,7 @@ export const EvaluationCard: React.FC<EvaluationCardProps> = ({
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
             <User className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -100,7 +100,7 @@ export const EvaluationCard: React.FC<EvaluationCardProps> = ({
       </div>
 
       {/* Overall Rating */}
-      <div className="mb-4 p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-yellow-400/5 border border-yellow-400/20">
+      <div className="mb-4 p-4 rounded-xl bg-yellow-500/10 border border-yellow-400/20">
         <div className="flex items-center justify-between mb-3">
           <span className="text-sm font-semibold text-white/80">Overall Rating</span>
           <div className="flex items-center gap-2">
@@ -145,7 +145,7 @@ export const EvaluationCard: React.FC<EvaluationCardProps> = ({
         <div className="mb-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-white/60">Performance Score</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-green-700 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-primary">
               {evaluation.performanceScore}
             </span>
           </div>
@@ -154,7 +154,7 @@ export const EvaluationCard: React.FC<EvaluationCardProps> = ({
               initial={{ width: 0 }}
               animate={{ width: `${evaluation.performanceScore}%` }}
               transition={{ duration: 1, ease: 'easeOut' }}
-              className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+              className="h-full bg-primary rounded-full"
             />
           </div>
         </div>

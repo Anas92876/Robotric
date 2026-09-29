@@ -150,7 +150,7 @@ export default function TrainerSessions() {
         </div>
         <Link to="/trainer/sessions/new">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <div className="px-6 py-3 bg-gradient-to-r from-primary to-accent rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-2">
+            <div className="px-6 py-3 bg-primary rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-2">
               <Plus className="w-5 h-5" />
               {t('dashboardTrainer:createSession')}
             </div>
@@ -282,7 +282,7 @@ export default function TrainerSessions() {
                       <div
                         className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
                         style={{
-                          background: `linear-gradient(135deg, ${session.groupId?.color ?? '#30c59b'}33, ${session.groupId?.color ?? '#30c59b'}11)`,
+                          background: `${session.groupId?.color ?? '#30c59b'}22`,
                           border: `1px solid ${session.groupId?.color ?? '#30c59b'}44`,
                         }}
                       >
@@ -412,7 +412,7 @@ export default function TrainerSessions() {
               </p>
               <Link to="/trainer/sessions/new" className="inline-block">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <div className="px-8 py-4 bg-gradient-to-r from-primary to-accent rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-3">
+                  <div className="px-8 py-4 bg-primary rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-3">
                     <Plus className="w-5 h-5" />
                     {t('dashboardTrainer:createFirstSession')}
                   </div>

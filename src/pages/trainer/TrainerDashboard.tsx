@@ -142,9 +142,7 @@ export default function TrainerDashboard() {
       {/* Welcome Section */}
       <motion.div variants={itemVariants} className={isRTL ? 'text-right font-arabic' : ''}>
         <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-          background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#003300',
           backgroundClip: 'text'
         }}>
           {t('dashboardTrainer:welcomeBack')}, {user?.name || t('dashboardTrainer:trainer')}
@@ -250,8 +248,8 @@ export default function TrainerDashboard() {
                     transition={{ duration: 0.5 }}
                     className="relative w-24 h-24 mx-auto mb-6"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-xl animate-pulse" />
-                    <div className="relative w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 rounded-full flex items-center justify-center border border-primary/30">
+                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse" />
+                    <div className="relative w-full h-full bg-primary/30 rounded-full flex items-center justify-center border border-primary/30">
                       <Calendar className="w-12 h-12 text-primary" />
                     </div>
                   </motion.div>
@@ -271,7 +269,7 @@ export default function TrainerDashboard() {
                       whileTap={{ scale: 0.95 }}
                       className="relative overflow-hidden"
                     >
-                      <div className={`relative px-6 py-3 bg-gradient-to-r from-primary to-accent rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-2 ${isRTL ? 'flex-row-reverse font-arabic' : ''}`}>
+                      <div className={`relative px-6 py-3 bg-primary rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-2 ${isRTL ?'flex-row-reverse font-arabic':''}`}>
                         <Calendar className="w-5 h-5" />
                         {t('dashboardCommon:viewSchedule')}
                         {isRTL ? <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> : <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
@@ -296,9 +294,9 @@ export default function TrainerDashboard() {
                   <motion.div
                     whileHover={{ scale: 1.02, x: isRTL ? -4 : 4 }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20"
+                    className="relative overflow-hidden rounded-xl bg-primary/20 border border-primary/30 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className={`relative z-10 flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="p-2 rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors">
                         <BookOpen className="w-5 h-5 text-primary" />
@@ -319,9 +317,9 @@ export default function TrainerDashboard() {
                   <motion.div
                     whileHover={{ scale: 1.02, x: isRTL ? -4 : 4 }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative overflow-hidden rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 p-4 transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/20"
+                    className="relative overflow-hidden rounded-xl bg-accent/20 border border-accent/30 p-4 transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/20"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className={`relative z-10 flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="p-2 rounded-lg bg-accent/20 group-hover:bg-accent/30 transition-colors">
                         <Users className="w-5 h-5 text-accent" />
@@ -342,9 +340,9 @@ export default function TrainerDashboard() {
                   <motion.div
                     whileHover={{ scale: 1.02, x: isRTL ? -4 : 4 }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative overflow-hidden rounded-xl bg-gradient-to-br from-secondary/20 to-secondary/5 border border-secondary/30 p-4 transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-secondary/20"
+                    className="relative overflow-hidden rounded-xl bg-secondary/20 border border-secondary/30 p-4 transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-secondary/20"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className={`relative z-10 flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="p-2 rounded-lg bg-secondary/20 group-hover:bg-secondary/30 transition-colors">
                         <Calendar className="w-5 h-5 text-secondary" />

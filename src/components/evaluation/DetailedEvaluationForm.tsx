@@ -72,10 +72,10 @@ export const DetailedEvaluationForm: React.FC<DetailedEvaluationFormProps> = ({
   const [error, setError] = useState<string | null>(null);
 
   const attendanceOptions: { value: Attendance['status']; label: string; color: string }[] = [
-    { value: 'present', label: '✓ Present', color: 'from-green-500 to-emerald-500' },
-    { value: 'late', label: '⏰ Late', color: 'from-yellow-500 to-orange-500' },
-    { value: 'absent', label: '✗ Absent', color: 'from-red-500 to-pink-500' },
-    { value: 'excused', label: '📋 Excused', color: 'from-blue-500 to-indigo-500' }
+    { value: 'present', label: '✓ Present', color: 'bg-green-500' },
+    { value: 'late', label: '⏰ Late', color: 'bg-amber-500' },
+    { value: 'absent', label: '✗ Absent', color: 'bg-red-500' },
+    { value: 'excused', label: '📋 Excused', color: 'bg-blue-500' }
   ];
 
   const participationLevels = [
@@ -190,7 +190,7 @@ export const DetailedEvaluationForm: React.FC<DetailedEvaluationFormProps> = ({
                 })}
                 className={`p-4 rounded-xl border-2 transition-all duration-300 ${
                   formData.attendance.status === option.value
-                    ? `bg-gradient-to-r ${option.color} border-transparent shadow-lg`
+                    ? `${option.color} border-transparent shadow-lg`
                     : 'bg-white/5 border-white/10 hover:border-white/20'
                 }`}
               >
@@ -444,7 +444,7 @@ export const DetailedEvaluationForm: React.FC<DetailedEvaluationFormProps> = ({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-primary/80 hover:from-primary hover:to-primary/70 font-bold shadow-lg shadow-primary/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 px-6 py-3 rounded-xl bg-primary hover:bg-primary font-bold shadow-lg shadow-primary/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             <Save className="w-5 h-5" />
             {isSubmitting ? 'Saving...' : 'Save Evaluation'}

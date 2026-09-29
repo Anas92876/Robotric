@@ -77,7 +77,7 @@ export default function CourseDetailsModal({
           {/* Course Info */}
           <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
             <div className="flex items-start gap-4">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+              <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                 <BookOpen className="w-10 h-10" />
               </div>
               <div className="flex-1">
@@ -278,7 +278,7 @@ export default function CourseDetailsModal({
               </h4>
               <div className="bg-white rounded-lg p-4 border border-[#003300]/10">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center text-white font-semibold">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-white font-semibold">
                     {(data.course?.instructor || data.instructor).name?.charAt(0).toUpperCase() || "I"}
                   </div>
                   <div>

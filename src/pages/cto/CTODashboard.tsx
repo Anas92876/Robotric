@@ -273,7 +273,7 @@ export default function CTODashboard() {
           <div className={isRTL ? "text-right" : ""}>
             <h1
               className="text-4xl font-bold inline-block"
-              style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              style={{ color: '#003300', backgroundClip: "text" }}
             >
               Manager Dashboard
             </h1>
@@ -297,7 +297,7 @@ export default function CTODashboard() {
             <div className={`relative bg-white rounded-xl p-5 border transition-all duration-300 hover:shadow-xl ${card.warn ? "border-red-200 hover:border-red-300" : "border-[#003300]/15 hover:border-[#003300]/30"}`}>
               <div className="flex items-start justify-between mb-3">
                 <div className={`p-2.5 rounded-xl ${card.warn ? "bg-red-50 text-red-500" : "text-[#ffffcc]"}`}
-                  style={card.warn ? {} : { background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" }}>
+                  style={card.warn ? {} : { background: "#003300" }}>
                   {card.icon}
                 </div>
                 <span className={`text-3xl font-bold ${card.warn ? "text-red-500" : "text-[#003300]"}`}>{card.value}</span>
@@ -311,7 +311,7 @@ export default function CTODashboard() {
           );
           return (
             <div key={card.label} className="relative group">
-              <div className={`absolute inset-0 rounded-2xl blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-300 ${card.warn ? "bg-red-500" : "bg-gradient-to-r from-emerald-500 to-green-500"}`} />
+              <div className={`absolute inset-0 rounded-2xl blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-300 ${card.warn ?"bg-red-500":"bg-emerald-500"}`} />
               {card.link ? <Link to={card.link}>{inner}</Link> : inner}
             </div>
           );
@@ -332,7 +332,7 @@ export default function CTODashboard() {
             <div className="w-full bg-[#003300]/10 rounded-full h-3 overflow-hidden">
               <motion.div
                 className="h-3 rounded-full"
-                style={{ background: "linear-gradient(90deg, #003300, #16a34a)" }}
+                style={{ background: "#003300" }}
                 initial={{ width: 0 }}
                 animate={{ width: `${completionRate}%` }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -489,7 +489,7 @@ export default function CTODashboard() {
                   <div className="text-center py-4">
                     {/* Avatar circle */}
                     <div className="w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-[#ffffcc]"
-                      style={{ background: "linear-gradient(135deg, #003300 0%, #16a34a 100%)" }}>
+                      style={{ background: "#003300" }}>
                       {a.employeeOfMonth.name.charAt(0).toUpperCase()}
                     </div>
                     <p className="text-xl font-bold text-[#003300]">{a.employeeOfMonth.name}</p>
@@ -550,7 +550,7 @@ export default function CTODashboard() {
                             {idx < 3 ? rankIcons[idx] : <span className="text-xs text-[#003300]/40 font-medium">{idx + 1}</span>}
                           </div>
                           <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold text-[#ffffcc]"
-                            style={{ background: `linear-gradient(135deg, ${CHART_COLORS[idx % CHART_COLORS.length]}, #16a34a)` }}>
+                            style={{ background: CHART_COLORS[idx % CHART_COLORS.length] }}>
                             {emp.name.charAt(0).toUpperCase()}
                           </div>
                           <div className="flex-1 min-w-0">
@@ -562,7 +562,7 @@ export default function CTODashboard() {
                               <div className="flex-1 bg-[#003300]/10 rounded-full h-1.5 overflow-hidden">
                                 <motion.div
                                   className="h-1.5 rounded-full"
-                                  style={{ background: idx === 0 ? "linear-gradient(90deg, #ca8a04, #eab308)" : "linear-gradient(90deg, #003300, #16a34a)" }}
+                                  style={{ background: idx === 0 ? "#ca8a04" : "#003300" }}
                                   initial={{ width: 0 }}
                                   animate={{ width: `${pct}%` }}
                                   transition={{ duration: 0.8, delay: idx * 0.05 }}

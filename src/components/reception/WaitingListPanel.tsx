@@ -147,7 +147,7 @@ export const WaitingListPanel: React.FC = () => {
               className="flex items-center gap-4 p-4 bg-white rounded-xl border border-zinc-200 hover:border-amber-300 hover:shadow-sm transition-all"
             >
               {/* Avatar */}
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center text-white font-bold shrink-0">
+              <div className="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center text-white font-bold shrink-0">
                 {lead.fullName.charAt(0).toUpperCase()}
               </div>
 

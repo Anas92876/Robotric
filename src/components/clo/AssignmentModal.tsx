@@ -185,7 +185,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
           return (
             <div key={groupId} className="border border-[#003300]/12 rounded-2xl overflow-hidden">
               {/* Group section header */}
-              <div className="px-5 py-4 bg-gradient-to-r from-[#003300]/5 to-transparent border-b border-[#003300]/10">
+              <div className="px-5 py-4 bg-[#003300]/5 border-b border-[#003300]/10">
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">

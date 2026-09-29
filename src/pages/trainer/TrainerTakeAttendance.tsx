@@ -266,9 +266,7 @@ export default function TrainerTakeAttendance() {
         <h1
           className="text-2xl font-bold"
           style={{
-            background: "linear-gradient(135deg, #003300 0%, #004d00 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: '#003300',
             backgroundClip: "text",
           }}
         >

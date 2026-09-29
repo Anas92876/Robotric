@@ -52,7 +52,7 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
       >
         <CardComponent variant="glass" hover className="overflow-hidden border border-white/10 hover:border-primary/30 transition-all duration-300">
           <CardBody padding="none">
-            <div className="relative aspect-square bg-gradient-to-br from-white/5 to-white/[0.02]">
+            <div className="relative aspect-square bg-white/5">
               {imageLoading && !imageError && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
                   <div className="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
@@ -99,7 +99,7 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
                   )}
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileHover={{ scale: 1, opacity: 1 }}
@@ -120,7 +120,7 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
                 </button>
               )}
               {image.title && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-3">
+                <div className="absolute bottom-0 left-0 right-0 bg-black/80 p-3">
                   <p className="text-white font-medium text-sm truncate">{image.title}</p>
                   {image.type && (
                     <Badge variant="secondary" size="sm" className="mt-1.5">
@@ -158,7 +158,7 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
               loading="lazy"
             />
             {(image.title || image.description) && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 rounded-b-lg">
+              <div className="absolute bottom-0 left-0 right-0 bg-black/90 p-6 rounded-b-lg">
                 {image.title && (
                   <h3 className="text-white font-semibold text-xl mb-2">{image.title}</h3>
                 )}

@@ -204,9 +204,7 @@ export default function TrainerTaskSubmissions() {
         </Button>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:taskSubmissions')}</h1>
           <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:reviewAndGrade')}</p>
@@ -316,7 +314,7 @@ export default function TrainerTaskSubmissions() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">
+                        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
                           {submission.studentId.name.charAt(0).toUpperCase()}
                         </div>
                         <div>
@@ -543,7 +541,7 @@ export default function TrainerTaskSubmissions() {
       >
         {selectedSubmission && (
           <div className="space-y-6 max-h-[80vh] overflow-y-auto">
-            <div className="p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
+            <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
               <p className="text-sm text-white/60 mb-1">{t('dashboardTrainer:studentName')}</p>
               <p className="text-white font-semibold text-lg">
                 {selectedSubmission.studentId.name}
@@ -748,7 +746,7 @@ export default function TrainerTaskSubmissions() {
               className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl mx-auto"
             />
             {selectedImage.filename && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-4 rounded-b-xl">
+              <div className="absolute bottom-0 left-0 right-0 bg-black/90 p-4 rounded-b-xl">
                 <p className="text-white text-sm text-center">{selectedImage.filename}</p>
               </div>
             )}

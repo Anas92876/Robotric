@@ -275,7 +275,7 @@ export default function CLOSessionDetail() {
             <div className="space-y-2">
               {resources.map(r => (
                 <div key={r._id} className="flex items-center gap-3 p-3 bg-[#003300]/2 rounded-xl hover:bg-[#003300]/4 transition-colors group">
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/80 to-primary-dark flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-primary/80 flex items-center justify-center flex-shrink-0">
                     <FileText className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">

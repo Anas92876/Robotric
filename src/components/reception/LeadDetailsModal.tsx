@@ -300,7 +300,7 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
               size="sm"
               leftIcon={<Plus className="w-4 h-4" />}
               onClick={() => setIsContactHistoryModalOpen(true)}
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+              className="bg-primary hover:bg-primary/90"
             >
               Add Contact
             </Button>

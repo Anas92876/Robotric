@@ -69,7 +69,7 @@ function CertCard({ cert }: { cert: CertRecord }) {
       className="bg-white rounded-2xl border border-[#003300]/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       {/* Gold top accent */}
-      <div className="h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400" />
+      <div className="h-1 bg-amber-400" />
 
       {/* Preview thumbnail — scaled down A4, fills full card width */}
       <div className="relative overflow-hidden bg-[#faf8f0] border-b border-[#003300]/6" style={{ height: '180px' }}>
@@ -94,7 +94,7 @@ function CertCard({ cert }: { cert: CertRecord }) {
           </div>
         </div>
         {/* Overlay gradient for clean fade at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf8f0]/70 pointer-events-none" />
+        <div className="absolute inset-0 bg-transparent pointer-events-none" />
         {/* Cert ID badge */}
         <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 border border-[#003300]/10">
           <p className="text-[10px] font-mono font-bold text-[#003300]/60">{cert.certificateNumber}</p>

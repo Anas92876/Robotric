@@ -159,8 +159,8 @@ export default function SessionPickerModal({
                           transition={{ duration: 0.5 }}
                           className="relative w-24 h-24 mx-auto mb-6"
                         >
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-xl animate-pulse" />
-                          <div className="relative w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 rounded-full flex items-center justify-center border border-primary/30">
+                          <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse" />
+                          <div className="relative w-full h-full bg-primary/30 rounded-full flex items-center justify-center border border-primary/30">
                             <Calendar className="w-12 h-12 text-primary" />
                           </div>
                         </motion.div>
@@ -183,7 +183,7 @@ export default function SessionPickerModal({
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
-                            <div className="px-6 py-3 bg-gradient-to-r from-primary to-accent rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-2">
+                            <div className="px-6 py-3 bg-primary rounded-xl font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 flex items-center gap-2">
                               <Plus className="w-5 h-5" />
                               Create Session
                             </div>

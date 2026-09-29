@@ -248,20 +248,18 @@ function Dashboard() {
         {statCards.map((card, index) => (
           <div
             key={index}
-            className="group relative bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl sm:rounded-2xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2"
+            className="group relative bg-white rounded-xl sm:rounded-2xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2"
           >
             {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
+            <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
             
             {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl sm:rounded-2xl -z-10" />
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
             
             <div className={`relative z-10 flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
                 <div className="text-3xl font-bold group-hover:scale-105 transition-transform duration-300 inline-block" style={{ 
-                  background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+                  color: '#003300',
                   backgroundClip: 'text'
                 }}>
                   {card.value}
@@ -271,7 +269,7 @@ function Dashboard() {
                 </h3>
               </div>
               <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ 
-                background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
+                background: '#003300',
                 color: '#ffffcc'
               }}>
                 {card.icon}
@@ -279,7 +277,7 @@ function Dashboard() {
             </div>
             
             {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
         ))}
       </div>

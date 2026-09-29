@@ -262,7 +262,7 @@ export const SubmissionViewer: React.FC<SubmissionViewerProps> = ({
                 className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl mx-auto"
               />
               {selectedImage.filename && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-4 rounded-b-xl">
+                <div className="absolute bottom-0 left-0 right-0 bg-black/90 p-4 rounded-b-xl">
                   <p className="text-white text-sm text-center">{selectedImage.filename}</p>
                 </div>
               )}

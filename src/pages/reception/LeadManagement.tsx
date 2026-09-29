@@ -277,9 +277,7 @@ const LeadManagement: React.FC = () => {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>
             {t('dashboardReception:leadManagement.title', 'Lead Management')}
@@ -294,7 +292,7 @@ const LeadManagement: React.FC = () => {
           variant="primary"
           leftIcon={<Plus className="w-5 h-5" />}
           onClick={() => setIsCreateModalOpen(true)}
-          className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+          className="bg-primary hover:bg-primary/90"
         >
           New Lead
         </Button>
@@ -422,7 +420,7 @@ const LeadManagement: React.FC = () => {
             variant="primary"
             leftIcon={<Search className="w-4 h-4" />}
             onClick={handleSearch}
-            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 px-6 shadow-sm"
+            className="bg-primary hover:bg-primary/90 px-6 shadow-sm"
           >
             Search
           </Button>

@@ -269,7 +269,7 @@ export const SessionResourcePicker: React.FC<SessionResourcePickerProps> = ({
                 </div>
 
                 {/* Icon */}
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/80 to-primary-dark flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-primary/80 flex items-center justify-center flex-shrink-0">
                   <FileText className="w-4.5 h-4.5 text-white" />
                 </div>
 

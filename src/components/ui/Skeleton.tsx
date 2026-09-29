@@ -70,7 +70,7 @@ export function SkeletonCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'bg-gradient-to-br from-white via-white to-[#003300]/5 border border-[#003300]/20 rounded-xl p-6 space-y-4',
+        'bg-white border border-[#003300]/20 rounded-xl p-6 space-y-4',
         className
       )}
     >

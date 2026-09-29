@@ -322,7 +322,7 @@ export default function StudentEvaluations() {
       <motion.div variants={itemVariants}>
         <h1
           className="text-2xl sm:text-3xl md:text-4xl font-bold"
-          style={{ background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+          style={{ color: '#003300', backgroundClip: 'text' }}
         >
           {t('dashboardStudent:myEvaluations', 'My Evaluations')}
         </h1>

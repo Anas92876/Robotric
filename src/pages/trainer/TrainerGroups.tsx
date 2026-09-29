@@ -105,9 +105,7 @@ export default function TrainerGroups() {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:myGroups')}</h1>
           <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:manageGroups')}</p>
@@ -285,7 +283,7 @@ export default function TrainerGroups() {
                             width: `${group.progress?.percentageComplete || 0}%`,
                           }}
                           transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                          className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                          className="h-full bg-primary rounded-full"
                         />
                       </div>
                     </div>

@@ -137,9 +137,7 @@ export default function SessionRequests() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardReception:sessionRequests.title', 'Session Requests')}</h1>
           <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardReception:sessionRequests.subtitle', 'Approve or decline student session requests')}</p>

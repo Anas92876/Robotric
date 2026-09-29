@@ -77,7 +77,7 @@ export default function ClientDashboard() {
         <div>
           <h1
             className="text-2xl md:text-3xl font-bold"
-            style={{ background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+            style={{ color: '#003300' }}
           >
             Welcome back, {user?.name?.split(' ')[0] || 'there'}
           </h1>

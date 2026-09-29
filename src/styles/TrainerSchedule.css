@@ -2,7 +2,7 @@
  * TrainerSchedule Custom Styles
  *
  * Premium UI/UX styling for react-big-calendar
- * Dark theme with glassmorphism, gradients, and smooth animations
+ * Calendar styles (flat colours, no gradients)
  *
  * @styles TrainerSchedule
  * @version 2.0.0
@@ -32,7 +32,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+  background: rgba(6, 182, 212, 0.15);
   border-bottom: 2px solid rgba(6, 182, 212, 0.4);
   color: #06b6d4;
   text-align: center;
@@ -65,7 +65,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
+  background: rgba(6, 182, 212, 0.08);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -87,7 +87,7 @@
 }
 
 .rbc-today {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+  background: rgba(6, 182, 212, 0.2);
   border: 2px solid rgba(6, 182, 212, 0.6);
   box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
 }
@@ -114,7 +114,7 @@
 
 .rbc-date-cell.rbc-now > a,
 .rbc-date-cell.rbc-now > button {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  background: #06b6d4;
   color: white !important;
   width: 40px;
   height: 40px;
@@ -148,7 +148,7 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border: 0;
-  background: var(--event-color, linear-gradient(135deg, #30c59b 0%, #3b82f6 100%)) !important;
+  background: var(--event-color, #30c59b) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -165,7 +165,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  background: rgba(255, 255, 255, 0.2);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -210,7 +210,7 @@
 
 .rbc-time-header {
   border-bottom: 2px solid rgba(48, 197, 155, 0.3);
-  background: linear-gradient(135deg, rgba(48, 197, 155, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  background: rgba(48, 197, 155, 0.05);
 }
 
 .rbc-time-header-content {
@@ -235,7 +235,7 @@
 }
 
 .rbc-current-time-indicator {
-  background: linear-gradient(90deg, #30c59b 0%, #3b82f6 100%);
+  background: #30c59b;
   height: 3px;
   box-shadow: 0 0 10px rgba(48, 197, 155, 0.5);
   z-index: 3;
@@ -337,7 +337,7 @@
   text-transform: uppercase;
   letter-spacing: 0.025em;
   color: #30c59b;
-  background: linear-gradient(135deg, rgba(48, 197, 155, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  background: rgba(48, 197, 155, 0.1);
   padding: 6px 12px;
   border-radius: 8px;
   margin: 4px;
@@ -347,7 +347,7 @@
 }
 
 .rbc-show-more:hover {
-  background: linear-gradient(135deg, rgba(48, 197, 155, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+  background: rgba(48, 197, 155, 0.2);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(48, 197, 155, 0.3);
 }
@@ -375,7 +375,7 @@
 }
 
 .rbc-overlay-header {
-  background: linear-gradient(135deg, rgba(48, 197, 155, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+  background: rgba(48, 197, 155, 0.2);
   border-bottom: 2px solid rgba(48, 197, 155, 0.3);
   color: white;
   font-weight: 700;

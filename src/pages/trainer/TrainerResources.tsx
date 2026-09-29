@@ -159,7 +159,7 @@ export default function TrainerResources() {
               {/* Resource row */}
               <div className="p-5 flex items-center gap-4">
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <FileText className="w-6 h-6 text-primary" />
                 </div>
 

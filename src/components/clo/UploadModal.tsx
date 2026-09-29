@@ -208,7 +208,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
           >
             {selectedFile ? (
               <div className="flex items-center justify-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
+                <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center">
                   <FileText className="w-7 h-7 text-white" />
                 </div>
                 <div className="text-left">
@@ -269,7 +269,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3 }}
-                className="h-full bg-gradient-to-r from-primary to-primary-dark rounded-full"
+                className="h-full bg-primary rounded-full"
               />
             </div>
           </motion.div>

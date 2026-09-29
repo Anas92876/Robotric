@@ -399,19 +399,19 @@ function CoursesLevel() {
               }`}>
                 {/* Top accent bar */}
                 <div className={`h-1.5 w-full ${
-                  course.type === 'bundle'
-                    ? 'bg-gradient-to-r from-violet-400 to-violet-600'
-                    : course.status === 'published' ? 'bg-emerald-400' : course.status === 'draft' ? 'bg-amber-400' : 'bg-zinc-300'
-                }`} />
+ course.type ==='bundle'
+ ?'bg-violet-400'
+ : course.status ==='published'?'bg-emerald-400': course.status ==='draft'?'bg-amber-400':'bg-zinc-300'
+ }`} />
 
                 <div className="p-5 flex flex-col flex-1">
                   {/* Top row: icon + status + actions */}
                   <div className="flex items-start justify-between gap-2 mb-4">
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                      course.type === 'bundle'
-                        ? 'bg-gradient-to-br from-violet-400 to-violet-600'
-                        : 'bg-gradient-to-br from-primary to-primary-dark'
-                    }`}>
+ course.type ==='bundle'
+ ?'bg-violet-400'
+ :'bg-primary'
+ }`}>
                       {course.type === 'bundle'
                         ? <Layers className="w-5 h-5 text-white" />
                         : <BookOpen className="w-5 h-5 text-white" />
@@ -736,7 +736,7 @@ function GroupsLevel({ courseId }: { courseId: string }) {
                     <div className="flex items-start justify-between gap-4">
                       {/* Left: avatar + info */}
                       <div className="flex items-start gap-4 flex-1 min-w-0">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/80 to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-primary/80 flex items-center justify-center text-white flex-shrink-0">
                           <UsersRound className="w-6 h-6" />
                         </div>
                         <div className="flex-1 min-w-0">

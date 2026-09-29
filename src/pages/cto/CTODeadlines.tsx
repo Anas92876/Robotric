@@ -345,7 +345,7 @@ export default function CTODeadlines() {
           <div>
             <h1
               className="text-4xl font-bold inline-block"
-              style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              style={{ color: '#003300', backgroundClip: "text" }}
             >
               Deadline Warnings
             </h1>

@@ -98,9 +98,7 @@ export default function StudentDashboard() {
       {/* Welcome Section */}
       <motion.div variants={itemVariants}>
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-          background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#003300',
           backgroundClip: 'text'
         }}>
           {t('dashboardStudent:welcomeBack')}, {user?.name || "Student"}
@@ -218,7 +216,7 @@ export default function StudentDashboard() {
                             initial={{ width: 0 }}
                             animate={{ width: `${course.progress}%` }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                            className="h-full bg-primary rounded-full"
                           />
                         </div>
                       </div>

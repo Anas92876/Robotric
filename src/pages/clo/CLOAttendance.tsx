@@ -205,7 +205,7 @@ export default function CLOAttendance() {
                     className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <BookOpen className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -279,7 +279,7 @@ export default function CLOAttendance() {
                     className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <ClipboardCheck className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -350,7 +350,7 @@ export default function CLOAttendance() {
             {/* Session Info Card */}
             <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
               <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                   <ClipboardCheck className="w-8 h-8" />
                 </div>
                 <div className={`flex-1 ${isRTL ? 'text-right' : ''}`}>
@@ -451,7 +451,7 @@ export default function CLOAttendance() {
                       className={`flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-[#003300]/5 hover:border-primary/20 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
                     >
                       <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-sm font-semibold">
+                        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold">
                           {record.student.name?.charAt(0).toUpperCase() || "S"}
                         </div>
                         <div className={isRTL ? 'text-right' : ''}>

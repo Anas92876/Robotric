@@ -29,8 +29,8 @@ function Card({
   const isHoverable = hoverable || hover;
 
   const variants = {
-    default: 'bg-gradient-to-br from-white via-white to-[#003300]/5 border border-[#003300]/20 shadow-lg',
-    elevated: 'bg-gradient-to-br from-white via-white to-[#003300]/5 border border-[#003300]/20 shadow-lg hover:shadow-2xl',
+    default: 'bg-white border border-[#003300]/20 shadow-lg',
+    elevated: 'bg-white border border-[#003300]/20 shadow-lg hover:shadow-2xl',
     outlined: 'bg-transparent border-2 border-[#003300]/30',
     glass: 'backdrop-blur-xl bg-white/90 border border-[#003300]/20 shadow-[0_8px_32px_rgba(0,51,0,0.1)]',
     premium: 'backdrop-blur-xl bg-white/95 border border-[#003300]/20 shadow-[0_8px_32px_rgba(0,51,0,0.15),0_1px_0_rgba(0,51,0,0.05)_inset]',
@@ -73,13 +73,13 @@ function Card({
         {isHoverable && (
           <>
             {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+            <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
             
             {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl -z-10" />
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
             
             {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </>
         )}
         <div className="relative z-10">{children}</div>
@@ -101,13 +101,13 @@ function Card({
       {isHoverable && (
         <>
           {/* Animated Background Gradient on Hover */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+          <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
           
           {/* Shimmer Effect */}
-          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl -z-10" />
+          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
           
           {/* Corner Decoration */}
-          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </>
       )}
       <div className="relative z-10">{children}</div>
@@ -197,12 +197,12 @@ function StatsCard({
   className,
 }: StatsCardProps) {
   return (
-    <div className={cn('group relative bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2', className)}>
+    <div className={cn('group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2', className)}>
       {/* Animated Background Gradient on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Shimmer Effect */}
-      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent" />
       
       {/* Content Container */}
       <div className="relative z-10 flex items-start justify-between">
@@ -216,9 +216,7 @@ function StatsCard({
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             className="text-3xl font-bold group-hover:scale-105 transition-transform duration-300 inline-block"
             style={{ 
-              background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              color: '#003300',
               backgroundClip: 'text'
             }}
           >
@@ -263,7 +261,7 @@ function StatsCard({
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             className="flex-shrink-0 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300"
             style={{ 
-              background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
+              background: '#003300',
               color: '#ffffcc'
             }}
           >
@@ -273,10 +271,10 @@ function StatsCard({
       </div>
 
       {/* Animated Bottom Accent Line */}
-      <div className="mt-4 h-1 bg-gradient-to-r from-transparent via-[#003300]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500" />
+      <div className="mt-4 h-1 bg-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500" />
 
       {/* Corner Decoration */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
   );
 }

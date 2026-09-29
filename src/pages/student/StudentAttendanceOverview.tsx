@@ -134,9 +134,7 @@ export default function StudentAttendanceOverview() {
       {/* Header */}
       <motion.div variants={itemVariants} >
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-          background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#003300',
           backgroundClip: 'text'
         }}>
           {t('dashboardStudent:attendanceOverview')}
@@ -171,14 +169,14 @@ export default function StudentAttendanceOverview() {
                 animate={{ width: `${overallStats?.averageAttendance || 0}%` }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className={`h-full rounded-full ${
-                  (overallStats?.averageAttendance || 0) >= 90
-                    ? "bg-gradient-to-r from-success to-success-dark"
-                    : (overallStats?.averageAttendance || 0) >= 75
-                    ? "bg-gradient-to-r from-primary to-accent"
-                    : (overallStats?.averageAttendance || 0) >= 60
-                    ? "bg-gradient-to-r from-warning to-warning-dark"
-                    : "bg-gradient-to-r from-error to-error-dark"
-                }`}
+ (overallStats?.averageAttendance || 0) >= 90
+ ?"bg-success"
+ : (overallStats?.averageAttendance || 0) >= 75
+ ?"bg-primary"
+ : (overallStats?.averageAttendance || 0) >= 60
+ ?"bg-warning"
+ :"bg-error"
+ }`}
               />
             </div>
           </CardBody>
@@ -262,7 +260,7 @@ export default function StudentAttendanceOverview() {
                           className="w-12 h-12 rounded-lg object-cover"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
                           <BookOpen className="w-6 h-6 text-white/40" />
                         </div>
                       )}
@@ -288,14 +286,14 @@ export default function StudentAttendanceOverview() {
                           animate={{ width: `${course.attendancePercentage}%` }}
                           transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                           className={`h-full rounded-full ${
-                            course.attendancePercentage >= 90
-                              ? "bg-gradient-to-r from-success to-success-dark"
-                              : course.attendancePercentage >= 75
-                              ? "bg-gradient-to-r from-primary to-accent"
-                              : course.attendancePercentage >= 60
-                              ? "bg-gradient-to-r from-warning to-warning-dark"
-                              : "bg-gradient-to-r from-error to-error-dark"
-                          }`}
+ course.attendancePercentage >= 90
+ ?"bg-success"
+ : course.attendancePercentage >= 75
+ ?"bg-primary"
+ : course.attendancePercentage >= 60
+ ?"bg-warning"
+ :"bg-error"
+ }`}
                         />
                       </div>
                     </div>

@@ -51,7 +51,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                className="w-3 h-3 bg-gradient-to-r from-primary to-secondary rounded-full"
+                className="w-3 h-3 bg-primary rounded-full"
                 animate={{
                   scale: [1, 1.5, 1],
                   opacity: [0.5, 1, 0.5],
@@ -84,7 +84,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
       <div className={`${containerClass} ${className}`}>
         <div className="flex flex-col items-center space-y-4">
           <motion.div
-            className="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-secondary"
+            className="w-16 h-16 rounded-full bg-primary"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.5, 1, 0.5],
@@ -143,7 +143,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
 
           {/* Center glow */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-full blur-md" />
+            <div className="w-8 h-8 bg-primary/50 rounded-full blur-md" />
           </div>
         </div>
 

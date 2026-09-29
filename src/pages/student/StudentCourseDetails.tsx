@@ -49,7 +49,7 @@ function ProgressBar({ value, className = "" }: { value: number; className?: str
         initial={{ width: 0 }}
         animate={{ width: `${value}%` }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        style={{ background: "linear-gradient(90deg, #003300, #004d00)" }}
+        style={{ background: "#003300" }}
       />
     </div>
   );
@@ -348,7 +348,7 @@ export default function StudentCourseDetails() {
               alt={course.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-black/50" />
           </div>
         )}
 
@@ -420,7 +420,7 @@ export default function StudentCourseDetails() {
             <div className="flex items-center gap-2.5 min-w-0">
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                style={{ background: "linear-gradient(135deg,#003300,#004d00)" }}
+                style={{ background: "#003300" }}
               >
                 <PlayCircle className="w-4 h-4 text-[#cccc99]" />
               </div>

@@ -41,7 +41,7 @@ export const ConvertChoiceModal: React.FC<ConvertChoiceModalProps> = ({
         {/* Lead Info */}
         <div className="bg-white/5 border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold text-lg">
+            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-lg">
               {lead.fullName.charAt(0).toUpperCase()}
             </div>
             <div>
@@ -67,7 +67,7 @@ export const ConvertChoiceModal: React.FC<ConvertChoiceModalProps> = ({
           {lead.status === 'interest' && (
             <button
               onClick={onSelectWaiting}
-              className="w-full p-4 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/20 rounded-lg hover:border-amber-500/40 transition-all group"
+              className="w-full p-4 bg-amber-500/10 border border-amber-500/20 rounded-lg hover:border-amber-500/40 transition-all group"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center group-hover:bg-amber-500/30 transition-colors">
@@ -85,7 +85,7 @@ export const ConvertChoiceModal: React.FC<ConvertChoiceModalProps> = ({
           {lead.status !== 'student' && (
             <button
               onClick={onSelectStudent}
-              className="w-full p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-lg hover:border-green-500/40 transition-all group"
+              className="w-full p-4 bg-green-500/10 border border-green-500/20 rounded-lg hover:border-green-500/40 transition-all group"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition-colors">
@@ -103,7 +103,7 @@ export const ConvertChoiceModal: React.FC<ConvertChoiceModalProps> = ({
           {lead.status === 'blacklist' && (
             <button
               onClick={onSelectInterest}
-              className="w-full p-4 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-lg hover:border-blue-500/40 transition-all group"
+              className="w-full p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg hover:border-blue-500/40 transition-all group"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
@@ -121,7 +121,7 @@ export const ConvertChoiceModal: React.FC<ConvertChoiceModalProps> = ({
           {lead.status !== 'blacklist' && (
             <button
               onClick={onSelectBlacklist}
-              className="w-full p-4 bg-gradient-to-r from-red-500/10 to-rose-500/10 border border-red-500/20 rounded-lg hover:border-red-500/40 transition-all group"
+              className="w-full p-4 bg-red-500/10 border border-red-500/20 rounded-lg hover:border-red-500/40 transition-all group"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center group-hover:bg-red-500/30 transition-colors">

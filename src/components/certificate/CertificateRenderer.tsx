@@ -96,7 +96,7 @@ const GoldDivider: React.FC<{ width?: string }> = ({ width = '60%' }) => (
       maxWidth: 500,
       height: 1,
       margin: '16px auto 14px',
-      background: `linear-gradient(to right, transparent, ${C.gold} 20%, ${C.gold} 80%, transparent)`,
+      background: C.gold,
       opacity: 0.7,
     }}
   />

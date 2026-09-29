@@ -130,9 +130,7 @@ export default function CLODashboard() {
         <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={isRTL ? 'text-right font-arabic' : ''}>
             <h1 className="text-4xl font-bold mb-2 inline-block group-hover:scale-105 transition-transform duration-300" style={{
-              background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              color: '#003300',
               backgroundClip: 'text'
             }}>
               {t('dashboardCLO:dashboard')}
@@ -167,23 +165,23 @@ export default function CLODashboard() {
           >
             {/* Subtle background effect */}
             <div
-              className={`absolute inset-0 bg-gradient-to-r ${card.lightColor} rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300`}
+              className={`absolute inset-0 ${card.lightColor} rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300`}
             ></div>
 
             {/* Card content */}
-            <div className="relative bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl sm:rounded-2xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out group/card overflow-hidden">
+            <div className="relative bg-white rounded-xl sm:rounded-2xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out group/card overflow-hidden">
               {/* Animated Background Gradient on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
+              <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
               
               {/* Shimmer Effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl sm:rounded-2xl -z-10" />
+              <div className="absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
                   {/* Icon with gradient background */}
                   <div
                     className="p-3 rounded-xl flex items-center justify-center group-hover/card:scale-110 transition-transform duration-300"
                     style={{ 
-                      background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
+                      background: '#003300',
                       color: '#ffffcc'
                     }}
                   >
@@ -194,9 +192,7 @@ export default function CLODashboard() {
                   <div
                     className="text-3xl font-bold group-hover/card:scale-105 transition-transform duration-300 inline-block"
                     style={{ 
-                      background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
+                      color: '#003300',
                       backgroundClip: 'text'
                     }}
                   >
@@ -216,7 +212,7 @@ export default function CLODashboard() {
               </div>
 
               {/* Corner Decoration */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
         ))}
@@ -229,10 +225,10 @@ export default function CLODashboard() {
       >
         {/* Attendance Rate */}
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-green-50 rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
           <div className="relative bg-white rounded-2xl p-6 border border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
             <div className={`flex items-center gap-3 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <div className="p-3 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50">
+              <div className="p-3 rounded-xl bg-green-50">
                 <Activity className="w-6 h-6 text-green-600" />
               </div>
               <div className={`flex-1 ${isRTL ? 'text-right font-arabic' : ''}`}>
@@ -243,7 +239,7 @@ export default function CLODashboard() {
               </div>
             </div>
             <div className="flex items-baseline gap-2 mb-3">
-              <span className="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
+              <span className="text-4xl font-bold text-green-500">
                 {stats?.performance.attendanceRate || 0}%
               </span>
               <TrendingUp className="w-5 h-5 text-green-500" />
@@ -251,7 +247,7 @@ export default function CLODashboard() {
             {/* Progress bar for attendance */}
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
-                className="h-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-500"
+                className="h-2 rounded-full bg-green-500 transition-all duration-500"
                 style={{
                   width: `${stats?.performance.attendanceRate || 0}%`,
                 }}
@@ -262,10 +258,10 @@ export default function CLODashboard() {
 
         {/* Completion Rate */}
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-teal-50 rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
           <div className="relative bg-white rounded-2xl p-6 border border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
             <div className={`flex items-center gap-3 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <div className="p-3 rounded-xl bg-gradient-to-r from-teal-50 to-cyan-50">
+              <div className="p-3 rounded-xl bg-teal-50">
                 <Award className="w-6 h-6 text-teal-600" />
               </div>
               <div className={`flex-1 ${isRTL ? 'text-right font-arabic' : ''}`}>
@@ -276,7 +272,7 @@ export default function CLODashboard() {
               </div>
             </div>
             <div className="flex items-baseline gap-2 mb-3">
-              <span className="text-4xl font-bold bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="text-4xl font-bold text-teal-500">
                 {stats?.performance.completionRate || 0}%
               </span>
               <TrendingUp className="w-5 h-5 text-teal-500" />
@@ -284,7 +280,7 @@ export default function CLODashboard() {
             {/* Progress bar for completion */}
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
-                className="h-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-500"
+                className="h-2 rounded-full bg-teal-500 transition-all duration-500"
                 style={{
                   width: `${stats?.performance.completionRate || 0}%`,
                 }}
@@ -320,7 +316,7 @@ export default function CLODashboard() {
                   className={`flex items-center justify-between p-4 rounded-xl hover:bg-emerald-50/50 transition-colors border border-transparent hover:border-emerald-100 ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <div className={`flex items-center gap-3 flex-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 text-white font-bold text-sm">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500 text-white font-bold text-sm">
                       #{index + 1}
                     </div>
                     <div className={`flex-1 min-w-0 ${isRTL ? 'text-right font-arabic' : ''}`}>
@@ -368,7 +364,7 @@ export default function CLODashboard() {
                         key={group._id}
                         className="flex items-center gap-3 p-3 rounded-xl hover:bg-emerald-50/50 transition-colors"
                       >
-                        <div className="p-2 rounded-lg bg-gradient-to-r from-emerald-50 to-green-50">
+                        <div className="p-2 rounded-lg bg-emerald-50">
                           <UsersRound className="w-4 h-4 text-emerald-600" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -403,7 +399,7 @@ export default function CLODashboard() {
                           key={course._id}
                           className="flex items-center gap-3 p-3 rounded-xl hover:bg-teal-50/50 transition-colors"
                         >
-                          <div className="p-2 rounded-lg bg-gradient-to-r from-teal-50 to-cyan-50">
+                          <div className="p-2 rounded-lg bg-teal-50">
                             <BookOpen className="w-4 h-4 text-teal-600" />
                           </div>
                           <div className="flex-1 min-w-0">

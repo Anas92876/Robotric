@@ -347,7 +347,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
               </div>
               <div className="w-full bg-white/50 rounded-full h-3">
                 <div
-                  className="bg-gradient-to-r from-green-500 to-emerald-500 h-3 rounded-full transition-all"
+                  className="bg-green-500 h-3 rounded-full transition-all"
                   style={{
                       width: `${displayEnrollment.payment?.totalAmount
                         ? Math.min((displayEnrollment.payment.paidAmount / displayEnrollment.payment.totalAmount) * 100, 100)
@@ -486,7 +486,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                     </div>
                     <div className="w-full bg-white/50 rounded-full h-3">
                       <div
-                        className="bg-gradient-to-r from-orange-500 to-orange-600 h-3 rounded-full transition-all"
+                        className="bg-orange-500 h-3 rounded-full transition-all"
                         style={{
                           width: `${displayEnrollment?.transportation?.totalAmount
                             ? Math.min(((displayEnrollment?.transportation?.paidAmount || 0) / (displayEnrollment?.transportation?.totalAmount || 1)) * 100, 100)

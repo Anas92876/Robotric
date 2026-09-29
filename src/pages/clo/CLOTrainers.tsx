@@ -159,9 +159,7 @@ export default function CLOTrainers() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{ 
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:trainers')}</h1>
         </div>
@@ -252,7 +250,7 @@ export default function CLOTrainers() {
               <div className="bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-md transition-all">
                 <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   {/* Avatar */}
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                     <Users className="w-8 h-8" />
                   </div>
 

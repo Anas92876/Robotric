@@ -160,9 +160,7 @@ export default function CLOEvaluations() {
             )}
           </div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:sessionEvaluations')}</h1>
           <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
@@ -233,7 +231,7 @@ export default function CLOEvaluations() {
                     className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <BookOpen className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -307,7 +305,7 @@ export default function CLOEvaluations() {
                     className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <FileText className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">

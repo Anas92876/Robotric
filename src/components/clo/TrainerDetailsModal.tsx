@@ -75,9 +75,9 @@ export default function TrainerDetailsModal({
       ) : data ? (
         <div className="space-y-6">
           {/* Trainer Info */}
-          <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6 border border-emerald-200">
+          <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-200">
             <div className="flex items-start gap-4">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center text-white flex-shrink-0">
+              <div className="w-20 h-20 rounded-full bg-emerald-500 flex items-center justify-center text-white flex-shrink-0">
                 <Users className="w-10 h-10" />
               </div>
               <div className="flex-1">

@@ -345,10 +345,10 @@ function LockedScreen({
       {/* Lock card */}
       <motion.div
         variants={fade}
-        className="rounded-2xl overflow-hidden border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-sm"
+        className="rounded-2xl overflow-hidden border border-amber-200 bg-amber-50 shadow-sm"
       >
         {/* Top amber strip */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-amber-400 to-orange-400" />
+        <div className="h-1.5 w-full bg-amber-400" />
 
         <div className="p-6 sm:p-8 text-center">
           {/* Lock icon */}

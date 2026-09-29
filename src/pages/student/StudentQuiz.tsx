@@ -150,10 +150,10 @@ export default function StudentQuiz() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 ${
-                isPassed
-                  ? "bg-gradient-to-br from-success/20 to-success/5 border-2 border-success/30"
-                  : "bg-gradient-to-br from-error/20 to-error/5 border-2 border-error/30"
-              }`}
+ isPassed
+ ?"bg-success/20 border-2 border-success/30"
+ :"bg-error/20 border-2 border-error/30"
+ }`}
             >
               {isPassed ? (
                 <Trophy className="w-10 h-10 text-success" />
@@ -163,7 +163,7 @@ export default function StudentQuiz() {
             </motion.div>
 
             {/* Message */}
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-green-700 to-primary bg-clip-text text-transparent">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-primary">
               {isPassed ? t('dashboardStudent:congratulations') : t('dashboardStudent:keepTrying')}
             </h2>
             <p className="text-white/60 mb-8">
@@ -175,10 +175,10 @@ export default function StudentQuiz() {
             {/* Score */}
             <div className="mb-8">
               <div className={`inline-flex items-center justify-center w-32 h-32 rounded-2xl ${
-                isPassed
-                  ? "bg-gradient-to-br from-success/20 to-success/5 border-2 border-success/40"
-                  : "bg-gradient-to-br from-error/20 to-error/5 border-2 border-error/40"
-              }`}>
+ isPassed
+ ?"bg-success/20 border-2 border-success/40"
+ :"bg-error/20 border-2 border-error/40"
+ }`}>
                 <div>
                   <div className={`text-5xl font-bold ${isPassed ? "text-success" : "text-error"}`}>
                     {scorePercentage}%
@@ -190,13 +190,13 @@ export default function StudentQuiz() {
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 mb-8">
-              <div className="p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+              <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
                 <p className="text-xs text-primary mb-1">{t('dashboardStudent:points')}</p>
                 <p className="text-lg font-bold text-primary">
                   {results.earnedPoints}<span className="text-sm text-white/40">/{results.totalPoints}</span>
                 </p>
               </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20">
+              <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
                 <p className="text-xs text-accent mb-1">{t('dashboardCommon:time')}</p>
                 <p className="text-lg font-bold text-accent">
                   {Math.floor(results.timeSpent / 60)}:{(results.timeSpent % 60).toString().padStart(2, '0')}
@@ -256,10 +256,10 @@ export default function StudentQuiz() {
           <CardBody className="p-4 sm:p-6 md:p-8">
             {/* Header */}
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 mb-4">
                 <Trophy className="w-8 h-8 text-primary" />
               </div>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-green-700 to-primary bg-clip-text text-transparent">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-primary">
                 {quiz.title}
               </h1>
               {quiz.description && (
@@ -269,17 +269,17 @@ export default function StudentQuiz() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-6">
-              <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center">
+              <div className="p-3 sm:p-4 rounded-xl bg-primary/10 border border-primary/20 text-center">
                 <p className="text-[10px] sm:text-xs text-primary mb-1">{t('dashboardStudent:questionsCount', { count: '' }).replace(' ()', '')}</p>
                 <p className="text-xl sm:text-2xl font-bold text-primary">{quiz.questions.length}</p>
               </div>
-              <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 text-center">
+              <div className="p-3 sm:p-4 rounded-xl bg-accent/10 border border-accent/20 text-center">
                 <p className="text-[10px] sm:text-xs text-accent mb-1">{t('dashboardCommon:time')}</p>
                 <p className="text-xl sm:text-2xl font-bold text-accent">
                   {quiz.timeLimit ? `${quiz.timeLimit}m` : "∞"}
                 </p>
               </div>
-              <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-br from-success/10 to-success/5 border border-success/20 text-center">
+              <div className="p-3 sm:p-4 rounded-xl bg-success/10 border border-success/20 text-center">
                 <p className="text-[10px] sm:text-xs text-success mb-1">Pass</p>
                 <p className="text-xl sm:text-2xl font-bold text-success">{quiz.passingScore}%</p>
               </div>
@@ -364,7 +364,7 @@ export default function StudentQuiz() {
       {/* Header */}
       <div className={`flex items-center justify-between px-2`}>
         <div >
-          <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-green-700 to-primary bg-clip-text text-transparent">{quiz.title}</h1>
+          <h1 className="text-xl font-bold text-primary">{quiz.title}</h1>
           <p className="text-sm text-white/50 mt-1">
             {t('dashboardStudent:questionOfTotal', {
               current: currentQuestion + 1,
@@ -400,7 +400,7 @@ export default function StudentQuiz() {
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${((currentQuestion + 1) / getTotalQuestions()) * 100}%` }}
-          className="h-full bg-gradient-to-r from-primary via-accent to-secondary"
+          className="h-full bg-primary"
           transition={{ duration: 0.3 }}
         />
       </div>
@@ -419,7 +419,7 @@ export default function StudentQuiz() {
               {/* Question Header */}
               <div className={`flex items-center justify-between mb-6`}>
                 <div className={`flex items-center gap-3`}>
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 flex items-center justify-center text-sm font-bold text-primary">
+                  <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/30 flex items-center justify-center text-sm font-bold text-primary">
                     {currentQuestion + 1}
                   </div>
                   <Badge variant={currentQ.type === "multiple" ? "warning" : "primary"} size="sm">
@@ -450,19 +450,19 @@ export default function StudentQuiz() {
                       whileHover={{ x: isRTL ? -2 : 2 }}
                       whileTap={{ scale: 0.99 }}
                       onClick={() => selectOption(currentQ._id, index, isMultiple)}
-                      className={`w-full p-4 sm:p-4 rounded-xl transition-all ${isRTL ? 'text-right' : 'text-left'} group min-h-[56px] sm:min-h-[64px] ${
-                        isSelected
-                          ? "bg-gradient-to-r from-primary/20 to-accent/20 border-2 border-primary/50"
-                          : "bg-white/5 border-2 border-white/10 hover:border-primary/30"
-                      }`}
+                      className={`w-full p-4 sm:p-4 rounded-xl transition-all ${isRTL ?'text-right':'text-left'} group min-h-[56px] sm:min-h-[64px] ${
+ isSelected
+ ?"bg-primary/20 border-2 border-primary/50"
+ :"bg-white/5 border-2 border-white/10 hover:border-primary/30"
+ }`}
                     >
                       <div className={`flex items-center gap-3`}>
                         <div
                           className={`w-10 h-10 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-base sm:text-sm font-bold shrink-0 ${
-                            isSelected
-                              ? "bg-gradient-to-br from-primary to-accent text-white"
-                              : "bg-white/10 text-white/50"
-                          }`}
+ isSelected
+ ?"bg-primary text-white"
+ :"bg-white/10 text-white/50"
+ }`}
                         >
                           {optionLabel}
                         </div>
@@ -518,12 +518,12 @@ export default function StudentQuiz() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setCurrentQuestion(index)}
                   className={`w-9 h-9 rounded-lg text-sm font-semibold transition-all ${
-                    isCurrent
-                      ? "bg-gradient-to-br from-primary to-accent text-white shadow-glow"
-                      : isAnswered
-                      ? "bg-success/30 text-success border border-success/50"
-                      : "bg-white/5 text-white/50 border border-white/10 hover:border-primary/30"
-                  }`}
+ isCurrent
+ ?"bg-primary text-white shadow-glow"
+ : isAnswered
+ ?"bg-success/30 text-success border border-success/50"
+ :"bg-white/5 text-white/50 border border-white/10 hover:border-primary/30"
+ }`}
                 >
                   {index + 1}
                 </motion.button>
@@ -584,7 +584,7 @@ export default function StudentQuiz() {
 
           {/* Progress */}
           <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="p-4 rounded-xl bg-gradient-to-br from-success/10 to-success/5 border border-success/20 text-center">
+            <div className="p-4 rounded-xl bg-success/10 border border-success/20 text-center">
               <p className="text-xs text-success mb-1">{t('dashboardStudent:answeredLabel')}</p>
               <p className="text-2xl font-bold text-success">{getAnsweredCount()}</p>
             </div>
@@ -604,7 +604,7 @@ export default function StudentQuiz() {
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${(getAnsweredCount() / getTotalQuestions()) * 100}%` }}
-                className="h-full bg-gradient-to-r from-primary via-accent to-success rounded-full"
+                className="h-full bg-primary rounded-full"
               />
             </div>
           </div>

@@ -59,6 +59,3 @@ export type { PaginationProps } from './Pagination';
 
 // Tech-themed components
 export { CircuitPattern } from './CircuitPattern';
-export { HexagonGrid } from './HexagonGrid';
-export { GlowingLines } from './GlowingLines';
-export { TechGrid } from './TechGrid';

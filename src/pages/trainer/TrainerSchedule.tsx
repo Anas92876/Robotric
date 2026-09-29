@@ -433,7 +433,7 @@ export default function TrainerSchedule() {
           </button>
           <button
             onClick={() => onNavigate('TODAY')}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 font-semibold text-sm hover:from-primary/30 hover:to-accent/30 transition-all duration-300 hover:scale-105"
+            className="px-6 py-2.5 rounded-xl bg-primary/20 border border-primary/30 font-semibold text-sm hover:bg-primary/30 transition-all duration-300 hover:scale-105"
           >
             {t('dashboardTrainer:today')}
           </button>
@@ -446,7 +446,7 @@ export default function TrainerSchedule() {
         </div>
 
         {/* Date Label */}
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-primary via-green-700 to-primary bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold text-primary">
           {label}
         </h2>
 
@@ -477,7 +477,7 @@ export default function TrainerSchedule() {
             {view === v && (
               <motion.div
                 layoutId="activeView"
-                className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-lg"
+                className="absolute inset-0 bg-primary rounded-lg"
                 initial={false}
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
@@ -520,7 +520,7 @@ export default function TrainerSchedule() {
       {/* Header */}
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-green-700 to-primary bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold text-primary">
             {t('dashboardTrainer:schedule')}
           </h1>
           <p className="mt-2 text-[#003300]/60">

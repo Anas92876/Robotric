@@ -105,9 +105,7 @@ export default function ReceptionGallery() {
         <div className="flex items-center justify-between mb-2 flex-wrap gap-3">
           <div>
             <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-              background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              color: '#003300',
               backgroundClip: 'text'
             }}>
               Gallery

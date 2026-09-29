@@ -127,9 +127,7 @@ export default function MyWorkHours() {
         <h1
           className="text-4xl font-bold inline-block"
           style={{
-            background: "linear-gradient(135deg, #003300 0%, #004d00 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: '#003300',
             backgroundClip: "text",
           }}
         >
@@ -170,8 +168,8 @@ export default function MyWorkHours() {
           <motion.div variants={itemVariants}>
             <div
               className={`rounded-2xl border-2 shadow-sm overflow-hidden ${
-                active ? "border-green-300 bg-gradient-to-br from-green-50 to-emerald-50" : "border-gray-200 bg-white"
-              }`}
+ active ?"border-green-300 bg-green-50":"border-gray-200 bg-white"
+ }`}
             >
               <div className="flex flex-col items-center text-center px-6 py-10 gap-5">
                 <div
@@ -216,7 +214,7 @@ export default function MyWorkHours() {
                     onClick={startWork}
                     disabled={isBusy}
                     className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 text-lg"
-                    style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" }}
+                    style={{ background: "#003300" }}
                   >
                     <Play className="w-5 h-5" />
                     Start Work

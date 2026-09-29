@@ -164,9 +164,7 @@ const ReceptionDashboard: React.FC = () => {
       {/* Welcome Section */}
       <motion.div variants={itemVariants}>
         <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{ 
-          background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#003300',
           backgroundClip: 'text'
         }}>
           {t('dashboardReception:welcomeBack')}, {user?.name || t('dashboardCommon:welcome')}
@@ -257,9 +255,9 @@ const ReceptionDashboard: React.FC = () => {
             onClick={() => navigate('/reception/users')}
             whileHover={{ scale: 1.02, y: -5 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 p-6 text-left transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20"
+            className="group relative overflow-hidden rounded-2xl bg-primary/20 border border-primary/30 p-6 text-left transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
@@ -279,9 +277,9 @@ const ReceptionDashboard: React.FC = () => {
             onClick={() => navigate('/reception/users')}
             whileHover={{ scale: 1.02, y: -5 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 p-6 text-left transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/20"
+            className="group relative overflow-hidden rounded-2xl bg-accent/20 border border-accent/30 p-6 text-left transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/20"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
@@ -301,9 +299,9 @@ const ReceptionDashboard: React.FC = () => {
             onClick={() => navigate('/reception/enrollments')}
             whileHover={{ scale: 1.02, y: -5 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/5 border border-secondary/30 p-6 text-left transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-secondary/20"
+            className="group relative overflow-hidden rounded-2xl bg-secondary/20 border border-secondary/30 p-6 text-left transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-secondary/20"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
@@ -323,9 +321,9 @@ const ReceptionDashboard: React.FC = () => {
             onClick={() => navigate('/reception/leads')}
             whileHover={{ scale: 1.02, y: -5 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/5 border border-secondary/30 p-6 text-left transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-secondary/20"
+            className="group relative overflow-hidden rounded-2xl bg-secondary/20 border border-secondary/30 p-6 text-left transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-secondary/20"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
@@ -389,7 +387,7 @@ const ReceptionDashboard: React.FC = () => {
                     className="w-full flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 hover:border-primary/50 transition-all group"
                   >
                     {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
                       {enrollment.student.name.charAt(0).toUpperCase()}
                     </div>
 

@@ -150,9 +150,7 @@ export default function CLOInterests() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:interests')}</h1>
           <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardCLO:manageInterestFields')}</p>
@@ -243,7 +241,7 @@ export default function CLOInterests() {
                   <tr key={interest._id} className="hover:bg-primary/5 transition-colors">
                     <td className="px-6 py-4">
                       <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                           <Tag className="w-5 h-5 text-white" />
                         </div>
                         <span className="font-medium text-[#003300]">{interest.name}</span>

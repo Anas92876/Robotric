@@ -23,31 +23,31 @@ const skills = [
     key: 'technicalSkills' as keyof SkillRatings,
     label: 'Technical Skills',
     icon: Code,
-    color: 'from-cyan-500 to-blue-500'
+    color: 'bg-cyan-500'
   },
   {
     key: 'problemSolving' as keyof SkillRatings,
     label: 'Problem Solving',
     icon: Brain,
-    color: 'from-purple-500 to-pink-500'
+    color: 'bg-purple-500'
   },
   {
     key: 'creativity' as keyof SkillRatings,
     label: 'Creativity',
     icon: Lightbulb,
-    color: 'from-yellow-500 to-orange-500'
+    color: 'bg-amber-500'
   },
   {
     key: 'teamwork' as keyof SkillRatings,
     label: 'Teamwork',
     icon: UsersIcon,
-    color: 'from-green-500 to-emerald-500'
+    color: 'bg-green-500'
   },
   {
     key: 'communication' as keyof SkillRatings,
     label: 'Communication',
     icon: MessageCircle,
-    color: 'from-blue-500 to-indigo-500'
+    color: 'bg-blue-500'
   }
 ];
 
@@ -91,7 +91,7 @@ export const SkillRatingsInput: React.FC<SkillRatingsInputProps> = ({
             {/* Skill Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg bg-gradient-to-r ${skill.color} bg-opacity-20`}>
+                <div className={`p-2 rounded-lg ${skill.color} bg-opacity-20`}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -99,7 +99,7 @@ export const SkillRatingsInput: React.FC<SkillRatingsInputProps> = ({
                   <p className="text-sm text-white/60">{ratingLabels[skillValue - 1]}</p>
                 </div>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent">
+              <span className="text-2xl font-bold ${skill.color}">
                 {skillValue}
               </span>
             </div>
@@ -120,8 +120,7 @@ export const SkillRatingsInput: React.FC<SkillRatingsInputProps> = ({
                   [&::-webkit-slider-thumb]:w-6
                   [&::-webkit-slider-thumb]:h-6
                   [&::-webkit-slider-thumb]:rounded-full
-                  [&::-webkit-slider-thumb]:bg-gradient-to-r
-                  [&::-webkit-slider-thumb]:${skill.color}
+                                    [&::-webkit-slider-thumb]:${skill.color}
                   [&::-webkit-slider-thumb]:cursor-pointer
                   [&::-webkit-slider-thumb]:shadow-lg
                   [&::-webkit-slider-thumb]:border-2
@@ -131,8 +130,7 @@ export const SkillRatingsInput: React.FC<SkillRatingsInputProps> = ({
                   [&::-moz-range-thumb]:w-6
                   [&::-moz-range-thumb]:h-6
                   [&::-moz-range-thumb]:rounded-full
-                  [&::-moz-range-thumb]:bg-gradient-to-r
-                  [&::-moz-range-thumb]:${skill.color}
+                                    [&::-moz-range-thumb]:${skill.color}
                   [&::-moz-range-thumb]:cursor-pointer
                   [&::-moz-range-thumb]:shadow-lg
                   [&::-moz-range-thumb]:border-2
@@ -143,7 +141,7 @@ export const SkillRatingsInput: React.FC<SkillRatingsInputProps> = ({
 
               {/* Gradient Progress */}
               <div
-                className={`absolute top-0 left-0 h-2 rounded-full bg-gradient-to-r ${skill.color} pointer-events-none transition-all duration-300`}
+                className={`absolute top-0 left-0 h-2 rounded-full ${skill.color} pointer-events-none transition-all duration-300`}
                 style={{ width: `${((skillValue - 1) / 4) * 100}%` }}
               />
 
@@ -157,7 +155,7 @@ export const SkillRatingsInput: React.FC<SkillRatingsInputProps> = ({
                     disabled={disabled}
                     className={`w-2 h-2 rounded-full transition-all duration-200 ${
                       step <= skillValue
-                        ? `bg-gradient-to-r ${skill.color}`
+                        ? skill.color
                         : 'bg-white/20'
                     } ${disabled ? 'cursor-not-allowed' : 'cursor-pointer hover:scale-150'}`}
                   />

@@ -253,17 +253,17 @@ export default function CLOGroups() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
-              <div className="group relative bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2">
+              <div className="group relative bg-white rounded-xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2">
                 {/* Animated Background Gradient on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+                <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
 
                 {/* Shimmer Effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl -z-10" />
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
 
                 <div className="relative z-10">
                 <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   {/* Avatar */}
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                     <UsersRound className="w-8 h-8" />
                   </div>
 
@@ -385,7 +385,7 @@ export default function CLOGroups() {
                 </div>
 
                 {/* Corner Decoration */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </motion.div>
           ))

@@ -123,7 +123,7 @@ function StatCard({
             initial={{ width: 0 }}
             animate={{ width: `${Math.min(progress, 100)}%` }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            style={{ background: `linear-gradient(90deg, ${iconColor}, ${iconColor}CC)` }}
+            style={{ background: iconColor }}
           />
         </div>
       )}

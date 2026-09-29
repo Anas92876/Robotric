@@ -416,7 +416,7 @@ export const UserForm: React.FC<UserFormProps> = ({
             type="submit"
             variant="primary"
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+            className="bg-cyan-500 hover:bg-cyan-600"
           >
             {isSubmitting ? 'Saving...' : mode === 'create' ? 'Create User' : 'Update User'}
           </Button>

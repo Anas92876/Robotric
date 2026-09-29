@@ -316,7 +316,7 @@ export default function StudentAssignment() {
 
             {/* Grade */}
             {submission.grade && (
-              <div className="p-4 rounded-lg bg-gradient-to-r from-success/10 to-success/5 border border-success/20">
+              <div className="p-4 rounded-lg bg-success/10 border border-success/20">
                 <div className={`flex items-center justify-between mb-3`}>
                   <h4 className="font-semibold">{t('dashboardStudent:grade')}</h4>
                   <div className="text-2xl font-bold text-success">
@@ -433,7 +433,7 @@ export default function StudentAssignment() {
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
-                    className="h-full bg-gradient-to-r from-primary to-accent"
+                    className="h-full bg-primary"
                   />
                 </div>
               </div>

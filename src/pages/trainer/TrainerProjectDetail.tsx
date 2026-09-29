@@ -236,9 +236,7 @@ export default function TrainerProjectDetail() {
         </Button>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>
             {isCreateMode ? t('dashboardTrainer:createProject') : projectDetails?.title || t('dashboardTrainer:projectDetails')}

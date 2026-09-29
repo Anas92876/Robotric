@@ -126,9 +126,7 @@ export default function StudentAttendance() {
           </Button>
         </Link>
         <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold mt-4 mb-2 inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'block text-right' : ''}`} style={{
-          background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#003300',
           backgroundClip: 'text'
         }}>{t('dashboardStudent:attendanceRecord')}</h1>
         <p className={`transition-colors duration-300`} style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:trackAttendanceHistory')}</p>
@@ -154,7 +152,7 @@ export default function StudentAttendance() {
                 initial={{ width: 0 }}
                 animate={{ width: `${stats?.attendancePercentage || 0}%` }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className={`h-full bg-gradient-to-r from-${getAttendancePercentageColor(stats?.attendancePercentage || 0)} to-${getAttendancePercentageColor(stats?.attendancePercentage || 0)}-dark rounded-full`}
+                className={`h-full bg-${getAttendancePercentageColor(stats?.attendancePercentage || 0)} || 0)}-dark rounded-full`}
               />
             </div>
           </CardBody>

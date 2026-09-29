@@ -76,13 +76,13 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
         dir={isRTL ? "rtl" : "ltr"}
       >
         {/* Violet header bar */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-violet-400 to-violet-600" />
+        <div className="h-1.5 w-full bg-violet-400" />
 
         {/* Main card body */}
         <div className="p-4">
           {/* Top row: icon + title + badge */}
           <div className="flex items-start gap-3 mb-3">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center flex-shrink-0 shadow-md">
+            <div className="w-11 h-11 rounded-xl bg-violet-500 flex items-center justify-center flex-shrink-0 shadow-md">
               <Layers className="w-5 h-5 text-white" />
             </div>
             <div className="flex-1 min-w-0">
@@ -109,7 +109,7 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
               </div>
               <div className="w-full h-1.5 rounded-full bg-violet-100 overflow-hidden">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-violet-400 to-violet-600"
+                  className="h-full rounded-full bg-violet-400"
                   initial={{ width: 0 }}
                   animate={{ width: `${avgProgress}%` }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
@@ -268,7 +268,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
           ) : (
             <div
               className="w-full h-full flex items-center justify-center opacity-30"
-              style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" }}
+              style={{ background: "#003300" }}
             >
               <BookOpen className="w-14 h-14 text-[#cccc99]/70" />
             </div>
@@ -298,7 +298,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center opacity-30"
-                style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" }}>
+                style={{ background: "#003300" }}>
                 <BookOpen className="w-8 h-8 text-[#cccc99]/70" />
               </div>
             )}
@@ -325,7 +325,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                 <Link
                   to={`/student/courses/${courseId}`}
                   className="flex items-center gap-1 text-[10px] font-bold px-3 py-1.5 rounded-lg text-white"
-                  style={{ background: "linear-gradient(135deg,#003300,#004d00)" }}
+                  style={{ background: "#003300" }}
                 >
                   <Award className="w-3 h-3" />
                   {t("dashboardStudent:viewCertificate", "Certificate")}
@@ -396,7 +396,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
               <Link
                 to={`/student/courses/${courseId}`}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-                style={{ background: "linear-gradient(135deg,#003300,#004d00)" }}
+                style={{ background: "#003300" }}
               >
                 <Download className="w-4 h-4" />
                 {t("dashboardStudent:viewCertificate", "View Certificate")}
@@ -463,7 +463,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               ) : (
                 <div
                   className="absolute inset-0 flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" }}
+                  style={{ background: "#003300" }}
                 >
                   <BookOpen className="w-8 h-8 text-[#cccc99]/70" />
                 </div>
@@ -510,7 +510,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                 </div>
                 <ProgressBar
                   value={progress}
-                  color={isCompleted ? "#22c55e" : "linear-gradient(90deg,#003300,#004d00)"}
+                  color={isCompleted ? "#22c55e" : "#003300"}
                 />
               </div>
 
@@ -532,7 +532,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                   </span>
                 )}
                 <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
-                  style={{ background: "linear-gradient(135deg,#003300,#004d00)" }}>
+                  style={{ background: "#003300" }}>
                   {isRTL
                     ? <ChevronLeft className="w-3.5 h-3.5 text-[#cccc99]" />
                     : <ChevronRight className="w-3.5 h-3.5 text-[#cccc99]" />}
@@ -555,7 +555,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               ) : (
                 <div
                   className="w-full h-full flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" }}
+                  style={{ background: "#003300" }}
                 >
                   <BookOpen className="w-14 h-14 text-[#cccc99]/70" />
                 </div>
@@ -577,7 +577,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   style={{
-                    background: isCompleted ? "#22c55e" : "linear-gradient(90deg,#cccc99,#ffffcc)",
+                    background: isCompleted ? "#22c55e" : "#cccc99",
                   }}
                 />
               </div>
@@ -613,7 +613,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                   </div>
                   <ProgressBar
                     value={progress}
-                    color={isCompleted ? "#22c55e" : "linear-gradient(90deg,#003300,#004d00)"}
+                    color={isCompleted ? "#22c55e" : "#003300"}
                   />
                 </div>
                 <div>
@@ -653,7 +653,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                 </span>
                 <div
                   className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-200"
-                  style={{ background: "linear-gradient(135deg,#003300,#004d00)" }}
+                  style={{ background: "#003300" }}
                 >
                   {isRTL
                     ? <ChevronLeft className="w-4 h-4 text-[#cccc99]" />
@@ -791,9 +791,7 @@ export default function StudentCourses() {
         <h1
           className="text-2xl sm:text-3xl font-bold"
           style={{
-            background: "linear-gradient(135deg, #003300 0%, #004d00 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: '#003300',
             backgroundClip: "text",
           }}
         >
@@ -828,7 +826,7 @@ export default function StudentCourses() {
               style={
                 statusFilter === f
                   ? {
-                      background: "linear-gradient(135deg, #003300 0%, #004d00 100%)",
+                      background: "#003300",
                       color: "#cccc99",
                       boxShadow: "0 2px 8px rgba(0,51,0,0.25)",
                     }
@@ -880,7 +878,7 @@ export default function StudentCourses() {
               <Link
                 to="/courses"
                 className="inline-block px-6 py-2.5 rounded-xl text-sm font-bold text-[#cccc99]"
-                style={{ background: "linear-gradient(135deg, #003300, #004d00)" }}
+                style={{ background: "#003300" }}
               >
                 {t("dashboardStudent:browseCourses")}
               </Link>

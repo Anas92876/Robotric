@@ -780,9 +780,7 @@ const EnrollmentManagement: React.FC = () => {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>
             {t('dashboardReception:enrollmentManagement.title', 'Enrollment Management')}
@@ -813,7 +811,7 @@ const EnrollmentManagement: React.FC = () => {
             variant="primary"
             leftIcon={<Plus className="w-5 h-5" />}
             onClick={() => setIsCreateModalOpen(true)}
-            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+            className="bg-primary hover:bg-primary/90"
           >
             New Enrollment
           </Button>
@@ -883,7 +881,7 @@ const EnrollmentManagement: React.FC = () => {
             variant="primary"
             leftIcon={<Search className="w-4 h-4" />}
             onClick={handleSearch}
-            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 px-6 shadow-sm"
+            className="bg-primary hover:bg-primary/90 px-6 shadow-sm"
           >
             Search
           </Button>
@@ -1311,7 +1309,7 @@ const EnrollmentManagement: React.FC = () => {
           {/* Student and Balance Info */}
           <div className="bg-white p-6 rounded-xl border-2 border-zinc-200 shadow-lg">
             <div className="flex items-center gap-3 mb-4 pb-4 border-b-2 border-zinc-200">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg shadow-md">
                 {selectedEnrollment?.student?.name?.charAt(0).toUpperCase() || 'S'}
               </div>
               <div>
@@ -1480,7 +1478,7 @@ const EnrollmentManagement: React.FC = () => {
 
                 {/* Payment Summary Card */}
                 {paymentAmount && !isNaN(parseFloat(paymentAmount)) && parseFloat(paymentAmount) > 0 && (
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-4 space-y-2">
+                  <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4 space-y-2">
                     <p className="text-sm font-semibold text-green-800 mb-2">Payment Summary</p>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-green-700">Current Remaining:</span>
@@ -1562,7 +1560,7 @@ const EnrollmentManagement: React.FC = () => {
                   onClick={handleRecordPayment}
                   disabled={isRecordingPayment || !paymentAmount}
                   leftIcon={<CheckCircle className="w-5 h-5" />}
-                  className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-3 shadow-xl"
+                  className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 shadow-xl"
                 >
                   {isRecordingPayment ? 'Processing...' : 'Record Payment'}
                 </Button>
@@ -1609,7 +1607,7 @@ const EnrollmentManagement: React.FC = () => {
                 <Button
                   variant="primary"
                   onClick={handleClosePaymentModal}
-                  className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white"
+                  className="bg-primary hover:bg-primary/90 text-white"
                 >
                   Close
                 </Button>

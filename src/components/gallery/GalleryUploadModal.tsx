@@ -278,7 +278,7 @@ export const GalleryUploadModal: React.FC<GalleryUploadModalProps> = ({
               </div>
               <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+                  className="h-full bg-primary transition-all duration-300"
                   style={{ width: `${uploadProgress}%` }}
                 />
               </div>

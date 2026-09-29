@@ -190,18 +190,13 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
       <h2
         className={cn(
           'text-center text-xl xs:text-2xl md:text-3xl lg:text-4xl font-black mb-6 xs:mb-8 md:mb-12',
-          'text-transparent bg-clip-text',
+          '',
           'from-[#003300] to-[#006600]',
           'px-4',
           isRTL && 'font-arabic'
         )}
         style={{
-          backgroundImage: isRTL
-            ? 'linear-gradient(to left, #003300, #006600)'
-            : 'linear-gradient(to right, #003300, #006600)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+          color: '#003300',
         }}
       >
         {title}

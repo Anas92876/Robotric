@@ -243,7 +243,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
               <td className="py-4 px-4">
                 <div className="flex items-center gap-3">
                   {/* Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-[#004d00] flex items-center justify-center text-[#ffffcc] font-semibold shadow-md">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-[#ffffcc] font-semibold shadow-md">
                     {enrollment.student?.name?.charAt(0).toUpperCase() || '?'}
                   </div>
 

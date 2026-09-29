@@ -116,18 +116,16 @@ export default function Dashboard() {
       className="space-y-8"
     >
       {/* Welcome Header */}
-      <div className="group relative overflow-hidden bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-[#003300]/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out">
+      <div className="group relative overflow-hidden bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-[#003300]/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out">
         {/* Animated Background Gradient on Hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
+        <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
         
         {/* Shimmer Effect */}
-        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl sm:rounded-2xl" />
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl" />
         
         <div className="relative z-10">
           <h1 className="text-3xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 inline-block" style={{ 
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>
             {t('dashboardAdmin:welcomeBackGreeting', { name: user?.name || t('dashboardCommon:welcome') })}
@@ -138,8 +136,8 @@ export default function Dashboard() {
         </div>
 
         {/* Corner Decoration */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-[#cccc99]/30 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#cccc99]/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
       {/* Quick Actions Grid */}
@@ -148,13 +146,13 @@ export default function Dashboard() {
           <Link
             key={index}
             to={action.link}
-            className="group relative bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-[#003300]/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2"
+            className="group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-[#003300]/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2"
           >
             {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
+            <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
             
             {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl sm:rounded-2xl" />
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl" />
 
             <div className="relative z-10">
               <div className="mb-4 group-hover:scale-110 transition-transform duration-300" style={{ color: '#003300' }}>
@@ -178,7 +176,7 @@ export default function Dashboard() {
             </div>
 
             {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </Link>
         ))}
       </div>

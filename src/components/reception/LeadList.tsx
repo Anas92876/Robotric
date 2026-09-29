@@ -102,7 +102,7 @@ export const LeadList: React.FC<LeadListProps> = ({
   if (!isLoading && leads.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 px-4">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-6">
+        <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-6">
           <Users className="w-10 h-10 text-primary" />
         </div>
         <h3 className="text-2xl font-bold text-white mb-3">No leads found</h3>
@@ -151,7 +151,7 @@ export const LeadList: React.FC<LeadListProps> = ({
               <td className="py-4 px-4">
                 <div className="flex items-center gap-3">
                   {/* Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white font-semibold">
+                  <div className="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center text-white font-semibold">
                     {lead.fullName.charAt(0).toUpperCase()}
                   </div>
 

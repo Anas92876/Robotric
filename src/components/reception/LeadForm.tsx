@@ -758,7 +758,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
             type="submit"
             variant="primary"
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+            className="bg-green-500 hover:bg-green-600"
           >
             {isSubmitting
               ? mode === 'create'

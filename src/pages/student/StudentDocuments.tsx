@@ -111,7 +111,7 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
     ? 'bg-green-500'
     : doc.verificationStatus === 'rejected'
     ? 'bg-red-500'
-    : 'bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400';
+    : 'bg-amber-400';
 
   return (
     <motion.div

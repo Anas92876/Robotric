@@ -74,7 +74,7 @@ export const MaterialCard: React.FC<MaterialCardProps> = ({
         <CardBody className="p-6 flex flex-col h-full">
           {/* Icon & Badge */}
           <div className="flex items-start justify-between mb-4">
-            <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
               <FileText className="w-6 h-6 text-blue-400" />
             </div>
             <Badge variant={getCategoryVariant(material.category || 'Documents')}>

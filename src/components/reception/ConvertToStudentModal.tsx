@@ -97,7 +97,7 @@ export const ConvertToStudentModal: React.FC<ConvertToStudentModalProps> = ({
         {/* Lead Info */}
         <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-semibold text-lg">
+            <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold text-lg">
               {lead.fullName.charAt(0).toUpperCase()}
             </div>
             <div>
@@ -208,7 +208,7 @@ export const ConvertToStudentModal: React.FC<ConvertToStudentModalProps> = ({
             type="submit"
             variant="primary"
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+            className="bg-primary hover:bg-primary/90"
           >
             {isSubmitting ? 'Converting...' : 'Create Student Account'}
           </Button>

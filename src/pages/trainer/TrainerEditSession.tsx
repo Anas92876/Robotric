@@ -216,9 +216,7 @@ export default function TrainerEditSession() {
 
         <div className="mt-4">
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:editSessionTitle')}</h1>
           <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>

@@ -84,7 +84,7 @@ export default function GroupDetailsModal({
           {/* Group Info */}
           <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
             <div className="flex items-start gap-4">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white flex-shrink-0">
+              <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                 <UsersRound className="w-10 h-10" />
               </div>
               <div className="flex-1">
@@ -208,7 +208,7 @@ export default function GroupDetailsModal({
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-sm font-semibold">
+                        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold">
                           {student.name?.charAt(0).toUpperCase() || "S"}
                         </div>
                         <div>

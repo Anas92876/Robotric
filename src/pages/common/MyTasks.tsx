@@ -451,9 +451,7 @@ export default function MyTasks() {
         <h1
           className="text-4xl font-bold inline-block"
           style={{
-            background: "linear-gradient(135deg, #003300 0%, #004d00 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: '#003300',
             backgroundClip: "text",
           }}
         >

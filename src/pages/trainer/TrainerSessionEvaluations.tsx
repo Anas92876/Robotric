@@ -158,9 +158,7 @@ export default function TrainerSessionEvaluations() {
 
         <div className="mt-4">
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:sessionEvaluations')}</h1>
           <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
@@ -246,7 +244,7 @@ export default function TrainerSessionEvaluations() {
                   initial={{ width: 0 }}
                   animate={{ width: `${completionRate}%` }}
                   transition={{ duration: 1, ease: 'easeOut' }}
-                  className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                  className="h-full bg-primary rounded-full"
                 />
               </div>
             </div>
@@ -273,7 +271,7 @@ export default function TrainerSessionEvaluations() {
                 <CardBody>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center border-2 border-primary/30">
+                      <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
                         <span className="text-lg font-bold text-white">
                           {student.name?.charAt(0).toUpperCase()}
                         </span>
@@ -303,7 +301,7 @@ export default function TrainerSessionEvaluations() {
 
                   <button
                     onClick={() => handleQuickEvaluate(student)}
-                    className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-white shadow-lg shadow-primary/20"
+                    className="w-full px-4 py-3 rounded-xl bg-primary hover:bg-primary/90 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-white shadow-lg shadow-primary/20"
                   >
                     <Plus className="w-5 h-5" />
                     {t('dashboardTrainer:quickEvaluate')}

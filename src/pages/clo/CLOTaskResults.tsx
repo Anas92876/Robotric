@@ -107,9 +107,7 @@ export default function CLOTaskResults() {
         </Button>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            background: 'linear-gradient(135deg, #003300 0%, #004d00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#003300',
             backgroundClip: 'text'
           }}>{taskResults.taskTitle}</h1>
           <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardCLO:taskPerformanceDesc')}</p>
@@ -225,7 +223,7 @@ export default function CLOTaskResults() {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="h-2 rounded-full bg-gradient-to-r from-primary to-success transition-all duration-500"
+                    className="h-2 rounded-full bg-primary transition-all duration-500"
                     style={{ width: `${completionRate}%` }}
                   />
                 </div>
@@ -239,7 +237,7 @@ export default function CLOTaskResults() {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="h-2 rounded-full bg-gradient-to-r from-accent to-primary transition-all duration-500"
+                    className="h-2 rounded-full bg-accent transition-all duration-500"
                     style={{ width: `${(statistics.averageScore / 100) * 100}%` }}
                   />
                 </div>

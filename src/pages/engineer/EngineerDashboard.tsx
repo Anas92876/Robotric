@@ -176,9 +176,7 @@ export default function EngineerDashboard() {
         <h1
           className="text-4xl font-bold inline-block"
           style={{
-            background: "linear-gradient(135deg, #003300 0%, #004d00 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: '#003300',
             backgroundClip: "text",
           }}
         >
@@ -201,12 +199,12 @@ export default function EngineerDashboard() {
           { label: "Done", value: doneTasks, icon: <CheckCircle className="w-8 h-8" />, color: "#22c55e" },
         ].map(card => (
           <div key={card.label} className="relative group">
-            <div className="relative bg-gradient-to-br from-white via-white to-[#003300]/5 rounded-xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-xl transition-all duration-500 group/card overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+            <div className="relative bg-white rounded-xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-xl transition-all duration-500 group/card overflow-hidden">
+              <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
               <div className="flex items-center justify-between mb-4">
                 <div
                   className="p-3 rounded-xl"
-                  style={{ background: "linear-gradient(135deg, #003300 0%, #004d00 100%)", color: "#ffffcc" }}
+                  style={{ background: "#003300", color: "#ffffcc" }}
                 >
                   {card.icon}
                 </div>
@@ -237,7 +235,7 @@ export default function EngineerDashboard() {
                   ? "text-white"
                   : "text-[#003300]/60 hover:text-[#003300]"
               }`}
-              style={activeTab === tab.value ? { background: "linear-gradient(135deg, #003300 0%, #004d00 100%)" } : {}}
+              style={activeTab === tab.value ? { background: "#003300" } : {}}
             >
               {tab.label}
             </button>

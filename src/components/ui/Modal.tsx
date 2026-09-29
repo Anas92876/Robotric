@@ -88,7 +88,7 @@ function Modal({
               <Dialog.Panel
                 className={cn(
                   'card-light w-full transform overflow-hidden rounded-xl sm:rounded-2xl',
-                  'bg-gradient-to-br from-white via-white to-[#003300]/5',
+                  'bg-white',
                   'border border-[#003300]/20',
                   'p-4 sm:p-6 text-left align-middle shadow-lg hover:shadow-2xl transition-all duration-500',
                   'relative group',
@@ -97,10 +97,10 @@ function Modal({
                 style={{ zIndex: 1050 }}
               >
                 {/* Animated Background Gradient on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#003300]/10 via-[#cccc99]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
+                <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
                 
                 {/* Shimmer Effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl sm:rounded-2xl -z-10" />
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
                 
                 {/* Content Container */}
                 <div className="relative z-10">
@@ -156,8 +156,8 @@ function Modal({
                 </div>
 
                 {/* Corner Decoration */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#003300]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-[#cccc99]/30 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#cccc99]/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -218,7 +218,7 @@ function ConfirmDialog({
                disabled={isLoading}
                className={cn(
                  'flex-1 px-4 py-2 rounded-lg text-white transition-all shadow-sm hover:shadow-md disabled:opacity-50 font-medium justify-center',
-                 variant === 'danger' ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600'
+                 variant === 'danger' ? 'bg-red-600 hover:bg-red-700' : 'bg-green-500 hover:bg-green-600'
                )}
              >
                {isLoading ? 'Loading...' : confirmText}
@@ -228,7 +228,7 @@ function ConfirmDialog({
                type="button"
                onClick={onClose}
                disabled={isLoading}
-               className="flex-1 px-4 py-2 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white transition-all shadow-sm hover:shadow-md disabled:opacity-50 font-medium justify-center"
+               className="flex-1 px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white transition-all shadow-sm hover:shadow-md disabled:opacity-50 font-medium justify-center"
              >
                {cancelText}
              </button>

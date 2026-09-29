@@ -231,13 +231,7 @@
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 204, 0.6),
-      rgba(204, 204, 153, 0.4),
-      transparent
-    );
+    background: rgba(255, 255, 204, 0.6);
     animation: skeleton-shimmer 1.2s infinite;
   }
   @keyframes skeleton-shimmer {
@@ -636,7 +630,7 @@ html[dir="rtl"] {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  background: linear-gradient(to bottom right, #003300, #003300);
+  background: #003300;
   color: #ffffcc;
   display: flex;
   align-items: center;
@@ -660,7 +654,7 @@ html[dir="rtl"] {
 
 .card-with-circle-3 {
   position: relative;
-  background: linear-gradient(to bottom right, #ffffff, #ffffff, rgba(0, 51, 0, 0.05));
+  background: #ffffff;
   padding: 2rem;
   min-height: 200px;
   border-top-left-radius: 1.5rem;

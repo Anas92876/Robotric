@@ -33,9 +33,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-gradient-to-r from-primary to-[#004d00] text-[#ffffcc] hover:from-[#004d00] hover:to-primary focus:ring-primary/50 shadow-md hover:shadow-lg',
+        'bg-primary text-[#ffffcc] hover:bg-[#004d00] focus:ring-primary/50 shadow-md hover:shadow-lg',
       secondary:
-        'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600 focus:ring-cyan-500/50 shadow-md hover:shadow-lg',
+        'bg-cyan-500 text-white hover:bg-cyan-600 focus:ring-cyan-500/50 shadow-md hover:shadow-lg',
       outline:
         'border-2 border-primary/30 hover:border-primary bg-white hover:bg-primary/5 text-[#003300] focus:ring-primary/50',
       ghost:
@@ -43,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       danger:
         'bg-red-500 text-white hover:bg-red-600 focus:ring-red-500/50 shadow-md hover:shadow-lg',
       success:
-        'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 focus:ring-green-500/50 shadow-md hover:shadow-lg',
+        'bg-green-500 text-white hover:bg-green-600 focus:ring-green-500/50 shadow-md hover:shadow-lg',
     };
 
     const sizes = {
