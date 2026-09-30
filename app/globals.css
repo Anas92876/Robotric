@@ -1217,9 +1217,8 @@ html[lang="ar"] .auth__copy h2 { letter-spacing: 0; line-height: 1.35; }
 .auth__stats div { background: rgba(255, 255, 255, .06); border: 1px solid rgba(204, 204, 153, .18); border-radius: 14px; padding: 12px 16px; }
 .auth__stats dt { font-size: 12px; color: rgba(204, 204, 153, .75); }
 .auth__stats dd { margin: 2px 0 0; font-size: 24px; font-weight: 500; color: #fff; letter-spacing: -0.01em; }
-.auth__lori { position: absolute; width: 190px; bottom: -8px; inset-inline-end: 28px; animation: lori-bob 3.6s ease-in-out infinite; filter: drop-shadow(0 20px 30px rgba(0, 0, 0, .35)); }
-.auth__lori img { width: 100%; height: auto; }
-[dir="rtl"] .auth__lori img { transform: scaleX(-1); }
+/* Login panel Lori: same living Lori as the hero (components/Lori.tsx); this only places him */
+.auth__lori { position: absolute; width: 190px; bottom: -8px; inset-inline-end: 28px; cursor: pointer; }
 .auth__main { display: grid; place-items: center; padding: 24px 0; }
 .auth__card { width: 100%; max-width: 480px; background: var(--color-paper); border-radius: var(--radius-feature); box-shadow: 0 30px 60px -32px rgba(0, 51, 0, .3), var(--shadow-md); padding: 40px; animation: rise .7s var(--ease-out) both; }
 .auth-form { display: grid; gap: 18px; }
@@ -1287,7 +1286,7 @@ html[lang="ar"] .auth-form__head h1 { letter-spacing: 0; line-height: 1.35; }
   .auth__main { padding: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .auth__lori, .auth__card, .hero-media__photo { animation: none !important; }
+  .auth__lori, .auth__lori *, .auth__card, .hero-media__photo { animation: none !important; }
 }
 
 /* Fields keep their natural height inside a row (errors under one field no longer shift its neighbour) */

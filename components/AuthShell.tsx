@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { SITE } from '@/lib/config';
 import type { Content } from '@/lib/content';
+import Lori from '@/components/Lori';
 
 // Split auth layout: brand panel (premium dark register + Lori + real figures) beside the form card
 export default function AuthShell({ lang, c, children }: { lang: 'en' | 'ar'; c: Content; children: ReactNode }) {
@@ -23,9 +23,7 @@ export default function AuthShell({ lang, c, children }: { lang: 'en' | 'ar'; c:
             <div><dt>{t.statPrograms}</dt><dd className="ltr">{c.site.trainingStats[0].value}</dd></div>
             <div><dt>{t.statSince}</dt><dd className="ltr">{SITE.founded}</dd></div>
           </dl>
-          <div className="auth__lori" aria-hidden="true">
-            <Image src="/images/lori.webp" alt="" width={625} height={803} quality={80} />
-          </div>
+          <Lori className="auth__lori" helloDelay={1200} />
         </aside>
         <div className="auth__main">
           <div className="auth__card">{children}</div>

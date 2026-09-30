@@ -17,20 +17,20 @@ const EYES = [
   { left: 64.2, top: 13.2, width: 10.1, height: 8 },
 ];
 
-export default function Lori() {
+export default function Lori({ className = 'lori', helloDelay = 2600 }: { className?: string; helloDelay?: number }) {
   const [hop, setHop] = useState(0);
   const [wave, setWave] = useState(0);
   const doHop = useCallback(() => setHop((n) => n + 1), []);
   const doWave = useCallback(() => setWave((n) => n + 1), []);
 
-  // Say hello once he has risen into place (the rise ends ~2.5 s after load)
+  // Say hello once he is in place (on the home hero the rise ends ~2.5 s after load)
   useEffect(() => {
-    const hello = setTimeout(doWave, 2600);
+    const hello = setTimeout(doWave, helloDelay);
     return () => clearTimeout(hello);
-  }, [doWave]);
+  }, [doWave, helloDelay]);
 
   return (
-    <div className="lori" aria-hidden="true" onMouseEnter={doWave} onClick={doHop}>
+    <div className={className} aria-hidden="true" onMouseEnter={doWave} onClick={doHop}>
       <div className="lori__float">
         <div key={hop} className={hop > 0 ? 'lori__hop is-hopping' : 'lori__hop'}>
           <div className="lori__art">
