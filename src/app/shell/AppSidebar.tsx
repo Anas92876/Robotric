@@ -60,17 +60,17 @@ export function AppSidebar({ sections, user, homePath, onSignOut, open, onClose 
         {/* The signed-in person: one slim solid row with a sign-out button */}
         <div className="shrink-0 p-3">
           <div className="flex items-center gap-3 rounded-card bg-ink p-2.5">
-            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-gold text-sm font-semibold text-ink">{user.name.charAt(0).toUpperCase()}</span>
+            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-glow text-sm font-semibold text-ink">{user.name.charAt(0).toUpperCase()}</span>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-cream">{user.name}</p>
-              <p className="truncate text-xs text-gold">{t(`role.${user.role}`, ROLE_LABELS[user.role] ?? user.role)}</p>
+              <p className="truncate text-sm font-semibold text-frost">{user.name}</p>
+              <p className="truncate text-xs text-glow">{t(`role.${user.role}`, ROLE_LABELS[user.role] ?? user.role)}</p>
             </div>
             <button
               type="button"
               onClick={onSignOut}
               aria-label={t('shell.signOut')}
               title={t('shell.signOut')}
-              className="grid size-9 shrink-0 place-items-center rounded-input bg-paper/10 text-cream transition-colors hover:bg-paper hover:text-ink focus-visible:focus-ring"
+              className="grid size-9 shrink-0 place-items-center rounded-input bg-paper/10 text-frost transition-colors hover:bg-paper hover:text-ink focus-visible:focus-ring"
             >
               <LogOut className="size-[18px] rtl:rotate-180" aria-hidden />
             </button>
@@ -121,7 +121,7 @@ function SidebarSection({ section, current }: { section: NavSection; current?: s
                     active ? 'bg-ink font-medium text-white' : 'text-ink-3 hover:bg-paper hover:text-ink',
                   )}
                 >
-                  <Icon className={cn('size-[18px] shrink-0', active ? 'text-white' : 'text-ink-4')} aria-hidden />
+                  <Icon className={cn('size-[18px] shrink-0', active ? 'text-glow' : 'text-ink-4')} aria-hidden />
                   <span className="truncate">{t(item.id, item.label)}</span>
                 </Link>
               </li>

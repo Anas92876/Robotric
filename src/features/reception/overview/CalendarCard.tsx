@@ -121,11 +121,11 @@ function DayCell({ day, isToday, isPicked, hasEvents, onPick }: { day: Date; isT
       aria-pressed={isPicked}
       className={cn(
         'relative mx-auto grid size-8 place-items-center rounded-full text-xs tabular-nums focus-visible:focus-ring',
-        isPicked ? 'bg-gold font-semibold text-ink' : isToday ? 'bg-ink font-semibold text-white' : 'text-ink-2 hover:bg-paper',
+        isPicked ? 'bg-glow font-semibold text-ink' : isToday ? 'bg-ink font-semibold text-white' : 'text-ink-2 hover:bg-paper',
       )}
     >
       {day.getDate()}
-      {hasEvents && !isPicked && <span aria-hidden className={cn('absolute bottom-0.5 size-1 rounded-full', isToday ? 'bg-gold' : 'bg-ink')} />}
+      {hasEvents && !isPicked && <span aria-hidden className={cn('absolute bottom-0.5 size-1 rounded-full', isToday ? 'bg-glow' : 'bg-ink')} />}
     </button>
   );
 }

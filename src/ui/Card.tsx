@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '../lib/utils';
 
-/** White surface on the cream canvas, with the soft brand shadow. */
+/** White surface with the soft brand shadow. */
 export function Card({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('rounded-card bg-paper shadow-card', className)} {...rest} />;
 }

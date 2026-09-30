@@ -1,7 +1,7 @@
 /*
- * Robotrick design tokens for the dashboard — the same brand system as the public
- * site (Robotric_Frontend_Public/app/globals.css, Design_Reference/DESIGN.md):
- * cream canvas, forest-green ink, gold accents, pastel tint cards, Inter + Cairo.
+ * Robotrick design tokens for the dashboard, built from Lori's colours (the
+ * Robotrick robot): navy ink, green glow accent, cool metal greys, soft mint and
+ * steel tints, Inter + Cairo. Flat colours only, no gradients.
  *
  * Tailwind v4 turns each token into utilities: --color-ink → text-ink / bg-ink /
  * border-ink, --radius-card → rounded-card, --shadow-card → shadow-card…
@@ -23,32 +23,35 @@
 }
 
 @theme {
-  /* ---- Brand ------------------------------------------------------------ */
-  --color-ink: #003300;          /* text, primary buttons, structure */
-  --color-ink-deep: #001a00;     /* hover on primary, dark surfaces */
-  --color-gold: #cccc99;         /* accent: badges, highlights, text on dark */
-  --color-cream: #ffffcc;        /* warm highlight */
+  /* ---- Brand: Lori's colours ------------------------------------------
+     The dashboard follows Lori, the Robotrick robot: his navy screen, his
+     green glow and his grey metal. (The public site keeps the forest green.) */
+  --color-ink: #0f1f33;          /* Lori's screen navy: text, primary buttons, dark cards */
+  --color-ink-deep: #081424;     /* hover on primary, darkest surfaces */
+  --color-glow: #3fd360;         /* Lori's green glow: accent fills, highlights on dark */
+  --color-glow-deep: #15803d;    /* the green as readable text on white */
+  --color-frost: #eefcf1;        /* near-white with a hint of green, for text on navy */
 
-  /* ---- Surfaces --------------------------------------------------------- */
-  --color-canvas: #f5f5dc;       /* page background (parchment) */
+  /* ---- Surfaces (Lori's metal) ------------------------------------------ */
+  --color-canvas: #f3f5f7;       /* cool light grey */
   --color-paper: #ffffff;        /* page, cards, tables, dialogs */
-  --color-rail: #f4f4ec;         /* sidebar and quiet fills */
-  --color-line: rgb(0 51 0 / 0.12);
-  --color-line-strong: rgb(0 51 0 / 0.2);
+  --color-rail: #eef1f4;         /* sidebar and quiet fills (light metal) */
+  --color-line: rgb(15 31 51 / 0.1);
+  --color-line-strong: rgb(15 31 51 / 0.18);
 
-  /* ---- Text ------------------------------------------------------------- */
-  --color-ink-2: #475a47;        /* body copy */
-  --color-ink-3: #5f6e5b;        /* secondary */
-  --color-ink-4: #7d8a78;        /* captions, placeholders */
+  /* ---- Text (slate greys) ----------------------------------------------- */
+  --color-ink-2: #3a4657;        /* body copy */
+  --color-ink-3: #5a6576;        /* secondary */
+  --color-ink-4: #8a93a0;        /* captions, placeholders */
 
-  /* ---- Pastel tints (stat cards, section accents) ----------------------- */
-  --color-tint-leaf: #e1ebd2;
-  --color-tint-khaki: #ececcf;
-  --color-tint-moss: #d5e2c3;
-  --color-tint-sand: #f1ecd6;
-  --color-tint-sage: #e7eed8;
-  --color-tint-straw: #f4f1c4;
-  --color-tint-fern: #dce6cf;
+  /* ---- Soft tints (tiles, highlights): greens and metal greys ----------- */
+  --color-tint-leaf: #e1f7e6;    /* mint */
+  --color-tint-khaki: #e8ecf1;   /* steel */
+  --color-tint-moss: #cdeed5;    /* deeper mint */
+  --color-tint-sand: #eef1f4;    /* light metal */
+  --color-tint-sage: #e6f4ea;    /* pale green */
+  --color-tint-straw: #e5eefa;   /* pale sky */
+  --color-tint-fern: #d8efdf;    /* fern */
 
   /* ---- Status (readable on white; each has a soft background) ----------- */
   --color-success: #1e7a3c;
@@ -80,22 +83,22 @@
   --radius-pill: 999px;
 
   --shadow-card:
-    rgb(0 51 0 / 0.04) 0 12px 12px -6px,
-    rgb(0 51 0 / 0.04) 0 6px 6px -3px,
-    rgb(0 51 0 / 0.04) 0 3px 3px -1.5px,
-    rgb(0 51 0 / 0.08) 0 1px 1px -0.5px,
-    rgb(0 51 0 / 0.05) 0 0 0 1px;
-  --shadow-pop: 0 24px 48px -12px rgb(0 26 0 / 0.25), 0 0 0 1px rgb(0 51 0 / 0.06);
+    rgb(15 31 51 / 0.04) 0 12px 12px -6px,
+    rgb(15 31 51 / 0.04) 0 6px 6px -3px,
+    rgb(15 31 51 / 0.04) 0 3px 3px -1.5px,
+    rgb(15 31 51 / 0.08) 0 1px 1px -0.5px,
+    rgb(15 31 51 / 0.05) 0 0 0 1px;
+  --shadow-pop: 0 24px 48px -12px rgb(8 20 36 / 0.25), 0 0 0 1px rgb(15 31 51 / 0.06);
 
   /* ---- Legacy names (pages not yet redesigned) -------------------------- */
   /* Old pages use primary/secondary/accent; map them to the brand until each
-     page moves to the ink/gold tokens above. */
-  --color-primary: #003300;
-  --color-primary-dark: #001a00;
-  --color-accent: #2d5a27;
-  --color-secondary: #ffffcc;
+     page moves to the ink/glow tokens above. */
+  --color-primary: #0f1f33;
+  --color-primary-dark: #081424;
+  --color-accent: #1d3a5c;
+  --color-secondary: #eefcf1;
   --color-background: #ffffff;
-  --color-surface: #f5f5dc;
+  --color-surface: #f3f5f7;
 }
 
 /* ---- Arabic typography ---------------------------------------------------

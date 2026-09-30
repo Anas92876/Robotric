@@ -102,7 +102,7 @@ function LatestEnrollment({ enrollment, loading }: { enrollment?: RecentEnrollme
       </div>
       <span className="hidden h-10 w-px bg-line-strong sm:block" aria-hidden />
       <div className="flex min-w-48 flex-1 items-center gap-3">
-        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-base font-semibold text-cream">{name.charAt(0).toUpperCase()}</span>
+        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-base font-semibold text-frost">{name.charAt(0).toUpperCase()}</span>
         <div className="min-w-0">
           <p className="text-[11px] rtl:text-xs font-medium uppercase tracking-wide text-ink-3">{t('overview.latestEnrollment')}</p>
           <p className="truncate font-semibold text-ink">{name}</p>
@@ -131,7 +131,7 @@ function LeadsPipeline({ stats, loading }: { stats?: LeadStats; loading: boolean
   if (loading) return <div className="h-20 animate-pulse rounded-card bg-rail" />;
   if (!stats) return null;
   const parts = [
-    { key: 'interested', value: stats.interest, bar: 'bg-gold' },
+    { key: 'interested', value: stats.interest, bar: 'bg-glow' },
     { key: 'waiting', value: stats.waiting, bar: 'bg-tint-moss' },
     { key: 'converted', value: stats.student, bar: 'bg-ink' },
     { key: 'blacklist', value: stats.blacklist, bar: 'bg-danger' },
@@ -162,7 +162,7 @@ function LeadsPipeline({ stats, loading }: { stats?: LeadStats; loading: boolean
 
 const STATUS_STYLE: Record<string, string> = {
   active: 'bg-ink text-white',
-  completed: 'bg-gold text-ink',
+  completed: 'bg-glow text-ink',
   pending: 'bg-tint-straw text-ink',
   suspended: 'bg-warning-soft text-warning',
   cancelled: 'bg-danger-soft text-danger',
@@ -288,11 +288,11 @@ function AttentionCard({ title, note, value, to }: { title: string; note: string
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="font-semibold leading-snug">{title}</p>
-          <p className="mt-1 text-xs text-gold">{note}</p>
+          <p className="mt-1 text-xs text-glow">{note}</p>
         </div>
         <span className="grid size-12 shrink-0 place-items-center rounded-input bg-paper text-xl font-bold tabular-nums text-ink">{value ?? '–'}</span>
       </div>
-      <span className="mt-3 flex items-center justify-end gap-1 text-xs font-medium text-cream">
+      <span className="mt-3 flex items-center justify-end gap-1 text-xs font-medium text-frost">
         {t('overview.open')}
         <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" aria-hidden />
       </span>

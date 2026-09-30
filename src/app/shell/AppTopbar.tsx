@@ -187,7 +187,7 @@ function AccountMenu({ user, onSignOut }: { user: { name: string; email?: string
   return (
     <HMenu as="div" className="relative shrink-0">
       <MenuButton className="flex h-11 items-center gap-2.5 rounded-pill border border-line bg-paper p-1 pe-1 transition-colors hover:border-line-strong focus-visible:focus-ring data-[open]:border-ink md:pe-3">
-        <span className="relative grid size-9 place-items-center rounded-full bg-ink text-xs font-semibold tracking-wide text-cream">
+        <span className="relative grid size-9 place-items-center rounded-full bg-ink text-xs font-semibold tracking-wide text-frost">
           {initials(user.name)}
           <span aria-hidden className="absolute -bottom-0.5 -end-0.5 size-3 rounded-full bg-success ring-2 ring-paper" />
         </span>
@@ -203,7 +203,7 @@ function AccountMenu({ user, onSignOut }: { user: { name: string; email?: string
         className="z-40 mt-2 w-64 rounded-card border border-line bg-paper p-1.5 shadow-pop [--anchor-gap:8px] focus:outline-none"
       >
         <div className="flex items-center gap-3 px-3 py-2.5">
-          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-gold text-sm font-semibold text-ink">{initials(user.name)}</span>
+          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-glow text-sm font-semibold text-ink">{initials(user.name)}</span>
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-ink">{user.name}</p>
             {user.email && <p className="truncate text-xs text-ink-4">{user.email}</p>}
