@@ -79,7 +79,7 @@ const TrainerGroupBoard = lazyImport(() => import("./pages/trainer/TrainerGroupB
 
 // Reception pages
 const ReceptionDashboard = lazyImport(() => import("./features/reception/overview/ReceptionOverviewPage"));
-const UserManagement = lazyImport(() => import("./pages/reception/UserManagement"));
+const UserManagement = lazyImport(() => import("./features/reception/users/AccountsPage"));
 const EnrollmentManagement = lazyImport(() => import("./pages/reception/EnrollmentManagement"));
 const LeadManagement = lazyImport(() => import("./pages/reception/LeadManagement"));
 const Schedule = lazyImport(() => import("./pages/reception/Schedule"));

@@ -1,11 +1,10 @@
-import type { ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpen, GraduationCap, Plus, RefreshCw, Users, UsersRound } from 'lucide-react';
 import { useAuth } from '../../../providers';
 import { cn } from '../../../lib/utils';
 import { useFormat } from '../../../app/format';
-import { Panel, PanelTitle } from '../../../ui';
+import { Panel, PanelTitle, StatTile } from '../../../ui';
 import { useEvents, useLeadStats, useOverviewStats, usePendingSessionRequests, usePendingTransport, useRecentEnrollments, type LeadStats, type RecentEnrollment } from './api';
 import { WelcomeBanner } from './WelcomeBanner';
 import { CalendarCard } from './CalendarCard';
@@ -65,24 +64,6 @@ export default function ReceptionOverviewPage() {
         </Panel>
       </aside>
     </div>
-  );
-}
-
-function StatTile({ icon, tint, label, value, loading, to }: { icon: ReactNode; tint: string; label: string; value?: number; loading: boolean; to?: string }) {
-  const body = (
-    <>
-      <span className={cn('mx-auto grid size-10 place-items-center rounded-input text-ink [&_svg]:size-5', tint)}>{icon}</span>
-      {loading ? <span className="mx-auto mt-3 block h-7 w-10 animate-pulse rounded-md bg-rail" /> : <span className="mt-2 block text-2xl font-bold tabular-nums text-ink">{value ?? 0}</span>}
-      <span className="mt-0.5 block text-xs text-ink-3">{label}</span>
-    </>
-  );
-  const cls = 'block rounded-card border border-line bg-paper px-3 py-4 text-center shadow-card';
-  return to ? (
-    <Link to={to} className={cn(cls, 'transition-colors hover:border-ink focus-visible:focus-ring')}>
-      {body}
-    </Link>
-  ) : (
-    <div className={cls}>{body}</div>
   );
 }
 

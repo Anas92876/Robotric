@@ -148,5 +148,88 @@
   "recentActivities": "Recent Activities",
   "latestUpdates": "Latest updates",
   "noRecentEnrollments": "No recent enrollments",
-  "noRecentActivities": "No recent activities"
+  "noRecentActivities": "No recent activities",
+  "users": {
+    "title": "User Management",
+    "subtitle": "Every account at the academy: students, trainers and staff.",
+    "new": "New account",
+    "search": "Search by name, email or phone…",
+    "allRoles": "All roles",
+    "active": "Active",
+    "disabled": "Disabled",
+    "you": "You",
+    "stats": {
+      "active": "Active accounts",
+      "students": "Students",
+      "trainers": "Trainers",
+      "disabled": "Disabled"
+    },
+    "col": {
+      "person": "Person",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "joined": "Joined",
+      "actions": "Actions"
+    },
+    "actionsFor": "Actions for {{name}}",
+    "edit": "Edit",
+    "disable": "Disable",
+    "enable": "Enable",
+    "delete": "Delete",
+    "empty": "No accounts yet",
+    "noDisabled": "No disabled accounts",
+    "noMatch": "No accounts match",
+    "noMatchHint": "Try another name, or clear the filters.",
+    "clearFilters": "Clear filters",
+    "loadError": "Could not load the accounts.",
+    "retry": "Try again",
+    "pageSummary": "{{from}}–{{to}} of {{total}}",
+    "previous": "Previous",
+    "next": "Next",
+    "form": {
+      "createTitle": "New account",
+      "editTitle": "Edit account",
+      "createNote": "The person signs in with this email and password.",
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "role": "Role",
+      "password": "Password",
+      "passwordHint": "At least 6 characters.",
+      "passwordKeep": "Leave empty to keep the current password.",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "create": "Create account",
+      "nameError": "Enter the full name (at least 2 letters).",
+      "emailError": "Enter a valid email address.",
+      "passwordRequired": "Enter a password.",
+      "passwordShort": "The password needs at least 6 characters.",
+      "phoneError": "Enter a valid phone number."
+    },
+    "confirm": {
+      "disableTitle": "Disable this account?",
+      "disableText": "{{name}} will be signed out at once and cannot sign in until the account is enabled again. Nothing is deleted.",
+      "enableTitle": "Enable this account?",
+      "enableText": "{{name}} will be able to sign in again.",
+      "deleteTitle": "Delete this account?",
+      "deleteText": "{{name}} will be removed for good. Accounts with enrollments, payments or attendance cannot be deleted: disable them instead."
+    },
+    "toast": {
+      "created": "{{name}} was added",
+      "saved": "Changes to {{name}} were saved",
+      "disabled": "{{name}} was disabled",
+      "enabled": "{{name}} was enabled",
+      "deleted": "{{name}} was deleted"
+    },
+    "errors": {
+      "title": "Could not complete that",
+      "inUse": "This account has learning history (enrollments, payments or attendance), so it cannot be deleted. Disable it instead.",
+      "self": "You cannot do this to your own account.",
+      "privileged": "Only an admin can manage admin, CLO or CTO accounts.",
+      "emailTaken": "Another account already uses this email."
+    }
+  }
 }

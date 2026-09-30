@@ -9,6 +9,8 @@ export { Panel, PanelTitle } from './Panel';
 export { Badge, type BadgeTone } from './Badge';
 export { Field, TextInput, SelectInput, TextArea } from './Field';
 export { StatCard, type Tint } from './StatCard';
+export { StatTile } from './StatTile';
+export { RowMenu, type RowAction } from './RowMenu';
 export { PageHeader } from './PageHeader';
 export { EmptyState } from './EmptyState';
 export { SearchInput } from './SearchInput';
