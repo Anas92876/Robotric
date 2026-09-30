@@ -659,6 +659,8 @@ main { animation: page-in .5s ease both; }
 /* ---- Scroll-linked: photos wipe open + parallax inside ----------------- */
 .motion .photo { clip-path: inset(calc((1 - var(--enter, 1)) * 100%) 0 0 0 round var(--radius-card)); scale: calc(1.08 - var(--enter, 1) * .08); }
 .motion .photo figcaption { translate: 0 calc((1 - var(--enter, 1)) * 20px); opacity: var(--enter, 1); }
+/* Carousel photos come in sideways, so they are always fully shown (no scroll-linked unroll) */
+.motion .carousel .photo { clip-path: none; scale: 1; }
 
 /* ---- Scroll-linked: journey/funnel line fills as you pass ---------------- */
 .funnel { position: relative; }

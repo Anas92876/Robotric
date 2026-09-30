@@ -124,7 +124,9 @@ function initMotion(): () => void {
 
   /* ---- Scroll-linked values: --y, --hero on :root; --enter per element ---- */
   if (motion) {
-    const linked = [...main.querySelectorAll('.closer, .photo, .journey')];
+    // Photos inside a carousel slide in sideways: a scroll-linked value measured while they
+    // were briefly on screen would freeze once they slide away (leaving them clipped shut)
+    const linked = [...main.querySelectorAll('.closer, .photo, .journey')].filter((el) => !el.closest('.carousel'));
     const visible = new Set<Element>();
     const vio = new IntersectionObserver((ents) => ents.forEach((en) => (en.isIntersecting ? visible.add(en.target) : visible.delete(en.target))), { rootMargin: '10% 0px 10% 0px' });
     linked.forEach((el) => vio.observe(el));
