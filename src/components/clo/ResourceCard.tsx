@@ -80,7 +80,6 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
 
   return (
     <motion.div
-      whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
       className="bg-white rounded-xl border border-ink/10 overflow-hidden hover:shadow-lg transition-shadow"
     >

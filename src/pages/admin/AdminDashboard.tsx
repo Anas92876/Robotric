@@ -258,7 +258,7 @@ function Dashboard() {
             
             <div className={`relative z-10 flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
-                <div className="text-3xl font-bold group-hover:scale-105 transition-transform duration-300 inline-block" style={{ 
+                <div className="text-3xl font-bold inline-block" style={{ 
                   color: '#0f1f33',
                   backgroundClip: 'text'
                 }}>
@@ -268,7 +268,7 @@ function Dashboard() {
                   {card.title}
                 </h3>
               </div>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ 
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ 
                 background: '#0f1f33',
                 color: '#eefcf1'
               }}>

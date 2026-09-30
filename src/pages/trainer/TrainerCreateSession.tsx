@@ -181,7 +181,7 @@ export default function TrainerCreateSession() {
         </Button>
 
         <div className="mt-4">
-          <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
+          <h1 className="text-3xl font-bold inline-block" style={{
             color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:createNewSession')}</h1>

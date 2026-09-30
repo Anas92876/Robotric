@@ -122,7 +122,6 @@ export const SubmissionViewer: React.FC<SubmissionViewerProps> = ({
         {answer.imageAnswers.map((img: ImageAnswer, index: number) => (
           <motion.div
             key={index}
-            whileHover={{ scale: 1.02, y: -2 }}
             transition={{ duration: 0.2 }}
             className="relative group cursor-pointer border border-white/20 rounded-lg overflow-hidden bg-white/5 hover:border-primary/50 transition-all"
             onClick={() => setSelectedImage({ url: img.cloudinaryUrl, filename: img.filename })}

@@ -47,7 +47,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
   return (
     <Link to={linkPath}>
       <motion.div
-        whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
       >
         <CardComponent variant="glass" hover className="h-full">

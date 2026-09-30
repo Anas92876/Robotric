@@ -43,7 +43,6 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
   return (
     <>
       <motion.div
-        whileHover={{ scale: 1.03, y: -4 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

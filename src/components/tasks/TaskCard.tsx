@@ -45,7 +45,6 @@ export const TaskCard: React.FC<TaskCardProps> = React.memo(({ task }) => {
   return (
     <Link to={`/student/tasks/${task._id}`}>
       <motion.div
-        whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
       >
         <CardComponent variant="glass" hover className="h-full">

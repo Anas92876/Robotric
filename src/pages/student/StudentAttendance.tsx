@@ -125,7 +125,7 @@ export default function StudentAttendance() {
             {t('dashboardStudent:backToCourse')}
           </Button>
         </Link>
-        <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold mt-4 mb-2 inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'block text-right' : ''}`} style={{
+        <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold mt-4 mb-2 inline-block ${isRTL ? 'block text-right' : ''}`} style={{
           color: '#0f1f33',
           backgroundClip: 'text'
         }}>{t('dashboardStudent:attendanceRecord')}</h1>

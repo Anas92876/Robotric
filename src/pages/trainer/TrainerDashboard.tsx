@@ -141,7 +141,7 @@ export default function TrainerDashboard() {
     >
       {/* Welcome Section */}
       <motion.div variants={itemVariants} className={isRTL ? 'text-right font-arabic' : ''}>
-        <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
+        <h1 className="text-4xl font-bold inline-block" style={{
           color: '#0f1f33',
           backgroundClip: 'text'
         }}>

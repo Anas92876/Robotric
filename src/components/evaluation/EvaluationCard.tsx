@@ -60,7 +60,6 @@ export const EvaluationCard: React.FC<EvaluationCardProps> = ({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
       className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-primary/50 transition-all duration-300"
     >
       {/* Header */}

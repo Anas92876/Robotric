@@ -129,7 +129,7 @@ export default function CLODashboard() {
       >
         <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={isRTL ? 'text-right font-arabic' : ''}>
-            <h1 className="text-4xl font-bold mb-2 inline-block group-hover:scale-105 transition-transform duration-300" style={{
+            <h1 className="text-4xl font-bold mb-2 inline-block" style={{
               color: '#0f1f33',
               backgroundClip: 'text'
             }}>

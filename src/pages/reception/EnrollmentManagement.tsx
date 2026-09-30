@@ -779,7 +779,7 @@ const EnrollmentManagement: React.FC = () => {
       {/* Page Header */}
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
-          <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
+          <h1 className={`text-4xl font-bold inline-block ${isRTL ? 'text-right' : 'text-left'}`} style={{
             color: '#0f1f33',
             backgroundClip: 'text'
           }}>

@@ -67,7 +67,6 @@ export const MaterialCard: React.FC<MaterialCardProps> = ({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.2 }}
-      whileHover={{ scale: 1.02 }}
       className="h-full"
     >
       <CardComponent variant="glass" className="h-full hover:border-white/20 transition-all">

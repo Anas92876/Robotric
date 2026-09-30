@@ -104,7 +104,7 @@ export default function TrainerGroups() {
       {/* Header */}
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
-          <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
+          <h1 className="text-3xl font-bold inline-block" style={{
             color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:myGroups')}</h1>

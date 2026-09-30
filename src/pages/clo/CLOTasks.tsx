@@ -153,7 +153,7 @@ export default function CLOTasks() {
       <motion.div variants={itemVariants}>
         <div className={`flex items-center justify-between mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={isRTL ? 'text-right' : ''}>
-            <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 mb-2" style={{
+            <h1 className="text-4xl font-bold inline-block mb-2" style={{
               color: '#0f1f33',
               backgroundClip: 'text'
             }}>{t('dashboardCLO:allTasks')}</h1>

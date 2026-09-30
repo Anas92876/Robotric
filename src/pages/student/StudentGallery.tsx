@@ -127,7 +127,7 @@ export default function StudentGallery() {
       <motion.div>
         <div className={`flex items-center justify-between mb-2`}>
           <div >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block" style={{
               color: '#0f1f33',
               backgroundClip: 'text'
             }}>

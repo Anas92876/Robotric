@@ -124,7 +124,7 @@ export default function Dashboard() {
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl" />
         
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 inline-block" style={{ 
+          <h1 className="text-3xl font-bold mb-2 inline-block" style={{ 
             color: '#0f1f33',
             backgroundClip: 'text'
           }}>
@@ -155,7 +155,7 @@ export default function Dashboard() {
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl" />
 
             <div className="relative z-10">
-              <div className="mb-4 group-hover:scale-110 transition-transform duration-300" style={{ color: '#0f1f33' }}>
+              <div className="mb-4" style={{ color: '#0f1f33' }}>
                 {action.icon}
               </div>
 

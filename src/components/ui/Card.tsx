@@ -10,6 +10,8 @@ export interface CardProps extends Omit<MotionProps, 'children'> {
   hover?: boolean; // Alias for hoverable
   animated?: boolean;
   className?: string;
+  /** Makes the card clickable; only clickable cards react to hover. */
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 /**
@@ -26,11 +28,14 @@ function Card({
   className,
   ...props
 }: CardProps) {
-  const isHoverable = hoverable || hover;
+  // Data never moves: a card only reacts to the pointer when it is actually
+  // clickable (has onClick). Tables, lists and panels stay still even if a page
+  // passes `hover`. Clickable cards get a calm hover: darker border, deeper shadow.
+  const isHoverable = (hoverable || hover) && typeof props.onClick === 'function';
 
   const variants = {
     default: 'bg-white border border-ink/20 shadow-lg',
-    elevated: 'bg-white border border-ink/20 shadow-lg hover:shadow-2xl',
+    elevated: 'bg-white border border-ink/20 shadow-lg',
     outlined: 'bg-transparent border-2 border-ink/30',
     glass: 'backdrop-blur-xl bg-white/90 border border-ink/20 shadow-[0_8px_32px_rgba(15, 31, 51,0.1)]',
     premium: 'backdrop-blur-xl bg-white/95 border border-ink/20 shadow-[0_8px_32px_rgba(15, 31, 51,0.15),0_1px_0_rgba(15, 31, 51,0.05)_inset]',
@@ -43,9 +48,7 @@ function Card({
     lg: 'p-8',
   };
 
-  const hoverStyles = isHoverable
-    ? 'cursor-pointer hover:shadow-2xl hover:border-ink/40 hover:-translate-y-2 group relative overflow-hidden'
-    : '';
+  const hoverStyles = isHoverable ? 'cursor-pointer hover:border-ink/40 hover:shadow-xl' : '';
 
   if (animated) {
     return (
@@ -53,16 +56,8 @@ function Card({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        whileHover={
-          isHoverable
-            ? {
-                scale: 1.02,
-                transition: { type: 'spring', stiffness: 400, damping: 30 },
-              }
-            : undefined
-        }
         className={cn(
-          'card-light rounded-xl transition-all duration-300 relative',
+          'card-light rounded-xl transition-[border-color,box-shadow] duration-200 relative',
           variants[variant],
           paddings[padding],
           hoverStyles,
@@ -70,18 +65,6 @@ function Card({
         )}
         {...props}
       >
-        {isHoverable && (
-          <>
-            {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
-            
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
-            
-            {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </>
-        )}
         <div className="relative z-10">{children}</div>
       </motion.div>
     );
@@ -90,7 +73,7 @@ function Card({
   return (
     <div
       className={cn(
-        'rounded-xl transition-all duration-300 relative',
+        'rounded-xl transition-[border-color,box-shadow] duration-200 relative',
         variants[variant],
         paddings[padding],
         hoverStyles,
@@ -98,18 +81,6 @@ function Card({
       )}
       {...(props as HTMLAttributes<HTMLDivElement>)}
     >
-      {isHoverable && (
-        <>
-          {/* Animated Background Gradient on Hover */}
-          <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
-          
-          {/* Shimmer Effect */}
-          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
-          
-          {/* Corner Decoration */}
-          <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </>
-      )}
       <div className="relative z-10">{children}</div>
     </div>
   );
@@ -197,13 +168,8 @@ function StatsCard({
   className,
 }: StatsCardProps) {
   return (
-    <div className={cn('group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2', className)}>
-      {/* Animated Background Gradient on Hover */}
-      <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      {/* Shimmer Effect */}
-      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent" />
-      
+    // A number to read, not a button: it stays still on hover
+    <div className={cn('relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg overflow-hidden', className)}>
       {/* Content Container */}
       <div className="relative z-10 flex items-start justify-between">
         <div className="flex-1">
@@ -214,7 +180,7 @@ function StatsCard({
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="text-3xl font-bold group-hover:scale-105 transition-transform duration-300 inline-block"
+            className="text-3xl font-bold inline-block"
             style={{ 
               color: '#0f1f33',
               backgroundClip: 'text'
@@ -256,25 +222,17 @@ function StatsCard({
           )}
         </div>
         {icon && (
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            className="flex-shrink-0 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300"
-            style={{ 
+          <div
+            className="flex-shrink-0 p-3 rounded-xl"
+            style={{
               background: '#0f1f33',
               color: '#eefcf1'
             }}
           >
             {icon}
-          </motion.div>
+          </div>
         )}
       </div>
-
-      {/* Animated Bottom Accent Line */}
-      <div className="mt-4 h-1 bg-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500" />
-
-      {/* Corner Decoration */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
   );
 }
