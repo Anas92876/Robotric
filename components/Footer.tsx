@@ -27,7 +27,7 @@ export default function Footer({ lang, c }: { lang: Locale; c: Content }) {
               </div>
             </div>
             <div>
-              <h4>{s.footer.quickLinks}</h4>
+              <h3>{s.footer.quickLinks}</h3>
               <ul>
                 <li><Link href={`${base}/about`}>{s.nav.about}</Link></li>
                 <li><Link href={`${base}/gallery`}>{s.nav.gallery}</Link></li>
@@ -38,11 +38,11 @@ export default function Footer({ lang, c }: { lang: Locale; c: Content }) {
               </ul>
             </div>
             <div>
-              <h4>{s.footer.services}</h4>
+              <h3>{s.footer.services}</h3>
               <ul>{SERVICES.map((x) => <li key={x.slug}><Link href={`${base}/${x.slug}`}>{dd[x.key]}</Link></li>)}</ul>
             </div>
             <div>
-              <h4>{s.footer.contactInfo}</h4>
+              <h3>{s.footer.contactInfo}</h3>
               <ul className="footer__contact">
                 <li><a href={SITE.maps} target="_blank" rel="noopener">{home.footer.address}</a></li>
                 <li><a href={`tel:${SITE.phoneTel}`} data-track="phone_click"><span className="ltr">{SITE.phoneDisplay}</span></a></li>
@@ -57,7 +57,7 @@ export default function Footer({ lang, c }: { lang: Locale; c: Content }) {
         </div>
       </footer>
 
-      <a className="wa-float" href={wa(s.common.whatsappHello)} target="_blank" rel="noopener" data-track="whatsapp_click" data-track-label="floating">
+      <a className="wa-float" aria-label={s.footer.whatsappFloat} href={wa(s.common.whatsappHello)} target="_blank" rel="noopener" data-track="whatsapp_click" data-track-label="floating">
         <Icon name="whatsapp" /><span>{s.footer.whatsappFloat}</span>
       </a>
     </>

@@ -58,7 +58,7 @@ export default function GalleryGrid({ items, categories, emptyText, isAr, labels
         {shown.map((it, i) => (
           <figure className="masonry__item" key={it.id}>
             <button type="button" className="masonry__btn" aria-label={it.title} onClick={(e) => { lastFocus.current = e.currentTarget; setOpen(i); }}>
-              <Image src={`/images/image-${it.id}.webp`} alt={it.title} width={1600} height={1200} sizes="(max-width: 760px) 100vw, 33vw" quality={70} style={{ width: '100%', height: 'auto' }} />
+              <Image src={`/images/image-${it.id}.webp`} alt={it.title} width={1600} height={1200} sizes="(max-width: 760px) 100vw, 33vw" quality={70} loading={i < 3 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} style={{ width: '100%', height: 'auto' }} />
             </button>
             <figcaption><span className="tag">{categories[it.category]}</span>{it.title}</figcaption>
           </figure>

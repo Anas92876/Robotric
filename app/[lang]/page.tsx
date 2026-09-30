@@ -62,7 +62,7 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
             <div className="device">
               <div className="device__bar"><i /><i /><i /><span className="device__url">robotrick.net</span></div>
               <div className="device__photo">
-                <Image src="/images/about/image_2026-02-24_03-11-56.webp" alt={s.about.buildingAlt} fill sizes="(max-width: 760px) 100vw, 980px" quality={80} priority />
+                <Image src="/images/about/image_2026-02-24_03-11-56.webp" alt={s.about.buildingAlt} fill sizes="(max-width: 760px) 100vw, 980px" quality={80} loading="eager" fetchPriority="high" />
                 <div className="device__chips">
                   <Link className="chip chip--solid" href={`${base}/training`}><Icon name="robot" /> {h.hero.training}</Link>
                   <Link className="chip chip--solid" href={`${base}/technical-projects`}><Icon name="gear" /> {h.hero.projects}</Link>
@@ -90,7 +90,7 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
       <section className="section">
         <div className="container">
           <SectionHead badge={h.about.badge} t={h.about.title} hl={h.about.titleHighlight} lead={h.about.additionalDescription}
-            side={<Link className="link-arrow" href={`${base}/about`}>{s.common.learnMore} <Arrow /></Link>} />
+            side={<Link className="link-arrow" href={`${base}/about`}>{s.common.learnMore}<span className="sr-only"> — {s.nav.about}</span> <Arrow /></Link>} />
         </div>
       </section>
 
@@ -139,7 +139,7 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
       <section className="section">
         <div className="container">
           <SectionHead badge={trainingIntro.hero.badge} t={h.programs.title} hl={h.programs.titleHighlight} lead={h.programs.description}
-            side={<Link className="link-arrow" href={`${base}/training`}>{s.common.learnMore} <Arrow /></Link>} />
+            side={<Link className="link-arrow" href={`${base}/training`}>{s.common.learnMore}<span className="sr-only"> — {h.programs.title} {h.programs.titleHighlight}</span> <Arrow /></Link>} />
           <div className="grid grid--4">
             {Object.entries(h.programs.categoryCards).map(([k, card], i) => (
               <Link className={`feature feature--${TINTS[i % TINTS.length]} feature--compact`} href={`${base}/training#map`} key={k}>
