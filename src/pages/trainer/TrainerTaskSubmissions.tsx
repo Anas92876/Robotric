@@ -204,10 +204,10 @@ export default function TrainerTaskSubmissions() {
         </Button>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:taskSubmissions')}</h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:reviewAndGrade')}</p>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:reviewAndGrade')}</p>
         </div>
       </motion.div>
 

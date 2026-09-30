@@ -111,12 +111,12 @@ export default function CLOSessions() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className="text-3xl font-bold inline-block" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {t('dashboardTrainer:sessions')}
           </h1>
-          <p className="mt-1" style={{ color: '#003300CC' }}>
+          <p className="mt-1" style={{ color: '#0f1f33CC' }}>
             {t('dashboardTrainer:sessionsSubtitle')}
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function CLOSessions() {
             <select
               value={selectedGroupId}
               onChange={(e) => setSelectedGroupId(e.target.value)}
-              className="px-4 py-2.5 rounded-xl bg-white border border-[#003300]/20 text-[#003300] focus:outline-none focus:border-primary transition-all"
+              className="px-4 py-2.5 rounded-xl bg-white border border-ink/20 text-ink focus:outline-none focus:border-primary transition-all"
             >
               <option value="">{t('dashboardTrainer:allGroups')}</option>
               {groups.map((g) => (
@@ -176,7 +176,7 @@ export default function CLOSessions() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-4 py-2.5 rounded-xl bg-white border border-[#003300]/20 text-[#003300] focus:outline-none focus:border-primary transition-all"
+              className="px-4 py-2.5 rounded-xl bg-white border border-ink/20 text-ink focus:outline-none focus:border-primary transition-all"
             >
               {STATUS_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>

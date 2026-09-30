@@ -134,12 +134,12 @@ export default function StudentAttendanceOverview() {
       {/* Header */}
       <motion.div variants={itemVariants} >
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-          color: '#003300',
+          color: '#0f1f33',
           backgroundClip: 'text'
         }}>
           {t('dashboardStudent:attendanceOverview')}
         </h1>
-        <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+        <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
           {t('dashboardStudent:attendanceSubtitle')}
         </p>
       </motion.div>
@@ -154,7 +154,7 @@ export default function StudentAttendanceOverview() {
           <CardBody>
             <div className={`flex items-center justify-between`}>
               <div>
-                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:averageAttendance')}</p>
+                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:averageAttendance')}</p>
                 <p className={`text-xl sm:text-2xl md:text-3xl font-bold ${getAttendancePercentageColor(overallStats?.averageAttendance || 0)}`}>
                   {overallStats?.averageAttendance || 0}%
                 </p>

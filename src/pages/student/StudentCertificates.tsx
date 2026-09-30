@@ -19,9 +19,9 @@ import { useTranslation } from 'react-i18next';
 import { CertificateA4, CertificateSquare, type CertData } from '../../components/certificate/CertificateRenderer';
 import { useCertificateDownload } from '../../hooks/useCertificateDownload';
 
-const TEXT_PRIMARY   = '#003300';
-const TEXT_SECONDARY = '#003300CC';
-const TEXT_TERTIARY  = '#00330080';
+const TEXT_PRIMARY   = '#0f1f33';
+const TEXT_SECONDARY = '#0f1f33CC';
+const TEXT_TERTIARY  = '#0f1f3380';
 
 interface CertRecord {
   _id: string;
@@ -66,13 +66,13 @@ function CertCard({ cert }: { cert: CertRecord }) {
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl border border-[#003300]/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+      className="bg-white rounded-2xl border border-ink/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       {/* Gold top accent */}
       <div className="h-1 bg-amber-400" />
 
       {/* Preview thumbnail — scaled down A4, fills full card width */}
-      <div className="relative overflow-hidden bg-[#faf8f0] border-b border-[#003300]/6" style={{ height: '180px' }}>
+      <div className="relative overflow-hidden bg-[#faf8f0] border-b border-ink/6" style={{ height: '180px' }}>
         {/*
           A4 cert is 1123×794. We want to fill the card width (~340px at lg).
           Scale = container_width / 1123. We use transform-origin top left and
@@ -96,8 +96,8 @@ function CertCard({ cert }: { cert: CertRecord }) {
         {/* Overlay gradient for clean fade at bottom */}
         <div className="absolute inset-0 bg-transparent pointer-events-none" />
         {/* Cert ID badge */}
-        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 border border-[#003300]/10">
-          <p className="text-[10px] font-mono font-bold text-[#003300]/60">{cert.certificateNumber}</p>
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 border border-ink/10">
+          <p className="text-[10px] font-mono font-bold text-ink/60">{cert.certificateNumber}</p>
         </div>
       </div>
 
@@ -118,7 +118,7 @@ function CertCard({ cert }: { cert: CertRecord }) {
           <button
             onClick={() => downloadPDF(a4Ref, pdfName)}
             disabled={!!generating}
-            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-[#003300]/15 text-xs font-semibold hover:bg-[#003300]/4 transition-colors disabled:opacity-50"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-ink/15 text-xs font-semibold hover:bg-ink/4 transition-colors disabled:opacity-50"
             style={{ color: TEXT_PRIMARY }}
           >
             {generating === 'pdf' ? (
@@ -148,7 +148,7 @@ function CertCard({ cert }: { cert: CertRecord }) {
           href={publicSite.verifyCertificate(cert.certificateNumber)}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1.5 w-full text-xs py-1.5 rounded-lg hover:bg-[#003300]/4 transition-colors"
+          className="flex items-center justify-center gap-1.5 w-full text-xs py-1.5 rounded-lg hover:bg-ink/4 transition-colors"
           style={{ color: TEXT_TERTIARY }}
         >
           <ExternalLink className="w-3 h-3" />
@@ -170,13 +170,13 @@ function Skeleton() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-pulse">
       {[1,2].map(i => (
-        <div key={i} className="bg-white rounded-2xl border border-[#003300]/8 overflow-hidden">
+        <div key={i} className="bg-white rounded-2xl border border-ink/8 overflow-hidden">
           <div className="h-1 bg-amber-200" />
-          <div className="h-44 bg-[#003300]/5" />
+          <div className="h-44 bg-ink/5" />
           <div className="p-4 space-y-2">
-            <div className="h-4 bg-[#003300]/10 rounded w-3/4" />
-            <div className="h-3 bg-[#003300]/6 rounded w-1/2" />
-            <div className="h-8 bg-[#003300]/6 rounded mt-3" />
+            <div className="h-4 bg-ink/10 rounded w-3/4" />
+            <div className="h-3 bg-ink/6 rounded w-1/2" />
+            <div className="h-8 bg-ink/6 rounded mt-3" />
           </div>
         </div>
       ))}
@@ -240,7 +240,7 @@ export default function StudentCertificates() {
           </button>
         </div>
       ) : certs.length === 0 ? (
-        <div className="text-center py-20 bg-white rounded-2xl border border-[#003300]/8">
+        <div className="text-center py-20 bg-white rounded-2xl border border-ink/8">
           <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style={{ background: 'rgba(184,150,12,0.1)' }}>
             <Award className="w-8 h-8 text-amber-400" />
           </div>

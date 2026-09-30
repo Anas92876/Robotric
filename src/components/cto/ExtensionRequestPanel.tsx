@@ -116,16 +116,16 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
   const minDateStr = minDate.toISOString().slice(0, 16);
 
   return (
-    <div className="mt-2 border-t border-[#003300]/8 pt-2">
+    <div className="mt-2 border-t border-ink/8 pt-2">
       <button
         onClick={() => setOpen(v => !v)}
-        className="flex items-center gap-2 text-xs text-[#003300]/50 hover:text-[#003300]/80 transition-colors w-full"
+        className="flex items-center gap-2 text-xs text-ink/50 hover:text-ink/80 transition-colors w-full"
       >
         <CalendarClock className="w-3.5 h-3.5 flex-shrink-0" />
         <span className="font-medium">
           Extension Requests
           {fetched && requests.length > 0 && (
-            <span className="ml-1.5 px-1.5 py-0.5 rounded-full bg-[#003300]/10 text-[#003300]/60">
+            <span className="ml-1.5 px-1.5 py-0.5 rounded-full bg-ink/10 text-ink/60">
               {requests.length}
             </span>
           )}
@@ -147,14 +147,14 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
           >
             <div className="mt-2 space-y-2">
               {loading && (
-                <div className="flex items-center gap-2 py-2 text-xs text-[#003300]/40">
+                <div className="flex items-center gap-2 py-2 text-xs text-ink/40">
                   <Loader2 className="w-3 h-3 animate-spin" /> Loading...
                 </div>
               )}
 
               {/* Current deadline reference */}
               {(taskDueDate || taskHardDeadline) && (
-                <div className="flex flex-wrap gap-3 px-2 py-1.5 rounded-lg bg-[#003300]/4 text-xs text-[#003300]/50">
+                <div className="flex flex-wrap gap-3 px-2 py-1.5 rounded-lg bg-ink/4 text-xs text-ink/50">
                   {taskDueDate && (
                     <span className="flex items-center gap-1">
                       <Clock className="w-3 h-3" /> Soft: {formatDate(taskDueDate)}
@@ -170,18 +170,18 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
 
               {/* Past requests */}
               {!loading && requests.length === 0 && (
-                <p className="text-xs text-[#003300]/30 py-1 px-1">No requests yet.</p>
+                <p className="text-xs text-ink/30 py-1 px-1">No requests yet.</p>
               )}
 
               {requests.map(req => {
                 const sc = statusConfig[req.status];
                 return (
-                  <div key={req._id} className="rounded-lg border border-[#003300]/10 bg-white p-2.5 space-y-1.5">
+                  <div key={req._id} className="rounded-lg border border-ink/10 bg-white p-2.5 space-y-1.5">
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-medium text-[#003300] leading-snug">{req.reason}</p>
-                        <p className="text-[10px] text-[#003300]/40 mt-0.5">
-                          Proposed: <span className="font-semibold text-[#003300]/60">{formatDate(req.proposedDate)}</span>
+                        <p className="text-xs font-medium text-ink leading-snug">{req.reason}</p>
+                        <p className="text-[10px] text-ink/40 mt-0.5">
+                          Proposed: <span className="font-semibold text-ink/60">{formatDate(req.proposedDate)}</span>
                           {" · "}{formatDateTime(req.createdAt)}
                         </p>
                       </div>
@@ -193,7 +193,7 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
                           <button
                             onClick={() => handleCancel(req._id)}
                             disabled={actionId === req._id}
-                            className="text-[#003300]/20 hover:text-red-400 transition-colors"
+                            className="text-ink/20 hover:text-red-400 transition-colors"
                             title="Cancel request"
                           >
                             {actionId === req._id ? <Loader2 className="w-3 h-3 animate-spin" /> : <Trash2 className="w-3 h-3" />}
@@ -216,7 +216,7 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
                   {!showForm ? (
                     <button
                       onClick={() => setShowForm(true)}
-                      className="flex items-center gap-1.5 text-xs text-[#003300]/40 hover:text-[#003300] transition-colors px-2 py-1"
+                      className="flex items-center gap-1.5 text-xs text-ink/40 hover:text-ink transition-colors px-2 py-1"
                     >
                       <Plus className="w-3 h-3" /> Request extension
                     </button>
@@ -225,24 +225,24 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
                       <p className="text-[10px] font-semibold text-yellow-700 uppercase tracking-wide">New Extension Request</p>
                       {formError && <p className="text-[10px] text-red-500">{formError}</p>}
                       <div>
-                        <label className="text-[10px] text-[#003300]/50 font-medium">Reason *</label>
+                        <label className="text-[10px] text-ink/50 font-medium">Reason *</label>
                         <textarea
                           autoFocus
                           rows={2}
                           placeholder="Why do you need more time?"
                           value={reason}
                           onChange={e => setReason(e.target.value)}
-                          className="w-full mt-0.5 text-xs px-2 py-1.5 rounded border border-yellow-200 bg-white text-[#003300] focus:outline-none focus:ring-1 focus:ring-yellow-400 resize-none"
+                          className="w-full mt-0.5 text-xs px-2 py-1.5 rounded border border-yellow-200 bg-white text-ink focus:outline-none focus:ring-1 focus:ring-yellow-400 resize-none"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] text-[#003300]/50 font-medium">Proposed new date *</label>
+                        <label className="text-[10px] text-ink/50 font-medium">Proposed new date *</label>
                         <input
                           type="datetime-local"
                           min={minDateStr}
                           value={proposedDate}
                           onChange={e => setProposedDate(e.target.value)}
-                          className="w-full mt-0.5 text-xs px-2 py-1.5 rounded border border-yellow-200 bg-white text-[#003300] focus:outline-none focus:ring-1 focus:ring-yellow-400"
+                          className="w-full mt-0.5 text-xs px-2 py-1.5 rounded border border-yellow-200 bg-white text-ink focus:outline-none focus:ring-1 focus:ring-yellow-400"
                         />
                       </div>
                       <div className="flex items-center gap-2 pt-0.5">
@@ -256,7 +256,7 @@ export default function ExtensionRequestPanel({ taskId, taskDueDate, taskHardDea
                         </button>
                         <button
                           onClick={() => { setShowForm(false); setReason(""); setProposedDate(""); setFormError(""); }}
-                          className="text-xs text-[#003300]/40 hover:text-[#003300] transition-colors"
+                          className="text-xs text-ink/40 hover:text-ink transition-colors"
                         >
                           Cancel
                         </button>

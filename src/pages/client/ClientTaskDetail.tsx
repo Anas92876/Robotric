@@ -39,16 +39,16 @@ export default function ClientTaskDetail() {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6 max-w-2xl">
-      <button onClick={() => navigate('/client/tasks')} className="inline-flex items-center gap-1.5 text-sm text-[#003300]/60 hover:text-[#003300]">
+      <button onClick={() => navigate('/client/tasks')} className="inline-flex items-center gap-1.5 text-sm text-ink/60 hover:text-ink">
         <ArrowLeft className="w-4 h-4" /> Back to requests
       </button>
 
       <div>
         <div className="flex items-start justify-between gap-3 mb-2">
-          <h1 className="text-xl font-bold text-[#003300] leading-snug">{task.title}</h1>
+          <h1 className="text-xl font-bold text-ink leading-snug">{task.title}</h1>
           <StatusBadge status={task.status} />
         </div>
-        <div className="flex flex-wrap items-center gap-2 text-xs text-[#003300]/50">
+        <div className="flex flex-wrap items-center gap-2 text-xs text-ink/50">
           <span>{projectName}</span>
           {submittedBy && <><span>·</span><span className="inline-flex items-center gap-1"><User className="w-3 h-3" />{submittedBy}</span></>}
           {task.clientUrgency && <><span>·</span><UrgencyBadge urgency={task.clientUrgency} /></>}
@@ -58,7 +58,7 @@ export default function ClientTaskDetail() {
       {task.description && (
         <CardComponent variant="default">
           <CardBody>
-            <p className="text-sm text-[#003300]/80 whitespace-pre-wrap">{task.description}</p>
+            <p className="text-sm text-ink/80 whitespace-pre-wrap">{task.description}</p>
           </CardBody>
         </CardComponent>
       )}
@@ -76,21 +76,21 @@ export default function ClientTaskDetail() {
       {task.status !== 'pending_review' && task.status !== 'declined' && (task.dueDate || assignedNames) && (
         <CardComponent variant="default">
           <CardBody className="space-y-2">
-            <p className="text-xs font-semibold text-[#003300]/60 uppercase tracking-wide">Set by our team</p>
+            <p className="text-xs font-semibold text-ink/60 uppercase tracking-wide">Set by our team</p>
             {task.dueDate && (
-              <p className="text-sm text-[#003300]/80 inline-flex items-center gap-1.5">
+              <p className="text-sm text-ink/80 inline-flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5" /> Target date: {new Date(task.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
               </p>
             )}
             {assignedNames && (
-              <p className="text-sm text-[#003300]/80">Working on it: {assignedNames}</p>
+              <p className="text-sm text-ink/80">Working on it: {assignedNames}</p>
             )}
           </CardBody>
         </CardComponent>
       )}
 
       <div>
-        <h2 className="text-sm font-semibold text-[#003300]/70 uppercase tracking-wide mb-3">Attachments</h2>
+        <h2 className="text-sm font-semibold text-ink/70 uppercase tracking-wide mb-3">Attachments</h2>
         <MediaGrid items={media} emptyLabel="No attachments on this request." />
       </div>
     </motion.div>

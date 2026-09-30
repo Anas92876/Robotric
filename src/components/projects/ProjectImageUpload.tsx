@@ -75,10 +75,10 @@ export const ProjectImageUpload: React.FC<ProjectImageUploadProps> = ({
                 </button>
               )}
             </div>
-            <div className="mt-1 text-xs text-[#003300]/60 truncate">
+            <div className="mt-1 text-xs text-ink/60 truncate">
               {images[index]?.name}
             </div>
-            <div className="text-xs text-[#003300]/40">
+            <div className="text-xs text-ink/40">
               {formatFileSize(images[index]?.size || 0)}
             </div>
           </div>
@@ -92,10 +92,10 @@ export const ProjectImageUpload: React.FC<ProjectImageUploadProps> = ({
             }`}
           >
             <Upload className="w-8 h-8 mx-auto mb-2 text-primary/60" />
-            <p className="text-sm text-[#003300]/70 mb-1">
+            <p className="text-sm text-ink/70 mb-1">
               Click to upload
             </p>
-            <p className="text-xs text-[#003300]/50">
+            <p className="text-xs text-ink/50">
               {maxImages - images.length} slot{maxImages - images.length !== 1 ? 's' : ''} remaining
             </p>
             <input
@@ -112,7 +112,7 @@ export const ProjectImageUpload: React.FC<ProjectImageUploadProps> = ({
       </div>
 
       {images.length >= maxImages && (
-        <p className="text-sm text-[#003300]/60 text-center">
+        <p className="text-sm text-ink/60 text-center">
           Maximum {maxImages} images reached
         </p>
       )}

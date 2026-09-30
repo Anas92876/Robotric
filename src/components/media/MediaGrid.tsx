@@ -13,7 +13,7 @@ export default function MediaGrid({ items, emptyLabel = "No attachments" }: Medi
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (items.length === 0) {
-    return <p className="text-xs text-[#003300]/40 italic">{emptyLabel}</p>;
+    return <p className="text-xs text-ink/40 italic">{emptyLabel}</p>;
   }
 
   return (
@@ -24,7 +24,7 @@ export default function MediaGrid({ items, emptyLabel = "No attachments" }: Medi
             key={item._id}
             type="button"
             onClick={() => setLightboxIndex(i)}
-            className="relative aspect-square rounded-lg overflow-hidden border border-[#003300]/15 bg-[#003300]/5 group"
+            className="relative aspect-square rounded-lg overflow-hidden border border-ink/15 bg-ink/5 group"
           >
             {item.kind === 'image' && (
               <img src={item.url} alt={item.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
@@ -39,9 +39,9 @@ export default function MediaGrid({ items, emptyLabel = "No attachments" }: Medi
             )}
             {item.kind === 'audio' && (
               <div className="w-full h-full flex flex-col items-center justify-center gap-1">
-                <Music className="w-5 h-5 text-[#003300]/50" />
+                <Music className="w-5 h-5 text-ink/50" />
                 {item.durationSeconds !== undefined && (
-                  <span className="text-[10px] text-[#003300]/50 tabular-nums">{formatDuration(item.durationSeconds)}</span>
+                  <span className="text-[10px] text-ink/50 tabular-nums">{formatDuration(item.durationSeconds)}</span>
                 )}
               </div>
             )}

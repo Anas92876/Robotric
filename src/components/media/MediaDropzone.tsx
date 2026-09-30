@@ -144,7 +144,7 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
         tabIndex={disabled ? -1 : 0}
         onKeyDown={(e) => { if (!disabled && (e.key === 'Enter' || e.key === ' ')) inputRef.current?.click(); }}
         className={`relative rounded-xl border-2 border-dashed transition-colors cursor-pointer px-4 py-6 text-center
-          ${isDragging ? 'border-[#003300] bg-[#003300]/5' : 'border-[#003300]/25 bg-[#003300]/[0.02] hover:bg-[#003300]/5'}
+          ${isDragging ? 'border-ink bg-ink/5' : 'border-ink/25 bg-ink/[0.02] hover:bg-ink/5'}
           ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
       >
         <input
@@ -156,11 +156,11 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
           className="hidden"
           disabled={disabled}
         />
-        <Upload className="w-6 h-6 mx-auto mb-2 text-[#003300]/50" />
-        <p className="text-sm font-medium text-[#003300]">
+        <Upload className="w-6 h-6 mx-auto mb-2 text-ink/50" />
+        <p className="text-sm font-medium text-ink">
           Drag files here, or click to browse
         </p>
-        <p className="text-xs text-[#003300]/50 mt-1">
+        <p className="text-xs text-ink/50 mt-1">
           Images, video, or audio — up to {formatBytes(MEDIA_LIMITS.video)} for video
         </p>
       </div>
@@ -182,11 +182,11 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
       {files.length > 0 && (
         <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
           {files.map(f => (
-            <div key={f.id} className="relative group rounded-lg overflow-hidden border border-[#003300]/15 bg-white">
-              <div className="aspect-video bg-[#003300]/5 flex items-center justify-center overflow-hidden">
+            <div key={f.id} className="relative group rounded-lg overflow-hidden border border-ink/15 bg-white">
+              <div className="aspect-video bg-ink/5 flex items-center justify-center overflow-hidden">
                 {f.kind === 'image' && <img src={f.previewUrl} alt={f.file.name} className="w-full h-full object-cover" />}
                 {f.kind === 'video' && <video src={f.previewUrl} muted playsInline className="w-full h-full object-cover" />}
-                {f.kind === 'audio' && <Music className="w-6 h-6 text-[#003300]/40" />}
+                {f.kind === 'audio' && <Music className="w-6 h-6 text-ink/40" />}
               </div>
 
               <button
@@ -199,8 +199,8 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
               </button>
 
               {f.status === 'uploading' && (
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-[#003300]/10">
-                  <div className="h-full bg-[#003300] transition-all" style={{ width: `${f.progress}%` }} />
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-ink/10">
+                  <div className="h-full bg-ink transition-all" style={{ width: `${f.progress}%` }} />
                 </div>
               )}
               {f.status === 'error' && (
@@ -209,7 +209,7 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
                 </div>
               )}
 
-              <div className="px-2 py-1 flex items-center gap-1 text-[10px] text-[#003300]/70">
+              <div className="px-2 py-1 flex items-center gap-1 text-[10px] text-ink/70">
                 {f.kind === 'image' && <ImageIcon className="w-3 h-3 flex-shrink-0" />}
                 {f.kind === 'video' && <Film className="w-3 h-3 flex-shrink-0" />}
                 {f.kind === 'audio' && <Music className="w-3 h-3 flex-shrink-0" />}

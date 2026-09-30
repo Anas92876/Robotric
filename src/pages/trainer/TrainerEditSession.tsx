@@ -216,10 +216,10 @@ export default function TrainerEditSession() {
 
         <div className="mt-4">
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:editSessionTitle')}</h1>
-          <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardTrainer:editSessionSubtitle')}
           </p>
         </div>

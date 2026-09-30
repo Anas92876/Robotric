@@ -211,7 +211,7 @@ function Dashboard() {
         <h1 className="text-3xl font-bold text-primary mb-2">
           {t('dashboardAdmin:adminDashboard')}
         </h1>
-        <p className="text-[#003300]/60">
+        <p className="text-ink/60">
           Manage your robotics inventory and orders
         </p>
       </div>
@@ -235,7 +235,7 @@ function Dashboard() {
             </svg>
             <h3 className="font-semibold text-yellow-400">{t('dashboardAdmin:inventory')}</h3>
           </div>
-          <ul className="space-y-1 text-sm text-[#003300]/70">
+          <ul className="space-y-1 text-sm text-ink/70">
             {alerts.map((alert, index) => (
               <li key={index}>• {alert}</li>
             ))}
@@ -248,10 +248,10 @@ function Dashboard() {
         {statCards.map((card, index) => (
           <div
             key={index}
-            className="group relative bg-white rounded-xl sm:rounded-2xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2"
+            className="group relative bg-white rounded-xl sm:rounded-2xl p-6 border border-ink/20 hover:border-ink/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2"
           >
             {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
+            <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
             
             {/* Shimmer Effect */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
@@ -259,25 +259,25 @@ function Dashboard() {
             <div className={`relative z-10 flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
                 <div className="text-3xl font-bold group-hover:scale-105 transition-transform duration-300 inline-block" style={{ 
-                  color: '#003300',
+                  color: '#0f1f33',
                   backgroundClip: 'text'
                 }}>
                   {card.value}
                 </div>
-                <h3 className="text-sm font-medium mt-1 transition-colors duration-300" style={{ color: '#003300' }}>
+                <h3 className="text-sm font-medium mt-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
                   {card.title}
                 </h3>
               </div>
               <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ 
-                background: '#003300',
-                color: '#ffffcc'
+                background: '#0f1f33',
+                color: '#eefcf1'
               }}>
                 {card.icon}
               </div>
             </div>
             
             {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
         ))}
       </div>
@@ -285,8 +285,8 @@ function Dashboard() {
       {/* Analytics widgets */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
         {/* Orders Trend */}
-        <div className="bg-white border border-[#003300]/15 rounded-2xl p-6">
-          <h3 className="text-[#003300] font-semibold mb-3">
+        <div className="bg-white border border-ink/15 rounded-2xl p-6">
+          <h3 className="text-ink font-semibold mb-3">
             {t('dashboardAdmin:orders')}
           </h3>
           {ordersByDay.length ? (
@@ -300,19 +300,19 @@ function Dashboard() {
                       className="w-6 bg-primary/30 border border-primary/40 rounded-t"
                       style={{ height: `${h}px` }}
                     />
-                    <span className="text-xs text-[#003300]/60 mt-1">{v}</span>
+                    <span className="text-xs text-ink/60 mt-1">{v}</span>
                   </div>
                 );
               })}
             </div>
           ) : (
-            <div className="text-[#003300]/60">No recent orders</div>
+            <div className="text-ink/60">No recent orders</div>
           )}
         </div>
 
         {/* Top Parts */}
-        <div className="bg-white border border-[#003300]/15 rounded-2xl p-6">
-          <h3 className="text-[#003300] font-semibold mb-3">{t('dashboardAdmin:inventory')}</h3>
+        <div className="bg-white border border-ink/15 rounded-2xl p-6">
+          <h3 className="text-ink font-semibold mb-3">{t('dashboardAdmin:inventory')}</h3>
           {topParts.length ? (
             <ul className="space-y-2">
               {topParts.map((p) => (
@@ -320,19 +320,19 @@ function Dashboard() {
                   key={p.name}
                   className={`flex items-center justify-between text-sm ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
-                  <span className="text-[#003300]/80">{p.name}</span>
+                  <span className="text-ink/80">{p.name}</span>
                   <span className="text-primary font-medium">× {p.count}</span>
                 </li>
               ))}
             </ul>
           ) : (
-            <div className="text-[#003300]/60">No order items yet</div>
+            <div className="text-ink/60">No order items yet</div>
           )}
         </div>
 
         {/* Low Stock */}
-        <div className="bg-white border border-[#003300]/15 rounded-2xl p-6">
-          <h3 className="text-[#003300] font-semibold mb-3">{t('dashboardAdmin:inventory')}</h3>
+        <div className="bg-white border border-ink/15 rounded-2xl p-6">
+          <h3 className="text-ink font-semibold mb-3">{t('dashboardAdmin:inventory')}</h3>
           {lowStock.length ? (
             <ul className="space-y-2">
               {lowStock.map((p) => (
@@ -340,7 +340,7 @@ function Dashboard() {
                   key={p.name}
                   className={`flex items-center justify-between text-sm ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
-                  <span className="text-[#003300]/80">{p.name}</span>
+                  <span className="text-ink/80">{p.name}</span>
                   <span className="text-red-400">
                     {p.availableQty}/{p.reorderPoint}
                   </span>
@@ -348,7 +348,7 @@ function Dashboard() {
               ))}
             </ul>
           ) : (
-            <div className="text-[#003300]/60">All stock above threshold</div>
+            <div className="text-ink/60">All stock above threshold</div>
           )}
         </div>
       </div>
@@ -411,7 +411,7 @@ function OrdersManagement() {
         breadcrumbs={[{ label: "Admin", to: "/admin" }, { label: "Orders" }]}
         actions={
           <select
-            className="bg-white border border-[#003300]/20 text-[#003300] rounded-xl px-4 py-2 focus:border-primary focus:outline-none"
+            className="bg-white border border-ink/20 text-ink rounded-xl px-4 py-2 focus:border-primary focus:outline-none"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           >
@@ -429,14 +429,14 @@ function OrdersManagement() {
         {filteredOrders.map((order) => (
           <div
             key={order._id}
-            className="bg-white border border-[#003300]/15 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300"
+            className="bg-white border border-ink/15 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300"
           >
             <div className={`flex justify-between items-start mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
-                <h3 className="text-lg font-semibold text-[#003300]">
+                <h3 className="text-lg font-semibold text-ink">
                   Order #{order._id.slice(-8)}
                 </h3>
-                <p className="text-[#003300]/60 text-sm">
+                <p className="text-ink/60 text-sm">
                   {new Date(order.createdAt).toLocaleDateString()}
                 </p>
               </div>
@@ -450,7 +450,7 @@ function OrdersManagement() {
                     ? "bg-green-900/20 text-green-400"
                     : order.status === "rejected"
                     ? "bg-red-900/20 text-red-400"
-                    : "bg-[#003300]/10 text-[#003300]/60"
+                    : "bg-ink/10 text-ink/60"
                 }`}
               >
                 {order.status}
@@ -458,10 +458,10 @@ function OrdersManagement() {
             </div>
 
             <div className="mb-4">
-              <h4 className="text-[#003300] font-medium mb-2">Items:</h4>
+              <h4 className="text-ink font-medium mb-2">Items:</h4>
               <ul className="space-y-1">
                 {order.items.map((item, idx) => (
-                  <li key={idx} className="text-[#003300]/70 text-sm">
+                  <li key={idx} className="text-ink/70 text-sm">
                     • {item.partId?.name || "Unknown Part"} × {item.qty}
                   </li>
                 ))}
@@ -511,7 +511,7 @@ function OrdersManagement() {
                 d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
               />
             </svg>
-            <p className="text-[#003300]/60">{t('dashboardAdmin:noOrders')}</p>
+            <p className="text-ink/60">{t('dashboardAdmin:noOrders')}</p>
           </div>
         )}
       </div>
@@ -592,15 +592,15 @@ function PartsManagement() {
           .map((part) => (
             <div
               key={part._id}
-              className="bg-white border border-[#003300]/15 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300"
+              className="bg-white border border-ink/15 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300"
             >
               <div className={`flex justify-between items-start mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-[#003300] mb-1">
+                  <h3 className="text-lg font-semibold text-ink mb-1">
                     {part.name}
                   </h3>
                   {part.category && (
-                    <span className="text-xs bg-[#003300]/10 text-[#003300]/70 px-2 py-1 rounded-full">
+                    <span className="text-xs bg-ink/10 text-ink/70 px-2 py-1 rounded-full">
                       {part.category}
                     </span>
                   )}
@@ -608,18 +608,18 @@ function PartsManagement() {
               </div>
 
               {part.description && (
-                <p className="text-[#003300]/60 text-sm mb-4">{part.description}</p>
+                <p className="text-ink/60 text-sm mb-4">{part.description}</p>
               )}
 
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-[#003300]/5 p-3 rounded-lg">
-                  <p className="text-xs text-[#003300]/60">Available</p>
+                <div className="bg-ink/5 p-3 rounded-lg">
+                  <p className="text-xs text-ink/60">Available</p>
                   <p className="text-xl font-bold text-green-400">
                     {part.availableQty}
                   </p>
                 </div>
-                <div className="bg-[#003300]/5 p-3 rounded-lg">
-                  <p className="text-xs text-[#003300]/60">Reserved</p>
+                <div className="bg-ink/5 p-3 rounded-lg">
+                  <p className="text-xs text-ink/60">Reserved</p>
                   <p className="text-xl font-bold text-yellow-400">
                     {part.reservedQty}
                   </p>
@@ -669,7 +669,7 @@ function PartsManagement() {
               d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
             />
           </svg>
-          <p className="text-[#003300]/60 mb-4">No parts found</p>
+          <p className="text-ink/60 mb-4">No parts found</p>
           <button
             onClick={() => setPartForm({ mode: "create" })}
             className="bg-primary hover:bg-primary-dark text-background px-6 py-2 rounded-xl font-semibold transition-all duration-300"

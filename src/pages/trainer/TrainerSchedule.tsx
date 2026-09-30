@@ -127,21 +127,21 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({
             <div className={`flex items-start justify-between mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{session.title}</h2>
+                  <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{session.title}</h2>
                   <Badge variant={getStatusColor(session.status) as any}>
                     {session.status}
                   </Badge>
                 </div>
                 {session.description && (
-                  <p className="transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{session.description}</p>
+                  <p className="transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{session.description}</p>
                 )}
               </div>
               <button
                 onClick={onClose}
                 className="transition-colors duration-300"
-                style={{ color: '#003300' + 'CC' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#003300'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = '#003300' + 'CC'; }}
+                style={{ color: '#0f1f33' + 'CC' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#0f1f33'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#0f1f33' + 'CC'; }}
               >
                 <X className="w-6 h-6" />
               </button>
@@ -153,14 +153,14 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({
               <div className="flex items-start gap-3 p-3 rounded-lg bg-white/5">
                 <CalendarIcon className="w-5 h-5 text-primary mt-0.5" />
                 <div>
-                  <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:dateTime')}</p>
-                  <p className="font-medium transition-colors duration-300" style={{ color: '#003300' }}>
+                  <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:dateTime')}</p>
+                  <p className="font-medium transition-colors duration-300" style={{ color: '#0f1f33' }}>
                     {dayjs(session.scheduledDate).format('MMM DD, YYYY')}
                   </p>
-                  <p className="text-sm transition-colors duration-300" style={{ color: '#003300' }}>
+                  <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' }}>
                     {formatTime(session.startTime)} - {formatTime(session.endTime)}
                   </p>
-                  <p className="text-xs mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+                  <p className="text-xs mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
                     {session.duration} {t('dashboardTrainer:minutes')}
                   </p>
                 </div>
@@ -427,9 +427,9 @@ export default function TrainerSchedule() {
         <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <button
             onClick={() => onNavigate('PREV')}
-            className="w-10 h-10 rounded-xl bg-white border border-[#003300]/15 flex items-center justify-center hover:bg-[#003300]/5 hover:border-primary/50 transition-all duration-300 hover:scale-105"
+            className="w-10 h-10 rounded-xl bg-white border border-ink/15 flex items-center justify-center hover:bg-ink/5 hover:border-primary/50 transition-all duration-300 hover:scale-105"
           >
-            <ChevronLeft className="w-5 h-5 text-[#003300]/80" />
+            <ChevronLeft className="w-5 h-5 text-ink/80" />
           </button>
           <button
             onClick={() => onNavigate('TODAY')}
@@ -439,9 +439,9 @@ export default function TrainerSchedule() {
           </button>
           <button
             onClick={() => onNavigate('NEXT')}
-            className="w-10 h-10 rounded-xl bg-white border border-[#003300]/15 flex items-center justify-center hover:bg-[#003300]/5 hover:border-primary/50 transition-all duration-300 hover:scale-105"
+            className="w-10 h-10 rounded-xl bg-white border border-ink/15 flex items-center justify-center hover:bg-ink/5 hover:border-primary/50 transition-all duration-300 hover:scale-105"
           >
-            <ChevronRight className="w-5 h-5 text-[#003300]/80" />
+            <ChevronRight className="w-5 h-5 text-ink/80" />
           </button>
         </div>
 
@@ -454,7 +454,7 @@ export default function TrainerSchedule() {
         <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`px-4 py-2.5 rounded-xl bg-white border border-[#003300]/20 text-[#003300] font-semibold text-sm hover:bg-[#003300]/5 hover:border-primary/50 transition-all duration-300 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}
+            className={`px-4 py-2.5 rounded-xl bg-white border border-ink/20 text-ink font-semibold text-sm hover:bg-ink/5 hover:border-primary/50 transition-all duration-300 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             <Filter className="w-4 h-4" />
             {t('dashboardCommon:filter')}
@@ -463,7 +463,7 @@ export default function TrainerSchedule() {
       </div>
 
       {/* View Switcher */}
-      <div className="flex rounded-xl overflow-hidden border border-[#003300]/15 bg-white w-fit">
+      <div className="flex rounded-xl overflow-hidden border border-ink/15 bg-white w-fit">
         {['month', 'week', 'day'].map((v) => (
           <button
             key={v}
@@ -471,7 +471,7 @@ export default function TrainerSchedule() {
             className={`px-6 py-2.5 text-sm font-semibold transition-all duration-300 relative ${
               view === v
                 ? 'text-secondary'
-                : 'text-[#003300]/50 hover:text-[#003300]'
+                : 'text-ink/50 hover:text-ink'
             }`}
           >
             {view === v && (
@@ -523,7 +523,7 @@ export default function TrainerSchedule() {
           <h1 className="text-4xl font-bold text-primary">
             {t('dashboardTrainer:schedule')}
           </h1>
-          <p className="mt-2 text-[#003300]/60">
+          <p className="mt-2 text-ink/60">
             {t('dashboardTrainer:scheduleSubtitle')}
           </p>
         </div>
@@ -550,7 +550,7 @@ export default function TrainerSchedule() {
                       setSelectedGroup('');
                       setSelectedStatus('');
                     }}
-                    className="text-sm text-[#003300]/60 hover:text-[#003300] transition-colors"
+                    className="text-sm text-ink/60 hover:text-ink transition-colors"
                   >
                     {t('dashboardTrainer:clearAll')}
                   </button>
@@ -559,14 +559,14 @@ export default function TrainerSchedule() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Group Filter */}
                   <div>
-                    <label className={`block text-sm font-semibold mb-3 text-[#003300]/80 flex items-center gap-2 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <label className={`block text-sm font-semibold mb-3 text-ink/80 flex items-center gap-2 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                       <Users className="w-4 h-4 text-accent" />
                       {t('dashboardTrainer:filterByGroup')}
                     </label>
                     <select
                       value={selectedGroup}
                       onChange={(e) => setSelectedGroup(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-[#003300]/20 text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all hover:bg-[#003300]/5"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-ink/20 text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all hover:bg-ink/5"
                       dir={isRTL ? 'rtl' : 'ltr'}
                     >
                       <option value="">{t('dashboardTrainer:allGroups')}</option>
@@ -580,14 +580,14 @@ export default function TrainerSchedule() {
 
                   {/* Status Filter */}
                   <div>
-                    <label className={`block text-sm font-semibold mb-3 text-[#003300]/80 flex items-center gap-2 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <label className={`block text-sm font-semibold mb-3 text-ink/80 flex items-center gap-2 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                       <AlertCircle className="w-4 h-4 text-secondary" />
                       {t('dashboardTrainer:filterByStatus')}
                     </label>
                     <select
                       value={selectedStatus}
                       onChange={(e) => setSelectedStatus(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-[#003300]/20 text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all hover:bg-[#003300]/5"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-ink/20 text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all hover:bg-ink/5"
                       dir={isRTL ? 'rtl' : 'ltr'}
                     >
                       <option value="">{t('dashboardTrainer:allStatuses')}</option>

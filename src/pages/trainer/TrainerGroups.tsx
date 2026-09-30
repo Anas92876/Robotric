@@ -105,10 +105,10 @@ export default function TrainerGroups() {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:myGroups')}</h1>
-          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:manageGroups')}</p>
+          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:manageGroups')}</p>
         </div>
         {/* Group creation removed - now managed by CLO */}
       </motion.div>
@@ -122,8 +122,8 @@ export default function TrainerGroups() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
-                <p className={`text-sm mb-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:totalGroupsCount')}</p>
-                <p className="text-3xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{groups.length}</p>
+                <p className={`text-sm mb-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:totalGroupsCount')}</p>
+                <p className="text-3xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{groups.length}</p>
               </div>
               <Users className="w-8 h-8 text-primary" />
             </div>
@@ -134,8 +134,8 @@ export default function TrainerGroups() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
-                <p className={`text-sm mb-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:totalStudents')}</p>
-                <p className="text-3xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{totalStudents}</p>
+                <p className={`text-sm mb-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:totalStudents')}</p>
+                <p className="text-3xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{totalStudents}</p>
               </div>
               <Users className="w-8 h-8 text-accent" />
             </div>
@@ -146,8 +146,8 @@ export default function TrainerGroups() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div>
-                <p className={`text-sm mb-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:avgAttendance')}</p>
-                <p className="text-3xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{avgAttendance}%</p>
+                <p className={`text-sm mb-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:avgAttendance')}</p>
+                <p className="text-3xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{avgAttendance}%</p>
               </div>
               <TrendingUp className="w-8 h-8 text-green-500" />
             </div>

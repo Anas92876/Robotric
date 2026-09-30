@@ -142,7 +142,7 @@ export default function CLOEvaluations() {
       {/* Header with Breadcrumb */}
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
-          <div className={`flex items-center gap-2 text-sm text-[#003300]/60 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center gap-2 text-sm text-ink/60 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <span className={step === 'course' ? 'text-primary font-medium' : ''}>{t('dashboardCLO:selectCourse')}</span>
             {(step === 'session' || step === 'details') && (
               <>
@@ -160,10 +160,10 @@ export default function CLOEvaluations() {
             )}
           </div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:sessionEvaluations')}</h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {step === 'course' && t('dashboardCLO:selectCourseToViewEvaluations')}
             {step === 'session' && t('dashboardCLO:selectSessionToViewEvaluations')}
             {step === 'details' && t('dashboardCLO:viewDetailedEvaluationDesc')}
@@ -228,14 +228,14 @@ export default function CLOEvaluations() {
                 >
                   <button
                     onClick={() => handleSelectCourse(course)}
-                    className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
+                    className={`w-full bg-white rounded-xl p-6 border border-ink/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <BookOpen className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-semibold text-[#003300] mb-1 group-hover:text-primary transition-colors">
+                        <h3 className="text-lg font-semibold text-ink mb-1 group-hover:text-primary transition-colors">
                           {course.title}
                         </h3>
                         <div className={`flex flex-wrap items-center gap-2 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
@@ -251,12 +251,12 @@ export default function CLOEvaluations() {
                           )}
                         </div>
                         {course.description && (
-                          <p className="text-sm text-[#003300]/60 line-clamp-2 mb-3">
+                          <p className="text-sm text-ink/60 line-clamp-2 mb-3">
                             {course.description}
                           </p>
                         )}
                         <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
-                          <span className="text-sm text-[#003300]/60">
+                          <span className="text-sm text-ink/60">
                             {t('dashboardCLO:clickToViewSessions')}
                           </span>
                           <ChevronRight className={`w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
@@ -267,12 +267,12 @@ export default function CLOEvaluations() {
                 </motion.div>
               ))
             ) : (
-              <div className="col-span-full bg-white rounded-xl p-12 border border-[#003300]/10 text-center">
-                <BookOpen className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <h3 className="text-lg font-semibold text-[#003300] mb-2">
+              <div className="col-span-full bg-white rounded-xl p-12 border border-ink/10 text-center">
+                <BookOpen className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <h3 className="text-lg font-semibold text-ink mb-2">
                   {t('dashboardCLO:noCourses')}
                 </h3>
-                <p className="text-[#003300]/60">
+                <p className="text-ink/60">
                   {t('dashboardCLO:noPublishedCourses')}
                 </p>
               </div>
@@ -302,17 +302,17 @@ export default function CLOEvaluations() {
                 >
                   <button
                     onClick={() => handleSelectSession(session)}
-                    className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
+                    className={`w-full bg-white rounded-xl p-6 border border-ink/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <FileText className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-xl font-semibold text-[#003300] mb-2 group-hover:text-primary transition-colors">
+                        <h3 className="text-xl font-semibold text-ink mb-2 group-hover:text-primary transition-colors">
                           {session.title}
                         </h3>
-                        <div className={`flex flex-wrap items-center gap-3 text-sm text-[#003300]/60 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className={`flex flex-wrap items-center gap-3 text-sm text-ink/60 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <Calendar className="w-4 h-4" />
                             <span>{formatDate(session.scheduledDate)}</span>
@@ -328,7 +328,7 @@ export default function CLOEvaluations() {
                         <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <FileText className="w-4 h-4 text-primary" />
-                            <span className="text-sm text-[#003300]/80">
+                            <span className="text-sm text-ink/80">
                               {t('dashboardCLO:evaluationsSubmitted', { count: session.evaluationsCount })}
                             </span>
                           </div>
@@ -340,12 +340,12 @@ export default function CLOEvaluations() {
                 </motion.div>
               ))
             ) : (
-              <div className="bg-white rounded-xl p-12 border border-[#003300]/10 text-center">
-                <FileText className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <h3 className="text-lg font-semibold text-[#003300] mb-2">
+              <div className="bg-white rounded-xl p-12 border border-ink/10 text-center">
+                <FileText className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <h3 className="text-lg font-semibold text-ink mb-2">
                   {t('dashboardCLO:noSessionsFound')}
                 </h3>
-                <p className="text-[#003300]/60">
+                <p className="text-ink/60">
                   {t('dashboardCLO:noEvaluationsForCourse')}
                 </p>
               </div>
@@ -366,21 +366,21 @@ export default function CLOEvaluations() {
             {/* Statistics Cards */}
             {sessionStats && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <FileText className="w-4 h-4 text-primary" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCLO:totalEvaluations')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCLO:totalEvaluations')}</p>
                   </div>
-                  <p className="text-2xl font-bold text-[#003300]">{sessionStats.total}</p>
+                  <p className="text-2xl font-bold text-ink">{sessionStats.total}</p>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <Award className="w-4 h-4 text-yellow-600" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCLO:averageRating')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCLO:averageRating')}</p>
                   </div>
-                  <p className="text-2xl font-bold text-[#003300]">
-                    {sessionStats.averageRating} <span className="text-sm text-[#003300]/60">/ 5</span>
+                  <p className="text-2xl font-bold text-ink">
+                    {sessionStats.averageRating} <span className="text-sm text-ink/60">/ 5</span>
                   </p>
                 </div>
               </div>
@@ -396,7 +396,7 @@ export default function CLOEvaluations() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
-                    <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
+                    <div className="bg-white rounded-xl p-6 border border-ink/10">
                       <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         {/* Rating Badge */}
                         <div className="flex-shrink-0">
@@ -405,17 +405,17 @@ export default function CLOEvaluations() {
                               ? evaluation.overallRating.toFixed(1)
                               : parseFloat(evaluation.overallRating).toFixed(1)}
                           </div>
-                          <p className="text-xs text-[#003300]/60 text-center">/ 5</p>
+                          <p className="text-xs text-ink/60 text-center">/ 5</p>
                         </div>
 
                         {/* Content */}
                         <div className={`flex-1 min-w-0 ${isRTL ? 'text-right' : ''}`}>
                           <div className={`flex items-start justify-between mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <div>
-                              <h4 className="text-lg font-semibold text-[#003300] mb-1">
+                              <h4 className="text-lg font-semibold text-ink mb-1">
                                 {t('dashboardCLO:studentLabel')} {evaluation.studentId?.name || "N/A"}
                               </h4>
-                              <div className={`flex flex-wrap items-center gap-3 text-sm text-[#003300]/60 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                              <div className={`flex flex-wrap items-center gap-3 text-sm text-ink/60 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                 <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                   <User className="w-4 h-4" />
                                   <span>{t('dashboardCLO:trainerLabel')} {evaluation.trainerId?.name || "N/A"}</span>
@@ -431,8 +431,8 @@ export default function CLOEvaluations() {
                           {/* Metrics Grid */}
                           <div className="mb-4">
                             <div>
-                              <p className="text-xs text-[#003300]/60 mb-1">{t('dashboardCLO:evaluatedOn')}</p>
-                              <p className="text-sm font-semibold text-[#003300]">
+                              <p className="text-xs text-ink/60 mb-1">{t('dashboardCLO:evaluatedOn')}</p>
+                              <p className="text-sm font-semibold text-ink">
                                 {formatDate(evaluation.evaluationDate)}
                               </p>
                             </div>
@@ -440,9 +440,9 @@ export default function CLOEvaluations() {
 
                           {/* Trainer Notes */}
                           {evaluation.trainerNotes?.generalNotes && (
-                            <div className="bg-gray-50 rounded-lg p-3 border border-[#003300]/5">
-                              <p className="text-xs text-[#003300]/60 mb-1 font-medium">{t('dashboardCLO:trainerNotes')}</p>
-                              <p className="text-sm text-[#003300]/80">
+                            <div className="bg-gray-50 rounded-lg p-3 border border-ink/5">
+                              <p className="text-xs text-ink/60 mb-1 font-medium">{t('dashboardCLO:trainerNotes')}</p>
+                              <p className="text-sm text-ink/80">
                                 {evaluation.trainerNotes.generalNotes}
                               </p>
                             </div>
@@ -450,13 +450,13 @@ export default function CLOEvaluations() {
 
                           {/* Evaluation Parameters */}
                           {evaluation.parameters && Object.keys(evaluation.parameters).length > 0 && (
-                            <div className="mt-4 pt-4 border-t border-[#003300]/10">
-                              <p className="text-xs text-[#003300]/60 mb-2 font-medium">{t('dashboardCLO:evaluationDetailsSection')}</p>
+                            <div className="mt-4 pt-4 border-t border-ink/10">
+                              <p className="text-xs text-ink/60 mb-2 font-medium">{t('dashboardCLO:evaluationDetailsSection')}</p>
                               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                 {Object.entries(evaluation.parameters).map(([key, value]) => (
                                   <div key={key} className={isRTL ? 'text-right' : ''}>
-                                    <p className="text-xs text-[#003300]/60 capitalize">{key}</p>
-                                    <p className="text-sm font-semibold text-[#003300]">
+                                    <p className="text-xs text-ink/60 capitalize">{key}</p>
+                                    <p className="text-sm font-semibold text-ink">
                                       {typeof value === 'boolean' ? (value ? 'Yes' : 'No') : value}
                                     </p>
                                   </div>
@@ -470,12 +470,12 @@ export default function CLOEvaluations() {
                   </motion.div>
                 ))
               ) : (
-                <div className="bg-white rounded-xl p-12 border border-[#003300]/10 text-center">
-                  <FileText className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                  <h3 className="text-lg font-semibold text-[#003300] mb-2">
+                <div className="bg-white rounded-xl p-12 border border-ink/10 text-center">
+                  <FileText className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                  <h3 className="text-lg font-semibold text-ink mb-2">
                     {t('dashboardCLO:noEvaluations')}
                   </h3>
-                  <p className="text-[#003300]/60">
+                  <p className="text-ink/60">
                     {t('dashboardCLO:noEvaluationsForSession')}
                   </p>
                 </div>

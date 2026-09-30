@@ -200,7 +200,7 @@ export const ConvertToStudentModal: React.FC<ConvertToStudentModalProps> = ({
             variant="ghost"
             onClick={handleClose}
             disabled={isSubmitting}
-            className="text-[#003300]/60 hover:text-[#003300] hover:bg-[#003300]/10"
+            className="text-ink/60 hover:text-ink hover:bg-ink/10"
           >
             Cancel
           </Button>

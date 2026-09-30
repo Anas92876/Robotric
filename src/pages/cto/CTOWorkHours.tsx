@@ -257,13 +257,13 @@ export default function CTOWorkHours() {
           <h1
             className="text-4xl font-bold inline-block"
             style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: "text",
             }}
           >
             Work Hours
           </h1>
-          <p className="mt-1.5" style={{ color: "#003300CC" }}>
+          <p className="mt-1.5" style={{ color: "#0f1f33CC" }}>
             Track clocked hours for hourly-paid staff
           </p>
         </div>
@@ -286,7 +286,7 @@ export default function CTOWorkHours() {
       {/* ── Stats strip ── */}
       <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { label: "Hourly Staff",  value: String(hourlyStaff.length),         icon: <Users className="w-5 h-5" />,        color: "text-[#003300]", bg: "bg-[#003300]/5" },
+          { label: "Hourly Staff",  value: String(hourlyStaff.length),         icon: <Users className="w-5 h-5" />,        color: "text-ink", bg: "bg-ink/5" },
           { label: "Working Now",   value: String(workingNow.length),          icon: <Timer className="w-5 h-5" />,        color: "text-green-600", bg: "bg-green-50" },
           { label: "Total Hours",   value: formatDuration(totalMinutes),       icon: <Clock className="w-5 h-5" />,        color: "text-blue-600",  bg: "bg-blue-50" },
           { label: "Sessions",      value: String(sessions.length),            icon: <CalendarDays className="w-5 h-5" />, color: "text-gray-600",  bg: "bg-gray-50" },
@@ -352,7 +352,7 @@ export default function CTOWorkHours() {
             {/* Enable more staff */}
             <button
               onClick={() => setShowEnableList(v => !v)}
-              className={`mt-4 flex items-center gap-2 text-sm font-medium text-[#003300] hover:underline ${isRTL ? "flex-row-reverse" : ""}`}
+              className={`mt-4 flex items-center gap-2 text-sm font-medium text-ink hover:underline ${isRTL ? "flex-row-reverse" : ""}`}
             >
               <UserPlus className="w-4 h-4" />
               Enable hourly tracking for more staff
@@ -428,7 +428,7 @@ export default function CTOWorkHours() {
                   type="date"
                   value={fromDate}
                   onChange={e => setFromDate(e.target.value)}
-                  className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                  className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
                 />
               </div>
               <div>
@@ -437,7 +437,7 @@ export default function CTOWorkHours() {
                   type="date"
                   value={toDate}
                   onChange={e => setToDate(e.target.value)}
-                  className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                  className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
                 />
               </div>
             </div>
@@ -448,7 +448,7 @@ export default function CTOWorkHours() {
                 {staffTotals.map(t => (
                   <span
                     key={t.id}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#003300]/5 text-[#003300] border border-[#003300]/10"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-ink/5 text-ink border border-ink/10"
                   >
                     {t.name}
                     <span className="font-bold">{formatDuration(t.minutes)}</span>
@@ -483,7 +483,7 @@ export default function CTOWorkHours() {
                               type="datetime-local"
                               value={editIn}
                               onChange={e => setEditIn(e.target.value)}
-                              className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                              className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
                             />
                           </div>
                           <div>
@@ -492,14 +492,14 @@ export default function CTOWorkHours() {
                               type="datetime-local"
                               value={editOut}
                               onChange={e => setEditOut(e.target.value)}
-                              className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                              className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
                             />
                           </div>
                           <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                             <button
                               onClick={() => saveEdit(session._id)}
                               disabled={savingId === session._id}
-                              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-white bg-[#003300] hover:bg-[#004d00] transition-colors disabled:opacity-60"
+                              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-white bg-ink hover:bg-ink-deep transition-colors disabled:opacity-60"
                             >
                               {savingId === session._id
                                 ? <RefreshCw className="w-4 h-4 animate-spin" />
@@ -554,7 +554,7 @@ export default function CTOWorkHours() {
                             <div className={`flex items-center gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
                               <button
                                 onClick={() => openEdit(session)}
-                                className="p-2 rounded-lg text-gray-400 hover:text-[#003300] hover:bg-gray-100 transition-colors"
+                                className="p-2 rounded-lg text-gray-400 hover:text-ink hover:bg-gray-100 transition-colors"
                                 title="Edit times"
                               >
                                 <Pencil className="w-4 h-4" />

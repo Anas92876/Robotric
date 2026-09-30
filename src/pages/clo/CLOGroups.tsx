@@ -179,7 +179,7 @@ export default function CLOGroups() {
       {/* Header */}
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
-          <h1 className="text-3xl font-bold text-[#003300]">{t('dashboardCLO:groups')}</h1>
+          <h1 className="text-3xl font-bold text-ink">{t('dashboardCLO:groups')}</h1>
         </div>
         <Button
           variant="primary"
@@ -191,11 +191,11 @@ export default function CLOGroups() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+      <div className="bg-white rounded-xl p-4 border border-ink/10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <div className="relative">
-              <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40`} />
+              <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40`} />
               <Input
                 type="text"
                 placeholder={t('dashboardCLO:searchGroups')}
@@ -210,7 +210,7 @@ export default function CLOGroups() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             >
               <option value="all">{t('dashboardCommon:allStatus')}</option>
               <option value="active">{t('dashboardCommon:active')}</option>
@@ -253,9 +253,9 @@ export default function CLOGroups() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
-              <div className="group relative bg-white rounded-xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2">
+              <div className="group relative bg-white rounded-xl p-6 border border-ink/20 hover:border-ink/40 hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden hover:-translate-y-2">
                 {/* Animated Background Gradient on Hover */}
-                <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+                <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
 
                 {/* Shimmer Effect */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
@@ -272,7 +272,7 @@ export default function CLOGroups() {
                     <div className={`flex items-start justify-between gap-4 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="flex-1 min-w-0">
                         <div className={`flex items-center gap-2 mb-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                          <h3 className="text-xl font-semibold text-[#003300] truncate">
+                          <h3 className="text-xl font-semibold text-ink truncate">
                             {group.name}
                           </h3>
                           <Badge
@@ -287,7 +287,7 @@ export default function CLOGroups() {
                           </Badge>
                         </div>
 
-                        <div className={`flex flex-wrap items-center gap-3 text-sm text-[#003300]/60 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className={`flex flex-wrap items-center gap-3 text-sm text-ink/60 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <BookOpen className="w-4 h-4" />
                             <span title={JSON.stringify(group.courseId)}>
@@ -361,17 +361,17 @@ export default function CLOGroups() {
 
                     {/* Stats */}
                     {group.stats && (
-                      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#003300]/10">
+                      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-ink/10">
                         <div className={isRTL ? 'text-right' : ''}>
-                          <p className="text-xs text-[#003300]/60 mb-1">
+                          <p className="text-xs text-ink/60 mb-1">
                             {t('dashboardCLO:studentsLabel')}
                           </p>
                           <div className={`flex items-baseline gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <Users className="w-4 h-4 text-primary" />
-                            <p className="text-lg font-semibold text-[#003300]">
+                            <p className="text-lg font-semibold text-ink">
                               {group.stats.studentsCount || 0}
                               {(group.maxStudents || group.maxCapacity) && (
-                                <span className="text-sm font-normal text-[#003300]/60">
+                                <span className="text-sm font-normal text-ink/60">
                                   /{group.maxStudents || group.maxCapacity}
                                 </span>
                               )}
@@ -385,18 +385,18 @@ export default function CLOGroups() {
                 </div>
 
                 {/* Corner Decoration */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </motion.div>
           ))
         ) : (
-          <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
+          <div className="bg-white rounded-xl p-6 border border-ink/10">
             <div className="text-center py-12">
-              <UsersRound className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-              <h3 className="text-lg font-semibold text-[#003300] mb-2">
+              <UsersRound className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 {t('dashboardCLO:noGroupsFound')}
               </h3>
-              <p className="text-[#003300]/60 mb-4">
+              <p className="text-ink/60 mb-4">
                 {searchQuery || statusFilter !== "all"
                   ? t('dashboardCLO:tryAdjustingFilters')
                   : t('dashboardCLO:getStartedFirstGroup')}

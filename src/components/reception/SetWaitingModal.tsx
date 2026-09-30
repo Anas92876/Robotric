@@ -188,7 +188,7 @@ export const SetWaitingModal: React.FC<SetWaitingModalProps> = ({
             <select
               value={courseId}
               onChange={e => { setCourseId(e.target.value); setErrors(p => ({ ...p, courseId: '' })); }}
-              className="w-full px-3 py-2.5 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-[#003300] focus:ring-2 focus:ring-[#003300]/20 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-ink focus:ring-2 focus:ring-ink/20 transition-colors"
             >
               <option value="">— Select Course —</option>
               {courses.map(c => (
@@ -231,7 +231,7 @@ export const SetWaitingModal: React.FC<SetWaitingModalProps> = ({
                 <select
                   value={depositMethod}
                   onChange={e => setDepositMethod(e.target.value as any)}
-                  className="w-full px-3 py-2.5 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-[#003300] focus:ring-2 focus:ring-[#003300]/20 transition-colors"
+                  className="w-full px-3 py-2.5 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-ink focus:ring-2 focus:ring-ink/20 transition-colors"
                 >
                   {DEPOSIT_METHODS.map(m => (
                     <option key={m.value} value={m.value}>{m.label}</option>
@@ -247,7 +247,7 @@ export const SetWaitingModal: React.FC<SetWaitingModalProps> = ({
                 onChange={e => setDepositNotes(e.target.value)}
                 rows={2}
                 placeholder="Any notes about the deposit..."
-                className="w-full px-3 py-2 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-[#003300] focus:ring-2 focus:ring-[#003300]/20 transition-colors resize-none text-sm"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-ink focus:ring-2 focus:ring-ink/20 transition-colors resize-none text-sm"
               />
             </div>
           </div>

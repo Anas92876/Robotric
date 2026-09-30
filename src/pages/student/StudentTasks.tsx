@@ -150,12 +150,12 @@ export default function StudentTasks() {
         <div className={`flex items-center justify-between mb-2`}>
           <div >
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>
               {t('dashboardStudent:myTasks')}
             </h1>
-            <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardStudent:tasksSubtitle')}
             </p>
           </div>
@@ -215,8 +215,8 @@ export default function StudentTasks() {
           <CardBody>
             <div className={`flex items-center justify-between`}>
               <div >
-                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:totalTasks')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{tasks.length}</p>
+                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:totalTasks')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{tasks.length}</p>
               </div>
               <FileText className="w-8 h-8 text-primary" />
             </div>
@@ -226,8 +226,8 @@ export default function StudentTasks() {
           <CardBody>
             <div className={`flex items-center justify-between`}>
               <div >
-                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:openTasks')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>
+                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:openTasks')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>
                   {tasks.filter((task) => task.status === "open").length}
                 </p>
               </div>
@@ -239,8 +239,8 @@ export default function StudentTasks() {
           <CardBody>
             <div className={`flex items-center justify-between`}>
               <div >
-                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:submitted')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>
+                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:submitted')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>
                   {
                     tasks.filter(
                       (task) =>
@@ -258,8 +258,8 @@ export default function StudentTasks() {
           <CardBody>
             <div className={`flex items-center justify-between`}>
               <div >
-                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:graded')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>
+                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:graded')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>
                   {tasks.filter((task) => task.submission?.status === "graded").length}
                 </p>
               </div>
@@ -290,7 +290,7 @@ export default function StudentTasks() {
         <>
           <motion.div variants={itemVariants} className="relative">
             {isLoading && (
-              <div className="absolute inset-0 bg-[#cccc99]/60 backdrop-blur-sm z-10 flex items-center justify-center rounded-xl min-h-[200px]">
+              <div className="absolute inset-0 bg-glow/60 backdrop-blur-sm z-10 flex items-center justify-center rounded-xl min-h-[200px]">
                 <LoadingState type="dots" text={t('dashboardStudent:loadingTasks')} className="py-8" />
               </div>
             )}

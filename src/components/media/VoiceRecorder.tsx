@@ -131,7 +131,7 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
 
   if (!supported) {
     return (
-      <div className="flex items-start gap-2 text-xs text-[#003300]/60 bg-[#003300]/5 border border-[#003300]/15 rounded-lg px-3 py-2">
+      <div className="flex items-start gap-2 text-xs text-ink/60 bg-ink/5 border border-ink/15 rounded-lg px-3 py-2">
         <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
         <span>Voice recording isn't supported in this browser — try Chrome, Firefox, or Edge.</span>
       </div>
@@ -140,9 +140,9 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
 
   if (recordedUrl) {
     return (
-      <div className="flex items-center gap-3 rounded-xl border border-[#003300]/15 bg-white px-3 py-2.5">
+      <div className="flex items-center gap-3 rounded-xl border border-ink/15 bg-white px-3 py-2.5">
         <audio src={recordedUrl} controls className="h-8 flex-1 min-w-0" />
-        <span className="text-xs text-[#003300]/60 flex-shrink-0 tabular-nums">{formatDuration(elapsed)}</span>
+        <span className="text-xs text-ink/60 flex-shrink-0 tabular-nums">{formatDuration(elapsed)}</span>
         <Button type="button" variant="ghost" size="sm" onClick={reRecord} leftIcon={<RotateCcw className="w-3.5 h-3.5" />}>
           Re-record
         </Button>
@@ -155,7 +155,7 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
 
   return (
     <div>
-      <div className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 transition-colors ${isRecording ? 'border-red-300 bg-red-50' : 'border-[#003300]/15 bg-white'}`}>
+      <div className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 transition-colors ${isRecording ? 'border-red-300 bg-red-50' : 'border-ink/15 bg-white'}`}>
         {isRecording ? (
           <>
             <div className="flex items-end gap-0.5 h-6 flex-shrink-0" aria-hidden="true">
@@ -174,8 +174,8 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
           </>
         ) : (
           <>
-            <Mic className="w-4 h-4 text-[#003300]/50 flex-shrink-0" />
-            <span className="text-xs text-[#003300]/60 flex-1">Record a voice note</span>
+            <Mic className="w-4 h-4 text-ink/50 flex-shrink-0" />
+            <span className="text-xs text-ink/60 flex-1">Record a voice note</span>
             <Button type="button" variant="outline" size="sm" onClick={startRecording} disabled={disabled} leftIcon={<Mic className="w-3.5 h-3.5" />}>
               Start Recording
             </Button>

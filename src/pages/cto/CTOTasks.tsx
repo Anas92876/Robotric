@@ -323,13 +323,13 @@ export default function CTOTasks() {
             <h1
               className="text-4xl font-bold inline-block"
               style={{
-                color: '#003300',
+                color: '#0f1f33',
                 backgroundClip: "text",
               }}
             >
               All Tasks
             </h1>
-            <p className="mt-2" style={{ color: "#003300CC" }}>
+            <p className="mt-2" style={{ color: "#0f1f33CC" }}>
               View and manage tasks across all projects
             </p>
           </div>
@@ -342,7 +342,7 @@ export default function CTOTasks() {
       {/* Stats */}
       <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {[
-          { label: "Total", value: tasks.length, color: "text-[#003300]" },
+          { label: "Total", value: tasks.length, color: "text-ink" },
           { label: "Pending Review", value: tasks.filter(t => t.status === "pending_review").length, color: "text-amber-500" },
           { label: "To Do", value: tasks.filter(t => t.status === "todo").length, color: "text-gray-400" },
           { label: "In Progress", value: tasks.filter(t => t.status === "in_progress").length, color: "text-blue-400" },
@@ -352,10 +352,10 @@ export default function CTOTasks() {
             <CardBody>
               <div className={`flex items-center justify-between ${isRTL ? "flex-row-reverse" : ""}`}>
                 <div className={isRTL ? "text-right" : ""}>
-                  <p className="text-sm text-[#003300]/60 mb-1">{stat.label}</p>
+                  <p className="text-sm text-ink/60 mb-1">{stat.label}</p>
                   <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
                 </div>
-                <ListTodo className="w-8 h-8 text-[#003300]/20" />
+                <ListTodo className="w-8 h-8 text-ink/20" />
               </div>
             </CardBody>
           </CardComponent>
@@ -417,9 +417,9 @@ export default function CTOTasks() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <ListTodo className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-[#003300]/60 text-lg mb-2">No tasks found</p>
-                <p className="text-[#003300]/40 text-sm">Try adjusting filters or create a new task</p>
+                <ListTodo className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <p className="text-ink/60 text-lg mb-2">No tasks found</p>
+                <p className="text-ink/40 text-sm">Try adjusting filters or create a new task</p>
               </div>
             </CardBody>
           </CardComponent>
@@ -433,22 +433,22 @@ export default function CTOTasks() {
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <div className="flex-1 min-w-0">
                       <div className={`flex items-center gap-2 mb-1 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                        <span className="font-semibold text-[#003300]">{task.title}</span>
+                        <span className="font-semibold text-ink">{task.title}</span>
                         {priorityBadge(task.priority)}
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${statusBadgeClass(task.status)}`}>
                           {task.status.replace("_", " ")}
                         </span>
                         {/* Project badge */}
-                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs bg-[#003300]/10 text-[#003300]">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs bg-ink/10 text-ink">
                           {getProjectName(task)}
                         </span>
                         {task.source === 'client' && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#003300]/8 text-[#003300]/70 border border-[#003300]/15">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-ink/8 text-ink/70 border border-ink/15">
                             Client Request
                           </span>
                         )}
                       </div>
-                      <div className={`flex items-center gap-4 text-xs text-[#003300]/40 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                      <div className={`flex items-center gap-4 text-xs text-ink/40 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
                         {getAssignees(task).length > 0 && (
                           <span className={`flex items-center gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
                             <Users className="w-3 h-3" />
@@ -506,7 +506,7 @@ export default function CTOTasks() {
           {formError && <Alert variant="error"><p className="text-sm">{formError}</p></Alert>}
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Task Title *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Task Title *</label>
             <Input
               placeholder="Task title..."
               value={editForm.title}
@@ -514,18 +514,18 @@ export default function CTOTasks() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Description</label>
+            <label className="block text-sm font-medium text-ink mb-1">Description</label>
             <textarea
               placeholder="Task description..."
               value={editForm.description}
               onChange={e => setEditForm(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30 resize-none"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30 resize-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Priority</label>
+              <label className="block text-sm font-medium text-ink mb-1">Priority</label>
               <Select
                 value={editForm.priority}
                 onChange={v => setEditForm(prev => ({ ...prev, priority: v as '1'|'2'|'3' }))}
@@ -533,7 +533,7 @@ export default function CTOTasks() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Status</label>
+              <label className="block text-sm font-medium text-ink mb-1">Status</label>
               <Select
                 value={editForm.status}
                 onChange={v => setEditForm(prev => ({ ...prev, status: v as 'todo'|'in_progress'|'done' }))}
@@ -542,13 +542,13 @@ export default function CTOTasks() {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Assign To</label>
+            <label className="block text-sm font-medium text-ink mb-1">Assign To</label>
             {editForm.assignedTo.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-2">
                 {editForm.assignedTo.map(uid => {
                   const u = users.find(u => u._id === uid);
                   return (
-                    <span key={uid} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-[#003300]/10 text-[#003300] border border-[#003300]/15">
+                    <span key={uid} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-ink/10 text-ink border border-ink/15">
                       {u?.name || uid}
                       <button type="button" onClick={() => setEditForm(prev => ({ ...prev, assignedTo: prev.assignedTo.filter(id => id !== uid) }))} className="hover:text-red-500 transition-colors ml-0.5">×</button>
                     </span>
@@ -564,7 +564,7 @@ export default function CTOTasks() {
                   setEditForm(prev => ({ ...prev, assignedTo: [...prev.assignedTo, val] }));
                 }
               }}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
             >
               <option value="">— Add assignee —</option>
               {users.filter(u => !editForm.assignedTo.includes(u._id)).map(u => (
@@ -574,12 +574,12 @@ export default function CTOTasks() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Due Date <span className="text-[#003300]/40 font-normal">(soft)</span></label>
+              <label className="block text-sm font-medium text-ink mb-1">Due Date <span className="text-ink/40 font-normal">(soft)</span></label>
               <input
                 type="datetime-local"
                 value={editForm.dueDate}
                 onChange={e => setEditForm(prev => ({ ...prev, dueDate: e.target.value }))}
-                className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
               />
             </div>
             <div>
@@ -588,7 +588,7 @@ export default function CTOTasks() {
                 type="datetime-local"
                 value={editForm.hardDeadline}
                 onChange={e => setEditForm(prev => ({ ...prev, hardDeadline: e.target.value }))}
-                className="w-full px-3 py-2 rounded-lg border border-red-200 bg-red-50/50 text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
+                className="w-full px-3 py-2 rounded-lg border border-red-200 bg-red-50/50 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
               />
               <p className="text-xs text-red-400 mt-1">Missing this is a critical problem</p>
             </div>
@@ -612,7 +612,7 @@ export default function CTOTasks() {
                   onChange={e => setDeclineReason(e.target.value)}
                   rows={2}
                   placeholder="Let the client know why this request won't move forward..."
-                  className="w-full px-3 py-2 rounded-lg border border-red-200 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-red-300 resize-none"
+                  className="w-full px-3 py-2 rounded-lg border border-red-200 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-red-300 resize-none"
                 />
                 <div className="flex justify-end gap-2">
                   <Button variant="outline" size="sm" onClick={() => { setShowDeclineForm(false); setDeclineReason(""); }} disabled={isDeclining}>
@@ -647,7 +647,7 @@ export default function CTOTasks() {
           {formError && <Alert variant="error"><p className="text-sm">{formError}</p></Alert>}
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Project *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Project *</label>
             <Select
               value={createForm.projectId}
               onChange={handleProjectChange}
@@ -657,11 +657,11 @@ export default function CTOTasks() {
 
           {createForm.projectId && (
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">
-                Sub-project <span className="text-[#003300]/40 font-normal">(optional)</span>
+              <label className="block text-sm font-medium text-ink mb-1">
+                Sub-project <span className="text-ink/40 font-normal">(optional)</span>
               </label>
               {subProjectsLoading ? (
-                <p className="text-xs text-[#003300]/40 py-2">Loading sub-projects...</p>
+                <p className="text-xs text-ink/40 py-2">Loading sub-projects...</p>
               ) : (
                 <Select
                   value={createForm.subProjectId}
@@ -675,7 +675,7 @@ export default function CTOTasks() {
             </div>
           )}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Task Title *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Task Title *</label>
             <Input
               placeholder="Task title..."
               value={createForm.title}
@@ -683,17 +683,17 @@ export default function CTOTasks() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Description</label>
+            <label className="block text-sm font-medium text-ink mb-1">Description</label>
             <textarea
               placeholder="Task description..."
               value={createForm.description}
               onChange={e => setCreateForm(prev => ({ ...prev, description: e.target.value }))}
               rows={2}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30 resize-none"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30 resize-none"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Priority</label>
+            <label className="block text-sm font-medium text-ink mb-1">Priority</label>
             <Select
               value={createForm.priority}
               onChange={v => setCreateForm(prev => ({ ...prev, priority: v as '1'|'2'|'3' }))}
@@ -701,13 +701,13 @@ export default function CTOTasks() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Assign To</label>
+            <label className="block text-sm font-medium text-ink mb-1">Assign To</label>
             {createForm.assignedTo.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-2">
                 {createForm.assignedTo.map(uid => {
                   const u = users.find(u => u._id === uid);
                   return (
-                    <span key={uid} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-[#003300]/10 text-[#003300] border border-[#003300]/15">
+                    <span key={uid} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-ink/10 text-ink border border-ink/15">
                       {u?.name || uid}
                       <button type="button" onClick={() => setCreateForm(prev => ({ ...prev, assignedTo: prev.assignedTo.filter(id => id !== uid) }))} className="hover:text-red-500 transition-colors ml-0.5">×</button>
                     </span>
@@ -723,7 +723,7 @@ export default function CTOTasks() {
                   setCreateForm(prev => ({ ...prev, assignedTo: [...prev.assignedTo, val] }));
                 }
               }}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
             >
               <option value="">— Add assignee —</option>
               {users.filter(u => !createForm.assignedTo.includes(u._id)).map(u => (
@@ -733,12 +733,12 @@ export default function CTOTasks() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Due Date <span className="text-[#003300]/40 font-normal">(soft)</span></label>
+              <label className="block text-sm font-medium text-ink mb-1">Due Date <span className="text-ink/40 font-normal">(soft)</span></label>
               <input
                 type="datetime-local"
                 value={createForm.dueDate}
                 onChange={e => setCreateForm(prev => ({ ...prev, dueDate: e.target.value }))}
-                className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
               />
             </div>
             <div>
@@ -747,7 +747,7 @@ export default function CTOTasks() {
                 type="datetime-local"
                 value={createForm.hardDeadline}
                 onChange={e => setCreateForm(prev => ({ ...prev, hardDeadline: e.target.value }))}
-                className="w-full px-3 py-2 rounded-lg border border-red-200 bg-red-50/50 text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
+                className="w-full px-3 py-2 rounded-lg border border-red-200 bg-red-50/50 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
               />
               <p className="text-xs text-red-400 mt-1">Missing this is a critical problem</p>
             </div>
@@ -763,8 +763,8 @@ export default function CTOTasks() {
       <Modal isOpen={!!deleteTaskId} onClose={() => setDeleteTaskId(null)} title="Delete Task" size="sm">
         <div className="space-y-4">
           <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-            <p className="text-[#003300] font-medium mb-1">Delete this task?</p>
-            <p className="text-[#003300]/70 text-sm">This action cannot be undone.</p>
+            <p className="text-ink font-medium mb-1">Delete this task?</p>
+            <p className="text-ink/70 text-sm">This action cannot be undone.</p>
           </div>
           <div className="flex justify-end gap-3">
             <Button variant="outline" onClick={() => setDeleteTaskId(null)} disabled={isDeleting}>Cancel</Button>

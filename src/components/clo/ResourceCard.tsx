@@ -82,10 +82,10 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="bg-white rounded-xl border border-[#003300]/10 overflow-hidden hover:shadow-lg transition-shadow"
+      className="bg-white rounded-xl border border-ink/10 overflow-hidden hover:shadow-lg transition-shadow"
     >
       {/* Header */}
-      <div className="p-6 border-b border-[#003300]/10">
+      <div className="p-6 border-b border-ink/10">
         <div className="flex items-start justify-between">
           <div className="flex items-start space-x-3 flex-1 min-w-0">
             <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -100,7 +100,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
                     onChange={(e) => setEditTitle(e.target.value)}
                     onKeyDown={handleKeyDown}
                     disabled={isSaving}
-                    className="flex-1 min-w-0 text-base font-semibold text-[#003300] border border-[#003300]/30 rounded-lg px-2 py-1 focus:outline-none focus:border-[#003300]/60"
+                    className="flex-1 min-w-0 text-base font-semibold text-ink border border-ink/30 rounded-lg px-2 py-1 focus:outline-none focus:border-ink/60"
                   />
                   <button
                     onClick={handleSave}
@@ -122,21 +122,21 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
               ) : (
                 <div className="flex items-center gap-1.5 group/title">
                   <h3
-                    className="font-semibold text-[#003300] text-lg truncate"
+                    className="font-semibold text-ink text-lg truncate"
                     title={resource.title}
                   >
                     {resource.title}
                   </h3>
                   <button
                     onClick={handleStartEdit}
-                    className="opacity-0 group-hover/title:opacity-100 p-1 rounded-md text-[#003300]/40 hover:text-[#003300] hover:bg-[#003300]/5 transition-all"
+                    className="opacity-0 group-hover/title:opacity-100 p-1 rounded-md text-ink/40 hover:text-ink hover:bg-ink/5 transition-all"
                     title="Rename"
                   >
                     <Pencil className="w-3.5 h-3.5" />
                   </button>
                 </div>
               )}
-              <p className="text-sm text-[#003300]/60 mt-1 line-clamp-2">
+              <p className="text-sm text-ink/60 mt-1 line-clamp-2">
                 {resource.description || "No description"}
               </p>
             </div>
@@ -147,8 +147,8 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
       {/* Content */}
       <div className="p-6 space-y-4">
         <div className="flex items-center space-x-2 text-sm">
-          <BookOpen className="w-4 h-4 text-[#003300]/40" />
-          <span className="text-[#003300]/80">
+          <BookOpen className="w-4 h-4 text-ink/40" />
+          <span className="text-ink/80">
             {resource.courseId &&
             typeof resource.courseId === "object" &&
             resource.courseId.title
@@ -160,14 +160,14 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
         {/* File Info */}
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center space-x-2">
-            <Calendar className="w-4 h-4 text-[#003300]/40" />
-            <span className="text-[#003300]/60">
+            <Calendar className="w-4 h-4 text-ink/40" />
+            <span className="text-ink/60">
               {resource.createdAt
                 ? new Date(resource.createdAt).toLocaleDateString()
                 : "Unknown date"}
             </span>
           </div>
-          <span className="text-[#003300]/60">
+          <span className="text-ink/60">
             {resource.fileSize
               ? (resource.fileSize / 1024 / 1024).toFixed(2)
               : "0.00"}{" "}

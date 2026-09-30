@@ -127,13 +127,13 @@ export default function MyWorkHours() {
         <h1
           className="text-4xl font-bold inline-block"
           style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: "text",
           }}
         >
           My Work Hours
         </h1>
-        <p className="mt-1.5" style={{ color: "#003300CC" }}>
+        <p className="mt-1.5" style={{ color: "#0f1f33CC" }}>
           Clock in when you start, clock out when you're done for the day
         </p>
       </motion.div>
@@ -214,7 +214,7 @@ export default function MyWorkHours() {
                     onClick={startWork}
                     disabled={isBusy}
                     className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 text-lg"
-                    style={{ background: "#003300" }}
+                    style={{ background: "#0f1f33" }}
                   >
                     <Play className="w-5 h-5" />
                     Start Work
@@ -227,7 +227,7 @@ export default function MyWorkHours() {
           {/* ── Stats strip ── */}
           <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { label: "Today",     value: formatDuration(stats.todayMin), icon: <Clock className="w-5 h-5" />,       bg: "bg-[#003300]/5", color: "text-[#003300]" },
+              { label: "Today",     value: formatDuration(stats.todayMin), icon: <Clock className="w-5 h-5" />,       bg: "bg-ink/5", color: "text-ink" },
               { label: "This Week", value: formatDuration(stats.weekMin),  icon: <CalendarDays className="w-5 h-5" />, bg: "bg-blue-50",     color: "text-blue-600" },
               { label: "This Month", value: formatDuration(stats.monthMin), icon: <History className="w-5 h-5" />,    bg: "bg-gray-50",     color: "text-gray-600" },
             ].map(stat => (

@@ -58,10 +58,10 @@
 
   @keyframes iconShadow {
     0%, 100% {
-      filter: drop-shadow(0 2px 4px rgba(0, 51, 0, 0.2));
+      filter: drop-shadow(0 2px 4px rgba(15, 31, 51, 0.2));
     }
     50% {
-      filter: drop-shadow(0 4px 12px rgba(0, 51, 0, 0.4)) drop-shadow(0 2px 8px rgba(0, 51, 0, 0.3));
+      filter: drop-shadow(0 4px 12px rgba(15, 31, 51, 0.4)) drop-shadow(0 2px 8px rgba(15, 31, 51, 0.3));
     }
   }
 
@@ -167,7 +167,7 @@
   .btn:hover {
     background-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 51, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(15, 31, 51, 0.4);
   }
 
   .btn-outline {
@@ -185,7 +185,7 @@
     background-color: var(--color-primary);
     color: var(--color-secondary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 51, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(15, 31, 51, 0.3);
   }
 
   /* Button variants to match admin theme */
@@ -223,7 +223,7 @@
   .skeleton {
     position: relative;
     overflow: hidden;
-    background-color: rgba(0, 51, 0, 0.08);
+    background-color: rgba(15, 31, 51, 0.08);
     border-radius: 0.75rem;
   }
   .skeleton::after {
@@ -231,7 +231,7 @@
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: rgba(255, 255, 204, 0.6);
+    background: rgba(238, 252, 241, 0.6);
     animation: skeleton-shimmer 1.2s infinite;
   }
   @keyframes skeleton-shimmer {
@@ -252,7 +252,7 @@
   .input:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 51, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(15, 31, 51, 0.2);
   }
 
   .select {
@@ -261,19 +261,19 @@
     padding: 0.5rem 0.75rem;
     transition: all 0.3s;
     background-color: #ffffff;
-    color: #003300;
+    color: #0f1f33;
   }
 
   .select:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 51, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(15, 31, 51, 0.2);
   }
 
   /* Select dropdown options light mode styling */
   select option {
     background-color: #ffffff;
-    color: #003300;
+    color: #0f1f33;
   }
 
   .badge {
@@ -381,10 +381,10 @@
   @keyframes pulseGlow {
     0%,
     100% {
-      box-shadow: 0 0 20px rgba(0, 51, 0, 0.5);
+      box-shadow: 0 0 20px rgba(15, 31, 51, 0.5);
     }
     50% {
-      box-shadow: 0 0 40px rgba(0, 51, 0, 0.8);
+      box-shadow: 0 0 40px rgba(15, 31, 51, 0.8);
     }
   }
 
@@ -423,30 +423,30 @@
  * keeping it white is correct. Only the opacity variants — which are
  * always used for muted body text — are remapped.
  * ============================================================ */
-.card-light .text-white\/80 { color: rgba(0, 51, 0, 0.8) !important; }
-.card-light .text-white\/70 { color: rgba(0, 51, 0, 0.75) !important; }
-.card-light .text-white\/60 { color: rgba(0, 51, 0, 0.65) !important; }
-.card-light .text-white\/50 { color: rgba(0, 51, 0, 0.55) !important; }
-.card-light .text-white\/40 { color: rgba(0, 51, 0, 0.45) !important; }
-.card-light .text-white\/30 { color: rgba(0, 51, 0, 0.4) !important; }
-.card-light .text-white\/20 { color: rgba(0, 51, 0, 0.35) !important; }
+.card-light .text-white\/80 { color: rgba(15, 31, 51, 0.8) !important; }
+.card-light .text-white\/70 { color: rgba(15, 31, 51, 0.75) !important; }
+.card-light .text-white\/60 { color: rgba(15, 31, 51, 0.65) !important; }
+.card-light .text-white\/50 { color: rgba(15, 31, 51, 0.55) !important; }
+.card-light .text-white\/40 { color: rgba(15, 31, 51, 0.45) !important; }
+.card-light .text-white\/30 { color: rgba(15, 31, 51, 0.4) !important; }
+.card-light .text-white\/20 { color: rgba(15, 31, 51, 0.35) !important; }
 
-.card-light .bg-white\/5  { background-color: rgba(0, 51, 0, 0.05) !important; }
-.card-light .bg-white\/10 { background-color: rgba(0, 51, 0, 0.08) !important; }
-.card-light .hover\:bg-white\/10:hover { background-color: rgba(0, 51, 0, 0.1) !important; }
-.card-light .hover\:bg-white\/5:hover  { background-color: rgba(0, 51, 0, 0.07) !important; }
+.card-light .bg-white\/5  { background-color: rgba(15, 31, 51, 0.05) !important; }
+.card-light .bg-white\/10 { background-color: rgba(15, 31, 51, 0.08) !important; }
+.card-light .hover\:bg-white\/10:hover { background-color: rgba(15, 31, 51, 0.1) !important; }
+.card-light .hover\:bg-white\/5:hover  { background-color: rgba(15, 31, 51, 0.07) !important; }
 
-.card-light .border-white\/10 { border-color: rgba(0, 51, 0, 0.12) !important; }
-.card-light .border-white\/20 { border-color: rgba(0, 51, 0, 0.2) !important; }
-.card-light .hover\:border-white\/40:hover { border-color: rgba(0, 51, 0, 0.35) !important; }
+.card-light .border-white\/10 { border-color: rgba(15, 31, 51, 0.12) !important; }
+.card-light .border-white\/20 { border-color: rgba(15, 31, 51, 0.2) !important; }
+.card-light .hover\:border-white\/40:hover { border-color: rgba(15, 31, 51, 0.35) !important; }
 
 .card-light .placeholder-white\/40::placeholder,
 .card-light .placeholder\:text-white\/40::placeholder {
-  color: rgba(0, 51, 0, 0.4);
+  color: rgba(15, 31, 51, 0.4);
 }
 
 /* Dark select option backgrounds → white in light mode */
-.card-light .bg-zinc-900 { background-color: #ffffff; color: #003300; }
+.card-light .bg-zinc-900 { background-color: #ffffff; color: #0f1f33; }
 
 /* Form inputs originally styled for dark theme: remap text color so
  * typed text is visible on the now-light input background. Bare
@@ -458,7 +458,7 @@
 .card-light input[class*=" text-white"],
 .card-light textarea[class*=" text-white"],
 .card-light select[class*=" text-white"] {
-  color: #003300;
+  color: #0f1f33;
 }
 
 /* Bare `text-white` on headings/paragraphs/spans inside light cards
@@ -474,19 +474,19 @@
 .card-light h6.text-white,
 .card-light p.text-white,
 .card-light label.text-white {
-  color: #003300 !important;
+  color: #0f1f33 !important;
 }
 
 /* Spans with bare text-white inside cards — excludes spans that carry a
    solid dark bg themselves (bg-primary, bg-red-*, bg-green-*, etc.) */
 .card-light span.text-white:not([class*="bg-primary"]):not([class*="bg-red"]):not([class*="bg-green"]):not([class*="bg-emerald"]):not([class*="bg-amber"]):not([class*="bg-gradient"]) {
-  color: #003300 !important;
+  color: #0f1f33 !important;
 }
 
 /* Light mode styles - default */
 body {
   background-color: #f9fafb;
-  color: #003300;
+  color: #0f1f33;
 }
 
 /* Removed: `* { color: inherit }` was overriding Tailwind text utilities (text-white etc.) */
@@ -494,12 +494,12 @@ body {
 /* Global select styling for light mode */
 select {
   background-color: #ffffff !important;
-  color: #003300 !important;
+  color: #0f1f33 !important;
 }
 
 select option {
   background-color: #ffffff !important;
-  color: #003300 !important;
+  color: #0f1f33 !important;
 }
 
 /* RTL Support */
@@ -630,21 +630,21 @@ html[dir="rtl"] {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  background: #003300;
-  color: #ffffcc;
+  background: #0f1f33;
+  color: #eefcf1;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 900;
   z-index: 20;
-  box-shadow: 0 4px 12px rgba(0, 51, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(15, 31, 51, 0.3);
   transition: all 0.3s ease;
 }
 
 .card-with-circle-3-holder:hover ._circle {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 51, 0, 0.4);
+  box-shadow: 0 6px 16px rgba(15, 31, 51, 0.4);
 }
 
 [dir="rtl"] .card-with-circle-3-holder ._circle {
@@ -689,18 +689,18 @@ html[dir="rtl"] {
 .card-with-circle-3 ._title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #003300;
+  color: #0f1f33;
   margin-bottom: 1rem;
   transition: color 0.3s ease;
 }
 
 .card-with-circle-3-holder:hover .card-with-circle-3 ._title {
-  color: #003300;
+  color: #0f1f33;
 }
 
 .card-with-circle-3 ._desc {
   font-size: 1rem;
   line-height: 1.6;
-  color: #003300;
+  color: #0f1f33;
   transition: color 0.3s ease;
 }

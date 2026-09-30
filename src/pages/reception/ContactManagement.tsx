@@ -251,12 +251,12 @@ const ContactManagement: React.FC = () => {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {t('dashboardReception:contactManagement.title', 'Contact Submissions')}
           </h1>
-          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>
+          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardReception:contactManagement.subtitle', 'Manage contact form submissions from the website')}
           </p>
         </div>
@@ -312,7 +312,7 @@ const ContactManagement: React.FC = () => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] placeholder-[#003300]/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
+                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-ink placeholder-ink/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
               />
             </div>
           </div>
@@ -324,7 +324,7 @@ const ContactManagement: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => handleStatusFilterChange(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="" className="bg-white">All Status</option>
                 <option value="new" className="bg-white">New</option>
@@ -333,7 +333,7 @@ const ContactManagement: React.FC = () => {
                 <option value="archived" className="bg-white">Archived</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -358,19 +358,19 @@ const ContactManagement: React.FC = () => {
             ) : contacts.length === 0 ? (
               <div className="text-center py-12">
                 <Mail className="w-16 h-16 text-primary/30 mx-auto mb-4" />
-                <p className="text-lg transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>No contacts found</p>
+                <p className="text-lg transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>No contacts found</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-primary/20">
-                      <th className="text-left py-4 px-4 text-sm font-bold text-[#003300]">Name</th>
-                      <th className="text-left py-4 px-4 text-sm font-bold text-[#003300]">Phone</th>
-                      <th className="text-left py-4 px-4 text-sm font-bold text-[#003300]">Subject</th>
-                      <th className="text-left py-4 px-4 text-sm font-bold text-[#003300]">Status</th>
-                      <th className="text-left py-4 px-4 text-sm font-bold text-[#003300]">Date</th>
-                      <th className="text-right py-4 px-4 text-sm font-bold text-[#003300]">Actions</th>
+                      <th className="text-left py-4 px-4 text-sm font-bold text-ink">Name</th>
+                      <th className="text-left py-4 px-4 text-sm font-bold text-ink">Phone</th>
+                      <th className="text-left py-4 px-4 text-sm font-bold text-ink">Subject</th>
+                      <th className="text-left py-4 px-4 text-sm font-bold text-ink">Status</th>
+                      <th className="text-left py-4 px-4 text-sm font-bold text-ink">Date</th>
+                      <th className="text-right py-4 px-4 text-sm font-bold text-ink">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -381,23 +381,23 @@ const ContactManagement: React.FC = () => {
                             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                               <User className="w-5 h-5 text-primary" />
                             </div>
-                            <span className="font-medium text-[#003300]">{contact.name}</span>
+                            <span className="font-medium text-ink">{contact.name}</span>
                           </div>
                         </td>
                         <td className="py-4 px-4">
-                          <div className="flex items-center gap-2 text-[#003300]">
+                          <div className="flex items-center gap-2 text-ink">
                             <Phone className="w-4 h-4 text-primary/60" />
                             {contact.phone}
                           </div>
                         </td>
                         <td className="py-4 px-4">
-                          <span className="text-[#003300]">{contact.subject}</span>
+                          <span className="text-ink">{contact.subject}</span>
                         </td>
                         <td className="py-4 px-4">
                           {getStatusBadge(contact.status)}
                         </td>
                         <td className="py-4 px-4">
-                          <div className="flex items-center gap-2 text-sm text-[#003300]/70">
+                          <div className="flex items-center gap-2 text-sm text-ink/70">
                             <Calendar className="w-4 h-4 text-primary/60" />
                             {new Date(contact.createdAt).toLocaleDateString()}
                           </div>
@@ -447,7 +447,7 @@ const ContactManagement: React.FC = () => {
           >
             Previous
           </Button>
-          <span className="transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <span className="transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             Page {pagination.page} of {pagination.pages}
           </span>
           <Button
@@ -475,23 +475,23 @@ const ContactManagement: React.FC = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Name</label>
-                <div className="flex items-center gap-2 text-[#003300]">
+                <label className="text-sm font-bold text-ink/70 mb-1 block">Name</label>
+                <div className="flex items-center gap-2 text-ink">
                   <User className="w-4 h-4 text-primary/60" />
                   {selectedContact.name}
                 </div>
               </div>
               <div>
-                <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Phone</label>
-                <div className="flex items-center gap-2 text-[#003300]">
+                <label className="text-sm font-bold text-ink/70 mb-1 block">Phone</label>
+                <div className="flex items-center gap-2 text-ink">
                   <Phone className="w-4 h-4 text-primary/60" />
                   {selectedContact.phone}
                 </div>
               </div>
               {selectedContact.email && (
                 <div>
-                  <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Email</label>
-                  <div className="flex items-center gap-2 text-[#003300]">
+                  <label className="text-sm font-bold text-ink/70 mb-1 block">Email</label>
+                  <div className="flex items-center gap-2 text-ink">
                     <Mail className="w-4 h-4 text-primary/60" />
                     {selectedContact.email}
                   </div>
@@ -499,8 +499,8 @@ const ContactManagement: React.FC = () => {
               )}
               {selectedContact.location && (
                 <div>
-                  <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Location</label>
-                  <div className="flex items-center gap-2 text-[#003300]">
+                  <label className="text-sm font-bold text-ink/70 mb-1 block">Location</label>
+                  <div className="flex items-center gap-2 text-ink">
                     <MapPin className="w-4 h-4 text-primary/60" />
                     {selectedContact.location}
                   </div>
@@ -508,8 +508,8 @@ const ContactManagement: React.FC = () => {
               )}
               {selectedContact.who && (
                 <div>
-                  <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Type</label>
-                  <div className="flex items-center gap-2 text-[#003300]">
+                  <label className="text-sm font-bold text-ink/70 mb-1 block">Type</label>
+                  <div className="flex items-center gap-2 text-ink">
                     {selectedContact.who === 'student' && <GraduationCap className="w-4 h-4 text-primary/60" />}
                     {selectedContact.who === 'parent' && <Users className="w-4 h-4 text-primary/60" />}
                     {selectedContact.who === 'business-owner' && <Briefcase className="w-4 h-4 text-primary/60" />}
@@ -522,19 +522,19 @@ const ContactManagement: React.FC = () => {
                 </div>
               )}
               <div>
-                <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Subject</label>
-                <div className="flex items-center gap-2 text-[#003300]">
+                <label className="text-sm font-bold text-ink/70 mb-1 block">Subject</label>
+                <div className="flex items-center gap-2 text-ink">
                   <FileText className="w-4 h-4 text-primary/60" />
                   {selectedContact.subject}
                 </div>
               </div>
               <div>
-                <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Status</label>
+                <label className="text-sm font-bold text-ink/70 mb-1 block">Status</label>
                 {getStatusBadge(selectedContact.status)}
               </div>
               <div>
-                <label className="text-sm font-bold text-[#003300]/70 mb-1 block">Submitted</label>
-                <div className="flex items-center gap-2 text-sm text-[#003300]">
+                <label className="text-sm font-bold text-ink/70 mb-1 block">Submitted</label>
+                <div className="flex items-center gap-2 text-sm text-ink">
                   <Calendar className="w-4 h-4 text-primary/60" />
                   {new Date(selectedContact.createdAt).toLocaleString()}
                 </div>
@@ -543,15 +543,15 @@ const ContactManagement: React.FC = () => {
 
             {selectedContact.message && (
               <div>
-                <label className="text-sm font-bold text-[#003300]/70 mb-2 block">Message</label>
-                <div className="p-4 bg-surface rounded-xl border border-primary/20 text-[#003300]">
+                <label className="text-sm font-bold text-ink/70 mb-2 block">Message</label>
+                <div className="p-4 bg-surface rounded-xl border border-primary/20 text-ink">
                   {selectedContact.message}
                 </div>
               </div>
             )}
 
             <div className="flex items-center gap-2 pt-4 border-t border-primary/20">
-              <span className="text-sm font-bold text-[#003300]/70">Update Status:</span>
+              <span className="text-sm font-bold text-ink/70">Update Status:</span>
               <Button
                 variant={selectedContact.status === 'read' ? 'primary' : 'secondary'}
                 size="sm"
@@ -588,13 +588,13 @@ const ContactManagement: React.FC = () => {
         title="Delete Contact"
       >
         <div className="space-y-4">
-          <p className="text-[#003300]">
+          <p className="text-ink">
             Are you sure you want to delete this contact submission? This action cannot be undone.
           </p>
           {contactToDelete && (
             <div className="p-4 bg-surface rounded-xl border border-primary/20">
-              <p className="font-bold text-[#003300]">{contactToDelete.name}</p>
-              <p className="text-sm text-[#003300]/70">{contactToDelete.phone}</p>
+              <p className="font-bold text-ink">{contactToDelete.name}</p>
+              <p className="text-sm text-ink/70">{contactToDelete.phone}</p>
             </div>
           )}
           <div className="flex items-center justify-end gap-3 pt-4">

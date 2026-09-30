@@ -150,8 +150,8 @@ export const UserTable: React.FC<UserTableProps> = ({
     return (
       <div className="text-center py-12">
         <Users className="w-16 h-16 text-primary/30 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-[#003300] mb-2">No users found</h3>
-        <p className="text-[#003300]/60">
+        <h3 className="text-xl font-semibold text-ink mb-2">No users found</h3>
+        <p className="text-ink/60">
           Try adjusting your filters or create a new user
         </p>
       </div>
@@ -164,22 +164,22 @@ export const UserTable: React.FC<UserTableProps> = ({
         {/* Table Header */}
         <thead>
           <tr className="border-b border-primary/10 bg-[#f9fafb]">
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Name
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Email
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Role
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Status
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Joined
             </th>
-            <th className="text-right py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-right py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Actions
             </th>
           </tr>
@@ -199,15 +199,15 @@ export const UserTable: React.FC<UserTableProps> = ({
               <td className="py-4 px-4">
                 <div className="flex items-center gap-3">
                   {/* Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-[#ffffcc] font-semibold shadow-md">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-frost font-semibold shadow-md">
                     {user.name.charAt(0).toUpperCase()}
                   </div>
 
                   {/* Name */}
                   <div>
-                    <p className="font-medium text-[#003300]">{user.name}</p>
+                    <p className="font-medium text-ink">{user.name}</p>
                     {user.profile?.phone && (
-                      <p className="text-sm text-[#003300]/50">{user.profile.phone}</p>
+                      <p className="text-sm text-ink/50">{user.profile.phone}</p>
                     )}
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export const UserTable: React.FC<UserTableProps> = ({
 
               {/* Email Column */}
               <td className="py-4 px-4">
-                <div className="flex items-center gap-2 text-[#003300]/70">
+                <div className="flex items-center gap-2 text-ink/70">
                   <Mail className="w-4 h-4 text-primary/50" />
                   <span className="text-sm">{user.email}</span>
                 </div>
@@ -238,7 +238,7 @@ export const UserTable: React.FC<UserTableProps> = ({
 
               {/* Joined Date Column */}
               <td className="py-4 px-4">
-                <div className="flex items-center gap-2 text-[#003300]/60 text-sm">
+                <div className="flex items-center gap-2 text-ink/60 text-sm">
                   <Calendar className="w-4 h-4" />
                   <span>{formatDate(user.createdAt)}</span>
                 </div>

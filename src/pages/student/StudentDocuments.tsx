@@ -22,9 +22,9 @@ import {
   type StudentDocument,
 } from '../../hooks/student/useStudentDocuments';
 
-const TEXT_PRIMARY   = '#003300';
-const TEXT_SECONDARY = '#003300CC';
-const TEXT_TERTIARY  = '#00330080';
+const TEXT_PRIMARY   = '#0f1f33';
+const TEXT_SECONDARY = '#0f1f33CC';
+const TEXT_TERTIARY  = '#0f1f3380';
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -63,19 +63,19 @@ function Skeleton() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-pulse">
       {ALL_DOCUMENT_TYPES.map((type) => (
-        <div key={type} className="bg-white rounded-2xl border border-[#003300]/8 overflow-hidden">
+        <div key={type} className="bg-white rounded-2xl border border-ink/8 overflow-hidden">
           <div className="h-1 bg-amber-200" />
           <div className="p-4 space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#003300]/8 flex-shrink-0" />
+              <div className="w-10 h-10 rounded-xl bg-ink/8 flex-shrink-0" />
               <div className="flex-1 space-y-2">
-                <div className="h-4 bg-[#003300]/10 rounded w-3/4" />
-                <div className="h-3 bg-[#003300]/6 rounded w-1/2" />
+                <div className="h-4 bg-ink/10 rounded w-3/4" />
+                <div className="h-3 bg-ink/6 rounded w-1/2" />
               </div>
             </div>
-            <div className="h-1 bg-[#003300]/6 rounded" />
-            <div className="h-28 bg-[#003300]/5 rounded-xl" />
-            <div className="h-9 bg-[#003300]/8 rounded-xl" />
+            <div className="h-1 bg-ink/6 rounded" />
+            <div className="h-28 bg-ink/5 rounded-xl" />
+            <div className="h-9 bg-ink/8 rounded-xl" />
           </div>
         </div>
       ))}
@@ -117,7 +117,7 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl border border-[#003300]/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+      className="bg-white rounded-2xl border border-ink/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       {/* Status-colored top accent */}
       <div className={`h-1 ${accentClass}`} />
@@ -127,7 +127,7 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
         <div className={`flex items-center justify-between mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: doc ? 'rgba(184,150,12,0.12)' : 'rgba(0,51,0,0.06)' }}>
+              style={{ backgroundColor: doc ? 'rgba(184,150,12,0.12)' : 'rgba(15, 31, 51,0.06)' }}>
               <FileText className="w-5 h-5" style={{ color: doc ? '#B8960C' : TEXT_TERTIARY }} />
             </div>
             <div className={isRTL ? 'text-right' : 'text-left'}>
@@ -145,13 +145,13 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
         </div>
 
         {/* Divider */}
-        <div className="h-px mb-3" style={{ backgroundColor: 'rgba(0,51,0,0.06)' }} />
+        <div className="h-px mb-3" style={{ backgroundColor: 'rgba(15, 31, 51,0.06)' }} />
 
         {/* Content area */}
         {doc ? (
           <div className="space-y-3">
             {/* Preview */}
-            <div className="rounded-xl overflow-hidden border border-[#003300]/6 bg-[#faf8f0] flex items-center justify-center" style={{ minHeight: 110 }}>
+            <div className="rounded-xl overflow-hidden border border-ink/6 bg-[#faf8f0] flex items-center justify-center" style={{ minHeight: 110 }}>
               {isImage ? (
                 <img
                   src={doc.fileUrl}
@@ -195,7 +195,7 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
                 href={doc.fileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-semibold border border-[#003300]/15 hover:bg-[#003300]/4 transition-colors"
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-semibold border border-ink/15 hover:bg-ink/4 transition-colors"
                 style={{ color: TEXT_PRIMARY }}
               >
                 <Eye className="w-3.5 h-3.5" />
@@ -207,7 +207,7 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
                   disabled={uploading}
                   className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-semibold transition-colors disabled:opacity-50"
                   style={{ backgroundColor: TEXT_PRIMARY, color: '#fff' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#004400'; }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#081424'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = TEXT_PRIMARY; }}
                 >
                   <Upload className="w-3.5 h-3.5" />
@@ -234,12 +234,12 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
             onClick={() => fileInputRef.current?.click()}
             className={`flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed cursor-pointer transition-colors py-7 ${
               dragging
-                ? 'border-[#003300] bg-green-50'
-                : 'border-[#003300]/15 hover:border-[#003300]/40 hover:bg-[#003300]/3'
+                ? 'border-ink bg-green-50'
+                : 'border-ink/15 hover:border-ink/40 hover:bg-ink/3'
             }`}
           >
             <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(0,51,0,0.06)' }}>
+              style={{ backgroundColor: 'rgba(15, 31, 51,0.06)' }}>
               <Upload className="w-5 h-5" style={{ color: TEXT_TERTIARY }} />
             </div>
             <div className="text-center">
@@ -266,7 +266,7 @@ function DocumentCard({ type, doc, uploading, uploadProgress, isRTL, onUpload, o
               </span>
               <span>{uploadProgress}%</span>
             </div>
-            <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(0,51,0,0.08)' }}>
+            <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(15, 31, 51,0.08)' }}>
               <motion.div
                 className="h-full rounded-full"
                 style={{ backgroundColor: uploadProgress >= 100 ? '#ca8a04' : TEXT_PRIMARY }}
@@ -359,9 +359,9 @@ export default function StudentDocuments() {
 
       {/* Not required gate */}
       {!loading && wroRequired === false && (
-        <div className="text-center py-20 bg-white rounded-2xl border border-[#003300]/8">
+        <div className="text-center py-20 bg-white rounded-2xl border border-ink/8">
           <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center"
-            style={{ background: 'rgba(0,51,0,0.06)' }}>
+            style={{ background: 'rgba(15, 31, 51,0.06)' }}>
             <Lock className="w-8 h-8" style={{ color: TEXT_TERTIARY }} />
           </div>
           <p className="font-semibold text-base mb-2" style={{ color: TEXT_PRIMARY }}>
@@ -385,7 +385,7 @@ export default function StudentDocuments() {
               { label: isRTL ? 'تم التحقق' : 'Verified',    value: verifiedCount,         color: '#16a34a' },
               { label: isRTL ? 'قيد المراجعة' : 'Pending',  value: pendingCount,          color: '#ca8a04' },
             ].map((stat) => (
-              <div key={stat.label} className="bg-white rounded-2xl border border-[#003300]/10 px-4 py-3 text-center shadow-sm">
+              <div key={stat.label} className="bg-white rounded-2xl border border-ink/10 px-4 py-3 text-center shadow-sm">
                 <p className="text-2xl font-bold" style={{ color: stat.color }}>{stat.value}</p>
                 <p className="text-xs mt-0.5" style={{ color: TEXT_TERTIARY }}>{stat.label}</p>
               </div>

@@ -130,12 +130,12 @@ export default function CLODashboard() {
         <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={isRTL ? 'text-right font-arabic' : ''}>
             <h1 className="text-4xl font-bold mb-2 inline-block group-hover:scale-105 transition-transform duration-300" style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>
               {t('dashboardCLO:dashboard')}
             </h1>
-            <p className="transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardCLO:cloSubtitle')}
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function CLODashboard() {
             size="sm"
             leftIcon={<RefreshCw className="w-4 h-4" />}
             onClick={refetch}
-            className="text-[#003300]/70 hover:text-primary border-primary/20 hover:border-primary/40 hover:bg-primary/5"
+            className="text-ink/70 hover:text-primary border-primary/20 hover:border-primary/40 hover:bg-primary/5"
           >
             {t('dashboardCommon:refresh')}
           </Button>
@@ -169,9 +169,9 @@ export default function CLODashboard() {
             ></div>
 
             {/* Card content */}
-            <div className="relative bg-white rounded-xl sm:rounded-2xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-2xl transition-all duration-500 ease-out group/card overflow-hidden">
+            <div className="relative bg-white rounded-xl sm:rounded-2xl p-6 border border-ink/20 hover:border-ink/40 hover:shadow-2xl transition-all duration-500 ease-out group/card overflow-hidden">
               {/* Animated Background Gradient on Hover */}
-              <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
+              <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
               
               {/* Shimmer Effect */}
               <div className="absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
@@ -181,8 +181,8 @@ export default function CLODashboard() {
                   <div
                     className="p-3 rounded-xl flex items-center justify-center group-hover/card:scale-110 transition-transform duration-300"
                     style={{ 
-                      background: '#003300',
-                      color: '#ffffcc'
+                      background: '#0f1f33',
+                      color: '#eefcf1'
                     }}
                   >
                     {card.icon}
@@ -192,7 +192,7 @@ export default function CLODashboard() {
                   <div
                     className="text-3xl font-bold group-hover/card:scale-105 transition-transform duration-300 inline-block"
                     style={{ 
-                      color: '#003300',
+                      color: '#0f1f33',
                       backgroundClip: 'text'
                     }}
                   >
@@ -201,18 +201,18 @@ export default function CLODashboard() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-semibold mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+                <h3 className="text-lg font-semibold mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
                   {card.title}
                 </h3>
 
                 {/* Subtitle */}
                 {card.subtitle && (
-                  <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{card.subtitle}</p>
+                  <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{card.subtitle}</p>
                 )}
               </div>
 
               {/* Corner Decoration */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
         ))}
@@ -232,10 +232,10 @@ export default function CLODashboard() {
                 <Activity className="w-6 h-6 text-green-600" />
               </div>
               <div className={`flex-1 ${isRTL ? 'text-right font-arabic' : ''}`}>
-                <h3 className="text-lg font-semibold text-[#003300]">
+                <h3 className="text-lg font-semibold text-ink">
                   {t('dashboardCLO:attendanceRate')}
                 </h3>
-                <p className="text-sm text-[#003300]/60">{t('dashboardCLO:attendanceRateDesc')}</p>
+                <p className="text-sm text-ink/60">{t('dashboardCLO:attendanceRateDesc')}</p>
               </div>
             </div>
             <div className="flex items-baseline gap-2 mb-3">
@@ -265,10 +265,10 @@ export default function CLODashboard() {
                 <Award className="w-6 h-6 text-teal-600" />
               </div>
               <div className={`flex-1 ${isRTL ? 'text-right font-arabic' : ''}`}>
-                <h3 className="text-lg font-semibold text-[#003300]">
+                <h3 className="text-lg font-semibold text-ink">
                   {t('dashboardCLO:completionRate')}
                 </h3>
-                <p className="text-sm text-[#003300]/60">{t('dashboardCLO:completionRateDesc')}</p>
+                <p className="text-sm text-ink/60">{t('dashboardCLO:completionRateDesc')}</p>
               </div>
             </div>
             <div className="flex items-baseline gap-2 mb-3">
@@ -298,7 +298,7 @@ export default function CLODashboard() {
         {/* Top Performing Trainers */}
         <div className="bg-white rounded-2xl p-6 border border-primary/10 shadow-md">
           <div className={`flex items-center justify-between mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <h3 className={`text-2xl font-bold text-[#003300] ${isRTL ? 'font-arabic' : ''}`}>
+            <h3 className={`text-2xl font-bold text-ink ${isRTL ? 'font-arabic' : ''}`}>
               {t('dashboardCLO:topPerformingTrainers')}
             </h3>
             <Link to="/clo/trainers">
@@ -320,10 +320,10 @@ export default function CLODashboard() {
                       #{index + 1}
                     </div>
                     <div className={`flex-1 min-w-0 ${isRTL ? 'text-right font-arabic' : ''}`}>
-                      <p className="font-semibold text-[#003300] truncate">
+                      <p className="font-semibold text-ink truncate">
                         {trainer.trainerName}
                       </p>
-                      <p className="text-sm text-[#003300]/60">
+                      <p className="text-sm text-ink/60">
                         {trainer.totalGroups} {trainer.totalGroups === 1 ? t('dashboardCLO:groupLabel') : t('dashboardCLO:groupsLabel')}
                       </p>
                     </div>
@@ -332,14 +332,14 @@ export default function CLODashboard() {
                     <p className="text-xl font-bold text-green-600">
                       {trainer.avgAttendance?.toFixed(1) || 0}%
                     </p>
-                    <p className="text-xs text-[#003300]/50">{t('dashboardCLO:attendanceLabel')}</p>
+                    <p className="text-xs text-ink/50">{t('dashboardCLO:attendanceLabel')}</p>
                   </div>
                 </div>
               ))
             ) : (
               <div className="text-center py-12">
-                <BarChart3 className="w-12 h-12 mx-auto mb-3 text-[#003300]/20" />
-                <p className={`text-[#003300]/60 ${isRTL ? 'font-arabic' : ''}`}>{t('dashboardCLO:noTrainerData')}</p>
+                <BarChart3 className="w-12 h-12 mx-auto mb-3 text-ink/20" />
+                <p className={`text-ink/60 ${isRTL ? 'font-arabic' : ''}`}>{t('dashboardCLO:noTrainerData')}</p>
               </div>
             )}
           </div>
@@ -347,7 +347,7 @@ export default function CLODashboard() {
 
         {/* Recent Activity */}
         <div className="bg-white rounded-2xl p-6 border border-primary/10 shadow-md">
-          <h3 className={`text-2xl font-bold text-[#003300] mb-6 ${isRTL ? 'font-arabic text-right' : ''}`}>
+          <h3 className={`text-2xl font-bold text-ink mb-6 ${isRTL ? 'font-arabic text-right' : ''}`}>
             {t('dashboardCLO:recentActivity')}
           </h3>
 
@@ -355,7 +355,7 @@ export default function CLODashboard() {
             {recentActivity?.groups && recentActivity.groups.length > 0 ? (
               <>
                 <div>
-                  <h4 className={`text-sm font-semibold text-[#003300]/60 mb-3 uppercase tracking-wide ${isRTL ? 'font-arabic text-right' : ''}`}>
+                  <h4 className={`text-sm font-semibold text-ink/60 mb-3 uppercase tracking-wide ${isRTL ? 'font-arabic text-right' : ''}`}>
                     {t('dashboardCLO:recentGroups')}
                   </h4>
                   <div className="space-y-2">
@@ -368,10 +368,10 @@ export default function CLODashboard() {
                           <UsersRound className="w-4 h-4 text-emerald-600" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-[#003300] text-sm truncate">
+                          <p className="font-medium text-ink text-sm truncate">
                             {group.name}
                           </p>
-                          <p className="text-xs text-[#003300]/60">
+                          <p className="text-xs text-ink/60">
                             {group.courseId?.title || "N/A"}
                           </p>
                         </div>
@@ -389,8 +389,8 @@ export default function CLODashboard() {
                 </div>
 
                 {recentActivity.courses && recentActivity.courses.length > 0 && (
-                  <div className="pt-4 border-t border-[#003300]/10">
-                    <h4 className={`text-sm font-semibold text-[#003300]/60 mb-3 uppercase tracking-wide ${isRTL ? 'font-arabic text-right' : ''}`}>
+                  <div className="pt-4 border-t border-ink/10">
+                    <h4 className={`text-sm font-semibold text-ink/60 mb-3 uppercase tracking-wide ${isRTL ? 'font-arabic text-right' : ''}`}>
                       {t('dashboardCLO:recentCourses')}
                     </h4>
                     <div className="space-y-2">
@@ -403,10 +403,10 @@ export default function CLODashboard() {
                             <BookOpen className="w-4 h-4 text-teal-600" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-[#003300] text-sm truncate">
+                            <p className="font-medium text-ink text-sm truncate">
                               {course.title}
                             </p>
-                            <p className="text-xs text-[#003300]/60">
+                            <p className="text-xs text-ink/60">
                               {course.category}
                             </p>
                           </div>
@@ -428,8 +428,8 @@ export default function CLODashboard() {
               </>
             ) : (
               <div className="text-center py-12">
-                <Activity className="w-12 h-12 mx-auto mb-3 text-[#003300]/20" />
-                <p className={`text-[#003300]/60 ${isRTL ? 'font-arabic' : ''}`}>{t('dashboardCommon:noRecentActivity')}</p>
+                <Activity className="w-12 h-12 mx-auto mb-3 text-ink/20" />
+                <p className={`text-ink/60 ${isRTL ? 'font-arabic' : ''}`}>{t('dashboardCommon:noRecentActivity')}</p>
               </div>
             )}
           </div>

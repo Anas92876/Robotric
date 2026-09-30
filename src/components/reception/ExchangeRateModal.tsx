@@ -74,7 +74,7 @@ export const ExchangeRateModal: React.FC<ExchangeRateModalProps> = ({
     >
       <div className="space-y-4">
         <div>
-          <label htmlFor="exchangeRate" className="block text-sm font-medium text-[#003300] mb-2">
+          <label htmlFor="exchangeRate" className="block text-sm font-medium text-ink mb-2">
             Exchange Rate: $1 = ? S.P.
           </label>
           <Input
@@ -95,7 +95,7 @@ export const ExchangeRateModal: React.FC<ExchangeRateModalProps> = ({
           {localError && (
             <p className="text-red-500 text-sm mt-1">{localError}</p>
           )}
-          <p className="text-xs text-[#003300]/50 mt-1">
+          <p className="text-xs text-ink/50 mt-1">
             Valid range: {MIN_RATE} - {MAX_RATE} S.P. per USD
           </p>
         </div>

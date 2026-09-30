@@ -33,21 +33,21 @@ export default function ClientRequestPanel({ task, mode }: ClientRequestPanelPro
   const requester = typeof task.clientId === 'object' && task.clientId ? task.clientId : null;
 
   return (
-    <div className="mt-3 rounded-xl border border-[#003300]/12 bg-[#003300]/[0.02] p-4">
+    <div className="mt-3 rounded-xl border border-ink/12 bg-ink/[0.02] p-4">
       <div className="flex items-center gap-2 mb-3">
-        <UserCircle2 className="w-4 h-4 text-[#003300]/50" />
-        <span className="text-sm font-medium text-[#003300]">
+        <UserCircle2 className="w-4 h-4 text-ink/50" />
+        <span className="text-sm font-medium text-ink">
           Client request{requester ? ` from ${requester.name}` : ''}
         </span>
         {task.clientUrgency && (
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#003300]/8 text-[#003300]/70 border border-[#003300]/15">
+          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-ink/8 text-ink/70 border border-ink/15">
             {URGENCY_LABEL[task.clientUrgency] || task.clientUrgency}
           </span>
         )}
       </div>
 
       {loading ? (
-        <p className="text-xs text-[#003300]/40">Loading attachments…</p>
+        <p className="text-xs text-ink/40">Loading attachments…</p>
       ) : (
         <MediaGrid items={media} emptyLabel="No attachments on this request." />
       )}

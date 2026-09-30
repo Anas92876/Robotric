@@ -98,12 +98,12 @@ export default function StudentDashboard() {
       {/* Welcome Section */}
       <motion.div variants={itemVariants}>
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-          color: '#003300',
+          color: '#0f1f33',
           backgroundClip: 'text'
         }}>
           {t('dashboardStudent:welcomeBack')}, {user?.name || "Student"}
         </h1>
-        <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+        <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
           {t('dashboardStudent:trackProgress')}
         </p>
       </motion.div>

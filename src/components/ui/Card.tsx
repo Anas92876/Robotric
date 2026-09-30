@@ -29,11 +29,11 @@ function Card({
   const isHoverable = hoverable || hover;
 
   const variants = {
-    default: 'bg-white border border-[#003300]/20 shadow-lg',
-    elevated: 'bg-white border border-[#003300]/20 shadow-lg hover:shadow-2xl',
-    outlined: 'bg-transparent border-2 border-[#003300]/30',
-    glass: 'backdrop-blur-xl bg-white/90 border border-[#003300]/20 shadow-[0_8px_32px_rgba(0,51,0,0.1)]',
-    premium: 'backdrop-blur-xl bg-white/95 border border-[#003300]/20 shadow-[0_8px_32px_rgba(0,51,0,0.15),0_1px_0_rgba(0,51,0,0.05)_inset]',
+    default: 'bg-white border border-ink/20 shadow-lg',
+    elevated: 'bg-white border border-ink/20 shadow-lg hover:shadow-2xl',
+    outlined: 'bg-transparent border-2 border-ink/30',
+    glass: 'backdrop-blur-xl bg-white/90 border border-ink/20 shadow-[0_8px_32px_rgba(15, 31, 51,0.1)]',
+    premium: 'backdrop-blur-xl bg-white/95 border border-ink/20 shadow-[0_8px_32px_rgba(15, 31, 51,0.15),0_1px_0_rgba(15, 31, 51,0.05)_inset]',
   };
 
   const paddings = {
@@ -44,7 +44,7 @@ function Card({
   };
 
   const hoverStyles = isHoverable
-    ? 'cursor-pointer hover:shadow-2xl hover:border-[#003300]/40 hover:-translate-y-2 group relative overflow-hidden'
+    ? 'cursor-pointer hover:shadow-2xl hover:border-ink/40 hover:-translate-y-2 group relative overflow-hidden'
     : '';
 
   if (animated) {
@@ -73,13 +73,13 @@ function Card({
         {isHoverable && (
           <>
             {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+            <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
             
             {/* Shimmer Effect */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
             
             {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </>
         )}
         <div className="relative z-10">{children}</div>
@@ -101,13 +101,13 @@ function Card({
       {isHoverable && (
         <>
           {/* Animated Background Gradient on Hover */}
-          <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+          <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
           
           {/* Shimmer Effect */}
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl -z-10" />
           
           {/* Corner Decoration */}
-          <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </>
       )}
       <div className="relative z-10">{children}</div>
@@ -132,9 +132,9 @@ function CardHeader({
   return (
     <div className={cn('flex items-start justify-between mb-4', className)}>
       <div className="flex-1">
-        <h3 className="text-lg font-semibold text-[#003300]">{title}</h3>
+        <h3 className="text-lg font-semibold text-ink">{title}</h3>
         {description && (
-          <p className="text-sm text-[#003300]/60 mt-1">{description}</p>
+          <p className="text-sm text-ink/60 mt-1">{description}</p>
         )}
       </div>
       {action && <div className="ml-4">{action}</div>}
@@ -149,7 +149,7 @@ export interface CardBodyProps {
 }
 
 function CardBody({ children, className }: CardBodyProps) {
-  return <div className={cn('text-[#003300]', className)}>{children}</div>;
+  return <div className={cn('text-ink', className)}>{children}</div>;
 }
 
 // Card Footer
@@ -199,7 +199,7 @@ function StatsCard({
   return (
     <div className={cn('group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2', className)}>
       {/* Animated Background Gradient on Hover */}
-      <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Shimmer Effect */}
       <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent" />
@@ -207,7 +207,7 @@ function StatsCard({
       {/* Content Container */}
       <div className="relative z-10 flex items-start justify-between">
         <div className="flex-1">
-          <p className="text-sm mb-2 font-medium transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="text-sm mb-2 font-medium transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {label}
           </p>
           <motion.p
@@ -216,7 +216,7 @@ function StatsCard({
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             className="text-3xl font-bold group-hover:scale-105 transition-transform duration-300 inline-block"
             style={{ 
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}
           >
@@ -261,8 +261,8 @@ function StatsCard({
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             className="flex-shrink-0 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300"
             style={{ 
-              background: '#003300',
-              color: '#ffffcc'
+              background: '#0f1f33',
+              color: '#eefcf1'
             }}
           >
             {icon}
@@ -274,7 +274,7 @@ function StatsCard({
       <div className="mt-4 h-1 bg-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500" />
 
       {/* Corner Decoration */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
   );
 }
@@ -314,8 +314,8 @@ function ImageCard({
         />
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-[#003300] mb-1">{title}</h3>
-        {description && <p className="text-sm text-[#003300]/60">{description}</p>}
+        <h3 className="text-lg font-semibold text-ink mb-1">{title}</h3>
+        {description && <p className="text-sm text-ink/60">{description}</p>}
         {footer && <div className="mt-4">{footer}</div>}
       </div>
     </Card>

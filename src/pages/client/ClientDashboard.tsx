@@ -77,11 +77,11 @@ export default function ClientDashboard() {
         <div>
           <h1
             className="text-2xl md:text-3xl font-bold"
-            style={{ color: '#003300' }}
+            style={{ color: '#0f1f33' }}
           >
             Welcome back, {user?.name?.split(' ')[0] || 'there'}
           </h1>
-          <p className="text-[#003300]/60 mt-1">
+          <p className="text-ink/60 mt-1">
             {projects.length} project{projects.length === 1 ? '' : 's'} · {tasks.filter(t => t.status === 'pending_review').length} pending review
           </p>
         </div>
@@ -96,9 +96,9 @@ export default function ClientDashboard() {
         <motion.div variants={itemVariants}>
           <CardComponent variant="default" className="text-center py-12">
             <CardBody>
-              <FolderOpen className="w-10 h-10 text-[#003300]/30 mx-auto mb-3" />
-              <p className="text-[#003300] font-medium">No projects yet</p>
-              <p className="text-sm text-[#003300]/50 mt-1">Once our team links you to a project, it'll show up here.</p>
+              <FolderOpen className="w-10 h-10 text-ink/30 mx-auto mb-3" />
+              <p className="text-ink font-medium">No projects yet</p>
+              <p className="text-sm text-ink/50 mt-1">Once our team links you to a project, it'll show up here.</p>
             </CardBody>
           </CardComponent>
         </motion.div>
@@ -112,14 +112,14 @@ export default function ClientDashboard() {
                 <CardComponent variant="elevated" hoverable className="h-full">
                   <CardBody>
                     <div className="flex items-start justify-between gap-3 mb-3">
-                      <h3 className="font-semibold text-[#003300] leading-snug">{project.name}</h3>
+                      <h3 className="font-semibold text-ink leading-snug">{project.name}</h3>
                       <div className="relative w-11 h-11 flex-shrink-0">
                         <svg viewBox="0 0 36 36" className="w-11 h-11 -rotate-90">
-                          <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(0,51,0,0.1)" strokeWidth="4" />
-                          <circle cx="18" cy="18" r="15.5" fill="none" stroke="#003300" strokeWidth="4"
+                          <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(15, 31, 51,0.1)" strokeWidth="4" />
+                          <circle cx="18" cy="18" r="15.5" fill="none" stroke="#0f1f33" strokeWidth="4"
                             strokeDasharray={`${progress} 100`} strokeLinecap="round" />
                         </svg>
-                        <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-[#003300]">{progress}%</span>
+                        <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-ink">{progress}%</span>
                       </div>
                     </div>
 
@@ -140,20 +140,20 @@ export default function ClientDashboard() {
                         </span>
                       )}
                       {counts.total === 0 && (
-                        <span className="text-xs text-[#003300]/40 italic">No requests yet</span>
+                        <span className="text-xs text-ink/40 italic">No requests yet</span>
                       )}
                     </div>
 
                     <div className="flex items-center justify-between">
                       <button
                         onClick={() => openNewRequest(project._id)}
-                        className="text-xs font-medium text-[#003300]/70 hover:text-[#003300] inline-flex items-center gap-1"
+                        className="text-xs font-medium text-ink/70 hover:text-ink inline-flex items-center gap-1"
                       >
                         <Plus className="w-3.5 h-3.5" /> New request
                       </button>
                       <Link
                         to={`/client/projects/${project._id}`}
-                        className="text-xs font-semibold text-[#003300] hover:underline inline-flex items-center gap-1"
+                        className="text-xs font-semibold text-ink hover:underline inline-flex items-center gap-1"
                       >
                         Open project <ArrowRight className="w-3.5 h-3.5" />
                       </Link>

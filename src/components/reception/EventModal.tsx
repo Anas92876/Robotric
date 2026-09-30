@@ -677,8 +677,8 @@ export const EventModal: React.FC<EventModalProps> = ({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

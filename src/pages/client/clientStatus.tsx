@@ -27,7 +27,7 @@ export function UrgencyBadge({ urgency }: { urgency: ClientUrgency }) {
   const meta = URGENCY_META[urgency];
   if (!meta) return null;
   return (
-    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#003300]/8 text-[#003300]/70 border border-[#003300]/15">
+    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-ink/8 text-ink/70 border border-ink/15">
       {meta.label}
     </span>
   );

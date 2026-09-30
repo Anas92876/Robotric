@@ -160,10 +160,10 @@ export default function CLOEvaluationCriteria() {
       <div className={`flex items-start justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:evaluationCriteria')}</h1>
-          <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardCLO:createAndManageCriteria')}
           </p>
         </div>
@@ -199,13 +199,13 @@ export default function CLOEvaluationCriteria() {
 
       {/* Search */}
       <div className="relative">
-        <Search className={`absolute ${isRTL ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 w-5 h-5 text-[#003300]/40`} />
+        <Search className={`absolute ${isRTL ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 w-5 h-5 text-ink/40`} />
         <input
           type="text"
           placeholder={t('dashboardCLO:searchByCriteria')}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className={`w-full ${isRTL ? 'pr-12 pl-4 text-right' : 'pl-12 pr-4'} py-4 bg-white border border-[#003300]/20 rounded-xl text-[#003300] placeholder:text-[#003300]/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
+          className={`w-full ${isRTL ? 'pr-12 pl-4 text-right' : 'pl-12 pr-4'} py-4 bg-white border border-ink/20 rounded-xl text-ink placeholder:text-ink/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
         />
       </div>
 
@@ -313,7 +313,7 @@ export default function CLOEvaluationCriteria() {
                     ) : (
                       <ChevronRight className={`w-5 h-5 text-white/60 ${isRTL ? 'rotate-180' : ''}`} />
                     )}
-                    <span className="font-semibold text-[#003300]">
+                    <span className="font-semibold text-ink">
                       {t('dashboardCLO:evalParamsCount', { count: criteriaItem.parameters.length })}
                     </span>
                   </div>

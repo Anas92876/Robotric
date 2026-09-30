@@ -169,10 +169,10 @@ export default function CLOSubscriptionPlans() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:subscriptionPlans')}</h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardCLO:manageSubPlans')}</p>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardCLO:manageSubPlans')}</p>
         </div>
         <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Button
@@ -193,11 +193,11 @@ export default function CLOSubscriptionPlans() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+      <div className="bg-white rounded-xl p-4 border border-ink/10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <div className="relative">
-              <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40`} />
+              <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40`} />
               <Input
                 type="text"
                 placeholder={t('dashboardCLO:searchPlans')}
@@ -212,7 +212,7 @@ export default function CLOSubscriptionPlans() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             >
               <option value="all">{t('dashboardCommon:allStatus')}</option>
               <option value="active">{t('dashboardCommon:active')}</option>
@@ -236,11 +236,11 @@ export default function CLOSubscriptionPlans() {
         <motion.div variants={itemVariants}>
           <CardComponent>
             <CardBody className="p-12 text-center">
-              <CreditCard className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-              <h3 className="text-xl font-semibold text-[#003300] mb-2">
+              <CreditCard className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+              <h3 className="text-xl font-semibold text-ink mb-2">
                 {t('dashboardCLO:noPlans')}
               </h3>
-              <p className="text-[#003300]/60 mb-6">
+              <p className="text-ink/60 mb-6">
                 {searchQuery || statusFilter !== 'all'
                   ? t('dashboardCLO:tryAdjustingFilters')
                   : t('dashboardCLO:getStartedFirstPlan')}
@@ -266,7 +266,7 @@ export default function CLOSubscriptionPlans() {
                 <CardBody className="p-6">
                   <div className={`flex items-start justify-between mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <div className={`flex-1 ${isRTL ? 'text-right' : ''}`}>
-                      <h3 className="font-semibold text-[#003300] text-lg mb-1">
+                      <h3 className="font-semibold text-ink text-lg mb-1">
                         {plan.name}
                       </h3>
                       <Badge
@@ -289,27 +289,27 @@ export default function CLOSubscriptionPlans() {
                   </div>
 
                   {plan.description && (
-                    <p className={`text-[#003300]/60 text-sm mb-4 line-clamp-2 ${isRTL ? 'text-right' : ''}`}>
+                    <p className={`text-ink/60 text-sm mb-4 line-clamp-2 ${isRTL ? 'text-right' : ''}`}>
                       {plan.description}
                     </p>
                   )}
 
                   <div className="space-y-2 mb-4">
                     <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <span className="text-sm text-[#003300]/60">{t('dashboardCLO:monthlyHours')}</span>
-                      <span className="font-semibold text-[#003300]">
+                      <span className="text-sm text-ink/60">{t('dashboardCLO:monthlyHours')}</span>
+                      <span className="font-semibold text-ink">
                         {plan.monthlyHours} hrs
                       </span>
                     </div>
                     <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <span className="text-sm text-[#003300]/60">{t('dashboardCLO:priceLabel')}</span>
-                      <span className="font-semibold text-[#003300]">
+                      <span className="text-sm text-ink/60">{t('dashboardCLO:priceLabel')}</span>
+                      <span className="font-semibold text-ink">
                         ${plan.price}
                       </span>
                     </div>
                   </div>
 
-                  <div className={`flex items-center gap-2 pt-4 border-t border-[#003300]/10 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <div className={`flex items-center gap-2 pt-4 border-t border-ink/10 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -363,10 +363,10 @@ export default function CLOSubscriptionPlans() {
         title={t('dashboardCLO:deleteSubPlanTitle')}
       >
         <div className="space-y-4">
-          <p className={`text-[#003300] ${isRTL ? 'text-right' : ''}`}>
+          <p className={`text-ink ${isRTL ? 'text-right' : ''}`}>
             {t('dashboardCLO:deleteSubPlanConfirm', { name: planToDelete?.name })}
           </p>
-          <p className={`text-sm text-[#003300]/60 ${isRTL ? 'text-right' : ''}`}>
+          <p className={`text-sm text-ink/60 ${isRTL ? 'text-right' : ''}`}>
             {t('dashboardCLO:deleteSubPlanNote')}
           </p>
           <div className={`flex items-center justify-end gap-3 pt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>

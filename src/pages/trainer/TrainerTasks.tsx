@@ -133,12 +133,12 @@ export default function TrainerTasks() {
         <div className="flex items-center justify-between mb-2">
           <div>
             <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{ 
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>
               {t('dashboardTrainer:tasks')}
             </h1>
-            <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardTrainer:tasksSubtitle')}
             </p>
           </div>
@@ -219,7 +219,7 @@ export default function TrainerTasks() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-[#003300]">
+                        <h3 className="text-lg font-semibold text-ink">
                           {task.title}
                         </h3>
                         <Badge

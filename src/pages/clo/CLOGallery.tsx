@@ -97,10 +97,10 @@ export default function CLOGallery() {
         <div className={`flex items-center justify-between mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={isRTL ? 'text-right' : ''}>
             <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 mb-2" style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>{t('dashboardCLO:gallery')}</h1>
-            <p className="transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardCLO:overviewGallery')}
             </p>
           </div>

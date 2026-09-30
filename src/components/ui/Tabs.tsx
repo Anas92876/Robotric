@@ -66,8 +66,8 @@ function Tabs({
                     ? 'border-primary text-primary'
                     : 'bg-primary text-secondary shadow-sm'
                   : variant === 'underline'
-                  ? 'border-transparent text-[#003300]/60 hover:text-[#003300]'
-                  : 'text-[#003300]/60 hover:text-[#003300] hover:bg-[#003300]/5'
+                  ? 'border-transparent text-ink/60 hover:text-ink'
+                  : 'text-ink/60 hover:text-ink hover:bg-ink/5'
               )
             }
           >
@@ -85,7 +85,7 @@ function Tabs({
               'animate-fade-in'
             )}
             style={{ 
-              color: '#003300',
+              color: '#0f1f33',
               position: 'relative',
               zIndex: 1,
               opacity: 1,
@@ -144,7 +144,7 @@ function VerticalTabs({
                     ? variant === 'pills'
                       ? 'bg-primary text-secondary'
                       : 'bg-primary text-secondary border-l-2 border-primary'
-                    : 'text-[#003300]/60 hover:text-[#003300] hover:bg-[#003300]/5'
+                    : 'text-ink/60 hover:text-ink hover:bg-ink/5'
                 )
               }
             >

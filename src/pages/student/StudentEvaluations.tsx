@@ -48,7 +48,7 @@ function PercentageGauge({ pct, size = 96, stroke = 8, label }: { pct: number; s
   const r = (size - stroke) / 2;
   const circ = 2 * Math.PI * r;
   const dash = (pct / 100) * circ;
-  const color = pct >= 80 ? '#003300' : pct >= 60 ? '#ca8a04' : '#dc2626';
+  const color = pct >= 80 ? '#0f1f33' : pct >= 60 ? '#ca8a04' : '#dc2626';
   return (
     <div className="flex flex-col items-center gap-1">
       <div style={{ width: size, height: size, position: 'relative' }}>
@@ -62,10 +62,10 @@ function PercentageGauge({ pct, size = 96, stroke = 8, label }: { pct: number; s
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="font-bold text-[#003300]" style={{ fontSize: size * 0.22 }}>{pct}%</span>
+          <span className="font-bold text-ink" style={{ fontSize: size * 0.22 }}>{pct}%</span>
         </div>
       </div>
-      {label && <span className="text-xs text-[#003300]/60 font-medium text-center">{label}</span>}
+      {label && <span className="text-xs text-ink/60 font-medium text-center">{label}</span>}
     </div>
   );
 }
@@ -103,9 +103,9 @@ function SessionEvalCard({ evaluation, isRTL }: { evaluation: Evaluation; isRTL:
       {/* Header */}
       <div className={`flex items-start justify-between gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className="flex-1 min-w-0">
-          <p className="font-bold text-[#003300] text-sm leading-tight">{evaluation.sessionTitle}</p>
+          <p className="font-bold text-ink text-sm leading-tight">{evaluation.sessionTitle}</p>
           {formattedDate && (
-            <span className="flex items-center gap-1 text-xs text-[#003300]/50 mt-1">
+            <span className="flex items-center gap-1 text-xs text-ink/50 mt-1">
               <Calendar className="w-3 h-3" />{formattedDate}
             </span>
           )}
@@ -133,7 +133,7 @@ function SessionEvalCard({ evaluation, isRTL }: { evaluation: Evaluation; isRTL:
             <div className="space-y-1.5">
               {evaluation.parameters.map((p, i) => (
                 <div key={i} className={`flex items-center justify-between p-2 rounded-lg bg-gray-50 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <span className="text-xs text-[#003300]/80">{p.name}</span>
+                  <span className="text-xs text-ink/80">{p.name}</span>
                   <StarRow score={p.score} max={p.maxScore} size="sm" />
                 </div>
               ))}
@@ -154,7 +154,7 @@ function SessionEvalCard({ evaluation, isRTL }: { evaluation: Evaluation; isRTL:
       {hasDetails && (
         <button
           onClick={() => setExpanded(p => !p)}
-          className={`mt-2 flex items-center gap-1 text-xs font-semibold text-[#003300]/50 hover:text-[#003300] transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
+          className={`mt-2 flex items-center gap-1 text-xs font-semibold text-ink/50 hover:text-ink transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
         >
           {expanded
             ? <><ChevronUp className="w-3 h-3" />{t('dashboardCommon:showLess', 'Show less')}</>
@@ -183,16 +183,16 @@ function CourseCard({ group, isRTL, onClick }: { group: CourseGroup; isRTL: bool
                   <BookOpen className="w-6 h-6 text-primary" />
                 </div>
                 <div className="min-w-0">
-                  <p className={`font-bold text-[#003300] text-base leading-tight truncate ${isRTL ? 'text-right' : ''}`}>
+                  <p className={`font-bold text-ink text-base leading-tight truncate ${isRTL ? 'text-right' : ''}`}>
                     {group.courseName}
                   </p>
                   {group.groupName && (
-                    <span className="inline-flex items-center gap-1 mt-1 text-xs text-[#003300]/50 bg-white/60 border border-white/40 rounded-full px-2 py-0.5">
+                    <span className="inline-flex items-center gap-1 mt-1 text-xs text-ink/50 bg-white/60 border border-white/40 rounded-full px-2 py-0.5">
                       <BookOpen className="w-2.5 h-2.5" />
                       {group.groupName}
                     </span>
                   )}
-                  <p className={`text-xs text-[#003300]/50 mt-1 ${isRTL ? 'text-right' : ''}`}>
+                  <p className={`text-xs text-ink/50 mt-1 ${isRTL ? 'text-right' : ''}`}>
                     {group.scoredSessions}/{group.totalSessions} sessions evaluated
                   </p>
                 </div>
@@ -207,7 +207,7 @@ function CourseCard({ group, isRTL, onClick }: { group: CourseGroup; isRTL: bool
                     <span className="text-xs text-gray-400">—</span>
                   </div>
                 )}
-                <ChevronRight className="w-5 h-5 text-[#003300]/30" />
+                <ChevronRight className="w-5 h-5 text-ink/30" />
               </div>
             </div>
 
@@ -240,16 +240,16 @@ function CourseDetailPanel({ group, isRTL, onClose }: { group: CourseGroup; isRT
       <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
         <button
           onClick={onClose}
-          className="w-9 h-9 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-[#003300] hover:bg-white/30 transition-colors shrink-0"
+          className="w-9 h-9 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-ink hover:bg-white/30 transition-colors shrink-0"
         >
           <X className="w-4 h-4" />
         </button>
         <div className="flex-1 min-w-0">
-          <h2 className={`font-bold text-[#003300] text-xl leading-tight truncate ${isRTL ? 'text-right' : ''}`}>
+          <h2 className={`font-bold text-ink text-xl leading-tight truncate ${isRTL ? 'text-right' : ''}`}>
             {group.courseName}
           </h2>
           {group.groupName && (
-            <p className={`text-xs text-[#003300]/50 mt-0.5 ${isRTL ? 'text-right' : ''}`}>{group.groupName}</p>
+            <p className={`text-xs text-ink/50 mt-0.5 ${isRTL ? 'text-right' : ''}`}>{group.groupName}</p>
           )}
         </div>
       </div>
@@ -261,9 +261,9 @@ function CourseDetailPanel({ group, isRTL, onClose }: { group: CourseGroup; isRT
             <div className={`flex items-center gap-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <PercentageGauge pct={group.percentage} size={96} stroke={9} label="Course Average" />
               <div className="flex-1">
-                <p className={`text-sm text-[#003300]/60 mb-1 ${isRTL ? 'text-right' : ''}`}>Overall Score</p>
+                <p className={`text-sm text-ink/60 mb-1 ${isRTL ? 'text-right' : ''}`}>Overall Score</p>
                 <StarRow score={group.averageScore!} max={5} />
-                <p className={`text-xs text-[#003300]/50 mt-2 ${isRTL ? 'text-right' : ''}`}>
+                <p className={`text-xs text-ink/50 mt-2 ${isRTL ? 'text-right' : ''}`}>
                   Based on {group.scoredSessions} of {group.totalSessions} sessions
                 </p>
               </div>
@@ -322,11 +322,11 @@ export default function StudentEvaluations() {
       <motion.div variants={itemVariants}>
         <h1
           className="text-2xl sm:text-3xl md:text-4xl font-bold"
-          style={{ color: '#003300', backgroundClip: 'text' }}
+          style={{ color: '#0f1f33', backgroundClip: 'text' }}
         >
           {t('dashboardStudent:myEvaluations', 'My Evaluations')}
         </h1>
-        <p className="mt-2 text-[#003300]/70">
+        <p className="mt-2 text-ink/70">
           {t('dashboardStudent:myEvaluationsSubtitle', 'Your trainer feedback and scores from all sessions')}
         </p>
       </motion.div>
@@ -373,18 +373,18 @@ export default function StudentEvaluations() {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <p className={`text-xs font-semibold text-[#003300]/50 uppercase tracking-wider mb-1 ${isRTL ? 'text-right' : ''}`}>
+                          <p className={`text-xs font-semibold text-ink/50 uppercase tracking-wider mb-1 ${isRTL ? 'text-right' : ''}`}>
                             {t('dashboardStudent:overallAverage', 'Full Courses Average')}
                           </p>
-                          <p className={`text-3xl font-bold text-[#003300] ${isRTL ? 'text-right' : ''}`}>
-                            {overallAverage}<span className="text-lg font-normal text-[#003300]/40">/5</span>
+                          <p className={`text-3xl font-bold text-ink ${isRTL ? 'text-right' : ''}`}>
+                            {overallAverage}<span className="text-lg font-normal text-ink/40">/5</span>
                           </p>
                           <div className={`flex items-center gap-3 mt-2 flex-wrap ${isRTL ? 'flex-row-reverse' : ''}`}>
-                            <span className="text-xs text-[#003300]/50">{courseGroups.length} courses</span>
-                            <span className="text-xs text-[#003300]/30">·</span>
-                            <span className="text-xs text-[#003300]/50">{totalEvals} sessions</span>
-                            <span className="text-xs text-[#003300]/30">·</span>
-                            <span className="text-xs text-[#003300]/50">{withNotes} with notes</span>
+                            <span className="text-xs text-ink/50">{courseGroups.length} courses</span>
+                            <span className="text-xs text-ink/30">·</span>
+                            <span className="text-xs text-ink/50">{totalEvals} sessions</span>
+                            <span className="text-xs text-ink/30">·</span>
+                            <span className="text-xs text-ink/50">{withNotes} with notes</span>
                           </div>
                         </div>
                       </div>
@@ -400,8 +400,8 @@ export default function StudentEvaluations() {
                     <div className="flex items-center gap-3">
                       <div className="p-2.5 rounded-xl bg-primary/10"><Star className="w-5 h-5 text-primary" /></div>
                       <div>
-                        <p className="text-xs text-[#003300]/60">{t('dashboardStudent:totalEvaluations', 'Total Evaluations')}</p>
-                        <p className="text-2xl font-bold text-[#003300]">{totalEvals}</p>
+                        <p className="text-xs text-ink/60">{t('dashboardStudent:totalEvaluations', 'Total Evaluations')}</p>
+                        <p className="text-2xl font-bold text-ink">{totalEvals}</p>
                       </div>
                     </div>
                   </CardBody></CardComponent>
@@ -411,8 +411,8 @@ export default function StudentEvaluations() {
                       <div className="flex items-center gap-3">
                         <div className="p-2.5 rounded-xl bg-yellow-500/10"><TrendingUp className="w-5 h-5 text-yellow-600" /></div>
                         <div>
-                          <p className="text-xs text-[#003300]/60">{t('dashboardStudent:averageScore', 'Average Score')}</p>
-                          <p className="text-2xl font-bold text-[#003300]">{courseGroups[0]?.averageScore}<span className="text-sm font-normal text-[#003300]/50">/5</span></p>
+                          <p className="text-xs text-ink/60">{t('dashboardStudent:averageScore', 'Average Score')}</p>
+                          <p className="text-2xl font-bold text-ink">{courseGroups[0]?.averageScore}<span className="text-sm font-normal text-ink/50">/5</span></p>
                         </div>
                       </div>
                     </CardBody></CardComponent>
@@ -422,8 +422,8 @@ export default function StudentEvaluations() {
                     <div className="flex items-center gap-3">
                       <div className="p-2.5 rounded-xl bg-blue-500/10"><MessageSquare className="w-5 h-5 text-blue-600" /></div>
                       <div>
-                        <p className="text-xs text-[#003300]/60">{t('dashboardStudent:withNotes', 'With Trainer Notes')}</p>
-                        <p className="text-2xl font-bold text-[#003300]">{withNotes}</p>
+                        <p className="text-xs text-ink/60">{t('dashboardStudent:withNotes', 'With Trainer Notes')}</p>
+                        <p className="text-2xl font-bold text-ink">{withNotes}</p>
                       </div>
                     </div>
                   </CardBody></CardComponent>
@@ -454,10 +454,10 @@ export default function StudentEvaluations() {
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <Star className="w-8 h-8 text-primary/40" />
               </div>
-              <h3 className="text-xl font-bold text-[#003300] mb-2">
+              <h3 className="text-xl font-bold text-ink mb-2">
                 {t('dashboardStudent:noEvaluationsYet', 'No evaluations yet')}
               </h3>
-              <p className="text-[#003300]/60 text-sm">
+              <p className="text-ink/60 text-sm">
                 {t('dashboardStudent:noEvaluationsDesc', 'Your trainer evaluations will appear here after each session.')}
               </p>
             </CardBody>

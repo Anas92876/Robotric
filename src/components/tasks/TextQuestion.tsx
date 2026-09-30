@@ -36,10 +36,10 @@ export const TextQuestion: React.FC<TextQuestionProps> = ({
       <CardBody>
         <div className="mb-4">
           <div className="flex items-start justify-between mb-2">
-            <h4 className="text-base font-semibold text-[#003300]">
+            <h4 className="text-base font-semibold text-ink">
               {question.questionText}
             </h4>
-            <span className="text-sm text-[#003300]/60">
+            <span className="text-sm text-ink/60">
               {question.points} {question.points === 1 ? 'point' : 'points'}
             </span>
           </div>
@@ -64,7 +64,7 @@ export const TextQuestion: React.FC<TextQuestionProps> = ({
           <div className="mt-2 text-right">
             <span
               className={`text-xs ${
-                remainingChars! < 20 ? 'text-red-600' : 'text-[#003300]/60'
+                remainingChars! < 20 ? 'text-red-600' : 'text-ink/60'
               }`}
             >
               {remainingChars} characters remaining

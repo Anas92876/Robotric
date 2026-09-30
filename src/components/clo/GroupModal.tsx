@@ -250,7 +250,7 @@ export default function GroupModal({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Group Name */}
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Group Name <span className="text-red-500">*</span>
             </label>
             <Input
@@ -270,17 +270,17 @@ export default function GroupModal({
 
           {/* Course Selection */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Course <span className="text-red-500">*</span>
             </label>
             <div className="relative">
-              <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40" />
+              <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
               <select
                 value={formData.courseId}
                 onChange={(e) =>
                   setFormData({ ...formData, courseId: e.target.value })
                 }
-                className="w-full pl-10 px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
+                className="w-full pl-10 px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
                 disabled={isLoading}
               >
                 <option value="">Select a course</option>
@@ -298,17 +298,17 @@ export default function GroupModal({
 
           {/* Trainer Selection */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Trainer <span className="text-red-500">*</span>
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40" />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
               <select
                 value={formData.trainerId}
                 onChange={(e) =>
                   setFormData({ ...formData, trainerId: e.target.value })
                 }
-                className="w-full pl-10 px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
+                className="w-full pl-10 px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
                 disabled={isLoading}
               >
                 <option value="">Select a trainer</option>
@@ -326,7 +326,7 @@ export default function GroupModal({
 
           {/* Start Date */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Start Date <span className="text-red-500">*</span>
             </label>
             <Input
@@ -345,7 +345,7 @@ export default function GroupModal({
 
           {/* End Date */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               End Date <span className="text-red-500">*</span>
             </label>
             <Input
@@ -364,7 +364,7 @@ export default function GroupModal({
 
           {/* Max Students */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Max Students <span className="text-red-500">*</span>
             </label>
             <Input
@@ -389,7 +389,7 @@ export default function GroupModal({
 
           {/* Starting Session Number */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Starting Session Number <span className="text-red-500">*</span>
             </label>
             <Input
@@ -406,7 +406,7 @@ export default function GroupModal({
               leftIcon={<Calendar className="w-4 h-4" />}
               disabled={isLoading}
             />
-            <p className="mt-1 text-xs text-[#003300]/60">
+            <p className="mt-1 text-xs text-ink/60">
               The session number this group starts from (e.g., 1 for beginners, 5 for advanced)
             </p>
             {errors.startingSessionNumber && (
@@ -416,7 +416,7 @@ export default function GroupModal({
 
           {/* Description */}
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Description
             </label>
             <textarea
@@ -426,7 +426,7 @@ export default function GroupModal({
               }
               placeholder="Provide additional details about the group..."
               rows={3}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder:text-[#003300]/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all resize-none"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink placeholder:text-ink/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all resize-none"
               disabled={isLoading}
             />
           </div>
@@ -435,7 +435,7 @@ export default function GroupModal({
         {/* Weekly Schedule */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <label className="block text-sm font-medium text-[#003300]">
+            <label className="block text-sm font-medium text-ink">
               Weekly Schedule
             </label>
             <Button
@@ -463,13 +463,13 @@ export default function GroupModal({
               {formData.schedule.map((session, index) => (
                 <div
                   key={index}
-                  className="p-4 rounded-lg border border-[#003300]/20 bg-gray-50 space-y-3"
+                  className="p-4 rounded-lg border border-ink/20 bg-gray-50 space-y-3"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-3">
                       {/* Day */}
                       <div>
-                        <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                        <label className="block text-xs font-medium text-ink/70 mb-1">
                           Day
                         </label>
                         <select
@@ -479,7 +479,7 @@ export default function GroupModal({
                             newSchedule[index].day = e.target.value;
                             setFormData({ ...formData, schedule: newSchedule });
                           }}
-                          className="w-full px-3 py-2 text-sm rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
+                          className="w-full px-3 py-2 text-sm rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
                           disabled={isLoading}
                         >
                           <option value="Monday">Monday</option>
@@ -494,7 +494,7 @@ export default function GroupModal({
 
                       {/* Start Time */}
                       <div>
-                        <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                        <label className="block text-xs font-medium text-ink/70 mb-1">
                           Start Time
                         </label>
                         <input
@@ -511,10 +511,10 @@ export default function GroupModal({
                               setScheduleErrors(newScheduleErrors);
                             }
                           }}
-                          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-[#003300] focus:ring-2 focus:ring-emerald-500/20 outline-none ${
+                          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-ink focus:ring-2 focus:ring-emerald-500/20 outline-none ${
                             scheduleErrors[index] 
                               ? 'border-red-500 focus:border-red-500' 
-                              : 'border-[#003300]/20 focus:border-emerald-500'
+                              : 'border-ink/20 focus:border-emerald-500'
                           }`}
                           disabled={isLoading}
                         />
@@ -522,7 +522,7 @@ export default function GroupModal({
 
                       {/* End Time */}
                       <div>
-                        <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                        <label className="block text-xs font-medium text-ink/70 mb-1">
                           End Time
                         </label>
                         <input
@@ -539,10 +539,10 @@ export default function GroupModal({
                               setScheduleErrors(newScheduleErrors);
                             }
                           }}
-                          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-[#003300] focus:ring-2 focus:ring-emerald-500/20 outline-none ${
+                          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-ink focus:ring-2 focus:ring-emerald-500/20 outline-none ${
                             scheduleErrors[index] 
                               ? 'border-red-500 focus:border-red-500' 
-                              : 'border-[#003300]/20 focus:border-emerald-500'
+                              : 'border-ink/20 focus:border-emerald-500'
                           }`}
                           disabled={isLoading}
                         />
@@ -550,7 +550,7 @@ export default function GroupModal({
 
                       {/* Location */}
                       <div>
-                        <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                        <label className="block text-xs font-medium text-ink/70 mb-1">
                           Location
                         </label>
                         <input
@@ -562,7 +562,7 @@ export default function GroupModal({
                             setFormData({ ...formData, schedule: newSchedule });
                           }}
                           placeholder="Room/Location"
-                          className="w-full px-3 py-2 text-sm rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder:text-[#003300]/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
+                          className="w-full px-3 py-2 text-sm rounded-lg border border-ink/20 bg-white text-ink placeholder:text-ink/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
                           disabled={isLoading}
                         />
                       </div>
@@ -601,14 +601,14 @@ export default function GroupModal({
           )}
 
           {formData.schedule.length === 0 && (
-            <p className="text-sm text-[#003300]/60 text-center py-4 border border-dashed border-[#003300]/20 rounded-lg">
+            <p className="text-sm text-ink/60 text-center py-4 border border-dashed border-ink/20 rounded-lg">
               No sessions added yet. Click "Add Session" to create a weekly schedule.
             </p>
           )}
         </div>
 
         {/* Footer Buttons */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button
             type="button"
             variant="outline"
@@ -636,8 +636,8 @@ export default function GroupModal({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

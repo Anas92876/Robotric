@@ -154,10 +154,10 @@ export default function CLOTasks() {
         <div className={`flex items-center justify-between mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={isRTL ? 'text-right' : ''}>
             <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 mb-2" style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>{t('dashboardCLO:allTasks')}</h1>
-            <p className="transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardCLO:overviewAllTasks')}
             </p>
           </div>
@@ -219,8 +219,8 @@ export default function CLOTasks() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:totalTasks')}</p>
-                <p className="text-2xl font-bold text-[#003300]">{tasks.length}</p>
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:totalTasks')}</p>
+                <p className="text-2xl font-bold text-ink">{tasks.length}</p>
               </div>
               <FileText className="w-8 h-8 text-primary" />
             </div>
@@ -230,8 +230,8 @@ export default function CLOTasks() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:openTasks')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:openTasks')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {tasks.filter((t) => t.status === "open").length}
                 </p>
               </div>
@@ -243,8 +243,8 @@ export default function CLOTasks() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:closedTasks')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:closedTasks')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {tasks.filter((t) => t.status === "closed").length}
                 </p>
               </div>
@@ -256,8 +256,8 @@ export default function CLOTasks() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:withQuestions')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:withQuestions')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {tasks.filter((t) => t.hasQuestions).length}
                 </p>
               </div>
@@ -273,9 +273,9 @@ export default function CLOTasks() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <FileText className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-[#003300]/60 text-lg mb-2">{t('dashboardCLO:noTasksFound')}</p>
-                <p className="text-[#003300]/40 text-sm">
+                <FileText className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <p className="text-ink/60 text-lg mb-2">{t('dashboardCLO:noTasksFound')}</p>
+                <p className="text-ink/40 text-sm">
                   {searchQuery || courseFilter !== "all" || groupFilter !== "all"
                     ? t('dashboardCLO:tryAdjustingFilters')
                     : t('dashboardCLO:noTasksCreated')}
@@ -293,7 +293,7 @@ export default function CLOTasks() {
                   <div className={`flex items-start justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <div className={`flex-1 ${isRTL ? 'text-right' : ''}`}>
                       <div className={`flex items-center gap-3 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <h3 className="text-lg font-semibold text-[#003300]">
+                        <h3 className="text-lg font-semibold text-ink">
                           {task.title}
                         </h3>
                         <Badge
@@ -303,10 +303,10 @@ export default function CLOTasks() {
                           {task.status}
                         </Badge>
                       </div>
-                      <p className="text-sm text-[#003300]/60 mb-3 line-clamp-2">
+                      <p className="text-sm text-ink/60 mb-3 line-clamp-2">
                         {task.description}
                       </p>
-                      <div className={`flex items-center gap-4 text-xs text-[#003300]/40 flex-wrap ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`flex items-center gap-4 text-xs text-ink/40 flex-wrap ${isRTL ? 'flex-row-reverse' : ''}`}>
                         <span>
                           {t('dashboardCLO:taskGroupsLabel')}{' '}
                           {task.groupIds && task.groupIds.length > 0

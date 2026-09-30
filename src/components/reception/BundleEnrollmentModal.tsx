@@ -271,7 +271,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
       {/* ── Step 1: Select Student ── */}
       {step === 1 && (
         <div className="space-y-3">
-          <p className="text-sm font-semibold text-[#003300] mb-2">Select the student to enroll</p>
+          <p className="text-sm font-semibold text-ink mb-2">Select the student to enroll</p>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
@@ -296,7 +296,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
                     {s.name.charAt(0).toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#003300] truncate">{s.name}</p>
+                    <p className="text-sm font-semibold text-ink truncate">{s.name}</p>
                     <p className="text-xs text-gray-400 truncate">{s.email}</p>
                   </div>
                   {studentId === s._id && <CheckCircle className="w-4 h-4 text-violet-500 flex-shrink-0" />}
@@ -319,7 +319,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
             <span className="text-sm font-medium text-emerald-700">{selectedStudent?.name}</span>
           </div>
 
-          <p className="text-sm font-semibold text-[#003300]">Select a bundle to enroll in</p>
+          <p className="text-sm font-semibold text-ink">Select a bundle to enroll in</p>
 
           {loadingBundles ? (
             <div className="py-6 text-center"><Loader2 className="w-5 h-5 animate-spin text-violet-400 mx-auto" /></div>
@@ -345,7 +345,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
                     <Layers className="w-4 h-4 text-violet-600" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-[#003300] truncate">{b.title}</p>
+                    <p className="text-sm font-bold text-ink truncate">{b.title}</p>
                     <p className="text-xs text-gray-400">{b.bundleCourses?.length || 0} courses · ${b.bundlePrice}</p>
                   </div>
                   {bundleId === b._id && <CheckCircle className="w-4 h-4 text-violet-500 flex-shrink-0" />}
@@ -400,7 +400,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
                         className="accent-violet-600 w-4 h-4 flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-[#003300] truncate">{sc.title}</p>
+                        <p className="text-sm font-medium text-ink truncate">{sc.title}</p>
                         <p className="text-xs text-gray-400">${sc.price} individually · {sc.level}</p>
                       </div>
                     </label>
@@ -432,7 +432,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
             </span>
           </div>
 
-          <p className="text-sm font-semibold text-[#003300]">Select a group for each sub-course</p>
+          <p className="text-sm font-semibold text-ink">Select a group for each sub-course</p>
 
           {loadingGroups ? (
             <div className="py-6 text-center"><Loader2 className="w-5 h-5 animate-spin text-violet-400 mx-auto" /></div>
@@ -443,7 +443,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
                 const selectedGroupId = groupSelections.find(g => g.courseId === sc._id)?.groupId || '';
                 return (
                   <div key={sc._id} className="border border-gray-200 rounded-xl p-3">
-                    <p className="text-sm font-semibold text-[#003300] mb-2">{sc.title}</p>
+                    <p className="text-sm font-semibold text-ink mb-2">{sc.title}</p>
                     {groups.length === 0 ? (
                       <p className="text-xs text-amber-600 bg-amber-50 px-3 py-2 rounded-lg">No active groups for this course</p>
                     ) : (
@@ -451,7 +451,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
                         <select
                           value={selectedGroupId}
                           onChange={e => handleGroupSelect(sc._id, e.target.value)}
-                          className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 outline-none focus:border-violet-400 text-[#003300]"
+                          className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 outline-none focus:border-violet-400 text-ink"
                         >
                           <option value="">— Select a group —</option>
                           {groups.map(g => (
@@ -478,33 +478,33 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
           {/* Summary */}
           <div className="bg-violet-50 border border-violet-200 rounded-xl p-4 space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-[#003300]/60">Student</span>
-              <span className="font-semibold text-[#003300]">{selectedStudent?.name}</span>
+              <span className="text-ink/60">Student</span>
+              <span className="font-semibold text-ink">{selectedStudent?.name}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-[#003300]/60">Bundle</span>
-              <span className="font-semibold text-[#003300]">{selectedBundleObj?.title}</span>
+              <span className="text-ink/60">Bundle</span>
+              <span className="font-semibold text-ink">{selectedBundleObj?.title}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-[#003300]/60">Mode</span>
+              <span className="text-ink/60">Mode</span>
               <span className="font-semibold text-violet-700">{enrollFull ? 'Full Bundle' : `${subCoursesToEnroll.length} courses`}</span>
             </div>
             <div className="border-t border-violet-200 pt-2 flex justify-between">
-              <span className="text-sm font-bold text-[#003300]">Base Price</span>
+              <span className="text-sm font-bold text-ink">Base Price</span>
               <span className="text-lg font-bold text-violet-700">${basePrice.toFixed(0)}</span>
             </div>
           </div>
 
           {/* Discount */}
           <div>
-            <label className="block text-sm font-semibold text-[#003300] mb-1">Discount (%)</label>
+            <label className="block text-sm font-semibold text-ink mb-1">Discount (%)</label>
             <div className="relative">
               <input
                 type="number"
                 value={discount}
                 onChange={e => setDiscount(e.target.value)}
                 min="0" max="100" step="1"
-                className="w-full pl-3 pr-10 py-2 text-sm rounded-lg border border-gray-200 outline-none focus:border-violet-400 text-[#003300]"
+                className="w-full pl-3 pr-10 py-2 text-sm rounded-lg border border-gray-200 outline-none focus:border-violet-400 text-ink"
                 placeholder="0"
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">%</span>
@@ -522,7 +522,7 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
           {/* Installments */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-semibold text-[#003300]">Payment Schedule</label>
+              <label className="text-sm font-semibold text-ink">Payment Schedule</label>
               <button
                 type="button"
                 onClick={addInstallment}
@@ -561,13 +561,13 @@ const BundleEnrollmentModal: React.FC<BundleEnrollmentModalProps> = ({ isOpen, o
 
           {/* Notes */}
           <div>
-            <label className="block text-sm font-semibold text-[#003300] mb-1">Notes (optional)</label>
+            <label className="block text-sm font-semibold text-ink mb-1">Notes (optional)</label>
             <textarea
               value={notes}
               onChange={e => setNotes(e.target.value)}
               rows={2}
               placeholder="Any notes about this enrollment…"
-              className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 outline-none focus:border-violet-400 text-[#003300] placeholder-gray-400 resize-none"
+              className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 outline-none focus:border-violet-400 text-ink placeholder-gray-400 resize-none"
             />
           </div>
         </div>

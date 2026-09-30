@@ -99,15 +99,15 @@ function AttachmentStrip({ attachments }: { attachments?: { url: string; publicI
   const [lightbox, setLightbox] = useState<string | null>(null);
   if (!attachments || attachments.length === 0) return null;
   return (
-    <div className="mt-3 pt-3 border-t border-[#003300]/8">
-      <p className="text-[10px] text-[#003300]/40 font-semibold uppercase tracking-wide mb-2">
+    <div className="mt-3 pt-3 border-t border-ink/8">
+      <p className="text-[10px] text-ink/40 font-semibold uppercase tracking-wide mb-2">
         Reference images from manager
       </p>
       <div className="flex flex-wrap gap-2">
         {attachments.map(img => (
           <div
             key={img.publicId}
-            className="relative group w-16 h-16 rounded-lg border border-[#003300]/10 overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+            className="relative group w-16 h-16 rounded-lg border border-ink/10 overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow"
             onClick={() => setLightbox(img.url)}
           >
             <img src={img.url} alt={img.name || "ref"} className="w-full h-full object-cover" />
@@ -179,7 +179,7 @@ function TaskCard({
         className={`rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden ${
           !isDone && due.urgency === "overdue" ? "border-red-200" :
           !isDone && due.urgency === "today"   ? "border-orange-200" :
-          "border-[#003300]/10"
+          "border-ink/10"
         }`}
       >
         {!isDone && (due.urgency === "overdue" || due.urgency === "today") && (
@@ -210,25 +210,25 @@ function TaskCard({
                       </span>
                     )}
                   </div>
-                  <p className={`font-semibold text-[#003300] mt-1.5 leading-snug ${isDone ? "line-through opacity-50" : ""}`}>
+                  <p className={`font-semibold text-ink mt-1.5 leading-snug ${isDone ? "line-through opacity-50" : ""}`}>
                     {task.title}
                   </p>
                 </div>
 
                 <button
                   onClick={() => setExpanded(v => !v)}
-                  className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-lg text-[#003300]/30 hover:text-[#003300]/60 hover:bg-[#003300]/5 transition-colors mt-0.5"
+                  className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-lg text-ink/30 hover:text-ink/60 hover:bg-ink/5 transition-colors mt-0.5"
                 >
                   {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </button>
               </div>
 
               {!expanded && task.description && (
-                <p className="text-sm text-[#003300]/45 mt-1.5 line-clamp-1">{task.description}</p>
+                <p className="text-sm text-ink/45 mt-1.5 line-clamp-1">{task.description}</p>
               )}
 
               <div className={`flex items-center gap-3 mt-2.5 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                <span className={`flex items-center gap-1 text-xs text-[#003300]/40 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <span className={`flex items-center gap-1 text-xs text-ink/40 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <FolderOpen className="w-3 h-3" />
                   {getProjectName()}
                 </span>
@@ -241,14 +241,14 @@ function TaskCard({
                 )}
 
                 {task.hardDeadline && (
-                  <span className="text-xs text-[#003300]/35 flex items-center gap-1">
+                  <span className="text-xs text-ink/35 flex items-center gap-1">
                     <Skull className="w-2.5 h-2.5 text-red-400" />
                     Hard: {formatDateShort(task.hardDeadline)}
                   </span>
                 )}
 
                 {task.dueDate && !task.hardDeadline && (
-                  <span className="text-xs text-[#003300]/35 flex items-center gap-1">
+                  <span className="text-xs text-ink/35 flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
                     {formatDateShort(task.dueDate)}
                   </span>
@@ -257,7 +257,7 @@ function TaskCard({
             </div>
           </div>
 
-          <div className={`flex items-center gap-2 mt-3 pt-3 border-t border-[#003300]/8 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`flex items-center gap-2 mt-3 pt-3 border-t border-ink/8 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
             {task.status === "todo" && (
               <Button
                 variant="primary"
@@ -326,9 +326,9 @@ function TaskCard({
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="px-4 pb-4 space-y-1 border-t border-[#003300]/8 pt-3">
+              <div className="px-4 pb-4 space-y-1 border-t border-ink/8 pt-3">
                 {task.description && (
-                  <p className="text-sm text-[#003300]/60 leading-relaxed">{task.description}</p>
+                  <p className="text-sm text-ink/60 leading-relaxed">{task.description}</p>
                 )}
                 <AttachmentStrip attachments={task.attachments} />
                 <div className="pt-1">
@@ -451,13 +451,13 @@ export default function MyTasks() {
         <h1
           className="text-4xl font-bold inline-block"
           style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: "text",
           }}
         >
           My Tasks
         </h1>
-        <p className="mt-1.5" style={{ color: "#003300CC" }}>
+        <p className="mt-1.5" style={{ color: "#0f1f33CC" }}>
           All tasks assigned to you
         </p>
       </motion.div>
@@ -486,13 +486,13 @@ export default function MyTasks() {
       {/* ── Stats strip ── */}
       <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { label: "Total",       value: tasks.length,          color: "text-[#003300]",  bg: "bg-[#003300]/5" },
+          { label: "Total",       value: tasks.length,          color: "text-ink",  bg: "bg-ink/5" },
           { label: "To Do",       value: tabCounts.todo,         color: "text-gray-500",   bg: "bg-gray-50" },
           { label: "In Progress", value: tabCounts.in_progress,  color: "text-blue-600",   bg: "bg-blue-50" },
           { label: "Done",        value: tabCounts.done,         color: "text-green-600",  bg: "bg-green-50" },
         ].map(stat => (
-          <div key={stat.label} className={`${stat.bg} rounded-xl px-4 py-3 border border-[#003300]/8`}>
-            <p className="text-xs text-[#003300]/50 font-medium">{stat.label}</p>
+          <div key={stat.label} className={`${stat.bg} rounded-xl px-4 py-3 border border-ink/8`}>
+            <p className="text-xs text-ink/50 font-medium">{stat.label}</p>
             <p className={`text-2xl font-bold mt-0.5 ${stat.color}`}>{stat.value}</p>
           </div>
         ))}
@@ -500,21 +500,21 @@ export default function MyTasks() {
 
       {/* ── Status tabs + filters ── */}
       <motion.div variants={itemVariants} className={`flex items-center justify-between gap-3 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-        <div className="flex items-center gap-1 bg-[#003300]/5 rounded-xl p-1">
+        <div className="flex items-center gap-1 bg-ink/5 rounded-xl p-1">
           {TAB_DEFS.map(tab => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 ${
                 activeTab === tab.key
-                  ? "bg-white text-[#003300] shadow-sm"
-                  : "text-[#003300]/50 hover:text-[#003300]/80"
+                  ? "bg-white text-ink shadow-sm"
+                  : "text-ink/50 hover:text-ink/80"
               }`}
             >
               {tab.dot && <span className={`w-1.5 h-1.5 rounded-full ${tab.dot} inline-block`} />}
               {tab.label}
               <span className={`text-xs px-1.5 py-0.5 rounded-full font-semibold ${
-                activeTab === tab.key ? "bg-[#003300]/10 text-[#003300]" : "bg-[#003300]/8 text-[#003300]/40"
+                activeTab === tab.key ? "bg-ink/10 text-ink" : "bg-ink/8 text-ink/40"
               }`}>
                 {tabCounts[tab.key]}
               </span>
@@ -552,9 +552,9 @@ export default function MyTasks() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-14">
-                <ListTodo className="w-14 h-14 mx-auto mb-4 text-[#003300]/15" />
-                <p className="text-[#003300]/50 text-lg font-medium mb-1">No tasks found</p>
-                <p className="text-[#003300]/35 text-sm">
+                <ListTodo className="w-14 h-14 mx-auto mb-4 text-ink/15" />
+                <p className="text-ink/50 text-lg font-medium mb-1">No tasks found</p>
+                <p className="text-ink/35 text-sm">
                   {activeTab !== "all" || priorityFilter !== "all" || projectFilter !== "all"
                     ? "Try adjusting the filters or switching tabs"
                     : "No tasks assigned to you yet"}

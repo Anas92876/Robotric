@@ -104,14 +104,14 @@ export default function NewTaskRequestModal({ isOpen, onClose, projects, default
       {phase === 'done' ? (
         <div className="flex flex-col items-center justify-center py-10 text-center">
           <CheckCircle2 className="w-12 h-12 text-emerald-500 mb-3" />
-          <p className="text-[#003300] font-semibold">Request sent</p>
-          <p className="text-sm text-[#003300]/60 mt-1">Our team will review it shortly.</p>
+          <p className="text-ink font-semibold">Request sent</p>
+          <p className="text-sm text-ink/60 mt-1">Our team will review it shortly.</p>
         </div>
       ) : (
         <div className="space-y-4">
           {projects.length > 1 && (
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1.5">Project</label>
+              <label className="block text-sm font-medium text-ink mb-1.5">Project</label>
               <Select
                 value={projectId}
                 onChange={setProjectId}
@@ -132,7 +132,7 @@ export default function NewTaskRequestModal({ isOpen, onClose, projects, default
           />
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1.5">Description</label>
+            <label className="block text-sm font-medium text-ink mb-1.5">Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -140,23 +140,23 @@ export default function NewTaskRequestModal({ isOpen, onClose, projects, default
               rows={4}
               maxLength={5000}
               placeholder="What's happening, and what would you like changed?"
-              className="w-full px-4 py-2.5 rounded-lg bg-white border border-[#003300]/20 text-[#003300] placeholder:text-[#003300]/35 focus:outline-none focus:border-[#003300]/50 focus:ring-2 focus:ring-[#003300]/20 transition-colors resize-none"
+              className="w-full px-4 py-2.5 rounded-lg bg-white border border-ink/20 text-ink placeholder:text-ink/35 focus:outline-none focus:border-ink/50 focus:ring-2 focus:ring-ink/20 transition-colors resize-none"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1.5">How urgent is this to you?</label>
+            <label className="block text-sm font-medium text-ink mb-1.5">How urgent is this to you?</label>
             <Select
               value={urgency}
               onChange={(v) => setUrgency(v as ClientUrgency)}
               disabled={submitting}
               options={URGENCY_OPTIONS}
             />
-            <p className="text-xs text-[#003300]/45 mt-1.5">Our team sets the final priority and deadline after reviewing your request.</p>
+            <p className="text-xs text-ink/45 mt-1.5">Our team sets the final priority and deadline after reviewing your request.</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1.5">Attachments</label>
+            <label className="block text-sm font-medium text-ink mb-1.5">Attachments</label>
             <div className="space-y-2">
               <MediaDropzone files={files} onFilesChange={setFiles} disabled={submitting} />
               <VoiceRecorder
@@ -184,7 +184,7 @@ export default function NewTaskRequestModal({ isOpen, onClose, projects, default
           )}
 
           {phase === 'uploading' && (
-            <div className="flex items-center gap-2 text-sm text-[#003300]/70">
+            <div className="flex items-center gap-2 text-sm text-ink/70">
               <Loader2 className="w-4 h-4 animate-spin" />
               <span>Sending request{files.length > 0 ? ' and uploading attachments' : ''}…</span>
             </div>

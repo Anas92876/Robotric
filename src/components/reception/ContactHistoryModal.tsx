@@ -140,14 +140,14 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
 
         {/* Contact Type */}
         <div>
-          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
             Contact Type <span className="text-red-500">*</span>
           </label>
           <select
             value={contactType}
             onChange={(e) => setContactType(e.target.value)}
             className="w-full px-4 py-2 rounded-lg border bg-white focus:outline-none focus:ring-2 transition-colors"
-            style={{ borderColor: '#003300' + '30', color: '#003300' }}
+            style={{ borderColor: '#0f1f33' + '30', color: '#0f1f33' }}
             required
           >
             {CONTACT_TYPES.map(type => (
@@ -160,7 +160,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
 
         {/* Call Reason */}
         <div>
-          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
             Call Reason <span className="text-red-500">*</span>
           </label>
           <textarea
@@ -175,14 +175,14 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
 
         {/* Outcome */}
         <div>
-          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
             Outcome <span className="text-red-500">*</span>
           </label>
           <select
             value={outcome}
             onChange={(e) => setOutcome(e.target.value)}
             className="w-full px-4 py-2 rounded-lg border bg-white focus:outline-none focus:ring-2 transition-colors"
-            style={{ borderColor: '#003300' + '30', color: '#003300' }}
+            style={{ borderColor: '#0f1f33' + '30', color: '#0f1f33' }}
             required
           >
             {OUTCOMES.map(opt => (
@@ -191,7 +191,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
               </option>
             ))}
           </select>
-          <p className="text-xs mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="text-xs mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             Event color will be {OUTCOMES.find(o => o.value === outcome)?.color}
           </p>
         </div>
@@ -199,7 +199,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
         {/* Contact Date & Time */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+            <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
               Contact Date & Time <span className="text-red-500">*</span>
             </label>
             <input
@@ -207,13 +207,13 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
               value={contactDate}
               onChange={(e) => setContactDate(e.target.value)}
               className="w-full px-4 py-2 rounded-lg border bg-white focus:outline-none focus:ring-2 transition-colors"
-            style={{ borderColor: '#003300' + '30', color: '#003300' }}
+            style={{ borderColor: '#0f1f33' + '30', color: '#0f1f33' }}
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+            <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
               Duration (minutes)
             </label>
             <Input
@@ -228,7 +228,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
 
         {/* Notes */}
         <div>
-          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
             Notes
           </label>
           <textarea
@@ -242,7 +242,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
 
         {/* Next Follow-up Date */}
         <div>
-          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#003300' }}>
+          <label className="block text-sm font-medium mb-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
             Next Follow-up Date (Optional)
           </label>
           <input
@@ -250,7 +250,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
             value={nextFollowUpDate}
             onChange={(e) => setNextFollowUpDate(e.target.value)}
             className="w-full px-4 py-2 rounded-lg border bg-white focus:outline-none focus:ring-2 transition-colors"
-            style={{ borderColor: '#003300' + '30', color: '#003300' }}
+            style={{ borderColor: '#0f1f33' + '30', color: '#0f1f33' }}
           />
         </div>
 
@@ -262,7 +262,7 @@ export const ContactHistoryModal: React.FC<ContactHistoryModalProps> = ({
         )}
 
         {/* Action Buttons */}
-        <div className="flex justify-end gap-3 pt-4 border-t transition-colors duration-300" style={{ borderColor: '#003300' + '20' }}>
+        <div className="flex justify-end gap-3 pt-4 border-t transition-colors duration-300" style={{ borderColor: '#0f1f33' + '20' }}>
           <Button
             type="button"
             variant="ghost"

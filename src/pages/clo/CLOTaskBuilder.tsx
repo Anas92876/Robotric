@@ -262,12 +262,12 @@ export default function CLOTaskBuilder() {
         </Button>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {isEditing ? t('dashboardCLO:editTask') : t('dashboardCLO:createTask')}
           </h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {isEditing ? t('dashboardCLO:editTaskSubtitle') : t('dashboardCLO:createTaskSubtitle')}
           </p>
         </div>

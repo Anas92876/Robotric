@@ -176,13 +176,13 @@ export default function EngineerDashboard() {
         <h1
           className="text-4xl font-bold inline-block"
           style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: "text",
           }}
         >
           My Dashboard
         </h1>
-        <p className="mt-2" style={{ color: "#003300CC" }}>
+        <p className="mt-2" style={{ color: "#0f1f33CC" }}>
           Welcome back, {user?.name || "Programmer"}
         </p>
       </motion.div>
@@ -193,18 +193,18 @@ export default function EngineerDashboard() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
       >
         {[
-          { label: "Total Tasks", value: totalTasks, icon: <ListTodo className="w-8 h-8" />, color: "#003300" },
+          { label: "Total Tasks", value: totalTasks, icon: <ListTodo className="w-8 h-8" />, color: "#0f1f33" },
           { label: "To Do", value: todoTasks, icon: <ListTodo className="w-8 h-8" />, color: "#6b7280" },
           { label: "In Progress", value: inProgressTasks, icon: <Clock className="w-8 h-8" />, color: "#3b82f6" },
           { label: "Done", value: doneTasks, icon: <CheckCircle className="w-8 h-8" />, color: "#22c55e" },
         ].map(card => (
           <div key={card.label} className="relative group">
-            <div className="relative bg-white rounded-xl p-6 border border-[#003300]/20 hover:border-[#003300]/40 hover:shadow-xl transition-all duration-500 group/card overflow-hidden">
-              <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
+            <div className="relative bg-white rounded-xl p-6 border border-ink/20 hover:border-ink/40 hover:shadow-xl transition-all duration-500 group/card overflow-hidden">
+              <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl -z-10" />
               <div className="flex items-center justify-between mb-4">
                 <div
                   className="p-3 rounded-xl"
-                  style={{ background: "#003300", color: "#ffffcc" }}
+                  style={{ background: "#0f1f33", color: "#eefcf1" }}
                 >
                   {card.icon}
                 </div>
@@ -215,7 +215,7 @@ export default function EngineerDashboard() {
                   {card.value}
                 </div>
               </div>
-              <h3 className="text-base font-semibold" style={{ color: "#003300" }}>
+              <h3 className="text-base font-semibold" style={{ color: "#0f1f33" }}>
                 {card.label}
               </h3>
             </div>
@@ -225,7 +225,7 @@ export default function EngineerDashboard() {
 
       {/* History Filter Tabs */}
       <motion.div variants={itemVariants}>
-        <div className={`flex gap-2 flex-wrap border-b border-[#003300]/10 pb-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+        <div className={`flex gap-2 flex-wrap border-b border-ink/10 pb-2 ${isRTL ? "flex-row-reverse" : ""}`}>
           {historyTabs.map(tab => (
             <button
               key={tab.value}
@@ -233,9 +233,9 @@ export default function EngineerDashboard() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeTab === tab.value
                   ? "text-white"
-                  : "text-[#003300]/60 hover:text-[#003300]"
+                  : "text-ink/60 hover:text-ink"
               }`}
-              style={activeTab === tab.value ? { background: "#003300" } : {}}
+              style={activeTab === tab.value ? { background: "#0f1f33" } : {}}
             >
               {tab.label}
             </button>
@@ -249,9 +249,9 @@ export default function EngineerDashboard() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <FolderOpen className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-[#003300]/60 text-lg mb-2">No tasks found</p>
-                <p className="text-[#003300]/40 text-sm">No tasks match the current filter</p>
+                <FolderOpen className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <p className="text-ink/60 text-lg mb-2">No tasks found</p>
+                <p className="text-ink/40 text-sm">No tasks match the current filter</p>
               </div>
             </CardBody>
           </CardComponent>
@@ -261,7 +261,7 @@ export default function EngineerDashboard() {
           {Object.entries(groupedTasks).map(([projectId, { projectName, tasks: projectTasks }]) => (
             <motion.div key={projectId} variants={itemVariants}>
               <div className="mb-3">
-                <h3 className={`text-lg font-semibold flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`} style={{ color: "#003300" }}>
+                <h3 className={`text-lg font-semibold flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`} style={{ color: "#0f1f33" }}>
                   <FolderOpen className="w-5 h-5 opacity-60" />
                   {projectName}
                   <span className="text-sm font-normal opacity-50">({projectTasks.length})</span>
@@ -277,14 +277,14 @@ export default function EngineerDashboard() {
                         <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
                           <div className="flex-1 min-w-0">
                             <div className={`flex items-center gap-2 mb-1 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                              <span className="font-semibold text-[#003300]">{task.title}</span>
+                              <span className="font-semibold text-ink">{task.title}</span>
                               {priorityBadge(task.priority)}
                               <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${statusBadgeClass(task.status)}`}>
                                 {task.status.replace("_", " ")}
                               </span>
                             </div>
                             {due && (
-                              <p className={`text-xs ${due.overdue && task.status !== "done" ? "text-red-400" : "text-[#003300]/40"}`}>
+                              <p className={`text-xs ${due.overdue && task.status !== "done" ? "text-red-400" : "text-ink/40"}`}>
                                 Due: {due.text}
                                 {due.overdue && task.status !== "done" && " (Overdue)"}
                               </p>

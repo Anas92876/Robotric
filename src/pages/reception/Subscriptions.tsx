@@ -161,10 +161,10 @@ export default function Subscriptions() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardReception:subscriptions.title', 'User Subscriptions')}</h1>
-          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardReception:subscriptions.subtitle', 'Manage student subscriptions')}</p>
+          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardReception:subscriptions.subtitle', 'Manage student subscriptions')}</p>
         </div>
         <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Button
@@ -204,11 +204,11 @@ export default function Subscriptions() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+      <div className="bg-white rounded-xl p-4 border border-ink/10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
               <Input
                 type="text"
                 placeholder="Search by student name or email..."
@@ -223,7 +223,7 @@ export default function Subscriptions() {
             <select
               value={statusFilter}
               onChange={(e) => handleStatusFilterChange(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -245,11 +245,11 @@ export default function Subscriptions() {
       {filteredSubscriptions.length === 0 ? (
         <CardComponent>
           <CardBody className="p-12 text-center">
-            <CreditCard className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-            <h3 className="text-xl font-semibold text-[#003300] mb-2">
+            <CreditCard className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+            <h3 className="text-xl font-semibold text-ink mb-2">
               No Subscriptions Found
             </h3>
-            <p className="text-[#003300]/60 mb-6">
+            <p className="text-ink/60 mb-6">
               {searchQuery || statusFilter !== 'all'
                 ? 'Try adjusting your filters'
                 : 'Get started by assigning a subscription to a student'}
@@ -273,7 +273,7 @@ export default function Subscriptions() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-semibold text-[#003300] text-lg">
+                        <h3 className="font-semibold text-ink text-lg">
                           {user?.name || 'Unknown User'}
                         </h3>
                         <Badge
@@ -288,28 +288,28 @@ export default function Subscriptions() {
                           {subscription.status}
                         </Badge>
                       </div>
-                      <p className="text-sm text-[#003300]/60 mb-4">{user?.email}</p>
+                      <p className="text-sm text-ink/60 mb-4">{user?.email}</p>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Plan</p>
-                          <p className="font-semibold text-[#003300]">{plan?.name || 'N/A'}</p>
+                          <p className="text-xs text-ink/60 mb-1">Plan</p>
+                          <p className="font-semibold text-ink">{plan?.name || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Remaining Hours</p>
-                          <p className="font-semibold text-[#003300]">
+                          <p className="text-xs text-ink/60 mb-1">Remaining Hours</p>
+                          <p className="font-semibold text-ink">
                             {subscription.remainingHours} hrs
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Start Date</p>
-                          <p className="font-semibold text-[#003300]">
+                          <p className="text-xs text-ink/60 mb-1">Start Date</p>
+                          <p className="font-semibold text-ink">
                             {new Date(subscription.startsAt).toLocaleDateString()}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">End Date</p>
-                          <p className="font-semibold text-[#003300]">
+                          <p className="text-xs text-ink/60 mb-1">End Date</p>
+                          <p className="font-semibold text-ink">
                             {new Date(subscription.endsAt).toLocaleDateString()}
                           </p>
                         </div>
@@ -368,15 +368,15 @@ export default function Subscriptions() {
         title="Cancel Subscription"
       >
         <div className="space-y-4">
-          <p className="text-[#003300]">
+          <p className="text-ink">
             Are you sure you want to cancel this subscription?
           </p>
           {subscriptionToCancel && (
-            <div className="bg-[#003300]/5 rounded-lg p-4">
-              <p className="text-sm text-[#003300]/60">
+            <div className="bg-ink/5 rounded-lg p-4">
+              <p className="text-sm text-ink/60">
                 User: {typeof subscriptionToCancel.userId === 'object' ? subscriptionToCancel.userId.name : 'N/A'}
               </p>
-              <p className="text-sm text-[#003300]/60">
+              <p className="text-sm text-ink/60">
                 Remaining Hours: {subscriptionToCancel.remainingHours}
               </p>
             </div>

@@ -101,7 +101,7 @@ export const WaitingListPanel: React.FC = () => {
             <select
               value={courseFilter}
               onChange={e => setCourseFilter(e.target.value)}
-              className="pl-9 pr-8 py-2 text-sm bg-white border border-zinc-200 rounded-lg text-zinc-700 focus:outline-none focus:border-[#003300] appearance-none cursor-pointer"
+              className="pl-9 pr-8 py-2 text-sm bg-white border border-zinc-200 rounded-lg text-zinc-700 focus:outline-none focus:border-ink appearance-none cursor-pointer"
             >
               <option value="">All Courses</option>
               {courses.map(c => (
@@ -215,7 +215,7 @@ export const WaitingListPanel: React.FC = () => {
                   setEnrollTarget(lead);
                   setIsEnrollModalOpen(true);
                 }}
-                className="shrink-0 bg-[#003300] hover:bg-[#004400] text-white"
+                className="shrink-0 bg-ink hover:bg-ink-deep text-white"
               >
                 Enroll
               </Button>

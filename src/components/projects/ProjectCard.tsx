@@ -71,19 +71,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
 
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-semibold text-[#003300] mb-1 truncate">
+                <h3 className="text-lg font-semibold text-ink mb-1 truncate">
                   {project.title}
                 </h3>
                 {project.courseId && (
-                  <p className="text-sm text-[#003300]/60 truncate">
+                  <p className="text-sm text-ink/60 truncate">
                     {project.courseId.title}
                   </p>
                 )}
                 {/* Student Name */}
                 {studentName && (
                   <div className="flex items-center gap-1.5 mt-1">
-                    <User className="w-3.5 h-3.5 text-[#003300]/50" />
-                    <p className="text-sm text-[#003300]/70 font-medium">
+                    <User className="w-3.5 h-3.5 text-ink/50" />
+                    <p className="text-sm text-ink/70 font-medium">
                       {studentName}
                     </p>
                   </div>
@@ -93,7 +93,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
             </div>
 
             {project.description && (
-              <p className="text-sm text-[#003300]/70 mb-4 line-clamp-2">
+              <p className="text-sm text-ink/70 mb-4 line-clamp-2">
                 {project.description}
               </p>
             )}
@@ -104,14 +104,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
               <div className="space-y-2 mb-4">
                 {project.technologies && project.technologies.length > 0 && (
                   <div className="flex items-center gap-2 flex-wrap">
-                    <Code className="w-4 h-4 text-[#003300]/60" />
+                    <Code className="w-4 h-4 text-ink/60" />
                     {project.technologies.slice(0, 3).map((tech, index) => (
                       <Badge key={index} variant="secondary" size="sm">
                         {tech}
                       </Badge>
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="text-xs text-[#003300]/60">
+                      <span className="text-xs text-ink/60">
                         +{project.technologies.length - 3} more
                       </span>
                     )}
@@ -119,8 +119,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
                 )}
                 {project.components && project.components.length > 0 && (
                   <div className="flex items-center gap-2 flex-wrap">
-                    <FileText className="w-4 h-4 text-[#003300]/60" />
-                    <span className="text-xs text-[#003300]/60">
+                    <FileText className="w-4 h-4 text-ink/60" />
+                    <span className="text-xs text-ink/60">
                       {project.components.length} component{project.components.length !== 1 ? 's' : ''}
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
                   </span>
                 </div>
               )}
-              <div className="flex items-center gap-1 text-xs text-[#003300]/60">
+              <div className="flex items-center gap-1 text-xs text-ink/60">
                 <Calendar className="w-3 h-3" />
                 <span>
                   {new Date(project.createdAt).toLocaleDateString()}

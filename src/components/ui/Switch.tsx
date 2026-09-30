@@ -52,7 +52,7 @@ function Switch({
             'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             sizeConfig.switch,
-            checked ? 'bg-primary' : 'bg-[#003300]/20'
+            checked ? 'bg-primary' : 'bg-ink/20'
           )}
         >
           <span
@@ -67,12 +67,12 @@ function Switch({
           <HeadlessSwitch.Label className="ml-3 cursor-pointer">
             <div>
               {label && (
-                <span className="text-sm font-medium text-[#003300]">
+                <span className="text-sm font-medium text-ink">
                   {label}
                 </span>
               )}
               {description && (
-                <p className="text-xs text-[#003300]/60 mt-0.5">{description}</p>
+                <p className="text-xs text-ink/60 mt-0.5">{description}</p>
               )}
             </div>
           </HeadlessSwitch.Label>
@@ -101,10 +101,10 @@ function SwitchGroup({
       {(title || description) && (
         <div className="mb-4">
           {title && (
-            <h3 className="text-base font-semibold text-[#003300]">{title}</h3>
+            <h3 className="text-base font-semibold text-ink">{title}</h3>
           )}
           {description && (
-            <p className="text-sm text-[#003300]/60 mt-1">{description}</p>
+            <p className="text-sm text-ink/60 mt-1">{description}</p>
           )}
         </div>
       )}

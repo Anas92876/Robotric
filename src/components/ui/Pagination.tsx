@@ -68,9 +68,9 @@ export const Pagination = ({
   return (
     <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''} ${className}`}>
       <div className={`text-sm text-white/60 ${isRTL ? 'font-arabic text-right' : ''}`}>
-        {t('showing')} <span className="font-semibold text-[#003300]">{startItem}</span> {t('to')}{' '}
-        <span className="font-semibold text-[#003300]">{endItem}</span> {t('of')}{' '}
-        <span className="font-semibold text-[#003300]">{total}</span> {t('results')}
+        {t('showing')} <span className="font-semibold text-ink">{startItem}</span> {t('to')}{' '}
+        <span className="font-semibold text-ink">{endItem}</span> {t('of')}{' '}
+        <span className="font-semibold text-ink">{total}</span> {t('results')}
       </div>
 
       <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
@@ -79,7 +79,7 @@ export const Pagination = ({
           size="sm"
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="border-[#003300]/15 hover:border-primary text-[#003300] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="border-ink/15 hover:border-primary text-ink disabled:opacity-50 disabled:cursor-not-allowed"
           leftIcon={<PrevIcon className="w-4 h-4" />}
         >
           {t('previous')}
@@ -107,7 +107,7 @@ export const Pagination = ({
                 className={
                   isActive
                     ? ''
-                    : 'border-[#003300]/15 hover:border-primary text-[#003300]'
+                    : 'border-ink/15 hover:border-primary text-ink'
                 }
               >
                 {pageNum}
@@ -121,7 +121,7 @@ export const Pagination = ({
           size="sm"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="border-[#003300]/15 hover:border-primary text-[#003300] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="border-ink/15 hover:border-primary text-ink disabled:opacity-50 disabled:cursor-not-allowed"
           rightIcon={<NextIcon className="w-4 h-4" />}
         >
           {t('next')}

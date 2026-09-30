@@ -132,12 +132,12 @@ export default function TrainerProjects() {
         <div className="flex items-center justify-between mb-2">
           <div>
             <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{ 
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>
               {t('dashboardTrainer:projects')}
             </h1>
-            <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardTrainer:projectsSubtitle')}
             </p>
           </div>
@@ -157,7 +157,7 @@ export default function TrainerProjects() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             leftIcon={<Search className="w-4 h-4" />}
-            className="bg-white border-[#003300]/20 text-[#003300] placeholder:text-[#003300]/40"
+            className="bg-white border-ink/20 text-ink placeholder:text-ink/40"
           />
         </div>
         <Select

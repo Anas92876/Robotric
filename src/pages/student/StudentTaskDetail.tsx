@@ -239,11 +239,11 @@ export default function StudentTaskDetail() {
         <CardBody>
           <div className={`flex items-start justify-between mb-4`}>
             <div className={`flex-1`}>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: '#003300' }}>{task.title}</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: '#0f1f33' }}>{task.title}</h1>
               {task.courseId && (
-                <p className="mb-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{task.courseId.title}</p>
+                <p className="mb-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{task.courseId.title}</p>
               )}
-              <p dir="auto" className="transition-colors duration-300" style={{ color: '#003300' }}>{task.description}</p>
+              <p dir="auto" className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{task.description}</p>
             </div>
             <div className="flex flex-col items-end gap-2">
               {isGraded ? (

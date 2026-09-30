@@ -188,9 +188,9 @@ export default function StudentModuleViewer() {
               {t('dashboardStudent:backToCourse')}
             </Button>
           </Link>
-          <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold mt-4 mb-2 transition-colors duration-300`} style={{ color: '#003300' }}>{module.title}</h1>
+          <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold mt-4 mb-2 transition-colors duration-300`} style={{ color: '#0f1f33' }}>{module.title}</h1>
           {module.description && (
-            <p dir="auto" className={`transition-colors duration-300`} style={{ color: '#003300' + 'CC' }}>{module.description}</p>
+            <p dir="auto" className={`transition-colors duration-300`} style={{ color: '#0f1f33' + 'CC' }}>{module.description}</p>
           )}
         </div>
 

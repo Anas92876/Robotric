@@ -46,10 +46,10 @@ const MCQQuestionComponent: React.FC<MCQQuestionProps> = ({
       <CardBody>
         <div className="mb-4">
           <div className="flex items-start justify-between mb-2">
-            <h4 className="text-base font-semibold text-[#003300]">
+            <h4 className="text-base font-semibold text-ink">
               {question.questionText}
             </h4>
-            <span className="text-sm text-[#003300]/60">
+            <span className="text-sm text-ink/60">
               {question.points} {question.points === 1 ? 'point' : 'points'}
             </span>
           </div>
@@ -76,7 +76,7 @@ const MCQQuestionComponent: React.FC<MCQQuestionProps> = ({
                 disabled={disabled}
                 className="w-4 h-4 text-primary focus:ring-primary"
               />
-              <span className="text-sm text-[#003300] flex-1">{option}</span>
+              <span className="text-sm text-ink flex-1">{option}</span>
             </label>
           ))}
         </div>

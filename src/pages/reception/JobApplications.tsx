@@ -211,14 +211,14 @@ export default function JobApplications() {
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {[
-          { key: 'total',     labelEn: 'Total',     labelAr: 'المجموع',      color: '#003300', icon: <Briefcase className="w-4 h-4" /> },
+          { key: 'total',     labelEn: 'Total',     labelAr: 'المجموع',      color: '#0f1f33', icon: <Briefcase className="w-4 h-4" /> },
           { key: 'new',       labelEn: 'New',       labelAr: 'جديد',         color: '#1d4ed8', icon: <Sparkles className="w-4 h-4" /> },
           { key: 'reviewed',  labelEn: 'Reviewed',  labelAr: 'تمت المراجعة', color: '#7c3aed', icon: <Eye className="w-4 h-4" /> },
           { key: 'interview', labelEn: 'Interview', labelAr: 'مقابلة',       color: '#d97706', icon: <Users className="w-4 h-4" /> },
           { key: 'accepted',  labelEn: 'Accepted',  labelAr: 'مقبول',        color: '#15803d', icon: <CheckCircle className="w-4 h-4" /> },
           { key: 'rejected',  labelEn: 'Rejected',  labelAr: 'مرفوض',        color: '#dc2626', icon: <XCircle className="w-4 h-4" /> },
         ].map(s => (
-          <div key={s.key} className="bg-white rounded-2xl p-4 shadow-sm border border-[#003300]/8">
+          <div key={s.key} className="bg-white rounded-2xl p-4 shadow-sm border border-ink/8">
             <div className="flex items-center justify-between mb-1">
               <span style={{ color: s.color }}>{s.icon}</span>
               <span className="text-2xl font-black text-primary">{stats[s.key as keyof typeof stats] ?? 0}</span>
@@ -229,7 +229,7 @@ export default function JobApplications() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#003300]/8 space-y-3">
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-ink/8 space-y-3">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="relative">
             <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/40" />
@@ -239,13 +239,13 @@ export default function JobApplications() {
               value={searchInput}
               onChange={e => setSearchInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && applyFilters()}
-              className="w-full ps-9 pe-4 py-2.5 rounded-xl border border-[#003300]/15 text-sm text-primary placeholder-primary/30 focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+              className="w-full ps-9 pe-4 py-2.5 rounded-xl border border-ink/15 text-sm text-primary placeholder-primary/30 focus:outline-none focus:ring-2 focus:ring-ink/20"
             />
           </div>
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl border border-[#003300]/15 text-sm text-primary focus:outline-none focus:ring-2 focus:ring-[#003300]/20 bg-white"
+            className="w-full px-3 py-2.5 rounded-xl border border-ink/15 text-sm text-primary focus:outline-none focus:ring-2 focus:ring-ink/20 bg-white"
           >
             <option value="">{isRTL ? 'كل الحالات' : 'All Statuses'}</option>
             {Object.entries(STATUS_CONFIG).map(([k, v]) => (
@@ -255,7 +255,7 @@ export default function JobApplications() {
           <select
             value={positionFilter}
             onChange={e => setPositionFilter(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl border border-[#003300]/15 text-sm text-primary focus:outline-none focus:ring-2 focus:ring-[#003300]/20 bg-white"
+            className="w-full px-3 py-2.5 rounded-xl border border-ink/15 text-sm text-primary focus:outline-none focus:ring-2 focus:ring-ink/20 bg-white"
           >
             <option value="">{isRTL ? 'كل الوظائف' : 'All Positions'}</option>
             {positions.map(p => <option key={p} value={p}>{p}</option>)}
@@ -275,7 +275,7 @@ export default function JobApplications() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-[#003300]/8 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-ink/8 overflow-hidden">
         {isLoading ? (
           <div className="p-12 text-center">
             <RefreshCw className="w-8 h-8 animate-spin text-primary/40 mx-auto" />
@@ -289,7 +289,7 @@ export default function JobApplications() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-[#003300]/8 bg-[#003300]/3">
+                <tr className="border-b border-ink/8 bg-ink/3">
                   {[
                     { en: 'Applicant',  ar: 'المتقدم' },
                     { en: 'Position',   ar: 'الوظيفة' },
@@ -305,18 +305,18 @@ export default function JobApplications() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#003300]/6">
+              <tbody className="divide-y divide-ink/6">
                 {applications.map((app, i) => (
                   <motion.tr
                     key={app._id}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.03 }}
-                    className="hover:bg-[#003300]/2 transition-colors"
+                    className="hover:bg-ink/2 transition-colors"
                   >
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-full bg-[#003300]/10 flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-ink/10 flex items-center justify-center shrink-0">
                           <span className="text-xs font-bold text-primary">{app.fullName[0]?.toUpperCase()}</span>
                         </div>
                         <div>
@@ -326,7 +326,7 @@ export default function JobApplications() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-[#003300]/8 text-primary">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-ink/8 text-primary">
                         <Briefcase className="w-3 h-3" />
                         {app.position}
                       </span>
@@ -353,12 +353,12 @@ export default function JobApplications() {
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1">
                         {app.cvUrl && (
-                          <span className="w-6 h-6 rounded-lg flex items-center justify-center text-[#003300]/50" title={isRTL ? 'سيرة ذاتية مرفقة' : 'CV attached'}>
+                          <span className="w-6 h-6 rounded-lg flex items-center justify-center text-ink/50" title={isRTL ? 'سيرة ذاتية مرفقة' : 'CV attached'}>
                             <FileText className="w-3.5 h-3.5" />
                           </span>
                         )}
                         <button onClick={() => openDetail(app)}
-                          className="w-8 h-8 rounded-lg flex items-center justify-center text-primary/60 hover:bg-[#003300]/8 hover:text-primary transition-colors"
+                          className="w-8 h-8 rounded-lg flex items-center justify-center text-primary/60 hover:bg-ink/8 hover:text-primary transition-colors"
                           title={isRTL ? 'عرض' : 'View'}>
                           <Eye className="w-4 h-4" />
                         </button>
@@ -378,7 +378,7 @@ export default function JobApplications() {
 
         {/* Pagination */}
         {pagination.pages > 1 && (
-          <div className="px-4 py-3 border-t border-[#003300]/8 flex items-center justify-between">
+          <div className="px-4 py-3 border-t border-ink/8 flex items-center justify-between">
             <p className="text-xs text-primary/50">
               {isRTL
                 ? `${pagination.total} طلب — صفحة ${pagination.page} من ${pagination.pages}`
@@ -405,9 +405,9 @@ export default function JobApplications() {
         {selected && (
           <div className="space-y-5" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <div className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-[#003300]/5">
+            <div className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-ink/5">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#003300]/15 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-ink/15 flex items-center justify-center">
                   <span className="text-lg font-black text-primary">{selected.fullName[0]?.toUpperCase()}</span>
                 </div>
                 <div>
@@ -430,7 +430,7 @@ export default function JobApplications() {
                 { icon: <TrendingUp className="w-4 h-4" />, label: isRTL ? 'مستوى الخبرة' : 'Experience',
                   value: selected.experienceLevel ? (isRTL ? EXP_LABEL[selected.experienceLevel]?.ar : EXP_LABEL[selected.experienceLevel]?.en) : '—' },
               ].map(item => (
-                <div key={item.label} className="flex items-start gap-2 p-3 rounded-xl bg-[#003300]/4">
+                <div key={item.label} className="flex items-start gap-2 p-3 rounded-xl bg-ink/4">
                   <span className="text-primary/40 mt-0.5">{item.icon}</span>
                   <div>
                     <p className="text-xs text-primary/50">{item.label}</p>
@@ -446,7 +446,7 @@ export default function JobApplications() {
                 <p className="text-xs font-bold text-primary/50 uppercase tracking-wide mb-2">{isRTL ? 'المهارات' : 'Skills'}</p>
                 <div className="flex flex-wrap gap-2">
                   {selected.skills.map(s => (
-                    <span key={s} className="px-3 py-1 rounded-full bg-[#003300]/8 text-primary text-xs font-semibold">{s}</span>
+                    <span key={s} className="px-3 py-1 rounded-full bg-ink/8 text-primary text-xs font-semibold">{s}</span>
                   ))}
                 </div>
               </div>
@@ -456,7 +456,7 @@ export default function JobApplications() {
             {selected.experienceDetails && (
               <div>
                 <p className="text-xs font-bold text-primary/50 uppercase tracking-wide mb-2">{isRTL ? 'تفاصيل الخبرة' : 'Experience Details'}</p>
-                <p className="text-sm text-primary/80 bg-[#003300]/4 rounded-xl p-3 leading-relaxed">{selected.experienceDetails}</p>
+                <p className="text-sm text-primary/80 bg-ink/4 rounded-xl p-3 leading-relaxed">{selected.experienceDetails}</p>
               </div>
             )}
 
@@ -464,7 +464,7 @@ export default function JobApplications() {
             {selected.whyUs && (
               <div>
                 <p className="text-xs font-bold text-primary/50 uppercase tracking-wide mb-2">{isRTL ? 'لماذا روبوتريك؟' : 'Why Robotrick?'}</p>
-                <p className="text-sm text-primary/80 bg-[#003300]/4 rounded-xl p-3 leading-relaxed">{selected.whyUs}</p>
+                <p className="text-sm text-primary/80 bg-ink/4 rounded-xl p-3 leading-relaxed">{selected.whyUs}</p>
               </div>
             )}
 
@@ -483,15 +483,15 @@ export default function JobApplications() {
             {selected.additionalInfo && (
               <div>
                 <p className="text-xs font-bold text-primary/50 uppercase tracking-wide mb-2">{isRTL ? 'معلومات إضافية' : 'Additional Info'}</p>
-                <p className="text-sm text-primary/80 bg-[#003300]/4 rounded-xl p-3 leading-relaxed">{selected.additionalInfo}</p>
+                <p className="text-sm text-primary/80 bg-ink/4 rounded-xl p-3 leading-relaxed">{selected.additionalInfo}</p>
               </div>
             )}
 
             {/* CV Download */}
             {selected.cvUrl ? (
-              <div className="flex items-center justify-between p-3 rounded-xl border border-[#003300]/15 bg-[#003300]/3">
+              <div className="flex items-center justify-between p-3 rounded-xl border border-ink/15 bg-ink/3">
                 <div className="flex items-center gap-2.5">
-                  <FileText className="w-5 h-5 text-[#003300]/60 shrink-0" />
+                  <FileText className="w-5 h-5 text-ink/60 shrink-0" />
                   <div>
                     <p className="text-sm font-bold text-primary">{isRTL ? 'السيرة الذاتية مرفقة' : 'CV Attached'}</p>
                     <p className="text-xs text-primary/50">{isRTL ? 'انقر للتنزيل' : 'Click to download'}</p>
@@ -505,7 +505,7 @@ export default function JobApplications() {
                 </Button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#003300]/8 bg-[#003300]/2 text-primary/40">
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-ink/8 bg-ink/2 text-primary/40">
                 <FileText className="w-4 h-4" />
                 <span className="text-xs">{isRTL ? 'لا توجد سيرة ذاتية مرفقة' : 'No CV attached'}</span>
               </div>
@@ -539,7 +539,7 @@ export default function JobApplications() {
                 onChange={e => setNoteInput(e.target.value)}
                 rows={3}
                 placeholder={isRTL ? 'أضف ملاحظاتك هنا...' : 'Add internal notes...'}
-                className="w-full px-3 py-2.5 rounded-xl border border-[#003300]/15 text-sm text-primary placeholder-primary/30 focus:outline-none focus:ring-2 focus:ring-[#003300]/20 resize-none"
+                className="w-full px-3 py-2.5 rounded-xl border border-ink/15 text-sm text-primary placeholder-primary/30 focus:outline-none focus:ring-2 focus:ring-ink/20 resize-none"
               />
               <div className="flex justify-end mt-2">
                 <Button size="sm" variant="primary" onClick={handleSaveNotes} isLoading={isUpdating}>
@@ -548,7 +548,7 @@ export default function JobApplications() {
               </div>
             </div>
 
-            <div className="flex justify-between pt-2 border-t border-[#003300]/8">
+            <div className="flex justify-between pt-2 border-t border-ink/8">
               <Button size="sm" variant="danger" leftIcon={<Trash2 className="w-4 h-4" />}
                 onClick={() => { setIsDetailOpen(false); confirmDelete(selected); }}>
                 {isRTL ? 'حذف' : 'Delete'}

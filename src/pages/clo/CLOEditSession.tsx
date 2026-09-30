@@ -15,9 +15,9 @@ import {
 // ─── Light-theme card wrapper ─────────────────────────────────────────────────
 function FormCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="bg-white rounded-2xl border border-[#003300]/10 overflow-hidden">
-      <div className="px-6 py-4 border-b border-[#003300]/8">
-        <h2 className="text-base font-bold text-[#003300]">{title}</h2>
+    <div className="bg-white rounded-2xl border border-ink/10 overflow-hidden">
+      <div className="px-6 py-4 border-b border-ink/8">
+        <h2 className="text-base font-bold text-ink">{title}</h2>
       </div>
       <div className="p-6">{children}</div>
     </div>
@@ -183,8 +183,8 @@ export default function CLOEditSession() {
           {t('dashboardTrainer:backToSession')}
         </Button>
         <div className="mt-4">
-          <h1 className="text-2xl font-bold text-[#003300]">{t('dashboardTrainer:editSessionTitle')}</h1>
-          <p className="mt-1 text-sm text-[#003300]/50">{t('dashboardTrainer:editSessionSubtitle')}</p>
+          <h1 className="text-2xl font-bold text-ink">{t('dashboardTrainer:editSessionTitle')}</h1>
+          <p className="mt-1 text-sm text-ink/50">{t('dashboardTrainer:editSessionSubtitle')}</p>
         </div>
       </div>
 
@@ -204,17 +204,17 @@ export default function CLOEditSession() {
           <FormCard title={t('dashboardTrainer:basicInfo')}>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#003300] mb-1.5">
+                <label className="block text-sm font-medium text-ink mb-1.5">
                   {t('dashboardTrainer:sessionTitle')} <span className="text-red-500">*</span>
                 </label>
                 <Input value={formData.title} onChange={e => handleChange("title", e.target.value)} placeholder={t('dashboardTrainer:sessionTitlePlaceholder')} required />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#003300] mb-1.5">{t('dashboardCommon:description')}</label>
+                <label className="block text-sm font-medium text-ink mb-1.5">{t('dashboardCommon:description')}</label>
                 <textarea
                   value={formData.description} onChange={e => handleChange("description", e.target.value)}
                   placeholder={t('dashboardTrainer:descriptionPlaceholder')} rows={3}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#003300]/15 bg-white text-[#003300] placeholder-[#003300]/35 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none transition-all text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl border border-ink/15 bg-white text-ink placeholder-ink/35 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none transition-all text-sm"
                 />
               </div>
             </div>
@@ -224,15 +224,15 @@ export default function CLOEditSession() {
           <FormCard title={t('dashboardTrainer:schedule')}>
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="block text-xs font-medium text-[#003300]/70 mb-1">{t('dashboardTrainer:sessionDate')}</label>
+                <label className="block text-xs font-medium text-ink/70 mb-1">{t('dashboardTrainer:sessionDate')}</label>
                 <Input type="date" value={customDate} onChange={e => setCustomDate(e.target.value)} />
               </div>
               <div>
-                <label className="block text-xs font-medium text-[#003300]/70 mb-1">{t('dashboardTrainer:startTime')}</label>
+                <label className="block text-xs font-medium text-ink/70 mb-1">{t('dashboardTrainer:startTime')}</label>
                 <Input type="time" value={customStartTime} onChange={e => setCustomStartTime(e.target.value)} />
               </div>
               <div>
-                <label className="block text-xs font-medium text-[#003300]/70 mb-1">{t('dashboardTrainer:endTime')}</label>
+                <label className="block text-xs font-medium text-ink/70 mb-1">{t('dashboardTrainer:endTime')}</label>
                 <Input type="time" value={customEndTime} onChange={e => setCustomEndTime(e.target.value)} />
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function CLOEditSession() {
             <div className="space-y-5">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-[#003300]">{t('dashboardTrainer:learningObjectives')}</label>
+                  <label className="text-sm font-medium text-ink">{t('dashboardTrainer:learningObjectives')}</label>
                   <button type="button" onClick={addObjective} className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 transition-colors">
                     <Plus className="w-3.5 h-3.5" /> {t('dashboardCommon:add')}
                   </button>
@@ -252,7 +252,7 @@ export default function CLOEditSession() {
                   {objectives.map((obj, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <Input value={obj} onChange={e => updateObjective(i, e.target.value)} placeholder={t('dashboardTrainer:objectivePlaceholder', { number: i + 1 })} />
-                      {objectives.length > 1 && <button type="button" onClick={() => removeObjective(i)} className="text-[#003300]/30 hover:text-red-500 transition-colors"><X className="w-4 h-4" /></button>}
+                      {objectives.length > 1 && <button type="button" onClick={() => removeObjective(i)} className="text-ink/30 hover:text-red-500 transition-colors"><X className="w-4 h-4" /></button>}
                     </div>
                   ))}
                 </div>
@@ -260,7 +260,7 @@ export default function CLOEditSession() {
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-[#003300]">{t('dashboardTrainer:materialsNeeded')}</label>
+                  <label className="text-sm font-medium text-ink">{t('dashboardTrainer:materialsNeeded')}</label>
                   <button type="button" onClick={addMaterial} className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 transition-colors">
                     <Plus className="w-3.5 h-3.5" /> {t('dashboardCommon:add')}
                   </button>
@@ -269,7 +269,7 @@ export default function CLOEditSession() {
                   {materialsNeeded.map((mat, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <Input value={mat} onChange={e => updateMaterial(i, e.target.value)} placeholder={t('dashboardTrainer:materialPlaceholder', { number: i + 1 })} />
-                      {materialsNeeded.length > 1 && <button type="button" onClick={() => removeMaterial(i)} className="text-[#003300]/30 hover:text-red-500 transition-colors"><X className="w-4 h-4" /></button>}
+                      {materialsNeeded.length > 1 && <button type="button" onClick={() => removeMaterial(i)} className="text-ink/30 hover:text-red-500 transition-colors"><X className="w-4 h-4" /></button>}
                     </div>
                   ))}
                 </div>
@@ -286,14 +286,14 @@ export default function CLOEditSession() {
                     <Youtube className="w-4 h-4 text-red-500" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-[#003300]">Attach a video to this session</p>
-                    <p className="text-xs text-[#003300]/50">Students will see an embedded player — no YouTube link is exposed</p>
+                    <p className="text-sm font-semibold text-ink">Attach a video to this session</p>
+                    <p className="text-xs text-ink/50">Students will see an embedded player — no YouTube link is exposed</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => { setHasVideo(v => !v); if (hasVideo) setYoutubeId(""); }}
-                  className={`relative w-11 h-6 rounded-full transition-colors ${hasVideo ? 'bg-primary' : 'bg-[#003300]/15'}`}
+                  className={`relative w-11 h-6 rounded-full transition-colors ${hasVideo ? 'bg-primary' : 'bg-ink/15'}`}
                   aria-label="Toggle video"
                 >
                   <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${hasVideo ? 'translate-x-5' : ''}`} />
@@ -302,7 +302,7 @@ export default function CLOEditSession() {
 
               {hasVideo && (
                 <div>
-                  <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                  <label className="block text-xs font-medium text-ink/70 mb-1">
                     YouTube Video ID <span className="text-red-500">*</span>
                   </label>
                   <Input
@@ -310,8 +310,8 @@ export default function CLOEditSession() {
                     onChange={e => setYoutubeId(e.target.value.trim())}
                     placeholder="e.g. dQw4w9WgXcQ"
                   />
-                  <p className="mt-1 text-xs text-[#003300]/40">
-                    The ID is the part after <code className="bg-[#003300]/6 px-1 rounded">youtube.com/watch?v=</code>
+                  <p className="mt-1 text-xs text-ink/40">
+                    The ID is the part after <code className="bg-ink/6 px-1 rounded">youtube.com/watch?v=</code>
                   </p>
                 </div>
               )}
@@ -321,7 +321,7 @@ export default function CLOEditSession() {
           {/* ── Session Resources ── */}
           {sessionCourseId && (
             <FormCard title="Session Resources">
-              <p className="text-sm text-[#003300]/55 mb-4">
+              <p className="text-sm text-ink/55 mb-4">
                 Attach course files to this session. Newly selected files will be assigned on save.
               </p>
               <SessionResourcePicker

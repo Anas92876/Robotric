@@ -19,9 +19,9 @@ import { formatDate } from '../../utils/dateTime';
 import { api } from '../../lib/api';
 
 // ─── Design tokens ─────────────────────────────────────────────────────────────
-const TEXT_PRIMARY   = '#003300';
-const TEXT_SECONDARY = '#003300CC';
-const TEXT_TERTIARY  = '#00330080';
+const TEXT_PRIMARY   = '#0f1f33';
+const TEXT_SECONDARY = '#0f1f33CC';
+const TEXT_TERTIARY  = '#0f1f3380';
 
 const fade      = { hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: { duration: 0.2 } } };
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.05 } } };
@@ -34,7 +34,7 @@ const PRIORITY_CFG = {
 } as const;
 
 const STATUS_CFG = {
-  todo:        { label: 'To Do',       labelAr: 'للتنفيذ',     icon: Circle,       color: TEXT_TERTIARY, bg: 'rgba(0,51,0,0.06)' },
+  todo:        { label: 'To Do',       labelAr: 'للتنفيذ',     icon: Circle,       color: TEXT_TERTIARY, bg: 'rgba(15, 31, 51,0.06)' },
   in_progress: { label: 'In Progress', labelAr: 'قيد التنفيذ', icon: Loader2,       color: '#2563eb',     bg: 'rgba(37,99,235,0.06)' },
   done:        { label: 'Done',        labelAr: 'منتهية',      icon: CheckCircle2,  color: '#16a34a',     bg: 'rgba(22,163,74,0.06)' },
 } as const;
@@ -86,7 +86,7 @@ function TrainerTaskCard({ task, isRTL, onEdit, onDelete, onStatusChange }: {
 
   return (
     <motion.div variants={fade}
-      className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+      className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
       <div className="h-1" style={{ background: pCfg.bar }} />
       <div className="p-4">
         <div className="flex items-start gap-3">
@@ -139,7 +139,7 @@ function TrainerTaskCard({ task, isRTL, onEdit, onDelete, onStatusChange }: {
           {/* Edit / Delete */}
           <div className="flex items-center gap-1 shrink-0 ml-1">
             <button onClick={() => onEdit(task)}
-              className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-[#003300]/6 transition-colors"
+              className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-ink/6 transition-colors"
               style={{ color: TEXT_TERTIARY }}>
               <Edit2 className="w-3.5 h-3.5" />
             </button>
@@ -167,7 +167,7 @@ function TrainerNoteCard({ note, userId, isRTL, onEdit, onDelete, onTogglePin }:
 
   return (
     <motion.div variants={fade}
-      className={`rounded-2xl bg-white border shadow-sm p-4 ${note.isPinned ? 'border-amber-300' : 'border-[#003300]/8'}`}>
+      className={`rounded-2xl bg-white border shadow-sm p-4 ${note.isPinned ? 'border-amber-300' : 'border-ink/8'}`}>
       {note.isPinned && (
         <div className="flex items-center gap-1.5 mb-2">
           <Pin className="w-3 h-3 text-amber-500" />
@@ -179,9 +179,9 @@ function TrainerNoteCard({ note, userId, isRTL, onEdit, onDelete, onTogglePin }:
       <p className="text-sm leading-relaxed whitespace-pre-wrap" dir="auto" style={{ color: TEXT_PRIMARY }}>
         {note.content}
       </p>
-      <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#003300]/6">
+      <div className="flex items-center justify-between mt-3 pt-2 border-t border-ink/6">
         <div className="flex items-center gap-1.5">
-          <div className="w-5 h-5 rounded-full bg-[#003300]/10 flex items-center justify-center shrink-0">
+          <div className="w-5 h-5 rounded-full bg-ink/10 flex items-center justify-center shrink-0">
             <User className="w-3 h-3" style={{ color: TEXT_TERTIARY }} />
           </div>
           <span className="text-xs font-medium" style={{ color: TEXT_SECONDARY }}>{note.author.name}</span>
@@ -200,7 +200,7 @@ function TrainerNoteCard({ note, userId, isRTL, onEdit, onDelete, onTogglePin }:
           {/* Edit — own notes only */}
           {isOwner && (
             <button onClick={() => onEdit(note)}
-              className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-[#003300]/6 transition-colors"
+              className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-ink/6 transition-colors"
               style={{ color: TEXT_TERTIARY }}>
               <Edit2 className="w-3.5 h-3.5" />
             </button>
@@ -281,11 +281,11 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
             dir={isRTL ? 'rtl' : 'ltr'}>
 
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-[#003300]/8">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-ink/8">
               <h3 className="font-bold text-base" style={{ color: TEXT_PRIMARY }}>
                 {editingTask ? t('dashboardTrainer:editTask') : t('dashboardTrainer:createTask')}
               </h3>
-              <button onClick={onClose} className="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-[#003300]/6 transition-colors"
+              <button onClick={onClose} className="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-ink/6 transition-colors"
                 style={{ color: TEXT_TERTIARY }}>
                 <X className="w-4 h-4" />
               </button>
@@ -301,7 +301,7 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
                   value={form.title}
                   onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
                   placeholder={isRTL ? 'عنوان المهمة' : 'Task title'}
-                  className="w-full text-sm rounded-xl border border-[#003300]/12 bg-[#003300]/2 px-3 py-2.5 focus:outline-none focus:border-[#003300]/30"
+                  className="w-full text-sm rounded-xl border border-ink/12 bg-ink/2 px-3 py-2.5 focus:outline-none focus:border-ink/30"
                   style={{ color: TEXT_PRIMARY }}
                   dir="auto"
                 />
@@ -316,7 +316,7 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
                   value={form.description}
                   onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
                   placeholder={isRTL ? 'وصف اختياري...' : 'Optional description...'}
-                  className="w-full text-sm rounded-xl border border-[#003300]/12 bg-[#003300]/2 px-3 py-2.5 resize-none focus:outline-none focus:border-[#003300]/30"
+                  className="w-full text-sm rounded-xl border border-ink/12 bg-ink/2 px-3 py-2.5 resize-none focus:outline-none focus:border-ink/30"
                   style={{ color: TEXT_PRIMARY }}
                   dir="auto"
                 />
@@ -336,7 +336,7 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
                         className={`flex-1 py-2 rounded-xl text-xs font-bold border transition-all ${active ? 'shadow-sm scale-[1.02]' : 'opacity-60 hover:opacity-90'}`}
                         style={{
                           background: active ? cfg.bar + '18' : 'transparent',
-                          borderColor: active ? cfg.bar : '#003300' + '20',
+                          borderColor: active ? cfg.bar : '#0f1f33' + '20',
                           color: cfg.bar,
                         }}>
                         {isRTL ? cfg.labelAr : cfg.label}
@@ -354,7 +354,7 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
                 <input type="date"
                   value={form.dueDate}
                   onChange={e => setForm(f => ({ ...f, dueDate: e.target.value }))}
-                  className="w-full text-sm rounded-xl border border-[#003300]/12 bg-[#003300]/2 px-3 py-2.5 focus:outline-none focus:border-[#003300]/30"
+                  className="w-full text-sm rounded-xl border border-ink/12 bg-ink/2 px-3 py-2.5 focus:outline-none focus:border-ink/30"
                   style={{ color: TEXT_PRIMARY }}
                 />
               </div>
@@ -370,12 +370,12 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
                       const checked = form.assignedTo.includes(m._id);
                       return (
                         <button key={m._id} onClick={() => toggleMember(m._id)}
-                          className={`w-full flex items-center gap-3 p-2.5 rounded-xl border text-left transition-all ${checked ? 'border-[#003300]/30 bg-[#003300]/5' : 'border-[#003300]/8 hover:border-[#003300]/20'}`}
+                          className={`w-full flex items-center gap-3 p-2.5 rounded-xl border text-left transition-all ${checked ? 'border-ink/30 bg-ink/5' : 'border-ink/8 hover:border-ink/20'}`}
                           dir={isRTL ? 'rtl' : 'ltr'}>
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${checked ? 'border-[#003300] bg-[#003300]' : 'border-[#003300]/30'}`}>
+                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${checked ? 'border-ink bg-ink' : 'border-ink/30'}`}>
                             {checked && <CheckCircle2 className="w-3 h-3 text-white" />}
                           </div>
-                          <div className="w-8 h-8 rounded-full bg-[#003300]/10 flex items-center justify-center shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-ink/10 flex items-center justify-center shrink-0">
                             <span className="text-xs font-bold" style={{ color: TEXT_PRIMARY }}>
                               {m.name.charAt(0).toUpperCase()}
                             </span>
@@ -393,15 +393,15 @@ function TaskModal({ isOpen, editingTask, members, isRTL, onClose, onSubmit, t }
             </div>
 
             {/* Footer */}
-            <div className="flex gap-2 px-5 py-4 border-t border-[#003300]/8">
+            <div className="flex gap-2 px-5 py-4 border-t border-ink/8">
               <button onClick={handleSubmit} disabled={saving || !form.title.trim()}
                 className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-all active:scale-95 disabled:opacity-50"
-                style={{ background: '#003300' }}>
+                style={{ background: '#0f1f33' }}>
                 {saving ? '...' : editingTask ? (isRTL ? 'حفظ التغييرات' : 'Save Changes') : t('dashboardTrainer:createTask')}
               </button>
               <button onClick={onClose}
                 className="px-4 py-2.5 rounded-xl text-sm font-semibold transition-all active:scale-95"
-                style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+                style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
                 {t('dashboardTrainer:cancel')}
               </button>
             </div>
@@ -505,13 +505,13 @@ export default function TrainerGroupBoard() {
         <motion.div variants={fade}>
           <Link to="/trainer/groups"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm transition-all"
-            style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+            style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
             {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
             {isRTL ? 'مجموعاتي' : 'My Groups'}
           </Link>
         </motion.div>
-        <motion.div variants={fade} className="rounded-2xl border border-[#003300]/10 bg-white shadow-sm p-8 text-center">
-          <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style={{ background: 'rgba(0,51,0,0.06)' }}>
+        <motion.div variants={fade} className="rounded-2xl border border-ink/10 bg-white shadow-sm p-8 text-center">
+          <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style={{ background: 'rgba(15, 31, 51,0.06)' }}>
             <Lock className="w-8 h-8" style={{ color: TEXT_TERTIARY }} />
           </div>
           <h2 className="text-lg font-bold mb-2" style={{ color: TEXT_PRIMARY }}>
@@ -529,8 +529,8 @@ export default function TrainerGroupBoard() {
   if (isLoading) {
     return (
       <div className="space-y-3 animate-pulse">
-        <div className="h-10 w-32 bg-[#003300]/8 rounded-2xl" />
-        <div className="h-48 bg-white border border-[#003300]/8 rounded-2xl" />
+        <div className="h-10 w-32 bg-ink/8 rounded-2xl" />
+        <div className="h-48 bg-white border border-ink/8 rounded-2xl" />
       </div>
     );
   }
@@ -557,16 +557,16 @@ export default function TrainerGroupBoard() {
       <motion.div variants={fade}>
         <Link to="/trainer/groups"
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm transition-all active:scale-[0.97]"
-          style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,51,0,0.12)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,51,0,0.07)')}>
+          style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(15, 31, 51,0.12)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(15, 31, 51,0.07)')}>
           {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           {isRTL ? 'مجموعاتي' : 'My Groups'}
         </Link>
       </motion.div>
 
       {/* Header */}
-      <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm p-4 sm:p-5">
+      <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm p-4 sm:p-5">
         <h1 className="text-xl sm:text-2xl font-bold" style={{ color: TEXT_PRIMARY }}>
           {t('dashboardTrainer:groupBoard')}
         </h1>
@@ -581,13 +581,13 @@ export default function TrainerGroupBoard() {
           <button key={tabKey} onClick={() => setTab(tabKey)}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-semibold transition-all ${tab === tabKey ? 'shadow-sm' : 'hover:opacity-80'}`}
             style={tab === tabKey
-              ? { background: '#003300', color: '#fff' }
-              : { background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+              ? { background: '#0f1f33', color: '#fff' }
+              : { background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
             {tabKey === 'notes' ? <StickyNote className="w-4 h-4" /> : <ListTodo className="w-4 h-4" />}
             {tabKey === 'notes' ? t('dashboardTrainer:boardNotes') : t('dashboardTrainer:boardTasks')}
             <span className="text-xs font-bold px-1.5 py-0.5 rounded-full"
               style={{
-                background: tab === tabKey ? 'rgba(255,255,255,0.2)' : 'rgba(0,51,0,0.1)',
+                background: tab === tabKey ? 'rgba(255,255,255,0.2)' : 'rgba(15, 31, 51,0.1)',
                 color: tab === tabKey ? '#fff' : TEXT_TERTIARY,
               }}>
               {tabKey === 'notes' ? notes.length : tasks.length}
@@ -600,9 +600,9 @@ export default function TrainerGroupBoard() {
         {/* ─── Notes tab ─── */}
         {tab === 'notes' && (
           <motion.div key="notes" variants={container} initial="hidden" animate="show" exit={{ opacity: 0 }} className="space-y-3">
-            <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+            <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
               {/* Section header */}
-              <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-[#003300]/6">
+              <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-ink/6">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'rgba(245,158,11,0.1)' }}>
                     <StickyNote className="w-4 h-4 text-amber-500" />
@@ -613,7 +613,7 @@ export default function TrainerGroupBoard() {
                 </div>
                 <button onClick={() => setShowNoteForm(f => !f)}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all active:scale-95"
-                  style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+                  style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
                   <Plus className="w-3.5 h-3.5" />
                   {t('dashboardTrainer:addNote')}
                 </button>
@@ -623,21 +623,21 @@ export default function TrainerGroupBoard() {
               <AnimatePresence>
                 {showNoteForm && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-                    className="border-b border-[#003300]/6 overflow-hidden">
+                    className="border-b border-ink/6 overflow-hidden">
                     <div className="p-4">
                       <textarea rows={3} value={noteInput} onChange={e => setNoteInput(e.target.value)}
                         placeholder={t('dashboardTrainer:noteWritePlaceholder')}
-                        className="w-full text-sm rounded-xl border border-[#003300]/12 bg-[#003300]/2 px-3 py-2.5 resize-none focus:outline-none focus:border-[#003300]/30"
+                        className="w-full text-sm rounded-xl border border-ink/12 bg-ink/2 px-3 py-2.5 resize-none focus:outline-none focus:border-ink/30"
                         style={{ color: TEXT_PRIMARY }} dir="auto" />
                       <div className="flex gap-2 mt-2">
                         <button onClick={handleCreateNote} disabled={savingNote || !noteInput.trim()}
                           className="px-4 py-2 rounded-xl text-xs font-bold text-white transition-all active:scale-95 disabled:opacity-50"
-                          style={{ background: '#003300' }}>
+                          style={{ background: '#0f1f33' }}>
                           {savingNote ? '...' : t('dashboardTrainer:saveNote')}
                         </button>
                         <button onClick={() => { setShowNoteForm(false); setNoteInput(''); }}
                           className="px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95"
-                          style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+                          style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
                           {t('dashboardTrainer:cancel')}
                         </button>
                       </div>
@@ -680,17 +680,17 @@ export default function TrainerGroupBoard() {
                       {t('dashboardTrainer:editNote')}
                     </h3>
                     <textarea rows={4} value={editNoteContent} onChange={e => setEditNoteContent(e.target.value)}
-                      className="w-full text-sm rounded-xl border border-[#003300]/12 bg-[#003300]/2 px-3 py-2.5 resize-none focus:outline-none focus:border-[#003300]/30"
+                      className="w-full text-sm rounded-xl border border-ink/12 bg-ink/2 px-3 py-2.5 resize-none focus:outline-none focus:border-ink/30"
                       style={{ color: TEXT_PRIMARY }} dir="auto" />
                     <div className="flex gap-2 mt-3">
                       <button onClick={handleEditNoteSave} disabled={savingNote || !editNoteContent.trim()}
                         className="px-4 py-2 rounded-xl text-xs font-bold text-white disabled:opacity-50 transition-all active:scale-95"
-                        style={{ background: '#003300' }}>
+                        style={{ background: '#0f1f33' }}>
                         {savingNote ? '...' : t('dashboardTrainer:saveNote')}
                       </button>
                       <button onClick={() => setEditingNote(null)}
                         className="px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95"
-                        style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+                        style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
                         {t('dashboardTrainer:cancel')}
                       </button>
                     </div>
@@ -704,9 +704,9 @@ export default function TrainerGroupBoard() {
         {/* ─── Tasks tab ─── */}
         {tab === 'tasks' && (
           <motion.div key="tasks" variants={container} initial="hidden" animate="show" exit={{ opacity: 0 }} className="space-y-3">
-            <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+            <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
               {/* Section header */}
-              <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-[#003300]/6">
+              <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-ink/6">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.08)' }}>
                     <ListTodo className="w-4 h-4 text-blue-500" />
@@ -717,7 +717,7 @@ export default function TrainerGroupBoard() {
                 </div>
                 <button onClick={() => { setEditingTask(null); setShowTaskModal(true); }}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all active:scale-95"
-                  style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}>
+                  style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}>
                   <Plus className="w-3.5 h-3.5" />
                   {t('dashboardTrainer:createTask')}
                 </button>

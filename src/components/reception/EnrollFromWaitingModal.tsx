@@ -157,9 +157,9 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
       <form onSubmit={handleSubmit} className="space-y-5">
 
         {/* Student + Course strip */}
-        <div className="p-3 rounded-xl bg-[#003300]/5 border border-[#003300]/10 space-y-2">
+        <div className="p-3 rounded-xl bg-ink/5 border border-ink/10 space-y-2">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#003300] flex items-center justify-center text-white font-bold text-sm shrink-0">
+            <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center text-white font-bold text-sm shrink-0">
               {lead.fullName.charAt(0).toUpperCase()}
             </div>
             <div>
@@ -170,7 +170,7 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
 
           {course && (
             <div className="flex items-center gap-2 text-xs text-zinc-600 ps-1">
-              <BookOpen className="w-3.5 h-3.5 text-[#003300]" />
+              <BookOpen className="w-3.5 h-3.5 text-ink" />
               <span className="font-medium">{course.title}</span>
               <span className="text-zinc-400">— ${coursePrice}</span>
             </div>
@@ -201,7 +201,7 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
             <select
               value={groupId}
               onChange={e => { setGroupId(e.target.value); setErrors(p => ({ ...p, groupId: '' })); }}
-              className="w-full px-3 py-2.5 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-[#003300] focus:ring-2 focus:ring-[#003300]/20 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-ink focus:ring-2 focus:ring-ink/20 transition-colors"
             >
               <option value="">— Select Group —</option>
               {groups.map(g => (
@@ -262,7 +262,7 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
             )}
             <div className="flex justify-between font-bold text-zinc-900 border-t border-zinc-200 pt-1.5">
               <span>Remaining to pay</span>
-              <span className={remainingAfterDeposit === 0 ? 'text-green-600' : 'text-[#003300]'}>
+              <span className={remainingAfterDeposit === 0 ? 'text-green-600' : 'text-ink'}>
                 ${remainingAfterDeposit.toFixed(2)}
               </span>
             </div>
@@ -282,7 +282,7 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
                 size="sm"
                 leftIcon={<Plus className="w-3.5 h-3.5" />}
                 onClick={addInstallment}
-                className="text-[#003300] hover:bg-[#003300]/5 text-xs"
+                className="text-ink hover:bg-ink/5 text-xs"
               >
                 Add
               </Button>
@@ -341,7 +341,7 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
             onChange={e => setNotes(e.target.value)}
             rows={2}
             placeholder="Any notes about this enrollment..."
-            className="w-full px-3 py-2 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-[#003300] focus:ring-2 focus:ring-[#003300]/20 transition-colors resize-none text-sm"
+            className="w-full px-3 py-2 rounded-lg bg-white border border-zinc-300 text-zinc-900 focus:outline-none focus:border-ink focus:ring-2 focus:ring-ink/20 transition-colors resize-none text-sm"
           />
         </div>
 
@@ -353,7 +353,7 @@ export const EnrollFromWaitingModal: React.FC<EnrollFromWaitingModalProps> = ({
           <Button
             type="submit"
             disabled={isSubmitting || groups.length === 0}
-            className="bg-[#003300] hover:bg-[#004400] text-white font-semibold px-6"
+            className="bg-ink hover:bg-ink-deep text-white font-semibold px-6"
             leftIcon={<UserCheck className="w-4 h-4" />}
           >
             {isSubmitting ? 'Enrolling...' : `Enroll${deposit > 0 ? ` ($${deposit} credited)` : ''}`}

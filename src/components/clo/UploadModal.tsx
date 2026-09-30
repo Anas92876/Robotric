@@ -188,7 +188,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* File Upload Area */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             PDF File <span className="text-red-500">*</span>
           </label>
           <div
@@ -202,7 +202,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
                 ? 'border-primary bg-primary/5'
                 : selectedFile
                   ? 'border-primary/30 bg-primary/5'
-                  : 'border-[#003300]/20 hover:border-primary/40 bg-[#003300]/5'
+                  : 'border-ink/20 hover:border-primary/40 bg-ink/5'
               }
             `}
           >
@@ -212,8 +212,8 @@ export const UploadModal: React.FC<UploadModalProps> = ({
                   <FileText className="w-7 h-7 text-white" />
                 </div>
                 <div className="text-left">
-                  <p className="font-semibold text-[#003300]">{selectedFile.name}</p>
-                  <p className="text-sm text-[#003300]/60">
+                  <p className="font-semibold text-ink">{selectedFile.name}</p>
+                  <p className="text-sm text-ink/60">
                     {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                   {!uploading && (
@@ -232,13 +232,13 @@ export const UploadModal: React.FC<UploadModalProps> = ({
               </div>
             ) : (
               <div>
-                <div className="w-16 h-16 rounded-xl bg-[#003300]/10 flex items-center justify-center mx-auto mb-4">
-                  <Upload className="w-8 h-8 text-[#003300]/40" />
+                <div className="w-16 h-16 rounded-xl bg-ink/10 flex items-center justify-center mx-auto mb-4">
+                  <Upload className="w-8 h-8 text-ink/40" />
                 </div>
-                <p className="text-[#003300] font-semibold mb-1">
+                <p className="text-ink font-semibold mb-1">
                   Drop your PDF here or click to browse
                 </p>
-                <p className="text-sm text-[#003300]/60">
+                <p className="text-sm text-ink/60">
                   Maximum file size: 50MB
                 </p>
               </div>
@@ -261,10 +261,10 @@ export const UploadModal: React.FC<UploadModalProps> = ({
             className="p-4 bg-primary/5 rounded-xl border border-primary/20"
           >
             <div className="flex items-center justify-between text-sm mb-2">
-              <span className="text-[#003300]/70 font-medium">Uploading resource...</span>
+              <span className="text-ink/70 font-medium">Uploading resource...</span>
               <span className="text-primary font-bold">{progress}%</span>
             </div>
-            <div className="w-full h-2.5 bg-[#003300]/10 rounded-full overflow-hidden">
+            <div className="w-full h-2.5 bg-ink/10 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
@@ -277,7 +277,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
 
         {/* Title */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Title <span className="text-red-500">*</span>
           </label>
           <Input
@@ -288,14 +288,14 @@ export const UploadModal: React.FC<UploadModalProps> = ({
             disabled={uploading}
             required
           />
-          <p className="text-xs text-[#003300]/50 mt-1.5">
+          <p className="text-xs text-ink/50 mt-1.5">
             {formData.title.length}/200 characters
           </p>
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Description
           </label>
           <textarea
@@ -304,13 +304,13 @@ export const UploadModal: React.FC<UploadModalProps> = ({
             placeholder="Enter resource description (optional)"
             rows={3}
             disabled={uploading}
-            className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder-[#003300]/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:bg-gray-50 transition-all"
+            className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink placeholder-ink/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:bg-gray-50 transition-all"
           />
         </div>
 
         {/* Course Selection */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Course <span className="text-red-500">*</span>
           </label>
           <select
@@ -318,7 +318,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
             onChange={(e) => setFormData(prev => ({ ...prev, courseId: e.target.value }))}
             disabled={uploading}
             required
-            className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:bg-gray-50 transition-all"
+            className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:bg-gray-50 transition-all"
           >
             <option value="">Select a course</option>
             {(courses || []).filter((c) => c != null && c._id != null).map((course) => (
@@ -341,7 +341,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button
             type="button"
             variant="ghost"

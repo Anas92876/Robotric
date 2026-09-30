@@ -392,7 +392,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
               max="100"
               value={value || ''}
               onChange={(e) => handleParameterChange(param.name, parseInt(e.target.value))}
-              className="w-full px-4 py-3 bg-white border border-[#003300]/20 rounded-xl text-[#003300] placeholder:text-[#003300]/40 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-4 py-3 bg-white border border-ink/20 rounded-xl text-ink placeholder:text-ink/40 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               placeholder="0–100%"
             />
           </div>
@@ -408,7 +408,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                 className={`flex-1 p-3 rounded-xl border-2 font-medium transition-all ${
                   value === true
                     ? 'bg-green-50 border-green-500 text-green-700'
-                    : 'bg-white border-[#003300]/20 text-[#003300]/60 hover:border-[#003300]/30'
+                    : 'bg-white border-ink/20 text-ink/60 hover:border-ink/30'
                 }`}
               >
                 ✓ Yes
@@ -419,7 +419,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                 className={`flex-1 p-3 rounded-xl border-2 font-medium transition-all ${
                   value === false
                     ? 'bg-red-50 border-red-500 text-red-700'
-                    : 'bg-white border-[#003300]/20 text-[#003300]/60 hover:border-[#003300]/30'
+                    : 'bg-white border-ink/20 text-ink/60 hover:border-ink/30'
                 }`}
               >
                 ✗ No
@@ -435,7 +435,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
               value={value || ''}
               onChange={(e) => handleParameterChange(param.name, e.target.value)}
               rows={3}
-              className="w-full px-4 py-3 bg-white border border-[#003300]/20 rounded-xl text-[#003300] placeholder:text-[#003300]/40 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-4 py-3 bg-white border border-ink/20 rounded-xl text-ink placeholder:text-ink/40 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               placeholder="Enter your response..."
             />
           </div>
@@ -447,7 +447,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
             <select
               value={value || ''}
               onChange={(e) => handleParameterChange(param.name, e.target.value)}
-              className="w-full px-4 py-3 bg-white border border-[#003300]/20 rounded-xl text-[#003300] focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full px-4 py-3 bg-white border border-ink/20 rounded-xl text-ink focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
             >
               <option value="">Select grade...</option>
               <option value="A">A — Excellent</option>
@@ -469,11 +469,11 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-2xl border border-[#003300]/20 shadow-lg p-6"
+        className="bg-white rounded-2xl border border-ink/20 shadow-lg p-6"
       >
         <div className="flex items-center justify-center gap-3 py-8">
           <Loader className="w-6 h-6 text-emerald-500 animate-spin" />
-          <span className="text-[#003300]">Loading evaluation criteria...</span>
+          <span className="text-ink">Loading evaluation criteria...</span>
         </div>
       </motion.div>
     );
@@ -484,17 +484,17 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-2xl border border-[#003300]/20 shadow-lg p-6"
+        className="bg-white rounded-2xl border border-ink/20 shadow-lg p-6"
       >
         <div className="text-center py-8">
           <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-[#003300] mb-2">No Evaluation Criteria</h3>
-          <p className="text-[#003300]/60 mb-6">
+          <h3 className="text-xl font-bold text-ink mb-2">No Evaluation Criteria</h3>
+          <p className="text-ink/60 mb-6">
             {criteriaError || 'No evaluation criteria has been configured for this group.'}
           </p>
           <button
             onClick={onCancel}
-            className="px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 border border-[#003300]/20 text-[#003300] font-semibold transition-all"
+            className="px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 border border-ink/20 text-ink font-semibold transition-all"
           >
             Close
           </button>
@@ -512,20 +512,20 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className="bg-white rounded-2xl border border-[#003300]/20 shadow-lg p-6 space-y-6 max-h-[80vh] overflow-y-auto"
+      className="bg-white rounded-2xl border border-ink/20 shadow-lg p-6 space-y-6 max-h-[80vh] overflow-y-auto"
     >
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#003300]/10">
+      <div className="flex items-center justify-between pb-4 border-b border-ink/10">
         <div>
-          <h3 className="text-xl font-bold text-[#003300]">{studentName}</h3>
-          <p className="text-sm text-[#003300]/60">{criteria.name}</p>
+          <h3 className="text-xl font-bold text-ink">{studentName}</h3>
+          <p className="text-sm text-ink/60">{criteria.name}</p>
         </div>
         <button
           type="button"
           onClick={handleClose}
           className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
         >
-          <X className="w-5 h-5 text-[#003300]/60" />
+          <X className="w-5 h-5 text-ink/60" />
         </button>
       </div>
 
@@ -535,7 +535,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
         {criteria.includeOverallRating && (
           <div className="space-y-3 p-4 bg-emerald-50 rounded-xl border-2 border-emerald-500/30">
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-semibold text-[#003300]">
+              <label className="block text-sm font-semibold text-ink">
                 Overall Rating (Auto-calculated)
                 <Badge variant="success" size="sm" className="ml-2">Auto</Badge>
               </label>
@@ -554,7 +554,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                       className={`w-7 h-7 transition-all absolute ${
                         isFilled
                           ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg'
-                          : 'fill-transparent text-[#003300]/20'
+                          : 'fill-transparent text-ink/20'
                       }`}
                     />
                     {isHalfFilled && (
@@ -566,7 +566,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                 );
               })}
             </div>
-            <p className="text-xs text-[#003300]/60 mt-2">
+            <p className="text-xs text-ink/60 mt-2">
               {selectedCount > 0 ? (
                 <>
                   Calculated from{' '}
@@ -590,8 +590,8 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
           {/* Section header */}
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h4 className="text-sm font-bold text-[#003300]">Evaluation Parameters</h4>
-              <p className="text-xs text-[#003300]/50 mt-0.5">
+              <h4 className="text-sm font-bold text-ink">Evaluation Parameters</h4>
+              <p className="text-xs text-ink/50 mt-0.5">
                 <span className={`font-semibold ${selectedCount === 0 ? 'text-red-500' : 'text-emerald-600'}`}>
                   {selectedCount}
                 </span>
@@ -611,11 +611,11 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
               )}
               {selectedCount > 0 && (
                 <>
-                  {!allSelected && <span className="text-[#003300]/20">|</span>}
+                  {!allSelected && <span className="text-ink/20">|</span>}
                   <button
                     type="button"
                     onClick={clearAll}
-                    className="text-[#003300]/40 hover:text-[#003300]/70 hover:underline transition-colors"
+                    className="text-ink/40 hover:text-ink/70 hover:underline transition-colors"
                   >
                     Clear All
                   </button>
@@ -638,8 +638,8 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                     transition={{ duration: 0.2 }}
                     className={`rounded-xl border-2 transition-all duration-200 ${
                       isSelected
-                        ? 'border-[#003300]/15 bg-white shadow-sm'
-                        : 'border-[#003300]/8 bg-gray-50'
+                        ? 'border-ink/15 bg-white shadow-sm'
+                        : 'border-ink/8 bg-gray-50'
                     }`}
                   >
                     {/* Card header */}
@@ -648,7 +648,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                         <div className="flex items-center gap-2 min-w-0">
                           <span
                             className={`text-sm font-semibold truncate transition-all ${
-                              isSelected ? 'text-[#003300]' : 'text-[#003300]/35 line-through'
+                              isSelected ? 'text-ink' : 'text-ink/35 line-through'
                             }`}
                           >
                             {param.name}
@@ -669,7 +669,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                           )}
                         </div>
                         {param.description && (
-                          <p className={`text-xs transition-all ${isSelected ? 'text-[#003300]/55' : 'text-[#003300]/25'}`}>
+                          <p className={`text-xs transition-all ${isSelected ? 'text-ink/55' : 'text-ink/25'}`}>
                             {param.description}
                           </p>
                         )}
@@ -681,7 +681,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                         onClick={() => toggleParam(param.name)}
                         aria-label={isSelected ? `Deselect ${param.name}` : `Select ${param.name}`}
                         className={`flex-shrink-0 ml-3 relative w-10 h-5 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 ${
-                          isSelected ? 'bg-emerald-500' : 'bg-[#003300]/20'
+                          isSelected ? 'bg-emerald-500' : 'bg-ink/20'
                         }`}
                       >
                         <span
@@ -704,7 +704,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
                         {renderParameterInput(param)}
                       </motion.div>
                     ) : (
-                      <p className="px-4 pb-3 text-xs text-[#003300]/35 italic">
+                      <p className="px-4 pb-3 text-xs text-ink/35 italic">
                         Excluded from this evaluation
                       </p>
                     )}
@@ -716,7 +716,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
 
         {/* Trainer Notes */}
         <div>
-          <label className="block text-sm font-semibold text-[#003300] mb-2">
+          <label className="block text-sm font-semibold text-ink mb-2">
             Notes & Comments
           </label>
           <textarea
@@ -726,7 +726,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
               setIsDirty(true);
             }}
             rows={4}
-            className="w-full px-4 py-3 bg-white border border-[#003300]/20 rounded-xl text-[#003300] placeholder:text-[#003300]/40 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+            className="w-full px-4 py-3 bg-white border border-ink/20 rounded-xl text-ink placeholder:text-ink/40 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
             placeholder="Add your notes and observations..."
           />
         </div>
@@ -744,12 +744,12 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
         )}
 
         {/* Actions */}
-        <div className="flex items-center gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center gap-3 pt-4 border-t border-ink/10">
           <button
             type="button"
             onClick={handleClose}
             disabled={isSubmitting}
-            className="flex-1 px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 border border-[#003300]/20 text-[#003300] font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 border border-ink/20 text-ink font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Cancel
           </button>
@@ -766,7 +766,7 @@ export const QuickEvaluationForm: React.FC<QuickEvaluationFormProps> = ({
       </form>
 
       {/* Tip */}
-      <div className="pt-4 border-t border-[#003300]/10 text-xs text-[#003300]/60">
+      <div className="pt-4 border-t border-ink/10 text-xs text-ink/60">
         <p>💡 Toggle parameters on/off to include only what you evaluated this session.</p>
       </div>
 

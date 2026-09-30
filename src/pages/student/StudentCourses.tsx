@@ -39,7 +39,7 @@ const item = {
 
 // ─── Mini progress bar ─────────────────────────────────────────────────────────
 
-function ProgressBar({ value, color = "#003300" }: { value: number; color?: string }) {
+function ProgressBar({ value, color = "#0f1f33" }: { value: number; color?: string }) {
   return (
     <div className="w-full h-1.5 rounded-full bg-black/10 overflow-hidden">
       <motion.div
@@ -90,11 +90,11 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-100 text-violet-700 border border-violet-200">
                   {isRTL ? 'باقة دورات' : 'Bundle'}
                 </span>
-                <span className="text-[10px] text-[#003300]/50">
+                <span className="text-[10px] text-ink/50">
                   {subCourses.length || enrollment.course.bundleCourses?.length || 0} {isRTL ? 'دورات' : 'courses'}
                 </span>
               </div>
-              <h3 className="text-sm font-bold text-[#003300] leading-snug line-clamp-2">
+              <h3 className="text-sm font-bold text-ink leading-snug line-clamp-2">
                 {enrollment.course.title}
               </h3>
             </div>
@@ -104,7 +104,7 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
           {subCourses.length > 0 && (
             <div className="mb-3">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] text-[#003300]/50">{isRTL ? 'التقدم الإجمالي' : 'Overall Progress'}</span>
+                <span className="text-[10px] text-ink/50">{isRTL ? 'التقدم الإجمالي' : 'Overall Progress'}</span>
                 <span className="text-[10px] font-bold text-violet-700">{avgProgress}%</span>
               </div>
               <div className="w-full h-1.5 rounded-full bg-violet-100 overflow-hidden">
@@ -136,7 +136,7 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
               )}
             </div>
             {enrollment.course.category && (
-              <span className="text-[10px] bg-[#003300]/6 text-[#003300]/60 font-medium px-2 py-0.5 rounded-md">
+              <span className="text-[10px] bg-ink/6 text-ink/60 font-medium px-2 py-0.5 rounded-md">
                 {enrollment.course.category}
               </span>
             )}
@@ -183,8 +183,8 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                         <BookOpen className="w-3.5 h-3.5 text-violet-600" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-[#003300] truncate">{sc.title}</p>
-                        {sc.level && <p className="text-[10px] text-[#003300]/45 capitalize">{sc.level}</p>}
+                        <p className="text-sm font-semibold text-ink truncate">{sc.title}</p>
+                        {sc.level && <p className="text-[10px] text-ink/45 capitalize">{sc.level}</p>}
                       </div>
                       {isRTL
                         ? <ChevronLeft className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
@@ -209,7 +209,7 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                       )}
 
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-bold text-[#003300] truncate">{sc.course.title}</p>
+                        <p className="text-xs font-bold text-ink truncate">{sc.course.title}</p>
                         {/* Mini progress + attendance row */}
                         <div className="flex items-center gap-3 mt-1">
                           <div className="flex items-center gap-1">
@@ -221,7 +221,7 @@ function BundleCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                             </div>
                             <span className="text-[9px] text-violet-600 font-bold">{sc.progress?.percentageComplete || 0}%</span>
                           </div>
-                          <span className="text-[9px] text-[#003300]/40">
+                          <span className="text-[9px] text-ink/40">
                             {isRTL ? 'حضور:' : 'Att:'} {sc.attendance?.percentage || 0}%
                           </span>
                         </div>
@@ -253,7 +253,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
   return (
     <motion.div variants={item}>
       <div
-        className="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-[#003300]/8"
+        className="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-ink/8"
         dir={isRTL ? "rtl" : "ltr"}
       >
         {/* Thumbnail with dark overlay */}
@@ -268,9 +268,9 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
           ) : (
             <div
               className="w-full h-full flex items-center justify-center opacity-30"
-              style={{ background: "#003300" }}
+              style={{ background: "#0f1f33" }}
             >
-              <BookOpen className="w-14 h-14 text-[#cccc99]/70" />
+              <BookOpen className="w-14 h-14 text-glow/70" />
             </div>
           )}
           {/* Lock overlay */}
@@ -280,7 +280,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
               <Lock className="w-6 h-6 text-white" />
             </div>
             <span className="text-white text-xs font-bold px-3 py-1 rounded-full"
-              style={{ background: "rgba(0,51,0,0.6)", border: "1px solid rgba(204,204,153,0.3)" }}>
+              style={{ background: "rgba(15, 31, 51,0.6)", border: "1px solid rgba(63, 211, 96,0.3)" }}>
               {t("dashboardStudent:courseClosed", "Course Closed")}
             </span>
           </div>
@@ -298,8 +298,8 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center opacity-30"
-                style={{ background: "#003300" }}>
-                <BookOpen className="w-8 h-8 text-[#cccc99]/70" />
+                style={{ background: "#0f1f33" }}>
+                <BookOpen className="w-8 h-8 text-glow/70" />
               </div>
             )}
             <div className="absolute inset-0 flex items-center justify-center"
@@ -316,7 +316,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                 {t("dashboardStudent:courseClosed", "Course Closed")}
               </span>
             </div>
-            <h3 className="text-sm font-bold text-[#003300]/70 leading-tight line-clamp-2">
+            <h3 className="text-sm font-bold text-ink/70 leading-tight line-clamp-2">
               {enrollment.course.title}
             </h3>
             {/* Action buttons */}
@@ -325,7 +325,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
                 <Link
                   to={`/student/courses/${courseId}`}
                   className="flex items-center gap-1 text-[10px] font-bold px-3 py-1.5 rounded-lg text-white"
-                  style={{ background: "#003300" }}
+                  style={{ background: "#0f1f33" }}
                 >
                   <Award className="w-3 h-3" />
                   {t("dashboardStudent:viewCertificate", "Certificate")}
@@ -350,7 +350,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
         {/* Desktop body */}
         <div className="hidden sm:flex sm:flex-col p-4 gap-3">
           {/* Level + duration */}
-          <div className="flex items-center justify-between text-xs text-[#003300]/40">
+          <div className="flex items-center justify-between text-xs text-ink/40">
             {enrollment.course.level && <span>{enrollment.course.level}</span>}
             {enrollment.course.duration && (
               <span className="flex items-center gap-1">
@@ -360,7 +360,7 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
             )}
           </div>
 
-          <h3 className="text-base font-bold text-[#003300]/60 leading-snug line-clamp-2">
+          <h3 className="text-base font-bold text-ink/60 leading-snug line-clamp-2">
             {enrollment.course.title}
           </h3>
 
@@ -390,13 +390,13 @@ function LockedCourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; i
           {/* Action buttons */}
           <div
             className="mt-auto flex items-center gap-2 pt-3"
-            style={{ borderTop: "1px solid rgba(0,51,0,0.08)" }}
+            style={{ borderTop: "1px solid rgba(15, 31, 51,0.08)" }}
           >
             {hasCert && (
               <Link
                 to={`/student/courses/${courseId}`}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-                style={{ background: "#003300" }}
+                style={{ background: "#0f1f33" }}
               >
                 <Download className="w-4 h-4" />
                 {t("dashboardStudent:viewCertificate", "View Certificate")}
@@ -437,17 +437,17 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
     ? { bg: "#dcfce7", text: "#15803d" }
     : isDropped
     ? { bg: "#fee2e2", text: "#dc2626" }
-    : { bg: "#003300", text: "#cccc99" };
+    : { bg: "#0f1f33", text: "#3fd360" };
 
   return (
     <motion.div variants={item}>
       <Link
         to={`/student/courses/${courseId}`}
-        className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#003300] rounded-2xl"
+        className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ink rounded-2xl"
         dir={isRTL ? "rtl" : "ltr"}
       >
         {/* ── Card shell ── */}
-        <div className="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-[#003300]/8 transition-all duration-250 group-hover:shadow-md group-hover:-translate-y-0.5 group-active:scale-[0.985] group-active:shadow-sm">
+        <div className="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-ink/8 transition-all duration-250 group-hover:shadow-md group-hover:-translate-y-0.5 group-active:scale-[0.985] group-active:shadow-sm">
 
           {/* ══ MOBILE: horizontal layout (image left, content right) ══ */}
           <div className="flex sm:hidden">
@@ -463,9 +463,9 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               ) : (
                 <div
                   className="absolute inset-0 flex items-center justify-center"
-                  style={{ background: "#003300" }}
+                  style={{ background: "#0f1f33" }}
                 >
-                  <BookOpen className="w-8 h-8 text-[#cccc99]/70" />
+                  <BookOpen className="w-8 h-8 text-glow/70" />
                 </div>
               )}
               {/* Progress strip at bottom of thumbnail */}
@@ -474,7 +474,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                   className="h-full transition-all duration-500"
                   style={{
                     width: `${progress}%`,
-                    background: isCompleted ? "#22c55e" : "#cccc99",
+                    background: isCompleted ? "#22c55e" : "#3fd360",
                   }}
                 />
               </div>
@@ -491,26 +491,26 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                   {t(`dashboardStudent:${enrollment.status}`, enrollment.status)}
                 </span>
                 {enrollment.course.level && (
-                  <span className="text-[10px] text-[#003300]/50 font-medium">
+                  <span className="text-[10px] text-ink/50 font-medium">
                     {enrollment.course.level}
                   </span>
                 )}
               </div>
 
               {/* Title */}
-              <h3 className="text-sm font-bold text-[#003300] leading-tight line-clamp-2">
+              <h3 className="text-sm font-bold text-ink leading-tight line-clamp-2">
                 {enrollment.course.title}
               </h3>
 
               {/* Progress bar + % */}
               <div className="space-y-0.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] text-[#003300]/50">{t("dashboardStudent:progress")}</span>
-                  <span className="text-[10px] font-bold text-[#003300]">{progress}%</span>
+                  <span className="text-[10px] text-ink/50">{t("dashboardStudent:progress")}</span>
+                  <span className="text-[10px] font-bold text-ink">{progress}%</span>
                 </div>
                 <ProgressBar
                   value={progress}
-                  color={isCompleted ? "#22c55e" : "#003300"}
+                  color={isCompleted ? "#22c55e" : "#0f1f33"}
                 />
               </div>
 
@@ -527,15 +527,15 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                     {t("dashboardStudent:completed")}
                   </span>
                 ) : (
-                  <span className="text-[10px] text-[#003300]/40">
+                  <span className="text-[10px] text-ink/40">
                     {t("dashboardStudent:attendance")}: {attendance}%
                   </span>
                 )}
                 <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
-                  style={{ background: "#003300" }}>
+                  style={{ background: "#0f1f33" }}>
                   {isRTL
-                    ? <ChevronLeft className="w-3.5 h-3.5 text-[#cccc99]" />
-                    : <ChevronRight className="w-3.5 h-3.5 text-[#cccc99]" />}
+                    ? <ChevronLeft className="w-3.5 h-3.5 text-glow" />
+                    : <ChevronRight className="w-3.5 h-3.5 text-glow" />}
                 </div>
               </div>
             </div>
@@ -555,9 +555,9 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               ) : (
                 <div
                   className="w-full h-full flex items-center justify-center"
-                  style={{ background: "#003300" }}
+                  style={{ background: "#0f1f33" }}
                 >
-                  <BookOpen className="w-14 h-14 text-[#cccc99]/70" />
+                  <BookOpen className="w-14 h-14 text-glow/70" />
                 </div>
               )}
 
@@ -577,7 +577,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   style={{
-                    background: isCompleted ? "#22c55e" : "#cccc99",
+                    background: isCompleted ? "#22c55e" : "#3fd360",
                   }}
                 />
               </div>
@@ -586,7 +586,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
             {/* Body */}
             <div className="p-4 flex flex-col gap-3 flex-1">
               {/* Level + duration */}
-              <div className="flex items-center justify-between text-xs text-[#003300]/50">
+              <div className="flex items-center justify-between text-xs text-ink/50">
                 {enrollment.course.level && <span>{enrollment.course.level}</span>}
                 {enrollment.course.duration && (
                   <span className="flex items-center gap-1">
@@ -597,7 +597,7 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               </div>
 
               {/* Title */}
-              <h3 className="text-base font-bold text-[#003300] leading-snug line-clamp-2">
+              <h3 className="text-base font-bold text-ink leading-snug line-clamp-2">
                 {enrollment.course.title}
               </h3>
 
@@ -605,28 +605,28 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               <div className="space-y-2">
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="flex items-center gap-1 text-[11px] text-[#003300]/60">
+                    <span className="flex items-center gap-1 text-[11px] text-ink/60">
                       <TrendingUp className="w-3 h-3" />
                       {t("dashboardStudent:progress")}
                     </span>
-                    <span className="text-[11px] font-bold text-[#003300]">{progress}%</span>
+                    <span className="text-[11px] font-bold text-ink">{progress}%</span>
                   </div>
                   <ProgressBar
                     value={progress}
-                    color={isCompleted ? "#22c55e" : "#003300"}
+                    color={isCompleted ? "#22c55e" : "#0f1f33"}
                   />
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="flex items-center gap-1 text-[11px] text-[#003300]/60">
+                    <span className="flex items-center gap-1 text-[11px] text-ink/60">
                       <Users className="w-3 h-3" />
                       {t("dashboardStudent:attendance")}
                     </span>
-                    <span className="text-[11px] font-bold text-[#003300]">{attendance}%</span>
+                    <span className="text-[11px] font-bold text-ink">{attendance}%</span>
                   </div>
                   <ProgressBar
                     value={attendance}
-                    color={attendance < 50 ? "#ef4444" : attendance < 75 ? "#f59e0b" : "#003300"}
+                    color={attendance < 50 ? "#ef4444" : attendance < 75 ? "#f59e0b" : "#0f1f33"}
                   />
                 </div>
               </div>
@@ -644,20 +644,20 @@ function CourseCard({ enrollment, isRTL }: { enrollment: EnrolledCourse; isRTL: 
               {/* CTA */}
               <div
                 className="mt-auto flex items-center justify-between pt-3"
-                style={{ borderTop: "1px solid rgba(0,51,0,0.08)" }}
+                style={{ borderTop: "1px solid rgba(15, 31, 51,0.08)" }}
               >
-                <span className="text-sm font-bold text-[#003300]">
+                <span className="text-sm font-bold text-ink">
                   {isCompleted
                     ? t("dashboardStudent:viewCertificate")
                     : t("dashboardStudent:continueLearning")}
                 </span>
                 <div
                   className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-200"
-                  style={{ background: "#003300" }}
+                  style={{ background: "#0f1f33" }}
                 >
                   {isRTL
-                    ? <ChevronLeft className="w-4 h-4 text-[#cccc99]" />
-                    : <ChevronRight className="w-4 h-4 text-[#cccc99]" />}
+                    ? <ChevronLeft className="w-4 h-4 text-glow" />
+                    : <ChevronRight className="w-4 h-4 text-glow" />}
                 </div>
               </div>
             </div>
@@ -675,8 +675,8 @@ function CourseSkeleton({ isRTL }: { isRTL: boolean }) {
     <div className="space-y-4 sm:space-y-6">
       {/* header skeleton */}
       <div className="space-y-2">
-        <div className="h-8 w-48 rounded-lg bg-[#003300]/10 animate-pulse" />
-        <div className="h-4 w-72 rounded-lg bg-[#003300]/6 animate-pulse" />
+        <div className="h-8 w-48 rounded-lg bg-ink/10 animate-pulse" />
+        <div className="h-4 w-72 rounded-lg bg-ink/6 animate-pulse" />
       </div>
       {/* filter skeleton */}
       <div className="space-y-2">
@@ -690,26 +690,26 @@ function CourseSkeleton({ isRTL }: { isRTL: boolean }) {
       {/* card skeletons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-[#003300]/8 animate-pulse">
+          <div key={i} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-ink/8 animate-pulse">
             {/* mobile */}
             <div className="flex sm:hidden h-24">
-              <div className="w-28 bg-[#003300]/10 shrink-0" />
+              <div className="w-28 bg-ink/10 shrink-0" />
               <div className="flex-1 p-3 space-y-2">
-                <div className="h-3 w-16 bg-[#003300]/10 rounded" />
-                <div className="h-4 w-full bg-[#003300]/10 rounded" />
-                <div className="h-3 w-3/4 bg-[#003300]/10 rounded" />
-                <div className="h-1.5 w-full bg-[#003300]/8 rounded-full" />
+                <div className="h-3 w-16 bg-ink/10 rounded" />
+                <div className="h-4 w-full bg-ink/10 rounded" />
+                <div className="h-3 w-3/4 bg-ink/10 rounded" />
+                <div className="h-1.5 w-full bg-ink/8 rounded-full" />
               </div>
             </div>
             {/* tablet+ */}
             <div className="hidden sm:block">
-              <div className="aspect-video bg-[#003300]/10" />
+              <div className="aspect-video bg-ink/10" />
               <div className="p-4 space-y-3">
-                <div className="h-3 w-24 bg-[#003300]/8 rounded" />
-                <div className="h-5 w-full bg-[#003300]/10 rounded" />
+                <div className="h-3 w-24 bg-ink/8 rounded" />
+                <div className="h-5 w-full bg-ink/10 rounded" />
                 <div className="space-y-1.5">
-                  <div className="h-1.5 w-full bg-[#003300]/8 rounded-full" />
-                  <div className="h-1.5 w-full bg-[#003300]/8 rounded-full" />
+                  <div className="h-1.5 w-full bg-ink/8 rounded-full" />
+                  <div className="h-1.5 w-full bg-ink/8 rounded-full" />
                 </div>
               </div>
             </div>
@@ -791,13 +791,13 @@ export default function StudentCourses() {
         <h1
           className="text-2xl sm:text-3xl font-bold"
           style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: "text",
           }}
         >
           {t("dashboardStudent:myCourses")}
         </h1>
-        <p className="mt-1 text-sm text-[#003300]/60">
+        <p className="mt-1 text-sm text-ink/60">
           {t("dashboardStudent:enrolledCoursesSubtitle")}
         </p>
       </motion.div>
@@ -806,13 +806,13 @@ export default function StudentCourses() {
       <motion.div variants={item} className="space-y-2">
         {/* Search */}
         <div className="relative">
-          <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40 pointer-events-none" />
+          <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40 pointer-events-none" />
           <input
             type="search"
             placeholder={t("dashboardCommon:search")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full ps-9 pe-4 py-2.5 rounded-xl bg-white border border-[#003300]/15 text-[#003300] placeholder-[#003300]/40 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30 transition"
+            className="w-full ps-9 pe-4 py-2.5 rounded-xl bg-white border border-ink/15 text-ink placeholder-ink/40 text-sm focus:outline-none focus:ring-2 focus:ring-ink/30 transition"
           />
         </div>
 
@@ -822,18 +822,18 @@ export default function StudentCourses() {
             <button
               key={f}
               onClick={() => setStatusFilter(f)}
-              className="flex-1 py-2 rounded-xl text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#003300]"
+              className="flex-1 py-2 rounded-xl text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink"
               style={
                 statusFilter === f
                   ? {
-                      background: "#003300",
-                      color: "#cccc99",
-                      boxShadow: "0 2px 8px rgba(0,51,0,0.25)",
+                      background: "#0f1f33",
+                      color: "#3fd360",
+                      boxShadow: "0 2px 8px rgba(15, 31, 51,0.25)",
                     }
                   : {
                       background: "rgba(255,255,255,0.7)",
-                      color: "#003300",
-                      border: "1px solid rgba(0,51,0,0.12)",
+                      color: "#0f1f33",
+                      border: "1px solid rgba(15, 31, 51,0.12)",
                     }
               }
             >
@@ -859,17 +859,17 @@ export default function StudentCourses() {
         </motion.div>
       ) : (
         <motion.div variants={item}>
-          <div className="rounded-2xl bg-white/70 border border-[#003300]/8 text-center py-14 px-6">
+          <div className="rounded-2xl bg-white/70 border border-ink/8 text-center py-14 px-6">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ background: "rgba(0,51,0,0.07)" }}
+              style={{ background: "rgba(15, 31, 51,0.07)" }}
             >
-              <BookOpen className="w-8 h-8 text-[#003300]/30" />
+              <BookOpen className="w-8 h-8 text-ink/30" />
             </div>
-            <h3 className="text-lg font-bold text-[#003300] mb-2">
+            <h3 className="text-lg font-bold text-ink mb-2">
               {t("dashboardCommon:noResults")}
             </h3>
-            <p className="text-sm text-[#003300]/60 mb-6">
+            <p className="text-sm text-ink/60 mb-6">
               {searchQuery || statusFilter !== "all"
                 ? t("dashboardStudent:tryAdjustingFilters")
                 : t("dashboardStudent:noCoursesEnrolled")}
@@ -877,8 +877,8 @@ export default function StudentCourses() {
             {!searchQuery && statusFilter === "all" && (
               <Link
                 to="/courses"
-                className="inline-block px-6 py-2.5 rounded-xl text-sm font-bold text-[#cccc99]"
-                style={{ background: "#003300" }}
+                className="inline-block px-6 py-2.5 rounded-xl text-sm font-bold text-glow"
+                style={{ background: "#0f1f33" }}
               >
                 {t("dashboardStudent:browseCourses")}
               </Link>

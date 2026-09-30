@@ -101,7 +101,7 @@ export function Select({
                   'transition-all duration-200',
                   disabled
                     ? 'bg-gray-100 cursor-not-allowed opacity-50 border-gray-300 text-gray-500'
-                    : 'bg-white border-primary/20 text-[#003300] hover:border-primary/40'
+                    : 'bg-white border-primary/20 text-ink hover:border-primary/40'
                 )}
               >
                 <div className="flex items-center gap-2">
@@ -110,7 +110,7 @@ export function Select({
                     {selectedOption?.label || placeholder}
                   </span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <ChevronDown className="h-4 w-4 text-[#003300]/60" aria-hidden="true" />
+                    <ChevronDown className="h-4 w-4 text-ink/60" aria-hidden="true" />
                   </span>
                 </div>
               </Listbox.Button>
@@ -143,7 +143,7 @@ export function Select({
                       className={({ active, disabled }) =>
                         cn(
                           'relative cursor-pointer select-none py-2.5 px-4',
-                          active ? 'bg-primary/10 text-primary' : 'text-[#003300]',
+                          active ? 'bg-primary/10 text-primary' : 'text-ink',
                           disabled && 'opacity-50 cursor-not-allowed'
                         )
                       }

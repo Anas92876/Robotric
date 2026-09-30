@@ -26,9 +26,9 @@ import { PDFViewer } from "../../components/ui/PDFViewer";
 import { useTranslation } from "react-i18next";
 import { formatDate } from "../../utils/dateTime";
 
-const TEXT_PRIMARY = "#003300";
-const TEXT_SECONDARY = "#003300CC";
-const TEXT_TERTIARY = "#00330080";
+const TEXT_PRIMARY = "#0f1f33";
+const TEXT_SECONDARY = "#0f1f33CC";
+const TEXT_TERTIARY = "#0f1f3380";
 
 // ─── Animation presets ────────────────────────────────────────────────────────
 const fade = {
@@ -43,13 +43,13 @@ const container = {
 // ─── Thin progress bar ─────────────────────────────────────────────────────────
 function ProgressBar({ value, className = "" }: { value: number; className?: string }) {
   return (
-    <div className={`w-full h-2 rounded-full bg-[#003300]/10 overflow-hidden ${className}`}>
+    <div className={`w-full h-2 rounded-full bg-ink/10 overflow-hidden ${className}`}>
       <motion.div
         className="h-full rounded-full"
         initial={{ width: 0 }}
         animate={{ width: `${value}%` }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        style={{ background: "#003300" }}
+        style={{ background: "#0f1f33" }}
       />
     </div>
   );
@@ -105,22 +105,22 @@ function SessionRow({
   const circleStyle = isCompleted
     ? "bg-green-100 text-green-600"
     : isCurrent
-    ? "bg-[#003300] text-[#cccc99]"
+    ? "bg-ink text-glow"
     : isFutureLocked
     ? "bg-amber-50 text-amber-400"
     : locked
-    ? "bg-[#003300]/8 text-[#003300]/30"
-    : "bg-[#003300]/10 text-[#003300]";
+    ? "bg-ink/8 text-ink/30"
+    : "bg-ink/10 text-ink";
 
   const rowStyle = isCurrent
-    ? "border-[#003300]/30 bg-[#003300]/4 ring-1 ring-[#003300]/20"
+    ? "border-ink/30 bg-ink/4 ring-1 ring-ink/20"
     : isCompleted
     ? "border-green-100 bg-green-50/50"
     : isFutureLocked
     ? "border-amber-100 bg-amber-50/40"
     : locked
-    ? "border-[#003300]/6 bg-white/40 opacity-60"
-    : "border-[#003300]/8 bg-white hover:border-[#003300]/20 hover:bg-[#003300]/2";
+    ? "border-ink/6 bg-white/40 opacity-60"
+    : "border-ink/8 bg-white hover:border-ink/20 hover:bg-ink/2";
 
   // Compact countdown: "3d 2h" or "45m"
   const countdownStr = isFutureLocked
@@ -161,7 +161,7 @@ function SessionRow({
             {session.title}
           </span>
           {isCurrent && (
-            <span className="shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#003300] text-[#cccc99]">
+            <span className="shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-ink text-glow">
               {t("dashboardStudent:current")}
             </span>
           )}
@@ -200,7 +200,7 @@ function SessionRow({
             <Lock className="w-3.5 h-3.5 text-amber-500" />
           </div>
         ) : !locked ? (
-          <div className="text-[#003300]/30">
+          <div className="text-ink/30">
             {isRTL ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
           </div>
         ) : null}
@@ -223,19 +223,19 @@ function SessionRow({
 function PageSkeleton() {
   return (
     <div className="space-y-4 animate-pulse">
-      <div className="h-4 w-32 bg-[#003300]/10 rounded" />
-      <div className="rounded-2xl bg-white p-4 sm:p-5 space-y-3 border border-[#003300]/8">
-        <div className="h-6 w-3/4 bg-[#003300]/10 rounded" />
-        <div className="h-4 w-full bg-[#003300]/8 rounded" />
-        <div className="h-2 w-full bg-[#003300]/8 rounded-full" />
+      <div className="h-4 w-32 bg-ink/10 rounded" />
+      <div className="rounded-2xl bg-white p-4 sm:p-5 space-y-3 border border-ink/8">
+        <div className="h-6 w-3/4 bg-ink/10 rounded" />
+        <div className="h-4 w-full bg-ink/8 rounded" />
+        <div className="h-2 w-full bg-ink/8 rounded-full" />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className="rounded-2xl bg-white p-4 border border-[#003300]/8 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#003300]/10 shrink-0" />
+          <div key={i} className="rounded-2xl bg-white p-4 border border-ink/8 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-ink/10 shrink-0" />
             <div className="flex-1 space-y-1.5">
-              <div className="h-4 bg-[#003300]/10 rounded w-3/4" />
-              <div className="h-3 bg-[#003300]/6 rounded w-1/2" />
+              <div className="h-4 bg-ink/10 rounded w-3/4" />
+              <div className="h-3 bg-ink/6 rounded w-1/2" />
             </div>
           </div>
         ))}
@@ -329,17 +329,17 @@ export default function StudentCourseDetails() {
       <div className="flex items-center gap-2 text-sm">
         <Link
           to="/student/courses"
-          className="flex items-center gap-1.5 font-medium text-[#003300]/60 hover:text-[#003300] transition-colors"
+          className="flex items-center gap-1.5 font-medium text-ink/60 hover:text-ink transition-colors"
         >
           {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           {t("dashboardStudent:myCourses")}
         </Link>
-        <span className="text-[#003300]/30">/</span>
-        <span className="text-[#003300] font-semibold truncate">{course.title}</span>
+        <span className="text-ink/30">/</span>
+        <span className="text-ink font-semibold truncate">{course.title}</span>
       </div>
 
       {/* ── Course header card ── */}
-      <div className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+      <div className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
         {/* Thumbnail strip (if present) */}
         {course.thumbnail && (
           <div className="relative h-28 sm:h-40 w-full overflow-hidden">
@@ -366,7 +366,7 @@ export default function StudentCourseDetails() {
               )}
             </div>
             {course.level && (
-              <span className="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full bg-[#003300]/8 text-[#003300]">
+              <span className="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full bg-ink/8 text-ink">
                 {course.level}
               </span>
             )}
@@ -414,15 +414,15 @@ export default function StudentCourseDetails() {
         {nextSession && (
           <Link
             to={`/student/sessions/${nextSession._id}`}
-            className="flex items-center justify-between gap-3 px-4 sm:px-5 py-3 border-t border-[#003300]/8 hover:bg-[#003300]/3 transition-colors active:bg-[#003300]/6 group"
-            style={{ borderTopColor: "rgba(0,51,0,0.08)" }}
+            className="flex items-center justify-between gap-3 px-4 sm:px-5 py-3 border-t border-ink/8 hover:bg-ink/3 transition-colors active:bg-ink/6 group"
+            style={{ borderTopColor: "rgba(15, 31, 51,0.08)" }}
           >
             <div className="flex items-center gap-2.5 min-w-0">
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                style={{ background: "#003300" }}
+                style={{ background: "#0f1f33" }}
               >
-                <PlayCircle className="w-4 h-4 text-[#cccc99]" />
+                <PlayCircle className="w-4 h-4 text-glow" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-bold" style={{ color: TEXT_PRIMARY }}>
@@ -444,7 +444,7 @@ export default function StudentCourseDetails() {
       <div className="flex gap-2">
         <Link
           to={`/student/payments/${courseId}`}
-          className="flex-1 flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-[#003300]/8 text-sm font-semibold hover:border-[#003300]/20 transition-colors active:scale-[0.98]"
+          className="flex-1 flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-ink/8 text-sm font-semibold hover:border-ink/20 transition-colors active:scale-[0.98]"
           style={{ color: TEXT_PRIMARY }}
         >
           <DollarSign className="w-4 h-4 shrink-0" style={{ color: TEXT_TERTIARY }} />
@@ -453,7 +453,7 @@ export default function StudentCourseDetails() {
         {course?.boardEnabled && course?.groupId && (
           <Link
             to={`/student/groups/${course.groupId}/board`}
-            className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-[#003300]/8 text-sm font-semibold hover:border-[#003300]/20 transition-colors active:scale-[0.98]"
+            className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-ink/8 text-sm font-semibold hover:border-ink/20 transition-colors active:scale-[0.98]"
             style={{ color: TEXT_PRIMARY }}
           >
             <ClipboardList className="w-4 h-4 shrink-0" style={{ color: TEXT_TERTIARY }} />
@@ -495,7 +495,7 @@ export default function StudentCourseDetails() {
             ))}
           </motion.div>
         ) : (
-          <div className="rounded-2xl bg-white border border-[#003300]/8 text-center py-14 px-6">
+          <div className="rounded-2xl bg-white border border-ink/8 text-center py-14 px-6">
             <BookOpen className="w-10 h-10 mx-auto mb-3 opacity-20" style={{ color: TEXT_PRIMARY }} />
             <p className="font-semibold text-sm" style={{ color: TEXT_PRIMARY }}>
               {t("dashboardStudent:noSessionsAvailableYet")}

@@ -33,10 +33,10 @@ const STATUS_OPTIONS = [
   { value: "cancelled", label: "Cancelled" },
 ] as const;
 
-const GREEN      = '#003300';
-const GREEN_MID  = '#003300CC';
-const GREEN_SOFT = '#00330080';
-const GREEN_PALE = '#00330033';
+const GREEN      = '#0f1f33';
+const GREEN_MID  = '#0f1f33CC';
+const GREEN_SOFT = '#0f1f3380';
+const GREEN_PALE = '#0f1f3333';
 
 export default function TrainerSessions() {
   const navigate = useNavigate();

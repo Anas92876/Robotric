@@ -86,7 +86,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
     const L = window.L;
     return L.divIcon({
       html: `<div style="
-        width:32px;height:32px;background:#003300;border-radius:50% 50% 50% 0;
+        width:32px;height:32px;background:#0f1f33;border-radius:50% 50% 50% 0;
         transform:rotate(-45deg);border:3px solid #fff;
         box-shadow:0 2px 10px rgba(0,0,0,0.35);">
       </div>`,
@@ -274,7 +274,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
             type="button"
             onClick={() => setActiveTab(tab)}
             className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-600 transition-all ${
-              activeTab === tab ? 'bg-white shadow text-[#003300]' : 'text-gray-500 hover:text-gray-700'
+              activeTab === tab ? 'bg-white shadow text-ink' : 'text-gray-500 hover:text-gray-700'
             }`}
           >
             {tab === 'search' ? <Search className="w-3.5 h-3.5" /> : <Link className="w-3.5 h-3.5" />}
@@ -296,7 +296,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
               onChange={e => setSearchQuery(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleSearchSubmit()}
               placeholder={isRTL ? 'ابحث عن عنوان أو مكان...' : 'Search address or place...'}
-              className="w-full ps-9 pe-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+              className="w-full ps-9 pe-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-ink/20"
               autoComplete="off"
             />
           </div>
@@ -304,7 +304,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
             type="button"
             onClick={handleSearchSubmit}
             disabled={searching || !searchQuery.trim()}
-            className="flex items-center gap-1.5 px-3 py-2 bg-[#003300] text-white rounded-xl text-xs font-600 disabled:opacity-40 hover:bg-[#004400] transition-colors shrink-0"
+            className="flex items-center gap-1.5 px-3 py-2 bg-ink text-white rounded-xl text-xs font-600 disabled:opacity-40 hover:bg-ink-deep transition-colors shrink-0"
           >
             {searching ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Search className="w-3.5 h-3.5" />}
             {isRTL ? 'بحث' : 'Search'}
@@ -323,7 +323,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
                 onChange={e => { setLinkInput(e.target.value); setLinkError(''); }}
                 onKeyDown={e => e.key === 'Enter' && handlePasteLink()}
                 placeholder={isRTL ? 'https://maps.google.com/...' : 'https://maps.google.com/...'}
-                className={`w-full ps-9 pe-3 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003300]/20 font-mono text-xs ${
+                className={`w-full ps-9 pe-3 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-ink/20 font-mono text-xs ${
                   linkError ? 'border-red-300 bg-red-50' : 'border-gray-200'
                 }`}
                 dir="ltr"
@@ -333,7 +333,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
               type="button"
               onClick={handlePasteLink}
               disabled={!linkInput.trim()}
-              className="flex items-center gap-1.5 px-3 py-2 bg-[#003300] text-white rounded-xl text-xs font-600 disabled:opacity-40 hover:bg-[#004400] transition-colors shrink-0"
+              className="flex items-center gap-1.5 px-3 py-2 bg-ink text-white rounded-xl text-xs font-600 disabled:opacity-40 hover:bg-ink-deep transition-colors shrink-0"
             >
               <Check className="w-3.5 h-3.5" />
               {isRTL ? 'تطبيق' : 'Apply'}
@@ -358,9 +358,9 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
         <div ref={containerRef} style={{ height: 300, width: '100%' }} />
         <div className="px-3 py-2 bg-gray-50 border-t border-gray-100 flex items-center justify-between gap-2 text-xs text-gray-500">
           <div className="flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-[#003300]" />
+            <MapPin className="w-3.5 h-3.5 text-ink" />
             {lat && lng
-              ? <span className="font-mono text-[#003300] font-600">{lat}, {lng}</span>
+              ? <span className="font-mono text-ink font-600">{lat}, {lng}</span>
               : <span>{isRTL ? 'انقر على الخريطة لتحديد الموقع' : 'Click on the map to pin a location'}</span>
             }
           </div>
@@ -369,7 +369,7 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ lat, lng, address, onCh
               href={`https://www.google.com/maps?q=${lat},${lng}`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1 text-[#003300] hover:underline"
+              className="flex items-center gap-1 text-ink hover:underline"
             >
               <Navigation className="w-3 h-3" />
               {isRTL ? 'عرض' : 'View'}
@@ -441,8 +441,8 @@ const StudentCombobox: React.FC<StudentComboboxProps> = ({ value, onChange, sear
           onChange={e => { setQuery(e.target.value); onChange(null); setOpen(true); }}
           onFocus={() => setOpen(true)}
           placeholder={isRTL ? 'ابحث عن طالب...' : 'Search for a student...'}
-          className={`w-full ps-9 pe-9 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003300]/20 ${
-            value ? 'border-[#003300]/40 bg-[#f0fdf4]' : 'border-gray-200'
+          className={`w-full ps-9 pe-9 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-ink/20 ${
+            value ? 'border-ink/40 bg-[#f0fdf4]' : 'border-gray-200'
           }`}
         />
         {value
@@ -454,8 +454,8 @@ const StudentCombobox: React.FC<StudentComboboxProps> = ({ value, onChange, sear
       </div>
 
       {value && (
-        <div className="mt-1 px-3 py-1.5 bg-[#f0fdf4] border border-[#003300]/20 rounded-xl flex items-center gap-2">
-          <Check className="w-3.5 h-3.5 text-[#003300]" />
+        <div className="mt-1 px-3 py-1.5 bg-[#f0fdf4] border border-ink/20 rounded-xl flex items-center gap-2">
+          <Check className="w-3.5 h-3.5 text-ink" />
           <div className="flex-1 min-w-0">
             <span className="text-sm font-600 text-gray-900">{value.name}</span>
             <span className="text-xs text-gray-500 ms-2">{value.email}</span>
@@ -552,7 +552,7 @@ const TransportManagement: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Header */}
-      <div className="bg-[#003300] px-6 py-8">
+      <div className="bg-ink px-6 py-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-1">
             <Bus className="w-7 h-7 text-white" />
@@ -575,7 +575,7 @@ const TransportManagement: React.FC = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-600 transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#003300] text-white shadow'
+                  ? 'bg-ink text-white shadow'
                   : 'text-gray-500 hover:bg-gray-50'
               }`}
             >
@@ -602,7 +602,7 @@ const TransportManagement: React.FC = () => {
         {/* Loading */}
         {loading && (
           <div className="flex items-center justify-center py-16">
-            <RefreshCw className="w-7 h-7 text-[#003300] animate-spin" />
+            <RefreshCw className="w-7 h-7 text-ink animate-spin" />
           </div>
         )}
 
@@ -760,12 +760,12 @@ const StudentsTab: React.FC<{
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder={isRTL ? 'بحث بالاسم أو العنوان...' : 'Search by name or address...'}
-            className="w-full ps-9 pe-4 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+            className="w-full ps-9 pe-4 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-ink/20"
           />
         </div>
         <button
           onClick={() => { setShowEnrollForm(true); hook.fetchDrivers(true); }}
-          className="flex items-center gap-2 bg-[#003300] text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] transition-colors"
+          className="flex items-center gap-2 bg-ink text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep transition-colors"
         >
           <Plus className="w-4 h-4" />
           {isRTL ? 'تسجيل طالب' : 'Enroll Student'}
@@ -782,7 +782,7 @@ const StudentsTab: React.FC<{
             className="bg-white border border-gray-200 rounded-2xl p-5 mb-5 shadow-sm overflow-hidden"
           >
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-700 text-[#003300] text-base">
+              <h3 className="font-700 text-ink text-base">
                 {isRTL ? 'تسجيل طالب في التوصيل' : 'Enroll Student in Transportation'}
               </h3>
               <button onClick={() => { setShowEnrollForm(false); resetForm(); }} className="text-gray-400 hover:text-gray-600">
@@ -817,7 +817,7 @@ const StudentsTab: React.FC<{
                   <select
                     value={driverId}
                     onChange={e => setDriverId(e.target.value)}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                   >
                     {hook.drivers.length === 0
                       ? <option value="">{isRTL ? 'جاري التحميل...' : 'Loading drivers...'}</option>
@@ -842,7 +842,7 @@ const StudentsTab: React.FC<{
                     value={homeAddress}
                     onChange={e => setHomeAddress(e.target.value)}
                     placeholder={isRTL ? 'وصف العنوان (اختياري)' : 'Address description (optional)'}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                   />
                 </div>
 
@@ -854,7 +854,7 @@ const StudentsTab: React.FC<{
                   <input
                     value={phoneNumber}
                     onChange={e => setPhoneNumber(e.target.value)}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                   />
                 </div>
 
@@ -869,7 +869,7 @@ const StudentsTab: React.FC<{
                     type="number"
                     min="1"
                     placeholder={isRTL ? 'يُحسب تلقائياً' : 'Auto-calculated'}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                   />
                 </div>
               </div>
@@ -878,7 +878,7 @@ const StudentsTab: React.FC<{
               <div className="space-y-2">
                 <label className="block text-xs font-600 text-gray-500 mb-1.5">
                   {isRTL ? 'موقع المنزل' : 'Home Location'}
-                  {mapLat && mapLng && <span className="text-[#003300] ms-2">✓</span>}
+                  {mapLat && mapLng && <span className="text-ink ms-2">✓</span>}
                   {!mapLat && <span className="text-red-400 ms-1">*</span>}
                 </label>
                 <LocationPicker
@@ -897,8 +897,8 @@ const StudentsTab: React.FC<{
 
             {/* Fee estimate result */}
             {estimate && (
-              <div className="mt-4 bg-white border-2 border-[#003300]/20 rounded-xl p-4">
-                <p className="text-xs font-700 text-[#003300] mb-3">{isRTL ? 'تقدير التكلفة' : 'Fee Estimate'}</p>
+              <div className="mt-4 bg-white border-2 border-ink/20 rounded-xl p-4">
+                <p className="text-xs font-700 text-ink mb-3">{isRTL ? 'تقدير التكلفة' : 'Fee Estimate'}</p>
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div className="bg-gray-50 rounded-xl p-3">
                     <p className="text-lg font-800 text-gray-900">{estimate.distanceKm} km</p>
@@ -908,7 +908,7 @@ const StudentsTab: React.FC<{
                     <p className="text-lg font-800 text-gray-900">{estimate.sessionsPerMonth}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{isRTL ? 'جلسات / شهر' : 'Sessions/mo'}</p>
                   </div>
-                  <div className="bg-[#003300] rounded-xl p-3">
+                  <div className="bg-ink rounded-xl p-3">
                     <p className="text-lg font-800 text-white">{(estimate.monthlyFee ?? 0).toLocaleString()}</p>
                     <p className="text-xs text-white/70 mt-0.5">{estimate.breakdown?.currency || 'SYP'} / {isRTL ? 'شهر' : 'month'}</p>
                   </div>
@@ -921,7 +921,7 @@ const StudentsTab: React.FC<{
               <button
                 onClick={handleEstimate}
                 disabled={estimating || !mapLat || !mapLng}
-                className="flex items-center gap-2 border border-[#003300] text-[#003300] px-4 py-2 rounded-xl text-sm font-600 hover:bg-[#003300]/5 disabled:opacity-40 transition-colors"
+                className="flex items-center gap-2 border border-ink text-ink px-4 py-2 rounded-xl text-sm font-600 hover:bg-ink/5 disabled:opacity-40 transition-colors"
               >
                 {estimating ? <RefreshCw className="w-4 h-4 animate-spin" /> : <DollarSign className="w-4 h-4" />}
                 {isRTL ? 'احسب التكلفة' : 'Calculate Fee'}
@@ -929,7 +929,7 @@ const StudentsTab: React.FC<{
               <button
                 onClick={handleEnroll}
                 disabled={saving || !selectedStudent || !driverId || !mapLat || !mapLng}
-                className="flex items-center gap-2 bg-[#003300] text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] disabled:opacity-40 transition-colors"
+                className="flex items-center gap-2 bg-ink text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep disabled:opacity-40 transition-colors"
               >
                 {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                 {isRTL ? 'حفظ' : 'Save'}
@@ -978,7 +978,7 @@ const StudentCard: React.FC<{ ds: DriverStudent; isRTL: boolean; hook: ReturnTyp
           <p className="text-xs text-gray-400 truncate">{ds.homeAddress || '—'}</p>
         </div>
         <div className="text-end shrink-0">
-          <p className="font-800 text-[#003300] text-sm">{ds.monthlyFee?.toLocaleString() || '—'}</p>
+          <p className="font-800 text-ink text-sm">{ds.monthlyFee?.toLocaleString() || '—'}</p>
           <p className="text-xs text-gray-400">SYP/mo</p>
         </div>
         <button onClick={() => setExpanded(!expanded)} className="text-gray-400 hover:text-gray-600 ms-1">
@@ -1131,7 +1131,7 @@ const DriversTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
     <div className="pb-10">
       <div className="flex justify-between items-center mb-4">
         <p className="text-sm text-gray-500">{hook.drivers.length} {isRTL ? 'سائق' : 'drivers'}</p>
-        <button onClick={openCreate} className="flex items-center gap-2 bg-[#003300] text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] transition-colors">
+        <button onClick={openCreate} className="flex items-center gap-2 bg-ink text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep transition-colors">
           <Plus className="w-4 h-4" /> {isRTL ? 'إضافة سائق' : 'Add Driver'}
         </button>
       </div>
@@ -1141,7 +1141,7 @@ const DriversTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
             className="bg-white border border-gray-200 rounded-2xl p-5 mb-5 shadow-sm overflow-hidden">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-700 text-[#003300]">
+              <h3 className="font-700 text-ink">
                 {isEdit
                   ? (isRTL ? `تعديل السائق: ${editTarget?.name}` : `Edit Driver: ${editTarget?.name}`)
                   : (isRTL ? 'إضافة سائق جديد' : 'Add New Driver')}
@@ -1169,7 +1169,7 @@ const DriversTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                     type={field.type}
                     value={(form as any)[field.key]}
                     onChange={e => setForm(f => ({ ...f, [field.key]: e.target.value }))}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                   />
                 </div>
               ))}
@@ -1181,7 +1181,7 @@ const DriversTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
               <button
                 onClick={handleSave}
                 disabled={saving || !form.name || (!isEdit && (!form.email || !form.password))}
-                className="flex items-center gap-2 bg-[#003300] text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] disabled:opacity-40 transition-colors"
+                className="flex items-center gap-2 bg-ink text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep disabled:opacity-40 transition-colors"
               >
                 {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                 {isEdit ? (isRTL ? 'حفظ التغييرات' : 'Save Changes') : (isRTL ? 'إنشاء' : 'Create')}
@@ -1213,7 +1213,7 @@ const DriversTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                     )}
                   </div>
                   <div className="text-end shrink-0">
-                    <p className="font-800 text-[#003300] text-lg">{driver.studentCount}</p>
+                    <p className="font-800 text-ink text-lg">{driver.studentCount}</p>
                     <p className="text-xs text-gray-400">{isRTL ? 'طلاب مسجلون' : 'enrolled students'}</p>
                     <p className="text-xs text-gray-400 mt-0.5">
                       {isRTL ? 'سعة السيارة' : 'seat cap'}: {driver.capacity}
@@ -1359,9 +1359,9 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
     <div className="pb-10">
       <div className="flex flex-wrap gap-3 mb-4">
         <input type="date" value={filterDate} onChange={e => setFilterDate(e.target.value)}
-          className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+          className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
         <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)}
-          className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20">
+          className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20">
           <option value="">{isRTL ? 'كل الحالات' : 'All statuses'}</option>
           <option value="scheduled">{isRTL ? 'مجدولة' : 'Scheduled'}</option>
           <option value="in_travel">{isRTL ? 'في الطريق' : 'In Travel'}</option>
@@ -1373,7 +1373,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
           <RefreshCw className={`w-4 h-4 ${hook.tripsLoading ? 'animate-spin' : ''}`} />
         </button>
         <button onClick={() => setShowForm(true)}
-          className="ms-auto flex items-center gap-2 bg-[#003300] text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] transition-colors">
+          className="ms-auto flex items-center gap-2 bg-ink text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep transition-colors">
           <Plus className="w-4 h-4" /> {isRTL ? 'رحلة جديدة' : 'New Trip'}
         </button>
       </div>
@@ -1383,14 +1383,14 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
             className="bg-white border border-gray-200 rounded-2xl p-5 mb-5 shadow-sm overflow-hidden">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-700 text-[#003300]">{isRTL ? 'إنشاء رحلة جديدة' : 'Create New Trip'}</h3>
+              <h3 className="font-700 text-ink">{isRTL ? 'إنشاء رحلة جديدة' : 'Create New Trip'}</h3>
               <button onClick={() => setShowForm(false)} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'السائق' : 'Driver'} *</label>
                 <select value={form.driverId} onChange={e => setForm(f => ({ ...f, driverId: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20">
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20">
                   <option value="">{isRTL ? 'اختر سائقاً' : 'Select driver'}</option>
                   {hook.drivers.map(d => <option key={d._id} value={d._id}>{d.name}</option>)}
                 </select>
@@ -1398,12 +1398,12 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
               <div>
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'التاريخ' : 'Date'} *</label>
                 <input type="datetime-local" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
               </div>
               <div>
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'الاتجاه' : 'Direction'}</label>
                 <select value={form.direction} onChange={e => setForm(f => ({ ...f, direction: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20">
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20">
                   <option value="to_academy">{isRTL ? '🌅 صباحاً — من المنازل إلى روبوتريك' : '🌅 Morning — Homes → RoboTrick'}</option>
                   <option value="from_academy">{isRTL ? '🌆 مساءً — من روبوتريك إلى المنازل' : '🌆 Afternoon — RoboTrick → Homes'}</option>
                 </select>
@@ -1428,8 +1428,8 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
                           <label key={s._id} className="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-50 transition-colors">
                             <input type="checkbox" checked={selectedStudentIds.includes(s._id)}
                               onChange={() => toggleStudent(s._id)}
-                              className="w-4 h-4 accent-[#003300] shrink-0" />
-                            <div className="w-5 h-5 rounded-full bg-[#003300] flex items-center justify-center shrink-0">
+                              className="w-4 h-4 accent-ink shrink-0" />
+                            <div className="w-5 h-5 rounded-full bg-ink flex items-center justify-center shrink-0">
                               <span className="text-white text-xs font-800">{s.pickupOrder}</span>
                             </div>
                             <span className="text-sm text-gray-800">{s.studentName}</span>
@@ -1443,11 +1443,11 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
               <div>
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'ملاحظات' : 'Notes'}</label>
                 <input value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
               </div>
               <div className="flex items-center gap-3">
                 <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                  <input type="checkbox" checked={form.isExtra} onChange={e => setForm(f => ({ ...f, isExtra: e.target.checked }))} className="w-4 h-4 accent-[#003300]" />
+                  <input type="checkbox" checked={form.isExtra} onChange={e => setForm(f => ({ ...f, isExtra: e.target.checked }))} className="w-4 h-4 accent-ink" />
                   {isRTL ? 'رحلة إضافية' : 'Extra trip'}
                 </label>
               </div>
@@ -1455,7 +1455,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
                 <div>
                   <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'رسوم إضافية' : 'Extra Charge'}</label>
                   <input type="number" value={form.extraCharge} onChange={e => setForm(f => ({ ...f, extraCharge: e.target.value }))}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
                 </div>
               )}
             </div>
@@ -1464,7 +1464,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
                 {isRTL ? 'إلغاء' : 'Cancel'}
               </button>
               <button onClick={handleCreate} disabled={saving || !form.driverId || !form.date}
-                className="flex items-center gap-2 bg-[#003300] text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] disabled:opacity-40 transition-colors">
+                className="flex items-center gap-2 bg-ink text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep disabled:opacity-40 transition-colors">
                 {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                 {isRTL ? 'إنشاء' : 'Create'}
               </button>
@@ -1475,7 +1475,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
 
       {hook.tripsLoading ? (
         <div className="flex items-center justify-center py-16">
-          <RefreshCw className="w-6 h-6 text-[#003300] animate-spin" />
+          <RefreshCw className="w-6 h-6 text-ink animate-spin" />
         </div>
       ) : hook.trips.length === 0 ? (
         <EmptyState icon={<Bus className="w-10 h-10 text-gray-300" />} message={isRTL ? 'لا توجد رحلات' : 'No trips found'} />
@@ -1507,7 +1507,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
                       {trip.driverEarnings != null && trip.driverEarnings > 0 && (
-                        <span className="text-xs text-white bg-[#003300] px-2 py-1.5 rounded-lg font-700">
+                        <span className="text-xs text-white bg-ink px-2 py-1.5 rounded-lg font-700">
                           {trip.driverEarnings.toLocaleString()} SYP
                         </span>
                       )}
@@ -1540,7 +1540,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
                                   const ssc = STUDENT_STATUS_COLORS[ss] || 'bg-gray-100 text-gray-600';
                                   return (
                                     <div key={String(s.studentId)} className="flex items-center gap-3 bg-gray-50 rounded-xl px-3 py-2">
-                                      <div className="w-6 h-6 rounded-full bg-[#003300] flex items-center justify-center shrink-0">
+                                      <div className="w-6 h-6 rounded-full bg-ink flex items-center justify-center shrink-0">
                                         <span className="text-white text-xs font-800">{s.pickupOrder}</span>
                                       </div>
                                       <div className="flex-1 min-w-0">
@@ -1548,7 +1548,7 @@ const TripsTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; isRT
                                         {s.homeAddress && <p className="text-xs text-gray-400 truncate">{s.homeAddress}</p>}
                                       </div>
                                       {s.phoneNumber && (
-                                        <a href={`tel:${s.phoneNumber}`} className="text-gray-400 hover:text-[#003300]">
+                                        <a href={`tel:${s.phoneNumber}`} className="text-gray-400 hover:text-ink">
                                           <Phone className="w-4 h-4" />
                                         </a>
                                       )}

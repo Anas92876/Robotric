@@ -56,7 +56,7 @@ const CTOTransport: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Header */}
-      <div className="bg-[#003300] px-6 py-8">
+      <div className="bg-ink px-6 py-8">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-1">
             <Bus className="w-7 h-7 text-white" />
@@ -76,7 +76,7 @@ const CTOTransport: React.FC = () => {
           {tabs.map(tab => (
             <button key={tab.id} onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-600 transition-all ${
-                activeTab === tab.id ? 'bg-[#003300] text-white shadow' : 'text-gray-500 hover:bg-gray-50'
+                activeTab === tab.id ? 'bg-ink text-white shadow' : 'text-gray-500 hover:bg-gray-50'
               }`}>
               {tab.icon}<span>{tab.label}</span>
             </button>
@@ -228,7 +228,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
             )) return;
             openCreate();
           }}
-          className="flex items-center gap-2 bg-[#003300] text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] transition-colors">
+          className="flex items-center gap-2 bg-ink text-white px-4 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep transition-colors">
           <Plus className="w-4 h-4" />
           {isRTL ? (activePricing ? 'استبدال السعر الحالي' : 'سعر جديد') : (activePricing ? 'Replace Active Pricing' : 'New Pricing')}
         </button>
@@ -240,7 +240,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
             className="bg-white border border-gray-200 rounded-2xl p-5 mb-5 shadow-sm overflow-hidden">
 
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-700 text-[#003300] text-base">
+              <h3 className="font-700 text-ink text-base">
                 {editTarget ? (isRTL ? 'تعديل السعر' : 'Edit Pricing') : (isRTL ? 'سعر جديد' : 'New Pricing')}
               </h3>
               <button onClick={() => setShowForm(false)} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>
@@ -251,7 +251,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
               <div className="md:col-span-2">
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'الاسم' : 'Name'} *</label>
                 <input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                   placeholder={isRTL ? 'مثال: أسعار مايو 2026' : 'e.g. May 2026 Rate'} />
               </div>
               <div>
@@ -259,7 +259,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                 <div className="relative">
                   <input type="number" min="0" value={form.studentRatePerKm}
                     onChange={e => setForm(f => ({ ...f, studentRatePerKm: e.target.value }))}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 pe-14 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 pe-14 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
                   <span className="absolute end-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">{currency}</span>
                 </div>
                 <p className="text-xs text-gray-400 mt-1">{isRTL ? 'ما يدفعه الطالب شهرياً لروبوتريك' : 'Monthly fee student pays Robotrick'}</p>
@@ -269,7 +269,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                 <div className="relative">
                   <input type="number" min="0" value={form.driverRatePerKm}
                     onChange={e => setForm(f => ({ ...f, driverRatePerKm: e.target.value }))}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 pe-14 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2 pe-14 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
                   <span className="absolute end-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">{currency}</span>
                 </div>
                 <p className="text-xs text-gray-400 mt-1">{isRTL ? 'يُستخدم إذا لم تنطبق أي شريحة' : 'Used when no tier matches'}</p>
@@ -278,13 +278,13 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'مضاعف الرحلات' : 'Leg Multiplier'}</label>
                 <input type="number" min="1" step="0.5" value={form.legMultiplier}
                   onChange={e => setForm(f => ({ ...f, legMultiplier: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
                 <p className="text-xs text-gray-400 mt-1">{isRTL ? 'للرسوم الشهرية للطالب فقط' : 'For student monthly fee only'}</p>
               </div>
               <div>
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'العملة' : 'Currency'}</label>
                 <select value={form.currency} onChange={e => setForm(f => ({ ...f, currency: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20">
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20">
                   <option value="SYP">SYP</option>
                   <option value="USD">USD</option>
                 </select>
@@ -292,7 +292,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
               <div className="md:col-span-2">
                 <label className="block text-xs font-600 text-gray-500 mb-1">{isRTL ? 'ملاحظات' : 'Notes'}</label>
                 <input value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20" />
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20" />
               </div>
             </div>
 
@@ -311,7 +311,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                   </div>
                 </div>
                 <button onClick={addTier}
-                  className="flex items-center gap-1.5 text-xs font-600 text-[#003300] border border-[#003300]/30 px-3 py-1.5 rounded-lg hover:bg-[#003300]/5 transition-colors">
+                  className="flex items-center gap-1.5 text-xs font-600 text-ink border border-ink/30 px-3 py-1.5 rounded-lg hover:bg-ink/5 transition-colors">
                   <Plus className="w-3.5 h-3.5" />
                   {isRTL ? 'أضف شريحة' : 'Add Tier'}
                 </button>
@@ -345,7 +345,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                       <input
                         type="number" min="1" value={tier.minStudents}
                         onChange={e => updateTier(i, 'minStudents', e.target.value)}
-                        className="border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                        className="border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:ring-2 focus:ring-ink/20"
                       />
                       {/* Max — empty = unlimited */}
                       <div className="relative">
@@ -353,7 +353,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                           type="number" min={tier.minStudents} value={tier.maxStudents ?? ''}
                           onChange={e => updateTier(i, 'maxStudents', e.target.value)}
                           placeholder={isRTL ? '∞' : '∞'}
-                          className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                          className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:ring-2 focus:ring-ink/20"
                         />
                         {tier.maxStudents == null && (
                           <span className="absolute inset-0 flex items-center justify-center text-sm text-gray-400 pointer-events-none">∞</span>
@@ -364,7 +364,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                         <input
                           type="number" min="0" value={tier.ratePerKm}
                           onChange={e => updateTier(i, 'ratePerKm', e.target.value)}
-                          className="w-full border border-gray-200 rounded-lg px-2 py-1.5 pe-10 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                          className="w-full border border-gray-200 rounded-lg px-2 py-1.5 pe-10 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
                         />
                         <span className="absolute end-2 top-1/2 -translate-y-1/2 text-xs text-gray-400">{currency}</span>
                       </div>
@@ -407,7 +407,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                         <tr key={row.n} className="border-b border-gray-50">
                           <td className="py-2 font-700 text-gray-800">{row.n}</td>
                           <td className="py-2">
-                            <span className={`font-700 ${row.fromTier ? 'text-[#003300]' : 'text-amber-600'}`}>
+                            <span className={`font-700 ${row.fromTier ? 'text-ink' : 'text-amber-600'}`}>
                               {row.driverRate.toLocaleString()} {currency}
                             </span>
                             {row.fromTier
@@ -437,7 +437,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
               </button>
               <button onClick={handleSave}
                 disabled={saving || !form.name || !form.studentRatePerKm || !form.driverRatePerKm}
-                className="flex items-center gap-2 bg-[#003300] text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-[#004400] disabled:opacity-40 transition-colors">
+                className="flex items-center gap-2 bg-ink text-white px-5 py-2 rounded-xl text-sm font-600 hover:bg-ink-deep disabled:opacity-40 transition-colors">
                 {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                 {isRTL ? 'حفظ' : 'Save'}
               </button>
@@ -447,7 +447,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
       </AnimatePresence>
 
       {hook.loading ? (
-        <div className="flex justify-center py-12"><RefreshCw className="w-6 h-6 text-[#003300] animate-spin" /></div>
+        <div className="flex justify-center py-12"><RefreshCw className="w-6 h-6 text-ink animate-spin" /></div>
       ) : hook.pricing.length === 0 ? (
         <div className="flex flex-col items-center py-20 text-center">
           <DollarSign className="w-10 h-10 text-gray-300" />
@@ -496,8 +496,8 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                       <p className="text-xs font-600 text-gray-500 mb-1.5">{isRTL ? 'شرائح سعر السائق:' : 'Driver rate tiers:'}</p>
                       <div className="flex flex-wrap gap-2">
                         {p.driverRateTiers.map((t, i) => (
-                          <div key={i} className="flex items-center gap-1.5 bg-[#003300]/5 border border-[#003300]/10 rounded-lg px-2.5 py-1 text-xs">
-                            <span className="font-600 text-[#003300]">
+                          <div key={i} className="flex items-center gap-1.5 bg-ink/5 border border-ink/10 rounded-lg px-2.5 py-1 text-xs">
+                            <span className="font-600 text-ink">
                               {t.minStudents}{t.maxStudents != null ? `–${t.maxStudents}` : '+'} {isRTL ? 'طلاب' : 'students'}
                             </span>
                             <span className="text-gray-400">→</span>
@@ -517,7 +517,7 @@ const PricingTab: React.FC<{ hook: ReturnType<typeof useTransportManagement>; is
                   </button>
                   {!p.isActive && (
                     <button onClick={() => hook.activatePricing(p._id)}
-                      className="flex items-center gap-1 text-xs bg-[#003300] text-white px-3 py-1.5 rounded-lg hover:bg-[#004400] transition-colors">
+                      className="flex items-center gap-1 text-xs bg-ink text-white px-3 py-1.5 rounded-lg hover:bg-ink-deep transition-colors">
                       <CheckCircle className="w-3.5 h-3.5" />
                       {isRTL ? 'تفعيل' : 'Activate'}
                     </button>
@@ -546,11 +546,11 @@ const EarningsTab: React.FC<{
     {/* Period selector */}
     <div className="flex items-center gap-3 mb-6">
       <select value={month} onChange={e => setMonth(parseInt(e.target.value))}
-        className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20">
+        className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20">
         {(isRTL ? MONTHS_AR : MONTHS).map((m, i) => <option key={i} value={i + 1}>{m}</option>)}
       </select>
       <select value={year} onChange={e => setYear(parseInt(e.target.value))}
-        className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20">
+        className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ink/20">
         {[2025, 2026, 2027].map(y => <option key={y} value={y}>{y}</option>)}
       </select>
       <button onClick={onRefresh} className="flex items-center gap-1.5 border border-gray-200 text-gray-600 px-3 py-2 rounded-xl text-sm hover:bg-gray-50 transition-colors">
@@ -559,14 +559,14 @@ const EarningsTab: React.FC<{
     </div>
 
     {loading ? (
-      <div className="flex justify-center py-12"><RefreshCw className="w-6 h-6 text-[#003300] animate-spin" /></div>
+      <div className="flex justify-center py-12"><RefreshCw className="w-6 h-6 text-ink animate-spin" /></div>
     ) : (
       <>
         {/* Overview cards */}
         {overview && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { label: isRTL ? 'إيرادات الطلاب' : 'Student Revenue', value: overview.totalStudentRevenue?.toLocaleString(), suffix: 'SYP', color: '#003300' },
+              { label: isRTL ? 'إيرادات الطلاب' : 'Student Revenue', value: overview.totalStudentRevenue?.toLocaleString(), suffix: 'SYP', color: '#0f1f33' },
               { label: isRTL ? 'تكلفة السائقين' : 'Driver Cost',     value: overview.totalDriverCost?.toLocaleString(),    suffix: 'SYP', color: '#dc2626' },
               { label: isRTL ? 'صافي الربح' : 'Net Profit',          value: overview.netProfit?.toLocaleString(),           suffix: 'SYP', color: overview.netProfit >= 0 ? '#16a34a' : '#dc2626' },
               { label: isRTL ? 'طلاب نشطون' : 'Active Students',     value: overview.activeStudents,                        suffix: '',    color: '#2563eb' },
@@ -594,7 +594,7 @@ const EarningsTab: React.FC<{
                   <p className="text-xs text-gray-400">{d.vehiclePlate || ''} · {d.trips} {isRTL ? 'رحلة' : 'trips'} · {d.students} {isRTL ? 'طالب' : 'students served'}</p>
                 </div>
                 <div className="text-end">
-                  <p className="font-800 text-[#003300] text-sm">{d.earnings?.toLocaleString()}</p>
+                  <p className="font-800 text-ink text-sm">{d.earnings?.toLocaleString()}</p>
                   <p className="text-xs text-gray-400">SYP</p>
                 </div>
               </div>
@@ -774,7 +774,7 @@ const FeedbackTab: React.FC<{ isRTL: boolean }> = ({ isRTL }) => {
                 key={d.driverId}
                 onClick={() => setDriverFilter(driverFilter === d.driverId ? '' : d.driverId)}
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-start ${
-                  driverFilter === d.driverId ? 'bg-[#003300]/5 ring-1 ring-[#003300]/20' : 'hover:bg-gray-50'
+                  driverFilter === d.driverId ? 'bg-ink/5 ring-1 ring-ink/20' : 'hover:bg-gray-50'
                 }`}
               >
                 <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
@@ -817,7 +817,7 @@ const FeedbackTab: React.FC<{ isRTL: boolean }> = ({ isRTL }) => {
           {driverFilter && (
             <button
               onClick={() => setDriverFilter('')}
-              className="text-xs text-[#003300] underline"
+              className="text-xs text-ink underline"
             >
               {isRTL ? 'إزالة فلتر السائق' : 'Clear driver filter'}
             </button>

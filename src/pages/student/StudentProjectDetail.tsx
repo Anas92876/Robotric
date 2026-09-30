@@ -87,12 +87,12 @@ export default function StudentProjectDetail() {
         <CardBody>
           <div className={`flex items-start justify-between mb-4`}>
             <div className={`flex-1`}>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: '#003300' }}>{projectDetails.title}</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: '#0f1f33' }}>{projectDetails.title}</h1>
               {projectDetails.courseId && (
-                <p className="mb-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{projectDetails.courseId.title}</p>
+                <p className="mb-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{projectDetails.courseId.title}</p>
               )}
               {projectDetails.description && (
-                <p dir="auto" className="transition-colors duration-300" style={{ color: '#003300' }}>{projectDetails.description}</p>
+                <p dir="auto" className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{projectDetails.description}</p>
               )}
             </div>
             <ProjectStatusBadge status={projectDetails.status} size="lg" />

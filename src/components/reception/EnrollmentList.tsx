@@ -129,8 +129,8 @@ function BundleExpandRow({ enrollmentId, colSpan }: { enrollmentId: string; colS
                   <BookOpen className="w-3 h-3 text-violet-600" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-[#003300] truncate">{se.course?.title}</p>
-                  {se.course?.level && <span className="text-[#003300]/45 capitalize text-[10px]">{se.course.level}</span>}
+                  <p className="font-semibold text-ink truncate">{se.course?.title}</p>
+                  {se.course?.level && <span className="text-ink/45 capitalize text-[10px]">{se.course.level}</span>}
                 </div>
                 {se.group ? (
                   <span className="text-[10px] text-violet-600 bg-violet-50 border border-violet-200 px-2 py-0.5 rounded-full font-medium flex-shrink-0">
@@ -181,8 +181,8 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
     return (
       <div className="text-center py-12">
         <BookOpen className="w-16 h-16 text-primary/30 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-[#003300] mb-2">No enrollments found</h3>
-        <p className="text-[#003300]/60">
+        <h3 className="text-xl font-semibold text-ink mb-2">No enrollments found</h3>
+        <p className="text-ink/60">
           Try adjusting your filters or create a new enrollment
         </p>
       </div>
@@ -206,23 +206,23 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
         {/* Table Header */}
         <thead>
           <tr className="border-b border-primary/10 bg-[#f9fafb]">
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Student
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Course
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Status
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Payment
             </th>
-            <th className="text-left py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+            <th className="text-left py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
               Enrolled
             </th>
             {hasActions && (
-              <th className="text-right py-4 px-4 text-sm font-semibold text-[#003300]/70 uppercase tracking-wider">
+              <th className="text-right py-4 px-4 text-sm font-semibold text-ink/70 uppercase tracking-wider">
                 Actions
               </th>
             )}
@@ -243,14 +243,14 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
               <td className="py-4 px-4">
                 <div className="flex items-center gap-3">
                   {/* Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-[#ffffcc] font-semibold shadow-md">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-frost font-semibold shadow-md">
                     {enrollment.student?.name?.charAt(0).toUpperCase() || '?'}
                   </div>
 
                   {/* Name and Email */}
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="font-medium text-[#003300]">{enrollment.student?.name || 'Unknown Student'}</p>
+                      <p className="font-medium text-ink">{enrollment.student?.name || 'Unknown Student'}</p>
                       {enrollment.transportation?.enabled && (
                         <Badge 
                           variant={
@@ -269,7 +269,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                         </Badge>
                       )}
                     </div>
-                    <p className="text-sm text-[#003300]/50">{enrollment.student?.email || 'No email'}</p>
+                    <p className="text-sm text-ink/50">{enrollment.student?.email || 'No email'}</p>
                   </div>
                 </div>
               </td>
@@ -284,7 +284,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="text-[#003300] font-medium leading-snug">{enrollment.course?.title || 'Unknown Course'}</p>
+                      <p className="text-ink font-medium leading-snug">{enrollment.course?.title || 'Unknown Course'}</p>
                       {isBundle && (
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-violet-100 text-violet-700 border border-violet-200 flex-shrink-0">
                           Bundle
@@ -292,7 +292,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                       )}
                     </div>
                     {enrollment.payment?.totalAmount !== undefined && (
-                      <p className="text-sm text-[#003300]/50">
+                      <p className="text-sm text-ink/50">
                         ${isBundle ? (enrollment.course.bundlePrice ?? enrollment.payment.totalAmount) : enrollment.payment.totalAmount}
                         {isBundle && ' (bundle price)'}
                       </p>
@@ -322,7 +322,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                   <div className="space-y-1">
                     {enrollment.payment ? (
                       <>
-                        <div className="flex items-center gap-2 text-[#003300]/70">
+                        <div className="flex items-center gap-2 text-ink/70">
                           <DollarSign className="w-4 h-4 text-primary/50" />
                           <span className="text-sm">
                             ${enrollment.payment.paidAmount} / ${enrollment.payment.totalAmount}
@@ -335,7 +335,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                         </Badge>
                       </>
                     ) : (
-                      <span className="text-sm text-[#003300]/50">No payment info</span>
+                      <span className="text-sm text-ink/50">No payment info</span>
                     )}
                   </div>
               </td>
@@ -344,7 +344,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
               <td className="py-4 px-4">
                 {enrollment.transportation?.enabled ? (
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-[#003300]/70">
+                    <div className="flex items-center gap-2 text-ink/70">
                       <Bus className="w-4 h-4 text-orange-500/70" />
                       <span className="text-sm">
                         {enrollment.transportation.paidAmount.toLocaleString()} / {enrollment.transportation.totalAmount.toLocaleString()} S.P.
@@ -390,13 +390,13 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                     })()}
                   </div>
                 ) : (
-                  <span className="text-sm text-[#003300]/50">-</span>
+                  <span className="text-sm text-ink/50">-</span>
                 )}
               </td>
 
               {/* Enrolled Date Column */}
               <td className="py-4 px-4">
-                <div className="flex items-center gap-2 text-[#003300]/60 text-sm">
+                <div className="flex items-center gap-2 text-ink/60 text-sm">
                   <Calendar className="w-4 h-4" />
                   <span>{formatDate(enrollment.enrolledAt)}</span>
                 </div>
@@ -413,7 +413,7 @@ export const EnrollmentList: React.FC<EnrollmentListProps> = ({
                           variant="ghost"
                           size="sm"
                           leftIcon={<MoreVertical className="w-4 h-4" />}
-                          className="text-[#003300]"
+                          className="text-ink"
                         />
                       }
                       items={[

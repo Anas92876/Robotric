@@ -73,12 +73,12 @@ export function CompetitionFormModal({ isOpen, onClose, competition, onSubmit }:
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         <Input label="Title" required value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. WRO Syria 2026" autoFocus />
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">Description</label>
+          <label className="block text-sm font-medium text-ink mb-2">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={3}
-            className="w-full px-4 py-2.5 rounded-lg bg-white border border-primary/20 text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+            className="w-full px-4 py-2.5 rounded-lg bg-white border border-primary/20 text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

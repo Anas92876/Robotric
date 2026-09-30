@@ -222,8 +222,8 @@ export default function TrainerGroupDetail() {
               </div>
             )}
             <div>
-              <h1 className="text-3xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{group.name}</h1>
-              <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{group.courseId?.title}</p>
+              <h1 className="text-3xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{group.name}</h1>
+              <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{group.courseId?.title}</p>
               <div className={`flex items-center gap-2 mt-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <Badge
                   variant={

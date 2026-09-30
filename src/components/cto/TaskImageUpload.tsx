@@ -67,13 +67,13 @@ export default function TaskImageUpload({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-[#003300]">{label}</label>
+        <label className="block text-sm font-medium text-ink">{label}</label>
         {!readonly && (
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
             disabled={uploading}
-            className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border border-[#003300]/20 text-[#003300]/60 hover:border-[#003300]/40 hover:text-[#003300] transition-colors disabled:opacity-40"
+            className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border border-ink/20 text-ink/60 hover:border-ink/40 hover:text-ink transition-colors disabled:opacity-40"
           >
             {uploading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <ImagePlus className="w-3.5 h-3.5" />}
             {uploading ? "Uploading…" : "Add images"}
@@ -92,13 +92,13 @@ export default function TaskImageUpload({
       {error && <p className="text-xs text-red-500">{error}</p>}
 
       {images.length === 0 && (
-        <p className="text-xs text-[#003300]/30 py-1">No images yet.</p>
+        <p className="text-xs text-ink/30 py-1">No images yet.</p>
       )}
 
       {images.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {images.map(img => (
-            <div key={img.publicId} className="relative group w-20 h-20 rounded-lg overflow-hidden border border-[#003300]/10 bg-[#003300]/4">
+            <div key={img.publicId} className="relative group w-20 h-20 rounded-lg overflow-hidden border border-ink/10 bg-ink/4">
               <img
                 src={img.url}
                 alt={img.name || "attachment"}
@@ -111,7 +111,7 @@ export default function TaskImageUpload({
                   onClick={() => setLightbox(img.url)}
                   className="p-1 bg-white/90 rounded-full hover:bg-white transition-colors"
                 >
-                  <ZoomIn className="w-3.5 h-3.5 text-[#003300]" />
+                  <ZoomIn className="w-3.5 h-3.5 text-ink" />
                 </button>
                 {!readonly && (
                   <button

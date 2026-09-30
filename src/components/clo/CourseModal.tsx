@@ -284,14 +284,14 @@ export default function CourseModal({
 
         {/* ── Course Type Toggle ── */}
         {!course && (
-          <div className="flex gap-2 p-1 bg-[#003300]/5 rounded-xl">
+          <div className="flex gap-2 p-1 bg-ink/5 rounded-xl">
             <button
               type="button"
               onClick={() => setFormData(f => ({ ...f, type: 'single' }))}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                 !isBundle
-                  ? 'bg-white shadow text-[#003300] ring-1 ring-[#003300]/10'
-                  : 'text-[#003300]/50 hover:text-[#003300]'
+                  ? 'bg-white shadow text-ink ring-1 ring-ink/10'
+                  : 'text-ink/50 hover:text-ink'
               }`}
             >
               <BookOpen className="w-4 h-4" />
@@ -302,8 +302,8 @@ export default function CourseModal({
               onClick={() => setFormData(f => ({ ...f, type: 'bundle' }))}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                 isBundle
-                  ? 'bg-white shadow text-[#003300] ring-1 ring-[#003300]/10'
-                  : 'text-[#003300]/50 hover:text-[#003300]'
+                  ? 'bg-white shadow text-ink ring-1 ring-ink/10'
+                  : 'text-ink/50 hover:text-ink'
               }`}
             >
               <Package className="w-4 h-4" />
@@ -332,7 +332,7 @@ export default function CourseModal({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Title */}
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               {isBundle ? 'Bundle Title' : 'Course Title'} <span className="text-red-500">*</span>
             </label>
             <Input
@@ -348,7 +348,7 @@ export default function CourseModal({
 
           {/* Category */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Category <span className="text-red-500">*</span>
             </label>
             <Input
@@ -364,15 +364,15 @@ export default function CourseModal({
 
           {/* Level */}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Level <span className="text-red-500">*</span>
             </label>
             <div className="relative">
-              <BarChart3 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40" />
+              <BarChart3 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
               <select
                 value={formData.level}
                 onChange={(e) => setFormData({ ...formData, level: e.target.value })}
-                className="w-full pl-10 px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
+                className="w-full pl-10 px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
                 disabled={isLoading}
               >
                 <option value="beginner">Beginner</option>
@@ -385,7 +385,7 @@ export default function CourseModal({
           {/* Duration — only for single courses */}
           {!isBundle && (
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">
+              <label className="block text-sm font-medium text-ink mb-1">
                 Duration (hours) <span className="text-red-500">*</span>
               </label>
               <Input
@@ -404,7 +404,7 @@ export default function CourseModal({
           {/* Price — single course */}
           {!isBundle && (
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">
+              <label className="block text-sm font-medium text-ink mb-1">
                 Price ($) <span className="text-red-500">*</span>
               </label>
               <Input
@@ -424,9 +424,9 @@ export default function CourseModal({
           {/* Bundle Price */}
           {isBundle && (
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-[#003300] mb-1">
+              <label className="block text-sm font-medium text-ink mb-1">
                 Bundle Price ($) <span className="text-red-500">*</span>
-                <span className="ml-2 text-xs text-[#003300]/45 font-normal">Set lower than sum of courses to give a discount</span>
+                <span className="ml-2 text-xs text-ink/45 font-normal">Set lower than sum of courses to give a discount</span>
               </label>
               <div className="flex gap-3 items-start">
                 <div className="flex-1">
@@ -450,7 +450,7 @@ export default function CourseModal({
                       ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
                       : savings < 0
                       ? 'bg-red-50 border-red-200 text-red-600'
-                      : 'bg-[#003300]/5 border-[#003300]/15 text-[#003300]/60'
+                      : 'bg-ink/5 border-ink/15 text-ink/60'
                   }`}>
                     {discountPct > 0 ? (
                       <div className="flex items-center gap-1.5">
@@ -476,7 +476,7 @@ export default function CourseModal({
 
           {/* Description */}
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Description <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -484,7 +484,7 @@ export default function CourseModal({
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder={isBundle ? "Describe what students will learn across all courses in this bundle..." : "Provide a detailed description of the course..."}
               rows={4}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder:text-[#003300]/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all resize-none"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink placeholder:text-ink/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all resize-none"
               disabled={isLoading}
             />
             {errors.description && <p className="mt-1 text-sm text-red-500">{errors.description}</p>}
@@ -493,14 +493,14 @@ export default function CourseModal({
 
         {/* WRO Documents toggle */}
         <div className="md:col-span-2">
-          <div className={`flex items-center justify-between p-4 rounded-xl border border-[#003300]/10 bg-[#003300]/3 ${formData.wroDocumentsRequired ? 'border-amber-400/40 bg-amber-50/60' : ''}`}>
+          <div className={`flex items-center justify-between p-4 rounded-xl border border-ink/10 bg-ink/3 ${formData.wroDocumentsRequired ? 'border-amber-400/40 bg-amber-50/60' : ''}`}>
             <div className="flex items-center gap-3">
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${formData.wroDocumentsRequired ? 'bg-amber-100' : 'bg-[#003300]/8'}`}>
-                <Trophy className={`w-4 h-4 ${formData.wroDocumentsRequired ? 'text-amber-600' : 'text-[#003300]/40'}`} />
+              <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${formData.wroDocumentsRequired ? 'bg-amber-100' : 'bg-ink/8'}`}>
+                <Trophy className={`w-4 h-4 ${formData.wroDocumentsRequired ? 'text-amber-600' : 'text-ink/40'}`} />
               </div>
               <div>
-                <p className="text-sm font-semibold text-[#003300]">WRO Documents Required</p>
-                <p className="text-xs text-[#003300]/50 mt-0.5">
+                <p className="text-sm font-semibold text-ink">WRO Documents Required</p>
+                <p className="text-xs text-ink/50 mt-0.5">
                   Students must upload their government documents
                 </p>
               </div>
@@ -509,7 +509,7 @@ export default function CourseModal({
               type="button"
               onClick={() => setFormData({ ...formData, wroDocumentsRequired: !formData.wroDocumentsRequired })}
               disabled={isLoading}
-              className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 focus:outline-none ${formData.wroDocumentsRequired ? 'bg-[#003300]' : 'bg-gray-200'}`}
+              className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 focus:outline-none ${formData.wroDocumentsRequired ? 'bg-ink' : 'bg-gray-200'}`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${formData.wroDocumentsRequired ? 'translate-x-5' : ''}`} />
             </button>
@@ -518,11 +518,11 @@ export default function CourseModal({
 
         {/* ── Sub-courses Section (bundle + editing only) ── */}
         {isBundle && isEditing && (
-          <div className="border border-[#003300]/10 rounded-xl overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-3 bg-[#003300]/3 border-b border-[#003300]/8">
+          <div className="border border-ink/10 rounded-xl overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 bg-ink/3 border-b border-ink/8">
               <div className="flex items-center gap-2">
-                <Package className="w-4 h-4 text-[#003300]/60" />
-                <span className="text-sm font-bold text-[#003300]">Sub-courses</span>
+                <Package className="w-4 h-4 text-ink/60" />
+                <span className="text-sm font-bold text-ink">Sub-courses</span>
                 {localSubCourses.length > 0 && (
                   <span className="bg-primary/10 text-primary text-xs font-bold px-2 py-0.5 rounded-full">
                     {localSubCourses.length}
@@ -542,18 +542,18 @@ export default function CourseModal({
             </div>
 
             {localSubCourses.length === 0 ? (
-              <div className="py-8 text-center text-[#003300]/40">
+              <div className="py-8 text-center text-ink/40">
                 <Package className="w-10 h-10 mx-auto mb-2 opacity-20" />
                 <p className="text-sm">No sub-courses linked yet.</p>
                 <p className="text-xs mt-1">Click "Link Course" to add existing single courses to this bundle.</p>
               </div>
             ) : (
-              <div className="divide-y divide-[#003300]/5">
+              <div className="divide-y divide-ink/5">
                 {localSubCourses.map(sc => (
                   <div key={sc._id} className="flex items-center justify-between px-4 py-3">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-[#003300] truncate">{sc.title}</p>
-                      <p className="text-xs text-[#003300]/45 mt-0.5">
+                      <p className="text-sm font-semibold text-ink truncate">{sc.title}</p>
+                      <p className="text-xs text-ink/45 mt-0.5">
                         Individual price: ${sc.price?.toFixed(0) || '0'}
                         {sc.level && <span className="ml-2 capitalize">{sc.level}</span>}
                       </p>
@@ -562,7 +562,7 @@ export default function CourseModal({
                       type="button"
                       onClick={() => handleUnlinkCourse(sc._id)}
                       disabled={subCourseAction === sc._id}
-                      className="ml-3 p-1.5 rounded-lg hover:bg-red-50 text-[#003300]/30 hover:text-red-500 transition-colors flex-shrink-0"
+                      className="ml-3 p-1.5 rounded-lg hover:bg-red-50 text-ink/30 hover:text-red-500 transition-colors flex-shrink-0"
                       title="Remove from bundle"
                     >
                       {subCourseAction === sc._id
@@ -574,21 +574,21 @@ export default function CourseModal({
                 ))}
 
                 {/* Pricing summary */}
-                <div className="px-4 py-3 bg-[#003300]/2 flex items-center justify-between">
-                  <span className="text-xs text-[#003300]/50">Individual total</span>
-                  <span className="text-sm font-semibold text-[#003300]">${individualTotal.toFixed(0)}</span>
+                <div className="px-4 py-3 bg-ink/2 flex items-center justify-between">
+                  <span className="text-xs text-ink/50">Individual total</span>
+                  <span className="text-sm font-semibold text-ink">${individualTotal.toFixed(0)}</span>
                 </div>
                 {bundlePrice > 0 && (
                   <div className={`px-4 py-2.5 flex items-center justify-between ${discountPct > 0 ? 'bg-emerald-50' : ''}`}>
                     <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-bold text-[#003300]">Bundle price</span>
+                      <span className="text-xs font-bold text-ink">Bundle price</span>
                       {discountPct > 0 && (
                         <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                           Save {discountPct}%
                         </span>
                       )}
                     </div>
-                    <span className="text-base font-bold text-[#003300]">${bundlePrice.toFixed(0)}</span>
+                    <span className="text-base font-bold text-ink">${bundlePrice.toFixed(0)}</span>
                   </div>
                 )}
               </div>
@@ -607,7 +607,7 @@ export default function CourseModal({
         )}
 
         {/* Footer Buttons */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button type="button" variant="outline" onClick={handleClose} disabled={isLoading}>
             Cancel
           </Button>
@@ -632,39 +632,39 @@ export default function CourseModal({
     >
       <div className="space-y-3">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/35" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/35" />
           <input
             type="text"
             value={pickerSearch}
             onChange={e => setPickerSearch(e.target.value)}
             placeholder="Search courses…"
-            className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-[#003300]/20 outline-none focus:border-emerald-400 text-[#003300] placeholder-[#003300]/40"
+            className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-ink/20 outline-none focus:border-emerald-400 text-ink placeholder-ink/40"
             autoFocus
           />
         </div>
 
         {loadingAvailable ? (
           <div className="py-8 text-center">
-            <Loader2 className="w-6 h-6 animate-spin text-[#003300]/30 mx-auto mb-2" />
-            <p className="text-sm text-[#003300]/40">Loading courses…</p>
+            <Loader2 className="w-6 h-6 animate-spin text-ink/30 mx-auto mb-2" />
+            <p className="text-sm text-ink/40">Loading courses…</p>
           </div>
         ) : filteredAvailable.length === 0 ? (
           <div className="py-8 text-center">
-            <BookOpen className="w-10 h-10 mx-auto mb-2 text-[#003300]/15" />
-            <p className="text-sm font-medium text-[#003300]/50">
+            <BookOpen className="w-10 h-10 mx-auto mb-2 text-ink/15" />
+            <p className="text-sm font-medium text-ink/50">
               {pickerSearch ? 'No matching courses' : 'No available courses'}
             </p>
-            <p className="text-xs text-[#003300]/35 mt-1">
+            <p className="text-xs text-ink/35 mt-1">
               Only single-type courses not yet assigned to any bundle appear here.
             </p>
           </div>
         ) : (
-          <div className="divide-y divide-[#003300]/5 max-h-[360px] overflow-y-auto rounded-xl border border-[#003300]/10">
+          <div className="divide-y divide-ink/5 max-h-[360px] overflow-y-auto rounded-xl border border-ink/10">
             {filteredAvailable.map(c => (
-              <div key={c._id} className="flex items-center justify-between px-4 py-3 hover:bg-[#003300]/2 transition-colors">
+              <div key={c._id} className="flex items-center justify-between px-4 py-3 hover:bg-ink/2 transition-colors">
                 <div className="flex-1 min-w-0 mr-3">
-                  <p className="text-sm font-semibold text-[#003300] truncate">{c.title}</p>
-                  <p className="text-xs text-[#003300]/45 mt-0.5">
+                  <p className="text-sm font-semibold text-ink truncate">{c.title}</p>
+                  <p className="text-xs text-ink/45 mt-0.5">
                     ${c.price?.toFixed(0) || '0'} · {c.category}
                     {c.level && <span className="ml-1 capitalize">{c.level}</span>}
                   </p>
@@ -705,8 +705,8 @@ export default function CourseModal({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

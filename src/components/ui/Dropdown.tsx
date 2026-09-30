@@ -47,7 +47,7 @@ function Dropdown({
         <Menu.Items
           className={cn(
             'absolute z-dropdown mt-2 w-56 rounded-lg',
-            'bg-white border border-[#003300]/20 shadow-xl',
+            'bg-white border border-ink/20 shadow-xl',
             'focus:outline-none overflow-hidden',
             alignmentClasses[align]
           )}
@@ -56,7 +56,7 @@ function Dropdown({
             {items.map((item, index) => (
               <Fragment key={index}>
                 {item.divider ? (
-                  <div className="my-1 h-px bg-[#003300]/20" />
+                  <div className="my-1 h-px bg-ink/20" />
                 ) : (
                   <Menu.Item disabled={item.disabled}>
                     {({ active }) => (
@@ -69,7 +69,7 @@ function Dropdown({
                           active && !item.disabled && 'bg-surface-hover',
                           item.danger
                             ? 'text-red-600 hover:bg-red-50'
-                            : 'text-[#003300] hover:bg-primary/5'
+                            : 'text-ink hover:bg-primary/5'
                         )}
                       >
                         {item.icon && (
@@ -105,7 +105,7 @@ function DropdownButton({
   const variants = {
     primary: 'bg-primary text-gray-900 hover:bg-primary-600',
     secondary: 'bg-primary text-secondary hover:bg-primary/90',
-    outline: 'border border-[#003300]/20 hover:bg-[#003300]/5 text-[#003300]',
+    outline: 'border border-ink/20 hover:bg-ink/5 text-ink',
   };
 
   return (

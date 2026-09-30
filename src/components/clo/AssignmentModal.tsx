@@ -75,17 +75,17 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
       transition={{ duration: 0.18 }}
       className="flex flex-col flex-1 min-h-0"
     >
-      <p className="text-sm text-[#003300]/55 mb-4 flex-shrink-0">
+      <p className="text-sm text-ink/55 mb-4 flex-shrink-0">
         Click one or more groups. You'll choose specific sessions in the next step.
       </p>
 
       {loadingGroups ? (
-        <div className="flex items-center justify-center flex-1 py-16 text-[#003300]/40">
+        <div className="flex items-center justify-center flex-1 py-16 text-ink/40">
           <Loader className="w-5 h-5 animate-spin mr-2" />
           <span className="text-sm">Loading groups…</span>
         </div>
       ) : allGroups.length === 0 ? (
-        <div className="flex-1 flex flex-col items-center justify-center py-16 text-[#003300]/40">
+        <div className="flex-1 flex flex-col items-center justify-center py-16 text-ink/40">
           <Users className="w-14 h-14 mb-3 opacity-30" />
           <p className="text-sm">No groups found for this course.</p>
         </div>
@@ -102,7 +102,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
                   className={`relative text-left p-5 rounded-2xl border-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
                     isSelected
                       ? 'border-primary bg-primary/6 shadow-md shadow-primary/10'
-                      : 'border-[#003300]/10 bg-white hover:border-[#003300]/25 hover:shadow-sm'
+                      : 'border-ink/10 bg-white hover:border-ink/25 hover:shadow-sm'
                   }`}
                 >
                   {/* Selected badge */}
@@ -114,18 +114,18 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
 
                   {/* Icon */}
                   <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-colors ${
-                    isSelected ? 'bg-primary' : 'bg-[#003300]/8'
+                    isSelected ? 'bg-primary' : 'bg-ink/8'
                   }`}>
-                    <Users className={`w-5 h-5 ${isSelected ? 'text-white' : 'text-[#003300]/50'}`} />
+                    <Users className={`w-5 h-5 ${isSelected ? 'text-white' : 'text-ink/50'}`} />
                   </div>
 
-                  <h3 className="font-bold text-[#003300] text-sm leading-snug mb-1 pr-8">{group.name}</h3>
-                  <p className="text-xs text-[#003300]/50 mb-3 truncate">
+                  <h3 className="font-bold text-ink text-sm leading-snug mb-1 pr-8">{group.name}</h3>
+                  <p className="text-xs text-ink/50 mb-3 truncate">
                     {group.trainerId?.name ?? 'No trainer'}
                   </p>
 
                   <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-lg transition-colors ${
-                    isSelected ? 'bg-primary/15 text-primary' : 'bg-[#003300]/8 text-[#003300]/60'
+                    isSelected ? 'bg-primary/15 text-primary' : 'bg-ink/8 text-ink/60'
                   }`}>
                     {group.students?.length ?? 0} student{(group.students?.length ?? 0) !== 1 ? 's' : ''}
                   </span>
@@ -137,7 +137,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-4 border-t border-[#003300]/10 mt-4 flex-shrink-0">
+      <div className="flex items-center justify-between pt-4 border-t border-ink/10 mt-4 flex-shrink-0">
         <Button variant="ghost" type="button" onClick={onClose}>Cancel</Button>
         <Button
           variant="primary"
@@ -167,7 +167,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
       transition={{ duration: 0.18 }}
       className="flex flex-col flex-1 min-h-0"
     >
-      <p className="text-sm text-[#003300]/55 mb-4 flex-shrink-0">
+      <p className="text-sm text-ink/55 mb-4 flex-shrink-0">
         Choose which sessions students can access this file in. Use <strong>Select All</strong> for a quick pick.
       </p>
 
@@ -183,17 +183,17 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
           const selectedCount = selectedGroupData?.selectedSessionIds.size ?? 0;
 
           return (
-            <div key={groupId} className="border border-[#003300]/12 rounded-2xl overflow-hidden">
+            <div key={groupId} className="border border-ink/12 rounded-2xl overflow-hidden">
               {/* Group section header */}
-              <div className="px-5 py-4 bg-[#003300]/5 border-b border-[#003300]/10">
+              <div className="px-5 py-4 bg-ink/5 border-b border-ink/10">
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
                       <Users className="w-5 h-5 text-white" />
                     </div>
                     <div className="min-w-0">
-                      <p className="font-bold text-[#003300] truncate">{group.name}</p>
-                      <p className="text-xs text-[#003300]/50">
+                      <p className="font-bold text-ink truncate">{group.name}</p>
+                      <p className="text-xs text-ink/50">
                         {group.trainerId?.name ?? 'No trainer'} · {group.students?.length ?? 0} students
                       </p>
                     </div>
@@ -202,7 +202,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
                   <div className="flex items-center gap-2 flex-shrink-0">
                     {!isLoadingSessions && sessions.length > 0 && (
                       <span className={`text-sm font-bold px-3 py-1 rounded-lg ${
-                        selectedCount > 0 ? 'bg-primary/12 text-primary' : 'bg-[#003300]/8 text-[#003300]/50'
+                        selectedCount > 0 ? 'bg-primary/12 text-primary' : 'bg-ink/8 text-ink/50'
                       }`}>
                         {selectedCount}/{sessions.length}
                       </span>
@@ -217,7 +217,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
                     <button
                       type="button"
                       onClick={() => clearSessionsForGroup(groupId)}
-                      className="text-xs font-semibold text-[#003300]/50 border border-[#003300]/15 px-3 py-2 rounded-xl hover:bg-[#003300]/5 transition-colors"
+                      className="text-xs font-semibold text-ink/50 border border-ink/15 px-3 py-2 rounded-xl hover:bg-ink/5 transition-colors"
                     >
                       Clear
                     </button>
@@ -228,12 +228,12 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
               {/* Sessions */}
               <div className="p-4">
                 {isLoadingSessions ? (
-                  <div className="flex items-center justify-center py-10 text-[#003300]/40">
+                  <div className="flex items-center justify-center py-10 text-ink/40">
                     <Loader className="w-4 h-4 animate-spin mr-2" />
                     <span className="text-sm">Loading sessions…</span>
                   </div>
                 ) : sessions.length === 0 ? (
-                  <div className="text-center py-10 text-[#003300]/40">
+                  <div className="text-center py-10 text-ink/40">
                     <Calendar className="w-8 h-8 mx-auto mb-2 opacity-35" />
                     <p className="text-sm">No sessions for this group yet.</p>
                   </div>
@@ -253,22 +253,22 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
                           className={`flex items-center gap-3 p-4 rounded-xl cursor-pointer select-none transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
                             isSessionSelected
                               ? 'bg-primary/8 border-2 border-primary/30'
-                              : 'border-2 border-[#003300]/8 bg-white hover:border-primary/20 hover:bg-[#003300]/2'
+                              : 'border-2 border-ink/8 bg-white hover:border-primary/20 hover:bg-ink/2'
                           }`}
                         >
                           {/* Visual checkbox — no hidden input */}
                           <div
                             className={`w-6 h-6 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
-                              isSessionSelected ? 'border-primary bg-primary' : 'border-[#003300]/25'
+                              isSessionSelected ? 'border-primary bg-primary' : 'border-ink/25'
                             }`}
                           >
                             {isSessionSelected && <Check className="w-3.5 h-3.5 text-white" />}
                           </div>
 
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-[#003300] truncate">{session.title}</p>
+                            <p className="text-sm font-semibold text-ink truncate">{session.title}</p>
                             {session.scheduledDate && (
-                              <p className="text-xs text-[#003300]/45 flex items-center gap-1 mt-0.5">
+                              <p className="text-xs text-ink/45 flex items-center gap-1 mt-0.5">
                                 <Calendar className="w-3 h-3 flex-shrink-0" />
                                 {new Date(session.scheduledDate).toLocaleDateString('en-US', {
                                   weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
@@ -288,11 +288,11 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-4 border-t border-[#003300]/10 mt-4 flex-shrink-0 flex-wrap gap-3">
+      <div className="flex items-center justify-between pt-4 border-t border-ink/10 mt-4 flex-shrink-0 flex-wrap gap-3">
         <button
           type="button"
           onClick={() => setStep(1)}
-          className="flex items-center gap-2 text-sm font-medium text-[#003300]/60 hover:text-[#003300] transition-colors px-3 py-2 rounded-xl hover:bg-[#003300]/5"
+          className="flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors px-3 py-2 rounded-xl hover:bg-ink/5"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Groups
@@ -300,7 +300,7 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
 
         <div className="flex items-center gap-3">
           {summary.totalSessions > 0 && (
-            <span className="text-sm text-[#003300]/50">
+            <span className="text-sm text-ink/50">
               {summary.totalSessions} session{summary.totalSessions !== 1 ? 's' : ''} · {summary.totalGroups} group{summary.totalGroups !== 1 ? 's' : ''} · ~{summary.totalStudents} students
             </span>
           )}
@@ -348,12 +348,12 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
                 <span className="ml-0.5 opacity-70">({selectedGroupIds.length})</span>
               )}
             </span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#003300]/25" />
+            <ArrowRight className="w-3.5 h-3.5 text-ink/25" />
             <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
-              step === 2 ? 'bg-primary text-white' : 'bg-[#003300]/8 text-[#003300]/45'
+              step === 2 ? 'bg-primary text-white' : 'bg-ink/8 text-ink/45'
             }`}>
               <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-extrabold ${
-                step === 2 ? 'bg-white/25' : 'bg-[#003300]/15'
+                step === 2 ? 'bg-white/25' : 'bg-ink/15'
               }`}>2</span>
               Sessions
             </span>
@@ -361,11 +361,11 @@ export const AssignmentModal: React.FC<AssignmentModalProps> = ({
 
           {/* Course selector — compact, pushed right */}
           <div className="ml-auto flex items-center gap-2">
-            <span className="text-xs text-[#003300]/45 hidden sm:inline">Course:</span>
+            <span className="text-xs text-ink/45 hidden sm:inline">Course:</span>
             <select
               value={selectedCourseId}
               onChange={(e) => setSelectedCourseId(e.target.value)}
-              className="text-xs py-1.5 pl-3 pr-7 rounded-lg border border-[#003300]/15 bg-[#003300]/3 text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/15 outline-none transition-all max-w-[200px] truncate"
+              className="text-xs py-1.5 pl-3 pr-7 rounded-lg border border-ink/15 bg-ink/3 text-ink focus:border-primary focus:ring-2 focus:ring-primary/15 outline-none transition-all max-w-[200px] truncate"
             >
               {courses.map((c) => (
                 <option key={c._id} value={c._id}>

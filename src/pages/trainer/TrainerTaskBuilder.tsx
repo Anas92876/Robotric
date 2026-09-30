@@ -232,12 +232,12 @@ export default function TrainerTaskBuilder() {
         </Button>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {isEditing ? t('dashboardTrainer:editTask') : t('dashboardTrainer:createTask')}
           </h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {isEditing ? t('dashboardTrainer:editTaskSubtitle') : t('dashboardTrainer:createTaskSubtitle')}
           </p>
         </div>

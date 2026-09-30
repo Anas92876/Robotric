@@ -44,7 +44,7 @@ export const RatingInput: React.FC<RatingInputProps> = ({
   return (
     <div className="space-y-2">
       {label && (
-        <label className="block text-sm font-semibold text-[#003300]">
+        <label className="block text-sm font-semibold text-ink">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -71,7 +71,7 @@ export const RatingInput: React.FC<RatingInputProps> = ({
                 className={`${sizeClasses[size]} transition-all duration-200 ${
                   rating <= displayRating
                     ? 'fill-yellow-400 text-yellow-400'
-                    : 'fill-transparent text-[#003300]/20'
+                    : 'fill-transparent text-ink/20'
                 }`}
               />
             </motion.button>
@@ -83,7 +83,7 @@ export const RatingInput: React.FC<RatingInputProps> = ({
           <motion.span
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-sm font-medium text-[#003300] min-w-[100px]"
+            className="text-sm font-medium text-ink min-w-[100px]"
           >
             {typeof displayRating === 'number' 
               ? `${displayRating.toFixed(1)} / 5` 

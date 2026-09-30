@@ -190,12 +190,12 @@ const UserManagement: React.FC = () => {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {t('dashboardReception:userManagement.title', 'User Management')}
           </h1>
-          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>
+          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardReception:userManagement.subtitle', 'Manage student, trainer, and staff accounts')}
           </p>
         </div>
@@ -245,7 +245,7 @@ const UserManagement: React.FC = () => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] placeholder-[#003300]/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
+                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-ink placeholder-ink/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
               />
             </div>
           </div>
@@ -257,13 +257,13 @@ const UserManagement: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => handleStatusFilterChange(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="active" className="bg-white">Active Users</option>
                 <option value="inactive" className="bg-white">Disabled Users</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -277,7 +277,7 @@ const UserManagement: React.FC = () => {
               <select
                 value={roleFilter}
                 onChange={(e) => handleRoleFilterChange(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="" className="bg-white">All Roles</option>
                 <option value="student" className="bg-white">Students</option>
@@ -301,7 +301,7 @@ const UserManagement: React.FC = () => {
                 )}
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -323,7 +323,7 @@ const UserManagement: React.FC = () => {
             variant="ghost"
             leftIcon={<RefreshCw className="w-4 h-4" />}
             onClick={fetchUsers}
-            className="text-[#003300]/70 hover:text-[#003300] hover:bg-primary/5 px-4"
+            className="text-ink/70 hover:text-ink hover:bg-primary/5 px-4"
           >
             <span className="hidden lg:inline">Refresh</span>
           </Button>

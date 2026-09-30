@@ -14,8 +14,8 @@ import { FieldCanvas } from '../../components/student/missionPlanner/FieldCanvas
 import { WaypointList } from '../../components/student/missionPlanner/WaypointList';
 import { CodeOutput } from '../../components/student/missionPlanner/CodeOutput';
 
-const TEXT_PRIMARY = '#003300';
-const TEXT_TERTIARY = '#00330080';
+const TEXT_PRIMARY = '#0f1f33';
+const TEXT_TERTIARY = '#0f1f3380';
 const ACCENT = '#7C3AED';
 
 export default function StudentMissionPlanner() {
@@ -82,10 +82,10 @@ export default function StudentMissionPlanner() {
   if (!wroLoading && !wroAccess) {
     return (
       <div className="space-y-4 sm:space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
-        <div className="text-center py-20 bg-white rounded-2xl border border-[#003300]/8">
+        <div className="text-center py-20 bg-white rounded-2xl border border-ink/8">
           <div
             className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center"
-            style={{ background: 'rgba(0,51,0,0.06)' }}
+            style={{ background: 'rgba(15, 31, 51,0.06)' }}
           >
             <Lock className="w-8 h-8" style={{ color: TEXT_TERTIARY }} />
           </div>
@@ -155,7 +155,7 @@ export default function StudentMissionPlanner() {
               style={
                 activeTab === tabItem.id
                   ? { backgroundColor: TEXT_PRIMARY, color: '#fff' }
-                  : { backgroundColor: 'rgba(0,51,0,0.06)', color: TEXT_PRIMARY }
+                  : { backgroundColor: 'rgba(15, 31, 51,0.06)', color: TEXT_PRIMARY }
               }
             >
               {isLocked ? <Lock className="w-3.5 h-3.5" /> : <tabItem.icon className="w-3.5 h-3.5" />}
@@ -195,7 +195,7 @@ export default function StudentMissionPlanner() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl border border-[#003300]/10 p-4"
+            className="bg-white rounded-2xl border border-ink/10 p-4"
           >
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-3">
               <div className="col-span-2 sm:col-span-1">
@@ -205,7 +205,7 @@ export default function StudentMissionPlanner() {
                 <select
                   value={presetIndex}
                   onChange={(e) => handlePresetChange(Number(e.target.value))}
-                  className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs"
+                  className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs"
                 >
                   {FIELD_PRESETS.map((p, i) => (
                     <option key={p.label} value={i}>
@@ -222,7 +222,7 @@ export default function StudentMissionPlanner() {
                   type="number"
                   value={fieldWidth}
                   onChange={(e) => setFieldWidth(Number(e.target.value) || 0)}
-                  className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+                  className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
                 />
               </div>
               <div>
@@ -233,7 +233,7 @@ export default function StudentMissionPlanner() {
                   type="number"
                   value={fieldHeight}
                   onChange={(e) => setFieldHeight(Number(e.target.value) || 0)}
-                  className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+                  className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
                 />
               </div>
               <div>
@@ -244,7 +244,7 @@ export default function StudentMissionPlanner() {
                   type="number"
                   value={start.x}
                   onChange={(e) => updateStart({ x: Number(e.target.value) || 0 })}
-                  className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+                  className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
                 />
               </div>
               <div>
@@ -255,7 +255,7 @@ export default function StudentMissionPlanner() {
                   type="number"
                   value={start.y}
                   onChange={(e) => updateStart({ y: Number(e.target.value) || 0 })}
-                  className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+                  className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
                 />
               </div>
             </div>
@@ -268,13 +268,13 @@ export default function StudentMissionPlanner() {
                   type="number"
                   value={start.theta}
                   onChange={(e) => updateStart({ theta: Number(e.target.value) || 0 })}
-                  className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+                  className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
                 />
               </div>
 
               <div className="flex items-center gap-2">
                 <label
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-[#003300]/15 hover:bg-[#003300]/4 cursor-pointer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-ink/15 hover:bg-ink/4 cursor-pointer"
                   style={{ color: TEXT_PRIMARY }}
                 >
                   <ImagePlus className="w-3.5 h-3.5" />
@@ -326,7 +326,7 @@ export default function StudentMissionPlanner() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-2xl border border-[#003300]/10 p-4"
+            className="bg-white rounded-2xl border border-ink/10 p-4"
           >
             <h3 className="font-bold text-sm mb-3" style={{ color: TEXT_PRIMARY }}>
               {isRTL ? 'المهام المحفوظة' : 'Saved Missions'}
@@ -338,7 +338,7 @@ export default function StudentMissionPlanner() {
                 placeholder={isRTL ? 'اسم المهمة' : 'Mission name'}
                 value={missionNameInput}
                 onChange={(e) => setMissionNameInput(e.target.value)}
-                className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs"
+                className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs"
               />
               <button
                 onClick={handleSave}
@@ -353,7 +353,7 @@ export default function StudentMissionPlanner() {
 
             <button
               onClick={newMission}
-              className="w-full flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold border border-[#003300]/15 hover:bg-[#003300]/4 mb-3"
+              className="w-full flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold border border-ink/15 hover:bg-ink/4 mb-3"
               style={{ color: TEXT_PRIMARY }}
             >
               <FilePlus className="w-3.5 h-3.5" />
@@ -371,7 +371,7 @@ export default function StudentMissionPlanner() {
                     key={m.name}
                     className={`flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${isRTL ? 'flex-row-reverse' : ''}`}
                     style={{
-                      borderColor: m.name === currentMissionName ? ACCENT : 'rgba(0,51,0,0.1)',
+                      borderColor: m.name === currentMissionName ? ACCENT : 'rgba(15, 31, 51,0.1)',
                       backgroundColor: m.name === currentMissionName ? `${ACCENT}0D` : 'transparent',
                     }}
                   >

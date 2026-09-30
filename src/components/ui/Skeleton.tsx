@@ -35,7 +35,7 @@ export function Skeleton({
   return (
     <div
       className={cn(
-        'bg-[#003300]/10',
+        'bg-ink/10',
         variants[variant],
         animations[animation],
         className
@@ -70,7 +70,7 @@ export function SkeletonCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'bg-white border border-[#003300]/20 rounded-xl p-6 space-y-4',
+        'bg-white border border-ink/20 rounded-xl p-6 space-y-4',
         className
       )}
     >

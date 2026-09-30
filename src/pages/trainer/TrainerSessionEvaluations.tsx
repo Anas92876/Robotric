@@ -158,10 +158,10 @@ export default function TrainerSessionEvaluations() {
 
         <div className="mt-4">
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardTrainer:sessionEvaluations')}</h1>
-          <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+          <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardTrainer:evaluateStudentSubtitle')}
           </p>
         </div>
@@ -176,8 +176,8 @@ export default function TrainerSessionEvaluations() {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:totalStudents')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{stats.totalStudents || 0}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:totalStudents')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{stats.totalStudents || 0}</p>
               </div>
             </div>
           </CardBody>
@@ -190,8 +190,8 @@ export default function TrainerSessionEvaluations() {
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:evaluated')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{stats.evaluated || 0}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:evaluated')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{stats.evaluated || 0}</p>
               </div>
             </div>
           </CardBody>
@@ -204,8 +204,8 @@ export default function TrainerSessionEvaluations() {
                 <Clock className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardCommon:pending')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{stats.pending || 0}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardCommon:pending')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{stats.pending || 0}</p>
               </div>
             </div>
           </CardBody>
@@ -218,8 +218,8 @@ export default function TrainerSessionEvaluations() {
                 <BarChart3 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardTrainer:completion')}</p>
-                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{completionRate}%</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardTrainer:completion')}</p>
+                <p className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{completionRate}%</p>
               </div>
             </div>
           </CardBody>

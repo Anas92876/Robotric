@@ -127,9 +127,9 @@ export const Stepper: React.FC<StepperProps> = ({
   // Color theme configuration
   const themeColors = useMemo(() => ({
     default: {
-      primary: colors?.primary || '#003300',
-      completed: colors?.completed || '#003300',
-      active: colors?.active || '#003300',
+      primary: colors?.primary || '#0f1f33',
+      completed: colors?.completed || '#0f1f33',
+      active: colors?.active || '#0f1f33',
       muted: colors?.muted || '#e5e7eb',
       text: '#ffffff',
       textMuted: '#6b7280',

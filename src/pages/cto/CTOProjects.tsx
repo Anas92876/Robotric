@@ -254,13 +254,13 @@ export default function CTOProjects() {
             <h1
               className="text-4xl font-bold inline-block"
               style={{
-                color: '#003300',
+                color: '#0f1f33',
                 backgroundClip: "text",
               }}
             >
               Projects
             </h1>
-            <p className="mt-2" style={{ color: "#003300CC" }}>
+            <p className="mt-2" style={{ color: "#0f1f33CC" }}>
               Manage all engineering projects
             </p>
           </div>
@@ -276,9 +276,9 @@ export default function CTOProjects() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <FolderOpen className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-[#003300]/60 text-lg mb-2">No projects yet</p>
-                <p className="text-[#003300]/40 text-sm mb-4">Create your first project to get started</p>
+                <FolderOpen className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <p className="text-ink/60 text-lg mb-2">No projects yet</p>
+                <p className="text-ink/40 text-sm mb-4">Create your first project to get started</p>
                 <Button variant="primary" leftIcon={<Plus className="w-4 h-4" />} onClick={openCreateModal}>
                   Create Project
                 </Button>
@@ -299,17 +299,17 @@ export default function CTOProjects() {
                     {/* Main info */}
                     <div className="flex-1 min-w-0">
                       <div className={`flex items-center gap-3 mb-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                        <h3 className="text-xl font-semibold text-[#003300]">{project.name}</h3>
+                        <h3 className="text-xl font-semibold text-ink">{project.name}</h3>
                         {priorityBadge(project.priority)}
                       </div>
 
                       {project.description && (
-                        <p className="text-sm text-[#003300]/60 mb-3 line-clamp-2">{project.description}</p>
+                        <p className="text-sm text-ink/60 mb-3 line-clamp-2">{project.description}</p>
                       )}
 
                       <div className={`flex items-center gap-6 flex-wrap text-sm ${isRTL ? "flex-row-reverse" : ""}`}>
                         {(project.subProjectCount || 0) > 0 && (
-                          <span className="text-xs text-[#003300]/50 font-medium">
+                          <span className="text-xs text-ink/50 font-medium">
                             {project.subProjectCount} sub-project{project.subProjectCount !== 1 ? "s" : ""}
                           </span>
                         )}
@@ -321,7 +321,7 @@ export default function CTOProjects() {
                           </div>
                         )}
 
-                        <div className={`flex items-center gap-1.5 text-[#003300]/50 ${isRTL ? "flex-row-reverse" : ""}`}>
+                        <div className={`flex items-center gap-1.5 text-ink/50 ${isRTL ? "flex-row-reverse" : ""}`}>
                           <Users className="w-4 h-4" />
                           <span className="text-xs">
                             {project.assignedEngineers.length > 0
@@ -331,7 +331,7 @@ export default function CTOProjects() {
                         </div>
 
                         {(project.clients?.length || 0) > 0 && (
-                          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#003300]/8 text-[#003300]/70 border border-[#003300]/15">
+                          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-ink/8 text-ink/70 border border-ink/15">
                             {project.clients!.length} client{project.clients!.length !== 1 ? "s" : ""} linked
                           </span>
                         )}
@@ -355,7 +355,7 @@ export default function CTOProjects() {
                         variant="ghost"
                         size="sm"
                         leftIcon={<CornerDownRight className="w-4 h-4" />}
-                        className="text-[#003300]/60 hover:bg-[#003300]/10"
+                        className="text-ink/60 hover:bg-ink/10"
                         onClick={(e) => { e.stopPropagation(); setMoveParentId(""); setMoveError(null); setMoveProjectTarget(project); }}
                       >
                         Move
@@ -401,7 +401,7 @@ export default function CTOProjects() {
           )}
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Project Name *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Project Name *</label>
             <Input
               placeholder="e.g. Robot Control System"
               value={form.name}
@@ -410,18 +410,18 @@ export default function CTOProjects() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Description</label>
+            <label className="block text-sm font-medium text-ink mb-1">Description</label>
             <textarea
               placeholder="Project description..."
               value={form.description}
               onChange={e => setForm(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30 resize-none"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30 resize-none"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Priority</label>
+            <label className="block text-sm font-medium text-ink mb-1">Priority</label>
             <Select
               value={form.priority}
               onChange={value => setForm(prev => ({ ...prev, priority: value as '1' | '2' | '3' }))}
@@ -434,7 +434,7 @@ export default function CTOProjects() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-2">Assign Members</label>
+            <label className="block text-sm font-medium text-ink mb-2">Assign Members</label>
 
             {/* Selected members as removable tags */}
             {form.assignedEngineers.length > 0 && (
@@ -444,7 +444,7 @@ export default function CTOProjects() {
                   return (
                     <span
                       key={id}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#003300]/10 text-[#003300] border border-[#003300]/20"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-ink/10 text-ink border border-ink/20"
                     >
                       {eng ? eng.name : id}
                       <button
@@ -462,16 +462,16 @@ export default function CTOProjects() {
 
             {/* Dropdown select */}
             {engineersLoading ? (
-              <p className="text-xs text-[#003300]/40 py-2">Loading users...</p>
+              <p className="text-xs text-ink/40 py-2">Loading users...</p>
             ) : engineers.length === 0 ? (
-              <p className="text-xs text-[#003300]/40 py-2">No users found in the system</p>
+              <p className="text-xs text-ink/40 py-2">No users found in the system</p>
             ) : (
               <select
                 value=""
                 onChange={e => {
                   if (e.target.value) toggleEngineer(e.target.value);
                 }}
-                className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
               >
                 <option value="">— Select a member to add —</option>
                 {engineers.map(eng => (
@@ -488,8 +488,8 @@ export default function CTOProjects() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-2">Link Clients</label>
-            <p className="text-xs text-[#003300]/40 mb-2">
+            <label className="block text-sm font-medium text-ink mb-2">Link Clients</label>
+            <p className="text-xs text-ink/40 mb-2">
               Linked clients can see this project and submit task requests on it.
             </p>
 
@@ -500,7 +500,7 @@ export default function CTOProjects() {
                   return (
                     <span
                       key={id}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#003300]/10 text-[#003300] border border-[#003300]/20"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-ink/10 text-ink border border-ink/20"
                     >
                       {client ? client.name : id}
                       <button
@@ -517,16 +517,16 @@ export default function CTOProjects() {
             )}
 
             {clientsLoading ? (
-              <p className="text-xs text-[#003300]/40 py-2">Loading clients...</p>
+              <p className="text-xs text-ink/40 py-2">Loading clients...</p>
             ) : clientUsers.length === 0 ? (
-              <p className="text-xs text-[#003300]/40 py-2">No client accounts found</p>
+              <p className="text-xs text-ink/40 py-2">No client accounts found</p>
             ) : (
               <select
                 value=""
                 onChange={e => {
                   if (e.target.value) toggleClient(e.target.value);
                 }}
-                className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/20"
               >
                 <option value="">— Select a client to link —</option>
                 {clientUsers.map(client => (
@@ -561,15 +561,15 @@ export default function CTOProjects() {
         size="sm"
       >
         <div className="space-y-4">
-          <div className="p-3 bg-[#003300]/5 border border-[#003300]/10 rounded-lg">
-            <p className="text-xs text-[#003300]/50 mb-0.5">Moving project</p>
-            <p className="text-sm font-semibold text-[#003300]">{moveProjectTarget?.name}</p>
+          <div className="p-3 bg-ink/5 border border-ink/10 rounded-lg">
+            <p className="text-xs text-ink/50 mb-0.5">Moving project</p>
+            <p className="text-sm font-semibold text-ink">{moveProjectTarget?.name}</p>
           </div>
 
           {moveError && <Alert variant="error"><p className="text-sm">{moveError}</p></Alert>}
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Move under *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Move under *</label>
             <Select
               value={moveParentId}
               onChange={setMoveParentId}
@@ -580,7 +580,7 @@ export default function CTOProjects() {
                   .map(p => ({ value: p._id, label: p.name })),
               ]}
             />
-            <p className="text-xs text-[#003300]/40 mt-1.5">
+            <p className="text-xs text-ink/40 mt-1.5">
               All tasks inside this project will be moved along with it.
             </p>
           </div>
@@ -605,8 +605,8 @@ export default function CTOProjects() {
       >
         <div className="space-y-4">
           <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-            <p className="text-[#003300] font-medium mb-1">Are you sure?</p>
-            <p className="text-[#003300]/70 text-sm">
+            <p className="text-ink font-medium mb-1">Are you sure?</p>
+            <p className="text-ink/70 text-sm">
               This will permanently delete the project and all its tasks. This action cannot be undone.
             </p>
           </div>

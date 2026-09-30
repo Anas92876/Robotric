@@ -73,11 +73,11 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
     >
       <div className="space-y-6 max-h-[70vh] overflow-y-auto">
         {/* Header with Status */}
-        <div className="flex items-center justify-between pb-4 border-b transition-colors duration-300" style={{ borderColor: '#003300' + '20' }}>
+        <div className="flex items-center justify-between pb-4 border-b transition-colors duration-300" style={{ borderColor: '#0f1f33' + '20' }}>
           <div>
-            <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{lead.fullName}</h2>
+            <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.fullName}</h2>
             {lead.englishName && (
-              <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{lead.englishName}</p>
+              <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{lead.englishName}</p>
             )}
           </div>
           <div className={`px-4 py-2 rounded-lg border ${getStatusBadge(lead.status)}`}>
@@ -87,51 +87,51 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
 
         {/* Personal Information */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-            <User className="w-5 h-5" style={{ color: '#003300' }} />
+          <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+            <User className="w-5 h-5" style={{ color: '#0f1f33' }} />
             Personal Information
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
             {lead.firstName && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>First Name</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.firstName}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>First Name</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.firstName}</p>
               </div>
             )}
             {lead.lastName && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Last Name</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.lastName}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Last Name</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.lastName}</p>
               </div>
             )}
             {lead.gender && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Gender</p>
-                <p className="capitalize transition-colors duration-300" style={{ color: '#003300' }}>{lead.gender}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Gender</p>
+                <p className="capitalize transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.gender}</p>
               </div>
             )}
             {lead.dateOfBirth && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Date of Birth</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{formatDate(lead.dateOfBirth)}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Date of Birth</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{formatDate(lead.dateOfBirth)}</p>
               </div>
             )}
             {lead.age && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Age</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.age} years</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Age</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.age} years</p>
               </div>
             )}
             {lead.residence && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Residence</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.residence}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Residence</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.residence}</p>
               </div>
             )}
             {lead.schoolName && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>School</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.schoolName}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>School</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.schoolName}</p>
               </div>
             )}
           </div>
@@ -140,21 +140,21 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
         {/* Family Information */}
         {(lead.fatherName || lead.motherName) && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-              <Users className="w-5 h-5" style={{ color: '#003300' }} />
+            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+              <Users className="w-5 h-5" style={{ color: '#0f1f33' }} />
               Family Information
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
               {lead.fatherName && (
                 <div>
-                  <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Father's Name</p>
-                  <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.fatherName}</p>
+                  <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Father's Name</p>
+                  <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.fatherName}</p>
                 </div>
               )}
               {lead.motherName && (
                 <div>
-                  <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Mother's Name</p>
-                  <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.motherName}</p>
+                  <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Mother's Name</p>
+                  <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.motherName}</p>
                 </div>
               )}
             </div>
@@ -163,20 +163,20 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
 
         {/* Contact Information */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-            <Phone className="w-5 h-5" style={{ color: '#003300' }} />
+          <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+            <Phone className="w-5 h-5" style={{ color: '#0f1f33' }} />
             Contact Information
           </h3>
-          <div className="rounded-lg p-4 space-y-3 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+          <div className="rounded-lg p-4 space-y-3 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
             <div>
-              <p className="text-sm transition-colors duration-300 mb-1" style={{ color: '#003300' + 'CC' }}>Primary Mobile</p>
-              <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.mobileNumber} {lead.mobileNumberLabel && `(${lead.mobileNumberLabel})`}</p>
+              <p className="text-sm transition-colors duration-300 mb-1" style={{ color: '#0f1f33' + 'CC' }}>Primary Mobile</p>
+              <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.mobileNumber} {lead.mobileNumberLabel && `(${lead.mobileNumberLabel})`}</p>
             </div>
             {lead.additionalNumbers && lead.additionalNumbers.length > 0 && (
               <div>
-                <p className="text-sm mb-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Additional Numbers</p>
+                <p className="text-sm mb-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Additional Numbers</p>
                 {lead.additionalNumbers.map((num, idx) => (
-                  <p key={idx} className="transition-colors duration-300" style={{ color: '#003300' }}>
+                  <p key={idx} className="transition-colors duration-300" style={{ color: '#0f1f33' }}>
                     {num.number} {num.label && `(${num.label})`}
                   </p>
                 ))}
@@ -184,9 +184,9 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
             )}
             {lead.socialMedia && lead.socialMedia.length > 0 && (
               <div>
-                <p className="text-sm mb-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Social Media</p>
+                <p className="text-sm mb-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Social Media</p>
                 {lead.socialMedia.map((social, idx) => (
-                  <p key={idx} className="transition-colors duration-300" style={{ color: '#003300' }}>
+                  <p key={idx} className="transition-colors duration-300" style={{ color: '#0f1f33' }}>
                     {social.platform}: {social.handle}
                   </p>
                 ))}
@@ -198,21 +198,21 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
         {/* Interest & Referral */}
         {(lead.interestField || lead.referralSource) && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-              <MessageSquare className="w-5 h-5" style={{ color: '#003300' }} />
+            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+              <MessageSquare className="w-5 h-5" style={{ color: '#0f1f33' }} />
               Interest & Referral
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
               {lead.interestField && (
                 <div>
-                  <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Interest Field</p>
-                  <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.interestField}</p>
+                  <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Interest Field</p>
+                  <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.interestField}</p>
                 </div>
               )}
               {lead.referralSource && (
                 <div>
-                  <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Referral Source</p>
-                  <p className="transition-colors duration-300" style={{ color: '#003300' }}>{lead.referralSource}</p>
+                  <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Referral Source</p>
+                  <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.referralSource}</p>
                 </div>
               )}
             </div>
@@ -222,12 +222,12 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
         {/* Notes */}
         {lead.notes && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-              <MessageSquare className="w-5 h-5" style={{ color: '#003300' }} />
+            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+              <MessageSquare className="w-5 h-5" style={{ color: '#0f1f33' }} />
               Notes
             </h3>
-            <div className="rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
-              <p className="whitespace-pre-wrap transition-colors duration-300" style={{ color: '#003300' }}>{lead.notes}</p>
+            <div className="rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
+              <p className="whitespace-pre-wrap transition-colors duration-300" style={{ color: '#0f1f33' }}>{lead.notes}</p>
             </div>
           </div>
         )}
@@ -259,18 +259,18 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
         {/* Status History */}
         {lead.statusHistory && lead.statusHistory.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-              <History className="w-5 h-5" style={{ color: '#003300' }} />
+            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+              <History className="w-5 h-5" style={{ color: '#0f1f33' }} />
               Status History
             </h3>
-            <div className="rounded-lg p-4 space-y-3 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+            <div className="rounded-lg p-4 space-y-3 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
               {lead.statusHistory.map((history, idx) => (
-                <div key={idx} className="border-l-2 pl-4 pb-3 last:pb-0 transition-colors duration-300" style={{ borderColor: '#003300' + '50' }}>
-                  <div className="flex items-center gap-2 text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+                <div key={idx} className="border-l-2 pl-4 pb-3 last:pb-0 transition-colors duration-300" style={{ borderColor: '#0f1f33' + '50' }}>
+                  <div className="flex items-center gap-2 text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
                     <Clock className="w-4 h-4" />
                     {formatDateTime(history.changedAt)}
                   </div>
-                  <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' }}>
+                  <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' }}>
                     {history.fromStatus ? (
                       <>
                         <span className="capitalize">{history.fromStatus}</span>
@@ -281,7 +281,7 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
                       <span className="capitalize">Set to {history.toStatus}</span>
                     )}
                   </p>
-                  <p className="text-sm mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Reason: {history.reason}</p>
+                  <p className="text-sm mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Reason: {history.reason}</p>
                 </div>
               ))}
             </div>
@@ -291,8 +291,8 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
         {/* Contact History */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-              <Phone className="w-5 h-5" style={{ color: '#003300' }} />
+            <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+              <Phone className="w-5 h-5" style={{ color: '#0f1f33' }} />
               Contact History
             </h3>
             <Button
@@ -305,7 +305,7 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
               Add Contact
             </Button>
           </div>
-          <div className="rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+          <div className="rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
             <ContactHistoryList
               contactHistory={contactHistory}
               onDelete={deleteContactHistory}
@@ -316,23 +316,23 @@ export const LeadDetailsModal: React.FC<LeadDetailsModalProps> = ({
 
         {/* Metadata */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#003300' }}>
-            <Calendar className="w-5 h-5" style={{ color: '#003300' }} />
+          <h3 className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2" style={{ color: '#0f1f33' }}>
+            <Calendar className="w-5 h-5" style={{ color: '#0f1f33' }} />
             Record Information
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#003300' + '08' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg p-4 transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08' }}>
             <div>
-              <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Created At</p>
-              <p className="transition-colors duration-300" style={{ color: '#003300' }}>{formatDateTime(lead.createdAt)}</p>
+              <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Created At</p>
+              <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{formatDateTime(lead.createdAt)}</p>
             </div>
             <div>
-              <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Last Updated</p>
-              <p className="transition-colors duration-300" style={{ color: '#003300' }}>{formatDateTime(lead.updatedAt)}</p>
+              <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Last Updated</p>
+              <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{formatDateTime(lead.updatedAt)}</p>
             </div>
             {lead.convertedAt && (
               <div>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Converted At</p>
-                <p className="transition-colors duration-300" style={{ color: '#003300' }}>{formatDateTime(lead.convertedAt)}</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Converted At</p>
+                <p className="transition-colors duration-300" style={{ color: '#0f1f33' }}>{formatDateTime(lead.convertedAt)}</p>
               </div>
             )}
           </div>

@@ -734,7 +734,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
  ?'bg-cyan-500 text-white shadow-md'
  : step < currentStep
  ?'bg-green-500 text-white shadow-md'
- :'bg-gray-200 text-[#003300]/40'
+ :'bg-gray-200 text-ink/40'
  }`}
               >
                 {step < currentStep ? '✓' : step}
@@ -810,10 +810,10 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
         {/* Step 2: Select Course */}
         {currentStep === 2 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#003300]">Select Course</h3>
+            <h3 className="text-lg font-semibold text-ink">Select Course</h3>
 
             <div>
-              <label htmlFor="courseId" className="block text-sm font-medium text-[#003300] mb-2">
+              <label htmlFor="courseId" className="block text-sm font-medium text-ink mb-2">
                 Course <span className="text-red-400">*</span>
               </label>
               <select
@@ -824,7 +824,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 disabled={isSubmitting}
                 className={`w-full px-4 py-2 rounded-lg bg-white border ${
                   errors.courseId ? 'border-red-500' : 'border-primary/20'
-                } text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
+                } text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
               >
                 <option value="">-- Select a course --</option>
                 {availableCourses
@@ -842,16 +842,16 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
               {formData.courseId && (
                 <div className="mt-4 space-y-2">
                   <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-sm text-[#003300]/70">
-                      Selected: <span className="text-[#003300] font-medium">{getSelectedCourseName()}</span>
+                    <p className="text-sm text-ink/70">
+                      Selected: <span className="text-ink font-medium">{getSelectedCourseName()}</span>
                     </p>
                   </div>
                   {enrollmentWarning && enrollmentWarning.type === 'course' && (
                     <Alert variant="warning" className="mt-2">
                       <AlertTriangle className="w-5 h-5" />
                       <div>
-                        <p className="font-semibold text-[#003300]">Warning: Already Enrolled</p>
-                        <p className="text-sm text-[#003300]/80 mt-1">{enrollmentWarning.message}</p>
+                        <p className="font-semibold text-ink">Warning: Already Enrolled</p>
+                        <p className="text-sm text-ink/80 mt-1">{enrollmentWarning.message}</p>
                       </div>
                     </Alert>
                   )}
@@ -864,10 +864,10 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
         {/* Step 3: Select Group */}
         {currentStep === 3 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#003300]">Select Group</h3>
+            <h3 className="text-lg font-semibold text-ink">Select Group</h3>
 
             <div>
-              <label htmlFor="groupId" className="block text-sm font-medium text-[#003300] mb-2">
+              <label htmlFor="groupId" className="block text-sm font-medium text-ink mb-2">
                 Group <span className="text-red-400">*</span>
               </label>
               <select
@@ -878,7 +878,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 disabled={isSubmitting || availableGroups.length === 0}
                 className={`w-full px-4 py-2 rounded-lg bg-white border ${
                   errors.groupId ? 'border-red-500' : 'border-primary/20'
-                } text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
+                } text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
               >
                 <option value="">-- Select a group --</option>
                 {availableGroups.map((group) => (
@@ -903,8 +903,8 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 <Alert variant="warning" className="mt-2">
                   <AlertTriangle className="w-5 h-5" />
                   <div>
-                    <p className="font-semibold text-[#003300]">Warning: Already in Group</p>
-                    <p className="text-sm text-[#003300]/80 mt-1">{enrollmentWarning.message}</p>
+                    <p className="font-semibold text-ink">Warning: Already in Group</p>
+                    <p className="text-sm text-ink/80 mt-1">{enrollmentWarning.message}</p>
                   </div>
                 </Alert>
               )}
@@ -916,7 +916,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
         {currentStep === 4 && (
           <div className="space-y-4">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-semibold text-[#003300]">Payment Plan</h3>
+              <h3 className="text-lg font-semibold text-ink">Payment Plan</h3>
               <div className="flex items-center gap-3 bg-white/50 px-3 py-1.5 rounded-lg border border-primary/10">
                 <span className={`text-sm font-medium ${currency === 'USD' ? 'text-primary' : 'text-gray-400'}`}>USD ($)</span>
                 <Switch
@@ -931,8 +931,8 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
             {/* Total Amount */}
             {/* Discount Section */}
             <div className="mb-4">
-              <label htmlFor="discount" className="block text-sm font-medium text-[#003300] mb-2">
-                Discount (%) <span className="text-[#003300]/50 text-xs">(Optional)</span>
+              <label htmlFor="discount" className="block text-sm font-medium text-ink mb-2">
+                Discount (%) <span className="text-ink/50 text-xs">(Optional)</span>
               </label>
               <Input
                 id="discount"
@@ -954,18 +954,18 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
             {/* Total Amount Display */}
             <div className="mb-4 p-4 bg-primary/5 border border-primary/20 rounded-lg">
-              <label className="block text-sm font-medium text-[#003300] mb-1">
+              <label className="block text-sm font-medium text-ink mb-1">
                 Total Amount ({currency})
               </label>
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold text-[#003300]">
+                <span className="text-2xl font-bold text-ink">
                   {currency === 'USD'
                     ? `$${formData.totalAmount || '0.00'}`
                     : `${(parseFloat(formData.totalAmount || '0') * exchangeRate).toLocaleString()} S.P.`
                   }
                 </span>
               </div>
-              <p className="text-xs text-[#003300]/40 mt-1">Exchange Rate: $1 = {exchangeRate} S.P.</p>
+              <p className="text-xs text-ink/40 mt-1">Exchange Rate: $1 = {exchangeRate} S.P.</p>
             </div>
 
             {/* Number of Installments */}
@@ -973,7 +973,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
             {calculateRemaining() > 0.01 ? (
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="block text-sm font-medium text-[#003300]">
+                  <label className="block text-sm font-medium text-ink">
                     Installments for Balance ($${calculateRemaining().toFixed(2)} USD) <span className="text-red-400">*</span>
                   </label>
                   <Button
@@ -986,7 +986,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                     + Add Installment
                   </Button>
                 </div>
-                <p className="text-xs text-[#003300]/50">
+                <p className="text-xs text-ink/50">
                   Installments are always in USD to protect against exchange rate fluctuations
                 </p>
 
@@ -1051,8 +1051,8 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
             {/* Paid Now */}
             <div>
-              <label htmlFor="paidNow" className="block text-sm font-medium text-[#003300] mb-2">
-                Paid Now ({currency}) <span className="text-[#003300]/50 text-xs">(Optional)</span>
+              <label htmlFor="paidNow" className="block text-sm font-medium text-ink mb-2">
+                Paid Now ({currency}) <span className="text-ink/50 text-xs">(Optional)</span>
               </label>
               <div className="relative">
                  <span className="absolute left-3 top-2 text-gray-500 font-bold">
@@ -1111,7 +1111,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                     disabled={isSubmitting}
                     className="w-4 h-4 rounded border-primary/20 text-primary focus:ring-primary"
                   />
-                  <label htmlFor="transportationEnabled" className="text-sm font-semibold text-[#003300] cursor-pointer">
+                  <label htmlFor="transportationEnabled" className="text-sm font-semibold text-ink cursor-pointer">
                     Enable Transportation Payment
                   </label>
                 </div>
@@ -1119,7 +1119,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                   <button
                     type="button"
                     onClick={() => setIsTransportationExpanded(!isTransportationExpanded)}
-                    className="text-primary hover:text-[#004d00] transition-colors"
+                    className="text-primary hover:text-ink-deep transition-colors"
                     aria-label={isTransportationExpanded ? 'Collapse transportation section' : 'Expand transportation section'}
                   >
                     {isTransportationExpanded ? (
@@ -1135,7 +1135,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 <div className={`space-y-4 pl-7 border-l-2 border-primary/20 transition-all duration-300 ${isTransportationExpanded ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                   {/* Transportation Total Amount */}
                   <div>
-                    <label htmlFor="transportation.totalAmount" className="block text-sm font-medium text-[#003300] mb-2">
+                    <label htmlFor="transportation.totalAmount" className="block text-sm font-medium text-ink mb-2">
                       Transportation Total Amount (S.P.) <span className="text-red-400">*</span>
                     </label>
                     <div className="relative">
@@ -1174,8 +1174,8 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
                   {/* Transportation Paid Now */}
                   <div>
-                    <label htmlFor="transportation.paidNow" className="block text-sm font-medium text-[#003300] mb-2">
-                      Transportation Paid Now (S.P.) <span className="text-[#003300]/50 text-xs">(Optional)</span>
+                    <label htmlFor="transportation.paidNow" className="block text-sm font-medium text-ink mb-2">
+                      Transportation Paid Now (S.P.) <span className="text-ink/50 text-xs">(Optional)</span>
                     </label>
                     <div className="relative">
                       <span className="absolute left-3 top-2 text-gray-500 font-bold">
@@ -1215,7 +1215,7 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                   {calculateTransportationRemaining() > 0 ? (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <label className="block text-sm font-medium text-[#003300]">
+                        <label className="block text-sm font-medium text-ink">
                           Transportation Installments ({Math.round(calculateTransportationRemaining()).toLocaleString()} S.P.) <span className="text-red-400">*</span>
                         </label>
                         <Button
@@ -1312,8 +1312,8 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
             {/* Notes */}
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-[#003300] mb-2">
-                Notes <span className="text-[#003300]/50 text-xs">(Optional)</span>
+              <label htmlFor="notes" className="block text-sm font-medium text-ink mb-2">
+                Notes <span className="text-ink/50 text-xs">(Optional)</span>
               </label>
               <textarea
                 id="notes"
@@ -1323,26 +1323,26 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 placeholder="Any special notes or requirements..."
                 disabled={isSubmitting}
                 rows={3}
-                className="w-full px-4 py-2 rounded-lg bg-white border border-primary/20 text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors resize-none"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-primary/20 text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors resize-none"
               />
             </div>
 
             {/* Summary */}
             <div className="p-4 bg-primary/5 border border-primary/20 rounded-lg space-y-3">
-              <p className="text-base font-semibold text-[#003300] mb-3 pb-2 border-b border-primary/20">Enrollment Summary</p>
+              <p className="text-base font-semibold text-ink mb-3 pb-2 border-b border-primary/20">Enrollment Summary</p>
               <div className="grid grid-cols-1 gap-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-[#003300]/70">Student:</span>
-                  <span className="text-sm font-medium text-[#003300]">{getSelectedStudentName() || 'Not selected'}</span>
+                  <span className="text-sm text-ink/70">Student:</span>
+                  <span className="text-sm font-medium text-ink">{getSelectedStudentName() || 'Not selected'}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-[#003300]/70">Course:</span>
-                  <span className="text-sm font-medium text-[#003300]">{getSelectedCourseName() || 'Not selected'}</span>
+                  <span className="text-sm text-ink/70">Course:</span>
+                  <span className="text-sm font-medium text-ink">{getSelectedCourseName() || 'Not selected'}</span>
                 </div>
                 {formData.groupId && (
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-[#003300]/70">Group:</span>
-                    <span className="text-sm font-medium text-[#003300]">
+                    <span className="text-sm text-ink/70">Group:</span>
+                    <span className="text-sm font-medium text-ink">
                       {availableGroups.find(g => g._id === formData.groupId)?.name || 'Selected'}
                     </span>
                   </div>
@@ -1358,28 +1358,28 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                     return (
                       <>
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm text-[#003300]/70">Course Total:</span>
-                          <span className="text-sm font-medium text-[#003300]">
+                          <span className="text-sm text-ink/70">Course Total:</span>
+                          <span className="text-sm font-medium text-ink">
                             ${originalPrice.toFixed(2)}
                           </span>
                         </div>
                         {discountPct > 0 && (
                           <div className="flex justify-between items-center mb-1">
-                            <span className="text-sm text-[#003300]/70">Discount ({formData.discount}%):</span>
+                            <span className="text-sm text-ink/70">Discount ({formData.discount}%):</span>
                             <span className="text-sm font-medium text-green-600">
                               -${discountAmt.toFixed(2)}
                             </span>
                           </div>
                         )}
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm text-[#003300]/70">Paid Now:</span>
-                          <span className="text-sm font-medium text-[#003300]">
+                          <span className="text-sm text-ink/70">Paid Now:</span>
+                          <span className="text-sm font-medium text-ink">
                             ${paidNow.toFixed(2)}
                           </span>
                         </div>
                         <div className="flex justify-between items-center font-semibold pt-1 border-t border-primary/10">
-                          <span className="text-sm text-[#003300]">Remaining:</span>
-                          <span className="text-sm text-[#003300]">
+                          <span className="text-sm text-ink">Remaining:</span>
+                          <span className="text-sm text-ink">
                             ${remaining.toFixed(2)}
                           </span>
                         </div>
@@ -1390,20 +1390,20 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 {formData.transportation.enabled && (
                   <div className="pt-2 border-t border-primary/10">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm text-[#003300]/70">Transportation Total:</span>
-                      <span className="text-sm font-medium text-[#003300]">
+                      <span className="text-sm text-ink/70">Transportation Total:</span>
+                      <span className="text-sm font-medium text-ink">
                         {parseFloat(formData.transportation.totalAmount || '0').toLocaleString()} S.P.
                       </span>
                     </div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm text-[#003300]/70">Transportation Paid:</span>
-                      <span className="text-sm font-medium text-[#003300]">
+                      <span className="text-sm text-ink/70">Transportation Paid:</span>
+                      <span className="text-sm font-medium text-ink">
                         {parseFloat(formData.transportation.paidNow || '0').toLocaleString()} S.P.
                       </span>
                     </div>
                     <div className="flex justify-between items-center font-semibold pt-1 border-t border-primary/10">
-                      <span className="text-sm text-[#003300]">Transportation Remaining:</span>
-                      <span className="text-sm text-[#003300]">
+                      <span className="text-sm text-ink">Transportation Remaining:</span>
+                      <span className="text-sm text-ink">
                         {(Math.max(0, parseFloat(formData.transportation.totalAmount || '0') - parseFloat(formData.transportation.paidNow || '0'))).toLocaleString()} S.P.
                       </span>
                     </div>
@@ -1480,8 +1480,8 @@ export const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

@@ -105,12 +105,12 @@ export default function ReceptionGallery() {
         <div className="flex items-center justify-between mb-2 flex-wrap gap-3">
           <div>
             <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>
               Gallery
             </h1>
-            <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               Manage gallery images for any group
             </p>
           </div>
@@ -133,7 +133,7 @@ export default function ReceptionGallery() {
                 type="button"
                 onClick={() => setShowGroupPicker((v) => !v)}
                 className="flex items-center gap-2 text-sm font-medium transition-colors"
-                style={{ color: '#003300' }}
+                style={{ color: '#0f1f33' }}
               >
                 <Users className="w-4 h-4" />
                 {selectedGroupIds.length === 0
@@ -146,7 +146,7 @@ export default function ReceptionGallery() {
                     type="button"
                     onClick={() => setSelectedGroupIds([])}
                     className="text-xs underline transition-colors"
-                    style={{ color: '#003300' + '99' }}
+                    style={{ color: '#0f1f33' + '99' }}
                   >
                     Clear selection
                   </button>
@@ -177,9 +177,9 @@ export default function ReceptionGallery() {
                       onClick={() => toggleSelectedGroup(group._id)}
                       className={`flex items-center justify-between gap-2 px-3 py-2 rounded-lg border text-sm transition-colors text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                       style={{
-                        borderColor: isSelected ? '#003300' : '#00330033',
-                        backgroundColor: isSelected ? '#0033001A' : 'transparent',
-                        color: '#003300',
+                        borderColor: isSelected ? '#0f1f33' : '#0f1f3333',
+                        backgroundColor: isSelected ? '#0f1f331A' : 'transparent',
+                        color: '#0f1f33',
                       }}
                     >
                       <span className="truncate">
@@ -191,7 +191,7 @@ export default function ReceptionGallery() {
                   );
                 })}
                 {(groups || []).length === 0 && !isLoading && (
-                  <p className="text-sm col-span-full text-center py-4" style={{ color: '#003300' + '99' }}>
+                  <p className="text-sm col-span-full text-center py-4" style={{ color: '#0f1f33' + '99' }}>
                     No groups found
                   </p>
                 )}
@@ -209,9 +209,9 @@ export default function ReceptionGallery() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <ImageIcon className="w-16 h-16 mx-auto mb-4" style={{ color: '#003300' + '33' }} />
-                <p className="text-lg mb-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Select one or more groups</p>
-                <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + '99' }}>
+                <ImageIcon className="w-16 h-16 mx-auto mb-4" style={{ color: '#0f1f33' + '33' }} />
+                <p className="text-lg mb-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Select one or more groups</p>
+                <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + '99' }}>
                   Choose groups above to view their gallery images
                 </p>
               </div>

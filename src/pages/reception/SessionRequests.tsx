@@ -137,10 +137,10 @@ export default function SessionRequests() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardReception:sessionRequests.title', 'Session Requests')}</h1>
-          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardReception:sessionRequests.subtitle', 'Approve or decline student session requests')}</p>
+          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardReception:sessionRequests.subtitle', 'Approve or decline student session requests')}</p>
         </div>
         <Button
           variant="outline"
@@ -152,16 +152,16 @@ export default function SessionRequests() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+      <div className="bg-white rounded-xl p-4 border border-ink/10">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-[#003300]/40" />
-            <span className="text-sm text-[#003300]/60">Status:</span>
+            <Filter className="w-4 h-4 text-ink/40" />
+            <span className="text-sm text-ink/60">Status:</span>
           </div>
           <select
             value={statusFilter}
             onChange={(e) => handleStatusFilterChange(e.target.value)}
-            className="px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
           >
             <option value="all">All</option>
             <option value="pending">Pending</option>
@@ -184,11 +184,11 @@ export default function SessionRequests() {
       {filteredRequests.length === 0 ? (
         <CardComponent>
           <CardBody className="p-12 text-center">
-            <Calendar className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-            <h3 className="text-xl font-semibold text-[#003300] mb-2">
+            <Calendar className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+            <h3 className="text-xl font-semibold text-ink mb-2">
               No Session Requests Found
             </h3>
-            <p className="text-[#003300]/60">
+            <p className="text-ink/60">
               {statusFilter !== 'all' ? 'Try adjusting your filters' : 'No requests yet'}
             </p>
           </CardBody>
@@ -208,43 +208,43 @@ export default function SessionRequests() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-semibold text-[#003300] text-lg">
+                        <h3 className="font-semibold text-ink text-lg">
                           {user?.name || 'Unknown User'}
                         </h3>
                         {getStatusBadge(request.status)}
                       </div>
                       {user?.email && (
-                        <p className="text-sm text-[#003300]/60 mb-4">{user.email}</p>
+                        <p className="text-sm text-ink/60 mb-4">{user.email}</p>
                       )}
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Date</p>
-                          <p className="font-semibold text-[#003300]">
+                          <p className="text-xs text-ink/60 mb-1">Date</p>
+                          <p className="font-semibold text-ink">
                             {formatDate(request.date)}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Time</p>
-                          <p className="font-semibold text-[#003300]">
+                          <p className="text-xs text-ink/60 mb-1">Time</p>
+                          <p className="font-semibold text-ink">
                             {request.startTime} - {endTime}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Duration</p>
-                          <p className="font-semibold text-[#003300]">
+                          <p className="text-xs text-ink/60 mb-1">Duration</p>
+                          <p className="font-semibold text-ink">
                             {request.durationHours} hrs
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">Status</p>
-                          <p className="font-semibold text-[#003300]">{request.status}</p>
+                          <p className="text-xs text-ink/60 mb-1">Status</p>
+                          <p className="font-semibold text-ink">{request.status}</p>
                         </div>
                       </div>
 
                       {request.description && (
-                        <div className="bg-[#003300]/5 rounded-lg p-3 mb-4">
-                          <p className="text-sm text-[#003300]/80">{request.description}</p>
+                        <div className="bg-ink/5 rounded-lg p-3 mb-4">
+                          <p className="text-sm text-ink/80">{request.description}</p>
                         </div>
                       )}
 
@@ -309,18 +309,18 @@ export default function SessionRequests() {
         title="Decline Session Request"
       >
         <div className="space-y-4">
-          <p className="text-[#003300]">
+          <p className="text-ink">
             Are you sure you want to decline this session request?
           </p>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-2">
+            <label className="block text-sm font-medium text-ink mb-2">
               Reason (Optional)
             </label>
             <textarea
               value={declineReason}
               onChange={(e) => setDeclineReason(e.target.value)}
               rows={3}
-              className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder-[#003300]/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+              className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink placeholder-ink/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
               placeholder="Enter reason for declining..."
             />
           </div>

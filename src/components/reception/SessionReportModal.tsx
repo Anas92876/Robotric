@@ -130,16 +130,16 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Session Info */}
-        <div className="bg-[#003300]/5 rounded-lg p-4 mb-4">
-          <h4 className="font-semibold text-[#003300] mb-2">Session Details</h4>
+        <div className="bg-ink/5 rounded-lg p-4 mb-4">
+          <h4 className="font-semibold text-ink mb-2">Session Details</h4>
           <div className="space-y-1 text-sm">
-            <p className="text-[#003300]/80">
+            <p className="text-ink/80">
               <strong>Student:</strong> {user?.name || 'Unknown'}
             </p>
-            <p className="text-[#003300]/80">
+            <p className="text-ink/80">
               <strong>Date:</strong> {new Date(session.date).toLocaleDateString()}
             </p>
-            <p className="text-[#003300]/80">
+            <p className="text-ink/80">
               <strong>Time:</strong> {session.startTime} ({session.durationHours} hrs)
             </p>
           </div>
@@ -155,7 +155,7 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
 
         {/* Attendance Toggle */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-3">
+          <label className="block text-sm font-medium text-ink mb-3">
             Attendance <span className="text-red-500">*</span>
           </label>
           <div className="flex items-center gap-4">
@@ -165,11 +165,11 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
                 name="attendance"
                 checked={formData.attendance === true}
                 onChange={() => setFormData((prev) => ({ ...prev, attendance: true }))}
-                className="w-4 h-4 text-primary border-[#003300]/30 focus:ring-primary/20"
+                className="w-4 h-4 text-primary border-ink/30 focus:ring-primary/20"
               />
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-sm text-[#003300]">Attended</span>
+                <span className="text-sm text-ink">Attended</span>
               </div>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
@@ -178,11 +178,11 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
                 name="attendance"
                 checked={formData.attendance === false}
                 onChange={() => setFormData((prev) => ({ ...prev, attendance: false }))}
-                className="w-4 h-4 text-primary border-[#003300]/30 focus:ring-primary/20"
+                className="w-4 h-4 text-primary border-ink/30 focus:ring-primary/20"
               />
               <div className="flex items-center gap-2">
                 <XCircle className="w-4 h-4 text-red-600" />
-                <span className="text-sm text-[#003300]">No Show</span>
+                <span className="text-sm text-ink">No Show</span>
               </div>
             </label>
           </div>
@@ -190,7 +190,7 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
 
         {/* Notes */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Notes <span className="text-red-500">*</span>
           </label>
           <textarea
@@ -202,10 +202,10 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
               }
             }}
             rows={6}
-            className={`w-full px-4 py-2.5 rounded-lg border bg-white text-[#003300] placeholder-[#003300]/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${
+            className={`w-full px-4 py-2.5 rounded-lg border bg-white text-ink placeholder-ink/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${
               errors.notes
                 ? 'border-red-500'
-                : 'border-[#003300]/20 hover:border-primary/40'
+                : 'border-ink/20 hover:border-primary/40'
             }`}
             placeholder="Enter detailed notes about the session..."
             maxLength={5000}
@@ -213,14 +213,14 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
           {errors.notes && (
             <p className="text-red-500 text-xs mt-1">{errors.notes}</p>
           )}
-          <p className="text-xs text-[#003300]/50 mt-1">
+          <p className="text-xs text-ink/50 mt-1">
             {formData.notes.length}/5000 characters
           </p>
         </div>
 
         {/* PDF Upload */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             PDF Report (Optional)
           </label>
           {!formData.pdf ? (
@@ -233,15 +233,15 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
                 border-2 border-dashed rounded-xl p-8 text-center transition-all cursor-pointer
                 ${isDragging
                   ? 'border-primary bg-primary/5'
-                  : 'border-[#003300]/20 hover:border-primary/40 bg-[#003300]/5'
+                  : 'border-ink/20 hover:border-primary/40 bg-ink/5'
                 }
               `}
             >
-              <Upload className="w-8 h-8 mx-auto text-[#003300]/40 mb-2" />
-              <p className="text-sm text-[#003300]/60 mb-1">
+              <Upload className="w-8 h-8 mx-auto text-ink/40 mb-2" />
+              <p className="text-sm text-ink/60 mb-1">
                 Click to upload or drag and drop
               </p>
-              <p className="text-xs text-[#003300]/50">
+              <p className="text-xs text-ink/50">
                 PDF only, max 10MB
               </p>
               <input
@@ -253,14 +253,14 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
               />
             </div>
           ) : (
-            <div className="border border-[#003300]/20 rounded-lg p-4 bg-[#003300]/5 flex items-center justify-between">
+            <div className="border border-ink/20 rounded-lg p-4 bg-ink/5 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <FileText className="w-5 h-5 text-primary" />
                 <div>
-                  <p className="text-sm font-medium text-[#003300]">
+                  <p className="text-sm font-medium text-ink">
                     {formData.pdf.name}
                   </p>
-                  <p className="text-xs text-[#003300]/60">
+                  <p className="text-xs text-ink/60">
                     {formatFileSize(formData.pdf.size)}
                   </p>
                 </div>
@@ -276,7 +276,7 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
           )}
         </div>
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button variant="outline" onClick={onClose} disabled={isSubmitting}>
             Cancel
           </Button>

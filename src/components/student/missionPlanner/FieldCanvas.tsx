@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import type { MouseEvent, PointerEvent } from 'react';
 import type { Point, Pose } from '../../../utils/missionPlanner';
 
-const TEXT_PRIMARY = '#003300';
+const TEXT_PRIMARY = '#0f1f33';
 const ACCENT = '#7C3AED';
 
 interface FieldCanvasProps {
@@ -104,7 +104,7 @@ export function FieldCanvas({
       <svg
         ref={svgRef}
         viewBox={`0 0 ${fieldWidth} ${fieldHeight}`}
-        className="w-full h-auto rounded-xl border border-[#003300]/10 bg-[#faf8f0] touch-none select-none cursor-crosshair"
+        className="w-full h-auto rounded-xl border border-ink/10 bg-[#faf8f0] touch-none select-none cursor-crosshair"
         onClick={handleBackgroundClick}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -124,14 +124,14 @@ export function FieldCanvas({
 
         {/* Grid */}
         {vLines.map((x) => (
-          <line key={`v-${x}`} x1={x} y1={0} x2={x} y2={fieldHeight} stroke="#003300" strokeOpacity={backgroundImage ? 0.12 : 0.06} strokeWidth={fieldWidth * 0.0015} />
+          <line key={`v-${x}`} x1={x} y1={0} x2={x} y2={fieldHeight} stroke="#0f1f33" strokeOpacity={backgroundImage ? 0.12 : 0.06} strokeWidth={fieldWidth * 0.0015} />
         ))}
         {hLines.map((y) => (
-          <line key={`h-${y}`} x1={0} y1={y} x2={fieldWidth} y2={y} stroke="#003300" strokeOpacity={backgroundImage ? 0.12 : 0.06} strokeWidth={fieldWidth * 0.0015} />
+          <line key={`h-${y}`} x1={0} y1={y} x2={fieldWidth} y2={y} stroke="#0f1f33" strokeOpacity={backgroundImage ? 0.12 : 0.06} strokeWidth={fieldWidth * 0.0015} />
         ))}
 
         {/* Border */}
-        <rect x={0} y={0} width={fieldWidth} height={fieldHeight} fill="none" stroke="#003300" strokeOpacity={0.15} strokeWidth={fieldWidth * 0.003} />
+        <rect x={0} y={0} width={fieldWidth} height={fieldHeight} fill="none" stroke="#0f1f33" strokeOpacity={0.15} strokeWidth={fieldWidth * 0.003} />
 
         {/* Path */}
         {waypoints.length > 0 && (
@@ -170,7 +170,7 @@ export function FieldCanvas({
           />
         </g>
       </svg>
-      <p className={`text-xs mt-2 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#00330080' }}>
+      <p className={`text-xs mt-2 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f3380' }}>
         {isRTL
           ? 'انقر على الملعب لإضافة نقطة هدف. اسحب الروبوت أو النقاط لتعديل مواضعها.'
           : 'Click the field to add a waypoint. Drag the robot or points to fine-tune their positions.'}

@@ -89,7 +89,7 @@ function Modal({
                 className={cn(
                   'card-light w-full transform overflow-hidden rounded-xl sm:rounded-2xl',
                   'bg-white',
-                  'border border-[#003300]/20',
+                  'border border-ink/20',
                   'p-4 sm:p-6 text-left align-middle shadow-lg hover:shadow-2xl transition-all duration-500',
                   'relative group',
                   sizes[size]
@@ -97,7 +97,7 @@ function Modal({
                 style={{ zIndex: 1050 }}
               >
                 {/* Animated Background Gradient on Hover */}
-                <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
+                <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
                 
                 {/* Shimmer Effect */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
@@ -112,13 +112,13 @@ function Modal({
                           <Dialog.Title
                             as="h3"
                             className="text-xl font-semibold"
-                            style={{ color: '#003300' }}
+                            style={{ color: '#0f1f33' }}
                           >
                             {title}
                           </Dialog.Title>
                         )}
                         {description && (
-                          <Dialog.Description className="mt-1 text-sm" style={{ color: '#003300' + 'CC' }}>
+                          <Dialog.Description className="mt-1 text-sm" style={{ color: '#0f1f33' + 'CC' }}>
                             {description}
                           </Dialog.Description>
                         )}
@@ -127,15 +127,15 @@ function Modal({
                         <button
                           type="button"
                           className="ml-4 rounded-lg p-1.5 transition-colors"
-                          style={{ color: '#003300' + 'CC' }}
+                          style={{ color: '#0f1f33' + 'CC' }}
                           onClick={onClose}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = '#003300' + '10';
-                            e.currentTarget.style.color = '#003300';
+                            e.currentTarget.style.backgroundColor = '#0f1f33' + '10';
+                            e.currentTarget.style.color = '#0f1f33';
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.backgroundColor = 'transparent';
-                            e.currentTarget.style.color = '#003300' + 'CC';
+                            e.currentTarget.style.color = '#0f1f33' + 'CC';
                           }}
                         >
                           <X className="w-5 h-5" />
@@ -145,7 +145,7 @@ function Modal({
                   )}
 
                   {/* Content */}
-                  <div style={{ color: '#003300', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>{children}</div>
+                  <div style={{ color: '#0f1f33', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>{children}</div>
 
                   {/* Footer */}
                   {footer && (
@@ -156,8 +156,8 @@ function Modal({
                 </div>
 
                 {/* Corner Decoration */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#cccc99]/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-glow/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -207,8 +207,8 @@ function ConfirmDialog({
         <div className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full ${iconStyles[variant]} mb-4`}>
           <AlertTriangle className="h-6 w-6" aria-hidden="true" />
         </div>
-        <h3 className="text-lg font-semibold mb-2" style={{ color: '#003300' }}>{title}</h3>
-        <p className="text-sm mb-6" style={{ color: '#003300' + 'CC' }}>{description}</p>
+        <h3 className="text-lg font-semibold mb-2" style={{ color: '#0f1f33' }}>{title}</h3>
+        <p className="text-sm mb-6" style={{ color: '#0f1f33' + 'CC' }}>{description}</p>
         <div className="flex gap-3 w-full">
            {/* Primary Button */}
            {primaryAction === 'confirm' ? (
@@ -242,12 +242,12 @@ function ConfirmDialog({
                disabled={isLoading}
                className="flex-1 px-4 py-2 rounded-lg border transition-colors disabled:opacity-50 font-medium justify-center"
                style={{ 
-                 borderColor: '#003300' + '30',
-                 color: '#003300',
+                 borderColor: '#0f1f33' + '30',
+                 color: '#0f1f33',
                  backgroundColor: 'transparent'
                }}
                onMouseEnter={(e) => {
-                 e.currentTarget.style.backgroundColor = '#003300' + '10';
+                 e.currentTarget.style.backgroundColor = '#0f1f33' + '10';
                }}
                onMouseLeave={(e) => {
                  e.currentTarget.style.backgroundColor = 'transparent';
@@ -265,13 +265,13 @@ function ConfirmDialog({
                  variant === 'danger' ? 'border-red-200 text-red-600 hover:bg-red-50' : ''
                )}
                style={variant !== 'danger' ? {
-                 borderColor: '#003300' + '30',
-                 color: '#003300',
+                 borderColor: '#0f1f33' + '30',
+                 color: '#0f1f33',
                  backgroundColor: 'transparent'
                } : {}}
                onMouseEnter={(e) => {
                  if (variant !== 'danger') {
-                   e.currentTarget.style.backgroundColor = '#003300' + '10';
+                   e.currentTarget.style.backgroundColor = '#0f1f33' + '10';
                  }
                }}
                onMouseLeave={(e) => {

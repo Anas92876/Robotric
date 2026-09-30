@@ -301,7 +301,7 @@ export const UserForm: React.FC<UserFormProps> = ({
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Input */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-[#003300] mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-ink mb-2">
             Full Name <span className="text-red-400">*</span>
           </label>
           <Input
@@ -321,7 +321,7 @@ export const UserForm: React.FC<UserFormProps> = ({
 
         {/* Email Input */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-[#003300] mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-ink mb-2">
             Email Address <span className="text-red-400">*</span>
           </label>
           <Input
@@ -341,9 +341,9 @@ export const UserForm: React.FC<UserFormProps> = ({
 
         {/* Password Input (Create mode only or optional in edit) */}
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-[#003300] mb-2">
+          <label htmlFor="password" className="block text-sm font-medium text-ink mb-2">
             Password {mode === 'create' && <span className="text-red-400">*</span>}
-            {mode === 'edit' && <span className="text-[#003300]/50 text-xs ml-1">(Leave blank to keep current)</span>}
+            {mode === 'edit' && <span className="text-ink/50 text-xs ml-1">(Leave blank to keep current)</span>}
           </label>
           <Input
             id="password"
@@ -362,7 +362,7 @@ export const UserForm: React.FC<UserFormProps> = ({
 
         {/* Role Select */}
         <div>
-          <label htmlFor="role" className="block text-sm font-medium text-[#003300] mb-2">
+          <label htmlFor="role" className="block text-sm font-medium text-ink mb-2">
             Role <span className="text-red-400">*</span>
           </label>
           <select
@@ -373,7 +373,7 @@ export const UserForm: React.FC<UserFormProps> = ({
             disabled={isSubmitting}
             className={`w-full px-4 py-2 rounded-lg bg-white border ${
               errors.role ? 'border-red-500' : 'border-primary/20'
-            } text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
+            } text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-colors`}
           >
             {ROLE_OPTIONS.filter((o) => !o.privileged || canManagePrivileged || o.value === formData.role).map((o) => (
               <option key={o.value} value={o.value} disabled={o.privileged && !canManagePrivileged}>
@@ -388,8 +388,8 @@ export const UserForm: React.FC<UserFormProps> = ({
 
         {/* Phone Input (Optional) */}
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-[#003300] mb-2">
-            Phone Number <span className="text-[#003300]/50 text-xs">(Optional)</span>
+          <label htmlFor="phone" className="block text-sm font-medium text-ink mb-2">
+            Phone Number <span className="text-ink/50 text-xs">(Optional)</span>
           </label>
           <Input
             id="phone"
@@ -436,8 +436,8 @@ export const UserForm: React.FC<UserFormProps> = ({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

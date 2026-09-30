@@ -780,12 +780,12 @@ const EnrollmentManagement: React.FC = () => {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {t('dashboardReception:enrollmentManagement.title', 'Enrollment Management')}
           </h1>
-          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>
+          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardReception:enrollmentManagement.subtitle', 'Register students in courses and manage enrollments')}
           </p>
         </div>
@@ -795,7 +795,7 @@ const EnrollmentManagement: React.FC = () => {
             variant="outline"
             leftIcon={<Settings className="w-5 h-5" />}
             onClick={() => setIsExchangeRateModalOpen(true)}
-            className="border-primary/30 hover:bg-primary/5 text-[#003300]"
+            className="border-primary/30 hover:bg-primary/5 text-ink"
           >
             Exchange Rate
           </Button>
@@ -871,7 +871,7 @@ const EnrollmentManagement: React.FC = () => {
                   setSearchInput(value);
                 }}
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] placeholder-[#003300]/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
+                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-ink placeholder-ink/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
               />
             </div>
           </div>
@@ -891,7 +891,7 @@ const EnrollmentManagement: React.FC = () => {
             variant={showFilters ? 'primary' : 'outline'}
             leftIcon={<Filter className="w-4 h-4" />}
             onClick={() => setShowFilters(!showFilters)}
-            className={`px-4 shadow-sm ${showFilters ? 'bg-primary border-primary text-white' : 'border-primary/30 hover:bg-primary/5 text-[#003300]'}`}
+            className={`px-4 shadow-sm ${showFilters ? 'bg-primary border-primary text-white' : 'border-primary/30 hover:bg-primary/5 text-ink'}`}
           >
             Filters
           </Button>
@@ -901,7 +901,7 @@ const EnrollmentManagement: React.FC = () => {
             variant="ghost"
             leftIcon={<RefreshCw className="w-4 h-4" />}
             onClick={fetchEnrollments}
-            className="text-[#003300]/70 hover:text-[#003300] hover:bg-primary/5 px-4"
+            className="text-ink/70 hover:text-ink hover:bg-primary/5 px-4"
           >
             <span className="hidden lg:inline">Refresh</span>
           </Button>
@@ -925,7 +925,7 @@ const EnrollmentManagement: React.FC = () => {
                   <select
                     value={courseFilter}
                     onChange={(e) => handleCourseFilterChange(e.target.value)}
-                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
                   >
                     <option value="" className="bg-white">All Courses</option>
                     {/* Single courses */}
@@ -945,7 +945,7 @@ const EnrollmentManagement: React.FC = () => {
                     ))}
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -957,14 +957,14 @@ const EnrollmentManagement: React.FC = () => {
                   <select
                     value={statusFilter}
                     onChange={(e) => handleStatusFilterChange(e.target.value)}
-                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
                   >
                     <option value="" className="bg-white">All Status</option>
                     <option value="active" className="bg-white">Active</option>
                     <option value="inactive" className="bg-white">Inactive</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -976,7 +976,7 @@ const EnrollmentManagement: React.FC = () => {
                   <select
                     value={paymentFilter}
                     onChange={(e) => handlePaymentFilterChange(e.target.value)}
-                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
                   >
                     <option value="" className="bg-white">All Payments</option>
                     <option value="paid" className="bg-white">Paid In Full</option>
@@ -984,7 +984,7 @@ const EnrollmentManagement: React.FC = () => {
                     <option value="unpaid" className="bg-white">Unpaid</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -996,14 +996,14 @@ const EnrollmentManagement: React.FC = () => {
                   <select
                     value={discountFilter}
                     onChange={(e) => handleDiscountFilterChange(e.target.value)}
-                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
                   >
                     <option value="" className="bg-white">All Discounts</option>
                     <option value="true" className="bg-white">Discounted</option>
                     <option value="false" className="bg-white">Standard Price</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -1015,7 +1015,7 @@ const EnrollmentManagement: React.FC = () => {
                   <select
                     value={transportationFilter}
                     onChange={(e) => handleTransportationFilterChange(e.target.value)}
-                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                    className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
                   >
                     <option value="" className="bg-white">All Transportation</option>
                     <option value="enabled" className="bg-white">With Transportation</option>
@@ -1024,7 +1024,7 @@ const EnrollmentManagement: React.FC = () => {
                     <option value="pending" className="bg-white">Transportation Pending</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -1037,7 +1037,7 @@ const EnrollmentManagement: React.FC = () => {
                 <div className="flex justify-end pt-2">
                   <button
                     onClick={handleClearFilters}
-                    className="text-sm text-[#003300]/60 hover:text-[#003300] transition-colors flex items-center gap-2 hover:bg-primary/5 px-3 py-1.5 rounded-lg"
+                    className="text-sm text-ink/60 hover:text-ink transition-colors flex items-center gap-2 hover:bg-primary/5 px-3 py-1.5 rounded-lg"
                   >
                     <XCircle className="w-4 h-4" />
                     Clear All Filters
@@ -1079,8 +1079,8 @@ const EnrollmentManagement: React.FC = () => {
             onClick={() => setActiveTab('enrollments')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
               activeTab === 'enrollments'
-                ? 'bg-[#003300] text-white shadow-sm'
-                : 'text-[#003300]/70 hover:text-[#003300] hover:bg-[#003300]/5'
+                ? 'bg-ink text-white shadow-sm'
+                : 'text-ink/70 hover:text-ink hover:bg-ink/5'
             }`}
           >
             <BookOpen className="w-4 h-4" />
@@ -1157,8 +1157,8 @@ const EnrollmentManagement: React.FC = () => {
 
                 {/* Pagination */}
                 {pagination && pagination.pages > 1 && (
-                  <div className={`flex items-center justify-between px-6 py-4 border-t transition-colors duration-300 ${isRTL ? 'flex-row-reverse' : ''}`} style={{ borderColor: '#003300' + '20' }}>
-                    <p className="text-sm transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+                  <div className={`flex items-center justify-between px-6 py-4 border-t transition-colors duration-300 ${isRTL ? 'flex-row-reverse' : ''}`} style={{ borderColor: '#0f1f33' + '20' }}>
+                    <p className="text-sm transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
                       Showing {enrollments.length} of {pagination.total} enrollments
                     </p>
 
@@ -1168,13 +1168,13 @@ const EnrollmentManagement: React.FC = () => {
                         size="sm"
                         onClick={() => handlePageChange(pagination.page - 1)}
                         disabled={pagination.page === 1}
-                        className="border-[#003300]/20 hover:border-[#003300]/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                        style={{ color: '#003300' }}
+                        className="border-ink/20 hover:border-ink/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ color: '#0f1f33' }}
                       >
                         Previous
                       </Button>
 
-                      <span className="text-sm px-4 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+                      <span className="text-sm px-4 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
                         Page {pagination.page} of {pagination.pages}
                       </span>
 
@@ -1183,8 +1183,8 @@ const EnrollmentManagement: React.FC = () => {
                         size="sm"
                         onClick={() => handlePageChange(pagination.page + 1)}
                         disabled={pagination.page === pagination.pages}
-                        className="border-[#003300]/20 hover:border-[#003300]/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                        style={{ color: '#003300' }}
+                        className="border-ink/20 hover:border-ink/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ color: '#0f1f33' }}
                       >
                         Next
                       </Button>
@@ -1633,21 +1633,21 @@ const EnrollmentManagement: React.FC = () => {
         {transportationPaymentEnrollment && (
           <div className="space-y-4">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-[#003300]/70">
+              <p className="text-sm text-ink/70">
                 <span className="font-semibold">Student:</span> {transportationPaymentEnrollment.student?.name}
               </p>
-              <p className="text-sm text-[#003300]/70">
+              <p className="text-sm text-ink/70">
                 <span className="font-semibold">Course:</span> {transportationPaymentEnrollment.course?.title}
               </p>
               {transportationPaymentEnrollment.transportation && (
                 <div className="mt-2 pt-2 border-t border-blue-200">
-                  <p className="text-sm text-[#003300]/70">
+                  <p className="text-sm text-ink/70">
                     <span className="font-semibold">Transportation Total:</span> {transportationPaymentEnrollment.transportation.totalAmount.toLocaleString()} S.P.
                   </p>
-                  <p className="text-sm text-[#003300]/70">
+                  <p className="text-sm text-ink/70">
                     <span className="font-semibold">Paid:</span> {transportationPaymentEnrollment.transportation.paidAmount.toLocaleString()} S.P.
                   </p>
-                  <p className="text-sm text-[#003300]/70">
+                  <p className="text-sm text-ink/70">
                     <span className="font-semibold">Remaining:</span> {transportationPaymentEnrollment.transportation.remainingAmount.toLocaleString()} S.P.
                   </p>
                 </div>
@@ -1655,7 +1655,7 @@ const EnrollmentManagement: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-2">
+              <label className="block text-sm font-medium text-ink mb-2">
                 Payment Amount (S.P.) <span className="text-red-400">*</span>
               </label>
               <Input
@@ -1671,14 +1671,14 @@ const EnrollmentManagement: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-2">
+              <label className="block text-sm font-medium text-ink mb-2">
                 Payment Method <span className="text-red-400">*</span>
               </label>
               <select
                 value={transportationPaymentMethod}
                 onChange={(e) => setTransportationPaymentMethod(e.target.value)}
                 disabled={isRecordingTransportationPayment}
-                className="w-full px-4 py-2 rounded-lg bg-white border border-primary/20 text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-primary/20 text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
               >
                 <option value="cash">Cash</option>
                 <option value="card">Card</option>
@@ -1689,8 +1689,8 @@ const EnrollmentManagement: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-2">
-                Notes <span className="text-[#003300]/50 text-xs">(Optional)</span>
+              <label className="block text-sm font-medium text-ink mb-2">
+                Notes <span className="text-ink/50 text-xs">(Optional)</span>
               </label>
               <textarea
                 value={transportationPaymentNotes}
@@ -1698,7 +1698,7 @@ const EnrollmentManagement: React.FC = () => {
                 placeholder="Any notes about this payment..."
                 disabled={isRecordingTransportationPayment}
                 rows={3}
-                className="w-full px-4 py-2 rounded-lg bg-white border border-primary/20 text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-primary/20 text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none"
               />
             </div>
 
@@ -1746,17 +1746,17 @@ const EnrollmentManagement: React.FC = () => {
         {addTransportationEnrollment && (
           <div className="space-y-4">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-[#003300]/70">
+              <p className="text-sm text-ink/70">
                 <span className="font-semibold">Student:</span> {addTransportationEnrollment.student?.name}
               </p>
-              <p className="text-sm text-[#003300]/70">
+              <p className="text-sm text-ink/70">
                 <span className="font-semibold">Course:</span> {addTransportationEnrollment.course?.title}
               </p>
             </div>
 
             {/* Transportation Total Amount */}
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-2">
+              <label className="block text-sm font-medium text-ink mb-2">
                 Transportation Total Amount (S.P.) <span className="text-red-400">*</span>
               </label>
               <div className="relative">
@@ -1776,8 +1776,8 @@ const EnrollmentManagement: React.FC = () => {
 
             {/* Transportation Paid Now */}
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-2">
-                Transportation Paid Now (S.P.) <span className="text-[#003300]/50 text-xs">(Optional)</span>
+              <label className="block text-sm font-medium text-ink mb-2">
+                Transportation Paid Now (S.P.) <span className="text-ink/50 text-xs">(Optional)</span>
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-2 text-gray-500 font-bold">S.P.</span>
@@ -1798,8 +1798,8 @@ const EnrollmentManagement: React.FC = () => {
             {parseFloat(transportationPaidNow || '0') > 0 && (
               <>
                 <div>
-                  <label className="block text-sm font-medium text-[#003300] mb-2">
-                    Payment Method <span className="text-[#003300]/50 text-xs">(Optional)</span>
+                  <label className="block text-sm font-medium text-ink mb-2">
+                    Payment Method <span className="text-ink/50 text-xs">(Optional)</span>
                   </label>
                   <select
                     value={transportationAddPaymentMethod}
@@ -1816,8 +1816,8 @@ const EnrollmentManagement: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#003300] mb-2">
-                    Notes <span className="text-[#003300]/50 text-xs">(Optional)</span>
+                  <label className="block text-sm font-medium text-ink mb-2">
+                    Notes <span className="text-ink/50 text-xs">(Optional)</span>
                   </label>
                   <textarea
                     value={transportationAddNotes}
@@ -1839,7 +1839,7 @@ const EnrollmentManagement: React.FC = () => {
               return remaining > 0 ? (
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <label className="block text-sm font-medium text-[#003300]">
+                    <label className="block text-sm font-medium text-ink">
                       Transportation Installments ({Math.round(remaining).toLocaleString()} S.P.) <span className="text-red-400">*</span>
                     </label>
                     <Button

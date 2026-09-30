@@ -144,7 +144,7 @@ export default function TrainerSessionDetail() {
         <div className="flex items-start justify-between mt-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-3xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{session.title}</h1>
+              <h1 className="text-3xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{session.title}</h1>
               <Badge variant={getStatusColor(session.status) as any}>
                 {session.status.replace("_", " ")}
               </Badge>

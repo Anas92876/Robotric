@@ -20,16 +20,16 @@ import {
 } from "../../hooks/clo/useCLOTrainingContent";
 
 /* ── design tokens ────────────────────────────────────────────── */
-const G     = "#003300";
-const G10   = "rgba(0,51,0,0.10)";
-const G6    = "rgba(0,51,0,0.06)";
-const G3    = "rgba(0,51,0,0.03)";
-const CREAM = "#cccc99";
+const G     = "#0f1f33";
+const G10   = "rgba(15, 31, 51,0.10)";
+const G6    = "rgba(15, 31, 51,0.06)";
+const G3    = "rgba(15, 31, 51,0.03)";
+const CREAM = "#3fd360";
 
 const inputCls    = `w-full px-3 py-2.5 text-sm rounded-xl border bg-white text-[${G}] placeholder-[${G}]/30 focus:outline-none transition-all focus:ring-2 focus:ring-[${G}]/20 border-[${G}]/15 focus:border-[${G}]/40`;
-const labelCls    = "block text-[11px] font-bold text-[#003300]/50 mb-1.5 uppercase tracking-wider";
-const sectionHead = "text-sm font-black text-[#003300] mb-3 flex items-center gap-2";
-const cardCls     = "bg-white rounded-2xl border border-[#003300]/10 overflow-hidden shadow-sm";
+const labelCls    = "block text-[11px] font-bold text-ink/50 mb-1.5 uppercase tracking-wider";
+const sectionHead = "text-sm font-black text-ink mb-3 flex items-center gap-2";
+const cardCls     = "bg-white rounded-2xl border border-ink/10 overflow-hidden shadow-sm";
 const pill = (active: boolean) =>
   `inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${
     active ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-amber-50 text-amber-700 border-amber-200"
@@ -79,11 +79,11 @@ function ImageGrid({ images, uploading, deletingId, error, onUploadClick, onDele
       {error && <p className="text-xs text-red-500 bg-red-50 px-3 py-1.5 rounded-lg">{error}</p>}
       <div className="flex flex-wrap gap-2 items-start">
         {images.map(img => (
-          <div key={img.publicId} className="relative group w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border border-[#003300]/10 flex-shrink-0">
+          <div key={img.publicId} className="relative group w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border border-ink/10 flex-shrink-0">
             <img src={img.url} alt="" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100">
               <button type="button" onClick={() => onPreview(img.url)} className="p-1 bg-white/90 rounded-full cursor-pointer hover:bg-white transition-colors">
-                <ZoomIn className="w-3 h-3 text-[#003300]" />
+                <ZoomIn className="w-3 h-3 text-ink" />
               </button>
               <button type="button" onClick={() => onDelete(img.publicId)} disabled={deletingId === img.publicId} className="p-1 bg-white/90 rounded-full cursor-pointer hover:bg-red-50 transition-colors">
                 {deletingId === img.publicId ? <Loader2 className="w-3 h-3 animate-spin text-red-500" /> : <X className="w-3 h-3 text-red-500" />}
@@ -95,14 +95,14 @@ function ImageGrid({ images, uploading, deletingId, error, onUploadClick, onDele
           type="button"
           onClick={onUploadClick}
           disabled={uploading}
-          className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-dashed border-[#003300]/20 flex flex-col items-center justify-center gap-0.5 hover:border-[#003300]/40 hover:bg-[#003300]/3 transition-all cursor-pointer disabled:opacity-40 flex-shrink-0"
+          className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-dashed border-ink/20 flex flex-col items-center justify-center gap-0.5 hover:border-ink/40 hover:bg-ink/3 transition-all cursor-pointer disabled:opacity-40 flex-shrink-0"
         >
-          {uploading ? <Loader2 className="w-4 h-4 animate-spin text-[#003300]/40" /> : <ImagePlus className="w-4 h-4 text-[#003300]/30" />}
-          {!uploading && <span className="text-[9px] font-bold text-[#003300]/30">Add</span>}
+          {uploading ? <Loader2 className="w-4 h-4 animate-spin text-ink/40" /> : <ImagePlus className="w-4 h-4 text-ink/30" />}
+          {!uploading && <span className="text-[9px] font-bold text-ink/30">Add</span>}
         </button>
       </div>
       {images.length === 0 && !uploading && (
-        <p className="text-[11px] text-[#003300]/30">{emptyLabel ?? "No images yet."}</p>
+        <p className="text-[11px] text-ink/30">{emptyLabel ?? "No images yet."}</p>
       )}
     </div>
   );
@@ -185,11 +185,11 @@ function DeptCoverManager({ deptIndex, coverImage, onChanged }: {
       <input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={e => upload(e.target.files)} />
       {error && <p className="text-xs text-red-500 bg-red-50 px-3 py-1.5 rounded-lg">{error}</p>}
       {coverImage.url ? (
-        <div className="relative group rounded-xl overflow-hidden border border-[#003300]/10" style={{ height: 100 }}>
+        <div className="relative group rounded-xl overflow-hidden border border-ink/10" style={{ height: 100 }}>
           <img src={coverImage.url} alt="cover" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-            <button type="button" onClick={() => setLightbox(true)} className="p-1.5 bg-white/90 rounded-full cursor-pointer"><ZoomIn className="w-4 h-4 text-[#003300]" /></button>
-            <button type="button" onClick={() => inputRef.current?.click()} className="p-1.5 bg-white/90 rounded-full cursor-pointer"><ImagePlus className="w-4 h-4 text-[#003300]" /></button>
+            <button type="button" onClick={() => setLightbox(true)} className="p-1.5 bg-white/90 rounded-full cursor-pointer"><ZoomIn className="w-4 h-4 text-ink" /></button>
+            <button type="button" onClick={() => inputRef.current?.click()} className="p-1.5 bg-white/90 rounded-full cursor-pointer"><ImagePlus className="w-4 h-4 text-ink" /></button>
             <button type="button" onClick={remove} disabled={deleting} className="p-1.5 bg-white/90 rounded-full cursor-pointer">
               {deleting ? <Loader2 className="w-4 h-4 animate-spin text-red-500" /> : <Trash2 className="w-4 h-4 text-red-500" />}
             </button>
@@ -197,9 +197,9 @@ function DeptCoverManager({ deptIndex, coverImage, onChanged }: {
         </div>
       ) : (
         <button type="button" onClick={() => inputRef.current?.click()} disabled={uploading}
-          className="w-full h-20 rounded-xl border-2 border-dashed border-[#003300]/15 flex flex-col items-center justify-center gap-1 hover:border-[#003300]/30 hover:bg-[#003300]/3 transition-all cursor-pointer disabled:opacity-40">
-          {uploading ? <Loader2 className="w-5 h-5 animate-spin text-[#003300]/40" /> : <ImagePlus className="w-5 h-5 text-[#003300]/25" />}
-          <span className="text-[11px] font-bold text-[#003300]/30">{uploading ? "Uploading…" : "Upload cover image"}</span>
+          className="w-full h-20 rounded-xl border-2 border-dashed border-ink/15 flex flex-col items-center justify-center gap-1 hover:border-ink/30 hover:bg-ink/3 transition-all cursor-pointer disabled:opacity-40">
+          {uploading ? <Loader2 className="w-5 h-5 animate-spin text-ink/40" /> : <ImagePlus className="w-5 h-5 text-ink/25" />}
+          <span className="text-[11px] font-bold text-ink/30">{uploading ? "Uploading…" : "Upload cover image"}</span>
         </button>
       )}
       {lightbox && <Lightbox src={coverImage.url} onClose={() => setLightbox(false)} />}
@@ -287,7 +287,7 @@ function ProgramForm({ initial, showHours, yearRoundMode, onSave, onCancel }: Pr
   const canSave = form.title.trim() && form.age.trim();
 
   return (
-    <div className="rounded-2xl border-2 border-[#003300]/15 bg-[#003300]/3 p-3 sm:p-4 space-y-3">
+    <div className="rounded-2xl border-2 border-ink/15 bg-ink/3 p-3 sm:p-4 space-y-3">
 
       {/* row 1: title + age */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -349,9 +349,9 @@ function ProgramForm({ initial, showHours, yearRoundMode, onSave, onCancel }: Pr
         {(form.whatYouLearn ?? []).length > 0 && (
           <ul className="space-y-1.5">
             {(form.whatYouLearn ?? []).map((item, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-xs bg-white border border-[#003300]/10 rounded-lg px-3 py-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#003300]/30 flex-shrink-0 mt-1" />
-                <span className="flex-1 text-[#003300]/80 break-words min-w-0">{item}</span>
+              <li key={idx} className="flex items-start gap-2 text-xs bg-white border border-ink/10 rounded-lg px-3 py-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-ink/30 flex-shrink-0 mt-1" />
+                <span className="flex-1 text-ink/80 break-words min-w-0">{item}</span>
                 <button type="button" onClick={() => set("whatYouLearn", (form.whatYouLearn ?? []).filter((_, i) => i !== idx))}
                   className="text-red-400 hover:text-red-600 cursor-pointer flex-shrink-0 mt-0.5"><X className="w-3 h-3" /></button>
               </li>
@@ -364,18 +364,18 @@ function ProgramForm({ initial, showHours, yearRoundMode, onSave, onCancel }: Pr
       <div className="flex items-center gap-4 flex-wrap pt-1">
         <label className="flex items-center gap-2 cursor-pointer select-none">
           <input type="checkbox" checked={form.available} onChange={e => set("available", e.target.checked)}
-            className="w-4 h-4 rounded accent-[#003300]" />
-          <span className="text-xs font-semibold text-[#003300]/70">Available</span>
+            className="w-4 h-4 rounded accent-ink" />
+          <span className="text-xs font-semibold text-ink/70">Available</span>
         </label>
         <label className="flex items-center gap-2 cursor-pointer select-none">
           <input type="checkbox" checked={!!form.certificate} onChange={e => set("certificate", e.target.checked)}
-            className="w-4 h-4 rounded accent-[#003300]" />
-          <span className="text-xs font-semibold text-[#003300]/70">Certificate</span>
+            className="w-4 h-4 rounded accent-ink" />
+          <span className="text-xs font-semibold text-ink/70">Certificate</span>
         </label>
       </div>
 
       {/* action buttons */}
-      <div className="flex gap-2 border-t border-[#003300]/10 pt-3">
+      <div className="flex gap-2 border-t border-ink/10 pt-3">
         <button
           onClick={() => canSave && onSave(form)}
           disabled={!canSave}
@@ -384,7 +384,7 @@ function ProgramForm({ initial, showHours, yearRoundMode, onSave, onCancel }: Pr
           <Check className="w-3.5 h-3.5" /> Save Program
         </button>
         <button onClick={onCancel}
-          className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border border-[#003300]/20 text-[#003300]/60 hover:bg-[#003300]/5 transition-all cursor-pointer">
+          className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border border-ink/20 text-ink/60 hover:bg-ink/5 transition-all cursor-pointer">
           <X className="w-3.5 h-3.5" /> Cancel
         </button>
       </div>
@@ -410,11 +410,11 @@ function ProgramRow({ prog, index, trackId, deptIndex, yearRoundMode, onEdit, on
   return (
     <div className={cardCls}>
       <div className="flex items-center gap-2 px-3 py-3 sm:px-4">
-        <GripVertical className="w-4 h-4 text-[#003300]/20 flex-shrink-0 hidden sm:block" />
+        <GripVertical className="w-4 h-4 text-ink/20 flex-shrink-0 hidden sm:block" />
         <div className="flex-1 min-w-0">
           {/* title + badges line */}
           <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-sm font-bold text-[#003300] leading-tight truncate">{prog.title}</span>
+            <span className="text-sm font-bold text-ink leading-tight truncate">{prog.title}</span>
             <span className={pill(prog.available ?? true)}>{prog.available !== false ? "Live" : "Soon"}</span>
             {prog.certificate && (
               <span className="inline-flex items-center gap-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-yellow-50 text-yellow-700 border border-yellow-200">
@@ -422,16 +422,16 @@ function ProgramRow({ prog, index, trackId, deptIndex, yearRoundMode, onEdit, on
               </span>
             )}
             {(prog.images?.length ?? 0) > 0 && (
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#003300]/8 text-[#003300]/50">
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-ink/8 text-ink/50">
                 {prog.images!.length}🖼
               </span>
             )}
           </div>
           {/* meta line */}
           <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-            {prog.age && <span className="text-[11px] text-[#003300]/45 flex items-center gap-0.5"><Users className="w-3 h-3 flex-shrink-0" />{prog.age}</span>}
-            {(prog.hoursPerLevel || prog.hours) && <span className="text-[11px] text-[#003300]/45 flex items-center gap-0.5"><Clock className="w-3 h-3 flex-shrink-0" />{prog.hoursPerLevel || prog.hours}</span>}
-            {prog.levels && <span className="text-[11px] text-[#003300]/45">{prog.levels}</span>}
+            {prog.age && <span className="text-[11px] text-ink/45 flex items-center gap-0.5"><Users className="w-3 h-3 flex-shrink-0" />{prog.age}</span>}
+            {(prog.hoursPerLevel || prog.hours) && <span className="text-[11px] text-ink/45 flex items-center gap-0.5"><Clock className="w-3 h-3 flex-shrink-0" />{prog.hoursPerLevel || prog.hours}</span>}
+            {prog.levels && <span className="text-[11px] text-ink/45">{prog.levels}</span>}
           </div>
         </div>
         {/* action buttons — always visible, touch-friendly */}
@@ -439,12 +439,12 @@ function ProgramRow({ prog, index, trackId, deptIndex, yearRoundMode, onEdit, on
           <button
             onClick={() => setShowImages(v => !v)}
             title="Images"
-            className={`p-2 rounded-lg transition-colors cursor-pointer ${showImages ? "bg-[#003300]/10" : "hover:bg-[#003300]/6"}`}
+            className={`p-2 rounded-lg transition-colors cursor-pointer ${showImages ? "bg-ink/10" : "hover:bg-ink/6"}`}
           >
-            <ImagePlus className="w-4 h-4 text-[#003300]/50" />
+            <ImagePlus className="w-4 h-4 text-ink/50" />
           </button>
-          <button onClick={onEdit} className="p-2 rounded-lg hover:bg-[#003300]/6 transition-colors cursor-pointer">
-            <Edit2 className="w-4 h-4 text-[#003300]/50" />
+          <button onClick={onEdit} className="p-2 rounded-lg hover:bg-ink/6 transition-colors cursor-pointer">
+            <Edit2 className="w-4 h-4 text-ink/50" />
           </button>
           <button onClick={onDelete} className="p-2 rounded-lg hover:bg-red-50 transition-colors cursor-pointer">
             <Trash2 className="w-4 h-4 text-red-400" />
@@ -455,7 +455,7 @@ function ProgramRow({ prog, index, trackId, deptIndex, yearRoundMode, onEdit, on
       <AnimatePresence initial={false}>
         {showImages && (
           <motion.div key="imgs" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.18 }} className="overflow-hidden">
-            <div className="px-3 sm:px-4 pb-3 pt-2 border-t border-[#003300]/8 bg-[#003300]/2">
+            <div className="px-3 sm:px-4 pb-3 pt-2 border-t border-ink/8 bg-ink/2">
               <p className={labelCls + " mb-2"}>Program Images</p>
               {yearRoundMode && deptIndex !== undefined ? (
                 <DeptProgramImageManager deptIndex={deptIndex} programIndex={index} images={prog.images ?? []} onChanged={onImagesChange} />
@@ -528,7 +528,7 @@ function FaqEditor({ faq, onChange }: { faq: FaqItem[]; onChange: (faq: FaqItem[
   const remove = (i: number) => onChange(faq.filter((_, idx) => idx !== i));
 
   const FaqForm = ({ onSave, onCancel }: { onSave: () => void; onCancel: () => void }) => (
-    <div className="rounded-2xl border-2 border-[#003300]/15 bg-[#003300]/3 p-3 sm:p-4 space-y-3">
+    <div className="rounded-2xl border-2 border-ink/15 bg-ink/3 p-3 sm:p-4 space-y-3">
       <div>
         <label className={labelCls}>Question</label>
         <input autoFocus className={inputCls} value={form.question} onChange={e => setForm(f => ({ ...f, question: e.target.value }))} placeholder="e.g. Does my child need prior experience?" />
@@ -539,7 +539,7 @@ function FaqEditor({ faq, onChange }: { faq: FaqItem[]; onChange: (faq: FaqItem[
       </div>
       <div className="flex gap-2 pt-1">
         <button onClick={onSave} className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold cursor-pointer hover:opacity-90" style={{ backgroundColor: G, color: CREAM }}><Check className="w-3.5 h-3.5" /> Save</button>
-        <button onClick={onCancel} className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border border-[#003300]/20 text-[#003300]/60 hover:bg-[#003300]/5 cursor-pointer"><X className="w-3.5 h-3.5" /> Cancel</button>
+        <button onClick={onCancel} className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border border-ink/20 text-ink/60 hover:bg-ink/5 cursor-pointer"><X className="w-3.5 h-3.5" /> Cancel</button>
       </div>
     </div>
   );
@@ -552,13 +552,13 @@ function FaqEditor({ faq, onChange }: { faq: FaqItem[]; onChange: (faq: FaqItem[
             <FaqForm onSave={saveEdit} onCancel={() => setEditIdx(null)} />
           ) : (
             <div className={`${cardCls} flex items-start gap-3 px-3 sm:px-4 py-3`}>
-              <HelpCircle className="w-4 h-4 text-[#003300]/25 flex-shrink-0 mt-0.5" />
+              <HelpCircle className="w-4 h-4 text-ink/25 flex-shrink-0 mt-0.5" />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold text-[#003300] leading-tight break-words">{item.question}</p>
-                <p className="text-xs text-[#003300]/45 mt-1 line-clamp-2 leading-relaxed break-words">{item.answer}</p>
+                <p className="text-sm font-bold text-ink leading-tight break-words">{item.question}</p>
+                <p className="text-xs text-ink/45 mt-1 line-clamp-2 leading-relaxed break-words">{item.answer}</p>
               </div>
               <div className="flex gap-0.5 flex-shrink-0">
-                <button onClick={() => startEdit(i)} className="p-2 rounded-lg hover:bg-[#003300]/6 cursor-pointer"><Edit2 className="w-4 h-4 text-[#003300]/40" /></button>
+                <button onClick={() => startEdit(i)} className="p-2 rounded-lg hover:bg-ink/6 cursor-pointer"><Edit2 className="w-4 h-4 text-ink/40" /></button>
                 <button onClick={() => remove(i)} className="p-2 rounded-lg hover:bg-red-50 cursor-pointer"><Trash2 className="w-4 h-4 text-red-400" /></button>
               </div>
             </div>
@@ -611,7 +611,7 @@ function DepartmentCard({ dept, deptIndex, onUpdate, onRemove }: {
     <div className={`${cardCls} transition-shadow hover:shadow-md`}>
       {/* ── header bar ── */}
       <div className="flex items-center gap-2 px-3 sm:px-4 py-3" style={{ backgroundColor: G3 }}>
-        <GripVertical className="w-4 h-4 text-[#003300]/20 flex-shrink-0 hidden sm:block" />
+        <GripVertical className="w-4 h-4 text-ink/20 flex-shrink-0 hidden sm:block" />
 
         {editingName ? (
           <input
@@ -626,13 +626,13 @@ function DepartmentCard({ dept, deptIndex, onUpdate, onRemove }: {
           />
         ) : (
           <button onClick={() => setEditingName(true)} className="flex-1 min-w-0 text-start cursor-pointer group">
-            <span className="text-sm font-black text-[#003300] group-hover:text-[#003300]/70 transition-colors truncate block">{dept.name}</span>
+            <span className="text-sm font-black text-ink group-hover:text-ink/70 transition-colors truncate block">{dept.name}</span>
           </button>
         )}
 
         {/* badges — hide text on mobile, keep pill */}
         <div className="flex items-center gap-1 flex-shrink-0">
-          <span className="text-[10px] font-bold text-[#003300]/40 hidden sm:inline">{programCount}p</span>
+          <span className="text-[10px] font-bold text-ink/40 hidden sm:inline">{programCount}p</span>
           {hasCover && (
             <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200">
               <span className="hidden sm:inline">Cover </span>✓
@@ -644,8 +644,8 @@ function DepartmentCard({ dept, deptIndex, onUpdate, onRemove }: {
           <button onClick={onRemove} className="p-2 rounded-lg hover:bg-red-50 cursor-pointer transition-colors">
             <Trash2 className="w-4 h-4 text-red-400" />
           </button>
-          <button onClick={() => setExpanded(v => !v)} className="p-2 rounded-lg hover:bg-[#003300]/6 cursor-pointer transition-colors">
-            {expanded ? <ChevronUp className="w-4 h-4 text-[#003300]/50" /> : <ChevronDown className="w-4 h-4 text-[#003300]/50" />}
+          <button onClick={() => setExpanded(v => !v)} className="p-2 rounded-lg hover:bg-ink/6 cursor-pointer transition-colors">
+            {expanded ? <ChevronUp className="w-4 h-4 text-ink/50" /> : <ChevronDown className="w-4 h-4 text-ink/50" />}
           </button>
         </div>
       </div>
@@ -654,7 +654,7 @@ function DepartmentCard({ dept, deptIndex, onUpdate, onRemove }: {
       <AnimatePresence initial={false}>
         {expanded && (
           <motion.div key="body" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }} className="overflow-hidden">
-            <div className="p-3 sm:p-4 space-y-4 border-t border-[#003300]/8">
+            <div className="p-3 sm:p-4 space-y-4 border-t border-ink/8">
 
               {/* info fields */}
               <div className="space-y-3">
@@ -676,7 +676,7 @@ function DepartmentCard({ dept, deptIndex, onUpdate, onRemove }: {
 
               {/* programs */}
               <div>
-                <p className={sectionHead}><BookOpen className="w-4 h-4 text-[#003300]/40" /> Programs in this department</p>
+                <p className={sectionHead}><BookOpen className="w-4 h-4 text-ink/40" /> Programs in this department</p>
                 <div className="space-y-2">
                   {(dept.programs ?? []).map((prog, pi) => (
                     <div key={pi}>
@@ -740,22 +740,22 @@ function YearRoundEditor({ departments, faq, onDeptChange, onFaqChange }: {
       {/* FAQ card */}
       <div className={cardCls}>
         <button onClick={() => setShowFaq(v => !v)}
-          className="w-full flex items-center justify-between gap-3 px-3 sm:px-4 py-3 hover:bg-[#003300]/3 transition-colors cursor-pointer">
+          className="w-full flex items-center justify-between gap-3 px-3 sm:px-4 py-3 hover:bg-ink/3 transition-colors cursor-pointer">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: G }}>
               <HelpCircle className="w-4 h-4" style={{ color: CREAM }} />
             </div>
             <div className="text-start min-w-0">
-              <p className="text-sm font-black text-[#003300]">Shared FAQ</p>
-              <p className="text-[11px] text-[#003300]/40 truncate">{faq.length} question{faq.length !== 1 ? "s" : ""} — all department pages</p>
+              <p className="text-sm font-black text-ink">Shared FAQ</p>
+              <p className="text-[11px] text-ink/40 truncate">{faq.length} question{faq.length !== 1 ? "s" : ""} — all department pages</p>
             </div>
           </div>
-          {showFaq ? <ChevronUp className="w-4 h-4 text-[#003300]/40 flex-shrink-0" /> : <ChevronDown className="w-4 h-4 text-[#003300]/40 flex-shrink-0" />}
+          {showFaq ? <ChevronUp className="w-4 h-4 text-ink/40 flex-shrink-0" /> : <ChevronDown className="w-4 h-4 text-ink/40 flex-shrink-0" />}
         </button>
         <AnimatePresence initial={false}>
           {showFaq && (
             <motion.div key="faq" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-              <div className="px-3 sm:px-4 pb-4 pt-1 border-t border-[#003300]/8">
+              <div className="px-3 sm:px-4 pb-4 pt-1 border-t border-ink/8">
                 <FaqEditor faq={faq} onChange={onFaqChange} />
               </div>
             </motion.div>
@@ -774,7 +774,7 @@ function YearRoundEditor({ departments, faq, onDeptChange, onFaqChange }: {
           <input autoFocus className={`${inputCls} flex-1`} value={newDeptName} onChange={e => setNewDeptName(e.target.value)}
             placeholder="Department name" onKeyDown={e => { if (e.key === "Enter") addDept(); if (e.key === "Escape") setAddingDept(false); }} />
           <button onClick={addDept} className="px-4 py-2 rounded-xl text-sm font-bold cursor-pointer hover:opacity-90 flex-shrink-0" style={{ backgroundColor: G, color: CREAM }}><Check className="w-4 h-4" /></button>
-          <button onClick={() => setAddingDept(false)} className="px-4 py-2 rounded-xl text-sm font-bold border border-[#003300]/20 text-[#003300]/60 hover:bg-[#003300]/5 cursor-pointer flex-shrink-0"><X className="w-4 h-4" /></button>
+          <button onClick={() => setAddingDept(false)} className="px-4 py-2 rounded-xl text-sm font-bold border border-ink/20 text-ink/60 hover:bg-ink/5 cursor-pointer flex-shrink-0"><X className="w-4 h-4" /></button>
         </div>
       ) : (
         <AddButton label="Add Department" onClick={() => setAddingDept(true)} icon={<Plus className="w-4 h-4" />} large />
@@ -819,12 +819,12 @@ function TrackEditor({ trackId, content, onChange }: { trackId: TrackId; content
         </div>
       </div>
 
-      <div className="border-t border-[#003300]/8" />
+      <div className="border-t border-ink/8" />
 
       <p className={sectionHead}>
         {trackId === "yearRound"
-          ? <><CalendarDays className="w-4 h-4 text-[#003300]/40" /> Departments &amp; FAQ</>
-          : <><BookOpen className="w-4 h-4 text-[#003300]/40" /> Programs</>}
+          ? <><CalendarDays className="w-4 h-4 text-ink/40" /> Departments &amp; FAQ</>
+          : <><BookOpen className="w-4 h-4 text-ink/40" /> Programs</>}
       </p>
 
       {trackId === "yearRound" ? (
@@ -854,7 +854,7 @@ function AddButton({ label, onClick, icon, large }: { label: string; onClick: ()
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center gap-2 font-bold border-2 border-dashed border-[#003300]/20 text-[#003300]/45 hover:border-[#003300]/40 hover:text-[#003300]/65 transition-all w-full justify-center cursor-pointer rounded-xl ${large ? "px-4 py-3 text-sm" : "px-3 py-2.5 text-xs"}`}
+      className={`flex items-center gap-2 font-bold border-2 border-dashed border-ink/20 text-ink/45 hover:border-ink/40 hover:text-ink/65 transition-all w-full justify-center cursor-pointer rounded-xl ${large ? "px-4 py-3 text-sm" : "px-3 py-2.5 text-xs"}`}
     >
       {icon ?? <Plus className={large ? "w-4 h-4" : "w-3.5 h-3.5"} />}
       {label}
@@ -912,7 +912,7 @@ export default function CLOTrainingContent() {
     <div className="min-h-screen" style={{ backgroundColor: "#f5f4ef" }}>
 
       {/* ── Sticky top bar ── */}
-      <div className="sticky top-0 z-30 border-b border-[#003300]/10 shadow-sm" style={{ backgroundColor: "#fff" }}>
+      <div className="sticky top-0 z-30 border-b border-ink/10 shadow-sm" style={{ backgroundColor: "#fff" }}>
         <div className="max-w-5xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
 
           {/* left: icon + title */}
@@ -921,8 +921,8 @@ export default function CLOTrainingContent() {
               <FileText className="w-4 h-4" style={{ color: CREAM }} />
             </div>
             <div className="hidden sm:block min-w-0">
-              <p className="text-sm font-black text-[#003300] leading-tight">Training Content</p>
-              <p className="text-[11px] text-[#003300]/40 leading-tight">Public training page editor</p>
+              <p className="text-sm font-black text-ink leading-tight">Training Content</p>
+              <p className="text-[11px] text-ink/40 leading-tight">Public training page editor</p>
             </div>
           </div>
 
@@ -967,18 +967,18 @@ export default function CLOTrainingContent() {
 
         {isLoading ? (
           <div className="flex items-center justify-center py-24 gap-3">
-            <Loader2 className="w-6 h-6 animate-spin text-[#003300]/40" />
-            <span className="text-sm font-semibold text-[#003300]/40">Loading content…</span>
+            <Loader2 className="w-6 h-6 animate-spin text-ink/40" />
+            <span className="text-sm font-semibold text-ink/40">Loading content…</span>
           </div>
         ) : (
           <motion.div key={activeLang} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="space-y-4">
 
             {/* ── Hero Stats card ── */}
             <div className={cardCls}>
-              <div className="px-4 py-3 border-b border-[#003300]/8 flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-[#003300]/40 flex-shrink-0" />
-                <h2 className="text-sm font-black text-[#003300]">Hero Stats</h2>
-                <span className="text-[11px] text-[#003300]/35 font-medium hidden sm:inline">Numbers shown in the hero section</span>
+              <div className="px-4 py-3 border-b border-ink/8 flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-ink/40 flex-shrink-0" />
+                <h2 className="text-sm font-black text-ink">Hero Stats</h2>
+                <span className="text-[11px] text-ink/35 font-medium hidden sm:inline">Numbers shown in the hero section</span>
               </div>
               <div className="p-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {STATS_META.map(({ key, label, shortLabel, icon: Icon }) => (
@@ -997,7 +997,7 @@ export default function CLOTrainingContent() {
             {/* ── Track tab bar ── */}
             <div className={cardCls}>
               {/* tabs — icon+short on mobile, icon+full on desktop */}
-              <div className="flex border-b border-[#003300]/8 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+              <div className="flex border-b border-ink/8 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
                 {TRACK_IDS.map(id => {
                   const { Icon, label, shortLabel, color } = TRACK_META[id];
                   const isActive = activeTrack === id;
@@ -1053,7 +1053,7 @@ export default function CLOTrainingContent() {
 
             {/* ── Bottom save ── */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-6">
-              <p className="text-xs text-[#003300]/35 text-center sm:text-left">
+              <p className="text-xs text-ink/35 text-center sm:text-left">
                 Editing: <span className="font-bold">{activeLang === "ar" ? "Arabic" : "English"}</span> content
               </p>
               <button

@@ -91,17 +91,17 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
       <CardBody>
         <div className="mb-4">
           <div className="flex items-start justify-between mb-2">
-            <h4 className="text-base font-semibold text-[#003300]">
+            <h4 className="text-base font-semibold text-ink">
               {question.questionText}
             </h4>
-            <span className="text-sm text-[#003300]/60">
+            <span className="text-sm text-ink/60">
               {question.points} {question.points === 1 ? 'point' : 'points'}
             </span>
           </div>
           {question.required && (
             <span className="text-xs text-red-600">Required</span>
           )}
-          <div className="mt-2 text-xs text-[#003300]/60">
+          <div className="mt-2 text-xs text-ink/60">
             Max {question.maxImages || 1} image{question.maxImages !== 1 ? 's' : ''}
             {question.maxImageSize && ` • Max ${question.maxImageSize}MB per image`}
           </div>
@@ -120,11 +120,11 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
               />
               <div className="p-3 bg-white flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <ImageIcon className="w-4 h-4 text-[#003300]/60" />
-                  <span className="text-sm text-[#003300]/60">
+                  <ImageIcon className="w-4 h-4 text-ink/60" />
+                  <span className="text-sm text-ink/60">
                     {selectedFiles[index]?.name}
                   </span>
-                  <span className="text-xs text-[#003300]/40">
+                  <span className="text-xs text-ink/40">
                     ({formatFileSize(selectedFiles[index]?.size || 0)})
                   </span>
                 </div>
@@ -150,10 +150,10 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
               }`}
             >
               <Upload className="w-8 h-8 mx-auto mb-2 text-primary/60" />
-              <p className="text-sm text-[#003300]/70 mb-1">
+              <p className="text-sm text-ink/70 mb-1">
                 Click to upload or drag and drop
               </p>
-              <p className="text-xs text-[#003300]/50">
+              <p className="text-xs text-ink/50">
                 {question.allowedImageTypes?.join(', ') || 'JPEG, PNG, WebP'}
               </p>
               <input
@@ -170,7 +170,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
 
           {answer?.imageAnswers && answer.imageAnswers.length > 0 && (
             <div className="mt-3">
-              <p className="text-sm font-medium text-[#003300] mb-2">Submitted Images:</p>
+              <p className="text-sm font-medium text-ink mb-2">Submitted Images:</p>
               <div className="grid grid-cols-2 gap-3">
                 {answer.imageAnswers.map((img, index) => (
                   <div key={index} className="relative border border-primary/20 rounded-lg overflow-hidden">

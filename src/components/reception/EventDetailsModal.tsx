@@ -127,14 +127,14 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
             <div className={`w-4 h-4 rounded-full ${getColorClass('purple')} mt-1 flex-shrink-0`} />
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{event.title}</h2>
+                <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{event.title}</h2>
                 <Badge variant="success">
                   <CreditCard className="w-3 h-3 mr-1" />
                   Subscription Session
                 </Badge>
               </div>
               {session.description && (
-                <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{session.description}</p>
+                <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{session.description}</p>
               )}
             </div>
           </div>
@@ -155,20 +155,20 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
           )}
 
           {/* Date & Time */}
-          <div className="space-y-3 rounded-lg p-4 border transition-colors duration-300" style={{ backgroundColor: '#003300' + '08', borderColor: '#003300' + '20' }}>
-            <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#003300' }}>
-              <Calendar className="w-5 h-5" style={{ color: '#003300' + 'CC' }} />
+          <div className="space-y-3 rounded-lg p-4 border transition-colors duration-300" style={{ backgroundColor: '#0f1f33' + '08', borderColor: '#0f1f33' + '20' }}>
+            <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#0f1f33' }}>
+              <Calendar className="w-5 h-5" style={{ color: '#0f1f33' + 'CC' }} />
               <div>
-                <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Date</p>
-                <p className="font-medium transition-colors duration-300" style={{ color: '#003300' }}>{formatDate(new Date(session.date))}</p>
+                <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Date</p>
+                <p className="font-medium transition-colors duration-300" style={{ color: '#0f1f33' }}>{formatDate(new Date(session.date))}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#003300' }}>
-              <Clock className="w-5 h-5" style={{ color: '#003300' + 'CC' }} />
+            <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#0f1f33' }}>
+              <Clock className="w-5 h-5" style={{ color: '#0f1f33' + 'CC' }} />
               <div>
-                <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Time</p>
-                <p className="font-medium transition-colors duration-300" style={{ color: '#003300' }}>
+                <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Time</p>
+                <p className="font-medium transition-colors duration-300" style={{ color: '#0f1f33' }}>
                   {session.startTime} - {moment(endTime).format('h:mm A')} ({session.durationHours} hrs)
                 </p>
               </div>
@@ -177,7 +177,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
 
           {/* Status */}
           <div>
-            <p className="text-sm font-medium mb-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Status</p>
+            <p className="text-sm font-medium mb-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Status</p>
             <Badge variant={session.status === 'approved' ? 'success' : 'default'}>
               {session.status}
             </Badge>
@@ -229,28 +229,28 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
         <div className="flex items-start gap-4">
           <div className={`w-4 h-4 rounded-full ${getColorClass(event.color || 'blue')} mt-1 flex-shrink-0`} />
           <div className="flex-1">
-            <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#003300' }}>{event.title}</h2>
+            <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: '#0f1f33' }}>{event.title}</h2>
             {event.description && (
-              <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{event.description}</p>
+              <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{event.description}</p>
             )}
           </div>
         </div>
 
         {/* Date & Time */}
         <div className="space-y-3 bg-zinc-50 rounded-lg p-4 border border-zinc-200">
-          <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#003300' }}>
-            <Calendar className="w-5 h-5" style={{ color: '#003300' + 'CC' }} />
+          <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#0f1f33' }}>
+            <Calendar className="w-5 h-5" style={{ color: '#0f1f33' + 'CC' }} />
             <div>
-              <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Date</p>
-              <p className="font-medium transition-colors duration-300" style={{ color: '#003300' }}>{formatDate(event.startTime)}</p>
+              <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Date</p>
+              <p className="font-medium transition-colors duration-300" style={{ color: '#0f1f33' }}>{formatDate(event.startTime)}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#003300' }}>
-            <Clock className="w-5 h-5" style={{ color: '#003300' + 'CC' }} />
+          <div className="flex items-center gap-3 transition-colors duration-300" style={{ color: '#0f1f33' }}>
+            <Clock className="w-5 h-5" style={{ color: '#0f1f33' + 'CC' }} />
             <div>
-              <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>Time</p>
-              <p className="font-medium transition-colors duration-300" style={{ color: '#003300' }}>
+              <p className="text-sm font-medium transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>Time</p>
+              <p className="font-medium transition-colors duration-300" style={{ color: '#0f1f33' }}>
                 {formatTime(event.startTime)} - {formatTime(event.endTime)}
               </p>
             </div>
@@ -261,8 +261,8 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
         {event.participants && event.participants.length > 0 && (
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Users className="w-5 h-5" style={{ color: '#003300' + 'CC' }} />
-              <h3 className="font-semibold transition-colors duration-300" style={{ color: '#003300' }}>
+              <Users className="w-5 h-5" style={{ color: '#0f1f33' + 'CC' }} />
+              <h3 className="font-semibold transition-colors duration-300" style={{ color: '#0f1f33' }}>
                 Participants ({event.participants.length})
               </h3>
             </div>
@@ -286,7 +286,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                         ? 'bg-purple-100 text-purple-600'
                         : participant.type === 'lead'
                         ? 'bg-cyan-100 text-cyan-600'
-                        : 'bg-[#003300]/20'
+                        : 'bg-ink/20'
                     }`}>
                       <User className="w-5 h-5" />
                     </div>
@@ -297,7 +297,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                           : participant.type === 'lead'
                           ? 'text-cyan-900'
                           : ''
-                      }`} style={participant.type === 'custom' ? { color: '#003300' } : {}}>
+                      }`} style={participant.type === 'custom' ? { color: '#0f1f33' } : {}}>
                         {display.name}
                       </p>
                       <p className={`text-sm transition-colors duration-300 ${
@@ -306,7 +306,7 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
                           : participant.type === 'lead'
                           ? 'text-cyan-600'
                           : ''
-                      }`} style={participant.type === 'custom' ? { color: '#003300' + 'CC' } : {}}>
+                      }`} style={participant.type === 'custom' ? { color: '#0f1f33' + 'CC' } : {}}>
                         {display.subtitle}
                       </p>
                     </div>

@@ -69,7 +69,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className={`text-sm transition-colors duration-300 ${isRTL ? 'font-arabic' : ''}`}
-              style={{ color: '#003300' + 'CC' }}
+              style={{ color: '#0f1f33' + 'CC' }}
             >
               {displayText}
             </motion.p>
@@ -100,7 +100,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className={`text-sm transition-colors duration-300 ${isRTL ? 'font-arabic' : ''}`}
-              style={{ color: '#003300' + 'CC' }}
+              style={{ color: '#0f1f33' + 'CC' }}
             >
               {displayText}
             </motion.p>
@@ -153,7 +153,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className={`text-sm font-medium transition-colors duration-300 ${isRTL ? 'font-arabic' : ''}`}
-            style={{ color: '#003300' + 'CC' }}
+            style={{ color: '#0f1f33' + 'CC' }}
           >
             {displayText}
           </motion.p>

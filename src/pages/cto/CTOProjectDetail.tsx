@@ -340,14 +340,14 @@ export default function CTOProjectDetail() {
       {/* Back button + breadcrumb */}
       <motion.div variants={itemVariants}>
         {isSubProjectView ? (
-          <div className={`flex items-center gap-2 mb-4 text-sm text-[#003300]/60 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <Link to="/cto-internal/projects" className="hover:text-[#003300] transition-colors">Projects</Link>
+          <div className={`flex items-center gap-2 mb-4 text-sm text-ink/60 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <Link to="/cto-internal/projects" className="hover:text-ink transition-colors">Projects</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link to={`/cto-internal/projects/${parentId}`} className="hover:text-[#003300] transition-colors">
+            <Link to={`/cto-internal/projects/${parentId}`} className="hover:text-ink transition-colors">
               {(currentProject as any)?.parentProject?.name || "Project"}
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-[#003300]">{currentProject?.name}</span>
+            <span className="text-ink">{currentProject?.name}</span>
           </div>
         ) : (
           <Link to="/cto-internal/projects">
@@ -361,14 +361,14 @@ export default function CTOProjectDetail() {
           <div className={isRTL ? "text-right" : ""}>
             <div className={`flex items-center gap-3 flex-wrap mb-1 ${isRTL ? "flex-row-reverse" : ""}`}>
               {isSubProjectView && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-[#003300]/10 text-[#003300]">
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-ink/10 text-ink">
                   Sub-project
                 </span>
               )}
               <h1
                 className="text-4xl font-bold inline-block"
                 style={{
-                  color: '#003300',
+                  color: '#0f1f33',
                   backgroundClip: "text",
                 }}
               >
@@ -377,13 +377,13 @@ export default function CTOProjectDetail() {
               {currentProject && priorityBadge(currentProject.priority)}
             </div>
             {currentProject?.description && (
-              <p className="text-[#003300]/60 mt-1">{currentProject.description}</p>
+              <p className="text-ink/60 mt-1">{currentProject.description}</p>
             )}
             {(currentProject?.clients?.length || 0) > 0 && (
               <div className={`flex items-center gap-1.5 mt-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                <span className="text-xs text-[#003300]/40 font-medium">Client{currentProject!.clients!.length !== 1 ? "s" : ""}:</span>
+                <span className="text-xs text-ink/40 font-medium">Client{currentProject!.clients!.length !== 1 ? "s" : ""}:</span>
                 {currentProject!.clients!.map(c => (
-                  <span key={c._id} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#003300]/8 text-[#003300]/70 border border-[#003300]/15">
+                  <span key={c._id} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-ink/8 text-ink/70 border border-ink/15">
                     {c.name}
                   </span>
                 ))}
@@ -401,9 +401,9 @@ export default function CTOProjectDetail() {
         <motion.div variants={itemVariants}>
           <div className={`flex items-center justify-between mb-3 ${isRTL ? "flex-row-reverse" : ""}`}>
             <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-              <FolderOpen className="w-5 h-5 text-[#003300]/50" />
-              <span className="text-sm font-semibold text-[#003300]">
-                Sub-projects {subProjects.length > 0 && <span className="text-[#003300]/40">({subProjects.length})</span>}
+              <FolderOpen className="w-5 h-5 text-ink/50" />
+              <span className="text-sm font-semibold text-ink">
+                Sub-projects {subProjects.length > 0 && <span className="text-ink/40">({subProjects.length})</span>}
               </span>
             </div>
             <Button
@@ -420,8 +420,8 @@ export default function CTOProjectDetail() {
             <CardComponent variant="glass">
               <CardBody>
                 <div className="text-center py-6">
-                  <FolderOpen className="w-10 h-10 mx-auto mb-2 text-[#003300]/20" />
-                  <p className="text-[#003300]/50 text-sm">No sub-projects yet</p>
+                  <FolderOpen className="w-10 h-10 mx-auto mb-2 text-ink/20" />
+                  <p className="text-ink/50 text-sm">No sub-projects yet</p>
                 </div>
               </CardBody>
             </CardComponent>
@@ -437,12 +437,12 @@ export default function CTOProjectDetail() {
                       >
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           {priorityBadge(sp.priority)}
-                          <span className="font-semibold text-[#003300] truncate">{sp.name}</span>
+                          <span className="font-semibold text-ink truncate">{sp.name}</span>
                         </div>
                         {sp.description && (
-                          <p className="text-xs text-[#003300]/50 mb-2 line-clamp-2">{sp.description}</p>
+                          <p className="text-xs text-ink/50 mb-2 line-clamp-2">{sp.description}</p>
                         )}
-                        <div className="flex items-center gap-3 text-xs text-[#003300]/40 flex-wrap">
+                        <div className="flex items-center gap-3 text-xs text-ink/40 flex-wrap">
                           <span>{sp.taskCounts?.total || 0} tasks</span>
                           {(sp.taskCounts?.done || 0) > 0 && (
                             <span className="text-green-500">{sp.taskCounts?.done} done</span>
@@ -472,8 +472,8 @@ export default function CTOProjectDetail() {
       <motion.div variants={itemVariants}>
         <div className={`flex items-center justify-between mb-3 ${isRTL ? "flex-row-reverse" : ""}`}>
           <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <ListTodo className="w-5 h-5 text-[#003300]/50" />
-            <span className="text-sm font-semibold text-[#003300]">Tasks</span>
+            <ListTodo className="w-5 h-5 text-ink/50" />
+            <span className="text-sm font-semibold text-ink">Tasks</span>
           </div>
         </div>
         <div className={`flex gap-3 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -518,9 +518,9 @@ export default function CTOProjectDetail() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <ListTodo className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-[#003300]/60 text-lg mb-2">No tasks found</p>
-                <p className="text-[#003300]/40 text-sm mb-4">
+                <ListTodo className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <p className="text-ink/60 text-lg mb-2">No tasks found</p>
+                <p className="text-ink/40 text-sm mb-4">
                   {statusFilter !== "all" || priorityFilter !== "all" || userFilter !== "all"
                     ? "Try adjusting filters"
                     : "Create the first task for this project"}
@@ -541,21 +541,21 @@ export default function CTOProjectDetail() {
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <div className="flex-1 min-w-0">
                       <div className={`flex items-center gap-2 mb-1 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                        <span className="font-semibold text-[#003300]">{task.title}</span>
+                        <span className="font-semibold text-ink">{task.title}</span>
                         {priorityBadge(task.priority)}
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${statusBadgeClass(task.status)}`}>
                           {task.status.replace("_", " ")}
                         </span>
                         {task.source === 'client' && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#003300]/8 text-[#003300]/70 border border-[#003300]/15">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-ink/8 text-ink/70 border border-ink/15">
                             Client Request
                           </span>
                         )}
                       </div>
                       {task.description && (
-                        <p className="text-sm text-[#003300]/50 mb-1 line-clamp-1">{task.description}</p>
+                        <p className="text-sm text-ink/50 mb-1 line-clamp-1">{task.description}</p>
                       )}
-                      <div className={`flex items-center gap-4 text-xs text-[#003300]/40 ${isRTL ? "flex-row-reverse" : ""}`}>
+                      <div className={`flex items-center gap-4 text-xs text-ink/40 ${isRTL ? "flex-row-reverse" : ""}`}>
                         {getAssignees(task).length > 0 && (
                           <span className={`flex items-center gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
                             <Users className="w-3 h-3" />
@@ -606,7 +606,7 @@ export default function CTOProjectDetail() {
         <div className="space-y-4">
           {formError && <Alert variant="error"><p className="text-sm">{formError}</p></Alert>}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Task Title *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Task Title *</label>
             <Input
               placeholder="e.g. Implement authentication module"
               value={taskForm.title}
@@ -614,18 +614,18 @@ export default function CTOProjectDetail() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Description</label>
+            <label className="block text-sm font-medium text-ink mb-1">Description</label>
             <textarea
               placeholder="Task description..."
               value={taskForm.description}
               onChange={e => setTaskForm(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30 resize-none"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30 resize-none"
             />
           </div>
           <div className={`grid grid-cols-2 gap-4`}>
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Priority</label>
+              <label className="block text-sm font-medium text-ink mb-1">Priority</label>
               <Select
                 value={taskForm.priority}
                 onChange={value => setTaskForm(prev => ({ ...prev, priority: value as '1' | '2' | '3' }))}
@@ -638,7 +638,7 @@ export default function CTOProjectDetail() {
             </div>
             {editTask && (
               <div>
-                <label className="block text-sm font-medium text-[#003300] mb-1">Status</label>
+                <label className="block text-sm font-medium text-ink mb-1">Status</label>
                 <Select
                   value={taskForm.status}
                   onChange={value => setTaskForm(prev => ({ ...prev, status: value as 'todo' | 'in_progress' | 'done' }))}
@@ -651,13 +651,13 @@ export default function CTOProjectDetail() {
               </div>
             )}
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Assign To</label>
+              <label className="block text-sm font-medium text-ink mb-1">Assign To</label>
               {taskForm.assignedTo.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {taskForm.assignedTo.map(uid => {
                     const u = users.find(u => u._id === uid);
                     return (
-                      <span key={uid} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-[#003300]/10 text-[#003300] border border-[#003300]/15">
+                      <span key={uid} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-ink/10 text-ink border border-ink/15">
                         {u?.name || uid}
                         <button type="button" onClick={() => setTaskForm(prev => ({ ...prev, assignedTo: prev.assignedTo.filter(id => id !== uid) }))} className="hover:text-red-500 transition-colors ml-0.5">×</button>
                       </span>
@@ -673,7 +673,7 @@ export default function CTOProjectDetail() {
                     setTaskForm(prev => ({ ...prev, assignedTo: [...prev.assignedTo, val] }));
                   }
                 }}
-                className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
               >
                 <option value="">— Add assignee —</option>
                 {users.filter(u => !taskForm.assignedTo.includes(u._id)).map(u => (
@@ -684,12 +684,12 @@ export default function CTOProjectDetail() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-1">Due Date <span className="text-[#003300]/40 font-normal">(soft)</span></label>
+              <label className="block text-sm font-medium text-ink mb-1">Due Date <span className="text-ink/40 font-normal">(soft)</span></label>
               <input
                 type="datetime-local"
                 value={taskForm.dueDate}
                 onChange={e => setTaskForm(prev => ({ ...prev, dueDate: e.target.value }))}
-                className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30"
+                className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30"
               />
             </div>
             <div>
@@ -698,7 +698,7 @@ export default function CTOProjectDetail() {
                 type="datetime-local"
                 value={taskForm.hardDeadline}
                 onChange={e => setTaskForm(prev => ({ ...prev, hardDeadline: e.target.value }))}
-                className="w-full px-3 py-2 rounded-lg border border-red-200 bg-red-50/50 text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
+                className="w-full px-3 py-2 rounded-lg border border-red-200 bg-red-50/50 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
               />
               <p className="text-xs text-red-400 mt-1">Missing this is a critical problem</p>
             </div>
@@ -723,7 +723,7 @@ export default function CTOProjectDetail() {
                   onChange={e => setDeclineReason(e.target.value)}
                   rows={2}
                   placeholder="Let the client know why this request won't move forward..."
-                  className="w-full px-3 py-2 rounded-lg border border-red-200 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-red-300 resize-none"
+                  className="w-full px-3 py-2 rounded-lg border border-red-200 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-red-300 resize-none"
                 />
                 <div className="flex justify-end gap-2">
                   <Button variant="outline" size="sm" onClick={() => { setShowDeclineForm(false); setDeclineReason(""); }} disabled={isDeclining}>
@@ -758,8 +758,8 @@ export default function CTOProjectDetail() {
       <Modal isOpen={!!deleteTaskId} onClose={() => setDeleteTaskId(null)} title="Delete Task" size="sm">
         <div className="space-y-4">
           <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-            <p className="text-[#003300] font-medium mb-1">Delete this task?</p>
-            <p className="text-[#003300]/70 text-sm">This action cannot be undone.</p>
+            <p className="text-ink font-medium mb-1">Delete this task?</p>
+            <p className="text-ink/70 text-sm">This action cannot be undone.</p>
           </div>
           <div className={`flex justify-end gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
             <Button variant="outline" onClick={() => setDeleteTaskId(null)} disabled={isDeleting}>Cancel</Button>
@@ -773,7 +773,7 @@ export default function CTOProjectDetail() {
         <div className="space-y-4">
           {subProjectFormError && <Alert variant="error"><p className="text-sm">{subProjectFormError}</p></Alert>}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Sub-project Name *</label>
+            <label className="block text-sm font-medium text-ink mb-1">Sub-project Name *</label>
             <Input
               placeholder="e.g. Backend API"
               value={subProjectForm.name}
@@ -781,17 +781,17 @@ export default function CTOProjectDetail() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Description</label>
+            <label className="block text-sm font-medium text-ink mb-1">Description</label>
             <textarea
               placeholder="Sub-project description..."
               value={subProjectForm.description}
               onChange={e => setSubProjectForm(prev => ({ ...prev, description: e.target.value }))}
               rows={2}
-              className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:outline-none focus:ring-2 focus:ring-[#003300]/30 resize-none"
+              className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:outline-none focus:ring-2 focus:ring-ink/30 resize-none"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Priority</label>
+            <label className="block text-sm font-medium text-ink mb-1">Priority</label>
             <Select
               value={subProjectForm.priority}
               onChange={value => setSubProjectForm(prev => ({ ...prev, priority: value as '1' | '2' | '3' }))}
@@ -815,8 +815,8 @@ export default function CTOProjectDetail() {
       <Modal isOpen={!!deleteSubProjectId} onClose={() => setDeleteSubProjectId(null)} title="Delete Sub-project" size="sm">
         <div className="space-y-4">
           <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-            <p className="text-[#003300] font-medium mb-1">Delete this sub-project?</p>
-            <p className="text-[#003300]/70 text-sm">All tasks inside it must be deleted first.</p>
+            <p className="text-ink font-medium mb-1">Delete this sub-project?</p>
+            <p className="text-ink/70 text-sm">All tasks inside it must be deleted first.</p>
           </div>
           <div className="flex justify-end gap-3">
             <Button variant="outline" onClick={() => setDeleteSubProjectId(null)} disabled={isDeletingSubProject}>Cancel</Button>

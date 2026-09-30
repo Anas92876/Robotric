@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             {label}
             {props.required && <span className="text-red-500 ml-1">*</span>}
           </label>
@@ -36,7 +36,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
         <div className="relative">
           {leftIcon && (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#003300]/50">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-ink/50">
               {leftIcon}
             </div>
           )}
@@ -47,21 +47,21 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             disabled={disabled}
             className={cn(
               'w-full px-4 py-2.5 rounded-lg border transition-all duration-200',
-              'bg-white text-[#003300] placeholder:text-[#003300]/40',
+              'bg-white text-ink placeholder:text-ink/40',
               'focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50',
               'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50',
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
               error
                 ? 'border-red-500 focus:ring-red-500/50'
-                : 'border-[#003300]/20 hover:border-[#003300]/40',
+                : 'border-ink/20 hover:border-ink/40',
               className
             )}
             {...props}
           />
 
           {rightIcon && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[#003300]/50 pointer-events-none">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/50 pointer-events-none">
               <div className="pointer-events-auto">
                 {rightIcon}
               </div>
@@ -89,7 +89,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
 
         {helperText && !error && (
-          <p className="mt-1.5 text-sm text-[#003300]/60">{helperText}</p>
+          <p className="mt-1.5 text-sm text-ink/60">{helperText}</p>
         )}
       </div>
     );

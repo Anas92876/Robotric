@@ -116,28 +116,28 @@ export default function Dashboard() {
       className="space-y-8"
     >
       {/* Welcome Header */}
-      <div className="group relative overflow-hidden bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-[#003300]/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out">
+      <div className="group relative overflow-hidden bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-ink/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out">
         {/* Animated Background Gradient on Hover */}
-        <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
+        <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
         
         {/* Shimmer Effect */}
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl" />
         
         <div className="relative z-10">
           <h1 className="text-3xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 inline-block" style={{ 
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {t('dashboardAdmin:welcomeBackGreeting', { name: user?.name || t('dashboardCommon:welcome') })}
           </h1>
-          <p className={`text-lg transition-colors duration-300 ${isRTL ? 'font-arabic text-right' : ''}`} style={{ color: '#003300' + 'CC' }}>
+          <p className={`text-lg transition-colors duration-300 ${isRTL ? 'font-arabic text-right' : ''}`} style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardAdmin:welcomeMessage')}
           </p>
         </div>
 
         {/* Corner Decoration */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#cccc99]/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute bottom-0 left-0 w-20 h-20 bg-glow/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
       {/* Quick Actions Grid */}
@@ -146,28 +146,28 @@ export default function Dashboard() {
           <Link
             key={index}
             to={action.link}
-            className="group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-[#003300]/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2"
+            className="group relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-ink/20 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out overflow-hidden cursor-pointer hover:-translate-y-2"
           >
             {/* Animated Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-[#003300]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
+            <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
             
             {/* Shimmer Effect */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl" />
 
             <div className="relative z-10">
-              <div className="mb-4 group-hover:scale-110 transition-transform duration-300" style={{ color: '#003300' }}>
+              <div className="mb-4 group-hover:scale-110 transition-transform duration-300" style={{ color: '#0f1f33' }}>
                 {action.icon}
               </div>
 
-              <h3 className="text-xl font-bold mb-2 group-hover:text-[#003300] transition-colors duration-300" style={{ color: '#003300' }}>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-ink transition-colors duration-300" style={{ color: '#0f1f33' }}>
                 {action.title}
               </h3>
               
-              <p className="text-sm leading-relaxed transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+              <p className="text-sm leading-relaxed transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
                 {action.description}
               </p>
               
-              <div className={`mt-4 flex items-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isRTL ? 'flex-row-reverse' : ''}`} style={{ color: '#003300' }}>
+              <div className={`mt-4 flex items-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isRTL ? 'flex-row-reverse' : ''}`} style={{ color: '#0f1f33' }}>
                 <span className="text-sm">{t('dashboardAdmin:getStarted')}</span>
                 <svg className={`w-4 h-4 ${isRTL ? 'mr-2' : 'ml-2'} group-hover:translate-x-1 transition-transform duration-300`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -176,7 +176,7 @@ export default function Dashboard() {
             </div>
 
             {/* Corner Decoration */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-[#003300]/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </Link>
         ))}
       </div>
@@ -237,7 +237,7 @@ export default function Dashboard() {
         <div className={`flex items-center justify-between mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Activity className="w-6 h-6 text-primary" />
-            <h3 className="text-xl font-bold text-[#003300]">{t('dashboardAdmin:recentActivity')}</h3>
+            <h3 className="text-xl font-bold text-ink">{t('dashboardAdmin:recentActivity')}</h3>
           </div>
           <Button
             variant="ghost"
@@ -252,8 +252,8 @@ export default function Dashboard() {
         {recentActivity.length === 0 ? (
           <div className="text-center py-12">
             <Activity className="w-16 h-16 text-primary/30 mx-auto mb-4" />
-            <p className="text-[#003300]/70">{t('dashboardCommon:noResults')}</p>
-            <p className="text-[#003300]/50 text-sm mt-2">
+            <p className="text-ink/70">{t('dashboardCommon:noResults')}</p>
+            <p className="text-ink/50 text-sm mt-2">
               {t('dashboardAdmin:emptyActivityMessage')}
             </p>
           </div>
@@ -264,7 +264,7 @@ export default function Dashboard() {
                 key={activity.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300 border border-transparent hover:border-[#003300]/20 group ${isRTL ? 'flex-row-reverse' : ''}`}
+                className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300 border border-transparent hover:border-ink/20 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
@@ -285,14 +285,14 @@ export default function Dashboard() {
                   {activity.type}
                 </Badge>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#003300] text-sm font-medium truncate">
+                  <p className="text-ink text-sm font-medium truncate">
                     {activity.title}
                   </p>
-                  <p className="text-[#003300]/60 text-xs mt-1 truncate">
+                  <p className="text-ink/60 text-xs mt-1 truncate">
                     {activity.description}
                   </p>
                 </div>
-                <span className="text-[#003300]/50 text-xs whitespace-nowrap">
+                <span className="text-ink/50 text-xs whitespace-nowrap">
                   {formatTimeAgo(activity.timestamp)}
                 </span>
               </motion.div>
@@ -307,8 +307,8 @@ export default function Dashboard() {
           <CardComponent variant="glass" hover className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#003300]/60 text-sm mb-1">{t('dashboardAdmin:totalOrders')}</p>
-                <p className="text-2xl font-bold text-[#003300]">{stats.orders.completed}</p>
+                <p className="text-ink/60 text-sm mb-1">{t('dashboardAdmin:totalOrders')}</p>
+                <p className="text-2xl font-bold text-ink">{stats.orders.completed}</p>
               </div>
               <ShoppingCart className="w-10 h-10 text-primary/50" />
             </div>
@@ -317,8 +317,8 @@ export default function Dashboard() {
           <CardComponent variant="glass" hover className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#003300]/60 text-sm mb-1">{t('dashboardAdmin:activeProjects')}</p>
-                <p className="text-2xl font-bold text-[#003300]">{stats.projects.active}</p>
+                <p className="text-ink/60 text-sm mb-1">{t('dashboardAdmin:activeProjects')}</p>
+                <p className="text-2xl font-bold text-ink">{stats.projects.active}</p>
               </div>
               <Briefcase className="w-10 h-10 text-secondary/50" />
             </div>
@@ -327,8 +327,8 @@ export default function Dashboard() {
           <CardComponent variant="glass" hover className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#003300]/60 text-sm mb-1">{t('dashboardAdmin:totalTeams')}</p>
-                <p className="text-2xl font-bold text-[#003300]">{stats.teams.total}</p>
+                <p className="text-ink/60 text-sm mb-1">{t('dashboardAdmin:totalTeams')}</p>
+                <p className="text-2xl font-bold text-ink">{stats.teams.total}</p>
               </div>
               <Users className="w-10 h-10 text-accent/50" />
             </div>

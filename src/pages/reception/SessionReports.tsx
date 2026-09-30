@@ -174,10 +174,10 @@ export default function SessionReports() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardReception:sessionReports.title', 'Session Reports')}</h1>
-          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>
+          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardReception:sessionReports.subtitle', 'Create reports for completed sessions and deduct hours from subscriptions')}
           </p>
         </div>
@@ -191,13 +191,13 @@ export default function SessionReports() {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white rounded-xl p-1 border border-[#003300]/10 inline-flex">
+      <div className="bg-white rounded-xl p-1 border border-ink/10 inline-flex">
         <button
           onClick={() => setActiveTab('sessions')}
           className={`px-6 py-2 rounded-lg font-medium transition-all ${
             activeTab === 'sessions'
               ? 'bg-primary text-white'
-              : 'text-[#003300]/60 hover:text-[#003300]'
+              : 'text-ink/60 hover:text-ink'
           }`}
         >
           Sessions
@@ -207,7 +207,7 @@ export default function SessionReports() {
           className={`px-6 py-2 rounded-lg font-medium transition-all ${
             activeTab === 'reports'
               ? 'bg-primary text-white'
-              : 'text-[#003300]/60 hover:text-[#003300]'
+              : 'text-ink/60 hover:text-ink'
           }`}
         >
           My Reports ({reports.length})
@@ -223,11 +223,11 @@ export default function SessionReports() {
 
       {/* Filters - Only show on Sessions tab */}
       {activeTab === 'sessions' && (
-        <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+        <div className="bg-white rounded-xl p-4 border border-ink/10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
                 <Input
                   type="text"
                   placeholder="Search by student name or email..."
@@ -242,7 +242,7 @@ export default function SessionReports() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
               >
                 <option value="all">All Status</option>
                 <option value="approved">Approved (Ready for Report)</option>
@@ -268,11 +268,11 @@ export default function SessionReports() {
           {filteredSessions.length === 0 ? (
             <CardComponent>
               <CardBody className="p-12 text-center">
-                <FileText className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-                <h3 className="text-xl font-semibold text-[#003300] mb-2">
+                <FileText className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+                <h3 className="text-xl font-semibold text-ink mb-2">
                   No Sessions Found
                 </h3>
-                <p className="text-[#003300]/60">
+                <p className="text-ink/60">
                   {searchQuery || statusFilter !== 'all'
                     ? 'Try adjusting your filters'
                     : 'No sessions available for reporting'}
@@ -296,41 +296,41 @@ export default function SessionReports() {
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="font-semibold text-[#003300] text-lg">
+                            <h3 className="font-semibold text-ink text-lg">
                               {user?.name || 'Unknown User'}
                             </h3>
                             {getStatusBadge(session.status)}
                           </div>
-                          <p className="text-sm text-[#003300]/60 mb-4">{user?.email}</p>
+                          <p className="text-sm text-ink/60 mb-4">{user?.email}</p>
 
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                             <div>
-                              <p className="text-xs text-[#003300]/60 mb-1">Date</p>
-                              <p className="font-semibold text-[#003300]">
+                              <p className="text-xs text-ink/60 mb-1">Date</p>
+                              <p className="font-semibold text-ink">
                                 {formatDate(session.date)}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-[#003300]/60 mb-1">Time</p>
-                              <p className="font-semibold text-[#003300]">
+                              <p className="text-xs text-ink/60 mb-1">Time</p>
+                              <p className="font-semibold text-ink">
                                 {session.startTime} - {endTime}
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-[#003300]/60 mb-1">Duration</p>
-                              <p className="font-semibold text-[#003300]">
+                              <p className="text-xs text-ink/60 mb-1">Duration</p>
+                              <p className="font-semibold text-ink">
                                 {session.durationHours} hrs
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-[#003300]/60 mb-1">Status</p>
-                              <p className="font-semibold text-[#003300]">{session.status}</p>
+                              <p className="text-xs text-ink/60 mb-1">Status</p>
+                              <p className="font-semibold text-ink">{session.status}</p>
                             </div>
                           </div>
 
                           {session.description && (
-                            <div className="bg-[#003300]/5 rounded-lg p-3 mb-4">
-                              <p className="text-sm text-[#003300]/80">{session.description}</p>
+                            <div className="bg-ink/5 rounded-lg p-3 mb-4">
+                              <p className="text-sm text-ink/80">{session.description}</p>
                             </div>
                           )}
                         </div>
@@ -376,11 +376,11 @@ export default function SessionReports() {
           ) : reports.length === 0 ? (
             <CardComponent>
               <CardBody className="p-12 text-center">
-                <FileText className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-                <h3 className="text-xl font-semibold text-[#003300] mb-2">
+                <FileText className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+                <h3 className="text-xl font-semibold text-ink mb-2">
                   No Reports Found
                 </h3>
-                <p className="text-[#003300]/60">
+                <p className="text-ink/60">
                   You haven't created any session reports yet
                 </p>
               </CardBody>
@@ -403,7 +403,7 @@ export default function SessionReports() {
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="font-semibold text-[#003300] text-lg">
+                            <h3 className="font-semibold text-ink text-lg">
                               {user?.name || 'Unknown User'}
                             </h3>
                             <Badge variant={report.attendance ? 'success' : 'error'}>
@@ -421,32 +421,32 @@ export default function SessionReports() {
                             </Badge>
                           </div>
                           {user?.email && (
-                            <p className="text-sm text-[#003300]/60 mb-4">{user.email}</p>
+                            <p className="text-sm text-ink/60 mb-4">{user.email}</p>
                           )}
 
                           {session && (
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                               <div>
-                                <p className="text-xs text-[#003300]/60 mb-1">Date</p>
-                                <p className="font-semibold text-[#003300]">
+                                <p className="text-xs text-ink/60 mb-1">Date</p>
+                                <p className="font-semibold text-ink">
                                   {formatDate(session.date)}
                                 </p>
                               </div>
                               <div>
-                                <p className="text-xs text-[#003300]/60 mb-1">Time</p>
-                                <p className="font-semibold text-[#003300]">
+                                <p className="text-xs text-ink/60 mb-1">Time</p>
+                                <p className="font-semibold text-ink">
                                   {session.startTime} - {endTime}
                                 </p>
                               </div>
                               <div>
-                                <p className="text-xs text-[#003300]/60 mb-1">Duration</p>
-                                <p className="font-semibold text-[#003300]">
+                                <p className="text-xs text-ink/60 mb-1">Duration</p>
+                                <p className="font-semibold text-ink">
                                   {session.durationHours} hrs
                                 </p>
                               </div>
                               <div>
-                                <p className="text-xs text-[#003300]/60 mb-1">Created</p>
-                                <p className="font-semibold text-[#003300]">
+                                <p className="text-xs text-ink/60 mb-1">Created</p>
+                                <p className="font-semibold text-ink">
                                   {formatDate(report.createdAt)}
                                 </p>
                               </div>
@@ -454,8 +454,8 @@ export default function SessionReports() {
                           )}
 
                           {report.notes && (
-                            <div className="bg-[#003300]/5 rounded-lg p-3 mb-4">
-                              <p className="text-sm text-[#003300]/80 whitespace-pre-wrap line-clamp-2">
+                            <div className="bg-ink/5 rounded-lg p-3 mb-4">
+                              <p className="text-sm text-ink/80 whitespace-pre-wrap line-clamp-2">
                                 {report.notes}
                               </p>
                             </div>
@@ -513,7 +513,7 @@ export default function SessionReports() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-[#003300]/60 mb-1">Attendance</p>
+                <p className="text-sm text-ink/60 mb-1">Attendance</p>
                 <Badge variant={reportToView.attendance ? 'success' : 'error'}>
                   {reportToView.attendance ? (
                     <>
@@ -529,17 +529,17 @@ export default function SessionReports() {
                 </Badge>
               </div>
               <div>
-                <p className="text-sm text-[#003300]/60 mb-1">Created At</p>
-                <p className="font-semibold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">Created At</p>
+                <p className="font-semibold text-ink">
                   {new Date(reportToView.createdAt).toLocaleString()}
                 </p>
               </div>
             </div>
 
             <div>
-              <p className="text-sm text-[#003300]/60 mb-1">Notes</p>
-              <div className="bg-[#003300]/5 rounded-lg p-3">
-                <p className="text-sm text-[#003300]/80 whitespace-pre-wrap">
+              <p className="text-sm text-ink/60 mb-1">Notes</p>
+              <div className="bg-ink/5 rounded-lg p-3">
+                <p className="text-sm text-ink/80 whitespace-pre-wrap">
                   {reportToView.notes}
                 </p>
               </div>
@@ -547,7 +547,7 @@ export default function SessionReports() {
 
             {reportToView.pdfUrl && (
               <div>
-                <p className="text-sm text-[#003300]/60 mb-2">PDF Report</p>
+                <p className="text-sm text-ink/60 mb-2">PDF Report</p>
                 <a
                   href={reportToView.pdfUrl}
                   target="_blank"
@@ -562,12 +562,12 @@ export default function SessionReports() {
 
             {reportToView.createdBy && (
               <div>
-                <p className="text-sm text-[#003300]/60 mb-1">Created By</p>
-                <p className="font-semibold text-[#003300]">{reportToView.createdBy.name}</p>
+                <p className="text-sm text-ink/60 mb-1">Created By</p>
+                <p className="font-semibold text-ink">{reportToView.createdBy.name}</p>
               </div>
             )}
 
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
               <Button
                 variant="outline"
                 onClick={() => {

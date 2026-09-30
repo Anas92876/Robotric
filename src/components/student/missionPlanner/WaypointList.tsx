@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { ArrowUp, ArrowDown, Trash2, Plus } from 'lucide-react';
 import type { MissionStep, Point } from '../../../utils/missionPlanner';
 
-const TEXT_PRIMARY = '#003300';
-const TEXT_TERTIARY = '#00330080';
+const TEXT_PRIMARY = '#0f1f33';
+const TEXT_TERTIARY = '#0f1f3380';
 const ACCENT = '#7C3AED';
 
 interface WaypointListProps {
@@ -30,7 +30,7 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-[#003300]/10 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="bg-white rounded-2xl border border-ink/10 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="p-4">
         <h3 className="font-bold text-sm mb-3" style={{ color: TEXT_PRIMARY }}>
           {isRTL ? 'نقاط المسار' : 'Waypoints'}
@@ -45,7 +45,7 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
             {steps.map((step, i) => {
               const wp = waypoints[i];
               return (
-                <div key={i} className="rounded-xl border border-[#003300]/8 p-2.5 text-xs">
+                <div key={i} className="rounded-xl border border-ink/8 p-2.5 text-xs">
                   <div className={`flex items-center justify-between gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <span
                       className="inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold flex-shrink-0"
@@ -58,7 +58,7 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
                         type="number"
                         value={wp.x}
                         onChange={(e) => onUpdate(i, { ...wp, x: parseFloat(e.target.value) || 0 })}
-                        className="w-16 px-1.5 py-1 rounded-lg border border-[#003300]/15 text-center"
+                        className="w-16 px-1.5 py-1 rounded-lg border border-ink/15 text-center"
                         title="X (mm)"
                       />
                       <span style={{ color: TEXT_TERTIARY }}>X</span>
@@ -66,7 +66,7 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
                         type="number"
                         value={wp.y}
                         onChange={(e) => onUpdate(i, { ...wp, y: parseFloat(e.target.value) || 0 })}
-                        className="w-16 px-1.5 py-1 rounded-lg border border-[#003300]/15 text-center"
+                        className="w-16 px-1.5 py-1 rounded-lg border border-ink/15 text-center"
                         title="Y (mm)"
                       />
                       <span style={{ color: TEXT_TERTIARY }}>Y</span>
@@ -75,7 +75,7 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
                       <button
                         onClick={() => onReorder(i, -1)}
                         disabled={i === 0}
-                        className="p-1 rounded-lg border border-[#003300]/10 disabled:opacity-30 hover:bg-[#003300]/5"
+                        className="p-1 rounded-lg border border-ink/10 disabled:opacity-30 hover:bg-ink/5"
                         title={isRTL ? 'تحريك لأعلى' : 'Move up'}
                       >
                         <ArrowUp className="w-3 h-3" />
@@ -83,7 +83,7 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
                       <button
                         onClick={() => onReorder(i, 1)}
                         disabled={i === waypoints.length - 1}
-                        className="p-1 rounded-lg border border-[#003300]/10 disabled:opacity-30 hover:bg-[#003300]/5"
+                        className="p-1 rounded-lg border border-ink/10 disabled:opacity-30 hover:bg-ink/5"
                         title={isRTL ? 'تحريك لأسفل' : 'Move down'}
                       >
                         <ArrowDown className="w-3 h-3" />
@@ -124,14 +124,14 @@ export function WaypointList({ waypoints, steps, onUpdate, onRemove, onReorder, 
             placeholder="X"
             value={newX}
             onChange={(e) => setNewX(e.target.value)}
-            className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+            className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
           />
           <input
             type="number"
             placeholder="Y"
             value={newY}
             onChange={(e) => setNewY(e.target.value)}
-            className="w-full px-2 py-1.5 rounded-lg border border-[#003300]/15 text-xs text-center"
+            className="w-full px-2 py-1.5 rounded-lg border border-ink/15 text-xs text-center"
           />
           <button
             onClick={handleAdd}

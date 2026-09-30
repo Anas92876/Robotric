@@ -150,10 +150,10 @@ export default function CLOInterests() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:interests')}</h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardCLO:manageInterestFields')}</p>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardCLO:manageInterestFields')}</p>
         </div>
         <Button
           variant="primary"
@@ -165,11 +165,11 @@ export default function CLOInterests() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+      <div className="bg-white rounded-xl p-4 border border-ink/10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <div className="relative">
-              <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40`} />
+              <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40`} />
               <Input
                 type="text"
                 placeholder={t('dashboardCLO:searchInterests')}
@@ -184,7 +184,7 @@ export default function CLOInterests() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             >
               <option value="all">{t('dashboardCommon:allStatus')}</option>
               <option value="active">{t('dashboardCommon:active')}</option>
@@ -216,26 +216,26 @@ export default function CLOInterests() {
       )}
 
       {/* Interests Table */}
-      <div className="bg-white rounded-xl border border-[#003300]/10 overflow-hidden">
+      <div className="bg-white rounded-xl border border-ink/10 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-primary/5 border-b border-[#003300]/10">
+            <thead className="bg-primary/5 border-b border-ink/10">
               <tr>
-                <th className={`px-6 py-3 ${isRTL ? 'text-right' : 'text-left'} text-xs font-semibold text-[#003300] uppercase tracking-wider`}>
+                <th className={`px-6 py-3 ${isRTL ? 'text-right' : 'text-left'} text-xs font-semibold text-ink uppercase tracking-wider`}>
                   {t('dashboardCommon:name')}
                 </th>
-                <th className={`px-6 py-3 ${isRTL ? 'text-right' : 'text-left'} text-xs font-semibold text-[#003300] uppercase tracking-wider`}>
+                <th className={`px-6 py-3 ${isRTL ? 'text-right' : 'text-left'} text-xs font-semibold text-ink uppercase tracking-wider`}>
                   {t('dashboardCLO:descriptionLabel')}
                 </th>
-                <th className={`px-6 py-3 ${isRTL ? 'text-right' : 'text-left'} text-xs font-semibold text-[#003300] uppercase tracking-wider`}>
+                <th className={`px-6 py-3 ${isRTL ? 'text-right' : 'text-left'} text-xs font-semibold text-ink uppercase tracking-wider`}>
                   {t('dashboardCommon:status')}
                 </th>
-                <th className={`px-6 py-3 ${isRTL ? 'text-left' : 'text-right'} text-xs font-semibold text-[#003300] uppercase tracking-wider`}>
+                <th className={`px-6 py-3 ${isRTL ? 'text-left' : 'text-right'} text-xs font-semibold text-ink uppercase tracking-wider`}>
                   {t('dashboardCommon:actions')}
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#003300]/10">
+            <tbody className="divide-y divide-ink/10">
               {interests.length > 0 ? (
                 interests.map((interest) => (
                   <tr key={interest._id} className="hover:bg-primary/5 transition-colors">
@@ -244,10 +244,10 @@ export default function CLOInterests() {
                         <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                           <Tag className="w-5 h-5 text-white" />
                         </div>
-                        <span className="font-medium text-[#003300]">{interest.name}</span>
+                        <span className="font-medium text-ink">{interest.name}</span>
                       </div>
                     </td>
-                    <td className={`px-6 py-4 text-sm text-[#003300]/60 ${isRTL ? 'text-right' : ''}`}>
+                    <td className={`px-6 py-4 text-sm text-ink/60 ${isRTL ? 'text-right' : ''}`}>
                       {interest.description || t('dashboardCLO:noDescription')}
                     </td>
                     <td className="px-6 py-4">
@@ -308,11 +308,11 @@ export default function CLOInterests() {
                 <tr>
                   <td colSpan={4} className="px-6 py-12">
                     <div className="text-center">
-                      <Tag className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                      <h3 className="text-lg font-semibold text-[#003300] mb-2">
+                      <Tag className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                      <h3 className="text-lg font-semibold text-ink mb-2">
                         {t('dashboardCLO:noInterests')}
                       </h3>
-                      <p className="text-[#003300]/60 mb-4">
+                      <p className="text-ink/60 mb-4">
                         {searchQuery || statusFilter !== "all"
                           ? t('dashboardCLO:tryAdjustingFilters')
                           : t('dashboardCLO:getStartedFirstInterest')}
@@ -344,7 +344,7 @@ export default function CLOInterests() {
       >
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className={`block text-sm font-medium text-[#003300] mb-2 ${isRTL ? 'text-right' : ''}`}>
+            <label className={`block text-sm font-medium text-ink mb-2 ${isRTL ? 'text-right' : ''}`}>
               {t('dashboardCLO:interestNameLabel')} <span className="text-red-500">*</span>
             </label>
             <Input
@@ -360,7 +360,7 @@ export default function CLOInterests() {
           </div>
 
           <div>
-            <label className={`block text-sm font-medium text-[#003300] mb-2 ${isRTL ? 'text-right' : ''}`}>
+            <label className={`block text-sm font-medium text-ink mb-2 ${isRTL ? 'text-right' : ''}`}>
               {t('dashboardCLO:descriptionLabel')}
             </label>
             <textarea
@@ -368,11 +368,11 @@ export default function CLOInterests() {
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder={t('dashboardCLO:optionalDescPlaceholder')}
               rows={3}
-              className={`w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none ${isRTL ? 'text-right' : ''}`}
+              className={`w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none ${isRTL ? 'text-right' : ''}`}
             />
           </div>
 
-          <div className={`flex justify-end gap-3 pt-4 border-t border-[#003300]/10 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex justify-end gap-3 pt-4 border-t border-ink/10 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Button
               type="button"
               variant="ghost"

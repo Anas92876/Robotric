@@ -257,7 +257,7 @@ export default function TrainerTakeAttendance() {
       <div>
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-1.5 text-sm text-[#003300]/60 hover:text-[#003300] transition-colors mb-4"
+          className="flex items-center gap-1.5 text-sm text-ink/60 hover:text-ink transition-colors mb-4"
         >
           <ArrowLeft className="w-4 h-4" />
           {t('dashboardCommon:back')}
@@ -266,7 +266,7 @@ export default function TrainerTakeAttendance() {
         <h1
           className="text-2xl font-bold"
           style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: "text",
           }}
         >
@@ -274,7 +274,7 @@ export default function TrainerTakeAttendance() {
         </h1>
 
         {sessionInfo && (
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1.5 text-sm text-[#003300]/60">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1.5 text-sm text-ink/60">
             <span className="flex items-center gap-1">
               <Calendar className="w-3.5 h-3.5" />
               {sessionInfo.title}
@@ -292,9 +292,9 @@ export default function TrainerTakeAttendance() {
       </div>
 
       {/* ── Info banner: late rule ────────────────────────────── */}
-      <div className="flex items-start gap-3 bg-[#003300]/5 border border-[#003300]/10 rounded-xl px-4 py-3">
-        <Timer className="w-4 h-4 text-[#003300]/50 flex-shrink-0 mt-0.5" />
-        <p className="text-xs text-[#003300]/60 leading-relaxed">
+      <div className="flex items-start gap-3 bg-ink/5 border border-ink/10 rounded-xl px-4 py-3">
+        <Timer className="w-4 h-4 text-ink/50 flex-shrink-0 mt-0.5" />
+        <p className="text-xs text-ink/60 leading-relaxed">
           {t('dashboardTrainer:lateRuleInfoA')} <strong>{sessionStart}</strong> {t('dashboardTrainer:lateRuleInfoB')}
         </p>
       </div>
@@ -314,17 +314,17 @@ export default function TrainerTakeAttendance() {
           <p className="text-2xl font-bold text-red-600">{absentCount}</p>
           <p className="text-xs text-red-500 mt-0.5">{t('dashboardTrainer:absent')}</p>
         </div>
-        <div className="bg-[#003300]/5 border border-[#003300]/15 rounded-xl px-4 py-3 text-center">
-          <p className="text-2xl font-bold text-[#003300]">{students.length}</p>
-          <p className="text-xs text-[#003300]/60 mt-0.5">{t('dashboardTrainer:totalStudents')}</p>
+        <div className="bg-ink/5 border border-ink/15 rounded-xl px-4 py-3 text-center">
+          <p className="text-2xl font-bold text-ink">{students.length}</p>
+          <p className="text-xs text-ink/60 mt-0.5">{t('dashboardTrainer:totalStudents')}</p>
         </div>
       </div>
 
       {/* ── Students list ────────────────────────────────────── */}
-      <div className="bg-white border border-[#003300]/10 rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden shadow-sm">
         {/* List header + bulk actions */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#003300]/8">
-          <h2 className="text-sm font-bold text-[#003300]">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-ink/8">
+          <h2 className="text-sm font-bold text-ink">
             {t('dashboardTrainer:studentsListCount', { count: students.length })}
           </h2>
           <div className="flex gap-2">
@@ -346,7 +346,7 @@ export default function TrainerTakeAttendance() {
         </div>
 
         {/* Student rows */}
-        <div className="divide-y divide-[#003300]/6">
+        <div className="divide-y divide-ink/6">
           {students.map((student, index) => {
             const record = attendance.get(student._id);
             const status = record?.status ?? "absent";
@@ -388,7 +388,7 @@ export default function TrainerTakeAttendance() {
                   {/* Name */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="text-sm font-semibold text-[#003300] truncate">
+                      <p className="text-sm font-semibold text-ink truncate">
                         {student.name}
                       </p>
                       {isLate && (
@@ -402,7 +402,7 @@ export default function TrainerTakeAttendance() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-[#003300]/45 truncate">{student.email}</p>
+                    <p className="text-xs text-ink/45 truncate">{student.email}</p>
                   </div>
 
                   {/* حاضر / غائب buttons */}
@@ -413,7 +413,7 @@ export default function TrainerTakeAttendance() {
                       className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-semibold border transition-all ${
                         attended
                           ? "bg-emerald-500 border-emerald-500 text-white shadow-sm"
-                          : "bg-white border-[#003300]/20 text-[#003300]/60 hover:border-emerald-400 hover:text-emerald-600"
+                          : "bg-white border-ink/20 text-ink/60 hover:border-emerald-400 hover:text-emerald-600"
                       }`}
                     >
                       <CheckCircle className="w-4 h-4" />
@@ -425,7 +425,7 @@ export default function TrainerTakeAttendance() {
                       className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-semibold border transition-all ${
                         isAbsent
                           ? "bg-red-500 border-red-500 text-white shadow-sm"
-                          : "bg-white border-[#003300]/20 text-[#003300]/60 hover:border-red-400 hover:text-red-500"
+                          : "bg-white border-ink/20 text-ink/60 hover:border-red-400 hover:text-red-500"
                       }`}
                     >
                       <XCircle className="w-4 h-4" />
@@ -452,7 +452,7 @@ export default function TrainerTakeAttendance() {
                             className={`text-xs px-2.5 py-1 rounded-lg border font-medium transition-colors whitespace-nowrap ${
                               checkInTime === sessionStart
                                 ? "bg-emerald-500 border-emerald-500 text-white"
-                                : "bg-white border-[#003300]/20 text-[#003300]/60 hover:border-emerald-400 hover:text-emerald-600"
+                                : "bg-white border-ink/20 text-ink/60 hover:border-emerald-400 hover:text-emerald-600"
                             }`}
                           >
                             {t('dashboardTrainer:onTime')} ({sessionStart})
@@ -461,14 +461,14 @@ export default function TrainerTakeAttendance() {
 
                         {/* Manual time input */}
                         <div className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-[#003300]/40 flex-shrink-0" />
+                          <Clock className="w-3.5 h-3.5 text-ink/40 flex-shrink-0" />
                           <input
                             type="time"
                             value={checkInTime}
                             onChange={(e) => updateCheckInTime(student._id, e.target.value)}
-                            className="text-xs border border-[#003300]/20 rounded-lg px-2 py-1 text-[#003300] bg-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-200"
+                            className="text-xs border border-ink/20 rounded-lg px-2 py-1 text-ink bg-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-200"
                           />
-                          <span className="text-xs text-[#003300]/40">{t('dashboardTrainer:arrivalTime')}</span>
+                          <span className="text-xs text-ink/40">{t('dashboardTrainer:arrivalTime')}</span>
                         </div>
                       </div>
                     </motion.div>
@@ -508,7 +508,7 @@ export default function TrainerTakeAttendance() {
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="px-5 py-2.5 rounded-xl border border-[#003300]/20 text-sm font-medium text-[#003300]/70 hover:bg-[#003300]/5 transition-colors"
+          className="px-5 py-2.5 rounded-xl border border-ink/20 text-sm font-medium text-ink/70 hover:bg-ink/5 transition-colors"
         >
           {t('dashboardCommon:cancel')}
         </button>

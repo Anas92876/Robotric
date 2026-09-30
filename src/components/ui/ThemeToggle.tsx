@@ -13,7 +13,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={handleToggle}
-      className="relative p-3 rounded-lg bg-[#cccc99]/20 dark:bg-[#0d1a0d] hover:bg-[#cccc99]/30 dark:hover:bg-[#1a331a] border border-[#003300]/20 hover:border-[#003300]/50 transition-all duration-300 cursor-pointer"
+      className="relative p-3 rounded-lg bg-glow/20 dark:bg-[#0d1a0d] hover:bg-glow/30 dark:hover:bg-[#1a331a] border border-ink/20 hover:border-ink/50 transition-all duration-300 cursor-pointer"
       aria-label="Toggle theme"
       type="button"
     >
@@ -23,9 +23,9 @@ export function ThemeToggle() {
         transition={{ duration: 0.3 }}
       >
         {resolvedTheme === 'dark' ? (
-          <Sun className="w-5 h-5 text-[#003300] dark:text-[#ffffcc]" />
+          <Sun className="w-5 h-5 text-ink dark:text-frost" />
         ) : (
-          <Moon className="w-5 h-5 text-[#003300]" />
+          <Moon className="w-5 h-5 text-ink" />
         )}
       </motion.div>
     </button>

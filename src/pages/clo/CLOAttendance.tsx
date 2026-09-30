@@ -119,7 +119,7 @@ export default function CLOAttendance() {
       {/* Header with Breadcrumb */}
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div className={isRTL ? 'text-right' : ''}>
-          <div className={`flex items-center gap-2 text-sm text-[#003300]/60 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center gap-2 text-sm text-ink/60 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <span className={step === 'course' ? 'text-primary font-medium' : ''}>{t('dashboardCLO:selectCourse')}</span>
             {(step === 'session' || step === 'details') && (
               <>
@@ -136,8 +136,8 @@ export default function CLOAttendance() {
               </>
             )}
           </div>
-          <h1 className="text-3xl font-bold text-[#003300]">{t('dashboardCLO:sessionAttendance')}</h1>
-          <p className="text-[#003300]/60 mt-1">
+          <h1 className="text-3xl font-bold text-ink">{t('dashboardCLO:sessionAttendance')}</h1>
+          <p className="text-ink/60 mt-1">
             {step === 'course' && t('dashboardCLO:selectCourseDesc')}
             {step === 'session' && t('dashboardCLO:selectSessionDesc')}
             {step === 'details' && t('dashboardCLO:viewDetailedAttendanceDesc')}
@@ -202,14 +202,14 @@ export default function CLOAttendance() {
                 >
                   <button
                     onClick={() => handleSelectCourse(course)}
-                    className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
+                    className={`w-full bg-white rounded-xl p-6 border border-ink/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <BookOpen className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-semibold text-[#003300] mb-1 group-hover:text-primary transition-colors">
+                        <h3 className="text-lg font-semibold text-ink mb-1 group-hover:text-primary transition-colors">
                           {course.title}
                         </h3>
                         <div className={`flex flex-wrap items-center gap-2 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
@@ -225,12 +225,12 @@ export default function CLOAttendance() {
                           )}
                         </div>
                         {course.description && (
-                          <p className="text-sm text-[#003300]/60 line-clamp-2 mb-3">
+                          <p className="text-sm text-ink/60 line-clamp-2 mb-3">
                             {course.description}
                           </p>
                         )}
                         <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
-                          <span className="text-sm text-[#003300]/60">
+                          <span className="text-sm text-ink/60">
                             {t('dashboardCLO:clickToViewSessions')}
                           </span>
                           <ChevronRight className={`w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
@@ -241,12 +241,12 @@ export default function CLOAttendance() {
                 </motion.div>
               ))
             ) : (
-              <div className="col-span-full bg-white rounded-xl p-12 border border-[#003300]/10 text-center">
-                <BookOpen className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <h3 className="text-lg font-semibold text-[#003300] mb-2">
+              <div className="col-span-full bg-white rounded-xl p-12 border border-ink/10 text-center">
+                <BookOpen className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <h3 className="text-lg font-semibold text-ink mb-2">
                   {t('dashboardCLO:noCourses')}
                 </h3>
-                <p className="text-[#003300]/60">
+                <p className="text-ink/60">
                   {t('dashboardCLO:noPublishedCourses')}
                 </p>
               </div>
@@ -276,17 +276,17 @@ export default function CLOAttendance() {
                 >
                   <button
                     onClick={() => handleSelectSession(session)}
-                    className={`w-full bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
+                    className={`w-full bg-white rounded-xl p-6 border border-ink/10 hover:border-primary/30 hover:shadow-lg transition-all ${isRTL ? 'text-right' : 'text-left'} group`}
                   >
                     <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                         <ClipboardCheck className="w-6 h-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-xl font-semibold text-[#003300] mb-2 group-hover:text-primary transition-colors">
+                        <h3 className="text-xl font-semibold text-ink mb-2 group-hover:text-primary transition-colors">
                           {session.session?.title || "N/A"}
                         </h3>
-                        <div className={`flex flex-wrap items-center gap-3 text-sm text-[#003300]/60 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className={`flex flex-wrap items-center gap-3 text-sm text-ink/60 mb-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <Calendar className="w-4 h-4" />
                             <span>{formatDate(session.session?.date)}</span>
@@ -312,7 +312,7 @@ export default function CLOAttendance() {
                                 {session.stats?.attendanceRate || 0}% {t('dashboardCLO:attendanceLabel')}
                               </span>
                             </div>
-                            <span className="text-sm text-[#003300]/60">
+                            <span className="text-sm text-ink/60">
                               {session.stats?.totalStudents || 0} {t('dashboardCLO:students')}
                             </span>
                           </div>
@@ -324,12 +324,12 @@ export default function CLOAttendance() {
                 </motion.div>
               ))
             ) : (
-              <div className="bg-white rounded-xl p-12 border border-[#003300]/10 text-center">
-                <ClipboardCheck className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <h3 className="text-lg font-semibold text-[#003300] mb-2">
+              <div className="bg-white rounded-xl p-12 border border-ink/10 text-center">
+                <ClipboardCheck className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <h3 className="text-lg font-semibold text-ink mb-2">
                   {t('dashboardCLO:noSessionsFound')}
                 </h3>
-                <p className="text-[#003300]/60">
+                <p className="text-ink/60">
                   {t('dashboardCLO:noAttendanceRecorded')}
                 </p>
               </div>
@@ -348,16 +348,16 @@ export default function CLOAttendance() {
             className="space-y-6"
           >
             {/* Session Info Card */}
-            <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
+            <div className="bg-white rounded-xl p-6 border border-ink/10">
               <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
                   <ClipboardCheck className="w-8 h-8" />
                 </div>
                 <div className={`flex-1 ${isRTL ? 'text-right' : ''}`}>
-                  <h3 className="text-2xl font-bold text-[#003300] mb-2">
+                  <h3 className="text-2xl font-bold text-ink mb-2">
                     {selectedSession.session?.title || "N/A"}
                   </h3>
-                  <div className={`flex flex-wrap items-center gap-3 text-sm text-[#003300]/60 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <div className={`flex flex-wrap items-center gap-3 text-sm text-ink/60 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       <Calendar className="w-4 h-4" />
                       <span>{formatDate(selectedSession.session?.date)}</span>
@@ -382,50 +382,50 @@ export default function CLOAttendance() {
             {/* Statistics Cards */}
             {selectedSession.stats && (
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <TrendingUp className="w-4 h-4 text-green-600" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCLO:attendanceRate')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCLO:attendanceRate')}</p>
                   </div>
                   <p className="text-2xl font-bold text-green-600">
                     {selectedSession.stats.attendanceRate}%
                   </p>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <UserCheck className="w-4 h-4 text-green-600" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCommon:present')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCommon:present')}</p>
                   </div>
                   <p className="text-2xl font-bold text-green-600">
                     {selectedSession.stats.present}
                   </p>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <UserX className="w-4 h-4 text-red-600" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCommon:absent')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCommon:absent')}</p>
                   </div>
                   <p className="text-2xl font-bold text-red-600">
                     {selectedSession.stats.absent}
                   </p>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <Clock className="w-4 h-4 text-yellow-600" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCommon:late')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCommon:late')}</p>
                   </div>
                   <p className="text-2xl font-bold text-yellow-600">
                     {selectedSession.stats.late}
                   </p>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+                <div className="bg-white rounded-xl p-4 border border-ink/10">
                   <div className={`flex items-center gap-2 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <Shield className="w-4 h-4 text-blue-600" />
-                    <p className="text-xs text-[#003300]/60">{t('dashboardCommon:excused')}</p>
+                    <p className="text-xs text-ink/60">{t('dashboardCommon:excused')}</p>
                   </div>
                   <p className="text-2xl font-bold text-blue-600">
                     {selectedSession.stats.excused}
@@ -435,8 +435,8 @@ export default function CLOAttendance() {
             )}
 
             {/* Student Attendance Records */}
-            <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
-              <h3 className={`text-lg font-semibold text-[#003300] mb-4 ${isRTL ? 'text-right' : ''}`}>
+            <div className="bg-white rounded-xl p-6 border border-ink/10">
+              <h3 className={`text-lg font-semibold text-ink mb-4 ${isRTL ? 'text-right' : ''}`}>
                 {t('dashboardCLO:studentAttendanceCount', { count: selectedSession.records?.length || 0 })}
               </h3>
 
@@ -448,17 +448,17 @@ export default function CLOAttendance() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2, delay: index * 0.02 }}
-                      className={`flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-[#003300]/5 hover:border-primary/20 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
+                      className={`flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-ink/5 hover:border-primary/20 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
                     >
                       <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold">
                           {record.student.name?.charAt(0).toUpperCase() || "S"}
                         </div>
                         <div className={isRTL ? 'text-right' : ''}>
-                          <p className="font-medium text-[#003300]">
+                          <p className="font-medium text-ink">
                             {record.student.name}
                           </p>
-                          <p className="text-xs text-[#003300]/60">
+                          <p className="text-xs text-ink/60">
                             {record.student.email}
                           </p>
                         </div>
@@ -467,8 +467,8 @@ export default function CLOAttendance() {
                       <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         {record.checkInTime && (
                           <div className={isRTL ? 'text-left' : 'text-right'}>
-                            <p className="text-xs text-[#003300]/60">{t('dashboardCLO:checkIn')}</p>
-                            <p className="text-sm font-medium text-[#003300]">
+                            <p className="text-xs text-ink/60">{t('dashboardCLO:checkIn')}</p>
+                            <p className="text-sm font-medium text-ink">
                               {formatTime(record.checkInTime)}
                             </p>
                           </div>
@@ -487,8 +487,8 @@ export default function CLOAttendance() {
                 </div>
               ) : (
                 <div className="text-center py-8">
-                  <UserMinus className="w-12 h-12 mx-auto mb-3 text-[#003300]/20" />
-                  <p className="text-sm text-[#003300]/60">
+                  <UserMinus className="w-12 h-12 mx-auto mb-3 text-ink/20" />
+                  <p className="text-sm text-ink/60">
                     {t('dashboardCLO:noAttendanceRecordsFound')}
                   </p>
                 </div>

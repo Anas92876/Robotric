@@ -219,8 +219,8 @@ export default function StudentAssignment() {
         </Link>
         <div className={`flex items-start justify-between mt-4`}>
           <div className={`flex-1`}>
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: '#003300' }}>{assignment.title}</h1>
-            <p dir="auto" className="transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{assignment.description}</p>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: '#0f1f33' }}>{assignment.title}</h1>
+            <p dir="auto" className="transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{assignment.description}</p>
           </div>
           <div className={`flex items-center gap-3`}>
             <Badge

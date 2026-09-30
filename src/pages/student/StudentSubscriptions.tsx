@@ -115,8 +115,8 @@ export default function StudentSubscriptions() {
       {/* Header */}
       <div className={`flex items-center justify-between`}>
         <div >
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#003300]">{t('dashboardStudent:mySubscription')}</h1>
-          <p className="text-[#003300]/60 mt-1">{t('dashboardStudent:manageSubscription')}</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-ink">{t('dashboardStudent:mySubscription')}</h1>
+          <p className="text-ink/60 mt-1">{t('dashboardStudent:manageSubscription')}</p>
         </div>
         <Button
           variant="outline"
@@ -141,11 +141,11 @@ export default function StudentSubscriptions() {
       {!hasActiveSubscription ? (
         <CardComponent>
           <CardBody className="p-12 text-center">
-            <CreditCard className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-            <h3 className="text-xl font-semibold text-[#003300] mb-2">
+            <CreditCard className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+            <h3 className="text-xl font-semibold text-ink mb-2">
               {t('dashboardStudent:noActiveSubscription')}
             </h3>
-            <p className="text-[#003300]/60 mb-6">
+            <p className="text-ink/60 mb-6">
               {t('dashboardStudent:noActiveSubscriptionDesc')}
             </p>
           </CardBody>
@@ -175,16 +175,16 @@ export default function StudentSubscriptions() {
             <CardBody className="p-6">
               <div className={`grid grid-cols-2 gap-4`}>
                 <div>
-                  <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCommon:startDate')}</p>
-                  <p className="font-semibold text-[#003300]">
+                  <p className="text-sm text-ink/60 mb-1">{t('dashboardCommon:startDate')}</p>
+                  <p className="font-semibold text-ink">
                     {subscription?.startsAt
                       ? new Date(subscription.startsAt).toLocaleDateString()
                       : 'N/A'}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCommon:endDate')}</p>
-                  <p className="font-semibold text-[#003300]">
+                  <p className="text-sm text-ink/60 mb-1">{t('dashboardCommon:endDate')}</p>
+                  <p className="font-semibold text-ink">
                     {subscription?.endsAt
                       ? new Date(subscription.endsAt).toLocaleDateString()
                       : 'N/A'}
@@ -209,7 +209,7 @@ export default function StudentSubscriptions() {
 
       {/* My Session Requests */}
       <div>
-        <h2 className={`text-xl font-semibold text-[#003300] mb-4`}>
+        <h2 className={`text-xl font-semibold text-ink mb-4`}>
           {t('dashboardStudent:mySessionRequests')}
         </h2>
         {requestsLoading ? (
@@ -217,11 +217,11 @@ export default function StudentSubscriptions() {
         ) : requests.length === 0 ? (
           <CardComponent>
             <CardBody className="p-12 text-center">
-              <Calendar className="w-16 h-16 mx-auto text-[#003300]/20 mb-4" />
-              <h3 className="text-xl font-semibold text-[#003300] mb-2">
+              <Calendar className="w-16 h-16 mx-auto text-ink/20 mb-4" />
+              <h3 className="text-xl font-semibold text-ink mb-2">
                 {t('dashboardStudent:noSessionRequests')}
               </h3>
-              <p className="text-[#003300]/60 mb-6">
+              <p className="text-ink/60 mb-6">
                 {hasActiveSubscription
                   ? t('dashboardStudent:noSessionRequestsDesc')
                   : t('dashboardStudent:noActiveSubRequestDesc')}
@@ -247,7 +247,7 @@ export default function StudentSubscriptions() {
                     <div className={`flex items-start justify-between`}>
                       <div className="flex-1">
                         <div className={`flex items-center gap-3 mb-2`}>
-                          <h3 className="font-semibold text-[#003300] text-lg">
+                          <h3 className="font-semibold text-ink text-lg">
                             {new Date(request.date).toLocaleDateString()}
                           </h3>
                           <Badge
@@ -267,26 +267,26 @@ export default function StudentSubscriptions() {
 
                         <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 mb-4`}>
                           <div>
-                            <p className="text-xs text-[#003300]/60 mb-1">{t('dashboardCommon:time')}</p>
-                            <p className="font-semibold text-[#003300]">
+                            <p className="text-xs text-ink/60 mb-1">{t('dashboardCommon:time')}</p>
+                            <p className="font-semibold text-ink">
                               {request.startTime} - {endTime}
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs text-[#003300]/60 mb-1">{t('dashboardStudent:duration')}</p>
-                            <p className="font-semibold text-[#003300]">
+                            <p className="text-xs text-ink/60 mb-1">{t('dashboardStudent:duration')}</p>
+                            <p className="font-semibold text-ink">
                               {request.durationHours} hrs
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs text-[#003300]/60 mb-1">{t('dashboardCommon:status')}</p>
-                            <p className="font-semibold text-[#003300]">{request.status}</p>
+                            <p className="text-xs text-ink/60 mb-1">{t('dashboardCommon:status')}</p>
+                            <p className="font-semibold text-ink">{request.status}</p>
                           </div>
                         </div>
 
                         {request.description && (
-                          <div className="bg-[#003300]/5 rounded-lg p-3 mb-4">
-                            <p dir="auto" className={`text-sm text-[#003300]/80`}>{request.description}</p>
+                          <div className="bg-ink/5 rounded-lg p-3 mb-4">
+                            <p dir="auto" className={`text-sm text-ink/80`}>{request.description}</p>
                           </div>
                         )}
 
@@ -340,10 +340,10 @@ export default function StudentSubscriptions() {
         title={t('dashboardStudent:cancelSessionRequestTitle')}
       >
         <div className="space-y-4">
-          <p className={`text-[#003300]`}>
+          <p className={`text-ink`}>
             {t('dashboardStudent:cancelRequestConfirm')}
           </p>
-          <p className={`text-sm text-[#003300]/60`}>
+          <p className={`text-sm text-ink/60`}>
             {t('dashboardStudent:cancelRequestNote')}
           </p>
           <div className={`flex items-center justify-end gap-3 pt-4`}>

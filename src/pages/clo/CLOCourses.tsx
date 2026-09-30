@@ -88,16 +88,16 @@ function Breadcrumb({ items }: { items: { label: string; onClick?: () => void }[
     <nav className="flex items-center gap-1.5 text-sm flex-wrap">
       {items.map((item, i) => (
         <div key={i} className="flex items-center gap-1.5">
-          {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-[#003300]/30 flex-shrink-0" />}
+          {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-ink/30 flex-shrink-0" />}
           {item.onClick ? (
             <button
               onClick={item.onClick}
-              className="text-[#003300]/50 hover:text-[#003300] transition-colors font-medium hover:underline underline-offset-2 truncate max-w-[180px]"
+              className="text-ink/50 hover:text-ink transition-colors font-medium hover:underline underline-offset-2 truncate max-w-[180px]"
             >
               {item.label}
             </button>
           ) : (
-            <span className="text-[#003300] font-semibold truncate max-w-[180px]">{item.label}</span>
+            <span className="text-ink font-semibold truncate max-w-[180px]">{item.label}</span>
           )}
         </div>
       ))}
@@ -129,11 +129,11 @@ function StatusPill({ status }: { status: string }) {
 function StatChip({ icon, value, label }: { icon: React.ReactNode; value: string | number; label: string }) {
   return (
     <div className="flex flex-col items-center gap-0.5 min-w-0">
-      <div className="flex items-center gap-1 text-[#003300]">
-        <span className="text-[#003300]/40">{icon}</span>
+      <div className="flex items-center gap-1 text-ink">
+        <span className="text-ink/40">{icon}</span>
         <span className="text-base font-bold">{value}</span>
       </div>
-      <span className="text-[10px] text-[#003300]/45 uppercase tracking-wide">{label}</span>
+      <span className="text-[10px] text-ink/45 uppercase tracking-wide">{label}</span>
     </div>
   );
 }
@@ -257,16 +257,16 @@ function CoursesLevel() {
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <LayoutGrid className="w-4 h-4 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-[#003300]">
+            <h1 className="text-2xl font-bold text-ink">
               {openFolder ? openFolder.name : t('dashboardCLO:courses')}
             </h1>
             {openFolder && (
-              <button onClick={() => setOpenFolderId(null)} className="ml-1 text-xs text-[#003300]/40 hover:text-[#003300] underline underline-offset-2 transition-colors">
+              <button onClick={() => setOpenFolderId(null)} className="ml-1 text-xs text-ink/40 hover:text-ink underline underline-offset-2 transition-colors">
                 ← all folders
               </button>
             )}
           </div>
-          <p className="text-sm text-[#003300]/50">
+          <p className="text-sm text-ink/50">
             {openFolder
               ? `${folderCourses.length} course${folderCourses.length !== 1 ? 's' : ''} in this folder`
               : `${courses.length} total course${courses.length !== 1 ? 's' : ''} · ${folders.length} folder${folders.length !== 1 ? 's' : ''}`}
@@ -295,7 +295,7 @@ function CoursesLevel() {
                 onChange={e => setNewFolderName(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') createFolder(); if (e.key === 'Escape') { setIsCreatingFolder(false); setNewFolderName(""); } }}
                 placeholder="Folder name…"
-                className="flex-1 bg-transparent outline-none text-[#003300] text-sm placeholder-amber-400"
+                className="flex-1 bg-transparent outline-none text-ink text-sm placeholder-amber-400"
               />
               <button onClick={createFolder} className="text-xs font-semibold text-amber-700 hover:text-amber-800 px-2 py-1 rounded-md hover:bg-amber-100 transition-colors">Create</button>
               <button onClick={() => { setIsCreatingFolder(false); setNewFolderName(""); }} className="text-amber-400 hover:text-amber-600 transition-colors"><X className="w-4 h-4" /></button>
@@ -307,7 +307,7 @@ function CoursesLevel() {
       {/* ── Folders Row ── */}
       {!openFolderId && folders.length > 0 && (
         <div>
-          <p className="text-xs font-semibold text-[#003300]/40 uppercase tracking-wider mb-3">Folders</p>
+          <p className="text-xs font-semibold text-ink/40 uppercase tracking-wider mb-3">Folders</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {folders.map(folder => (
               <motion.div key={folder.id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="group relative">
@@ -318,12 +318,12 @@ function CoursesLevel() {
                       onChange={e => setRenamingValue(e.target.value)}
                       onKeyDown={e => { if (e.key === 'Enter') renameFolder(folder.id); if (e.key === 'Escape') setRenamingFolderId(null); }}
                       onBlur={() => renameFolder(folder.id)}
-                      className="w-full text-center text-xs outline-none border-b border-primary text-[#003300] bg-transparent"
+                      className="w-full text-center text-xs outline-none border-b border-primary text-ink bg-transparent"
                     />
                   </div>
                 ) : (
                   <button onClick={() => setOpenFolderId(folder.id)}
-                    className="w-full bg-white rounded-xl p-3 border border-[#003300]/10 hover:border-amber-300 hover:shadow-md hover:bg-amber-50/50 transition-all duration-200 flex flex-col items-center gap-2 text-center group/btn"
+                    className="w-full bg-white rounded-xl p-3 border border-ink/10 hover:border-amber-300 hover:shadow-md hover:bg-amber-50/50 transition-all duration-200 flex flex-col items-center gap-2 text-center group/btn"
                   >
                     <div className="relative">
                       <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center group-hover/btn:bg-amber-100 transition-colors">
@@ -335,40 +335,40 @@ function CoursesLevel() {
                         </span>
                       )}
                     </div>
-                    <span className="text-xs font-medium text-[#003300] line-clamp-2 leading-snug">{folder.name}</span>
+                    <span className="text-xs font-medium text-ink line-clamp-2 leading-snug">{folder.name}</span>
                   </button>
                 )}
                 {/* Folder actions */}
-                <div className="absolute -top-1.5 -right-1.5 hidden group-hover:flex items-center gap-0.5 bg-white rounded-lg shadow border border-[#003300]/10 p-0.5 z-10">
-                  <button onClick={e => { e.stopPropagation(); setRenamingFolderId(folder.id); setRenamingValue(folder.name); }} className="p-1 hover:bg-[#003300]/5 rounded text-[#003300]/40 hover:text-[#003300] transition-colors" title="Rename"><Edit className="w-3 h-3" /></button>
-                  <button onClick={e => { e.stopPropagation(); deleteFolder(folder.id); }} className="p-1 hover:bg-red-50 rounded text-[#003300]/40 hover:text-red-500 transition-colors" title="Delete"><Trash2 className="w-3 h-3" /></button>
+                <div className="absolute -top-1.5 -right-1.5 hidden group-hover:flex items-center gap-0.5 bg-white rounded-lg shadow border border-ink/10 p-0.5 z-10">
+                  <button onClick={e => { e.stopPropagation(); setRenamingFolderId(folder.id); setRenamingValue(folder.name); }} className="p-1 hover:bg-ink/5 rounded text-ink/40 hover:text-ink transition-colors" title="Rename"><Edit className="w-3 h-3" /></button>
+                  <button onClick={e => { e.stopPropagation(); deleteFolder(folder.id); }} className="p-1 hover:bg-red-50 rounded text-ink/40 hover:text-red-500 transition-colors" title="Delete"><Trash2 className="w-3 h-3" /></button>
                 </div>
               </motion.div>
             ))}
           </div>
-          {uncategorized.length > 0 && <p className="text-xs font-semibold text-[#003300]/40 uppercase tracking-wider mt-6 mb-3">Uncategorized Courses</p>}
+          {uncategorized.length > 0 && <p className="text-xs font-semibold text-ink/40 uppercase tracking-wider mt-6 mb-3">Uncategorized Courses</p>}
         </div>
       )}
 
       {/* ── Filters Bar ── */}
-      <div className="bg-white rounded-xl border border-[#003300]/10 p-3">
+      <div className="bg-white rounded-xl border border-ink/10 p-3">
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/35" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/35" />
             <input
               type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
               placeholder="Search courses…"
-              className="w-full pl-9 pr-3 py-2 text-sm bg-[#003300]/3 rounded-lg border border-transparent focus:border-[#003300]/20 focus:bg-white outline-none text-[#003300] placeholder-[#003300]/35 transition-all"
+              className="w-full pl-9 pr-3 py-2 text-sm bg-ink/3 rounded-lg border border-transparent focus:border-ink/20 focus:bg-white outline-none text-ink placeholder-ink/35 transition-all"
             />
           </div>
           <div className="flex gap-2">
-            <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className="flex-1 sm:flex-none px-3 py-2 text-sm rounded-lg border border-[#003300]/15 bg-white text-[#003300] focus:border-[#003300]/30 outline-none">
+            <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className="flex-1 sm:flex-none px-3 py-2 text-sm rounded-lg border border-ink/15 bg-white text-ink focus:border-ink/30 outline-none">
               <option value="all">All Status</option>
               <option value="published">Published</option>
               <option value="draft">Draft</option>
               <option value="archived">Archived</option>
             </select>
-            <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)} className="flex-1 sm:flex-none px-3 py-2 text-sm rounded-lg border border-[#003300]/15 bg-white text-[#003300] focus:border-[#003300]/30 outline-none">
+            <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)} className="flex-1 sm:flex-none px-3 py-2 text-sm rounded-lg border border-ink/15 bg-white text-ink focus:border-ink/30 outline-none">
               <option value="all">All Categories</option>
               {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
             </select>
@@ -395,7 +395,7 @@ function CoursesLevel() {
               <div className={`group relative bg-white rounded-2xl border hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full ${
                 course.type === 'bundle'
                   ? 'border-violet-200 hover:border-violet-300'
-                  : 'border-[#003300]/10 hover:border-[#003300]/25'
+                  : 'border-ink/10 hover:border-ink/25'
               }`}>
                 {/* Top accent bar */}
                 <div className={`h-1.5 w-full ${
@@ -427,19 +427,19 @@ function CoursesLevel() {
                       {/* Folder move */}
                       {folders.length > 0 && (
                         <div className="relative">
-                          <button onClick={() => setMoveMenuCourseId(prev => prev === course._id ? null : course._id)} className="p-1.5 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors" title="Move to folder">
+                          <button onClick={() => setMoveMenuCourseId(prev => prev === course._id ? null : course._id)} className="p-1.5 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors" title="Move to folder">
                             <FolderInput className="w-3.5 h-3.5" />
                           </button>
                           {moveMenuCourseId === course._id && (
-                            <div ref={moveMenuRef} className="absolute right-0 top-full mt-1 z-50 bg-white rounded-xl shadow-xl border border-[#003300]/10 py-1.5 min-w-[170px]">
-                              <p className="px-3 py-1 text-[10px] font-bold text-[#003300]/35 uppercase tracking-wider">Move to folder</p>
+                            <div ref={moveMenuRef} className="absolute right-0 top-full mt-1 z-50 bg-white rounded-xl shadow-xl border border-ink/10 py-1.5 min-w-[170px]">
+                              <p className="px-3 py-1 text-[10px] font-bold text-ink/35 uppercase tracking-wider">Move to folder</p>
                               {getFolderForCourse(course._id) && (
                                 <button onClick={() => moveCourseToFolder(course._id, null)} className="w-full text-left px-3 py-2 text-xs text-zinc-500 hover:bg-zinc-50 flex items-center gap-2 transition-colors">
                                   <X className="w-3 h-3" /> Remove from folder
                                 </button>
                               )}
                               {folders.map(f => (
-                                <button key={f.id} onClick={() => moveCourseToFolder(course._id, f.id)} className={`w-full text-left px-3 py-2 text-xs hover:bg-[#003300]/3 flex items-center gap-2 transition-colors ${f.courseIds.includes(course._id) ? 'text-primary font-semibold' : 'text-[#003300]'}`}>
+                                <button key={f.id} onClick={() => moveCourseToFolder(course._id, f.id)} className={`w-full text-left px-3 py-2 text-xs hover:bg-ink/3 flex items-center gap-2 transition-colors ${f.courseIds.includes(course._id) ? 'text-primary font-semibold' : 'text-ink'}`}>
                                   <Folder className="w-3 h-3 text-amber-400" />{f.name}
                                   {f.courseIds.includes(course._id) && <CheckCircle className="w-3 h-3 ml-auto text-primary" />}
                                 </button>
@@ -448,24 +448,24 @@ function CoursesLevel() {
                           )}
                         </div>
                       )}
-                      <button onClick={() => { setSelectedCourseId(course._id); setIsDetailsModalOpen(true); }} className="p-1.5 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors" title="View details"><Eye className="w-3.5 h-3.5" /></button>
-                      <button onClick={() => { setSelectedCourse(course as any); setIsModalOpen(true); }} className="p-1.5 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors" title="Edit"><Edit className="w-3.5 h-3.5" /></button>
-                      {course.status === "draft" && <button onClick={() => handlePublish(course._id)} className="p-1.5 rounded-lg hover:bg-emerald-50 text-[#003300]/40 hover:text-emerald-600 transition-colors" title="Publish"><CheckCircle className="w-3.5 h-3.5" /></button>}
-                      {course.status === "published" && <button onClick={() => handleArchive(course._id)} className="p-1.5 rounded-lg hover:bg-amber-50 text-[#003300]/40 hover:text-amber-600 transition-colors" title="Archive"><Archive className="w-3.5 h-3.5" /></button>}
-                      {course.status === "archived" && <button onClick={() => handleUnarchive(course._id)} className="p-1.5 rounded-lg hover:bg-blue-50 text-[#003300]/40 hover:text-blue-600 transition-colors" title="Restore to draft"><ArchiveRestore className="w-3.5 h-3.5" /></button>}
-                      {course.status === "draft" && <button onClick={() => handleDelete(course._id)} className="p-1.5 rounded-lg hover:bg-red-50 text-[#003300]/40 hover:text-red-500 transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>}
+                      <button onClick={() => { setSelectedCourseId(course._id); setIsDetailsModalOpen(true); }} className="p-1.5 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors" title="View details"><Eye className="w-3.5 h-3.5" /></button>
+                      <button onClick={() => { setSelectedCourse(course as any); setIsModalOpen(true); }} className="p-1.5 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors" title="Edit"><Edit className="w-3.5 h-3.5" /></button>
+                      {course.status === "draft" && <button onClick={() => handlePublish(course._id)} className="p-1.5 rounded-lg hover:bg-emerald-50 text-ink/40 hover:text-emerald-600 transition-colors" title="Publish"><CheckCircle className="w-3.5 h-3.5" /></button>}
+                      {course.status === "published" && <button onClick={() => handleArchive(course._id)} className="p-1.5 rounded-lg hover:bg-amber-50 text-ink/40 hover:text-amber-600 transition-colors" title="Archive"><Archive className="w-3.5 h-3.5" /></button>}
+                      {course.status === "archived" && <button onClick={() => handleUnarchive(course._id)} className="p-1.5 rounded-lg hover:bg-blue-50 text-ink/40 hover:text-blue-600 transition-colors" title="Restore to draft"><ArchiveRestore className="w-3.5 h-3.5" /></button>}
+                      {course.status === "draft" && <button onClick={() => handleDelete(course._id)} className="p-1.5 rounded-lg hover:bg-red-50 text-ink/40 hover:text-red-500 transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>}
                     </div>
                   </div>
 
                   {/* Title */}
                   <button onClick={() => course.type !== 'bundle' && navigate(`/clo/courses/${course._id}`)} className={`text-left mb-1 group/t ${course.type === 'bundle' ? 'cursor-default' : ''}`}>
-                    <h3 className="text-base font-bold text-[#003300] group-hover/t:text-primary transition-colors line-clamp-2 leading-snug">{course.title}</h3>
+                    <h3 className="text-base font-bold text-ink group-hover/t:text-primary transition-colors line-clamp-2 leading-snug">{course.title}</h3>
                   </button>
 
                   {/* Category + level chips */}
                   <div className="flex items-center gap-2 mb-3 flex-wrap">
                     {course.category && <span className="bg-primary/8 text-primary text-[11px] font-medium px-2 py-0.5 rounded-md">{course.category}</span>}
-                    {course.level && <span className="text-[11px] text-[#003300]/45 capitalize">{course.level}</span>}
+                    {course.level && <span className="text-[11px] text-ink/45 capitalize">{course.level}</span>}
                     {course.wroDocumentsRequired && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-100 text-amber-700">
                         <Award className="w-3 h-3" /> WRO
@@ -492,27 +492,27 @@ function CoursesLevel() {
                   )}
 
                   {/* Description */}
-                  <p className="text-xs text-[#003300]/50 line-clamp-2 mb-4 flex-grow leading-relaxed">
+                  <p className="text-xs text-ink/50 line-clamp-2 mb-4 flex-grow leading-relaxed">
                     {course.description || 'No description provided.'}
                   </p>
 
                   {/* Stats row */}
                   {course.stats && (
-                    <div className="flex items-center justify-between pt-3 border-t border-[#003300]/6">
+                    <div className="flex items-center justify-between pt-3 border-t border-ink/6">
                       {course.type === 'bundle' ? (
                         <>
                           <StatChip icon={<Layers className="w-3.5 h-3.5" />} value={course.stats.subCourseCount || course.bundleCourses?.length || 0} label="Courses" />
-                          <div className="w-px h-6 bg-[#003300]/8" />
+                          <div className="w-px h-6 bg-ink/8" />
                           <StatChip icon={<GraduationCap className="w-3.5 h-3.5" />} value={course.stats.totalEnrollments || 0} label="Students" />
-                          <div className="w-px h-6 bg-[#003300]/8" />
+                          <div className="w-px h-6 bg-ink/8" />
                           <StatChip icon={<TrendingUp className="w-3.5 h-3.5" />} value={`${course.stats.completionRate?.toFixed(0) || 0}%`} label="Complete" />
                         </>
                       ) : (
                         <>
                           <StatChip icon={<UsersRound className="w-3.5 h-3.5" />} value={course.stats.totalGroups || 0} label="Groups" />
-                          <div className="w-px h-6 bg-[#003300]/8" />
+                          <div className="w-px h-6 bg-ink/8" />
                           <StatChip icon={<GraduationCap className="w-3.5 h-3.5" />} value={course.stats.totalEnrollments || 0} label="Students" />
-                          <div className="w-px h-6 bg-[#003300]/8" />
+                          <div className="w-px h-6 bg-ink/8" />
                           <StatChip icon={<TrendingUp className="w-3.5 h-3.5" />} value={`${course.stats.completionRate?.toFixed(0) || 0}%`} label="Complete" />
                         </>
                       )}
@@ -549,8 +549,8 @@ function CoursesLevel() {
                                   <BookOpen className="w-3 h-3 text-violet-500" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <p className="text-xs font-semibold text-[#003300] truncate">{sc.title}</p>
-                                  <p className="text-[10px] text-[#003300]/40">${sc.price?.toFixed(0) || '0'} individually</p>
+                                  <p className="text-xs font-semibold text-ink truncate">{sc.title}</p>
+                                  <p className="text-[10px] text-ink/40">${sc.price?.toFixed(0) || '0'} individually</p>
                                 </div>
                                 <button
                                   onClick={() => navigate(`/clo/courses/${sc._id}`)}
@@ -571,10 +571,10 @@ function CoursesLevel() {
                 {course.type !== 'bundle' && (
                   <button
                     onClick={() => navigate(`/clo/courses/${course._id}`)}
-                    className="flex items-center justify-between px-5 py-3 bg-[#003300]/3 hover:bg-[#003300]/7 border-t border-[#003300]/6 transition-colors group/cta"
+                    className="flex items-center justify-between px-5 py-3 bg-ink/3 hover:bg-ink/7 border-t border-ink/6 transition-colors group/cta"
                   >
-                    <span className="text-xs font-semibold text-[#003300]/60 group-hover/cta:text-[#003300] transition-colors">View Groups & Sessions</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-[#003300]/40 group-hover/cta:text-[#003300] group-hover/cta:translate-x-0.5 transition-all" />
+                    <span className="text-xs font-semibold text-ink/60 group-hover/cta:text-ink transition-colors">View Groups & Sessions</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-ink/40 group-hover/cta:text-ink group-hover/cta:translate-x-0.5 transition-all" />
                   </button>
                 )}
               </div>
@@ -582,10 +582,10 @@ function CoursesLevel() {
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-[#003300]/10 py-20 text-center">
-          {openFolderId ? <FolderOpen className="w-12 h-12 mx-auto mb-3 text-[#003300]/15" /> : <BookOpen className="w-12 h-12 mx-auto mb-3 text-[#003300]/15" />}
-          <p className="font-semibold text-[#003300]/60 mb-1">{openFolderId ? 'Folder is empty' : 'No courses found'}</p>
-          <p className="text-sm text-[#003300]/35 mb-5">
+        <div className="bg-white rounded-2xl border border-ink/10 py-20 text-center">
+          {openFolderId ? <FolderOpen className="w-12 h-12 mx-auto mb-3 text-ink/15" /> : <BookOpen className="w-12 h-12 mx-auto mb-3 text-ink/15" />}
+          <p className="font-semibold text-ink/60 mb-1">{openFolderId ? 'Folder is empty' : 'No courses found'}</p>
+          <p className="text-sm text-ink/35 mb-5">
             {openFolderId ? 'Move courses into this folder using the folder icon on each course card.' : searchQuery || statusFilter !== "all" ? 'Try adjusting your filters.' : 'Get started by adding your first course.'}
           </p>
           {!openFolderId && !searchQuery && statusFilter === "all" && (
@@ -681,10 +681,10 @@ function GroupsLevel({ courseId }: { courseId: string }) {
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <UsersRound className="w-4 h-4 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-[#003300]">Groups</h1>
+            <h1 className="text-2xl font-bold text-ink">Groups</h1>
           </div>
           {currentCourse && (
-            <p className="text-sm text-[#003300]/50">
+            <p className="text-sm text-ink/50">
               {currentCourse.title} · <span className="text-emerald-600 font-medium">{activeCount} active</span>
               {completedCount > 0 && <span className="text-zinc-400"> · {completedCount} completed</span>}
             </p>
@@ -696,15 +696,15 @@ function GroupsLevel({ courseId }: { courseId: string }) {
       </div>
 
       {/* ── Filters ── */}
-      <div className="bg-white rounded-xl border border-[#003300]/10 p-3">
+      <div className="bg-white rounded-xl border border-ink/10 p-3">
         <div className="flex gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/35" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/35" />
             <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search groups…"
-              className="w-full pl-9 pr-3 py-2 text-sm bg-[#003300]/3 rounded-lg border border-transparent focus:border-[#003300]/20 focus:bg-white outline-none text-[#003300] placeholder-[#003300]/35 transition-all"
+              className="w-full pl-9 pr-3 py-2 text-sm bg-ink/3 rounded-lg border border-transparent focus:border-ink/20 focus:bg-white outline-none text-ink placeholder-ink/35 transition-all"
             />
           </div>
-          <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className="px-3 py-2 text-sm rounded-lg border border-[#003300]/15 bg-white text-[#003300] outline-none">
+          <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className="px-3 py-2 text-sm rounded-lg border border-ink/15 bg-white text-ink outline-none">
             <option value="all">All Status</option>
             <option value="active">Active</option>
             <option value="completed">Completed</option>
@@ -728,7 +728,7 @@ function GroupsLevel({ courseId }: { courseId: string }) {
         <div className="space-y-3">
           {groups.map((group, i) => (
             <motion.div key={group._id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, delay: i * 0.04 }}>
-              <div className="group bg-white rounded-2xl border border-[#003300]/10 hover:border-[#003300]/22 hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <div className="group bg-white rounded-2xl border border-ink/10 hover:border-ink/22 hover:shadow-lg transition-all duration-300 overflow-hidden">
                 {/* Left accent */}
                 <div className="flex">
                   <div className={`w-1 flex-shrink-0 ${group.status === 'active' ? 'bg-emerald-400' : 'bg-zinc-300'}`} />
@@ -744,7 +744,7 @@ function GroupsLevel({ courseId }: { courseId: string }) {
                           <div className="flex items-center gap-2 mb-1 flex-wrap">
                             <button
                               onClick={() => navigate(`/clo/courses/${courseId}/${group._id}`)}
-                              className="text-base font-bold text-[#003300] hover:text-primary transition-colors flex items-center gap-1 group/name"
+                              className="text-base font-bold text-ink hover:text-primary transition-colors flex items-center gap-1 group/name"
                             >
                               {group.name}
                               <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover/name:opacity-100 group-hover/name:translate-x-0.5 transition-all" />
@@ -752,7 +752,7 @@ function GroupsLevel({ courseId }: { courseId: string }) {
                             <StatusPill status={group.status} />
                           </div>
                           {/* Meta row */}
-                          <div className="flex items-center gap-4 text-xs text-[#003300]/50 flex-wrap">
+                          <div className="flex items-center gap-4 text-xs text-ink/50 flex-wrap">
                             {group.trainerId?.name && (
                               <span className="flex items-center gap-1"><User className="w-3 h-3" />{group.trainerId.name}</span>
                             )}
@@ -760,7 +760,7 @@ function GroupsLevel({ courseId }: { courseId: string }) {
                               <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{fmtDate(group.startDate)}</span>
                             )}
                             {group.stats && (
-                              <span className="flex items-center gap-1 font-medium text-[#003300]/60">
+                              <span className="flex items-center gap-1 font-medium text-ink/60">
                                 <Users className="w-3 h-3" />
                                 {group.stats.studentsCount || 0}
                                 {(group.maxStudents || group.maxCapacity) && `/${group.maxStudents || group.maxCapacity}`} students
@@ -772,31 +772,31 @@ function GroupsLevel({ courseId }: { courseId: string }) {
 
                       {/* Right: actions */}
                       <div className="flex items-center gap-1 flex-shrink-0">
-                        <button onClick={() => { setSelectedGroupId(group._id); setIsDetailsModalOpen(true); }} className="p-2 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors" title="View details"><Eye className="w-4 h-4" /></button>
-                        <button onClick={() => { setSelectedGroup(group); setIsModalOpen(true); }} className="p-2 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors" title="Edit"><Edit className="w-4 h-4" /></button>
+                        <button onClick={() => { setSelectedGroupId(group._id); setIsDetailsModalOpen(true); }} className="p-2 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors" title="View details"><Eye className="w-4 h-4" /></button>
+                        <button onClick={() => { setSelectedGroup(group); setIsModalOpen(true); }} className="p-2 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors" title="Edit"><Edit className="w-4 h-4" /></button>
                         <button
                           onClick={() => handleCloseGroup(group._id, group.status)}
-                          className={`p-2 rounded-lg transition-colors ${group.status === 'completed' ? 'text-emerald-600 hover:bg-emerald-50' : 'text-[#003300]/40 hover:text-amber-600 hover:bg-amber-50'}`}
+                          className={`p-2 rounded-lg transition-colors ${group.status === 'completed' ? 'text-emerald-600 hover:bg-emerald-50' : 'text-ink/40 hover:text-amber-600 hover:bg-amber-50'}`}
                           title={group.status === 'completed' ? 'Reopen group' : 'Close group'}
                         >
                           <UserMinus className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleToggleBoard(group._id)}
-                          className={`p-2 rounded-lg transition-colors ${group.boardEnabled ? 'text-primary bg-primary/10 hover:bg-primary/20' : 'text-[#003300]/40 hover:text-primary hover:bg-primary/8'}`}
+                          className={`p-2 rounded-lg transition-colors ${group.boardEnabled ? 'text-primary bg-primary/10 hover:bg-primary/20' : 'text-ink/40 hover:text-primary hover:bg-primary/8'}`}
                           title={group.boardEnabled ? t('dashboardCLO:boardEnabledTooltip') : t('dashboardCLO:boardDisabledTooltip')}
                         >
                           <LayoutDashboard className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleDelete(group._id)} className="p-2 rounded-lg hover:bg-red-50 text-[#003300]/40 hover:text-red-500 transition-colors" title="Delete"><Trash2 className="w-4 h-4" /></button>
+                        <button onClick={() => handleDelete(group._id)} className="p-2 rounded-lg hover:bg-red-50 text-ink/40 hover:text-red-500 transition-colors" title="Delete"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     </div>
 
                     {/* "View Sessions" footer link */}
-                    <div className="mt-3 pt-3 border-t border-[#003300]/6 flex justify-end">
+                    <div className="mt-3 pt-3 border-t border-ink/6 flex justify-end">
                       <button
                         onClick={() => navigate(`/clo/courses/${courseId}/${group._id}`)}
-                        className="flex items-center gap-1.5 text-xs font-semibold text-[#003300]/40 hover:text-primary transition-colors group/s"
+                        className="flex items-center gap-1.5 text-xs font-semibold text-ink/40 hover:text-primary transition-colors group/s"
                       >
                         <Layers className="w-3.5 h-3.5" />
                         View Sessions
@@ -810,10 +810,10 @@ function GroupsLevel({ courseId }: { courseId: string }) {
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-[#003300]/10 py-20 text-center">
-          <UsersRound className="w-12 h-12 mx-auto mb-3 text-[#003300]/15" />
-          <p className="font-semibold text-[#003300]/60 mb-1">No groups found</p>
-          <p className="text-sm text-[#003300]/35 mb-5">
+        <div className="bg-white rounded-2xl border border-ink/10 py-20 text-center">
+          <UsersRound className="w-12 h-12 mx-auto mb-3 text-ink/15" />
+          <p className="font-semibold text-ink/60 mb-1">No groups found</p>
+          <p className="text-sm text-ink/35 mb-5">
             {searchQuery || statusFilter !== "all" ? 'Try adjusting your filters.' : 'Create the first group for this course.'}
           </p>
           {!searchQuery && statusFilter === "all" && (
@@ -1018,10 +1018,10 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <Calendar className="w-4 h-4 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-[#003300]">Sessions</h1>
+            <h1 className="text-2xl font-bold text-ink">Sessions</h1>
           </div>
           {currentGroup && (
-            <p className="text-sm text-[#003300]/50">
+            <p className="text-sm text-ink/50">
               {currentGroup.name} ·{' '}
               <span className="text-amber-600 font-medium">{scheduledCount} scheduled</span>
               {inProgressCount > 0 && <span className="text-primary font-medium"> · {inProgressCount} in progress</span>}
@@ -1218,7 +1218,7 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
       {sessions.length > 0 && (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { label: 'Total', value: sessions.length, color: 'bg-[#003300]/5 text-[#003300]' },
+            { label: 'Total', value: sessions.length, color: 'bg-ink/5 text-ink' },
             { label: 'Scheduled', value: scheduledCount, color: 'bg-amber-50 text-amber-700' },
             { label: 'In Progress', value: inProgressCount, color: 'bg-primary/8 text-primary' },
             { label: 'Completed', value: completedCount, color: 'bg-emerald-50 text-emerald-700' },
@@ -1243,15 +1243,15 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
       )}
 
       {/* ── Filters ── */}
-      <div className="bg-white rounded-xl border border-[#003300]/10 p-3">
+      <div className="bg-white rounded-xl border border-ink/10 p-3">
         <div className="flex gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/35" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/35" />
             <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search sessions…"
-              className="w-full pl-9 pr-3 py-2 text-sm bg-[#003300]/3 rounded-lg border border-transparent focus:border-[#003300]/20 focus:bg-white outline-none text-[#003300] placeholder-[#003300]/35 transition-all"
+              className="w-full pl-9 pr-3 py-2 text-sm bg-ink/3 rounded-lg border border-transparent focus:border-ink/20 focus:bg-white outline-none text-ink placeholder-ink/35 transition-all"
             />
           </div>
-          <select value={selectedStatus} onChange={e => setSelectedStatus(e.target.value)} className="px-3 py-2 text-sm rounded-lg border border-[#003300]/15 bg-white text-[#003300] outline-none">
+          <select value={selectedStatus} onChange={e => setSelectedStatus(e.target.value)} className="px-3 py-2 text-sm rounded-lg border border-ink/15 bg-white text-ink outline-none">
             <option value="">All Status</option>
             <option value="scheduled">Scheduled</option>
             <option value="in_progress">In Progress</option>
@@ -1259,7 +1259,7 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
             <option value="cancelled">Cancelled</option>
           </select>
           {(selectedStatus || search) && (
-            <button onClick={() => { setSelectedStatus(""); setSearch(""); }} className="px-3 py-2 text-sm rounded-lg border border-[#003300]/15 bg-white text-[#003300]/50 hover:text-[#003300] flex items-center gap-1.5 transition-colors">
+            <button onClick={() => { setSelectedStatus(""); setSearch(""); }} className="px-3 py-2 text-sm rounded-lg border border-ink/15 bg-white text-ink/50 hover:text-ink flex items-center gap-1.5 transition-colors">
               <X className="w-3.5 h-3.5" /> Clear
             </button>
           )}
@@ -1268,10 +1268,10 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
 
       {/* ── Sessions ── */}
       {filtered.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-[#003300]/10 py-20 text-center">
-          <Calendar className="w-12 h-12 mx-auto mb-3 text-[#003300]/15" />
-          <p className="font-semibold text-[#003300]/60 mb-1">No sessions found</p>
-          <p className="text-sm text-[#003300]/35 mb-5">
+        <div className="bg-white rounded-2xl border border-ink/10 py-20 text-center">
+          <Calendar className="w-12 h-12 mx-auto mb-3 text-ink/15" />
+          <p className="font-semibold text-ink/60 mb-1">No sessions found</p>
+          <p className="text-sm text-ink/35 mb-5">
             {selectedStatus || search ? 'Try clearing your filters.' : 'Schedule the first session for this group.'}
           </p>
           {!selectedStatus && !search && (
@@ -1285,7 +1285,7 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
           {filtered.map((session, i) => (
             <motion.div key={session._id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18, delay: i * 0.03 }}>
               <div
-                className="group bg-white rounded-xl border border-[#003300]/10 hover:border-[#003300]/22 hover:shadow-md transition-all duration-200 cursor-pointer overflow-hidden"
+                className="group bg-white rounded-xl border border-ink/10 hover:border-ink/22 hover:shadow-md transition-all duration-200 cursor-pointer overflow-hidden"
                 onClick={() => navigate(`/clo/sessions/${session._id}`)}
               >
                 <div className="flex items-center gap-0">
@@ -1303,10 +1303,10 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
                     {/* Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="font-semibold text-[#003300] text-sm truncate">{session.title}</h3>
+                        <h3 className="font-semibold text-ink text-sm truncate">{session.title}</h3>
                         <StatusPill status={session.status} />
                       </div>
-                      <div className="flex items-center gap-4 mt-1 text-xs text-[#003300]/50 flex-wrap">
+                      <div className="flex items-center gap-4 mt-1 text-xs text-ink/50 flex-wrap">
                         <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{formatDate(session.scheduledDate)}</span>
                         {session.startTime && session.endTime && (
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{formatTime(session.startTime)} – {formatTime(session.endTime)}</span>
@@ -1319,14 +1319,14 @@ function SessionsLevel({ courseId, groupId }: { courseId: string; groupId: strin
                     <div className="flex items-center gap-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={e => { e.stopPropagation(); navigate(`/clo/sessions/${session._id}/edit`); }}
-                        className="p-1.5 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors"
+                        className="p-1.5 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors"
                         title="Edit"
                       >
                         <Edit className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={e => handleDelete(session._id, e)}
-                        className="p-1.5 rounded-lg hover:bg-red-50 text-[#003300]/40 hover:text-red-500 transition-colors"
+                        className="p-1.5 rounded-lg hover:bg-red-50 text-ink/40 hover:text-red-500 transition-colors"
                         title="Delete"
                       >
                         <Trash2 className="w-3.5 h-3.5" />

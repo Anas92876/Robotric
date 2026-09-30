@@ -184,7 +184,7 @@ export default function TrainerModal({
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Full Name <span className="text-red-500">*</span>
           </label>
           <Input
@@ -204,7 +204,7 @@ export default function TrainerModal({
 
         {/* Email */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Email Address <span className="text-red-500">*</span>
           </label>
           <Input
@@ -224,10 +224,10 @@ export default function TrainerModal({
 
         {/* Password */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Password {!trainer && <span className="text-red-500">*</span>}
             {trainer && (
-              <span className="text-xs text-[#003300]/60 ml-1">
+              <span className="text-xs text-ink/60 ml-1">
                 (Leave empty to keep current password)
               </span>
             )}
@@ -249,7 +249,7 @@ export default function TrainerModal({
 
         {/* Phone */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Phone Number
           </label>
           <Input
@@ -269,7 +269,7 @@ export default function TrainerModal({
 
         {/* Specialization */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Specialization
           </label>
           <Input
@@ -292,7 +292,7 @@ export default function TrainerModal({
 
         {/* Bio */}
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-1">
+          <label className="block text-sm font-medium text-ink mb-1">
             Bio
           </label>
           <textarea
@@ -305,13 +305,13 @@ export default function TrainerModal({
             }
             placeholder="Brief description about the trainer..."
             rows={3}
-            className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder:text-[#003300]/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all resize-none"
+            className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink placeholder:text-ink/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all resize-none"
             disabled={isLoading}
           />
         </div>
 
         {/* Footer Buttons */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button
             type="button"
             variant="outline"
@@ -343,8 +343,8 @@ export default function TrainerModal({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

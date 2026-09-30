@@ -314,10 +314,10 @@ const Schedule: React.FC = () => {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardReception:schedule.title', 'Schedule')}</h1>
-          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>{t('dashboardReception:schedule.subtitle', 'Manage meetings, events, and subscription sessions')}</p>
+          <p className={`mt-1 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardReception:schedule.subtitle', 'Manage meetings, events, and subscription sessions')}</p>
         </div>
       </div>
 

@@ -142,12 +142,12 @@ export default function TrainerDashboard() {
       {/* Welcome Section */}
       <motion.div variants={itemVariants} className={isRTL ? 'text-right font-arabic' : ''}>
         <h1 className="text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-          color: '#003300',
+          color: '#0f1f33',
           backgroundClip: 'text'
         }}>
           {t('dashboardTrainer:welcomeBack')}, {user?.name || t('dashboardTrainer:trainer')}
         </h1>
-        <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+        <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
           {t('dashboardTrainer:manageSubtitle')}
         </p>
       </motion.div>

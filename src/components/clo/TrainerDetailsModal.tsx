@@ -81,10 +81,10 @@ export default function TrainerDetailsModal({
                 <Users className="w-10 h-10" />
               </div>
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-[#003300] mb-2">
+                <h3 className="text-2xl font-bold text-ink mb-2">
                   {data.trainer.name}
                 </h3>
-                <div className="space-y-1 text-sm text-[#003300]/70">
+                <div className="space-y-1 text-sm text-ink/70">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4" />
                     <span>{data.trainer.email}</span>
@@ -103,7 +103,7 @@ export default function TrainerDetailsModal({
                   )}
                 </div>
                 {data.trainer.profile?.bio && (
-                  <p className="mt-3 text-sm text-[#003300]/60">
+                  <p className="mt-3 text-sm text-ink/60">
                     {data.trainer.profile.bio}
                   </p>
                 )}
@@ -122,7 +122,7 @@ export default function TrainerDetailsModal({
 
           {/* Performance Overview */}
           <div>
-            <h4 className="text-lg font-semibold text-[#003300] mb-4">
+            <h4 className="text-lg font-semibold text-ink mb-4">
               Performance Overview
             </h4>
           </div>
@@ -132,9 +132,9 @@ export default function TrainerDetailsModal({
             <div className="bg-white rounded-xl p-4 border border-emerald-100">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="w-4 h-4 text-emerald-600" />
-                <p className="text-xs text-[#003300]/60">Total Groups</p>
+                <p className="text-xs text-ink/60">Total Groups</p>
               </div>
-              <p className="text-2xl font-bold text-[#003300]">
+              <p className="text-2xl font-bold text-ink">
                 {data.performance.totalGroups}
               </p>
               <p className="text-xs text-green-600 mt-1">
@@ -145,9 +145,9 @@ export default function TrainerDetailsModal({
             <div className="bg-white rounded-xl p-4 border border-green-100">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="w-4 h-4 text-green-600" />
-                <p className="text-xs text-[#003300]/60">Total Students</p>
+                <p className="text-xs text-ink/60">Total Students</p>
               </div>
-              <p className="text-2xl font-bold text-[#003300]">
+              <p className="text-2xl font-bold text-ink">
                 {data.performance.totalStudents}
               </p>
             </div>
@@ -155,9 +155,9 @@ export default function TrainerDetailsModal({
             <div className="bg-white rounded-xl p-4 border border-teal-100">
               <div className="flex items-center gap-2 mb-2">
                 <BookOpen className="w-4 h-4 text-teal-600" />
-                <p className="text-xs text-[#003300]/60">Courses</p>
+                <p className="text-xs text-ink/60">Courses</p>
               </div>
-              <p className="text-2xl font-bold text-[#003300]">
+              <p className="text-2xl font-bold text-ink">
                 {data.performance.coursesCount}
               </p>
             </div>
@@ -165,7 +165,7 @@ export default function TrainerDetailsModal({
             <div className="bg-white rounded-xl p-4 border border-cyan-100">
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="w-4 h-4 text-cyan-600" />
-                <p className="text-xs text-[#003300]/60">Attendance</p>
+                <p className="text-xs text-ink/60">Attendance</p>
               </div>
               <p className="text-2xl font-bold text-green-600">
                 {data.performance.overallAttendanceRate}%
@@ -176,21 +176,21 @@ export default function TrainerDetailsModal({
           {/* Groups */}
           {data.groups && data.groups.length > 0 && (
             <div>
-              <h4 className="text-lg font-semibold text-[#003300] mb-3">
+              <h4 className="text-lg font-semibold text-ink mb-3">
                 Assigned Groups ({data.groups.length})
               </h4>
               <div className="space-y-2 max-h-64 overflow-y-auto">
                 {data.groups.map((group: any) => (
                   <div
                     key={group._id}
-                    className="bg-white rounded-lg p-4 border border-[#003300]/10 hover:border-emerald-200 transition-colors"
+                    className="bg-white rounded-lg p-4 border border-ink/10 hover:border-emerald-200 transition-colors"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <h5 className="font-semibold text-[#003300]">
+                        <h5 className="font-semibold text-ink">
                           {group.name}
                         </h5>
-                        <div className="flex items-center gap-3 mt-1 text-sm text-[#003300]/60">
+                        <div className="flex items-center gap-3 mt-1 text-sm text-ink/60">
                           <span className="flex items-center gap-1">
                             <BookOpen className="w-3 h-3" />
                             {group.courseId?.title || "N/A"}
@@ -225,22 +225,22 @@ export default function TrainerDetailsModal({
           {/* Courses Taught */}
           {data.courses && data.courses.length > 0 && (
             <div>
-              <h4 className="text-lg font-semibold text-[#003300] mb-3">
+              <h4 className="text-lg font-semibold text-ink mb-3">
                 Courses Taught ({data.courses.length})
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {data.courses.map((course: any) => (
                   <div
                     key={course._id}
-                    className="bg-white rounded-lg p-3 border border-[#003300]/10 hover:border-emerald-200 transition-colors"
+                    className="bg-white rounded-lg p-3 border border-ink/10 hover:border-emerald-200 transition-colors"
                   >
                     <div className="flex items-start gap-2">
                       <BookOpen className="w-4 h-4 text-emerald-600 mt-1" />
                       <div className="flex-1">
-                        <h5 className="font-medium text-[#003300] text-sm">
+                        <h5 className="font-medium text-ink text-sm">
                           {course.title}
                         </h5>
-                        <p className="text-xs text-[#003300]/60 mt-1">
+                        <p className="text-xs text-ink/60 mt-1">
                           {course.category}
                         </p>
                       </div>
@@ -252,7 +252,7 @@ export default function TrainerDetailsModal({
           )}
 
           {/* Close Button */}
-          <div className="flex justify-end pt-4 border-t border-[#003300]/10">
+          <div className="flex justify-end pt-4 border-t border-ink/10">
             <Button variant="outline" onClick={onClose}>
               Close
             </Button>

@@ -52,11 +52,11 @@ export const TaskCard: React.FC<TaskCardProps> = React.memo(({ task }) => {
           <CardBody>
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-semibold text-[#003300] mb-1 truncate">
+                <h3 className="text-lg font-semibold text-ink mb-1 truncate">
                   {task.title}
                 </h3>
                 {task.courseId && (
-                  <p className="text-sm text-[#003300]/60 truncate">
+                  <p className="text-sm text-ink/60 truncate">
                     {task.courseId.title}
                   </p>
                 )}
@@ -64,11 +64,11 @@ export const TaskCard: React.FC<TaskCardProps> = React.memo(({ task }) => {
               {getStatusBadge()}
             </div>
 
-            <p className="text-sm text-[#003300]/70 mb-4 line-clamp-2">
+            <p className="text-sm text-ink/70 mb-4 line-clamp-2">
               {task.description}
             </p>
 
-            <div className="flex items-center gap-4 text-xs text-[#003300]/60 mb-3">
+            <div className="flex items-center gap-4 text-xs text-ink/60 mb-3">
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
                 <span>{formatDeadline(task.deadline)}</span>

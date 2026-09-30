@@ -22,7 +22,7 @@ function Badge({
   className,
 }: BadgeProps) {
   const variants = {
-    default: 'bg-gray-100 text-[#003300] border-gray-300',
+    default: 'bg-gray-100 text-ink border-gray-300',
     primary: 'bg-primary/10 text-primary border-primary/30',
     secondary: 'bg-cyan-100 text-cyan-700 border-cyan-300',
     success: 'bg-green-100 text-green-700 border-green-300',
@@ -103,7 +103,7 @@ function DotBadge({
           )}
         />
       </span>
-      {children && <span className="text-sm text-[#003300]">{children}</span>}
+      {children && <span className="text-sm text-ink">{children}</span>}
     </span>
   );
 }
@@ -125,7 +125,7 @@ function NumberBadge({
   const displayCount = count > max ? `${max}+` : count;
 
   const variants = {
-    primary: 'bg-primary text-[#ffffcc]',
+    primary: 'bg-primary text-frost',
     error: 'bg-red-500 text-white',
   };
 

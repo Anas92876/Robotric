@@ -277,12 +277,12 @@ const LeadManagement: React.FC = () => {
       <motion.div variants={itemVariants} className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className={`text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>
             {t('dashboardReception:leadManagement.title', 'Lead Management')}
           </h1>
-          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#003300' + 'CC' }}>
+          <p className={`mt-2 transition-colors duration-300 ${isRTL ? 'text-right' : 'text-left'}`} style={{ color: '#0f1f33' + 'CC' }}>
             {t('dashboardReception:leadManagement.subtitle', 'Track and manage interested customers')}
           </p>
         </div>
@@ -340,7 +340,7 @@ const LeadManagement: React.FC = () => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] placeholder-[#003300]/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
+                className="w-full pl-12 pr-4 py-3.5 bg-white border border-primary/20 rounded-xl text-ink placeholder-ink/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 shadow-sm"
               />
             </div>
           </div>
@@ -352,7 +352,7 @@ const LeadManagement: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => handleStatusFilterChange(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="" className="bg-white">All Status</option>
                 <option value="interest" className="bg-white">Interest</option>
@@ -360,7 +360,7 @@ const LeadManagement: React.FC = () => {
                 <option value="blacklist" className="bg-white">Blacklist</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -374,7 +374,7 @@ const LeadManagement: React.FC = () => {
               <select
                 value={interestFilter}
                 onChange={(e) => handleInterestFilterChange(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="" className="bg-white">All Interests</option>
                 {interests.map(interest => (
@@ -384,7 +384,7 @@ const LeadManagement: React.FC = () => {
                 ))}
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -398,7 +398,7 @@ const LeadManagement: React.FC = () => {
               <select
                 value={`${sortBy}:${sortOrder}`}
                 onChange={(e) => handleSortChange(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
+                className="w-full pl-12 pr-10 py-3.5 bg-white border border-primary/20 rounded-xl text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:border-primary/30 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="leadDate:desc" className="bg-white">Newest First</option>
                 <option value="leadDate:asc" className="bg-white">Oldest First</option>
@@ -408,7 +408,7 @@ const LeadManagement: React.FC = () => {
                 <option value="fullName:desc" className="bg-white">الاسم (ي → أ)</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-[#003300]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-ink/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -430,7 +430,7 @@ const LeadManagement: React.FC = () => {
             variant="ghost"
             leftIcon={<RefreshCw className="w-4 h-4" />}
             onClick={fetchLeads}
-            className="text-[#003300]/70 hover:text-[#003300] hover:bg-primary/5 px-4"
+            className="text-ink/70 hover:text-ink hover:bg-primary/5 px-4"
           >
             <span className="hidden lg:inline">Refresh</span>
           </Button>
@@ -481,7 +481,7 @@ const LeadManagement: React.FC = () => {
 
                 {/* Pagination */}
                 {pagination && pagination.pages > 1 && (
-                  <div className="flex items-center justify-between px-6 py-4 border-t transition-colors duration-300" style={{ borderColor: '#003300' + '20' }}>
+                  <div className="flex items-center justify-between px-6 py-4 border-t transition-colors duration-300" style={{ borderColor: '#0f1f33' + '20' }}>
                     <p className="text-sm text-white/60">
                       Showing {leads.length} of {pagination.total} leads
                     </p>
@@ -492,13 +492,13 @@ const LeadManagement: React.FC = () => {
                         size="sm"
                         onClick={() => handlePageChange(pagination.page - 1)}
                         disabled={pagination.page === 1}
-                        className="border-[#003300]/20 hover:border-[#003300]/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                        style={{ color: '#003300' }}
+                        className="border-ink/20 hover:border-ink/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ color: '#0f1f33' }}
                       >
                         Previous
                       </Button>
 
-                      <span className="text-sm px-4 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+                      <span className="text-sm px-4 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
                         Page {pagination.page} of {pagination.pages}
                       </span>
 
@@ -507,8 +507,8 @@ const LeadManagement: React.FC = () => {
                         size="sm"
                         onClick={() => handlePageChange(pagination.page + 1)}
                         disabled={pagination.page === pagination.pages}
-                        className="border-[#003300]/20 hover:border-[#003300]/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                        style={{ color: '#003300' }}
+                        className="border-ink/20 hover:border-ink/50 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ color: '#0f1f33' }}
                       >
                         Next
                       </Button>

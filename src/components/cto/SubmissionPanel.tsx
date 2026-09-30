@@ -125,16 +125,16 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
   const isEmployee = mode === "employee";
 
   return (
-    <div className="mt-2 border-t border-[#003300]/8 pt-2">
+    <div className="mt-2 border-t border-ink/8 pt-2">
       <button
         onClick={() => setOpen(v => !v)}
-        className="flex items-center gap-2 text-xs text-[#003300]/50 hover:text-[#003300]/80 transition-colors w-full"
+        className="flex items-center gap-2 text-xs text-ink/50 hover:text-ink/80 transition-colors w-full"
       >
         <Paperclip className="w-3.5 h-3.5 flex-shrink-0" />
         <span className="font-medium">
           {isEmployee ? "My Submission" : "Submission"}
           {hasContent && (
-            <span className="ml-1.5 px-1.5 py-0.5 rounded-full bg-[#003300]/10 text-[#003300]/60">
+            <span className="ml-1.5 px-1.5 py-0.5 rounded-full bg-ink/10 text-ink/60">
               {submission.images.length + submission.links.length}
             </span>
           )}
@@ -155,9 +155,9 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
               {/* Images section */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-semibold text-[#003300]/50 uppercase tracking-wide">Images</span>
+                  <span className="text-[10px] font-semibold text-ink/50 uppercase tracking-wide">Images</span>
                   {isEmployee && (
-                    <label className={`flex items-center gap-1 text-[10px] cursor-pointer px-2 py-0.5 rounded border border-[#003300]/15 text-[#003300]/50 hover:border-[#003300]/30 hover:text-[#003300] transition-colors ${uploading ? "opacity-40 pointer-events-none" : ""}`}>
+                    <label className={`flex items-center gap-1 text-[10px] cursor-pointer px-2 py-0.5 rounded border border-ink/15 text-ink/50 hover:border-ink/30 hover:text-ink transition-colors ${uploading ? "opacity-40 pointer-events-none" : ""}`}>
                       {uploading ? <Loader2 className="w-3 h-3 animate-spin" /> : <ImagePlus className="w-3 h-3" />}
                       {uploading ? "Uploading…" : "Upload"}
                       <input
@@ -172,15 +172,15 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
                 </div>
                 {uploadError && <p className="text-[10px] text-red-500 mb-1">{uploadError}</p>}
                 {submission.images.length === 0 ? (
-                  <p className="text-[10px] text-[#003300]/25 py-1">No images.</p>
+                  <p className="text-[10px] text-ink/25 py-1">No images.</p>
                 ) : (
                   <div className="flex flex-wrap gap-2">
                     {submission.images.map(img => (
-                      <div key={img.publicId} className="relative group w-16 h-16 rounded-lg overflow-hidden border border-[#003300]/10 bg-[#003300]/4">
+                      <div key={img.publicId} className="relative group w-16 h-16 rounded-lg overflow-hidden border border-ink/10 bg-ink/4">
                         <img src={img.url} alt="submission" className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100">
                           <button type="button" onClick={() => setLightbox(img.url)} className="p-1 bg-white/90 rounded-full">
-                            <ZoomIn className="w-3 h-3 text-[#003300]" />
+                            <ZoomIn className="w-3 h-3 text-ink" />
                           </button>
                           {isEmployee && (
                             <button type="button" onClick={() => handleDeleteImage(img.publicId)} disabled={!!deletingId} className="p-1 bg-white/90 rounded-full">
@@ -196,16 +196,16 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
 
               {/* Links section */}
               <div>
-                <span className="text-[10px] font-semibold text-[#003300]/50 uppercase tracking-wide block mb-1.5">Links</span>
+                <span className="text-[10px] font-semibold text-ink/50 uppercase tracking-wide block mb-1.5">Links</span>
                 {submission.links.length === 0 && !isEmployee && (
-                  <p className="text-[10px] text-[#003300]/25 py-1">No links.</p>
+                  <p className="text-[10px] text-ink/25 py-1">No links.</p>
                 )}
                 {submission.links.map((link, idx) => (
                   <div key={idx} className="flex items-center gap-1.5 mb-1">
-                    <Link2 className="w-3 h-3 text-[#003300]/30 flex-shrink-0" />
+                    <Link2 className="w-3 h-3 text-ink/30 flex-shrink-0" />
                     <a href={link} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-600 hover:underline truncate flex-1">{link}</a>
                     {isEmployee && (
-                      <button type="button" onClick={() => handleRemoveLink(idx)} disabled={savingLinks} className="text-[#003300]/20 hover:text-red-400 transition-colors flex-shrink-0">
+                      <button type="button" onClick={() => handleRemoveLink(idx)} disabled={savingLinks} className="text-ink/20 hover:text-red-400 transition-colors flex-shrink-0">
                         <X className="w-3 h-3" />
                       </button>
                     )}
@@ -219,15 +219,15 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
                       value={linkInput}
                       onChange={e => { setLinkInput(e.target.value); setLinkError(""); }}
                       onKeyDown={e => e.key === "Enter" && handleAddLink()}
-                      className="flex-1 text-[10px] px-2 py-1 rounded border border-[#003300]/15 bg-white text-[#003300] focus:outline-none focus:ring-1 focus:ring-[#003300]/25"
+                      className="flex-1 text-[10px] px-2 py-1 rounded border border-ink/15 bg-white text-ink focus:outline-none focus:ring-1 focus:ring-ink/25"
                     />
                     <button
                       type="button"
                       onClick={handleAddLink}
                       disabled={savingLinks || !linkInput.trim()}
-                      className="p-1.5 rounded bg-[#003300]/8 hover:bg-[#003300]/15 transition-colors disabled:opacity-40"
+                      className="p-1.5 rounded bg-ink/8 hover:bg-ink/15 transition-colors disabled:opacity-40"
                     >
-                      {savingLinks ? <Loader2 className="w-3 h-3 animate-spin text-[#003300]" /> : <Plus className="w-3 h-3 text-[#003300]" />}
+                      {savingLinks ? <Loader2 className="w-3 h-3 animate-spin text-ink" /> : <Plus className="w-3 h-3 text-ink" />}
                     </button>
                   </div>
                 )}
@@ -236,7 +236,7 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
 
               {/* Note section */}
               <div>
-                <span className="text-[10px] font-semibold text-[#003300]/50 uppercase tracking-wide block mb-1.5">Note</span>
+                <span className="text-[10px] font-semibold text-ink/50 uppercase tracking-wide block mb-1.5">Note</span>
                 {isEmployee ? (
                   <div className="space-y-1">
                     <textarea
@@ -244,20 +244,20 @@ export default function SubmissionPanel({ taskId, mode, initialSubmission }: Sub
                       placeholder="Any notes for the manager…"
                       value={note}
                       onChange={e => setNote(e.target.value)}
-                      className="w-full text-xs px-2 py-1.5 rounded border border-[#003300]/15 bg-white text-[#003300] focus:outline-none focus:ring-1 focus:ring-[#003300]/25 resize-none"
+                      className="w-full text-xs px-2 py-1.5 rounded border border-ink/15 bg-white text-ink focus:outline-none focus:ring-1 focus:ring-ink/25 resize-none"
                     />
                     <button
                       type="button"
                       onClick={handleSaveNote}
                       disabled={savingNote}
-                      className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-[#003300]/8 hover:bg-[#003300]/15 transition-colors disabled:opacity-40 text-[#003300]/60"
+                      className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-ink/8 hover:bg-ink/15 transition-colors disabled:opacity-40 text-ink/60"
                     >
                       {savingNote ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
                       Save note
                     </button>
                   </div>
                 ) : (
-                  <p className="text-xs text-[#003300]/60">{submission.note || <span className="text-[#003300]/25">No note.</span>}</p>
+                  <p className="text-xs text-ink/60">{submission.note || <span className="text-ink/25">No note.</span>}</p>
                 )}
               </div>
             </div>

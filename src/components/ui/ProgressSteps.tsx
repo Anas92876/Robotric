@@ -53,8 +53,8 @@ export interface ProgressStepsProps {
  * - RTL/LTR support
  * - Responsive design (Mobile, Tablet, Desktop)
  * - Animated progress line (only shows between completed steps)
- * - Step states: numbers before activation (#003300), checkmarks after (#ffffcc)
- * - Background colors: #ffffcc before activation, #003300 after
+ * - Step states: numbers before activation (#0f1f33), checkmarks after (#eefcf1)
+ * - Background colors: #eefcf1 before activation, #0f1f33 after
  * - Full translation support
  * 
  * @example
@@ -191,12 +191,12 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
         className={cn(
           'text-center text-xl xs:text-2xl md:text-3xl lg:text-4xl font-black mb-6 xs:mb-8 md:mb-12',
           '',
-          'from-[#003300] to-[#006600]',
+          'from-ink to-[#006600]',
           'px-4',
           isRTL && 'font-arabic'
         )}
         style={{
-          color: '#003300',
+          color: '#0f1f33',
         }}
       >
         {title}
@@ -249,8 +249,8 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
                       'shadow-lg z-20',
                       'mx-auto',
                       isCompleted || isCurrent
-                        ? 'bg-[#003300] scale-100'
-                        : 'bg-[#ffffcc] scale-100'
+                        ? 'bg-ink scale-100'
+                        : 'bg-frost scale-100'
                     )}
                   >
                     {/* Checkmark or Number */}
@@ -258,14 +258,14 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
                       <Check
                         className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
                         strokeWidth={3}
-                        style={{ color: '#ffffcc' }}
+                        style={{ color: '#eefcf1' }}
                       />
                     ) : (
                       <span
                         className={cn(
                           'text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-black'
                         )}
-                        style={{ color: '#003300' }}
+                        style={{ color: '#0f1f33' }}
                       >
                         {stepNumber}
                       </span>
@@ -278,7 +278,7 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
                       'mt-2 xs:mt-2.5 sm:mt-3 md:mt-4',
                       'text-[10px] xs:text-xs sm:text-sm md:text-base font-semibold',
                       'transition-colors duration-300',
-                      'text-[#003300]',
+                      'text-ink',
                       'leading-tight',
                       isRTL && 'font-arabic',
                       // Centered on all screen sizes
@@ -326,7 +326,7 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
                     >
                       <div
                         className={cn(
-                          'h-full bg-[#003300] transition-all duration-700 ease-out',
+                          'h-full bg-ink transition-all duration-700 ease-out',
                           'w-0.5'
                         )}
                         style={{
@@ -360,7 +360,7 @@ export const ProgressSteps: React.FC<ProgressStepsProps> = ({
                     {shouldShowLine ? (
                       <div
                         className={cn(
-                          'w-full bg-[#003300] transition-all duration-700 ease-out',
+                          'w-full bg-ink transition-all duration-700 ease-out',
                           'h-0.5 sm:h-1'
                         )}
                       />

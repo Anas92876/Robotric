@@ -280,11 +280,11 @@ export default function EngineerDeadlines() {
           <div>
             <h1
               className="text-4xl font-bold inline-block"
-              style={{ color: '#003300', backgroundClip: "text" }}
+              style={{ color: '#0f1f33', backgroundClip: "text" }}
             >
               My Deadlines
             </h1>
-            <p className="mt-2" style={{ color: "#003300CC" }}>
+            <p className="mt-2" style={{ color: "#0f1f33CC" }}>
               Your tasks grouped by urgency
             </p>
           </div>
@@ -370,9 +370,9 @@ export default function EngineerDeadlines() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-16">
-                <Inbox className="w-14 h-14 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-lg font-semibold text-[#003300]/60 mb-1">No deadline-tracked tasks</p>
-                <p className="text-sm text-[#003300]/40">Tasks with due dates assigned to you will appear here.</p>
+                <Inbox className="w-14 h-14 mx-auto mb-4 text-ink/20" />
+                <p className="text-lg font-semibold text-ink/60 mb-1">No deadline-tracked tasks</p>
+                <p className="text-sm text-ink/40">Tasks with due dates assigned to you will appear here.</p>
                 <Link to="/engineer/tasks" className="mt-4 inline-block">
                   <Button variant="primary" size="sm" leftIcon={<ArrowRight className="w-4 h-4" />}>Go to My Tasks</Button>
                 </Link>
@@ -447,7 +447,7 @@ export default function EngineerDeadlines() {
                             {/* Content */}
                             <div className="flex-1 min-w-0">
                               <div className={`flex items-start justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                                <p className={`font-semibold text-[#003300] text-sm leading-snug ${isDone ? "line-through opacity-60" : ""}`}>
+                                <p className={`font-semibold text-ink text-sm leading-snug ${isDone ? "line-through opacity-60" : ""}`}>
                                   {task.title}
                                 </p>
                                 <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -457,7 +457,7 @@ export default function EngineerDeadlines() {
                               </div>
 
                               {task.description && (
-                                <p className="text-xs text-[#003300]/50 mt-1 line-clamp-1">{task.description}</p>
+                                <p className="text-xs text-ink/50 mt-1 line-clamp-1">{task.description}</p>
                               )}
 
                               <div className={`flex items-center flex-wrap gap-3 mt-2 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -475,8 +475,8 @@ export default function EngineerDeadlines() {
                                   </span>
                                 )}
                                 {project && (
-                                  <span className="text-xs text-[#003300]/40 flex items-center gap-1">
-                                    <span className="w-1 h-1 rounded-full bg-[#003300]/20 inline-block" />
+                                  <span className="text-xs text-ink/40 flex items-center gap-1">
+                                    <span className="w-1 h-1 rounded-full bg-ink/20 inline-block" />
                                     {project}
                                   </span>
                                 )}
@@ -490,7 +490,7 @@ export default function EngineerDeadlines() {
                                   onClick={() => updateStatus(task._id, "done")}
                                   disabled={isActing}
                                   title="Mark as done"
-                                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-[#003300]/20 hover:bg-green-50 hover:border-green-400 hover:text-green-600 transition-all text-[#003300]/30 disabled:opacity-40"
+                                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-ink/20 hover:bg-green-50 hover:border-green-400 hover:text-green-600 transition-all text-ink/30 disabled:opacity-40"
                                 >
                                   {isActing ? <RefreshCw className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
                                 </button>
@@ -499,7 +499,7 @@ export default function EngineerDeadlines() {
                                   onClick={() => updateStatus(task._id, "in_progress")}
                                   disabled={isActing}
                                   title="Undo — move back to In Progress"
-                                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-[#003300]/10 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600 transition-all text-[#003300]/20 disabled:opacity-40"
+                                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-ink/10 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600 transition-all text-ink/20 disabled:opacity-40"
                                 >
                                   {isActing ? <RefreshCw className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />}
                                 </button>

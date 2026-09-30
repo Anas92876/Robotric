@@ -59,10 +59,10 @@ export const StudentMobileNav: React.FC = () => {
     <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden pb-[env(safe-area-inset-bottom)]">
       {/* Dark Green Background matching Sidebar */}
       <div
-        className="absolute inset-0 backdrop-blur-md border-t shadow-[0_-4px_20px_-4px_rgba(0,51,0,0.3)]"
+        className="absolute inset-0 backdrop-blur-md border-t shadow-[0_-4px_20px_-4px_rgba(15, 31, 51,0.3)]"
         style={{
-          backgroundColor: '#003300',
-          borderColor: '#cccc99' + '30'
+          backgroundColor: '#0f1f33',
+          borderColor: '#3fd360' + '30'
         }}
       />
 
@@ -84,7 +84,7 @@ export const StudentMobileNav: React.FC = () => {
                   <motion.div
                     layoutId="mobileNavIndicator"
                     className="absolute -inset-x-2 sm:-inset-x-3 -inset-y-1 rounded-xl"
-                    style={{ backgroundColor: '#cccc99' + '20' }}
+                    style={{ backgroundColor: '#3fd360' + '20' }}
                     initial={false}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
@@ -94,7 +94,7 @@ export const StudentMobileNav: React.FC = () => {
                 <Icon
                   className="w-5 h-5 sm:w-6 sm:h-6 transition-colors duration-300"
                   style={{
-                    color: isActive ? '#cccc99' : '#cccc99' + 'CC',
+                    color: isActive ? '#3fd360' : '#3fd360' + 'CC',
                     strokeWidth: isActive ? 2.5 : 2
                   }}
                 />
@@ -103,7 +103,7 @@ export const StudentMobileNav: React.FC = () => {
                 <span
                   className="text-[9px] sm:text-[10px] font-medium transition-colors duration-300 leading-tight"
                   style={{
-                    color: isActive ? '#cccc99' : '#cccc99' + 'CC'
+                    color: isActive ? '#3fd360' : '#3fd360' + 'CC'
                   }}
                 >
                   {t(item.labelKey)}
@@ -114,7 +114,7 @@ export const StudentMobileNav: React.FC = () => {
                   <motion.div
                     layoutId="mobileNavDot"
                     className="absolute -bottom-2 w-1 h-1 rounded-full"
-                    style={{ backgroundColor: '#cccc99' }}
+                    style={{ backgroundColor: '#3fd360' }}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}

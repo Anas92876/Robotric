@@ -60,16 +60,16 @@ export function TeamFormModal({ isOpen, onClose, team, competitions, onSubmit }:
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         <Input label="Team name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Aleppo Bots" autoFocus />
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Competition{!isEdit && <span className="text-red-500 ml-1">*</span>}
           </label>
           {isEdit ? (
-            <p className="px-4 py-2.5 rounded-lg bg-[#003300]/5 text-[#003300]">{competitionTitle ?? '—'}</p>
+            <p className="px-4 py-2.5 rounded-lg bg-ink/5 text-ink">{competitionTitle ?? '—'}</p>
           ) : (
             <select
               value={competitionId}
               onChange={(e) => setCompetitionId(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-white border border-primary/20 text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+              className="w-full px-4 py-2.5 rounded-lg bg-white border border-primary/20 text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
             >
               <option value="">Choose a competition…</option>
               {competitions.map((c) => (
@@ -77,16 +77,16 @@ export function TeamFormModal({ isOpen, onClose, team, competitions, onSubmit }:
               ))}
             </select>
           )}
-          {!isEdit && competitions.length === 0 && <p className="text-sm text-[#003300]/60 mt-1">Create a competition first.</p>}
+          {!isEdit && competitions.length === 0 && <p className="text-sm text-ink/60 mt-1">Create a competition first.</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">Members</label>
+          <label className="block text-sm font-medium text-ink mb-2">Members</label>
           <textarea
             value={members}
             onChange={(e) => setMembers(e.target.value)}
             rows={4}
             placeholder={'One name per line\nOmar\nLina'}
-            className="w-full px-4 py-2.5 rounded-lg bg-white border border-primary/20 text-[#003300] focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+            className="w-full px-4 py-2.5 rounded-lg bg-white border border-primary/20 text-ink focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
           />
         </div>
 

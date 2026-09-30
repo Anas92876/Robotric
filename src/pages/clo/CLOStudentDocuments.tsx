@@ -94,10 +94,10 @@ function StatusSelect({ current, onUpdate, isRTL }: StatusSelectProps) {
     <div className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 px-2 py-1 rounded-lg border border-[#003300]/15 hover:border-[#003300]/30 hover:bg-[#003300]/4 transition-colors"
+        className="flex items-center gap-1.5 px-2 py-1 rounded-lg border border-ink/15 hover:border-ink/30 hover:bg-ink/4 transition-colors"
       >
         <StatusBadge status={current} />
-        <ChevronDown className="w-3 h-3 text-[#003300]/40 flex-shrink-0" />
+        <ChevronDown className="w-3 h-3 text-ink/40 flex-shrink-0" />
       </button>
 
       <AnimatePresence>
@@ -107,9 +107,9 @@ function StatusSelect({ current, onUpdate, isRTL }: StatusSelectProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -4, scale: 0.97 }}
             transition={{ duration: 0.15 }}
-            className={`absolute z-30 top-full mt-1.5 w-52 rounded-2xl bg-white border border-[#003300]/15 shadow-xl p-3 space-y-2 ${isRTL ? 'left-0' : 'right-0'}`}
+            className={`absolute z-30 top-full mt-1.5 w-52 rounded-2xl bg-white border border-ink/15 shadow-xl p-3 space-y-2 ${isRTL ? 'left-0' : 'right-0'}`}
           >
-            <p className="text-xs text-[#003300]/40 font-medium px-1">
+            <p className="text-xs text-ink/40 font-medium px-1">
               {isRTL ? 'تغيير الحالة' : 'Change status'}
             </p>
             {(['pending', 'verified', 'rejected'] as const).map((s) => (
@@ -118,12 +118,12 @@ function StatusSelect({ current, onUpdate, isRTL }: StatusSelectProps) {
                 onClick={() => setSelected(s)}
                 className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
                   selected === s
-                    ? 'bg-[#003300]/8 border border-[#003300]/15'
-                    : 'hover:bg-[#003300]/4'
+                    ? 'bg-ink/8 border border-ink/15'
+                    : 'hover:bg-ink/4'
                 }`}
               >
                 <StatusBadge status={s} />
-                {selected === s && <CheckCircle className="w-3 h-3 text-[#003300]/40 ml-auto" />}
+                {selected === s && <CheckCircle className="w-3 h-3 text-ink/40 ml-auto" />}
               </button>
             ))}
             {selected === 'rejected' && (
@@ -132,20 +132,20 @@ function StatusSelect({ current, onUpdate, isRTL }: StatusSelectProps) {
                 onChange={(e) => setNote(e.target.value)}
                 placeholder={isRTL ? 'ملاحظة الرفض (اختياري)' : 'Rejection note (optional)'}
                 rows={2}
-                className="w-full bg-[#003300]/4 border border-[#003300]/15 rounded-xl px-3 py-2 text-xs text-[#003300] placeholder:text-[#003300]/30 resize-none focus:outline-none focus:border-[#003300]/40 transition-colors"
+                className="w-full bg-ink/4 border border-ink/15 rounded-xl px-3 py-2 text-xs text-ink placeholder:text-ink/30 resize-none focus:outline-none focus:border-ink/40 transition-colors"
               />
             )}
             <div className="flex gap-2 pt-1">
               <button
                 onClick={() => { setOpen(false); setSelected(current); setNote(''); }}
-                className="flex-1 py-1.5 rounded-xl text-xs text-[#003300]/50 hover:bg-[#003300]/5 transition-colors border border-[#003300]/10"
+                className="flex-1 py-1.5 rounded-xl text-xs text-ink/50 hover:bg-ink/5 transition-colors border border-ink/10"
               >
                 {isRTL ? 'إلغاء' : 'Cancel'}
               </button>
               <button
                 onClick={handleSave}
                 disabled={saving || selected === current}
-                className="flex-1 py-1.5 rounded-xl text-xs font-semibold bg-[#003300] text-[#ffffcc] hover:bg-[#004400] disabled:opacity-40 transition-colors"
+                className="flex-1 py-1.5 rounded-xl text-xs font-semibold bg-ink text-frost hover:bg-ink-deep disabled:opacity-40 transition-colors"
               >
                 {saving
                   ? <RefreshCw className="w-3 h-3 animate-spin mx-auto" />
@@ -181,30 +181,30 @@ function DocumentRow({ doc, onUpdateStatus, onDownload, isRTL }: DocumentRowProp
   };
 
   return (
-    <div className={`flex items-center gap-3 p-3 rounded-xl border border-[#003300]/10 bg-[#003300]/3 hover:bg-[#003300]/6 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}>
+    <div className={`flex items-center gap-3 p-3 rounded-xl border border-ink/10 bg-ink/3 hover:bg-ink/6 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}>
       {/* Thumbnail */}
       <div className="flex-shrink-0">
         {doc.mimeType?.startsWith('image/') ? (
           <img
             src={doc.fileUrl}
             alt={labels?.en}
-            className="w-10 h-10 rounded-lg object-cover border border-[#003300]/15"
+            className="w-10 h-10 rounded-lg object-cover border border-ink/15"
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
           />
         ) : (
-          <div className="w-10 h-10 rounded-lg bg-[#003300]/8 flex items-center justify-center">
-            <FileText className="w-5 h-5 text-[#003300]/40" />
+          <div className="w-10 h-10 rounded-lg bg-ink/8 flex items-center justify-center">
+            <FileText className="w-5 h-5 text-ink/40" />
           </div>
         )}
       </div>
 
       {/* Info */}
       <div className={`flex-1 min-w-0 ${isRTL ? 'text-right' : 'text-left'}`}>
-        <p className="text-sm font-semibold text-[#003300] leading-tight">
+        <p className="text-sm font-semibold text-ink leading-tight">
           {labels?.ar}
-          <span className="text-[#003300]/40 text-xs font-normal"> — {labels?.en}</span>
+          <span className="text-ink/40 text-xs font-normal"> — {labels?.en}</span>
         </p>
-        <p className="text-xs text-[#003300]/40 truncate mt-0.5">
+        <p className="text-xs text-ink/40 truncate mt-0.5">
           {doc.originalName} · {formatBytes(doc.fileSize)}
         </p>
         {doc.verificationNote && (
@@ -219,7 +219,7 @@ function DocumentRow({ doc, onUpdateStatus, onDownload, isRTL }: DocumentRowProp
         <button
           onClick={handleDownload}
           disabled={downloading}
-          className="p-2 rounded-lg border border-[#003300]/15 hover:bg-[#003300]/8 transition-colors text-[#003300]/60 disabled:opacity-50"
+          className="p-2 rounded-lg border border-ink/15 hover:bg-ink/8 transition-colors text-ink/60 disabled:opacity-50"
           title={isRTL ? 'تحميل' : 'Download'}
         >
           {downloading
@@ -276,27 +276,27 @@ function StudentCard({ summary, isRTL, onFetchStudentDocs, onUpdateStatus, onDow
       {/* Header row */}
       <button
         onClick={handleExpand}
-        className={`w-full flex items-center gap-4 p-4 hover:bg-[#003300]/3 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
+        className={`w-full flex items-center gap-4 p-4 hover:bg-ink/3 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
       >
         {/* Avatar */}
         <div
           className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm text-white"
-          style={{ background: '#003300' }}
+          style={{ background: '#0f1f33' }}
         >
           {summary.student.name.charAt(0).toUpperCase()}
         </div>
 
         {/* Name + progress */}
         <div className={`flex-1 min-w-0 ${isRTL ? 'text-right' : 'text-left'}`}>
-          <p className="font-semibold text-[#003300] text-sm truncate">{summary.student.name}</p>
+          <p className="font-semibold text-ink text-sm truncate">{summary.student.name}</p>
           <div className={`flex items-center gap-2 mt-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <div className="flex-1 h-1.5 rounded-full bg-[#003300]/10 overflow-hidden max-w-[80px]">
+            <div className="flex-1 h-1.5 rounded-full bg-ink/10 overflow-hidden max-w-[80px]">
               <div
-                className="h-full rounded-full bg-[#003300] transition-all"
+                className="h-full rounded-full bg-ink transition-all"
                 style={{ width: `${completionPct}%` }}
               />
             </div>
-            <span className="text-xs text-[#003300]/40">{summary.total}/5</span>
+            <span className="text-xs text-ink/40">{summary.total}/5</span>
           </div>
         </div>
 
@@ -318,8 +318,8 @@ function StudentCard({ summary, isRTL, onFetchStudentDocs, onUpdateStatus, onDow
             </Badge>
           )}
           {expanded
-            ? <ChevronUp className="w-4 h-4 text-[#003300]/30" />
-            : <ChevronDown className="w-4 h-4 text-[#003300]/30" />}
+            ? <ChevronUp className="w-4 h-4 text-ink/30" />
+            : <ChevronDown className="w-4 h-4 text-ink/30" />}
         </div>
       </button>
 
@@ -333,14 +333,14 @@ function StudentCard({ summary, isRTL, onFetchStudentDocs, onUpdateStatus, onDow
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-4 pt-3 border-t border-[#003300]/10 space-y-2">
+            <div className="px-4 pb-4 pt-3 border-t border-ink/10 space-y-2">
               {loadingDocs ? (
-                <div className="text-center py-6 text-[#003300]/40 text-sm">
+                <div className="text-center py-6 text-ink/40 text-sm">
                   <RefreshCw className="w-4 h-4 animate-spin mx-auto mb-2 opacity-50" />
                   {isRTL ? 'جارٍ التحميل…' : 'Loading documents…'}
                 </div>
               ) : docs.length === 0 ? (
-                <div className="text-center py-6 text-[#003300]/40 text-sm">
+                <div className="text-center py-6 text-ink/40 text-sm">
                   {isRTL ? 'لا توجد وثائق بعد' : 'No documents uploaded yet'}
                 </div>
               ) : (
@@ -360,14 +360,14 @@ function StudentCard({ summary, isRTL, onFetchStudentDocs, onUpdateStatus, onDow
                   ).map((type) => (
                     <div
                       key={type}
-                      className={`flex items-center gap-3 p-3 rounded-xl border border-dashed border-[#003300]/15 ${isRTL ? 'flex-row-reverse' : ''}`}
+                      className={`flex items-center gap-3 p-3 rounded-xl border border-dashed border-ink/15 ${isRTL ? 'flex-row-reverse' : ''}`}
                     >
-                      <div className="w-10 h-10 rounded-lg border border-dashed border-[#003300]/15 flex items-center justify-center flex-shrink-0">
-                        <FileText className="w-4 h-4 text-[#003300]/20" />
+                      <div className="w-10 h-10 rounded-lg border border-dashed border-ink/15 flex items-center justify-center flex-shrink-0">
+                        <FileText className="w-4 h-4 text-ink/20" />
                       </div>
                       <div className={isRTL ? 'text-right' : 'text-left'}>
-                        <p className="text-sm text-[#003300]/30">{DOCUMENT_TYPE_LABELS[type].ar}</p>
-                        <p className="text-xs text-[#003300]/20">{DOCUMENT_TYPE_LABELS[type].en} — {isRTL ? 'لم يُرفع' : 'Not uploaded'}</p>
+                        <p className="text-sm text-ink/30">{DOCUMENT_TYPE_LABELS[type].ar}</p>
+                        <p className="text-xs text-ink/20">{DOCUMENT_TYPE_LABELS[type].en} — {isRTL ? 'لم يُرفع' : 'Not uploaded'}</p>
                       </div>
                     </div>
                   ))}
@@ -462,13 +462,13 @@ export default function CLOStudentDocuments() {
             <h1
               className="text-4xl font-bold mb-2"
               style={{
-                color: '#003300',
+                color: '#0f1f33',
                 backgroundClip: 'text',
               }}
             >
               {isRTL ? 'وثائق WRO' : 'WRO Documents'}
             </h1>
-            <p style={{ color: '#003300CC' }}>
+            <p style={{ color: '#0f1f33CC' }}>
               {isRTL
                 ? 'مراجعة وثائق الطلاب الحكومية للمشاركة في البطولة'
                 : 'Review and verify student government documents for WRO competition'}
@@ -491,8 +491,8 @@ export default function CLOStudentDocuments() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{isRTL ? 'الطلاب المشاركون' : 'Students with docs'}</p>
-                <p className="text-2xl font-bold text-[#003300]">{totalStudents}</p>
+                <p className="text-sm text-ink/60 mb-1">{isRTL ? 'الطلاب المشاركون' : 'Students with docs'}</p>
+                <p className="text-2xl font-bold text-ink">{totalStudents}</p>
               </div>
               <User className="w-8 h-8 text-primary" />
             </div>
@@ -503,8 +503,8 @@ export default function CLOStudentDocuments() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{isRTL ? 'قيد المراجعة' : 'Pending review'}</p>
-                <p className="text-2xl font-bold text-[#003300]">{totalPending}</p>
+                <p className="text-sm text-ink/60 mb-1">{isRTL ? 'قيد المراجعة' : 'Pending review'}</p>
+                <p className="text-2xl font-bold text-ink">{totalPending}</p>
               </div>
               <Clock className="w-8 h-8 text-accent" />
             </div>
@@ -515,8 +515,8 @@ export default function CLOStudentDocuments() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{isRTL ? 'تم التحقق' : 'Verified'}</p>
-                <p className="text-2xl font-bold text-[#003300]">{totalVerified}</p>
+                <p className="text-sm text-ink/60 mb-1">{isRTL ? 'تم التحقق' : 'Verified'}</p>
+                <p className="text-2xl font-bold text-ink">{totalVerified}</p>
               </div>
               <CheckCircle className="w-8 h-8 text-success" />
             </div>
@@ -555,8 +555,8 @@ export default function CLOStudentDocuments() {
             onClick={() => setActiveTab(key)}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${isRTL ? 'flex-row-reverse' : ''} ${
               activeTab === key
-                ? 'bg-[#003300] text-[#ffffcc] shadow-sm'
-                : 'bg-[#003300]/8 text-[#003300]/70 hover:bg-[#003300]/15 hover:text-[#003300]'
+                ? 'bg-ink text-frost shadow-sm'
+                : 'bg-ink/8 text-ink/70 hover:bg-ink/15 hover:text-ink'
             }`}
           >
             <Icon className="w-4 h-4" />
@@ -582,11 +582,11 @@ export default function CLOStudentDocuments() {
             <CardComponent variant="glass">
               <CardBody>
                 <div className="text-center py-12">
-                  <Trophy className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                  <p className="text-[#003300]/60 text-lg mb-2">
+                  <Trophy className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                  <p className="text-ink/60 text-lg mb-2">
                     {isRTL ? 'لا يوجد طلاب' : 'No students found'}
                   </p>
-                  <p className="text-[#003300]/40 text-sm">
+                  <p className="text-ink/40 text-sm">
                     {searchQuery
                       ? (isRTL ? 'جرّب تعديل كلمة البحث' : 'Try adjusting your search')
                       : (isRTL ? 'لم يرفع أي طالب وثائق بعد' : 'No students have uploaded documents yet')}
@@ -646,7 +646,7 @@ export default function CLOStudentDocuments() {
                 })),
               ]}
             />
-            <span className="text-sm text-[#003300]/40 self-center">
+            <span className="text-sm text-ink/40 self-center">
               {pagination.total} {isRTL ? 'وثيقة' : 'documents'}
             </span>
           </div>
@@ -657,9 +657,9 @@ export default function CLOStudentDocuments() {
             <CardComponent variant="glass">
               <CardBody>
                 <div className="text-center py-12">
-                  <FileCheck className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                  <p className="text-[#003300]/60 text-lg mb-2">{isRTL ? 'لا توجد وثائق' : 'No documents found'}</p>
-                  <p className="text-[#003300]/40 text-sm">{isRTL ? 'جرّب تعديل الفلاتر' : 'Try adjusting the filters'}</p>
+                  <FileCheck className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                  <p className="text-ink/60 text-lg mb-2">{isRTL ? 'لا توجد وثائق' : 'No documents found'}</p>
+                  <p className="text-ink/40 text-sm">{isRTL ? 'جرّب تعديل الفلاتر' : 'Try adjusting the filters'}</p>
                 </div>
               </CardBody>
             </CardComponent>
@@ -673,7 +673,7 @@ export default function CLOStudentDocuments() {
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.04 }}
-                      className={`flex items-center gap-4 p-4 rounded-xl border border-[#003300]/10 hover:bg-[#003300]/3 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
+                      className={`flex items-center gap-4 p-4 rounded-xl border border-ink/10 hover:bg-ink/3 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
                     >
                       {/* Thumbnail */}
                       <div className="flex-shrink-0">
@@ -681,12 +681,12 @@ export default function CLOStudentDocuments() {
                           <img
                             src={doc.fileUrl}
                             alt=""
-                            className="w-12 h-12 rounded-xl object-cover border border-[#003300]/10"
+                            className="w-12 h-12 rounded-xl object-cover border border-ink/10"
                             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                           />
                         ) : (
-                          <div className="w-12 h-12 rounded-xl bg-[#003300]/8 flex items-center justify-center">
-                            <FileText className="w-6 h-6 text-[#003300]/40" />
+                          <div className="w-12 h-12 rounded-xl bg-ink/8 flex items-center justify-center">
+                            <FileText className="w-6 h-6 text-ink/40" />
                           </div>
                         )}
                       </div>
@@ -694,12 +694,12 @@ export default function CLOStudentDocuments() {
                       {/* Info */}
                       <div className={`flex-1 min-w-0 ${isRTL ? 'text-right' : 'text-left'}`}>
                         <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                          <p className="font-semibold text-[#003300] text-sm">
+                          <p className="font-semibold text-ink text-sm">
                             {DOCUMENT_TYPE_LABELS[doc.documentType as DocumentType]?.ar}
                           </p>
                           <StatusBadge status={doc.verificationStatus} />
                         </div>
-                        <p className="text-xs text-[#003300]/50 mt-0.5 truncate">
+                        <p className="text-xs text-ink/50 mt-0.5 truncate">
                           {doc.studentId?.name} · {doc.originalName} · {formatBytes(doc.fileSize)}
                         </p>
                         {doc.verificationNote && (
@@ -713,7 +713,7 @@ export default function CLOStudentDocuments() {
                       <div className={`flex items-center gap-2 flex-shrink-0 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         <button
                           onClick={() => handleDownload(doc._id, doc.originalName)}
-                          className="p-2 rounded-lg border border-[#003300]/15 hover:bg-[#003300]/8 transition-colors text-[#003300]/60"
+                          className="p-2 rounded-lg border border-ink/15 hover:bg-ink/8 transition-colors text-ink/60"
                           title={isRTL ? 'تحميل' : 'Download'}
                         >
                           <Download className="w-4 h-4" />
@@ -730,15 +730,15 @@ export default function CLOStudentDocuments() {
 
                 {/* Pagination */}
                 {pagination.pages > 1 && (
-                  <div className={`flex items-center gap-2 justify-center pt-4 border-t border-[#003300]/10 mt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <div className={`flex items-center gap-2 justify-center pt-4 border-t border-ink/10 mt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {Array.from({ length: pagination.pages }, (_, i) => i + 1).map((p) => (
                       <button
                         key={p}
                         onClick={() => fetchDocuments(p)}
                         className={`w-8 h-8 rounded-lg text-xs font-medium transition-colors ${
                           p === pagination.page
-                            ? 'bg-[#003300] text-[#ffffcc]'
-                            : 'bg-[#003300]/8 text-[#003300]/60 hover:bg-[#003300]/15'
+                            ? 'bg-ink text-frost'
+                            : 'bg-ink/8 text-ink/60 hover:bg-ink/15'
                         }`}
                       >
                         {p}

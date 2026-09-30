@@ -193,21 +193,21 @@ const SubscriptionPlanModal: React.FC<SubscriptionPlanModalProps> = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Description (Optional)
           </label>
           <textarea
             value={formData.description}
             onChange={(e) => handleChange('description', e.target.value)}
             rows={3}
-            className="w-full px-4 py-2.5 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder-[#003300]/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:bg-gray-50 transition-all"
+            className="w-full px-4 py-2.5 rounded-lg border border-ink/20 bg-white text-ink placeholder-ink/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:bg-gray-50 transition-all"
             placeholder="Describe what this plan includes..."
             maxLength={500}
           />
           {errors.description && (
             <p className="text-red-500 text-xs mt-1">{errors.description}</p>
           )}
-          <p className="text-xs text-[#003300]/50 mt-1">
+          <p className="text-xs text-ink/50 mt-1">
             {formData.description?.length || 0}/500 characters
           </p>
         </div>
@@ -218,13 +218,13 @@ const SubscriptionPlanModal: React.FC<SubscriptionPlanModalProps> = ({
               type="checkbox"
               checked={formData.isActive}
               onChange={(e) => handleChange('isActive', e.target.checked)}
-              className="w-4 h-4 text-primary border-[#003300]/30 rounded focus:ring-primary/20"
+              className="w-4 h-4 text-primary border-ink/30 rounded focus:ring-primary/20"
             />
-            <span className="text-sm text-[#003300]">Active (available for assignment)</span>
+            <span className="text-sm text-ink">Active (available for assignment)</span>
           </label>
         </div>
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button variant="outline" onClick={handleClose} disabled={isSubmitting}>
             Cancel
           </Button>
@@ -247,8 +247,8 @@ const SubscriptionPlanModal: React.FC<SubscriptionPlanModalProps> = ({
         <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
           <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-[#003300] font-medium">Are you sure you want to leave?</p>
-            <p className="text-sm text-[#003300]/60 mt-1">
+            <p className="text-ink font-medium">Are you sure you want to leave?</p>
+            <p className="text-sm text-ink/60 mt-1">
               You have unsaved changes. If you leave now, your changes will be lost.
             </p>
           </div>

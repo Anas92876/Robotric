@@ -107,10 +107,10 @@ export default function CLOTaskResults() {
         </Button>
         <div className={isRTL ? 'text-right' : ''}>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{taskResults.taskTitle}</h1>
-          <p className="mt-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardCLO:taskPerformanceDesc')}</p>
+          <p className="mt-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardCLO:taskPerformanceDesc')}</p>
         </div>
       </motion.div>
 
@@ -120,8 +120,8 @@ export default function CLOTaskResults() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:totalStudents')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:totalStudents')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {statistics.totalStudents}
                 </p>
               </div>
@@ -134,8 +134,8 @@ export default function CLOTaskResults() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:totalSubmissions')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:totalSubmissions')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {statistics.totalSubmissions}
                 </p>
               </div>
@@ -148,8 +148,8 @@ export default function CLOTaskResults() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:completionRate')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:completionRate')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {completionRate.toFixed(1)}%
                 </p>
               </div>
@@ -162,8 +162,8 @@ export default function CLOTaskResults() {
           <CardBody>
             <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={isRTL ? 'text-right' : ''}>
-                <p className="text-sm text-[#003300]/60 mb-1">{t('dashboardCLO:averageScore')}</p>
-                <p className="text-2xl font-bold text-[#003300]">
+                <p className="text-sm text-ink/60 mb-1">{t('dashboardCLO:averageScore')}</p>
+                <p className="text-2xl font-bold text-ink">
                   {statistics.averageScore.toFixed(1)}
                 </p>
               </div>
@@ -177,32 +177,32 @@ export default function CLOTaskResults() {
       <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CardComponent variant="glass">
           <CardBody>
-            <h3 className={`text-lg font-semibold text-[#003300] mb-4 ${isRTL ? 'text-right' : ''}`}>{t('dashboardCLO:submissionStatus')}</h3>
+            <h3 className={`text-lg font-semibold text-ink mb-4 ${isRTL ? 'text-right' : ''}`}>{t('dashboardCLO:submissionStatus')}</h3>
             <div className="space-y-3">
               <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-[#003300]">{t('dashboardCLO:gradedLabel')}</span>
+                  <span className="text-ink">{t('dashboardCLO:gradedLabel')}</span>
                 </div>
-                <span className="text-lg font-bold text-[#003300]">
+                <span className="text-lg font-bold text-ink">
                   {statistics.gradedSubmissions}
                 </span>
               </div>
               <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <Clock className="w-5 h-5 text-yellow-600" />
-                  <span className="text-[#003300]">{t('dashboardCLO:pendingReviewLabel')}</span>
+                  <span className="text-ink">{t('dashboardCLO:pendingReviewLabel')}</span>
                 </div>
-                <span className="text-lg font-bold text-[#003300]">
+                <span className="text-lg font-bold text-ink">
                   {statistics.pendingSubmissions}
                 </span>
               </div>
               <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <AlertCircle className="w-5 h-5 text-red-600" />
-                  <span className="text-[#003300]">{t('dashboardCLO:lateSubmissions')}</span>
+                  <span className="text-ink">{t('dashboardCLO:lateSubmissions')}</span>
                 </div>
-                <span className="text-lg font-bold text-[#003300]">
+                <span className="text-lg font-bold text-ink">
                   {statistics.lateSubmissions}
                 </span>
               </div>
@@ -212,12 +212,12 @@ export default function CLOTaskResults() {
 
         <CardComponent variant="glass">
           <CardBody>
-            <h3 className={`text-lg font-semibold text-[#003300] mb-4 ${isRTL ? 'text-right' : ''}`}>{t('dashboardCLO:performanceMetrics')}</h3>
+            <h3 className={`text-lg font-semibold text-ink mb-4 ${isRTL ? 'text-right' : ''}`}>{t('dashboardCLO:performanceMetrics')}</h3>
             <div className="space-y-4">
               <div>
                 <div className={`flex items-center justify-between mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <span className="text-sm text-[#003300]/60">{t('dashboardCLO:completionRate')}</span>
-                  <span className="text-sm font-medium text-[#003300]">
+                  <span className="text-sm text-ink/60">{t('dashboardCLO:completionRate')}</span>
+                  <span className="text-sm font-medium text-ink">
                     {completionRate.toFixed(1)}%
                   </span>
                 </div>
@@ -230,8 +230,8 @@ export default function CLOTaskResults() {
               </div>
               <div>
                 <div className={`flex items-center justify-between mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <span className="text-sm text-[#003300]/60">{t('dashboardCLO:averageScore')}</span>
-                  <span className="text-sm font-medium text-[#003300]">
+                  <span className="text-sm text-ink/60">{t('dashboardCLO:averageScore')}</span>
+                  <span className="text-sm font-medium text-ink">
                     {statistics.averageScore.toFixed(1)}
                   </span>
                 </div>
@@ -252,7 +252,7 @@ export default function CLOTaskResults() {
         <motion.div variants={itemVariants}>
           <CardComponent variant="glass">
             <CardBody>
-              <h3 className={`text-lg font-semibold text-[#003300] mb-4 ${isRTL ? 'text-right' : ''}`}>
+              <h3 className={`text-lg font-semibold text-ink mb-4 ${isRTL ? 'text-right' : ''}`}>
                 {t('dashboardCLO:submissionSummary')}
               </h3>
               <div className="space-y-2">
@@ -262,10 +262,10 @@ export default function CLOTaskResults() {
                     className={`flex items-center justify-between p-3 rounded-lg bg-white/50 border border-primary/10 ${isRTL ? 'flex-row-reverse' : ''}`}
                   >
                     <div className={isRTL ? 'text-right' : ''}>
-                      <p className="font-medium text-[#003300]">
+                      <p className="font-medium text-ink">
                         {submission.studentName || "Student"}
                       </p>
-                      <p className="text-xs text-[#003300]/60">
+                      <p className="text-xs text-ink/60">
                         {submission.submittedAt
                           ? formatDate(submission.submittedAt)
                           : t('dashboardCLO:notSubmitted')}
@@ -273,7 +273,7 @@ export default function CLOTaskResults() {
                     </div>
                     <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       {submission.score !== undefined && (
-                        <span className="text-sm font-medium text-[#003300]">
+                        <span className="text-sm font-medium text-ink">
                           {submission.score}
                         </span>
                       )}

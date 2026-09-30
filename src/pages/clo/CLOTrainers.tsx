@@ -159,7 +159,7 @@ export default function CLOTrainers() {
       <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
         <div>
           <h1 className="text-3xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{ 
-            color: '#003300',
+            color: '#0f1f33',
             backgroundClip: 'text'
           }}>{t('dashboardCLO:trainers')}</h1>
         </div>
@@ -173,11 +173,11 @@ export default function CLOTrainers() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-4 border border-[#003300]/10">
+      <div className="bg-white rounded-xl p-4 border border-ink/10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/40" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
               <Input
                 type="text"
                 placeholder={t('dashboardCLO:searchTrainers')}
@@ -192,7 +192,7 @@ export default function CLOTrainers() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             >
               <option value="all">{t('dashboardCommon:allStatus')}</option>
               <option value="active">{t('dashboardCommon:active')}</option>
@@ -204,7 +204,7 @@ export default function CLOTrainers() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             >
               <option value="createdAt">{t('dashboardCLO:newestFirst')}</option>
               <option value="name">{t('dashboardCLO:nameAZ')}</option>
@@ -247,7 +247,7 @@ export default function CLOTrainers() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
-              <div className="bg-white rounded-xl p-6 border border-[#003300]/10 hover:border-primary/30 hover:shadow-md transition-all">
+              <div className="bg-white rounded-xl p-6 border border-ink/10 hover:border-primary/30 hover:shadow-md transition-all">
                 <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   {/* Avatar */}
                   <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
@@ -259,7 +259,7 @@ export default function CLOTrainers() {
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="text-xl font-semibold text-[#003300] truncate">
+                          <h3 className="text-xl font-semibold text-ink truncate">
                             {trainer.name}
                           </h3>
                           <Badge
@@ -276,7 +276,7 @@ export default function CLOTrainers() {
                           </Badge>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-[#003300]/60">
+                        <div className="flex flex-wrap items-center gap-3 text-sm text-ink/60">
                           <div className="flex items-center gap-1">
                             <Mail className="w-4 h-4" />
                             <span>{trainer.email}</span>
@@ -332,31 +332,31 @@ export default function CLOTrainers() {
 
                     {/* Stats */}
                     {trainer.stats && (
-                      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#003300]/10">
+                      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-ink/10">
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">
+                          <p className="text-xs text-ink/60 mb-1">
                             {t('dashboardCLO:groups')}
                           </p>
                           <div className="flex items-baseline gap-1">
                             <BookOpen className="w-4 h-4 text-primary" />
-                            <p className="text-lg font-semibold text-[#003300]">
+                            <p className="text-lg font-semibold text-ink">
                               {trainer.stats.totalGroups || 0}
                             </p>
                           </div>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">
+                          <p className="text-xs text-ink/60 mb-1">
                             {t('dashboardCLO:students')}
                           </p>
                           <div className="flex items-baseline gap-1">
                             <Users className="w-4 h-4 text-secondary" />
-                            <p className="text-lg font-semibold text-[#003300]">
+                            <p className="text-lg font-semibold text-ink">
                               {trainer.stats.totalStudents || 0}
                             </p>
                           </div>
                         </div>
                         <div>
-                          <p className="text-xs text-[#003300]/60 mb-1">
+                          <p className="text-xs text-ink/60 mb-1">
                             {t('dashboardCLO:avgAttendance')}
                           </p>
                           <div className="flex items-baseline gap-1">
@@ -374,13 +374,13 @@ export default function CLOTrainers() {
             </motion.div>
           ))
         ) : (
-          <div className="bg-white rounded-xl p-6 border border-[#003300]/10">
+          <div className="bg-white rounded-xl p-6 border border-ink/10">
             <div className="text-center py-12">
-              <Users className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-              <h3 className="text-lg font-semibold text-[#003300] mb-2">
+              <Users className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 {t('dashboardCLO:noTrainers')}
               </h3>
-              <p className="text-[#003300]/60 mb-4">
+              <p className="text-ink/60 mb-4">
                 {searchQuery || statusFilter !== "all"
                   ? t('dashboardCLO:tryAdjustingFilters')
                   : t('dashboardCLO:getStartedFirstTrainer')}

@@ -60,8 +60,8 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const BRAND = "#003300";
-const CHART_COLORS = ["#003300", "#16a34a", "#4ade80", "#86efac", "#bbf7d0", "#dcfce7", "#f0fdf4", "#064e3b"];
+const BRAND = "#0f1f33";
+const CHART_COLORS = ["#0f1f33", "#16a34a", "#4ade80", "#86efac", "#bbf7d0", "#dcfce7", "#f0fdf4", "#064e3b"];
 const STATUS_COLORS = { todo: "#6b7280", in_progress: "#3b82f6", done: "#22c55e" };
 const PRIORITY_COLORS = { 1: "#ef4444", 2: "#f97316", 3: "#22c55e" };
 
@@ -273,11 +273,11 @@ export default function CTODashboard() {
           <div className={isRTL ? "text-right" : ""}>
             <h1
               className="text-4xl font-bold inline-block"
-              style={{ color: '#003300', backgroundClip: "text" }}
+              style={{ color: '#0f1f33', backgroundClip: "text" }}
             >
               Manager Dashboard
             </h1>
-            <p className="mt-2" style={{ color: "#003300CC" }}>Team performance & project analytics</p>
+            <p className="mt-2" style={{ color: "#0f1f33CC" }}>Team performance & project analytics</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="ghost" size="sm" leftIcon={<RefreshCw className="w-4 h-4" />} onClick={fetchAnalytics}>
@@ -294,16 +294,16 @@ export default function CTODashboard() {
       <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {statCards.map((card: any) => {
           const inner = (
-            <div className={`relative bg-white rounded-xl p-5 border transition-all duration-300 hover:shadow-xl ${card.warn ? "border-red-200 hover:border-red-300" : "border-[#003300]/15 hover:border-[#003300]/30"}`}>
+            <div className={`relative bg-white rounded-xl p-5 border transition-all duration-300 hover:shadow-xl ${card.warn ? "border-red-200 hover:border-red-300" : "border-ink/15 hover:border-ink/30"}`}>
               <div className="flex items-start justify-between mb-3">
-                <div className={`p-2.5 rounded-xl ${card.warn ? "bg-red-50 text-red-500" : "text-[#ffffcc]"}`}
-                  style={card.warn ? {} : { background: "#003300" }}>
+                <div className={`p-2.5 rounded-xl ${card.warn ? "bg-red-50 text-red-500" : "text-frost"}`}
+                  style={card.warn ? {} : { background: "#0f1f33" }}>
                   {card.icon}
                 </div>
-                <span className={`text-3xl font-bold ${card.warn ? "text-red-500" : "text-[#003300]"}`}>{card.value}</span>
+                <span className={`text-3xl font-bold ${card.warn ? "text-red-500" : "text-ink"}`}>{card.value}</span>
               </div>
-              <p className="font-semibold text-[#003300] text-sm">{card.label}</p>
-              <p className="text-xs text-[#003300]/50 mt-0.5">{card.sub}</p>
+              <p className="font-semibold text-ink text-sm">{card.label}</p>
+              <p className="text-xs text-ink/50 mt-0.5">{card.sub}</p>
               {card.link && card.warn && (
                 <p className="text-xs text-red-400 mt-1.5 font-medium">View details →</p>
               )}
@@ -324,21 +324,21 @@ export default function CTODashboard() {
           <CardBody>
             <div className={`flex items-center justify-between mb-3 ${isRTL ? "flex-row-reverse" : ""}`}>
               <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <TrendingUp className="w-5 h-5 text-[#003300]/60" />
-                <span className="font-semibold text-[#003300]">Overall Completion Rate</span>
+                <TrendingUp className="w-5 h-5 text-ink/60" />
+                <span className="font-semibold text-ink">Overall Completion Rate</span>
               </div>
-              <span className="text-2xl font-bold text-[#003300]">{completionRate}%</span>
+              <span className="text-2xl font-bold text-ink">{completionRate}%</span>
             </div>
-            <div className="w-full bg-[#003300]/10 rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-ink/10 rounded-full h-3 overflow-hidden">
               <motion.div
                 className="h-3 rounded-full"
-                style={{ background: "#003300" }}
+                style={{ background: "#0f1f33" }}
                 initial={{ width: 0 }}
                 animate={{ width: `${completionRate}%` }}
                 transition={{ duration: 1, ease: "easeOut" }}
               />
             </div>
-            <div className="flex items-center justify-between mt-2 text-xs text-[#003300]/50">
+            <div className="flex items-center justify-between mt-2 text-xs text-ink/50">
               <span>{doneTasks} done</span>
               <span>{totalTasks - doneTasks} remaining</span>
             </div>
@@ -354,17 +354,17 @@ export default function CTODashboard() {
           <div className="lg:col-span-2">
             <CardComponent variant="glass">
               <CardBody>
-                <h2 className="text-lg font-bold text-[#003300] mb-4">Monthly Productivity (Last 6 Months)</h2>
+                <h2 className="text-lg font-bold text-ink mb-4">Monthly Productivity (Last 6 Months)</h2>
                 {a.monthlyProductivity.length === 0 ? (
-                  <div className="flex items-center justify-center h-48 text-[#003300]/40 text-sm">No data yet</div>
+                  <div className="flex items-center justify-center h-48 text-ink/40 text-sm">No data yet</div>
                 ) : (
                   <ResponsiveContainer width="100%" height={220}>
                     <LineChart data={a.monthlyProductivity} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#00330015" />
-                      <XAxis dataKey="month" tick={{ fontSize: 11, fill: "#003300AA" }} />
-                      <YAxis tick={{ fontSize: 11, fill: "#003300AA" }} allowDecimals={false} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#0f1f3315" />
+                      <XAxis dataKey="month" tick={{ fontSize: 11, fill: "#0f1f33AA" }} />
+                      <YAxis tick={{ fontSize: 11, fill: "#0f1f33AA" }} allowDecimals={false} />
                       <Tooltip
-                        contentStyle={{ background: "white", border: "1px solid #00330020", borderRadius: 8, fontSize: 12 }}
+                        contentStyle={{ background: "white", border: "1px solid #0f1f3320", borderRadius: 8, fontSize: 12 }}
                         formatter={(v: number) => [`${v} tasks`, "Completed"]}
                       />
                       <Line type="monotone" dataKey="completed" stroke={BRAND} strokeWidth={2.5} dot={{ fill: BRAND, r: 4 }} activeDot={{ r: 6 }} />
@@ -379,9 +379,9 @@ export default function CTODashboard() {
           <div>
             <CardComponent variant="glass">
               <CardBody>
-                <h2 className="text-lg font-bold text-[#003300] mb-4">Task Status</h2>
+                <h2 className="text-lg font-bold text-ink mb-4">Task Status</h2>
                 {statusPieData.length === 0 ? (
-                  <div className="flex items-center justify-center h-48 text-[#003300]/40 text-sm">No tasks yet</div>
+                  <div className="flex items-center justify-center h-48 text-ink/40 text-sm">No tasks yet</div>
                 ) : (
                   <ResponsiveContainer width="100%" height={220}>
                     <PieChart>
@@ -391,7 +391,7 @@ export default function CTODashboard() {
                         ))}
                       </Pie>
                       <Tooltip
-                        contentStyle={{ background: "white", border: "1px solid #00330020", borderRadius: 8, fontSize: 12 }}
+                        contentStyle={{ background: "white", border: "1px solid #0f1f3320", borderRadius: 8, fontSize: 12 }}
                         formatter={(v: number) => [`${v} tasks`]}
                       />
                       <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11 }} />
@@ -412,18 +412,18 @@ export default function CTODashboard() {
           <div className="lg:col-span-2">
             <CardComponent variant="glass">
               <CardBody>
-                <h2 className="text-lg font-bold text-[#003300] mb-1">Employee Scores — {currentMonthName}</h2>
-                <p className="text-xs text-[#003300]/50 mb-4">P1=15pts · P2=10pts · P3=5pts · On-time bonus=+5pts</p>
+                <h2 className="text-lg font-bold text-ink mb-1">Employee Scores — {currentMonthName}</h2>
+                <p className="text-xs text-ink/50 mb-4">P1=15pts · P2=10pts · P3=5pts · On-time bonus=+5pts</p>
                 {a.topEmployees.length === 0 ? (
-                  <div className="flex items-center justify-center h-48 text-[#003300]/40 text-sm">No completed tasks this month</div>
+                  <div className="flex items-center justify-center h-48 text-ink/40 text-sm">No completed tasks this month</div>
                 ) : (
                   <ResponsiveContainer width="100%" height={220}>
                     <BarChart data={a.topEmployees} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#00330015" />
-                      <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#003300AA" }} />
-                      <YAxis tick={{ fontSize: 11, fill: "#003300AA" }} allowDecimals={false} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#0f1f3315" />
+                      <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#0f1f33AA" }} />
+                      <YAxis tick={{ fontSize: 11, fill: "#0f1f33AA" }} allowDecimals={false} />
                       <Tooltip
-                        contentStyle={{ background: "white", border: "1px solid #00330020", borderRadius: 8, fontSize: 12 }}
+                        contentStyle={{ background: "white", border: "1px solid #0f1f3320", borderRadius: 8, fontSize: 12 }}
                         formatter={(v: number, _: string, props: any) => [`${v} pts (${props.payload.tasks} tasks)`, props.payload.fullName]}
                       />
                       <Bar dataKey="score" radius={[4, 4, 0, 0]}>
@@ -442,9 +442,9 @@ export default function CTODashboard() {
           <div>
             <CardComponent variant="glass">
               <CardBody>
-                <h2 className="text-lg font-bold text-[#003300] mb-4">Task Priority Mix</h2>
+                <h2 className="text-lg font-bold text-ink mb-4">Task Priority Mix</h2>
                 {priorityPieData.length === 0 ? (
-                  <div className="flex items-center justify-center h-48 text-[#003300]/40 text-sm">No tasks yet</div>
+                  <div className="flex items-center justify-center h-48 text-ink/40 text-sm">No tasks yet</div>
                 ) : (
                   <ResponsiveContainer width="100%" height={220}>
                     <PieChart>
@@ -454,7 +454,7 @@ export default function CTODashboard() {
                         ))}
                       </Pie>
                       <Tooltip
-                        contentStyle={{ background: "white", border: "1px solid #00330020", borderRadius: 8, fontSize: 12 }}
+                        contentStyle={{ background: "white", border: "1px solid #0f1f3320", borderRadius: 8, fontSize: 12 }}
                         formatter={(v: number) => [`${v} tasks`]}
                       />
                       <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11 }} />
@@ -478,9 +478,9 @@ export default function CTODashboard() {
                 <div className={`flex items-center justify-between mb-4 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <Trophy className="w-5 h-5 text-yellow-500" />
-                    <h2 className="text-lg font-bold text-[#003300]">Employee of the Month</h2>
+                    <h2 className="text-lg font-bold text-ink">Employee of the Month</h2>
                   </div>
-                  <button onClick={openOverrideModal} className="text-xs text-[#003300]/40 hover:text-[#003300] transition-colors underline underline-offset-2">
+                  <button onClick={openOverrideModal} className="text-xs text-ink/40 hover:text-ink transition-colors underline underline-offset-2">
                     Override
                   </button>
                 </div>
@@ -488,39 +488,39 @@ export default function CTODashboard() {
                 {a.employeeOfMonth ? (
                   <div className="text-center py-4">
                     {/* Avatar circle */}
-                    <div className="w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-[#ffffcc]"
-                      style={{ background: "#003300" }}>
+                    <div className="w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-frost"
+                      style={{ background: "#0f1f33" }}>
                       {a.employeeOfMonth.name.charAt(0).toUpperCase()}
                     </div>
-                    <p className="text-xl font-bold text-[#003300]">{a.employeeOfMonth.name}</p>
-                    <p className="text-xs text-[#003300]/50 mb-3">{a.employeeOfMonth.role}</p>
+                    <p className="text-xl font-bold text-ink">{a.employeeOfMonth.name}</p>
+                    <p className="text-xs text-ink/50 mb-3">{a.employeeOfMonth.role}</p>
                     <div className="flex items-center justify-center gap-4">
                       <div className="text-center">
                         <p className="text-2xl font-bold text-yellow-500">{a.employeeOfMonth.score}</p>
-                        <p className="text-xs text-[#003300]/50">points</p>
+                        <p className="text-xs text-ink/50">points</p>
                       </div>
-                      <div className="w-px h-8 bg-[#003300]/10" />
+                      <div className="w-px h-8 bg-ink/10" />
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-[#003300]">{a.employeeOfMonth.tasks}</p>
-                        <p className="text-xs text-[#003300]/50">tasks done</p>
+                        <p className="text-2xl font-bold text-ink">{a.employeeOfMonth.tasks}</p>
+                        <p className="text-xs text-ink/50">tasks done</p>
                       </div>
                     </div>
                     {a.employeeOfMonth.isManual && (
                       <div className="mt-3 flex items-center justify-center gap-1.5">
-                        <span className="text-xs text-[#003300]/40 bg-[#003300]/5 px-2 py-0.5 rounded-full">Manually selected</span>
+                        <span className="text-xs text-ink/40 bg-ink/5 px-2 py-0.5 rounded-full">Manually selected</span>
                         <button onClick={handleClearOverride} className="text-xs text-red-400 hover:text-red-600 transition-colors">
                           <X className="w-3 h-3" />
                         </button>
                       </div>
                     )}
                     {!a.employeeOfMonth.isManual && (
-                      <p className="text-xs text-[#003300]/40 mt-3">Auto-selected by score</p>
+                      <p className="text-xs text-ink/40 mt-3">Auto-selected by score</p>
                     )}
                   </div>
                 ) : (
                   <div className="text-center py-8">
-                    <Trophy className="w-12 h-12 mx-auto mb-3 text-[#003300]/20" />
-                    <p className="text-[#003300]/50 text-sm">No completed tasks this month yet</p>
+                    <Trophy className="w-12 h-12 mx-auto mb-3 text-ink/20" />
+                    <p className="text-ink/50 text-sm">No completed tasks this month yet</p>
                   </div>
                 )}
               </CardBody>
@@ -532,12 +532,12 @@ export default function CTODashboard() {
             <CardComponent variant="glass">
               <CardBody>
                 <div className={`flex items-center gap-2 mb-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                  <Users className="w-5 h-5 text-[#003300]/60" />
-                  <h2 className="text-lg font-bold text-[#003300]">Team Leaderboard — {currentMonthName}</h2>
+                  <Users className="w-5 h-5 text-ink/60" />
+                  <h2 className="text-lg font-bold text-ink">Team Leaderboard — {currentMonthName}</h2>
                 </div>
 
                 {a.employeeScores.length === 0 ? (
-                  <div className="text-center py-8 text-[#003300]/40 text-sm">No activity this month</div>
+                  <div className="text-center py-8 text-ink/40 text-sm">No activity this month</div>
                 ) : (
                   <div className="space-y-2">
                     {a.employeeScores.map((emp, idx) => {
@@ -545,30 +545,30 @@ export default function CTODashboard() {
                         ? (emp.thisMonthScore / a.employeeScores[0].thisMonthScore) * 100
                         : 0;
                       return (
-                        <div key={emp._id.toString()} className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-[#003300]/5 transition-colors">
+                        <div key={emp._id.toString()} className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-ink/5 transition-colors">
                           <div className="w-7 flex-shrink-0 flex items-center justify-center">
-                            {idx < 3 ? rankIcons[idx] : <span className="text-xs text-[#003300]/40 font-medium">{idx + 1}</span>}
+                            {idx < 3 ? rankIcons[idx] : <span className="text-xs text-ink/40 font-medium">{idx + 1}</span>}
                           </div>
-                          <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold text-[#ffffcc]"
+                          <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold text-frost"
                             style={{ background: CHART_COLORS[idx % CHART_COLORS.length] }}>
                             {emp.name.charAt(0).toUpperCase()}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
-                              <span className={`text-sm font-semibold text-[#003300] truncate ${idx === 0 ? "text-yellow-600" : ""}`}>{emp.name}</span>
-                              <span className="text-sm font-bold text-[#003300] ml-2 flex-shrink-0">{emp.thisMonthScore} pts</span>
+                              <span className={`text-sm font-semibold text-ink truncate ${idx === 0 ? "text-yellow-600" : ""}`}>{emp.name}</span>
+                              <span className="text-sm font-bold text-ink ml-2 flex-shrink-0">{emp.thisMonthScore} pts</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="flex-1 bg-[#003300]/10 rounded-full h-1.5 overflow-hidden">
+                              <div className="flex-1 bg-ink/10 rounded-full h-1.5 overflow-hidden">
                                 <motion.div
                                   className="h-1.5 rounded-full"
-                                  style={{ background: idx === 0 ? "#ca8a04" : "#003300" }}
+                                  style={{ background: idx === 0 ? "#ca8a04" : "#0f1f33" }}
                                   initial={{ width: 0 }}
                                   animate={{ width: `${pct}%` }}
                                   transition={{ duration: 0.8, delay: idx * 0.05 }}
                                 />
                               </div>
-                              <span className="text-xs text-[#003300]/40 flex-shrink-0">{emp.tasksThisMonth} tasks</span>
+                              <span className="text-xs text-ink/40 flex-shrink-0">{emp.tasksThisMonth} tasks</span>
                             </div>
                           </div>
                         </div>
@@ -597,15 +597,15 @@ export default function CTODashboard() {
           <CardBody>
             <div className={`flex items-center justify-between mb-5 ${isRTL ? "flex-row-reverse" : ""}`}>
               <div className={`flex items-center gap-2.5 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <div className={`p-2 rounded-xl ${versionSettings.forceUpdate ? "bg-red-500/10" : "bg-[#003300]/10"}`}>
+                <div className={`p-2 rounded-xl ${versionSettings.forceUpdate ? "bg-red-500/10" : "bg-ink/10"}`}>
                   {versionSettings.forceUpdate
                     ? <ShieldAlert className="w-5 h-5 text-red-500" />
-                    : <Shield className="w-5 h-5 text-[#003300]/70" />
+                    : <Shield className="w-5 h-5 text-ink/70" />
                   }
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-[#003300]">App Version Control</h2>
-                  <p className="text-xs text-[#003300]/50">Control the mobile app update gate</p>
+                  <h2 className="text-lg font-bold text-ink">App Version Control</h2>
+                  <p className="text-xs text-ink/50">Control the mobile app update gate</p>
                 </div>
               </div>
               <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -633,22 +633,22 @@ export default function CTODashboard() {
             )}
 
             {versionLoading ? (
-              <div className="h-24 flex items-center justify-center text-[#003300]/40 text-sm">Loading settings...</div>
+              <div className="h-24 flex items-center justify-center text-ink/40 text-sm">Loading settings...</div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
                 {/* Force Update Toggle */}
-                <div className={`rounded-xl border p-4 transition-all duration-300 ${versionSettings.forceUpdate ? "border-red-300 bg-red-50" : "border-[#003300]/10 bg-white/50"}`}>
+                <div className={`rounded-xl border p-4 transition-all duration-300 ${versionSettings.forceUpdate ? "border-red-300 bg-red-50" : "border-ink/10 bg-white/50"}`}>
                   <div className="flex items-start justify-between mb-2">
                     <div>
-                      <p className="text-sm font-semibold text-[#003300]">Force Update</p>
-                      <p className="text-xs text-[#003300]/50 mt-0.5">Immediately block all users</p>
+                      <p className="text-sm font-semibold text-ink">Force Update</p>
+                      <p className="text-xs text-ink/50 mt-0.5">Immediately block all users</p>
                     </div>
-                    <Smartphone className={`w-4 h-4 mt-0.5 ${versionSettings.forceUpdate ? "text-red-500" : "text-[#003300]/30"}`} />
+                    <Smartphone className={`w-4 h-4 mt-0.5 ${versionSettings.forceUpdate ? "text-red-500" : "text-ink/30"}`} />
                   </div>
                   <button
                     onClick={() => setVersionSettings(s => ({ ...s, forceUpdate: !s.forceUpdate }))}
-                    className={`mt-2 relative inline-flex h-7 w-12 items-center rounded-full transition-colors duration-300 focus:outline-none ${versionSettings.forceUpdate ? "bg-red-500" : "bg-[#003300]/20"}`}
+                    className={`mt-2 relative inline-flex h-7 w-12 items-center rounded-full transition-colors duration-300 focus:outline-none ${versionSettings.forceUpdate ? "bg-red-500" : "bg-ink/20"}`}
                   >
                     <span
                       className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-sm transition-transform duration-300 ${versionSettings.forceUpdate ? "translate-x-6" : "translate-x-1"}`}
@@ -660,28 +660,28 @@ export default function CTODashboard() {
                 </div>
 
                 {/* Minimum App Version */}
-                <div className="rounded-xl border border-[#003300]/10 bg-white/50 p-4">
-                  <p className="text-sm font-semibold text-[#003300] mb-0.5">Minimum Version</p>
-                  <p className="text-xs text-[#003300]/50 mb-3">Block users below this version</p>
+                <div className="rounded-xl border border-ink/10 bg-white/50 p-4">
+                  <p className="text-sm font-semibold text-ink mb-0.5">Minimum Version</p>
+                  <p className="text-xs text-ink/50 mb-3">Block users below this version</p>
                   <Input
                     value={versionSettings.minimumAppVersion}
                     onChange={(e) => setVersionSettings(s => ({ ...s, minimumAppVersion: e.target.value }))}
                     placeholder="e.g. 1.3.0"
                     className="font-mono"
                   />
-                  <p className="text-xs text-[#003300]/40 mt-1.5">Current app: 1.3.0</p>
+                  <p className="text-xs text-ink/40 mt-1.5">Current app: 1.3.0</p>
                 </div>
 
                 {/* Update Message */}
-                <div className="rounded-xl border border-[#003300]/10 bg-white/50 p-4">
-                  <p className="text-sm font-semibold text-[#003300] mb-0.5">Update Message</p>
-                  <p className="text-xs text-[#003300]/50 mb-3">Shown to users on the update screen</p>
+                <div className="rounded-xl border border-ink/10 bg-white/50 p-4">
+                  <p className="text-sm font-semibold text-ink mb-0.5">Update Message</p>
+                  <p className="text-xs text-ink/50 mb-3">Shown to users on the update screen</p>
                   <textarea
                     value={versionSettings.updateMessage}
                     onChange={(e) => setVersionSettings(s => ({ ...s, updateMessage: e.target.value }))}
                     placeholder="e.g. إصدار جديد متاح الآن..."
                     rows={3}
-                    className="w-full rounded-lg border border-[#003300]/15 bg-white px-3 py-2 text-sm text-[#003300] placeholder-[#003300]/30 resize-none focus:outline-none focus:ring-2 focus:ring-[#003300]/30 transition"
+                    className="w-full rounded-lg border border-ink/15 bg-white px-3 py-2 text-sm text-ink placeholder-ink/30 resize-none focus:outline-none focus:ring-2 focus:ring-ink/30 transition"
                     dir="auto"
                   />
                 </div>
@@ -704,8 +704,8 @@ export default function CTODashboard() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-12">
-                <FolderOpen className="w-16 h-16 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-[#003300]/60 text-lg mb-2">No projects yet</p>
+                <FolderOpen className="w-16 h-16 mx-auto mb-4 text-ink/20" />
+                <p className="text-ink/60 text-lg mb-2">No projects yet</p>
                 <Link to="/cto-internal/projects">
                   <Button variant="primary" leftIcon={<Plus className="w-4 h-4" />}>Create Project</Button>
                 </Link>
@@ -719,15 +719,15 @@ export default function CTODashboard() {
                 <CardBody>
                   <div className="space-y-3">
                     <div className={`flex items-start justify-between ${isRTL ? "flex-row-reverse" : ""}`}>
-                      <h3 className="text-base font-semibold text-[#003300] flex-1 mr-2 leading-tight">{project.name}</h3>
+                      <h3 className="text-base font-semibold text-ink flex-1 mr-2 leading-tight">{project.name}</h3>
                       {priorityBadge(project.priority)}
                     </div>
                     {project.description && (
-                      <p className="text-xs text-[#003300]/60 line-clamp-2">{project.description}</p>
+                      <p className="text-xs text-ink/60 line-clamp-2">{project.description}</p>
                     )}
                     {project.taskCounts && (
                       <>
-                        <div className="w-full bg-[#003300]/10 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-ink/10 rounded-full h-1.5 overflow-hidden">
                           <div
                             className="h-1.5 rounded-full bg-green-500 transition-all"
                             style={{ width: project.taskCounts.total > 0 ? `${(project.taskCounts.done / project.taskCounts.total) * 100}%` : "0%" }}
@@ -765,8 +765,8 @@ export default function CTODashboard() {
           <CardBody>
             {tasks.length === 0 ? (
               <div className="text-center py-8">
-                <ListTodo className="w-12 h-12 mx-auto mb-3 text-[#003300]/20" />
-                <p className="text-[#003300]/60">No tasks yet</p>
+                <ListTodo className="w-12 h-12 mx-auto mb-3 text-ink/20" />
+                <p className="text-ink/60">No tasks yet</p>
               </div>
             ) : (
               <div className="space-y-2">
@@ -777,11 +777,11 @@ export default function CTODashboard() {
                     : task.status === "in_progress" ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
                     : "bg-gray-500/20 text-gray-400 border border-gray-500/30";
                   return (
-                    <div key={task._id} className={`flex items-center gap-4 p-3 rounded-lg hover:bg-[#003300]/5 transition-colors ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div key={task._id} className={`flex items-center gap-4 p-3 rounded-lg hover:bg-ink/5 transition-colors ${isRTL ? "flex-row-reverse" : ""}`}>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-[#003300] truncate text-sm">{task.title}</p>
+                        <p className="font-medium text-ink truncate text-sm">{task.title}</p>
                         {assignees.length > 0 && (
-                          <p className="text-xs text-[#003300]/50 mt-0.5">{assignees.map((u: any) => u.name).join(", ")}</p>
+                          <p className="text-xs text-ink/50 mt-0.5">{assignees.map((u: any) => u.name).join(", ")}</p>
                         )}
                       </div>
                       <div className={`flex items-center gap-2 flex-shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -802,10 +802,10 @@ export default function CTODashboard() {
       {/* Override Employee of Month Modal */}
       <Modal isOpen={showOverrideModal} onClose={() => setShowOverrideModal(false)} title="Set Employee of the Month" size="sm">
         <div className="space-y-4">
-          <p className="text-sm text-[#003300]/60">Manually select this month's winner. This overrides the automatic score-based selection.</p>
+          <p className="text-sm text-ink/60">Manually select this month's winner. This overrides the automatic score-based selection.</p>
           {overrideError && <Alert variant="error"><p className="text-sm">{overrideError}</p></Alert>}
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">Select Employee</label>
+            <label className="block text-sm font-medium text-ink mb-1">Select Employee</label>
             <Select
               value={selectedUserId}
               onChange={setSelectedUserId}

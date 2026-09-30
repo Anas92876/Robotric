@@ -110,7 +110,7 @@ function InlineUpload({ courseId, onUploaded, onCancel }: InlineUploadProps) {
           <input
             type="text" value={title} onChange={e => setTitle(e.target.value)}
             placeholder="File title *"
-            className="w-full px-3 py-1.5 text-sm rounded-lg border border-amber-200 bg-white text-[#003300] placeholder-[#003300]/35 outline-none focus:border-amber-400 transition-colors"
+            className="w-full px-3 py-1.5 text-sm rounded-lg border border-amber-200 bg-white text-ink placeholder-ink/35 outline-none focus:border-amber-400 transition-colors"
           />
 
           {/* Progress */}
@@ -200,14 +200,14 @@ export const SessionResourcePicker: React.FC<SessionResourcePickerProps> = ({
       {/* Toolbar */}
       <div className="flex items-center gap-2">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#003300]/35" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-ink/35" />
           <input
             type="text" value={search} onChange={e => setSearch(e.target.value)}
             placeholder="Search files…"
-            className="w-full pl-8 pr-3 py-1.5 text-sm bg-[#003300]/3 rounded-lg border border-transparent focus:border-[#003300]/20 focus:bg-white outline-none text-[#003300] placeholder-[#003300]/35 transition-all"
+            className="w-full pl-8 pr-3 py-1.5 text-sm bg-ink/3 rounded-lg border border-transparent focus:border-ink/20 focus:bg-white outline-none text-ink placeholder-ink/35 transition-all"
           />
         </div>
-        <button onClick={() => fetchResources()} className="p-1.5 rounded-lg hover:bg-[#003300]/5 text-[#003300]/40 hover:text-[#003300]/70 transition-colors" title="Refresh">
+        <button onClick={() => fetchResources()} className="p-1.5 rounded-lg hover:bg-ink/5 text-ink/40 hover:text-ink/70 transition-colors" title="Refresh">
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
         <button
@@ -234,12 +234,12 @@ export const SessionResourcePicker: React.FC<SessionResourcePickerProps> = ({
 
       {/* File list */}
       {loading ? (
-        <div className="flex items-center justify-center py-8 text-[#003300]/40">
+        <div className="flex items-center justify-center py-8 text-ink/40">
           <Loader className="w-4 h-4 animate-spin mr-2" />
           <span className="text-sm">Loading files…</span>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-8 text-[#003300]/40">
+        <div className="text-center py-8 text-ink/40">
           <FileText className="w-8 h-8 mx-auto mb-2 opacity-40" />
           <p className="text-sm">{search ? 'No files match your search.' : 'No files uploaded for this course yet.'}</p>
           {!search && (
@@ -260,11 +260,11 @@ export const SessionResourcePicker: React.FC<SessionResourcePickerProps> = ({
                 className={`w-full text-left flex items-center gap-3 p-3 rounded-xl border transition-all duration-150 ${
                   selected
                     ? 'border-primary/40 bg-primary/5 shadow-sm'
-                    : 'border-[#003300]/8 bg-white hover:border-[#003300]/20 hover:bg-[#003300]/2'
+                    : 'border-ink/8 bg-white hover:border-ink/20 hover:bg-ink/2'
                 }`}
               >
                 {/* Checkbox */}
-                <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${selected ? 'border-primary bg-primary' : 'border-[#003300]/20'}`}>
+                <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${selected ? 'border-primary bg-primary' : 'border-ink/20'}`}>
                   {selected && <CheckCircle className="w-3.5 h-3.5 text-white" />}
                 </div>
 
@@ -275,14 +275,14 @@ export const SessionResourcePicker: React.FC<SessionResourcePickerProps> = ({
 
                 {/* Info */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-[#003300] truncate">{r.title}</p>
+                  <p className="text-sm font-semibold text-ink truncate">{r.title}</p>
                   <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                     {r.category && (
                       <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-md ${CAT_COLOR[r.category] ?? CAT_COLOR.other}`}>
                         {r.category}
                       </span>
                     )}
-                    <span className="text-[10px] text-[#003300]/40">{formatBytes(r.fileSize)}</span>
+                    <span className="text-[10px] text-ink/40">{formatBytes(r.fileSize)}</span>
                   </div>
                 </div>
 

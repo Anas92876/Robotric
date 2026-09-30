@@ -128,12 +128,12 @@ export default function StudentGallery() {
         <div className={`flex items-center justify-between mb-2`}>
           <div >
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block group-hover:scale-105 transition-transform duration-300" style={{
-              color: '#003300',
+              color: '#0f1f33',
               backgroundClip: 'text'
             }}>
               {t('dashboardStudent:gallery')}
             </h1>
-            <p className="mt-2 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>
+            <p className="mt-2 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>
               {t('dashboardStudent:gallerySubtitle')}
             </p>
           </div>
@@ -156,7 +156,7 @@ export default function StudentGallery() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             leftIcon={<Search className="w-4 h-4" />}
-            className="w-full bg-white border-[#003300]/20 text-[#003300] placeholder:text-[#003300]/40"
+            className="w-full bg-white border-ink/20 text-ink placeholder:text-ink/40"
           />
         </div>
         <div className="flex gap-2 flex-wrap sm:flex-nowrap">
@@ -188,7 +188,7 @@ export default function StudentGallery() {
       {/* Gallery Grid - show loading overlay when refetching with existing images */}
       <motion.div className="relative">
         {isLoading && filteredImages.length > 0 && (
-          <div className="absolute inset-0 bg-[#cccc99]/60 backdrop-blur-sm z-10 flex items-center justify-center rounded-xl min-h-[200px]">
+          <div className="absolute inset-0 bg-glow/60 backdrop-blur-sm z-10 flex items-center justify-center rounded-xl min-h-[200px]">
             <LoadingState type="dots" text={t('dashboardStudent:loadingGallery')} className="py-8" />
           </div>
         )}

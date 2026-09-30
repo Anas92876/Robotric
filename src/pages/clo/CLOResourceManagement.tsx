@@ -61,17 +61,17 @@ function Breadcrumb({
       {items.map((item, i) => (
         <div key={i} className="flex items-center gap-1.5">
           {i > 0 && (
-            <ChevronRight className="w-3.5 h-3.5 text-[#003300]/30 flex-shrink-0" />
+            <ChevronRight className="w-3.5 h-3.5 text-ink/30 flex-shrink-0" />
           )}
           {item.onClick ? (
             <button
               onClick={item.onClick}
-              className="text-[#003300]/50 hover:text-[#003300] transition-colors font-medium hover:underline underline-offset-2"
+              className="text-ink/50 hover:text-ink transition-colors font-medium hover:underline underline-offset-2"
             >
               {item.label}
             </button>
           ) : (
-            <span className="text-[#003300] font-semibold">{item.label}</span>
+            <span className="text-ink font-semibold">{item.label}</span>
           )}
         </div>
       ))}
@@ -185,11 +185,11 @@ export const CLOResourceManagement: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                 <LayoutGrid className="w-4 h-4 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold text-[#003300]">
+              <h1 className="text-2xl font-bold text-ink">
                 Course Materials
               </h1>
             </div>
-            <p className="text-sm text-[#003300]/50">
+            <p className="text-sm text-ink/50">
               {validCourses.length} course{validCourses.length !== 1 ? "s" : ""}{" "}
               · {totalFiles} file{totalFiles !== 1 ? "s" : ""}
             </p>
@@ -209,7 +209,7 @@ export const CLOResourceManagement: React.FC = () => {
             {
               label: "Total Files",
               value: totalFiles,
-              color: "bg-[#003300]/5 text-[#003300]",
+              color: "bg-ink/5 text-ink",
               icon: <FileText className="w-4 h-4" />,
             },
             {
@@ -266,12 +266,12 @@ export const CLOResourceManagement: React.FC = () => {
 
         {/* Course cards */}
         {validCourses.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-[#003300]/10 py-20 text-center">
-            <BookOpen className="w-12 h-12 mx-auto mb-3 text-[#003300]/15" />
-            <p className="font-semibold text-[#003300]/60 mb-1">
+          <div className="bg-white rounded-2xl border border-ink/10 py-20 text-center">
+            <BookOpen className="w-12 h-12 mx-auto mb-3 text-ink/15" />
+            <p className="font-semibold text-ink/60 mb-1">
               No courses yet
             </p>
-            <p className="text-sm text-[#003300]/35">
+            <p className="text-sm text-ink/35">
               Create courses first before uploading materials.
             </p>
           </div>
@@ -288,7 +288,7 @@ export const CLOResourceManagement: React.FC = () => {
                 >
                   <button
                     onClick={() => handleEnterCourse(course._id)}
-                    className="group w-full text-left bg-white rounded-2xl border border-[#003300]/10 hover:border-[#003300]/25 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                    className="group w-full text-left bg-white rounded-2xl border border-ink/10 hover:border-ink/25 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
                   >
                     {/* Accent bar */}
                     <div
@@ -301,11 +301,11 @@ export const CLOResourceManagement: React.FC = () => {
                           <BookOpen className="w-5 h-5 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-[#003300] text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
+                          <h3 className="font-bold text-ink text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                             {course.title}
                           </h3>
                           {course.category && (
-                            <span className="text-xs text-[#003300]/45">
+                            <span className="text-xs text-ink/45">
                               {course.category}
                               {course.level ? ` · ${course.level}` : ""}
                             </span>
@@ -315,13 +315,13 @@ export const CLOResourceManagement: React.FC = () => {
 
                       {/* File count */}
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1.5 text-[#003300]/50">
+                        <div className="flex items-center gap-1.5 text-ink/50">
                           <File className="w-3.5 h-3.5" />
                           <span className="text-xs font-medium">
                             {count} file{count !== 1 ? "s" : ""}
                           </span>
                         </div>
-                        <div className="flex items-center gap-1 text-xs font-semibold text-[#003300]/40 group-hover:text-primary transition-colors">
+                        <div className="flex items-center gap-1 text-xs font-semibold text-ink/40 group-hover:text-primary transition-colors">
                           Open{" "}
                           <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                         </div>
@@ -365,11 +365,11 @@ export const CLOResourceManagement: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                 <FolderOpen className="w-4 h-4 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold text-[#003300]">
+              <h1 className="text-2xl font-bold text-ink">
                 {activeCourse?.title}
               </h1>
             </div>
-            <p className="text-sm text-[#003300]/50">
+            <p className="text-sm text-ink/50">
               {courseFiles.length} file{courseFiles.length !== 1 ? "s" : ""} ·{" "}
               {formatBytes(totalSize)}
             </p>
@@ -392,15 +392,15 @@ export const CLOResourceManagement: React.FC = () => {
         </div>
 
         {/* Search */}
-        <div className="bg-white rounded-xl border border-[#003300]/10 p-3">
+        <div className="bg-white rounded-xl border border-ink/10 p-3">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003300]/35" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/35" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search files in this course…"
-              className="w-full pl-9 pr-3 py-2 text-sm bg-[#003300]/3 rounded-lg border border-transparent focus:border-[#003300]/20 focus:bg-white outline-none text-[#003300] placeholder-[#003300]/35 transition-all"
+              className="w-full pl-9 pr-3 py-2 text-sm bg-ink/3 rounded-lg border border-transparent focus:border-ink/20 focus:bg-white outline-none text-ink placeholder-ink/35 transition-all"
             />
           </div>
         </div>
@@ -419,12 +419,12 @@ export const CLOResourceManagement: React.FC = () => {
         {loading ? (
           <LoadingState type="spinner" text="Loading files…" />
         ) : courseFiles.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-[#003300]/10 py-20 text-center">
-            <FileText className="w-12 h-12 mx-auto mb-3 text-[#003300]/15" />
-            <p className="font-semibold text-[#003300]/60 mb-1">
+          <div className="bg-white rounded-2xl border border-ink/10 py-20 text-center">
+            <FileText className="w-12 h-12 mx-auto mb-3 text-ink/15" />
+            <p className="font-semibold text-ink/60 mb-1">
               {searchQuery ? "No files match your search" : "No files yet"}
             </p>
-            <p className="text-sm text-[#003300]/35 mb-5">
+            <p className="text-sm text-ink/35 mb-5">
               {searchQuery
                 ? "Try a different search term."
                 : "Upload the first file for this course."}

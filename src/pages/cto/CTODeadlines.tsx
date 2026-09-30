@@ -345,11 +345,11 @@ export default function CTODeadlines() {
           <div>
             <h1
               className="text-4xl font-bold inline-block"
-              style={{ color: '#003300', backgroundClip: "text" }}
+              style={{ color: '#0f1f33', backgroundClip: "text" }}
             >
               Deadline Warnings
             </h1>
-            <p className="mt-2" style={{ color: "#003300CC" }}>
+            <p className="mt-2" style={{ color: "#0f1f33CC" }}>
               Track overdue and upcoming task deadlines
             </p>
           </div>
@@ -435,9 +435,9 @@ export default function CTODeadlines() {
           <CardComponent variant="glass">
             <CardBody>
               <div className="text-center py-16">
-                <Inbox className="w-14 h-14 mx-auto mb-4 text-[#003300]/20" />
-                <p className="text-lg font-semibold text-[#003300]/60 mb-1">No deadline-tracked tasks</p>
-                <p className="text-sm text-[#003300]/40">Tasks with due dates will appear here.</p>
+                <Inbox className="w-14 h-14 mx-auto mb-4 text-ink/20" />
+                <p className="text-lg font-semibold text-ink/60 mb-1">No deadline-tracked tasks</p>
+                <p className="text-sm text-ink/40">Tasks with due dates will appear here.</p>
                 <Link to="/cto-internal/tasks" className="mt-4 inline-block">
                   <Button variant="primary" size="sm" leftIcon={<ArrowRight className="w-4 h-4" />}>Go to Task Manager</Button>
                 </Link>
@@ -514,7 +514,7 @@ export default function CTODeadlines() {
                             {/* Content */}
                             <div className="flex-1 min-w-0">
                               <div className={`flex items-start justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                                <p className={`font-semibold text-[#003300] text-sm leading-snug ${isDone ? "line-through opacity-60" : ""}`}>
+                                <p className={`font-semibold text-ink text-sm leading-snug ${isDone ? "line-through opacity-60" : ""}`}>
                                   {task.title}
                                 </p>
                                 <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -524,7 +524,7 @@ export default function CTODeadlines() {
                               </div>
 
                               {task.description && (
-                                <p className="text-xs text-[#003300]/50 mt-1 line-clamp-1">{task.description}</p>
+                                <p className="text-xs text-ink/50 mt-1 line-clamp-1">{task.description}</p>
                               )}
 
                               <div className={`flex items-center flex-wrap gap-3 mt-2 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -547,16 +547,16 @@ export default function CTODeadlines() {
 
                                 {/* Project */}
                                 {project && (
-                                  <span className="text-xs text-[#003300]/40 flex items-center gap-1">
-                                    <span className="w-1 h-1 rounded-full bg-[#003300]/20 inline-block" />
+                                  <span className="text-xs text-ink/40 flex items-center gap-1">
+                                    <span className="w-1 h-1 rounded-full bg-ink/20 inline-block" />
                                     {project}
                                   </span>
                                 )}
 
                                 {/* Assignees */}
                                 {assignees.length > 0 && (
-                                  <span className="text-xs text-[#003300]/40 flex items-center gap-1">
-                                    <span className="w-1 h-1 rounded-full bg-[#003300]/20 inline-block" />
+                                  <span className="text-xs text-ink/40 flex items-center gap-1">
+                                    <span className="w-1 h-1 rounded-full bg-ink/20 inline-block" />
                                     {assignees.map(u => u.name).join(", ")}
                                   </span>
                                 )}
@@ -570,7 +570,7 @@ export default function CTODeadlines() {
                                   onClick={() => markDone(task._id)}
                                   disabled={markingId === task._id}
                                   title="Mark as done"
-                                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-[#003300]/20 hover:bg-green-50 hover:border-green-400 hover:text-green-600 transition-all duration-150 text-[#003300]/30 disabled:opacity-40"
+                                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-ink/20 hover:bg-green-50 hover:border-green-400 hover:text-green-600 transition-all duration-150 text-ink/30 disabled:opacity-40"
                                 >
                                   {markingId === task._id ? (
                                     <RefreshCw className="w-4 h-4 animate-spin" />
@@ -582,7 +582,7 @@ export default function CTODeadlines() {
                               <button
                                 onClick={() => editingId === task._id ? setEditingId(null) : openEdit(task)}
                                 title="Edit deadline"
-                                className="flex items-center justify-center w-8 h-8 rounded-lg border border-[#003300]/20 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 transition-all duration-150 text-[#003300]/30"
+                                className="flex items-center justify-center w-8 h-8 rounded-lg border border-ink/20 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 transition-all duration-150 text-ink/30"
                               >
                                 {editingId === task._id ? <X className="w-4 h-4" /> : <Pencil className="w-4 h-4" />}
                               </button>
@@ -597,18 +597,18 @@ export default function CTODeadlines() {
                                   animate={{ opacity: 1, y: 0 }}
                                   exit={{ opacity: 0, y: -6 }}
                                   transition={{ duration: 0.15 }}
-                                  className="absolute right-0 top-full mt-1 z-30 w-72 bg-white border border-[#003300]/15 rounded-xl shadow-xl p-4 space-y-3"
+                                  className="absolute right-0 top-full mt-1 z-30 w-72 bg-white border border-ink/15 rounded-xl shadow-xl p-4 space-y-3"
                                   onClick={e => e.stopPropagation()}
                                 >
-                                  <p className="text-xs font-bold text-[#003300]/70 uppercase tracking-wide">Edit Deadlines</p>
+                                  <p className="text-xs font-bold text-ink/70 uppercase tracking-wide">Edit Deadlines</p>
                                   <div className="space-y-2">
                                     <label className="block">
-                                      <span className="text-xs text-[#003300]/50 mb-1 block">Soft Due Date</span>
+                                      <span className="text-xs text-ink/50 mb-1 block">Soft Due Date</span>
                                       <input
                                         type="date"
                                         value={editDueDate}
                                         onChange={e => setEditDueDate(e.target.value)}
-                                        className="w-full text-sm border border-[#003300]/15 rounded-lg px-3 py-1.5 text-[#003300] focus:outline-none focus:ring-2 focus:ring-[#003300]/20"
+                                        className="w-full text-sm border border-ink/15 rounded-lg px-3 py-1.5 text-ink focus:outline-none focus:ring-2 focus:ring-ink/20"
                                       />
                                       {editDueDate && (
                                         <button
@@ -621,14 +621,14 @@ export default function CTODeadlines() {
                                       )}
                                     </label>
                                     <label className="block">
-                                      <span className="text-xs text-[#003300]/50 mb-1 block flex items-center gap-1">
+                                      <span className="text-xs text-ink/50 mb-1 block flex items-center gap-1">
                                         <Skull className="w-3 h-3 text-red-500" /> Hard Deadline
                                       </span>
                                       <input
                                         type="date"
                                         value={editHardDeadline}
                                         onChange={e => setEditHardDeadline(e.target.value)}
-                                        className="w-full text-sm border border-red-200 rounded-lg px-3 py-1.5 text-[#003300] focus:outline-none focus:ring-2 focus:ring-red-200"
+                                        className="w-full text-sm border border-red-200 rounded-lg px-3 py-1.5 text-ink focus:outline-none focus:ring-2 focus:ring-red-200"
                                       />
                                       {editHardDeadline && (
                                         <button
@@ -644,7 +644,7 @@ export default function CTODeadlines() {
                                   <button
                                     onClick={() => saveEdit(task._id)}
                                     disabled={savingId === task._id}
-                                    className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-[#003300] text-white text-sm font-semibold hover:bg-[#004d00] disabled:opacity-50 transition-colors"
+                                    className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-ink text-white text-sm font-semibold hover:bg-ink-deep disabled:opacity-50 transition-colors"
                                   >
                                     {savingId === task._id ? (
                                       <RefreshCw className="w-4 h-4 animate-spin" />

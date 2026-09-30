@@ -140,17 +140,17 @@ const UserSubscriptionModal: React.FC<UserSubscriptionModalProps> = ({
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Student <span className="text-red-500">*</span>
           </label>
           <select
             value={formData.userId}
             onChange={(e) => handleChange('userId', e.target.value)}
             disabled={!!subscription}
-            className={`w-full px-4 py-2.5 rounded-lg border bg-white text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${
+            className={`w-full px-4 py-2.5 rounded-lg border bg-white text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${
               errors.userId
                 ? 'border-red-500'
-                : 'border-[#003300]/20 hover:border-primary/40'
+                : 'border-ink/20 hover:border-primary/40'
             } ${subscription ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <option value="">Select a student</option>
@@ -166,7 +166,7 @@ const UserSubscriptionModal: React.FC<UserSubscriptionModalProps> = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#003300] mb-2">
+          <label className="block text-sm font-medium text-ink mb-2">
             Subscription Plan <span className="text-red-500">*</span>
           </label>
           {activePlans.length === 0 ? (
@@ -181,10 +181,10 @@ const UserSubscriptionModal: React.FC<UserSubscriptionModalProps> = ({
                 value={formData.planId}
                 onChange={(e) => handlePlanChange(e.target.value)}
                 disabled={!!subscription}
-                className={`w-full px-4 py-2.5 rounded-lg border bg-white text-[#003300] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${
+                className={`w-full px-4 py-2.5 rounded-lg border bg-white text-ink focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${
                   errors.planId
                     ? 'border-red-500'
-                    : 'border-[#003300]/20 hover:border-primary/40'
+                    : 'border-ink/20 hover:border-primary/40'
                 } ${subscription ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 <option value="">Select a plan</option>
@@ -198,9 +198,9 @@ const UserSubscriptionModal: React.FC<UserSubscriptionModalProps> = ({
                 <p className="text-red-500 text-xs mt-1">{errors.planId}</p>
               )}
               {selectedPlan && (
-                <div className="mt-2 bg-[#003300]/5 rounded-lg p-3 border border-[#003300]/10">
-                  <p className="text-sm font-medium text-[#003300] mb-1">Selected Plan Details:</p>
-                  <div className="space-y-1 text-xs text-[#003300]/70">
+                <div className="mt-2 bg-ink/5 rounded-lg p-3 border border-ink/10">
+                  <p className="text-sm font-medium text-ink mb-1">Selected Plan Details:</p>
+                  <div className="space-y-1 text-xs text-ink/70">
                     <p>• Monthly Hours: <strong>{selectedPlan.monthlyHours} hrs</strong></p>
                     <p>• Price: <strong>${selectedPlan.price}</strong></p>
                     <p>• Remaining hours will be set to: <strong>{selectedPlan.monthlyHours} hours</strong></p>
@@ -250,7 +250,7 @@ const UserSubscriptionModal: React.FC<UserSubscriptionModalProps> = ({
           </div>
         )}
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button variant="outline" onClick={onClose} disabled={isSubmitting}>
             Cancel
           </Button>

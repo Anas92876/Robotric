@@ -126,10 +126,10 @@ export default function StudentAttendance() {
           </Button>
         </Link>
         <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold mt-4 mb-2 inline-block group-hover:scale-105 transition-transform duration-300 ${isRTL ? 'block text-right' : ''}`} style={{
-          color: '#003300',
+          color: '#0f1f33',
           backgroundClip: 'text'
         }}>{t('dashboardStudent:attendanceRecord')}</h1>
-        <p className={`transition-colors duration-300`} style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:trackAttendanceHistory')}</p>
+        <p className={`transition-colors duration-300`} style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:trackAttendanceHistory')}</p>
       </div>
 
       {/* Stats Cards */}
@@ -138,7 +138,7 @@ export default function StudentAttendance() {
           <CardBody>
             <div className={`flex items-center justify-between`}>
               <div >
-                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#003300' + 'CC' }}>{t('dashboardStudent:attendanceRate')}</p>
+                <p className="text-sm mb-1 transition-colors duration-300" style={{ color: '#0f1f33' + 'CC' }}>{t('dashboardStudent:attendanceRate')}</p>
                 <p className="text-xl sm:text-2xl md:text-3xl font-bold">
                   {Math.round(stats?.attendancePercentage || 0)}%
                 </p>

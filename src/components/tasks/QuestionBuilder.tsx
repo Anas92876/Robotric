@@ -67,7 +67,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-[#003300]">Questions</h3>
+        <h3 className="text-lg font-semibold text-ink">Questions</h3>
         <div className="flex gap-2">
           <Button
             type="button"
@@ -100,7 +100,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
       </div>
 
       {questions.length === 0 ? (
-        <div className="text-center py-8 text-[#003300]/60">
+        <div className="text-center py-8 text-ink/60">
           <p>No questions added yet. Click the buttons above to add questions.</p>
         </div>
       ) : (
@@ -124,7 +124,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
               >
                 <CardBody>
                   <div className="flex items-start gap-3">
-                    <GripVertical className="w-5 h-5 text-[#003300]/40 mt-1 cursor-move" />
+                    <GripVertical className="w-5 h-5 text-ink/40 mt-1 cursor-move" />
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
@@ -157,7 +157,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
 
                       <div className="space-y-3">
                         <div>
-                          <label className="block text-sm font-medium text-[#003300] mb-1">
+                          <label className="block text-sm font-medium text-ink mb-1">
                             Question Text
                           </label>
                           <input
@@ -173,7 +173,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
 
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="block text-sm font-medium text-[#003300] mb-1">
+                            <label className="block text-sm font-medium text-ink mb-1">
                               Points
                             </label>
                             <input
@@ -198,7 +198,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
                                 }
                                 className="w-4 h-4 text-primary"
                               />
-                              <span className="text-sm text-[#003300]">Required</span>
+                              <span className="text-sm text-ink">Required</span>
                             </label>
                           </div>
                         </div>
@@ -206,7 +206,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
                         {question.answerType === 'mcq' && (
                           <div>
                             <div className="flex items-center justify-between mb-2">
-                              <label className="block text-sm font-medium text-[#003300]">
+                              <label className="block text-sm font-medium text-ink">
                                 Options
                               </label>
                               <select
@@ -319,7 +319,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
                                 >
                                   Add Option
                                 </Button>
-                                <span className="text-xs text-[#003300]/50">
+                                <span className="text-xs text-ink/50">
                                   Click the circle to mark correct answer(s)
                                 </span>
                               </div>
@@ -329,7 +329,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
 
                         {question.answerType === 'text' && (
                           <div>
-                            <label className="block text-sm font-medium text-[#003300] mb-1">
+                            <label className="block text-sm font-medium text-ink mb-1">
                               Max Length (characters)
                             </label>
                             <input
@@ -349,7 +349,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
                         {question.answerType === 'image' && (
                           <div className="grid grid-cols-2 gap-3">
                             <div>
-                              <label className="block text-sm font-medium text-[#003300] mb-1">
+                              <label className="block text-sm font-medium text-ink mb-1">
                                 Max Images
                               </label>
                               <input
@@ -365,7 +365,7 @@ export const QuestionBuilder: React.FC<QuestionBuilderProps> = ({
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-[#003300] mb-1">
+                              <label className="block text-sm font-medium text-ink mb-1">
                                 Max Size (MB)
                               </label>
                               <input

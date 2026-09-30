@@ -32,10 +32,10 @@ const CAT_COLOR: Record<string, string> = {
 // ─── Light-theme info card ────────────────────────────────────────────────────
 function InfoCard({ icon, label, children }: { icon: React.ReactNode; label: string; children: React.ReactNode }) {
   return (
-    <div className="bg-white rounded-2xl border border-[#003300]/10 p-5">
+    <div className="bg-white rounded-2xl border border-ink/10 p-5">
       <div className="flex items-center gap-2 mb-3">
-        <div className="text-[#003300]/40">{icon}</div>
-        <p className="text-xs font-bold text-[#003300]/40 uppercase tracking-wider">{label}</p>
+        <div className="text-ink/40">{icon}</div>
+        <p className="text-xs font-bold text-ink/40 uppercase tracking-wider">{label}</p>
       </div>
       {children}
     </div>
@@ -146,13 +146,13 @@ export default function CLOSessionDetail() {
         <div className="flex items-start justify-between mt-4 gap-4">
           <div>
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <h1 className="text-2xl font-bold text-[#003300]">{session.title}</h1>
+              <h1 className="text-2xl font-bold text-ink">{session.title}</h1>
               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${statusStyle}`}>
                 {session.status.replace("_", " ")}
               </span>
             </div>
             {session.description && (
-              <p className="text-sm text-[#003300]/55 mt-1">{session.description}</p>
+              <p className="text-sm text-ink/55 mt-1">{session.description}</p>
             )}
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
@@ -169,20 +169,20 @@ export default function CLOSessionDetail() {
       {/* ── Info grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <InfoCard icon={<Calendar className="w-4 h-4" />} label="Date & Time">
-          <p className="font-semibold text-[#003300]">
+          <p className="font-semibold text-ink">
             {formatDate(session.scheduledDate, { month: "long", day: "numeric", year: "numeric" })}
           </p>
-          <p className="text-sm text-[#003300]/60 mt-0.5">
+          <p className="text-sm text-ink/60 mt-0.5">
             {formatHHMM(session.startTime)} – {formatHHMM(session.endTime)}
-            {session.duration && <span className="ml-2 text-[#003300]/40">({session.duration} min)</span>}
+            {session.duration && <span className="ml-2 text-ink/40">({session.duration} min)</span>}
           </p>
         </InfoCard>
 
         <InfoCard icon={<Users className="w-4 h-4" />} label="Group">
-          <p className="font-semibold text-[#003300]">{session.groupId?.name || "Unknown"}</p>
-          <p className="text-sm text-[#003300]/60 mt-0.5">
+          <p className="font-semibold text-ink">{session.groupId?.name || "Unknown"}</p>
+          <p className="text-sm text-ink/60 mt-0.5">
             {session.groupId?.students?.length || 0} students
-            {session.courseId?.title && <span className="text-[#003300]/40"> · {session.courseId.title}</span>}
+            {session.courseId?.title && <span className="text-ink/40"> · {session.courseId.title}</span>}
           </p>
         </InfoCard>
       </div>
@@ -193,18 +193,18 @@ export default function CLOSessionDetail() {
         session.lessonPlan.materialsNeeded?.length > 0 ||
         session.lessonPlan.activities?.length > 0
       ) && (
-        <div className="bg-white rounded-2xl border border-[#003300]/10 p-5">
+        <div className="bg-white rounded-2xl border border-ink/10 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <BookOpen className="w-4 h-4 text-[#003300]/40" />
-            <p className="text-xs font-bold text-[#003300]/40 uppercase tracking-wider">{t('dashboardTrainer:lessonPlan')}</p>
+            <BookOpen className="w-4 h-4 text-ink/40" />
+            <p className="text-xs font-bold text-ink/40 uppercase tracking-wider">{t('dashboardTrainer:lessonPlan')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {session.lessonPlan.objectives?.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-[#003300] mb-2">{t('dashboardTrainer:learningObjectives')}</h3>
+                <h3 className="text-sm font-semibold text-ink mb-2">{t('dashboardTrainer:learningObjectives')}</h3>
                 <ul className="space-y-1.5">
                   {session.lessonPlan.objectives.map((o: string, i: number) => (
-                    <li key={i} className="text-sm text-[#003300]/65 flex items-start gap-2">
+                    <li key={i} className="text-sm text-ink/65 flex items-start gap-2">
                       <span className="text-primary mt-1 text-xs">•</span>{o}
                     </li>
                   ))}
@@ -213,10 +213,10 @@ export default function CLOSessionDetail() {
             )}
             {session.lessonPlan.materialsNeeded?.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-[#003300] mb-2">{t('dashboardTrainer:materialsNeeded')}</h3>
+                <h3 className="text-sm font-semibold text-ink mb-2">{t('dashboardTrainer:materialsNeeded')}</h3>
                 <ul className="space-y-1.5">
                   {session.lessonPlan.materialsNeeded.map((m: string, i: number) => (
-                    <li key={i} className="text-sm text-[#003300]/65 flex items-start gap-2">
+                    <li key={i} className="text-sm text-ink/65 flex items-start gap-2">
                       <span className="text-accent mt-1 text-xs">•</span>{m}
                     </li>
                   ))}
@@ -225,10 +225,10 @@ export default function CLOSessionDetail() {
             )}
             {session.lessonPlan.activities?.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-[#003300] mb-2">{t('dashboardTrainer:activities')}</h3>
+                <h3 className="text-sm font-semibold text-ink mb-2">{t('dashboardTrainer:activities')}</h3>
                 <ul className="space-y-1.5">
                   {session.lessonPlan.activities.map((a: string, i: number) => (
-                    <li key={i} className="text-sm text-[#003300]/65 flex items-start gap-2">
+                    <li key={i} className="text-sm text-ink/65 flex items-start gap-2">
                       <span className="text-secondary mt-1 text-xs">•</span>{a}
                     </li>
                   ))}
@@ -240,11 +240,11 @@ export default function CLOSessionDetail() {
       )}
 
       {/* ── Session Resources ── */}
-      <div className="bg-white rounded-2xl border border-[#003300]/10 overflow-hidden">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#003300]/8">
+      <div className="bg-white rounded-2xl border border-ink/10 overflow-hidden">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-ink/8">
           <div className="flex items-center gap-2">
-            <Paperclip className="w-4 h-4 text-[#003300]/40" />
-            <p className="text-xs font-bold text-[#003300]/40 uppercase tracking-wider">Session Resources</p>
+            <Paperclip className="w-4 h-4 text-ink/40" />
+            <p className="text-xs font-bold text-ink/40 uppercase tracking-wider">Session Resources</p>
             {resources.length > 0 && (
               <span className="bg-primary/10 text-primary text-xs font-bold px-1.5 py-0.5 rounded-full">{resources.length}</span>
             )}
@@ -256,14 +256,14 @@ export default function CLOSessionDetail() {
 
         <div className="p-5">
           {resLoading ? (
-            <div className="flex items-center gap-2 text-sm text-[#003300]/40 py-4">
-              <div className="w-4 h-4 border-2 border-[#003300]/20 border-t-primary rounded-full animate-spin" />
+            <div className="flex items-center gap-2 text-sm text-ink/40 py-4">
+              <div className="w-4 h-4 border-2 border-ink/20 border-t-primary rounded-full animate-spin" />
               Loading resources…
             </div>
           ) : resources.length === 0 ? (
             <div className="text-center py-8">
-              <FileText className="w-8 h-8 mx-auto mb-2 text-[#003300]/15" />
-              <p className="text-sm text-[#003300]/45">No files attached to this session.</p>
+              <FileText className="w-8 h-8 mx-auto mb-2 text-ink/15" />
+              <p className="text-sm text-ink/45">No files attached to this session.</p>
               <button
                 onClick={() => navigate(`/clo/sessions/${sessionId}/edit`)}
                 className="mt-2 text-xs text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
@@ -274,24 +274,24 @@ export default function CLOSessionDetail() {
           ) : (
             <div className="space-y-2">
               {resources.map(r => (
-                <div key={r._id} className="flex items-center gap-3 p-3 bg-[#003300]/2 rounded-xl hover:bg-[#003300]/4 transition-colors group">
+                <div key={r._id} className="flex items-center gap-3 p-3 bg-ink/2 rounded-xl hover:bg-ink/4 transition-colors group">
                   <div className="w-9 h-9 rounded-lg bg-primary/80 flex items-center justify-center flex-shrink-0">
                     <FileText className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#003300] truncate">{r.title}</p>
+                    <p className="text-sm font-semibold text-ink truncate">{r.title}</p>
                     <div className="flex items-center gap-2 mt-0.5">
                       {r.category && (
                         <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-md ${CAT_COLOR[r.category] ?? CAT_COLOR.other}`}>
                           {r.category}
                         </span>
                       )}
-                      <span className="text-[10px] text-[#003300]/40">{formatBytes(r.fileSize)}</span>
+                      <span className="text-[10px] text-ink/40">{formatBytes(r.fileSize)}</span>
                     </div>
                   </div>
                   <button
                     onClick={() => setViewerResource(r)}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-[#003300]/40 hover:text-primary opacity-0 group-hover:opacity-100 transition-all px-2 py-1.5 rounded-lg hover:bg-primary/8"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-ink/40 hover:text-primary opacity-0 group-hover:opacity-100 transition-all px-2 py-1.5 rounded-lg hover:bg-primary/8"
                   >
                     <Eye className="w-3.5 h-3.5" /> View
                   </button>

@@ -34,9 +34,9 @@ import { useTranslation } from 'react-i18next';
 import { formatDate as fmtDate, formatTime } from "../../utils/dateTime";
 import { Button, Alert } from '../../components/ui';
 
-const TEXT_PRIMARY = '#003300';
-const TEXT_SECONDARY = '#003300CC';
-const TEXT_TERTIARY = '#00330080';
+const TEXT_PRIMARY = '#0f1f33';
+const TEXT_SECONDARY = '#0f1f33CC';
+const TEXT_TERTIARY = '#0f1f3380';
 
 interface SessionMaterial {
   _id: string;
@@ -149,7 +149,7 @@ function StarRow({ score, maxScore = 5 }: { score: number; maxScore?: number }) 
       {Array.from({ length: maxScore }, (_, i) => i + 1).map((s) => (
         <Star
           key={s}
-          className={`w-4 h-4 ${s <= Math.round(score) ? 'text-amber-400 fill-amber-400' : 'text-[#003300]/15'}`}
+          className={`w-4 h-4 ${s <= Math.round(score) ? 'text-amber-400 fill-amber-400' : 'text-ink/15'}`}
         />
       ))}
       <span className="ms-1.5 text-xs font-bold" style={{ color: TEXT_PRIMARY }}>
@@ -177,9 +177,9 @@ function MaterialCard({
   };
 
   return (
-    <div className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-[#003300]/8 hover:border-[#003300]/20 transition-colors">
+    <div className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-ink/8 hover:border-ink/20 transition-colors">
       {/* Icon */}
-      <div className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(0,51,0,0.06)' }}>
+      <div className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(15, 31, 51,0.06)' }}>
         <FileText className="w-5 h-5" style={{ color: TEXT_TERTIARY }} />
       </div>
 
@@ -195,7 +195,7 @@ function MaterialCard({
         )}
         <div className="flex items-center gap-2 mt-0.5">
           {material.category && (
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#003300]/6 text-[#003300]">
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-ink/6 text-ink">
               {material.category}
             </span>
           )}
@@ -210,7 +210,7 @@ function MaterialCard({
       {/* View button */}
       <button
         onClick={() => onView(material._id)}
-        className="shrink-0 w-8 h-8 rounded-xl flex items-center justify-center hover:bg-[#003300]/8 transition-colors active:scale-95"
+        className="shrink-0 w-8 h-8 rounded-xl flex items-center justify-center hover:bg-ink/8 transition-colors active:scale-95"
         style={{ color: TEXT_SECONDARY }}
         aria-label={t('dashboardStudent:viewMaterial')}
       >
@@ -250,17 +250,17 @@ function SessionVideoPlayer({ sessionId, isRTL }: { sessionId: string; isRTL: bo
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-48 rounded-2xl bg-[#003300]/4 animate-pulse">
-        <PlayCircle className="w-10 h-10 text-[#003300]/20" />
+      <div className="flex items-center justify-center h-48 rounded-2xl bg-ink/4 animate-pulse">
+        <PlayCircle className="w-10 h-10 text-ink/20" />
       </div>
     );
   }
 
   if (err || !playerUrl) {
     return (
-      <div className="flex flex-col items-center justify-center h-32 rounded-2xl bg-[#003300]/4 gap-2">
-        <AlertCircle className="w-6 h-6 text-[#003300]/30" />
-        <p className="text-xs text-[#003300]/40">
+      <div className="flex flex-col items-center justify-center h-32 rounded-2xl bg-ink/4 gap-2">
+        <AlertCircle className="w-6 h-6 text-ink/30" />
+        <p className="text-xs text-ink/40">
           {isRTL ? 'تعذّر تحميل الفيديو' : 'Could not load video'}
         </p>
       </div>
@@ -333,9 +333,9 @@ function LockedScreen({
         <Link
           to={session.courseId ? `/student/courses/${session.courseId._id}` : '/student/courses'}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm transition-all active:scale-[0.97]"
-          style={{ background: 'rgba(0,51,0,0.07)', color: TEXT_PRIMARY }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,51,0,0.12)')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,51,0,0.07)')}
+          style={{ background: 'rgba(15, 31, 51,0.07)', color: TEXT_PRIMARY }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(15, 31, 51,0.12)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(15, 31, 51,0.07)')}
         >
           {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           {session.courseId ? session.courseId.title : t('dashboardStudent:myCourses')}
@@ -419,7 +419,7 @@ function LockedScreen({
       {session.description && (
         <motion.div
           variants={fade}
-          className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm p-4 sm:p-5"
+          className="rounded-2xl bg-white border border-ink/8 shadow-sm p-4 sm:p-5"
         >
           <p className="text-sm leading-relaxed" dir="auto" style={{ color: TEXT_SECONDARY }}>
             {session.description}
@@ -434,30 +434,30 @@ function LockedScreen({
 function PageSkeleton() {
   return (
     <div className="space-y-3 animate-pulse">
-      <div className="h-4 w-32 bg-[#003300]/10 rounded" />
-      <div className="rounded-2xl bg-white p-4 border border-[#003300]/8 space-y-3">
-        <div className="h-6 w-2/3 bg-[#003300]/10 rounded" />
-        <div className="h-4 w-full bg-[#003300]/8 rounded" />
+      <div className="h-4 w-32 bg-ink/10 rounded" />
+      <div className="rounded-2xl bg-white p-4 border border-ink/8 space-y-3">
+        <div className="h-6 w-2/3 bg-ink/10 rounded" />
+        <div className="h-4 w-full bg-ink/8 rounded" />
         <div className="grid grid-cols-2 gap-3">
           {[1, 2].map((i) => (
             <div key={i} className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-[#003300]/8 shrink-0" />
+              <div className="w-9 h-9 rounded-xl bg-ink/8 shrink-0" />
               <div className="flex-1 space-y-1">
-                <div className="h-3 bg-[#003300]/8 rounded w-1/2" />
-                <div className="h-4 bg-[#003300]/10 rounded w-3/4" />
+                <div className="h-3 bg-ink/8 rounded w-1/2" />
+                <div className="h-4 bg-ink/10 rounded w-3/4" />
               </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="rounded-2xl bg-white p-4 border border-[#003300]/8 space-y-3">
-        <div className="h-5 w-1/3 bg-[#003300]/10 rounded" />
+      <div className="rounded-2xl bg-white p-4 border border-ink/8 space-y-3">
+        <div className="h-5 w-1/3 bg-ink/10 rounded" />
         {[1, 2, 3].map((i) => (
           <div key={i} className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#003300]/8 shrink-0" />
+            <div className="w-10 h-10 rounded-xl bg-ink/8 shrink-0" />
             <div className="flex-1 space-y-1.5">
-              <div className="h-4 bg-[#003300]/10 rounded w-3/4" />
-              <div className="h-3 bg-[#003300]/6 rounded w-1/2" />
+              <div className="h-4 bg-ink/10 rounded w-3/4" />
+              <div className="h-3 bg-ink/6 rounded w-1/2" />
             </div>
           </div>
         ))}
@@ -604,11 +604,11 @@ export default function StudentSessionDetails() {
           to={session.courseId ? `/student/courses/${session.courseId._id}` : '/student/courses'}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm transition-all active:scale-[0.97]"
           style={{
-            background: 'rgba(0,51,0,0.07)',
+            background: 'rgba(15, 31, 51,0.07)',
             color: TEXT_PRIMARY,
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,51,0,0.12)')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,51,0,0.07)')}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(15, 31, 51,0.12)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(15, 31, 51,0.07)')}
         >
           {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           {session.courseId ? session.courseId.title : t('dashboardStudent:myCourses')}
@@ -616,14 +616,14 @@ export default function StudentSessionDetails() {
       </motion.div>
 
       {/* ── Session header card ── */}
-      <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+      <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
         <div className="p-4 sm:p-5">
           {/* Title + type badge */}
           <div className="flex items-start justify-between gap-3 mb-3">
             <h1 className="text-xl sm:text-2xl font-bold leading-tight" style={{ color: TEXT_PRIMARY }}>
               {session.title}
             </h1>
-            <span className="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full bg-[#003300]/8 capitalize" style={{ color: TEXT_PRIMARY }}>
+            <span className="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full bg-ink/8 capitalize" style={{ color: TEXT_PRIMARY }}>
               {session.type}
             </span>
           </div>
@@ -698,7 +698,7 @@ export default function StudentSessionDetails() {
 
         {/* ── Attendance strip — full-width bottom of header card ── */}
         {attendance && (
-          <div className="border-t border-[#003300]/6">
+          <div className="border-t border-ink/6">
             <AttendanceBadge record={attendance} isRTL={isRTL} />
           </div>
         )}
@@ -706,9 +706,9 @@ export default function StudentSessionDetails() {
 
       {/* ── Evaluation card ── */}
       {evaluation && (
-        <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+        <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
           {/* Header strip */}
-          <div className="flex items-center gap-2.5 px-4 sm:px-5 py-3.5 border-b border-[#003300]/6">
+          <div className="flex items-center gap-2.5 px-4 sm:px-5 py-3.5 border-b border-ink/6">
             <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'rgba(245,158,11,0.1)' }}>
               <MessageSquare className="w-4 h-4 text-amber-500" />
             </div>
@@ -719,7 +719,7 @@ export default function StudentSessionDetails() {
 
           <div className="p-4 sm:p-5 space-y-3">
             {/* Overall score */}
-            <div className="flex items-center justify-between p-3 rounded-xl" style={{ background: 'rgba(0,51,0,0.04)' }}>
+            <div className="flex items-center justify-between p-3 rounded-xl" style={{ background: 'rgba(15, 31, 51,0.04)' }}>
               <span className="text-sm font-semibold" style={{ color: TEXT_PRIMARY }}>
                 {t('dashboardStudent:overallScore', 'Overall Score')}
               </span>
@@ -730,7 +730,7 @@ export default function StudentSessionDetails() {
             {evaluation.parameters && evaluation.parameters.length > 0 && (
               <div className="space-y-2">
                 {evaluation.parameters.map((param, i) => (
-                  <div key={i} className="flex items-center justify-between px-3 py-2.5 rounded-xl border border-[#003300]/6">
+                  <div key={i} className="flex items-center justify-between px-3 py-2.5 rounded-xl border border-ink/6">
                     <span className="text-sm" dir="auto" style={{ color: TEXT_SECONDARY }}>
                       {param.name}
                     </span>
@@ -757,8 +757,8 @@ export default function StudentSessionDetails() {
 
       {/* ── Video card ── */}
       {session.hasVideo && (
-        <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
-          <div className="flex items-center gap-2.5 px-4 sm:px-5 py-3.5 border-b border-[#003300]/6">
+        <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
+          <div className="flex items-center gap-2.5 px-4 sm:px-5 py-3.5 border-b border-ink/6">
             <div className="w-8 h-8 rounded-xl flex items-center justify-center bg-red-50">
               <PlayCircle className="w-4 h-4 text-red-500" />
             </div>
@@ -773,9 +773,9 @@ export default function StudentSessionDetails() {
       )}
 
       {/* ── Materials card ── */}
-      <motion.div variants={fade} className="rounded-2xl bg-white border border-[#003300]/8 shadow-sm overflow-hidden">
+      <motion.div variants={fade} className="rounded-2xl bg-white border border-ink/8 shadow-sm overflow-hidden">
         {/* Header strip */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-[#003300]/6">
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-ink/6">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.08)' }}>
               <BookOpen className="w-4 h-4 text-blue-500" />
@@ -785,7 +785,7 @@ export default function StudentSessionDetails() {
             </h2>
           </div>
           {session.materials && session.materials.length > 0 && (
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-[#003300]/6" style={{ color: TEXT_TERTIARY }}>
+            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-ink/6" style={{ color: TEXT_TERTIARY }}>
               {session.materials.length}
             </span>
           )}
@@ -802,7 +802,7 @@ export default function StudentSessionDetails() {
             </motion.div>
           ) : (
             <div className="text-center py-10">
-              <div className="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style={{ background: 'rgba(0,51,0,0.05)' }}>
+              <div className="w-14 h-14 rounded-2xl mx-auto mb-3 flex items-center justify-center" style={{ background: 'rgba(15, 31, 51,0.05)' }}>
                 <FileText className="w-7 h-7" style={{ color: TEXT_TERTIARY }} />
               </div>
               <p className="font-semibold text-sm" style={{ color: TEXT_PRIMARY }}>

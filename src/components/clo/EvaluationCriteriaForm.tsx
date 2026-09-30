@@ -366,12 +366,12 @@ export default function EvaluationCriteriaForm({
 
         {/* Basic Info */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-[#003300] border-b border-[#003300]/10 pb-2">
+          <h3 className="text-lg font-semibold text-ink border-b border-ink/10 pb-2">
             Basic Information
           </h3>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Criteria Name <span className="text-red-500">*</span>
             </label>
             <Input
@@ -388,7 +388,7 @@ export default function EvaluationCriteriaForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-1">
+            <label className="block text-sm font-medium text-ink mb-1">
               Description
             </label>
             <textarea
@@ -398,7 +398,7 @@ export default function EvaluationCriteriaForm({
                 setIsDirty(true);
               }}
               rows={3}
-              className="w-full px-4 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder:text-[#003300]/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-ink/20 bg-white text-ink placeholder:text-ink/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all"
               placeholder="Optional description..."
             />
           </div>
@@ -406,23 +406,23 @@ export default function EvaluationCriteriaForm({
 
         {/* Application Scope */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-[#003300] border-b border-[#003300]/10 pb-2">
+          <h3 className="text-lg font-semibold text-ink border-b border-ink/10 pb-2">
             Application Scope
           </h3>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-2">
+            <label className="block text-sm font-medium text-ink mb-2">
               Courses <span className="text-red-500">*</span>
-              <span className="text-xs font-normal text-[#003300]/50 ml-2">(select one or more)</span>
+              <span className="text-xs font-normal text-ink/50 ml-2">(select one or more)</span>
             </label>
-            <div className="grid grid-cols-1 gap-2 max-h-48 overflow-y-auto p-1 border border-[#003300]/10 rounded-lg bg-gray-50">
+            <div className="grid grid-cols-1 gap-2 max-h-48 overflow-y-auto p-1 border border-ink/10 rounded-lg bg-gray-50">
               {courses.map(course => (
                 <label
                   key={course._id}
                   className={`flex items-center gap-3 p-2 rounded-lg border cursor-pointer transition-all ${
                     formData.courseIds.includes(course._id)
                       ? 'border-emerald-500 bg-emerald-50'
-                      : 'border-[#003300]/10 bg-white hover:border-[#003300]/20'
+                      : 'border-ink/10 bg-white hover:border-ink/20'
                   }`}
                 >
                   <input
@@ -444,11 +444,11 @@ export default function EvaluationCriteriaForm({
                       }
                       setIsDirty(true);
                     }}
-                    className="rounded border-[#003300]/20 text-emerald-500 focus:ring-emerald-500"
+                    className="rounded border-ink/20 text-emerald-500 focus:ring-emerald-500"
                   />
                   <div className="flex items-center gap-2 flex-1 min-w-0">
-                    <BookOpen className="w-4 h-4 text-[#003300]/40 flex-shrink-0" />
-                    <span className="text-sm text-[#003300] truncate">{course.title}</span>
+                    <BookOpen className="w-4 h-4 text-ink/40 flex-shrink-0" />
+                    <span className="text-sm text-ink truncate">{course.title}</span>
                   </div>
                 </label>
               ))}
@@ -456,7 +456,7 @@ export default function EvaluationCriteriaForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#003300] mb-2">
+            <label className="block text-sm font-medium text-ink mb-2">
               Applies To <span className="text-red-500">*</span>
             </label>
             <div className="grid grid-cols-2 gap-3">
@@ -468,8 +468,8 @@ export default function EvaluationCriteriaForm({
                 }}
                 className={`p-4 rounded-lg border-2 transition-all ${
                   formData.appliesTo === 'course'
-                    ? 'border-emerald-500 bg-emerald-50 text-[#003300]'
-                    : 'border-[#003300]/20 bg-white text-[#003300]/60 hover:border-[#003300]/30'
+                    ? 'border-emerald-500 bg-emerald-50 text-ink'
+                    : 'border-ink/20 bg-white text-ink/60 hover:border-ink/30'
                 }`}
               >
                 <BookOpen className="w-6 h-6 mx-auto mb-2" />
@@ -484,8 +484,8 @@ export default function EvaluationCriteriaForm({
                 }}
                 className={`p-4 rounded-lg border-2 transition-all ${
                   formData.appliesTo === 'groups'
-                    ? 'border-emerald-500 bg-emerald-50 text-[#003300]'
-                    : 'border-[#003300]/20 bg-white text-[#003300]/60 hover:border-[#003300]/30'
+                    ? 'border-emerald-500 bg-emerald-50 text-ink'
+                    : 'border-ink/20 bg-white text-ink/60 hover:border-ink/30'
                 }`}
               >
                 <Users className="w-6 h-6 mx-auto mb-2" />
@@ -497,17 +497,17 @@ export default function EvaluationCriteriaForm({
 
           {formData.appliesTo === 'groups' && (
             <div>
-              <label className="block text-sm font-medium text-[#003300] mb-2">
+              <label className="block text-sm font-medium text-ink mb-2">
                 Select Groups <span className="text-red-500">*</span>
               </label>
-              <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto p-1 border border-[#003300]/10 rounded-lg bg-gray-50">
+              <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto p-1 border border-ink/10 rounded-lg bg-gray-50">
                 {groups.map(group => (
                   <label
                     key={group._id}
                     className={`flex items-center gap-2 p-2 rounded-lg border cursor-pointer transition-all ${
                       formData.groupIds.includes(group._id)
                         ? 'border-emerald-500 bg-emerald-50'
-                        : 'border-[#003300]/10 bg-white hover:border-[#003300]/20'
+                        : 'border-ink/10 bg-white hover:border-ink/20'
                     }`}
                   >
                     <input
@@ -527,9 +527,9 @@ export default function EvaluationCriteriaForm({
                         }
                         setIsDirty(true);
                       }}
-                      className="rounded border-[#003300]/20 text-emerald-500 focus:ring-emerald-500"
+                      className="rounded border-ink/20 text-emerald-500 focus:ring-emerald-500"
                     />
-                    <span className="text-sm text-[#003300]">{group.name}</span>
+                    <span className="text-sm text-ink">{group.name}</span>
                   </label>
                 ))}
               </div>
@@ -539,10 +539,10 @@ export default function EvaluationCriteriaForm({
 
         {/* Evaluation Parameters */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-[#003300]/10 pb-2">
+          <div className="flex items-center justify-between border-b border-ink/10 pb-2">
             <div>
-              <h3 className="text-lg font-semibold text-[#003300]">Evaluation Parameters</h3>
-              <p className="text-sm mt-1 text-[#003300]/60">
+              <h3 className="text-lg font-semibold text-ink">Evaluation Parameters</h3>
+              <p className="text-sm mt-1 text-ink/60">
                 Define custom evaluation parameters for this criteria
               </p>
             </div>
@@ -558,7 +558,7 @@ export default function EvaluationCriteriaForm({
           </div>
 
           {formData.parameters.length === 0 ? (
-            <div className="text-center py-8 text-[#003300]/40 bg-gray-50 rounded-lg border border-dashed border-[#003300]/20">
+            <div className="text-center py-8 text-ink/40 bg-gray-50 rounded-lg border border-dashed border-ink/20">
               <p className="mb-2">No parameters added yet</p>
               <p className="text-sm">Click "Add Parameter" to create custom evaluation criteria</p>
             </div>
@@ -569,15 +569,15 @@ export default function EvaluationCriteriaForm({
                   key={index}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-white rounded-lg border border-[#003300]/20 space-y-3"
+                  className="p-4 bg-white rounded-lg border border-ink/20 space-y-3"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2 flex-1">
-                      <GripVertical className="w-5 h-5 text-[#003300]/40 cursor-move" />
+                      <GripVertical className="w-5 h-5 text-ink/40 cursor-move" />
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <Star className="w-4 h-4 text-yellow-500" />
-                          <span className="font-semibold text-[#003300]">
+                          <span className="font-semibold text-ink">
                             Parameter {index + 1}
                           </span>
                           {param.required && (
@@ -606,7 +606,7 @@ export default function EvaluationCriteriaForm({
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-[#003300] mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         Parameter Name <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -619,20 +619,20 @@ export default function EvaluationCriteriaForm({
                     </div>
 
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-[#003300] mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         Description
                       </label>
                       <textarea
                         value={param.description}
                         onChange={(e) => updateParameter(index, 'description', e.target.value)}
                         rows={2}
-                        className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] placeholder:text-[#003300]/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
+                        className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink placeholder:text-ink/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
                         placeholder="Optional description for this parameter..."
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-[#003300] mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         Type <span className="text-red-500">*</span>
                       </label>
                       <select
@@ -645,14 +645,14 @@ export default function EvaluationCriteriaForm({
                             updateParameter(index, 'ratingScale', { min: 1, max: 5 });
                           }
                         }}
-                        className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
+                        className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
                       >
                         <option value="rating">Rating</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-[#003300] mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         Rating Scale
                       </label>
                       <div className="flex items-center gap-2">
@@ -663,10 +663,10 @@ export default function EvaluationCriteriaForm({
                             ...(param.ratingScale || { min: 1, max: 5 }),
                             min: parseInt(e.target.value) || 1
                           })}
-                          className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
+                          className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
                           min="1"
                         />
-                        <span className="text-[#003300]/60">to</span>
+                        <span className="text-ink/60">to</span>
                         <input
                           type="number"
                           value={param.ratingScale?.max || 5}
@@ -674,26 +674,26 @@ export default function EvaluationCriteriaForm({
                             ...(param.ratingScale || { min: 1, max: 5 }),
                             max: parseInt(e.target.value) || 5
                           })}
-                          className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
+                          className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
                           min="2"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-[#003300] mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         Weight (%)
                       </label>
                       <input
                         type="number"
                         value={param.weight || 0}
                         onChange={(e) => updateParameter(index, 'weight', Math.max(0, Math.min(100, parseInt(e.target.value) || 0)))}
-                        className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
+                        className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm"
                         min="0"
                         max="100"
                         placeholder="0-100"
                       />
-                      <p className="text-xs text-[#003300]/60 mt-1">
+                      <p className="text-xs text-ink/60 mt-1">
                         Weight for weighted calculation (optional)
                       </p>
                     </div>
@@ -704,9 +704,9 @@ export default function EvaluationCriteriaForm({
                           type="checkbox"
                           checked={param.required}
                           onChange={(e) => updateParameter(index, 'required', e.target.checked)}
-                          className="rounded border-[#003300]/20 text-emerald-500 focus:ring-emerald-500"
+                          className="rounded border-ink/20 text-emerald-500 focus:ring-emerald-500"
                         />
-                        <span className="text-sm text-[#003300]">Required</span>
+                        <span className="text-sm text-ink">Required</span>
                       </label>
                     </div>
                   </div>
@@ -721,7 +721,7 @@ export default function EvaluationCriteriaForm({
                     : 'bg-yellow-50 border-yellow-200'
                 }`}>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-[#003300]">
+                    <span className="text-sm font-medium text-ink">
                       Total Weight: {totalWeight}%
                     </span>
                     {totalWeight !== 100 && (
@@ -736,7 +736,7 @@ export default function EvaluationCriteriaForm({
                     )}
                   </div>
                   {totalWeight !== 100 && (
-                    <p className="text-xs text-[#003300]/60 mt-1">
+                    <p className="text-xs text-ink/60 mt-1">
                       Parameter weights should sum to 100% for weighted calculations
                     </p>
                   )}
@@ -748,7 +748,7 @@ export default function EvaluationCriteriaForm({
 
         {/* Additional Options */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-[#003300] border-b border-[#003300]/10 pb-2">
+          <h3 className="text-lg font-semibold text-ink border-b border-ink/10 pb-2">
             Additional Options
           </h3>
 
@@ -758,20 +758,20 @@ export default function EvaluationCriteriaForm({
                 type="checkbox"
                 checked={true}
                 disabled
-                className="mt-0.5 rounded border-[#003300]/20 text-emerald-500 focus:ring-emerald-500 cursor-not-allowed"
+                className="mt-0.5 rounded border-ink/20 text-emerald-500 focus:ring-emerald-500 cursor-not-allowed"
               />
               <div className="flex-1">
-                <div className="text-[#003300] font-semibold flex items-center gap-2">
+                <div className="text-ink font-semibold flex items-center gap-2">
                   Overall Rating (1-5) <Badge variant="success" size="sm">Required</Badge>
                 </div>
-                <div className="text-sm text-[#003300]/60">Overall rating from 1 to 5 stars - Always included in evaluations</div>
+                <div className="text-sm text-ink/60">Overall rating from 1 to 5 stars - Always included in evaluations</div>
               </div>
             </div>
 
             {formData.includeOverallRating && (
               <div className="ml-8 grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                  <label className="block text-xs font-medium text-ink/70 mb-1">
                     Min Rating
                   </label>
                   <input
@@ -787,13 +787,13 @@ export default function EvaluationCriteriaForm({
                       }));
                       setIsDirty(true);
                     }}
-                    className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
+                    className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
                     min="1"
                     max="5"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-[#003300]/70 mb-1">
+                  <label className="block text-xs font-medium text-ink/70 mb-1">
                     Max Rating
                   </label>
                   <input
@@ -809,13 +809,13 @@ export default function EvaluationCriteriaForm({
                       }));
                       setIsDirty(true);
                     }}
-                    className="w-full px-3 py-2 rounded-lg border border-[#003300]/20 bg-white text-[#003300] text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
+                    className="w-full px-3 py-2 rounded-lg border border-ink/20 bg-white text-ink text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
                     min="1"
                     max="5"
                   />
                 </div>
                 <div className="col-span-2 mt-2 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-xs text-[#003300]/70">
+                  <p className="text-xs text-ink/70">
                     <strong>Note:</strong> Overall rating is always included in evaluations. You can also add custom parameters above.
                   </p>
                 </div>
@@ -826,7 +826,7 @@ export default function EvaluationCriteriaForm({
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#003300]/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-ink/10">
           <Button
             type="button"
             variant="ghost"

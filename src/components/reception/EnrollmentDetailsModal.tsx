@@ -278,29 +278,29 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
         label: 'Overview',
         icon: <User className="w-4 h-4" />,
         content: (
-          <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#003300', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
+          <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#0f1f33', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
         {/* Course Information */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-primary" />
             Course Information
           </h3>
           <div className="bg-primary/5 rounded-lg p-4 space-y-3">
             <div>
-              <p className="text-[#003300]/60 text-sm">Course Title</p>
-                <p className="text-[#003300] font-semibold">{displayEnrollment.course?.title || 'Course'}</p>
+              <p className="text-ink/60 text-sm">Course Title</p>
+                <p className="text-ink font-semibold">{displayEnrollment.course?.title || 'Course'}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-[#003300]/60 text-sm">Enrolled Date</p>
-                <p className="text-[#003300] flex items-center gap-2">
+                <p className="text-ink/60 text-sm">Enrolled Date</p>
+                <p className="text-ink flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-primary" />
                     {formatDate(displayEnrollment.enrolledAt)}
                 </p>
               </div>
               <div>
-                <p className="text-[#003300]/60 text-sm">Course Price</p>
-                  <p className="text-[#003300] font-semibold">${displayEnrollment.course?.price?.toFixed(2) || '0.00'}</p>
+                <p className="text-ink/60 text-sm">Course Price</p>
+                  <p className="text-ink font-semibold">${displayEnrollment.course?.price?.toFixed(2) || '0.00'}</p>
                 </div>
               </div>
             </div>
@@ -312,25 +312,25 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
         label: 'Payments',
         icon: <DollarSign className="w-4 h-4" />,
         content: (
-          <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#003300', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
+          <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#0f1f33', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
         {/* Payment Summary */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
             <DollarSign className="w-5 h-5 text-primary" />
             Payment Summary
           </h3>
           <div className="bg-primary/5 rounded-lg p-4">
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div>
-                <p className="text-[#003300]/60 text-sm">Total Amount</p>
-                  <p className="text-[#003300] font-bold text-xl">${displayEnrollment.payment?.totalAmount?.toFixed(2) || '0.00'}</p>
+                <p className="text-ink/60 text-sm">Total Amount</p>
+                  <p className="text-ink font-bold text-xl">${displayEnrollment.payment?.totalAmount?.toFixed(2) || '0.00'}</p>
               </div>
               <div>
-                <p className="text-[#003300]/60 text-sm">Paid Amount</p>
+                <p className="text-ink/60 text-sm">Paid Amount</p>
                   <p className="text-green-600 font-bold text-xl">${displayEnrollment.payment?.paidAmount?.toFixed(2) || '0.00'}</p>
               </div>
               <div>
-                <p className="text-[#003300]/60 text-sm">Remaining</p>
+                <p className="text-ink/60 text-sm">Remaining</p>
                   <p className="text-red-600 font-bold text-xl">${displayEnrollment.payment?.remainingAmount?.toFixed(2) || '0.00'}</p>
               </div>
             </div>
@@ -338,8 +338,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
             {/* Payment Progress Bar */}
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-[#003300]/60">Payment Progress</span>
-                <span className="text-[#003300] font-semibold">
+                <span className="text-ink/60">Payment Progress</span>
+                <span className="text-ink font-semibold">
                     {displayEnrollment.payment?.totalAmount
                       ? Math.round((displayEnrollment.payment.paidAmount / displayEnrollment.payment.totalAmount) * 100)
                     : 0}%
@@ -362,7 +362,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
         {/* Installments / Payment History */}
           {displayEnrollment.payment?.installments && displayEnrollment.payment.installments.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
               <CreditCard className="w-5 h-5 text-primary" />
                 Payment History ({displayEnrollment.payment.installments.length} Installments)
             </h3>
@@ -378,8 +378,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                         {getInstallmentIcon(installment.status)}
                       </div>
                       <div>
-                        <p className="text-[#003300] font-semibold">Installment #{index + 1}</p>
-                        <p className="text-[#003300]/60 text-sm">
+                        <p className="text-ink font-semibold">Installment #{index + 1}</p>
+                        <p className="text-ink/60 text-sm">
                           Due: {formatDate(installment.dueDate)}
                         </p>
                         {installment.paidDate && (
@@ -390,7 +390,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-[#003300] font-bold text-lg">${installment.amount?.toFixed(2) || '0.00'}</p>
+                      <p className="text-ink font-bold text-lg">${installment.amount?.toFixed(2) || '0.00'}</p>
                       <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg border text-xs ${getInstallmentStatusBadge(installment.status)}`}>
                         {installment.status.charAt(0).toUpperCase() + installment.status.slice(1)}
                       </div>
@@ -416,7 +416,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
             <LoadingState message="Loading transportation receipts..." />
           </div>
         ) : (
-          <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#003300', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
+          <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#0f1f33', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
             {/* Driver-assignment banner — appears when transport is enabled on the
                  enrollment but no DriverStudent exists for this student yet. The
                  student is paid up, but the bus side doesn't know about them. */}
@@ -454,22 +454,22 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
             <div>
               {/* Transportation Payment Summary */}
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
                   <Bus className="w-5 h-5 text-orange-500" />
                   Transportation Payment Summary
                 </h3>
                 <div className="bg-orange-500/5 rounded-lg p-4 border border-orange-500/20">
                   <div className="grid grid-cols-3 gap-4 mb-4">
                     <div>
-                      <p className="text-[#003300]/60 text-sm">Total Amount</p>
-                      <p className="text-[#003300] font-bold text-xl">{displayEnrollment?.transportation?.totalAmount?.toLocaleString() || '0'} S.P.</p>
+                      <p className="text-ink/60 text-sm">Total Amount</p>
+                      <p className="text-ink font-bold text-xl">{displayEnrollment?.transportation?.totalAmount?.toLocaleString() || '0'} S.P.</p>
                     </div>
                     <div>
-                      <p className="text-[#003300]/60 text-sm">Paid Amount</p>
+                      <p className="text-ink/60 text-sm">Paid Amount</p>
                       <p className="text-green-600 font-bold text-xl">{displayEnrollment?.transportation?.paidAmount?.toLocaleString() || '0'} S.P.</p>
                     </div>
                     <div>
-                      <p className="text-[#003300]/60 text-sm">Remaining</p>
+                      <p className="text-ink/60 text-sm">Remaining</p>
                       <p className="text-red-600 font-bold text-xl">{displayEnrollment?.transportation?.remainingAmount?.toLocaleString() || '0'} S.P.</p>
                     </div>
                   </div>
@@ -477,8 +477,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                   {/* Transportation Payment Progress Bar */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-[#003300]/60">Payment Progress</span>
-                      <span className="text-[#003300] font-semibold">
+                      <span className="text-ink/60">Payment Progress</span>
+                      <span className="text-ink font-semibold">
                         {displayEnrollment?.transportation?.totalAmount
                           ? Math.round((displayEnrollment?.transportation?.paidAmount || 0) / (displayEnrollment?.transportation?.totalAmount || 1) * 100)
                           : 0}%
@@ -500,7 +500,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                 {/* Transportation Installments */}
                 {displayEnrollment?.transportation?.installments && displayEnrollment?.transportation?.installments.length > 0 && (
                   <div className="space-y-2 max-h-60 overflow-y-auto">
-                    <h4 className="text-sm font-semibold text-[#003300]">Transportation Installments ({displayEnrollment?.transportation?.installments?.length || 0})</h4>
+                    <h4 className="text-sm font-semibold text-ink">Transportation Installments ({displayEnrollment?.transportation?.installments?.length || 0})</h4>
                     {displayEnrollment?.transportation?.installments?.map((installment: any, index: number) => (
                       <div
                         key={index}
@@ -512,8 +512,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                               {getInstallmentIcon(installment.status)}
                             </div>
                             <div>
-                              <p className="text-[#003300] font-semibold">Transportation Installment #{index + 1}</p>
-                              <p className="text-[#003300]/60 text-sm">
+                              <p className="text-ink font-semibold">Transportation Installment #{index + 1}</p>
+                              <p className="text-ink/60 text-sm">
                                 Due: {formatDate(installment.dueDate)}
                               </p>
                               {installment.paidDate && (
@@ -524,7 +524,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-[#003300] font-bold text-lg">{installment.amount?.toLocaleString() || '0'} S.P.</p>
+                            <p className="text-ink font-bold text-lg">{installment.amount?.toLocaleString() || '0'} S.P.</p>
                             <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg border text-xs ${getInstallmentStatusBadge(installment.status)}`}>
                               {installment.status.charAt(0).toUpperCase() + installment.status.slice(1)}
                             </div>
@@ -538,7 +538,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                 {/* Transportation Receipts */}
                 {transportationReceipts.length > 0 && (
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
                       <FileText className="w-5 h-5 text-orange-500" />
                       Transportation Receipts ({transportationReceipts.length})
                     </h3>
@@ -549,8 +549,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                           className="bg-orange-500/5 rounded-lg p-4 border border-orange-500/10 hover:border-orange-500/20 transition-all flex items-center justify-between"
                         >
                           <div>
-                            <p className="text-[#003300] font-semibold">Receipt #{receipt.receiptNumber}</p>
-                            <p className="text-[#003300]/60 text-sm">
+                            <p className="text-ink font-semibold">Receipt #{receipt.receiptNumber}</p>
+                            <p className="text-ink/60 text-sm">
                               Amount: {receipt.payment.amount.toLocaleString()} S.P. | {formatDateTime(receipt.createdAt)}
                             </p>
                           </div>
@@ -592,18 +592,18 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
       label: 'History',
       icon: <FileText className="w-4 h-4" />,
       content: (
-        <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#003300', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
+        <div className="space-y-6 max-h-[60vh] overflow-y-auto" style={{ color: '#0f1f33', position: 'relative', zIndex: 1, opacity: 1, visibility: 'visible' }}>
           {/* Inactive Reason */}
           {(displayEnrollment.status === 'inactive' || displayEnrollment.status === 'dropped' || displayEnrollment.status === 'suspended') && displayEnrollment.notes && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
               <AlertCircle className="w-5 h-5 text-red-500" />
                 {displayEnrollment.status === 'inactive' ? 'Inactive Reason' :
                  displayEnrollment.status === 'dropped' ? 'Dropped Reason' :
                'Suspended Reason'}
             </h3>
             <div className="bg-red-500/5 border border-red-500/20 rounded-lg p-4">
-                <p className="text-[#003300] whitespace-pre-wrap">{displayEnrollment.notes}</p>
+                <p className="text-ink whitespace-pre-wrap">{displayEnrollment.notes}</p>
             </div>
           </div>
         )}
@@ -611,12 +611,12 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
         {/* General Notes */}
           {displayEnrollment.notes && displayEnrollment.status === 'active' && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-[#003300] flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-ink flex items-center gap-2">
               <FileText className="w-5 h-5 text-primary" />
               Notes
             </h3>
             <div className="bg-primary/5 rounded-lg p-4">
-                <p className="text-[#003300] whitespace-pre-wrap">{displayEnrollment.notes}</p>
+                <p className="text-ink whitespace-pre-wrap">{displayEnrollment.notes}</p>
               </div>
             </div>
           )}
@@ -646,8 +646,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
       ) : error ? (
         <div className="p-6 text-center">
           <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <p className="text-[#003300] font-semibold mb-2">Failed to load enrollment details</p>
-          <p className="text-[#003300]/60 text-sm mb-4">{error}</p>
+          <p className="text-ink font-semibold mb-2">Failed to load enrollment details</p>
+          <p className="text-ink/60 text-sm mb-4">{error}</p>
           {enrollmentId && (
             <Button
               onClick={async () => {
@@ -672,8 +672,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
           {/* Header with Status */}
           <div className="flex items-center justify-between pb-4 border-b border-primary/20">
             <div>
-              <h2 className="text-2xl font-bold text-[#003300]">{displayEnrollment?.student?.name || 'Student'}</h2>
-              <p className="text-[#003300]/60 mt-1">{displayEnrollment?.student?.email || 'N/A'}</p>
+              <h2 className="text-2xl font-bold text-ink">{displayEnrollment?.student?.name || 'Student'}</h2>
+              <p className="text-ink/60 mt-1">{displayEnrollment?.student?.email || 'N/A'}</p>
             </div>
             <div className={`px-4 py-2 rounded-lg border ${getStatusBadge(displayEnrollment?.status || 'active')}`}>
               {(displayEnrollment?.status || 'active').charAt(0).toUpperCase() + (displayEnrollment?.status || 'active').slice(1)}
@@ -681,7 +681,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
           </div>
 
           {/* Tabs */}
-          <div style={{ color: '#003300', position: 'relative' }}>
+          <div style={{ color: '#0f1f33', position: 'relative' }}>
             <Tabs items={tabsItems} />
           </div>
         </div>
@@ -697,7 +697,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
         title="Delete Transportation"
         description={
           <div className="space-y-2">
-            <p className="text-[#003300]">
+            <p className="text-ink">
               Are you sure you want to delete all transportation data for this enrollment?
             </p>
             <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-3">
@@ -714,7 +714,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
                 Warning: This enrollment has {displayEnrollment.transportation.paidAmount.toLocaleString()} S.P. in paid transportation fees.
               </p>
             )}
-            <p className="text-sm text-[#003300]/70 mt-2">
+            <p className="text-sm text-ink/70 mt-2">
               This action cannot be undone.
             </p>
       </div>
