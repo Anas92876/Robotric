@@ -95,6 +95,7 @@ export function receptionRoutes({ guards, controllers: c }: Container): Router {
   r.get('/enrollments/available-groups/:courseId', c.enrollmentForm.availableGroups);
   r.get('/enrollments/available-students', c.enrollmentForm.availableStudents);
   r.get('/enrollments/check', c.enrollments.check);
+  r.get('/enrollments/summary', c.enrollments.summary);
   r.post('/enrollments/from-waiting', c.enrollments.fromWaiting);
   r.post('/enrollments/bundle', c.enrollments.bundle);
   r.post('/enrollments/mark-overdue-transportation', c.enrollments.markOverdueTransport);

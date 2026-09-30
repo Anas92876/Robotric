@@ -105,6 +105,10 @@ export class EnrollmentController {
     private readonly payments: EnrollmentPaymentService,
   ) {}
 
+  summary = async (_req: Request, res: Response) => {
+    res.json({ success: true, data: await this.enrollments.summary() });
+  };
+
   list = async (req: Request, res: Response) => {
     const page = parsePagination(req.query);
     const q = parse(listEnrollmentsQuery, req.query);

@@ -229,6 +229,26 @@ describe('status, listing, deletion', () => {
     expect(byEmail.body.pagination.total).toBe(1);
   });
 
+  it('summarises counts and money over every enrollment (money from active ones only)', async () => {
+    const summary = async () => (await api().get('/api/reception/enrollments/summary').set(rec)).body.data;
+    const before = await summary();
+
+    const paying = (await enroll({ studentId: (await student()).user.id, courseId: await course(100) })).body.data;
+    await api().post(`/api/reception/enrollments/${paying._id}/payment`).set(rec).send({ amount: 40 });
+    const stopped = (await enroll({ studentId: (await student()).user.id, courseId: await course(50) })).body.data;
+    await api().put(`/api/reception/enrollments/${stopped._id}/status`).set(rec).send({ status: 'inactive', reason: 'Moved away' });
+
+    const after = await summary();
+    expect(after.total - before.total).toBe(2);
+    expect(after.active - before.active).toBe(1);
+    expect(after.inactive - before.inactive).toBe(1);
+    expect(after.amountTotal - before.amountTotal).toBe(100);
+    expect(after.amountPaid - before.amountPaid).toBe(40);
+    expect(after.amountRemaining - before.amountRemaining).toBe(60);
+
+    expect((await api().get('/api/reception/enrollments/summary')).status).toBe(401);
+  });
+
   it('deletes an enrollment with its receipts and removes the student from the course groups', async () => {
     const s = await student();
     const courseId = await course(100);

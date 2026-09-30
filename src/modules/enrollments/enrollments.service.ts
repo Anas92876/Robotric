@@ -104,6 +104,11 @@ export class EnrollmentService {
 
   // ─── Reading ─────────────────────────────────────────────────────────────
 
+  /** Headline counts and money for the reception enrollments page. */
+  summary() {
+    return this.enrollments.summary();
+  }
+
   list(filter: EnrollmentFilter, page: Page) {
     return this.enrollments.list(filter, page);
   }

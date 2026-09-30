@@ -61,6 +61,16 @@ export interface EnrollmentFilter {
 
 export type CoursePaymentResult = { ok: true } | { ok: false; reason: 'not_found' } | { ok: false; reason: 'exceeds'; remaining: number };
 
+/** Headline numbers for the reception enrollments page (money: active enrollments only). */
+export interface EnrollmentSummary {
+  total: number;
+  active: number;
+  inactive: number;
+  amountTotal: number;
+  amountPaid: number;
+  amountRemaining: number;
+}
+
 export interface CourseEnrollmentCounts {
   total: number;
   active: number;
@@ -94,6 +104,8 @@ export interface EnrollmentRepository {
   addCoursePayment(id: string, amount: number, at: Date): Promise<CoursePaymentResult>;
   markOverdueTransportInstallments(now: Date): Promise<{ installments: number; enrollments: number; checked: number }>;
   countsByCourse(courseIds: string[]): Promise<Map<string, CourseEnrollmentCounts>>;
+  /** Counts and money over every enrollment (bundle sub-courses only count under their bundle). */
+  summary(): Promise<EnrollmentSummary>;
   forCourse(courseId: string): Promise<Enrollment[]>;
   /** Per-day counts (YYYY-MM-DD) of enrollments, or of completions, since a date. */
   dailyCounts(courseId: string, since: Date, field: 'enrolledAt' | 'completedAt'): Promise<{ _id: string; count: number }[]>;
@@ -343,6 +355,23 @@ export class DrizzleEnrollmentRepository implements EnrollmentRepository {
       )
       .returning({ enrollmentId: enrollmentInstallments.enrollmentId });
     return { installments: marked.length, enrollments: new Set(marked.map((m) => m.enrollmentId)).size, checked: checkedRow?.n ?? 0 };
+  }
+
+  async summary(): Promise<EnrollmentSummary> {
+    const active = sql`${enrollments.status} = 'active'`;
+    const [r] = await this.db
+      .select({
+        total: count(),
+        active: sql<number>`count(*) filter (where ${active})`.mapWith(Number),
+        inactive: sql<number>`count(*) filter (where ${enrollments.status} = 'inactive')`.mapWith(Number),
+        amountTotal: sql<number>`coalesce(sum(${enrollments.paymentTotal}) filter (where ${active}), 0)`.mapWith(Number),
+        amountPaid: sql<number>`coalesce(sum(${enrollments.paymentPaid}) filter (where ${active}), 0)`.mapWith(Number),
+      })
+      .from(enrollments)
+      .where(ne(enrollments.source, 'bundle'));
+    const amountTotal = r?.amountTotal ?? 0;
+    const amountPaid = r?.amountPaid ?? 0;
+    return { total: r?.total ?? 0, active: r?.active ?? 0, inactive: r?.inactive ?? 0, amountTotal, amountPaid, amountRemaining: Math.max(0, amountTotal - amountPaid) };
   }
 
   async countsByCourse(courseIds: string[]): Promise<Map<string, CourseEnrollmentCounts>> {
