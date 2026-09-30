@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
+import { Lori } from '../../../app/brand/Lori';
 
 /** Navy greeting card (Lori's screen colour) at the top of the overview, with Lori standing in front of it. */
-export function WelcomeBanner({ name }: { name: string }) {
+export function WelcomeBanner({ name, attention = false }: { name: string; attention?: boolean }) {
   const { t } = useTranslation('dashboardReception');
   return (
     // Top margin leaves room for Lori's head, which rises above the card
@@ -22,14 +23,7 @@ export function WelcomeBanner({ name }: { name: string }) {
       </div>
 
       {/* Lori, in front of the card and taller than it; faces the text in both directions */}
-      <img
-        src="/dash-assets/images/lori.webp"
-        alt=""
-        aria-hidden
-        width={467}
-        height={600}
-        className="pointer-events-none absolute bottom-0 end-8 z-10 hidden h-[128%] w-auto select-none drop-shadow-[0_18px_24px_rgb(8_20_36/0.35)] sm:block rtl:-scale-x-100 motion-safe:animate-lori"
-      />
+      <Lori attention={attention} className="absolute bottom-0 end-8 z-10 hidden h-[128%] cursor-pointer sm:block" />
     </div>
   );
 }

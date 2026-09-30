@@ -23,7 +23,7 @@ export default function ReceptionOverviewPage() {
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
       <div className="min-w-0 space-y-5">
-        <WelcomeBanner name={user?.name ?? ''} />
+        <WelcomeBanner name={user?.name ?? ''} attention={(leads.data?.needsFollowUp ?? 0) > 0} />
 
         {stats.isError && (
           <div className="flex items-center justify-between gap-3 rounded-card bg-danger-soft px-4 py-3 text-sm text-danger">
