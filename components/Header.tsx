@@ -96,7 +96,10 @@ export default function Header({ lang, nav, services, servicesFooter }: HeaderPr
             <Link className="nav__link nav__mobile-only" href={`${base}/login`}>{nav.login}</Link>
           </nav>
           <div className="nav__actions">
-            <Link className="lang-switch" href={otherLangHref} hrefLang={lang === 'en' ? 'ar' : 'en'} lang={lang === 'en' ? 'ar' : 'en'}>{nav.otherLang}</Link>
+            {/* A plain link on purpose: switching language loads the page fresh, so <html lang/dir>,
+                the Arabic font and the early `js motion` script all come from the server.
+                A client-side <Link> would re-render the root layout in the browser instead. */}
+            <a className="lang-switch" href={otherLangHref} hrefLang={lang === 'en' ? 'ar' : 'en'} lang={lang === 'en' ? 'ar' : 'en'}>{nav.otherLang}</a>
             <Link className="nav__text-link" href={`${base}/login`} aria-current={current(isCurrent('login') || isCurrent('signup'))}>{nav.login}</Link>
             <Link className="btn btn--primary btn--sm" href={`${base}/technical-consultation`} data-track="cta_click" data-track-label="nav_consultation">{nav.cta}</Link>
             <button className="nav__toggle" type="button" aria-controls="nav-links" aria-expanded={menuOpen} aria-label={nav.menu} onClick={() => setMenuOpen((o) => !o)}>

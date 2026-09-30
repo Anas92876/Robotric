@@ -45,7 +45,7 @@ export default async function LangLayout({ children, params }: LayoutProps<'/[la
   };
 
   return (
-    <html lang={lang} dir={isRtl(lang) ? 'rtl' : 'ltr'} className={`${inter.variable} ${lang === 'ar' ? cairo.variable : ''}`} suppressHydrationWarning>
+    <html lang={lang} dir={isRtl(lang) ? 'rtl' : 'ltr'} data-scroll-behavior="smooth" className={`${inter.variable} ${lang === 'ar' ? cairo.variable : ''}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: earlyScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
