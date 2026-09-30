@@ -96,6 +96,16 @@
     75% { translate: 0 -6px; rotate: -2deg; }
     100% { translate: 0 0; rotate: 0deg; }
   }
+  /* Waving hello: the forearm swings around the elbow, twice, then rests */
+  --animate-lori-wave: lori-wave 1.6s ease-in-out;
+  @keyframes lori-wave {
+    0%, 100% { rotate: 0deg; }
+    16% { rotate: 14deg; }
+    33% { rotate: -10deg; }
+    50% { rotate: 14deg; }
+    67% { rotate: -10deg; }
+    84% { rotate: 6deg; }
+  }
   /* His own green glow breathes (Lori's colours stay untouched) */
   --animate-lori-glow: lori-glow 3.2s ease-in-out infinite;
   @keyframes lori-glow {
