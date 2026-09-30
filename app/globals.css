@@ -1326,3 +1326,28 @@ svg.arrow { width: 1em; height: 1em; flex: none; vertical-align: -0.14em; }
 /* Icons inside text links */
 .link-arrow svg:not(.arrow) { width: 16px; height: 16px; }
 .form__status .link-arrow { display: inline-flex; margin-inline-start: 6px; }
+
+/* ---- Arabic typography -----------------------------------------------------
+   The layout was tuned for Inter; Cairo reads smaller and lighter at the same
+   size and needs taller lines. In Arabic: one size step up for running text,
+   heavier headings, roomier line-height, and no letter-spacing (it breaks the
+   joining between Arabic letters). English is unaffected. */
+html[lang="ar"] {
+  --text-caption: 12px;
+  --text-body-sm: 15px;
+  --text-body: 17px;
+  --text-subheading: 20px;
+  --text-heading-sm: 23px;
+}
+html[lang="ar"] body { line-height: 1.7; }
+html[lang="ar"] *, html[lang="ar"] *::before, html[lang="ar"] *::after { letter-spacing: 0 !important; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4 { font-weight: 700; }
+html[lang="ar"] .hero h1 { line-height: 1.3; }
+html[lang="ar"] .hero__lead, html[lang="ar"] .section-head p, html[lang="ar"] .closer p { line-height: 1.75; }
+html[lang="ar"] .card h3, html[lang="ar"] .feature h3, html[lang="ar"] .step h3 { line-height: 1.45; }
+html[lang="ar"] .card p, html[lang="ar"] .feature > p, html[lang="ar"] .step p, html[lang="ar"] .proof p, html[lang="ar"] .checks li { line-height: 1.8; }
+html[lang="ar"] .step p, html[lang="ar"] .proof p, html[lang="ar"] .checks li { font-size: 16px; }
+html[lang="ar"] .dropdown__text > span { font-size: 14px; line-height: 1.6; }
+html[lang="ar"] .tag { font-size: 12px; }
+/* The gold highlight sits on Cairo's baseline (its text box is taller than Inter's) */
+html[lang="ar"] em.hl { background-position: 100% 76%; }
