@@ -9,6 +9,7 @@ import { SITE, wa } from '@/lib/config';
 import { Icon, type IconName } from '@/lib/icons';
 import { Arrow, Closer, Photo, SectionHead, Title, YearsSince } from '@/components/ui';
 import Rotator from '@/components/Rotator';
+import Lori from '@/components/Lori';
 
 const CATEGORY_ICONS: Record<string, IconName> = { Robotics: 'robot', AI: 'ai', VR: 'vr', '3D Printing': 'cube', Drones: 'drone', 'Web Dev': 'code', Competitions: 'trophy', EngineeringDesign: 'compass' };
 const TINTS = ['leaf', 'khaki', 'sand', 'cream', 'sage', 'straw', 'moss', 'fern'];
@@ -57,7 +58,7 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
 
           <div className="halo">
             <span className="orb orb--a" aria-hidden="true" /><span className="orb orb--b" aria-hidden="true" />
-            <div className="lori" aria-hidden="true"><Image src="/images/lori.webp" alt="" width={625} height={803} quality={80} priority /></div>
+            <Lori />
             <div className="device">
               <div className="device__bar"><i /><i /><i /><span className="device__url">robotrick.net</span></div>
               <div className="device__photo">

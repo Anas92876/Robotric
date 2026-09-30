@@ -228,7 +228,6 @@ em.hl { font-style: normal; padding-inline: 2px; }
 
 /* Device frame on the halo gradient — the only place the halo appears */
 .halo { margin-top: 56px; border-radius: var(--radius-xl); background: var(--gradient-halo); padding: 56px 48px 0; overflow: hidden; position: relative; }
-.halo::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,51,0,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,51,0,.06) 1px, transparent 1px); background-size: 32px 32px; mask-image: radial-gradient(circle at 50% 30%, #000 20%, transparent 70%); pointer-events: none; }
 .device { position: relative; max-width: 980px; margin-inline: auto; background: var(--color-paper); border-radius: 22px 22px 0 0; box-shadow: var(--shadow-md), 0 30px 60px -20px rgba(0, 51, 0, 0.25); padding: 12px 12px 0; }
 .device__bar { display: flex; align-items: center; gap: 6px; padding: 4px 8px 12px; }
 .device__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--tint-khaki); }
@@ -357,7 +356,6 @@ em.hl { font-style: normal; padding-inline: 2px; }
 
 /* ---- Premium closing banner (brand dark register) ----------------------- */
 .closer { background: var(--gradient-premium); color: var(--brand-gold); border-radius: var(--radius-xl); padding: 72px 48px; text-align: center; position: relative; overflow: hidden; display: grid; justify-items: center; gap: 20px; }
-.closer::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(204,204,153,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(204,204,153,.06) 1px, transparent 1px); background-size: 36px 36px; pointer-events: none; }
 .closer::after { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(204,204,153,.18), transparent 65%); top: -160px; inset-inline-end: -120px; pointer-events: none; }
 .closer > * { position: relative; z-index: 1; }
 .closer h2 { font-size: var(--text-heading); line-height: 1.05; letter-spacing: -0.024em; color: #fff; max-width: 760px; }
@@ -496,12 +494,10 @@ em.hl.is-drawn, .hero em.hl, .page-hero em.hl { background-size: 100% 32%; }
 .hero em.hl, .page-hero em.hl { animation: draw-hl 1s var(--ease-out) .7s both; }
 @keyframes draw-hl { from { background-size: 0% 32%; } to { background-size: 100% 32%; } }
 
-/* ---- Halo: breathing light, drifting grid, floating device ------------- */
+/* ---- Halo: breathing light, floating device (no background grid) -------- */
 .halo { background-size: 140% 140%; background-position: 50% 50%; }
 .halo.is-live { animation: rise-big 1.2s var(--ease-out) .45s both, halo-breathe 12s ease-in-out 1.6s infinite; }
 @keyframes halo-breathe { 0%, 100% { background-position: 50% 50%; } 33% { background-position: 35% 60%; } 66% { background-position: 65% 40%; } }
-.halo::before { animation: grid-drift 24s linear infinite; }
-@keyframes grid-drift { to { background-position: 32px 32px, 32px 32px; } }
 .device { animation: float 7s ease-in-out 2s infinite; will-change: transform; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
@@ -587,9 +583,7 @@ a.feature:hover, a.feature:focus-visible { transform: translateY(-8px) scale(1.0
 .faq summary:hover::after { transform: scale(1.1); }
 .faq details[open] summary:hover::after { transform: rotate(45deg) scale(1.1); }
 
-/* ---- Closer banner: drifting grid + floating glow ---------------------- */
-.closer::before { animation: grid-drift-lg 30s linear infinite; }
-@keyframes grid-drift-lg { to { background-position: 36px 36px, 36px 36px; } }
+/* ---- Closer banner: floating glow (no background grid) ------------------ */
 .closer::after { animation: orb 16s ease-in-out infinite; }
 .closer .orb--c { width: 360px; height: 360px; background: radial-gradient(circle, rgba(204,204,153,.14), transparent 65%); bottom: -180px; inset-inline-start: -100px; filter: none; opacity: 1; animation: orb 20s ease-in-out -8s infinite reverse; }
 
@@ -820,13 +814,31 @@ html[lang="ar"] .h-section { letter-spacing: 0; line-height: 1.3; }
 .device__photo { position: relative; border-radius: 14px 14px 0 0; overflow: hidden; aspect-ratio: 16 / 8; background: var(--tint-khaki); }
 .device__photo img { width: 100%; height: 100%; object-fit: cover; }
 .device__chips { position: absolute; inset-inline-start: 16px; bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
-.lori { position: absolute; z-index: 3; bottom: 0; inset-inline-end: 1%; width: 170px; pointer-events: none; animation: lori-in 1.2s var(--ease-spring) 1.3s both; }
-.lori img { width: 100%; height: auto; filter: drop-shadow(0 18px 24px rgba(0, 51, 0, .25)); animation: lori-bob 3.4s ease-in-out 2.6s infinite; }
+.lori { position: absolute; z-index: 3; bottom: 0; inset-inline-end: 1%; width: 170px; cursor: pointer; animation: lori-in 1.2s var(--ease-spring) 1.3s both; }
 @keyframes lori-in { from { opacity: 0; transform: translateY(140px) rotate(6deg); } to { opacity: 1; transform: none; } }
-@keyframes lori-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-12px) rotate(1.5deg); } }
 .motion .lori { translate: 0 calc(var(--hero, 0) * -50px); }
-[dir="rtl"] .lori img { transform: scaleX(-1); animation-name: lori-bob-rtl; }
-@keyframes lori-bob-rtl { 0%, 100% { transform: scaleX(-1) translateY(0); } 50% { transform: scaleX(-1) translateY(-12px); } }
+/* Lori is alive (components/Lori.tsx): each motion sits on its own wrapper so they combine;
+   his artwork and colours are never changed */
+.lori__float { animation: lori-bob 3.4s ease-in-out 2.6s infinite; }
+@keyframes lori-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-12px) rotate(1.5deg); } }
+.lori__hop { transform-origin: 50% 100%; }
+.lori__hop.is-hopping { animation: lori-hop .8s ease-out; }
+@keyframes lori-hop { 0%, 100% { translate: 0 0; rotate: 0deg; } 30% { translate: 0 -22px; rotate: -5deg; } 55% { translate: 0 0; rotate: 3deg; } 75% { translate: 0 -6px; rotate: -2deg; } }
+.lori__art { position: relative; }
+[dir="rtl"] .lori__art { scale: -1 1; }
+.lori__glow { position: relative; animation: lori-glow 3.2s ease-in-out infinite; }
+.lori__glow img { display: block; width: 100%; height: auto; }
+@keyframes lori-glow {
+  0%, 100% { filter: drop-shadow(0 18px 24px rgba(0, 51, 0, .25)) drop-shadow(0 0 0 rgba(60, 242, 60, 0)); }
+  50% { filter: drop-shadow(0 18px 24px rgba(0, 51, 0, .25)) drop-shadow(0 0 12px rgba(60, 242, 60, .55)); }
+}
+/* Waving: the forearm layer turns around the elbow */
+.lori__forearm { position: absolute; inset: 0; transform-origin: 14.35% 49.83%; }
+.lori__forearm.is-waving { animation: lori-wave 1.6s ease-in-out; }
+@keyframes lori-wave { 0%, 100% { rotate: 0deg; } 16% { rotate: 14deg; } 33% { rotate: -10deg; } 50% { rotate: 14deg; } 67% { rotate: -10deg; } 84% { rotate: 6deg; } }
+/* Blinking: eyelids in his own screen navy with a closed-eye line in his eye green */
+.lori__lid { position: absolute; transform-origin: top; scale: 1 0; background: #0f1a2d; border-bottom: 2px solid #3cf23c; border-radius: 0 0 999px 999px; animation: lori-blink 5.5s ease-in-out infinite; }
+@keyframes lori-blink { 0%, 88%, 100% { scale: 1 0; } 90% { scale: 1 1; } 92% { scale: 1 0; } 94% { scale: 1 1; } 96% { scale: 1 0; } }
 
 /* ---- Home gallery teaser -------------------------------------------------- */
 .mosaic { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px; }
@@ -1104,6 +1116,7 @@ html[lang="ar"] .job-form legend { letter-spacing: 0; font-size: 13px; }
 @media (max-width: 760px) {
   .brand-logo { height: 24px; }
   .lori { width: 84px; inset-inline-end: -4px; }
+  .lori__lid { border-bottom-width: 1px; }
   .device__photo { aspect-ratio: 4 / 3; }
   .device__chips { inset-inline: 10px; bottom: 10px; }
   .mosaic, .vm, .materials, .contact-cards, .program-grid, .options, .timeline__year, .timeline__items { grid-template-columns: 1fr; }
@@ -1141,7 +1154,7 @@ html[lang="ar"] .job-form legend { letter-spacing: 0; font-size: 13px; }
   .vtimeline::before { inset-inline-start: 19px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .lori, .lori img, .track-panel { animation: none !important; }
+  .lori, .lori *, .track-panel { animation: none !important; }
 }
 
 /* Proof cards nested inside a revealed block (e.g. the About timeline) pop in with their parent */
@@ -1189,7 +1202,6 @@ html[lang="ar"] .hero-media__text h1 { letter-spacing: 0; line-height: 1.25; }
 .auth { padding-block: 40px 24px; }
 .auth__inner { display: grid; grid-template-columns: .95fr 1.05fr; gap: 24px; align-items: stretch; }
 .auth__panel { position: relative; overflow: hidden; border-radius: var(--radius-xl); background: var(--gradient-premium); color: #fff; padding: 44px; display: grid; align-content: start; gap: 32px; min-height: 640px; isolation: isolate; }
-.auth__panel::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(204,204,153,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(204,204,153,.07) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(circle at 30% 20%, #000 30%, transparent 80%); }
 .auth__panel .orb--c { width: 380px; height: 380px; background: radial-gradient(circle, rgba(204,204,153,.22), transparent 65%); bottom: -120px; inset-inline-end: -80px; z-index: -1; }
 .brand-logo--gold { background: var(--brand-gold); height: 32px; }
 .auth__copy { display: grid; gap: 16px; justify-items: start; max-width: 420px; }
