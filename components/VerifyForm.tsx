@@ -17,7 +17,7 @@ export default function VerifyForm({ lang, label, placeholder, button, initial =
     router.push(`/${lang}/verify/${encodeURIComponent(num)}`);
   };
   return (
-    <form className="card form" onSubmit={onSubmit}>
+    <form className="card form" onSubmit={onSubmit} data-no-reveal>
       <label className="label" htmlFor="cert">{label}</label>
       <div className="verify">
         <input className="input" id="cert" name="cert" required placeholder={placeholder} autoComplete="off" spellCheck={false} value={value} onChange={(e) => { setValue(e.target.value); setBusy(false); }} />

@@ -16,8 +16,8 @@
  },
  "design": {
   "badge": "إمكانيات التصميم",
-  "title": "إمكانيات التصميم الهندسي",
-  "titleHighlight": "(Ready Design)",
+  "title": "إمكانيات",
+  "titleHighlight": "التصميم الهندسي",
   "items": [
    {
     "title": "النمذجة ثلاثية الأبعاد",
@@ -47,7 +47,7 @@
     "description": "للقطع الميكانيكية التي تحتاج متانة وتحمل حرارة."
    },
    {
-    "name": "TPU (Flexible)",
+    "name": "TPU (مرن)",
     "description": "للقطع المرنة والمطاطية."
    }
   ]

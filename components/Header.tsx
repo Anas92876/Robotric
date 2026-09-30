@@ -66,7 +66,7 @@ export default function Header({ lang, nav, services, servicesFooter }: HeaderPr
       <header className={cls} id="nav">
         <div className="container nav__inner">
           <Link className="logo" href={base}>{logo}</Link>
-          <nav className="nav__links" id="nav-links" aria-label="Main">
+          <nav className="nav__links" id="nav-links" aria-label={lang === 'ar' ? 'القائمة الرئيسية' : 'Main'}>
             <Link className="nav__link" href={base} aria-current={current(rest === '' || rest === '/')}>{nav.home}</Link>
             <Link className="nav__link" href={`${base}/about`} aria-current={current(isCurrent('about'))}>{nav.about}</Link>
             <div className={`dropdown${ddOpen ? ' is-open' : ''}`} ref={ddRef}>

@@ -61,7 +61,7 @@ export default function JobApplyForm({ labels: f, apiBase, position }: { labels:
   }
 
   return (
-    <form className="card form job-form" id="apply" onSubmit={onSubmit} noValidate>
+    <form className="card form job-form" id="apply" onSubmit={onSubmit} noValidate data-no-reveal>
       <h2 className="form__title">{f.title}</h2>
       <fieldset>
         <legend>{f.personal}</legend>

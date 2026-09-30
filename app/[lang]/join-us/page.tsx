@@ -24,7 +24,7 @@ export default async function JoinUsPage({ params }: PageProps<'/[lang]/join-us'
       <PageHero
         crumbs={<Crumbs home={s.nav.home} homeHref={base} items={[{ label: s.nav.joinUs }]} />}
         badge={t.badge} t={j.hero.title} lead={j.hero.subtitle}
-        media={{ src: '/images/image-2.webp', alt: 'Robotrick team' }}
+        media={{ src: '/images/image-2.webp', alt: lang === 'ar' ? 'فريق روبوتريك' : 'Robotrick team' }}
         actions={<a className="btn btn--primary" href="#positions">{t.openTitle}</a>}
       />
 

@@ -66,7 +66,7 @@ export default function ContactForm({ labels, apiBase, waNumber, waHello, headin
   const set = (k: keyof typeof values) => (e: { target: { value: string } }) => setValues((s) => ({ ...s, [k]: e.target.value }));
 
   return (
-    <form className="card form" onSubmit={onSubmit} noValidate>
+    <form className="card form" onSubmit={onSubmit} noValidate data-no-reveal>
       {heading ? <h2 className="form__title">{heading}</h2> : null}
       <div className="form__row">
         <div className={`field${errors.name ? ' has-error' : ''}`}>

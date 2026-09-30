@@ -46,9 +46,12 @@ export default async function ContactPage({ params }: PageProps<'/[lang]/contact
       <section className="section">
         <div className="container">
           <div className="split split--top">
+            {/* Plain wrapper so the page-reveal animation lands here, not on the late-hydrating form */}
+            <div>
             <Suspense>
               <ContactForm labels={{ form: hc.form, validation: hc.validation }} apiBase={SITE.browserApiBase} waNumber={SITE.whatsapp} waHello={s.common.whatsappHello} />
             </Suspense>
+            </div>
             <iframe className="map" title={hc.visitTitle} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={`${SITE.mapEmbed}&hl=${lang}`} />
           </div>
         </div>

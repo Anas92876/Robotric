@@ -51,7 +51,7 @@ type Crumb = { label: string; href?: string };
 
 export function Crumbs({ home, homeHref, items }: { home: string; homeHref: string; items: Crumb[] }) {
   return (
-    <nav className="crumbs" aria-label="Breadcrumb">
+    <nav className="crumbs" aria-label={homeHref.startsWith('/ar') ? 'مسار التنقل' : 'Breadcrumb'}>
       <Link href={homeHref}>{home}</Link>
       {items.map((c) => (
         <span key={c.label} style={{ display: 'contents' }}>

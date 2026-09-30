@@ -42,6 +42,8 @@ function initMotion(): () => void {
   const candidates = scope.flatMap((s) => [...s.querySelectorAll(REVEAL)]);
   candidates.forEach((el) => {
     if (el.classList.contains('reveal')) return;
+    // Client forms hydrate later (inside <Suspense>); adding classes to them first breaks hydration
+    if (el.closest('[data-no-reveal]')) return;
     if (el.closest('.hero, .page-hero .hero__split, .halo, .device')) return;
     if (el.parentElement?.closest('.reveal') && !el.matches('.faq details')) return;
     el.classList.add('reveal');

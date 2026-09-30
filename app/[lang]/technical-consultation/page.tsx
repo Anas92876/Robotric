@@ -32,10 +32,12 @@ export default async function ConsultationPage({ params }: PageProps<'/[lang]/te
                 <li><a href={wa(p.heroCta.bookConsultation)} target="_blank" rel="noopener" data-track="whatsapp_click" data-track-label="consult_channel"><span className="icon-dot"><Icon name="whatsapp" /></span><span><strong>WhatsApp</strong><span className="ltr">{SITE.phoneDisplay}</span></span></a></li>
               </ul>
             </div>
+            <div>
             <Suspense>
               <ContactForm labels={{ form: hc.form, validation: hc.validation }} apiBase={SITE.browserApiBase} waNumber={SITE.whatsapp} waHello={s.common.whatsappHello}
                 heading={p.heroCta.bookConsultation} submitLabel={p.heroCta.bookConsultation} defaultSubject="consultation" idPrefix="tc" />
             </Suspense>
+            </div>
           </div>
         </div>
       </section>
