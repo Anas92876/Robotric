@@ -87,7 +87,7 @@ const ReceptionSubscriptions = lazyImport(() => import("./features/reception/sub
 const SessionRequests = lazyImport(() => import("./features/reception/sessions/SessionRequestsPage"));
 const SessionReports = lazyImport(() => import("./features/reception/sessions/SessionReportsPage"));
 const ContactManagement = lazyImport(() => import("./features/reception/contacts/ContactsPage"));
-const ReceptionGallery = lazyImport(() => import("./pages/reception/ReceptionGallery"));
+const ReceptionGallery = lazyImport(() => import("./features/reception/gallery/GalleryPage"));
 const JobApplications = lazyImport(() => import("./features/reception/jobs/JobApplicationsPage"));
 const TransportManagement = lazyImport(() => import("./pages/reception/TransportManagement"));
 

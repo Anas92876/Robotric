@@ -660,5 +660,25 @@
       "saved": "Subscription saved",
       "canceled": "Subscription canceled"
     }
+  },
+  "photos": {
+    "title": "Gallery",
+    "subtitle": "Photos of each group: class moments and student projects.",
+    "upload": "Upload a moment",
+    "all": "All photos",
+    "moments": "Moments",
+    "projects": "Projects",
+    "groups": "Groups",
+    "showAll": "Show every group",
+    "noGroups": "No active groups yet.",
+    "pickGroups": "Pick at least one group to see its photos",
+    "empty": "No photos in these groups yet",
+    "deleteTitle": "Delete this photo?",
+    "deleteText": "The photo will be removed from the gallery for good.",
+    "delete": "Delete",
+    "toast": {
+      "uploaded": "Photo uploaded",
+      "deleted": "Photo deleted"
+    }
   }
 }

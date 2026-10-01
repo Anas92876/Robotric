@@ -113,7 +113,10 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
                     e.stopPropagation();
                     onDelete();
                   }}
-                  className="absolute top-2 right-2 p-1 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                  // Always visible on touch screens; on desktop it appears on hover or keyboard focus
+                  aria-label={document.documentElement.lang === 'ar' ? 'حذف الصورة' : 'Delete photo'}
+                  title={document.documentElement.lang === 'ar' ? 'حذف الصورة' : 'Delete photo'}
+                  className="absolute top-2 end-2 grid size-8 place-items-center bg-red-600 text-white rounded-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
                 >
                   <X className="w-4 h-4" />
                 </button>
