@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { X, AlertTriangle } from 'lucide-react';
@@ -35,6 +35,17 @@ function Modal({
     full: 'max-w-[calc(100vw-2rem)] sm:max-w-7xl',
   };
 
+  // Escape closes the dialog (Headless UI's own onClose is switched off below so that a click on
+  // the page scrollbar does not close it; the overlay click is handled by hand)
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen, onClose]);
+
   // Handle overlay click - only close if clicking directly on overlay, not scrollbar
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!closeOnOverlayClick) return;
@@ -64,7 +75,7 @@ function Modal({
           leaveTo="opacity-0"
         >
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-ink-deep/40 backdrop-blur-[2px]"
             style={{ zIndex: 1040 }}
           />
         </Transition.Child>
@@ -87,21 +98,15 @@ function Modal({
             >
               <Dialog.Panel
                 className={cn(
-                  'card-light w-full transform overflow-hidden rounded-xl sm:rounded-2xl',
-                  'bg-white',
-                  'border border-ink/20',
-                  'p-4 sm:p-6 text-left align-middle shadow-lg hover:shadow-2xl transition-all duration-500',
-                  'relative group',
+                  // Same look as the new kit's Dialog; no hover effects (a dialog holds data, it should not move)
+                  'rt-app card-light w-full transform overflow-hidden rounded-feature',
+                  'bg-paper border border-line',
+                  'p-4 sm:p-6 text-start align-middle shadow-pop',
+                  'relative',
                   sizes[size]
                 )}
                 style={{ zIndex: 1050 }}
               >
-                {/* Animated Background Gradient on Hover */}
-                <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl -z-10" />
-                
-                {/* Shimmer Effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-transparent rounded-xl sm:rounded-2xl -z-10" />
-                
                 {/* Content Container */}
                 <div className="relative z-10">
                   {/* Header */}
@@ -126,7 +131,7 @@ function Modal({
                       {showCloseButton && (
                         <button
                           type="button"
-                          className="ml-4 rounded-lg p-1.5 transition-colors"
+                          className="ms-4 rounded-lg p-1.5 transition-colors"
                           style={{ color: '#0f1f33' + 'CC' }}
                           onClick={onClose}
                           onMouseEnter={(e) => {
@@ -155,9 +160,6 @@ function Modal({
                   )}
                 </div>
 
-                {/* Corner Decoration */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-ink/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-glow/30 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </Dialog.Panel>
             </Transition.Child>
           </div>

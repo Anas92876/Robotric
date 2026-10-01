@@ -375,5 +375,71 @@
     "loadError": "Could not load the enrollments.",
     "retry": "Try again",
     "rateShort": "$1 = {{rate}} S.P."
+  },
+  "leads": {
+    "title": "Leads",
+    "subtitle": "People interested in the academy: follow up, move them to the waiting list, or enrol them.",
+    "new": "New lead",
+    "stats": {
+      "total": "All leads",
+      "interest": "Interested",
+      "waiting": "Waiting list",
+      "student": "Became students",
+      "blacklist": "Blacklist",
+      "followUp": "Need follow-up"
+    },
+    "status": {
+      "interest": "Interested",
+      "waiting": "Waiting list",
+      "student": "Student",
+      "blacklist": "Blacklist"
+    },
+    "col": {
+      "lead": "Lead",
+      "phone": "Phone",
+      "interest": "Interest",
+      "status": "Status",
+      "followUp": "Follow-up",
+      "actions": "Actions"
+    },
+    "added": "Added {{date}}",
+    "due": "(due)",
+    "actionsFor": "Actions for {{name}}",
+    "menu": {
+      "view": "View details",
+      "contact": "Log a contact",
+      "edit": "Edit",
+      "move": "Change status / convert",
+      "delete": "Delete"
+    },
+    "search": "Search by name or phone…",
+    "allStatuses": "All statuses",
+    "allInterests": "All interests",
+    "sortLabel": "Sort",
+    "sort": {
+      "leadDate_desc": "Newest first",
+      "leadDate_asc": "Oldest first",
+      "createdAt_desc": "Recently added",
+      "createdAt_asc": "First added",
+      "fullName_asc": "Name A → Z",
+      "fullName_desc": "Name Z → A"
+    },
+    "deleteTitle": "Delete this lead?",
+    "deleteText": "{{name}} and their contact history will be removed for good.",
+    "toast": {
+      "created": "Lead added",
+      "saved": "Lead saved",
+      "deleted": "Lead deleted",
+      "status": "Status changed",
+      "waiting": "Moved to the waiting list",
+      "converted": "{{name}} is now a student",
+      "contact": "Contact logged"
+    },
+    "empty": "No leads yet",
+    "noMatch": "No leads match",
+    "noMatchHint": "Try another name or number, or clear the filters.",
+    "clearFilters": "Clear filters",
+    "loadError": "Could not load the leads.",
+    "retry": "Try again"
   }
 }
