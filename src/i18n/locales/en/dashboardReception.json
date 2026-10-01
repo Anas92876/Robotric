@@ -626,5 +626,39 @@
       "declined": "Request declined",
       "reported": "Report saved and hours deducted"
     }
+  },
+  "subs": {
+    "title": "Subscriptions",
+    "subtitle": "Monthly hour packages students use to book private sessions.",
+    "assign": "Assign subscription",
+    "status": {
+      "active": "Active",
+      "expired": "Expired",
+      "canceled": "Canceled"
+    },
+    "endingSoon": "Ending within a week",
+    "endsSoon": "Ends this week",
+    "col": {
+      "student": "Student",
+      "plan": "Plan",
+      "hoursLeft": "Hours left",
+      "period": "Period",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "perMonth": "{{hours}} h/month · {{price}}",
+    "actionsFor": "Actions for {{name}}",
+    "edit": "Edit",
+    "cancel": "Cancel subscription",
+    "search": "Search by student or plan…",
+    "none": "No subscriptions here",
+    "loadError": "Could not load the subscriptions.",
+    "cancelTitle": "Cancel this subscription?",
+    "cancelText": "The subscription of {{name}} ends now; its {{hours}} remaining hours can no longer be booked.",
+    "toast": {
+      "assigned": "Subscription assigned",
+      "saved": "Subscription saved",
+      "canceled": "Subscription canceled"
+    }
   }
 }
