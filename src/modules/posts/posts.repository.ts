@@ -4,6 +4,8 @@ import { type PostRow, posts } from './posts.table';
 
 export interface PostRepository {
   published(): Promise<PostRow[]>;
+  /** Drafts and published, newest first (for staff). */
+  all(): Promise<PostRow[]>;
   findPublished(by: { id?: string; slug?: string }): Promise<PostRow | null>;
   findById(id: string): Promise<PostRow | null>;
   slugTaken(slug: string): Promise<boolean>;
@@ -17,6 +19,10 @@ export class DrizzlePostRepository implements PostRepository {
 
   published() {
     return this.db.select().from(posts).where(eq(posts.status, 'published')).orderBy(desc(posts.publishedAt));
+  }
+
+  all() {
+    return this.db.select().from(posts).orderBy(desc(posts.updatedAt));
   }
 
   async findPublished(by: { id?: string; slug?: string }) {

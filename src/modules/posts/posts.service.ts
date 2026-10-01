@@ -34,6 +34,18 @@ export class PostService {
     return this.posts.published();
   }
 
+  /** Every post including drafts, for the people who write them. */
+  all() {
+    return this.posts.all();
+  }
+
+  /** One post including drafts, for editing. */
+  async getAny(id: string) {
+    const post = isValidId(id) ? await this.posts.findById(id) : null;
+    if (!post) throw notFound();
+    return post;
+  }
+
   async get(by: { id?: string; slug?: string }) {
     if (by.id !== undefined && !isValidId(by.id)) throw notFound();
     const post = await this.posts.findPublished(by);

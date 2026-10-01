@@ -137,5 +137,13 @@ describe('images and posts', () => {
     expect((await api().get('/api/posts/')).body.map((p: { slug: string }) => p.slug)).toEqual(['hello']);
     expect((await api().get('/api/posts/slug/hello')).body.title).toBe('Hello again');
     expect((await api().post('/api/posts/').set(student.headers).send({})).status).toBe(403);
+
+    // Staff list includes drafts; the public one does not
+    const second = (await api().post('/api/posts/').set(editor).send({ slug: 'later', title: 'Later', body: 'Soon' })).body;
+    expect((await api().get('/api/posts/manage').set(editor)).body.map((p: { slug: string }) => p.slug).sort()).toEqual(['hello', 'later']);
+    expect((await api().get(`/api/posts/manage/${second._id}`).set(editor)).body.status).toBe('draft');
+    expect((await api().get(`/api/posts/${second._id}`)).status).toBe(404);
+    expect((await api().get('/api/posts/manage')).status).toBe(401);
+    expect((await api().get('/api/posts/manage').set(student.headers)).status).toBe(403);
   });
 });

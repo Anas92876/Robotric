@@ -77,6 +77,9 @@ export function postRoutes({ guards, controllers: c }: Container): Router {
   const p = c.posts;
   const writers = [guards.requireAuth, guards.requireRoles('editor', 'admin', 'superadmin', 'reception', 'social')];
   r.get('/', p.list);
+  // Staff see drafts too (the public list above is published only)
+  r.get('/manage', ...writers, p.manage);
+  r.get('/manage/:id', ...writers, p.manageOne);
   r.get('/slug/:slug', p.bySlug);
   r.get('/:id', p.get);
   r.post('/', ...writers, p.create);

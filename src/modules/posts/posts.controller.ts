@@ -23,6 +23,14 @@ type IdReq = Request<{ id: string }>;
 export class PostController {
   constructor(private readonly posts: PostService) {}
 
+  manage = async (_req: Request, res: Response) => {
+    res.json((await this.posts.all()).map(postDoc));
+  };
+
+  manageOne = async (req: IdReq, res: Response) => {
+    res.json(postDoc(await this.posts.getAny(req.params.id)));
+  };
+
   list = async (_req: Request, res: Response) => {
     res.json((await this.posts.published()).map(postDoc));
   };
