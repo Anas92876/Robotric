@@ -27,7 +27,10 @@ export function RowMenu({ label, actions }: { label: string; actions: RowAction[
           <MenuItem key={a.label}>
             <button
               type="button"
-              onClick={a.onClick}
+              // Run the action after this click has finished and the menu has closed: otherwise a
+              // dialog opened by the action can see the same click as an "outside click" and close
+              // at once, or lose focus to the menu button
+              onClick={() => setTimeout(a.onClick, 0)}
               className={cn(
                 'flex w-full items-center gap-2.5 rounded-input px-3 py-2 text-start text-sm [&_svg]:size-4',
                 a.tone === 'danger' ? 'text-danger data-[focus]:bg-danger-soft' : 'text-ink data-[focus]:bg-rail',
