@@ -680,5 +680,98 @@
       "uploaded": "Photo uploaded",
       "deleted": "Photo deleted"
     }
+  },
+  "cal": {
+    "title": "Schedule",
+    "subtitle": "Meetings and events of the centre, with the private sessions students booked.",
+    "new": "New event",
+    "today": "Today",
+    "thisWeek": "This week",
+    "sessionsWeek": "Private sessions this week",
+    "prev": "Previous",
+    "next": "Next",
+    "goToday": "Today",
+    "views": "Calendar view",
+    "legend": "Legend",
+    "legendSessions": "Private sessions",
+    "legendEvents": "Meetings and events",
+    "view": {
+      "month": "Month",
+      "week": "Week",
+      "day": "Day",
+      "agenda": "List"
+    },
+    "col": {
+      "date": "Date",
+      "time": "Time",
+      "event": "Event"
+    },
+    "more": "+{{count}} more",
+    "noneInRange": "Nothing scheduled in this period.",
+    "loadError": "We couldn't load the schedule.",
+    "sessionOf": "Private session · {{name}}",
+    "newTitle": "New event",
+    "editTitle": "Edit event",
+    "create": "Add to schedule",
+    "save": "Save changes",
+    "edit": "Edit",
+    "delete": "Delete",
+    "when": "When",
+    "student": "Student",
+    "notes": "Notes",
+    "noPeople": "No one added yet.",
+    "createdBy": "Added by {{name}}",
+    "openRequests": "Open session requests",
+    "session": {
+      "booked": "Booked · {{hours}} h",
+      "completed": "Done · {{hours}} h"
+    },
+    "who": {
+      "lead": "Lead",
+      "custom": "Guest",
+      "company": "Team"
+    },
+    "f": {
+      "title": "Title",
+      "titleHint": "e.g. Meeting with a parent",
+      "date": "Date",
+      "from": "From",
+      "to": "To",
+      "color": "Colour",
+      "description": "Notes",
+      "people": "Who takes part",
+      "chosen": "Chosen people",
+      "remove": "Remove {{name}}",
+      "team": "From the team",
+      "findLead": "Add a lead",
+      "findHint": "Type at least 2 letters of a name or phone number",
+      "findPlaceholder": "Search leads…",
+      "results": "Matching leads",
+      "searching": "Searching…",
+      "noLeads": "No matching leads",
+      "guest": "Someone else",
+      "guestName": "Name",
+      "guestPhone": "Phone (optional)",
+      "addGuest": "Add"
+    },
+    "colors": {
+      "blue": "Blue",
+      "green": "Green",
+      "red": "Red",
+      "yellow": "Yellow",
+      "purple": "Purple",
+      "gray": "Grey"
+    },
+    "errTitle": "Please write a title.",
+    "errTime": "Please choose the date and times.",
+    "errOrder": "The end time must be after the start time.",
+    "errHours": "Events must be between {{from}} and {{to}}.",
+    "deleteTitle": "Delete this event?",
+    "deleteText": "\"{{title}}\" will be removed from the schedule.",
+    "toast": {
+      "created": "Event added",
+      "saved": "Event saved",
+      "deleted": "Event deleted"
+    }
   }
 }
