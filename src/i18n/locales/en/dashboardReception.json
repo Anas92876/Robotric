@@ -441,5 +441,55 @@
     "clearFilters": "Clear filters",
     "loadError": "Could not load the leads.",
     "retry": "Try again"
+  },
+  "contacts": {
+    "title": "Contact Messages",
+    "subtitle": "Messages sent through the website contact form.",
+    "stats": {
+      "total": "All messages"
+    },
+    "status": {
+      "new": "New",
+      "read": "Read",
+      "replied": "Replied",
+      "archived": "Archived"
+    },
+    "who": {
+      "student": "Student",
+      "parent": "Parent",
+      "business-owner": "Business owner",
+      "other": "Other"
+    },
+    "col": {
+      "sender": "Sender",
+      "phone": "Phone",
+      "subject": "Subject",
+      "received": "Received",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actionsFor": "Actions for {{name}}",
+    "menu": {
+      "open": "Open",
+      "replied": "Mark as replied",
+      "archive": "Archive",
+      "delete": "Delete"
+    },
+    "search": "Search by name, phone or subject…",
+    "receivedOn": "Received {{date}} at {{time}}",
+    "message": "Message",
+    "noMessage": "No message — only the subject was sent.",
+    "deleteTitle": "Delete this message?",
+    "deleteText": "The message from {{name}} will be removed for good.",
+    "toast": {
+      "read": "Marked as read",
+      "new": "Marked as new",
+      "replied": "Marked as replied",
+      "archived": "Archived",
+      "deleted": "Message deleted"
+    },
+    "empty": "No messages yet",
+    "noMatch": "No messages match",
+    "loadError": "Could not load the messages."
   }
 }
