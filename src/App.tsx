@@ -88,7 +88,7 @@ const SessionRequests = lazyImport(() => import("./pages/reception/SessionReques
 const SessionReports = lazyImport(() => import("./pages/reception/SessionReports"));
 const ContactManagement = lazyImport(() => import("./features/reception/contacts/ContactsPage"));
 const ReceptionGallery = lazyImport(() => import("./pages/reception/ReceptionGallery"));
-const JobApplications = lazyImport(() => import("./pages/reception/JobApplications"));
+const JobApplications = lazyImport(() => import("./features/reception/jobs/JobApplicationsPage"));
 const TransportManagement = lazyImport(() => import("./pages/reception/TransportManagement"));
 
 // CLO pages

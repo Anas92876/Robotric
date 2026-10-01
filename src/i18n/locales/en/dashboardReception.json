@@ -491,5 +491,81 @@
     "empty": "No messages yet",
     "noMatch": "No messages match",
     "loadError": "Could not load the messages."
+  },
+  "jobs": {
+    "title": "Job Applications",
+    "subtitle": "Applications sent from the Join Us page: review, interview, accept or reject.",
+    "stats": {
+      "total": "All applications"
+    },
+    "status": {
+      "new": "New",
+      "reviewed": "Reviewed",
+      "interview": "Interview",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    },
+    "experience": {
+      "none": "No experience",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "professional": "Professional"
+    },
+    "availability": {
+      "full_time": "Full time",
+      "part_time": "Part time",
+      "flexible": "Flexible"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "field": {
+      "email": "Email",
+      "age": "Age",
+      "location": "Location",
+      "gender": "Gender",
+      "experience": "Experience",
+      "availability": "Availability",
+      "skills": "Skills",
+      "experienceDetails": "Experience details",
+      "whyUs": "Why Robotrick",
+      "additionalInfo": "Anything else"
+    },
+    "col": {
+      "applicant": "Applicant",
+      "position": "Position",
+      "experience": "Experience",
+      "received": "Received",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actionsFor": "Actions for {{name}}",
+    "menu": {
+      "open": "Open",
+      "interview": "Invite to interview",
+      "accept": "Accept",
+      "reject": "Reject",
+      "cv": "Download CV",
+      "delete": "Delete"
+    },
+    "search": "Search by name, phone or email…",
+    "allPositions": "All positions",
+    "appliedFor": "Applied for {{position}} · {{date}}",
+    "portfolio": "Portfolio",
+    "notes": "Private notes",
+    "notesHint": "Only staff can see these.",
+    "saveNotes": "Save notes",
+    "deleteTitle": "Delete this application?",
+    "deleteText": "The application of {{name}} and its CV will be removed for good.",
+    "toast": {
+      "status": "Marked as {{status}}",
+      "notes": "Notes saved",
+      "deleted": "Application deleted"
+    },
+    "empty": "No applications yet",
+    "emptyHint": "Applications from the Join Us page will appear here.",
+    "noMatch": "No applications match",
+    "loadError": "Could not load the applications."
   }
 }

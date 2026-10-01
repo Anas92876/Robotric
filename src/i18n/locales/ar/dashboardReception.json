@@ -491,5 +491,81 @@
     "empty": "لا توجد رسائل بعد",
     "noMatch": "لا توجد رسائل مطابقة",
     "loadError": "تعذّر تحميل الرسائل."
+  },
+  "jobs": {
+    "title": "طلبات التوظيف",
+    "subtitle": "الطلبات المرسلة من صفحة انضم إلينا: راجعها، أو ادعُ للمقابلة، أو اقبل أو ارفض.",
+    "stats": {
+      "total": "كل الطلبات"
+    },
+    "status": {
+      "new": "جديد",
+      "reviewed": "تمت المراجعة",
+      "interview": "مقابلة",
+      "accepted": "مقبول",
+      "rejected": "مرفوض"
+    },
+    "experience": {
+      "none": "بدون خبرة",
+      "beginner": "مبتدئ",
+      "intermediate": "متوسط",
+      "professional": "محترف"
+    },
+    "availability": {
+      "full_time": "دوام كامل",
+      "part_time": "دوام جزئي",
+      "flexible": "مرن"
+    },
+    "gender": {
+      "male": "ذكر",
+      "female": "أنثى"
+    },
+    "field": {
+      "email": "البريد الإلكتروني",
+      "age": "العمر",
+      "location": "السكن",
+      "gender": "الجنس",
+      "experience": "الخبرة",
+      "availability": "التفرغ",
+      "skills": "المهارات",
+      "experienceDetails": "تفاصيل الخبرة",
+      "whyUs": "لماذا روبوتريك",
+      "additionalInfo": "معلومات إضافية"
+    },
+    "col": {
+      "applicant": "المتقدم",
+      "position": "الوظيفة",
+      "experience": "الخبرة",
+      "received": "تاريخ الاستلام",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    },
+    "actionsFor": "إجراءات {{name}}",
+    "menu": {
+      "open": "فتح",
+      "interview": "دعوة لمقابلة",
+      "accept": "قبول",
+      "reject": "رفض",
+      "cv": "تنزيل السيرة الذاتية",
+      "delete": "حذف"
+    },
+    "search": "ابحث بالاسم أو الهاتف أو البريد…",
+    "allPositions": "كل الوظائف",
+    "appliedFor": "تقدّم لوظيفة {{position}} · {{date}}",
+    "portfolio": "معرض الأعمال",
+    "notes": "ملاحظات خاصة",
+    "notesHint": "يراها الموظفون فقط.",
+    "saveNotes": "حفظ الملاحظات",
+    "deleteTitle": "حذف هذا الطلب؟",
+    "deleteText": "سيُحذف طلب {{name}} مع سيرته الذاتية نهائياً.",
+    "toast": {
+      "status": "تم التغيير إلى: {{status}}",
+      "notes": "تم حفظ الملاحظات",
+      "deleted": "تم حذف الطلب"
+    },
+    "empty": "لا توجد طلبات بعد",
+    "emptyHint": "ستظهر هنا الطلبات المرسلة من صفحة انضم إلينا.",
+    "noMatch": "لا توجد طلبات مطابقة",
+    "loadError": "تعذّر تحميل الطلبات."
   }
 }
