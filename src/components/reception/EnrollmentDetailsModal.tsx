@@ -163,6 +163,8 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
     const params = new URLSearchParams({
       tab: 'students',
       enrollStudentId: String(studentId),
+      enrollStudentName: enrollment?.student?.name ?? '',
+      enrollStudentEmail: enrollment?.student?.email ?? '',
     });
     onClose();
     navigate(`/reception/transport?${params.toString()}`);

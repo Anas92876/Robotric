@@ -217,7 +217,7 @@ export default function EnrollmentsPage() {
                 {
                   label: t('enrollments.menu.assignDriver'),
                   icon: <Bus />,
-                  onClick: () => navigate(`/reception/transport?${new URLSearchParams({ tab: 'students', enrollStudentId: String(e.student?._id ?? '') })}`),
+                  onClick: () => navigate(`/reception/transport?${new URLSearchParams({ tab: 'students', enrollStudentId: String(e.student?._id ?? ''), enrollStudentName: e.student?.name ?? '', enrollStudentEmail: e.student?.email ?? '' })}`),
                   hidden: !tr?.enabled || !assignment || assignment.assigned,
                 },
                 { label: t('enrollments.menu.receipt'), icon: <FileDown />, onClick: () => void downloadLatest(e), hidden: e.payment.paidAmount <= 0 && e.payment.totalAmount > 0 },
