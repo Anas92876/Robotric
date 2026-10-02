@@ -38,7 +38,7 @@ const NotFound = lazyImport(() => import("./pages/common/NotFound"));
 const StudentDashboard = lazyImport(() => import("./features/student/overview/StudentOverviewPage"));
 const StudentCourses = lazyImport(() => import("./features/student/courses/CoursesPage"));
 const StudentCourseDetails = lazyImport(() => import("./features/student/courses/CoursePage"));
-const StudentSessionDetails = lazyImport(() => import("./pages/student/StudentSessionDetails"));
+const StudentSessionDetails = lazyImport(() => import("./features/student/sessions/SessionPage"));
 const StudentModuleViewer = lazyImport(() => import("./pages/student/StudentModuleViewer"));
 const StudentQuiz = lazyImport(() => import("./pages/student/StudentQuiz"));
 const StudentAssignment = lazyImport(() => import("./pages/student/StudentAssignment"));

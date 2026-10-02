@@ -1,5 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
+import i18n from 'i18next';
 import { redirectToLogin } from './publicSite';
 
 // Define the shape of the error response from the API
@@ -99,7 +100,7 @@ const createApiClient = (): AxiosInstance => {
         if (typeof window !== 'undefined' && window.__ROBOTRICK_TOAST__) {
           window.__ROBOTRICK_TOAST__({
             type: 'error',
-            title: 'Error',
+            title: i18n.t('dashboardCommon:error', { defaultValue: 'Error' }),
             description: errorMessage,
           });
         }

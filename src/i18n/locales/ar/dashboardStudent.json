@@ -427,5 +427,35 @@
       "absent": "غائب",
       "excused": "معذور"
     }
+  },
+  "cls": {
+    "title": "الحصة",
+    "notFound": "هذه الحصة غير موجودة.",
+    "noAccess": "هذه الحصة ليست ضمن دوراتك.",
+    "loadError": "تعذّر تحميل هذه الحصة.",
+    "lockedTitle": "تُفتح هذه الحصة في يومها",
+    "days": "أيام",
+    "hours": "ساعات",
+    "minutes": "دقائق",
+    "noAttendance": "لم يُسجّل الحضور",
+    "video": "فيديو الحصة",
+    "videoError": "تعذّر تحميل الفيديو. حاول لاحقاً.",
+    "materials_zero": "المواد",
+    "materials_one": "المواد (1)",
+    "materials_two": "المواد (2)",
+    "materials_few": "المواد ({{count}})",
+    "materials_many": "المواد ({{count}})",
+    "materials_other": "المواد ({{count}})",
+    "noMaterials": "لا توجد مواد لهذه الحصة بعد.",
+    "view": "فتح",
+    "homework": "الواجبات",
+    "due": "التسليم {{date}}",
+    "handedIn": "سُلّم",
+    "scored": "{{score}} / {{max}}",
+    "toDo": "للإنجاز",
+    "evaluation": "تقييمك",
+    "noEvaluation": "لم يقيّم مدربك هذه الحصة بعد.",
+    "overall": "التقييم العام",
+    "notes": "ملاحظات المدرب"
   }
 }

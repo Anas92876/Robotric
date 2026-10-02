@@ -415,5 +415,31 @@
       "absent": "Absent",
       "excused": "Excused"
     }
+  },
+  "cls": {
+    "title": "Class",
+    "notFound": "This class does not exist.",
+    "noAccess": "This class is not in your courses.",
+    "loadError": "We couldn't load this class.",
+    "lockedTitle": "This class opens on its day",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "noAttendance": "Attendance not taken",
+    "video": "Class video",
+    "videoError": "The video couldn't load. Try again later.",
+    "materials_one": "Material ({{count}})",
+    "materials_other": "Materials ({{count}})",
+    "noMaterials": "No materials for this class yet.",
+    "view": "Open",
+    "homework": "Homework",
+    "due": "Due {{date}}",
+    "handedIn": "Handed in",
+    "scored": "{{score}} / {{max}}",
+    "toDo": "To do",
+    "evaluation": "Your evaluation",
+    "noEvaluation": "Your trainer has not evaluated this class yet.",
+    "overall": "Overall",
+    "notes": "Trainer's notes"
   }
 }
