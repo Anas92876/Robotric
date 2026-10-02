@@ -744,5 +744,40 @@
       "renamed": "PDF renamed",
       "deleted": "PDF removed"
     }
+  },
+  "doc": {
+    "title": "WRO documents",
+    "subtitle": "Check the papers students send for the World Robot Olympiad. Accept them, or ask for a new copy and say why.",
+    "waiting": "Waiting for review",
+    "accepted": "Accepted",
+    "rejected": "New copy asked",
+    "search": "Search students…",
+    "show": "Show",
+    "waitingTab": "Waiting",
+    "allTab": "All students",
+    "nothingWaiting": "Nothing is waiting for review.",
+    "noStudents": "No student has sent documents yet.",
+    "sentOf": "{{n}} of {{of}} sent",
+    "pick": "Choose a student to see their documents.",
+    "notSent": "Not sent yet",
+    "status": {
+      "pending": "Waiting",
+      "verified": "Accepted",
+      "rejected": "New copy asked"
+    },
+    "open": "Open",
+    "accept": "Accept",
+    "reject": "Ask for a new copy",
+    "undo": "Back to waiting",
+    "because": "Reason: {{note}}",
+    "reviewedBy": "Reviewed by {{name}} on {{date}}",
+    "rejectTitle": "Ask for a new copy",
+    "reason": "Reason",
+    "reasonHint": "The student sees this, e.g. \"The photo is blurry\".",
+    "toast": {
+      "verified": "Document accepted",
+      "rejected": "New copy asked for",
+      "pending": "Document back to waiting"
+    }
   }
 }

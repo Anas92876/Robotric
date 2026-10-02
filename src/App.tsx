@@ -113,7 +113,7 @@ const CLOTaskBuilder = lazyImport(() => import("./features/trainer/tasks/TaskBui
 const CLOTaskResults = lazyImport(() => import("./features/trainer/tasks/TaskSubmissionsPage"));
 const CLOGallery = lazyImport(() => import("./features/clo/gallery/GalleryPage"));
 const CLOTrainingContent = lazyImport(() => import("./pages/clo/CLOTrainingContent"));
-const CLOStudentDocuments = lazyImport(() => import("./pages/clo/CLOStudentDocuments"));
+const CLOStudentDocuments = lazyImport(() => import("./features/clo/documents/DocumentsPage"));
 
 // CTO pages
 const CTODashboard = lazyImport(() => import("./pages/cto/CTODashboard"));
