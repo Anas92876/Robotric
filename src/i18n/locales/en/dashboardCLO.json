@@ -623,5 +623,19 @@
     "toast": {
       "duplicated": "Copied as a draft"
     }
+  },
+  "gal": {
+    "title": "Gallery",
+    "subtitle": "Photos trainers shared from every group: class moments and student projects.",
+    "type": "Kind of photo",
+    "types": {
+      "all": "All",
+      "moment": "Moments",
+      "project": "Projects"
+    },
+    "count_one": "{{count}} photo",
+    "count_other": "{{count}} photos",
+    "none": "No photos here yet",
+    "noneHint": "Trainers and reception share photos from their groups."
   }
 }
