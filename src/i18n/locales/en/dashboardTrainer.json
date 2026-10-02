@@ -522,5 +522,23 @@
       "cancelled": "Class cancelled",
       "deleted": "Class deleted"
     }
+  },
+  "at": {
+    "title": "Attendance",
+    "pick": "Choose the class to take attendance for.",
+    "noClasses": "No classes to take attendance for yet.",
+    "taken": "Already taken — you can correct it",
+    "allPresent": "Everyone present",
+    "save": "Save attendance",
+    "saved": "Attendance saved",
+    "saveError": "Attendance couldn't be saved",
+    "present": "Present",
+    "late": "Late",
+    "absent": "Absent",
+    "unmarked": "Not marked",
+    "unsaved": "You have changes that are not saved yet.",
+    "statusFor": "Attendance of {{name}}",
+    "noteFor": "Note about {{name}}",
+    "notePlaceholder": "e.g. came with a parent, left early…"
   }
 }
