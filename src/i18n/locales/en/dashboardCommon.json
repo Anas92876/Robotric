@@ -652,5 +652,54 @@
       "extApproved": "More time approved",
       "extRejected": "Request rejected"
     }
+  },
+  "wh": {
+    "title": "Work hours",
+    "subtitle": "Who is paid by the hour, who is working now, and every clock-in to check or correct.",
+    "hourly": "Paid by the hour",
+    "workingNow": "Working now",
+    "inRange": "Hours in this period",
+    "people": "Staff",
+    "peopleHint": "Switch on for people paid by the hour; they get the clock-in button on My hours.",
+    "isHourly": "{{name}} is paid by the hour",
+    "hoursIn": "{{n}} h in this period",
+    "role": {
+      "admin": "Admin",
+      "reception": "Reception",
+      "clo": "Learning lead",
+      "cto": "Technical lead",
+      "trainer": "Trainer",
+      "engineer": "Engineer",
+      "social": "Social media",
+      "editor": "Editor",
+      "judge": "Judge"
+    },
+    "from": "From",
+    "to": "To",
+    "sessions": "Clock-ins",
+    "none": "No clock-ins in this period.",
+    "col": {
+      "person": "Person",
+      "day": "Day",
+      "time": "Time",
+      "length": "Length"
+    },
+    "h": "{{n}} h",
+    "now": "Working now",
+    "auto": "Closed automatically",
+    "delete": "Delete",
+    "deleteTitle": "Delete this clock-in?",
+    "deleteText": "Its hours are removed from the totals.",
+    "editTitle": "Correct this clock-in",
+    "in": "Clock-in",
+    "out": "Clock-out",
+    "outHint": "Leave empty if they are still working.",
+    "errOrder": "Clock-out must be after clock-in.",
+    "toast": {
+      "hourly": "{{name}} is now paid by the hour",
+      "notHourly": "{{name}} is no longer paid by the hour",
+      "saved": "Clock-in corrected",
+      "deleted": "Clock-in deleted"
+    }
   }
 }
