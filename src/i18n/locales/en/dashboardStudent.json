@@ -767,5 +767,18 @@
       "sent": "Request sent — reception will confirm it",
       "canceled": "Request canceled"
     }
+  },
+  "cert": {
+    "title": "Certificates",
+    "subtitle": "Certificates for the courses you finished — print them or share them.",
+    "none": "No certificates yet",
+    "noneHint": "When you finish a course, your certificate appears here.",
+    "loadError": "We couldn't load your certificates.",
+    "issued": "Issued {{date}}",
+    "hours_one": "{{count}} hour",
+    "hours_other": "{{count}} hours",
+    "pdf": "PDF to print",
+    "image": "Image to share",
+    "verify": "Check it on the website"
   }
 }

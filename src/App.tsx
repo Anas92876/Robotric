@@ -53,7 +53,7 @@ const StudentProjects = lazyImport(() => import("./features/student/projects/Pro
 const StudentProjectDetail = lazyImport(() => import("./features/student/projects/ProjectPage"));
 const StudentGallery = lazyImport(() => import("./pages/student/StudentGallery"));
 const StudentEvaluations = lazyImport(() => import("./features/student/evaluations/EvaluationsPage"));
-const StudentCertificates = lazyImport(() => import("./pages/student/StudentCertificates"));
+const StudentCertificates = lazyImport(() => import("./features/student/certificates/CertificatesPage"));
 const StudentDocuments = lazyImport(() => import("./pages/student/StudentDocuments"));
 const StudentMissionPlanner = lazyImport(() => import("./pages/student/StudentMissionPlanner"));
 
