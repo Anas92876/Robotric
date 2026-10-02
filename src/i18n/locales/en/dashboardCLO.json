@@ -487,5 +487,28 @@
       "added_other": "{{count}} PDFs added to the class",
       "removed": "PDF removed from the class"
     }
+  },
+  "att": {
+    "title": "Attendance",
+    "subtitle": "What trainers marked in each class. Open a class to see who came.",
+    "classes": "Classes marked",
+    "rate": "Average attendance",
+    "allGroups": "All groups",
+    "status": {
+      "present": "Present",
+      "late": "Late",
+      "absent": "Absent"
+    },
+    "col": {
+      "class": "Class",
+      "when": "Date",
+      "counts": "Present · late · absent",
+      "rate": "Attendance"
+    },
+    "none": "No attendance here yet.",
+    "noneHint": "Attendance appears once trainers mark it in class.",
+    "range": "{{from}}–{{to}} of {{total}}",
+    "prev": "Previous",
+    "next": "Next"
   }
 }

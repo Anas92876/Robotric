@@ -79,8 +79,8 @@ export default function SessionPage() {
         <div className="space-y-3">
           {s.status !== 'cancelled' && (
             <>
-              <Link to={`${r.base}/attendance?session=${s._id}`} className="flex items-center gap-3 rounded-card border border-line bg-paper p-4 hover:border-ink focus-visible:focus-ring">
-                <ClipboardCheck className="size-5 text-ink-3" aria-hidden /><span className="flex-1 font-medium text-ink">{t('sp.attendance')}</span>
+              <Link to={r.role === 'clo' ? `/clo/attendance${s.groupId ? `?group=${s.groupId._id}` : ''}` : `/trainer/attendance?session=${s._id}`} className="flex items-center gap-3 rounded-card border border-line bg-paper p-4 hover:border-ink focus-visible:focus-ring">
+                <ClipboardCheck className="size-5 text-ink-3" aria-hidden /><span className="flex-1 font-medium text-ink">{r.role === 'clo' ? t('dashboardCLO:att.title') : t('sp.attendance')}</span>
               </Link>
               <Link to={r.role === 'clo' ? `/clo/evaluations?session=${s._id}` : `/trainer/session/${s._id}/evaluations`} className="flex items-center gap-3 rounded-card border border-line bg-paper p-4 hover:border-ink focus-visible:focus-ring">
                 <Star className="size-5 text-ink-3" aria-hidden /><span className="flex-1 font-medium text-ink">{t('sp.evaluate')}</span>
