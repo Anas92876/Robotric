@@ -623,5 +623,29 @@
       "resumed": "عادت المعايير للاستخدام",
       "deleted": "حُذفت المعايير"
     }
+  },
+  "ctk": {
+    "subtitle": "كل المهام المعطاة للطلاب — منك أو من المدربين.",
+    "classes": "الحصص",
+    "classesHint": "تذهب المهمة إلى طلاب مجموعات هذه الحصص وتظهر في صفحة كل حصة.",
+    "pickedN_zero": "لم تُختر حصص",
+    "pickedN_one": "حصة واحدة مختارة",
+    "pickedN_two": "حصتان مختارتان",
+    "pickedN_few": "{{count}} حصص مختارة",
+    "pickedN_many": "{{count}} حصة مختارة",
+    "pickedN_other": "{{count}} حصة مختارة",
+    "noClasses": "لا توجد حصص.",
+    "classN": "الحصة {{n}}",
+    "errClasses": "اختر حصة واحدة على الأقل.",
+    "col": {
+      "classes": "الحصص"
+    },
+    "results": "النتائج",
+    "duplicate": "نسخ",
+    "allStatuses": "كل الحالات",
+    "closed": "مغلقة",
+    "toast": {
+      "duplicated": "نُسخت كمسودة"
+    }
   }
 }

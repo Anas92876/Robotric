@@ -603,5 +603,25 @@
       "resumed": "Criteria in use again",
       "deleted": "Criteria deleted"
     }
+  },
+  "ctk": {
+    "subtitle": "Every task given to students — by you or by trainers.",
+    "classes": "Classes",
+    "classesHint": "The task goes to the students of these classes' groups and shows on each class page.",
+    "pickedN_one": "{{count}} class chosen",
+    "pickedN_other": "{{count}} classes chosen",
+    "noClasses": "No classes found.",
+    "classN": "Class {{n}}",
+    "errClasses": "Choose at least one class.",
+    "col": {
+      "classes": "Classes"
+    },
+    "results": "Results",
+    "duplicate": "Duplicate",
+    "allStatuses": "All statuses",
+    "closed": "Closed",
+    "toast": {
+      "duplicated": "Copied as a draft"
+    }
   }
 }

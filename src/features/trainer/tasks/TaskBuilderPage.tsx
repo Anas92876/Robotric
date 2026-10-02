@@ -7,14 +7,15 @@ import { useToast } from '../../../components/ui/Toast';
 import { Button, Field, PageHeader, Panel, PanelTitle, SelectInput, TextArea, TextInput } from '../../../ui';
 import { QuestionsEditor, questionProblems, type QuestionDraft } from '../../common/taskBuilder/QuestionsEditor';
 import { useTrainerGroupOptions } from '../sessions/api';
-import { idOf, useTaskDetails, useTaskMutations } from './api';
+import { ClassPicker } from '../../clo/tasks/ClassPicker';
+import { idOf, useTaskDetails, useTaskMutations, useTaskRole } from './api';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 /** ISO time as the value of a local date-time input. */
 const toLocal = (iso: string) => { const d = new Date(iso); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`; };
 const inAWeek = () => { const d = new Date(Date.now() + 7 * 864e5); d.setHours(20, 0, 0, 0); return toLocal(d.toISOString()); };
 
-/** New task or edit a task: details, deadline, questions; saved as a draft or published to the group. */
+/** New task or edit a task: details, deadline, questions; saved as a draft or published. The trainer picks a group, the CLO picks classes. */
 export default function TaskBuilderPage() {
   const { taskId } = useParams();
   const [params] = useSearchParams();
@@ -23,6 +24,8 @@ export default function TaskBuilderPage() {
   const { t: tc } = useTranslation('dashboardCommon');
   const navigate = useNavigate();
   const toast = useToast();
+  const r = useTaskRole();
+  const clo = r.role === 'clo';
   const groups = useTrainerGroupOptions();
   const current = useTaskDetails(taskId ?? '');
   const { save } = useTaskMutations();
@@ -32,6 +35,7 @@ export default function TaskBuilderPage() {
   const [description, setDescription] = useState('');
   const [descriptionAr, setDescriptionAr] = useState('');
   const [groupId, setGroupId] = useState(params.get('group') ?? '');
+  const [sessionIds, setSessionIds] = useState<string[]>(() => (params.get('session') ? [params.get('session')!] : []));
   const [deadline, setDeadline] = useState(inAWeek);
   const [maxScore, setMaxScore] = useState(100);
   const [late, setLate] = useState(false);
@@ -47,6 +51,7 @@ export default function TaskBuilderPage() {
     setDescription(task.description);
     setDescriptionAr(task.descriptionAr ?? '');
     setGroupId(idOf(task.groupId));
+    setSessionIds((task.sessionIds ?? []).map(idOf).filter(Boolean));
     setDeadline(toLocal(task.deadline));
     setMaxScore(task.maxScore);
     setLate(task.allowLateSubmission);
@@ -54,12 +59,14 @@ export default function TaskBuilderPage() {
   }, [task]);
 
   const session = params.get('session');
-  const back = editing ? { to: task?.status === 'draft' ? `/trainer/tasks?group=${groupId}` : `/trainer/tasks/${taskId}/submissions`, label: task?.title ?? t('tk.title') } : session ? { to: `/trainer/sessions/${session}`, label: t('tk.backClass') } : { to: `/trainer/tasks${groupId ? `?group=${groupId}` : ''}`, label: t('tk.title') };
+  const listPath = clo ? '/clo/tasks' : `/trainer/tasks${groupId ? `?group=${groupId}` : ''}`;
+  const resultsPath = (id: string) => (clo ? `/clo/tasks/${id}/results` : `/trainer/tasks/${id}/submissions`);
+  const back = editing ? { to: task?.status === 'draft' ? listPath : resultsPath(taskId!), label: task?.title ?? t('tk.title') } : session ? { to: `${r.base}/sessions/${session}`, label: t('tk.backClass') } : { to: listPath, label: t('tk.title') };
 
   const submit = (status: 'draft' | 'open') => (e?: FormEvent) => {
     e?.preventDefault();
     if (!title.trim()) return setError(t('tb.errTitle'));
-    if (!groupId) return setError(t('tb.errGroup'));
+    if (clo ? !sessionIds.length : !groupId) return setError(clo ? t('dashboardCLO:ctk.errClasses') : t('tb.errGroup'));
     if (!description.trim()) return setError(t('tb.errDescription'));
     if (!deadline) return setError(t('tb.errDeadline'));
     if (status === 'open') {
@@ -72,7 +79,7 @@ export default function TaskBuilderPage() {
       {
         id: taskId,
         d: {
-          ...(editing ? {} : { groupId }),
+          ...(clo ? { sessionIds } : editing ? {} : { groupId }),
           title: title.trim(), titleAr: titleAr.trim(), description: description.trim(), descriptionAr: descriptionAr.trim(),
           deadline: new Date(deadline).toISOString(), maxScore, allowLateSubmission: late,
           questions: questions.map((q, i) => ({ ...q, order: i, options: q.answerType === 'mcq' ? q.options.map((o) => o.trim()) : [], correctAnswers: q.answerType === 'mcq' ? q.correctAnswers : [] })),
@@ -82,7 +89,7 @@ export default function TaskBuilderPage() {
       {
         onSuccess: (saved) => {
           toast.success(t(status === 'draft' && draft ? 'tb.toast.draft' : editing && !draft ? 'tb.toast.saved' : 'tb.toast.published'));
-          navigate(status === 'open' || !draft ? `/trainer/tasks/${saved?._id ?? taskId}/submissions` : `/trainer/tasks?group=${groupId}`);
+          navigate(status === 'open' || !draft ? resultsPath(saved?._id ?? taskId!) : listPath);
         },
         onError: (err) => setError(readApiError(err).message),
       },
@@ -105,6 +112,13 @@ export default function TaskBuilderPage() {
               <Field label={t('tb.descriptionAr')}>{(c) => <TextArea {...c} rows={3} value={descriptionAr} onChange={(e) => setDescriptionAr(e.target.value)} maxLength={5000} dir="rtl" />}</Field>
             </div>
           </Panel>
+          {clo && (
+            <Panel>
+              <PanelTitle title={t('dashboardCLO:ctk.classes')} />
+              <p className="-mt-2 mb-4 text-sm text-ink-3">{t('dashboardCLO:ctk.classesHint')}</p>
+              <ClassPicker value={sessionIds} onChange={setSessionIds} />
+            </Panel>
+          )}
           <Panel>
             <PanelTitle title={t('tb.questions')} />
             <p className="-mt-2 mb-4 text-sm text-ink-3">{t('tb.questionsHint')}</p>
@@ -116,14 +130,16 @@ export default function TaskBuilderPage() {
           <Panel>
             <PanelTitle title={t('tb.settings')} />
             <div className="space-y-4">
-              <Field label={t('tk.group')} required hint={editing ? t('sf.groupLocked') : undefined}>
-                {(c) => (
-                  <SelectInput {...c} value={groupId} onChange={(e) => setGroupId(e.target.value)} disabled={editing}>
-                    <option value="">{t('sf.pickGroup')}</option>
-                    {(groups.data ?? []).filter((g) => g.status === 'active' || g._id === groupId).map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}
-                  </SelectInput>
-                )}
-              </Field>
+              {!clo && (
+                <Field label={t('tk.group')} required hint={editing ? t('sf.groupLocked') : undefined}>
+                  {(c) => (
+                    <SelectInput {...c} value={groupId} onChange={(e) => setGroupId(e.target.value)} disabled={editing}>
+                      <option value="">{t('sf.pickGroup')}</option>
+                      {(groups.data ?? []).filter((g) => g.status === 'active' || g._id === groupId).map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}
+                    </SelectInput>
+                  )}
+                </Field>
+              )}
               <Field label={t('tk.col.deadline')} required>{(c) => <TextInput {...c} type="datetime-local" value={deadline} onChange={(e) => setDeadline(e.target.value)} dir="ltr" />}</Field>
               <Field label={t('tb.maxScore')}>{(c) => <TextInput {...c} type="number" min={1} max={1000} value={maxScore} onChange={(e) => setMaxScore(Number(e.target.value) || 0)} />}</Field>
               <label className="flex items-start gap-3 text-sm text-ink">
