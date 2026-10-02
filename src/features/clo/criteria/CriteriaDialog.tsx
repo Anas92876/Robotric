@@ -6,7 +6,7 @@ import { api } from '../../../lib/api';
 import { readApiError } from '../../../app/apiError';
 import { useToast } from '../../../components/ui/Toast';
 import { cn } from '../../../lib/utils';
-import { Button, Dialog, Field, SelectInput, TextArea, TextInput } from '../../../ui';
+import { Button, Dialog, Field, SelectInput, TextInput } from '../../../ui';
 import { useCloCourseOptions, useCloGroups } from '../api';
 
 export type ParamType = 'rating' | 'percentage' | 'grade' | 'boolean' | 'text';
