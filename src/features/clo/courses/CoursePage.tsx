@@ -71,7 +71,7 @@ export default function CoursePage() {
   const back = { to: '/clo/courses', label: t('crs.listTitle') };
 
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('crs.one')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).message} /></Panel></div>;
-  if (!c || !q.data) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!c || !q.data) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
 
   const s = q.data.stats;
   const groups = q.data.groups;

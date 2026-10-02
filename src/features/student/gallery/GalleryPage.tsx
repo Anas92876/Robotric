@@ -49,7 +49,7 @@ export default function GalleryPage() {
           ))}
         </div>
         {list.length > 1 && (
-          <SelectInput aria-label={t('tk.course')} value={course} onChange={(e) => { setCourse(e.target.value); setPage(1); }} className="w-auto min-w-48">
+          <SelectInput aria-label={t('tk.course')} value={course} onChange={(e) => { setCourse(e.target.value); setPage(1); }} className="w-full sm:w-auto sm:min-w-48">
             <option value="">{t('courses.all')}</option>
             {list.map((c) => <option key={c.course._id} value={c.course._id}>{c.course.title}</option>)}
           </SelectInput>

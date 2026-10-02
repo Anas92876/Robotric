@@ -163,9 +163,33 @@ function RecentEnrollmentsTable({ rows, loading }: { rows: RecentEnrollment[]; l
     );
   if (rows.length === 0) return <p className="py-6 text-center text-sm text-ink-4">{t('noRecentEnrollments')}</p>;
 
+  const status = (r: RecentEnrollment) => (
+    <span className={cn('inline-block rounded-input px-3 py-1.5 text-[11px] rtl:text-xs font-semibold uppercase tracking-wide', STATUS_STYLE[r.status] ?? 'bg-rail text-ink-2')}>
+      {t(`overview.statuses.${r.status}`, r.status)}
+    </span>
+  );
   return (
-    <div className="-mx-2 overflow-x-auto">
-      <table className="w-full min-w-[640px] text-start">
+    <>
+    {/* Phones: one card per enrollment */}
+    <ul className="divide-y divide-line md:hidden">
+      {rows.map((r) => {
+        const name = r.student?.name ?? '—';
+        return (
+          <li key={r._id}>
+            <button type="button" onClick={() => navigate('/reception/enrollments')} className="flex w-full items-start gap-3 py-3 text-start focus-visible:focus-ring">
+              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-tint-sage font-semibold text-ink">{name.charAt(0).toUpperCase()}</span>
+              <span className="min-w-0 flex-1">
+                <span className="flex items-start justify-between gap-2"><span className="truncate font-medium text-ink" dir="auto">{name}</span>{status(r)}</span>
+                <span className="block truncate text-sm text-ink-2" dir="auto">{r.course?.title ?? '—'}</span>
+                <span className="mt-0.5 block text-xs tabular-nums text-ink-4">{f.date(r.enrolledAt)}{r.payment ? <> · <span className="font-semibold text-ink-2">{f.money(r.payment.paidAmount)}</span> / {f.money(r.payment.totalAmount)}</> : null}</span>
+              </span>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+    <div className="-mx-2 hidden overflow-x-auto md:block">
+      <table className="w-full text-start">
         <thead>
           <tr className="text-sm text-ink-3">
             <th className="px-2 pb-3 text-start font-medium">{t('overview.student')}</th>
@@ -211,6 +235,7 @@ function RecentEnrollmentsTable({ rows, loading }: { rows: RecentEnrollment[]; l
         </tbody>
       </table>
     </div>
+    </>
   );
 }
 

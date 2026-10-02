@@ -14,7 +14,7 @@ interface PageHeaderProps {
 /** Title block at the top of every page. */
 export function PageHeader({ title, description, actions, back }: PageHeaderProps) {
   return (
-    <header className="flex flex-wrap items-end justify-between gap-4">
+    <header className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
       <div className="min-w-0">
         {back && (
           <Link to={back.to} className="mb-2 inline-flex items-center gap-1.5 rounded-md text-sm font-medium text-ink-3 hover:text-ink focus-visible:focus-ring">
@@ -22,10 +22,10 @@ export function PageHeader({ title, description, actions, back }: PageHeaderProp
             {back.label}
           </Link>
         )}
-        <h1 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl" dir="auto">{title}</h1>
-        {description && <p className="mt-1 text-ink-3" dir="auto">{description}</p>}
+        <h1 className="text-xl font-semibold tracking-tight text-ink [overflow-wrap:anywhere] sm:text-2xl lg:text-3xl" dir="auto">{title}</h1>
+        {description && <p className="mt-1 text-sm text-ink-3 sm:text-base" dir="auto">{description}</p>}
       </div>
-      {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
+      {actions && <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">{actions}</div>}
     </header>
   );
 }

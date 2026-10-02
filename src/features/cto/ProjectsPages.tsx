@@ -95,7 +95,7 @@ export function CtoProjectPage() {
   const back = parent ? { to: `/cto-internal/projects/${parent._id}`, label: parent.name } : { to: '/cto-internal/projects', label: t('work.projectsTitle') };
 
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('work.project')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).message} /></Panel></div>;
-  if (!p) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!p) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
   const c = q.data?.taskCounts;
 
   return (

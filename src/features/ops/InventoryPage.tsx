@@ -140,8 +140,8 @@ export default function InventoryPage() {
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
         <Panel className="min-w-0 p-0 sm:p-0">
           <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-            <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('inv.search')} /></div>
-            {categories.length > 1 && <SelectInput aria-label={t('inv.category')} value={category} onChange={(e) => setCategory(e.target.value)} className="w-auto min-w-40"><option value="">{t('inv.allCategories')}</option>{categories.map((c) => <option key={c} value={c}>{c}</option>)}</SelectInput>}
+            <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('inv.search')} /></div>
+            {categories.length > 1 && <SelectInput aria-label={t('inv.category')} value={category} onChange={(e) => setCategory(e.target.value)} className="w-full sm:w-auto sm:min-w-40"><option value="">{t('inv.allCategories')}</option>{categories.map((c) => <option key={c} value={c}>{c}</option>)}</SelectInput>}
           </div>
           {parts.isError ? <EmptyState icon={<Boxes />} title={readApiError(parts.error).message} /> : <DataTable label={t('inv.title')} columns={columns} rows={rows} rowKey={(p) => p._id} loading={parts.isLoading} empty={<EmptyState icon={<Boxes />} title={t('inv.none')} />} />}
         </Panel>

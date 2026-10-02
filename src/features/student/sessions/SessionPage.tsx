@@ -120,7 +120,7 @@ export default function SessionPage() {
       </div>
     );
   }
-  if (q.isLoading || !s) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
+  if (q.isLoading || !s) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
 
   if ('locked' in s) {
     return (

@@ -52,9 +52,9 @@ export default function SessionsPage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('ses.search')} /></div>
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('ses.search')} /></div>
           {groups.length > 1 && (
-            <SelectInput aria-label={t('grp.groups')} value={group} onChange={(e) => setGroup(e.target.value)} className="w-auto min-w-44">
+            <SelectInput aria-label={t('grp.groups')} value={group} onChange={(e) => setGroup(e.target.value)} className="w-full sm:w-auto sm:min-w-44">
               <option value="">{t('ses.allGroups')}</option>
               {groups.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
             </SelectInput>

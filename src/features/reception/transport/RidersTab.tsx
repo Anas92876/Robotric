@@ -96,10 +96,10 @@ export function RidersTab({ riders, drivers, loading, emptyAction }: Props) {
   return (
     <Panel className="p-0 sm:p-0">
       <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-        <div className="min-w-56 flex-1">
+        <div className="w-full flex-1 sm:w-auto sm:min-w-56">
           <SearchInput value={search} onChange={setSearch} placeholder={t('transport.searchRiders')} />
         </div>
-        <SelectInput aria-label={t('transport.col.driver')} value={driver} onChange={(e) => setDriver(e.target.value)} className="w-auto min-w-44">
+        <SelectInput aria-label={t('transport.col.driver')} value={driver} onChange={(e) => setDriver(e.target.value)} className="w-full sm:w-auto sm:min-w-44">
           <option value="">{t('transport.allDrivers')}</option>
           {drivers.map((d) => (
             <option key={d._id} value={d._id}>

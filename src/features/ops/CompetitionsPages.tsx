@@ -124,7 +124,7 @@ export function TeamsPage() {
       <PageHeader title={t('team.title')} description={t('team.subtitle')} actions={<Button icon={<Plus />} onClick={() => setForm({ x: null })}>{t('team.new')}</Button>} />
       <Panel className="p-0 sm:p-0">
         <div className="border-b border-line p-4">
-          <SelectInput aria-label={t('cmp.one')} value={comp} onChange={(e) => setParams(e.target.value ? { competition: e.target.value } : {})} className="w-auto min-w-56"><option value="">{t('team.allComps')}</option>{(comps.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}</SelectInput>
+          <SelectInput aria-label={t('cmp.one')} value={comp} onChange={(e) => setParams(e.target.value ? { competition: e.target.value } : {})} className="w-full sm:w-auto sm:min-w-56"><option value="">{t('team.allComps')}</option>{(comps.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}</SelectInput>
         </div>
         {teams.isError ? <EmptyState icon={<Users />} title={readApiError(teams.error).message} /> : <DataTable label={t('team.title')} columns={columns} rows={rows} rowKey={(x) => x._id} loading={teams.isLoading} empty={<EmptyState icon={<Users />} title={t('team.none')} />} />}
       </Panel>

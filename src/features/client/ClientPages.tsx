@@ -120,12 +120,12 @@ export function ClientRequestsPage() {
       <PageHeader title={t('cl.requestsTitle')} description={t('cl.requestsText')} actions={(projects.data?.length ?? 0) > 0 ? <Button icon={<Plus />} onClick={() => setAsking(true)}>{t('cl.new')}</Button> : undefined} />
       <Panel>
         <div className="mb-3 flex flex-wrap gap-3">
-          <SelectInput aria-label={t('cl.statusLabel')} value={status} onChange={(e) => setStatus(e.target.value)} className="w-auto min-w-44">
+          <SelectInput aria-label={t('cl.statusLabel')} value={status} onChange={(e) => setStatus(e.target.value)} className="w-full sm:w-auto sm:min-w-44">
             <option value="">{t('cl.allStatuses')}</option>
             {(['pending_review', 'in_progress', 'done', 'declined'] as const).map((s) => <option key={s} value={s}>{t(`cl.status.${s}`)}</option>)}
           </SelectInput>
           {(projects.data?.length ?? 0) > 1 && (
-            <SelectInput aria-label={t('cl.project')} value={project} onChange={(e) => setProject(e.target.value)} className="w-auto min-w-44"><option value="">{t('cl.allProjects')}</option>{projects.data!.map((p) => <option key={p._id} value={p._id}>{p.name}</option>)}</SelectInput>
+            <SelectInput aria-label={t('cl.project')} value={project} onChange={(e) => setProject(e.target.value)} className="w-full sm:w-auto sm:min-w-44"><option value="">{t('cl.allProjects')}</option>{projects.data!.map((p) => <option key={p._id} value={p._id}>{p.name}</option>)}</SelectInput>
           )}
         </div>
         {requests.isError ? <EmptyState icon={<Inbox />} title={readApiError(requests.error).message} /> : requests.isLoading ? <div className="h-28 animate-pulse rounded-card bg-rail" /> : rows.length === 0 ? <EmptyState icon={<Inbox />} title={t('cl.noRequests')} /> : <RequestList items={rows} showProject={(projects.data?.length ?? 0) > 1} />}
@@ -145,7 +145,7 @@ export function ClientProjectPage() {
   const p = projects.data?.find((x) => x._id === id);
   const mine = (requests.data ?? []).filter((r) => projectIdOf(r) === id).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   const back = { to: '/client/dashboard', label: t('cl.home') };
-  if (projects.isLoading) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-60 animate-pulse rounded-panel bg-rail" /></div>;
+  if (projects.isLoading) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-60 animate-pulse rounded-panel bg-rail" /></div>;
   if (!p) return <div className="space-y-5"><PageHeader back={back} title={t('cl.project')} /><Panel><EmptyState icon={<AlertCircle />} title={t('cl.notFound')} /></Panel></div>;
   return (
     <div className="space-y-5">
@@ -177,7 +177,7 @@ export function ClientRequestPage() {
   const r = q.data;
   const back = { to: '/client/tasks', label: t('cl.requestsTitle') };
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('cl.one')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).message} /></Panel></div>;
-  if (!r) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!r) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
   const team = r.assignedTo?.map((a) => a.name).join(i18n.language === 'ar' ? '، ' : ', ') ?? '';
   return (
     <div className="space-y-5">

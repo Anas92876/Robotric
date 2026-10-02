@@ -155,7 +155,7 @@ export default function TaskPage() {
       </div>
     );
   }
-  if (!q.data) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-64 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!q.data) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-64 animate-pulse rounded-panel bg-rail" /></div>;
   if ('locked' in q.data) {
     return (
       <div className="space-y-5">
@@ -203,7 +203,7 @@ export default function TaskPage() {
             <p className="text-sm text-frost/70">{t('tsk.yourGrade')}</p>
             <p className="text-4xl font-bold tabular-nums text-glow">{sub.score ?? 0}<span className="text-lg text-frost/60"> / {task.maxScore}</span></p>
           </div>
-          {sub.feedback && <p className="min-w-56 flex-1 whitespace-pre-line rounded-card bg-white/10 p-4 text-sm text-frost/90" dir="auto">{sub.feedback}</p>}
+          {sub.feedback && <p className="w-full flex-1 sm:w-auto sm:min-w-56 whitespace-pre-line rounded-card bg-white/10 p-4 text-sm text-frost/90" dir="auto">{sub.feedback}</p>}
         </section>
       )}
 

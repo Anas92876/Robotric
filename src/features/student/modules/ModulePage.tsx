@@ -61,7 +61,7 @@ export default function ModulePage() {
       </div>
     );
   }
-  if (!q.data) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-64 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!q.data) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-64 animate-pulse rounded-panel bg-rail" /></div>;
 
   const m = q.data.module;
   const done = q.data.progress?.status === 'completed' || complete.isSuccess;

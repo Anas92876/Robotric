@@ -98,7 +98,7 @@ export function TripsTab({ trips, loading, filters, onFilters, emptyAction }: Pr
     <Panel className="p-0 sm:p-0">
       <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
         <TextInput type="date" aria-label={t('transport.trip.filterDate')} value={filters.date} onChange={(e) => onFilters({ ...filters, date: e.target.value })} className="h-10 w-auto" />
-        <SelectInput aria-label={t('transport.col.status')} value={filters.status} onChange={(e) => onFilters({ ...filters, status: e.target.value as TripFilters['status'] })} className="h-10 w-auto min-w-40">
+        <SelectInput aria-label={t('transport.col.status')} value={filters.status} onChange={(e) => onFilters({ ...filters, status: e.target.value as TripFilters['status'] })} className="h-10 w-full sm:w-auto sm:min-w-40">
           <option value="">{t('enrollments.anyStatus')}</option>
           {(['scheduled', 'in_travel', 'completed', 'cancelled'] as const).map((s) => (
             <option key={s} value={s}>

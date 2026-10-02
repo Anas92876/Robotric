@@ -81,11 +81,11 @@ export default function AttendancePage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setFilter('course', e.target.value)} className="w-auto min-w-48">
+          <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setFilter('course', e.target.value)} className="w-full sm:w-auto sm:min-w-48">
             <option value="">{t('gr.allCourses')}</option>
             {(courses.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}
           </SelectInput>
-          <SelectInput aria-label={t('gr.one')} value={group} onChange={(e) => setFilter('group', e.target.value)} className="w-auto min-w-48">
+          <SelectInput aria-label={t('gr.one')} value={group} onChange={(e) => setFilter('group', e.target.value)} className="w-full sm:w-auto sm:min-w-48">
             <option value="">{t('att.allGroups')}</option>
             {courseGroups.map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}
           </SelectInput>

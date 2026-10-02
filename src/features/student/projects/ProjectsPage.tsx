@@ -106,7 +106,7 @@ export function ProjectPage() {
 
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('pj.one')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).status === 404 ? t('pj.notFound') : t('pj.loadError')} /></Panel></div>;
   const p = q.data;
-  if (!p) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!p) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
 
   const imgs = [...p.images].sort((a, b) => a.order - b.order).filter((i) => i.cloudinaryUrl);
   const owner = ownerOf(p);

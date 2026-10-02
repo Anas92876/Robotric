@@ -280,10 +280,10 @@ export default function EnrollmentsPage() {
         <Panel className="p-0 sm:p-0">
           <div className="space-y-3 border-b border-line p-4">
             <div className="flex flex-wrap items-center gap-3">
-              <div className="min-w-56 flex-1">
+              <div className="w-full flex-1 sm:w-auto sm:min-w-56">
                 <SearchInput value={filters.search} onChange={(search) => patch({ search })} placeholder={t('enrollments.search')} />
               </div>
-              <SelectInput aria-label={t('enrollments.col.course')} value={filters.course} onChange={(e) => patch({ course: e.target.value })} className="w-auto min-w-48">
+              <SelectInput aria-label={t('enrollments.col.course')} value={filters.course} onChange={(e) => patch({ course: e.target.value })} className="w-full sm:w-auto sm:min-w-48">
                 <option value="">{t('enrollments.allCourses')}</option>
                 {(courses.data ?? []).map((c) => (
                   <option key={c._id} value={c._id}>

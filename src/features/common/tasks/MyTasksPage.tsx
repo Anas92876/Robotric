@@ -124,10 +124,10 @@ export default function MyTasksPage() {
 
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1">
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56">
             <SearchInput value={search} onChange={setSearch} placeholder={t('myTasks.search')} />
           </div>
-          <SelectInput aria-label={t('myTasks.col.priority')} value={priority} onChange={(e) => setPriority(e.target.value)} className="w-auto min-w-40">
+          <SelectInput aria-label={t('myTasks.col.priority')} value={priority} onChange={(e) => setPriority(e.target.value)} className="w-full sm:w-auto sm:min-w-40">
             <option value="">{t('myTasks.anyPriority')}</option>
             {[1, 2, 3].map((p) => (
               <option key={p} value={p}>
@@ -136,7 +136,7 @@ export default function MyTasksPage() {
             ))}
           </SelectInput>
           {(projects.data?.length ?? 0) > 0 && (
-            <SelectInput aria-label={t('myTasks.project')} value={project} onChange={(e) => setProject(e.target.value)} className="w-auto min-w-40">
+            <SelectInput aria-label={t('myTasks.project')} value={project} onChange={(e) => setProject(e.target.value)} className="w-full sm:w-auto sm:min-w-40">
               <option value="">{t('myTasks.anyProject')}</option>
               {projects.data!.map((p) => (
                 <option key={p._id} value={p._id}>

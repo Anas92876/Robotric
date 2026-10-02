@@ -23,7 +23,7 @@ export function AppTopbar({ sections, user, onSignOut, onMenu }: AppTopbarProps)
 
   return (
     <header className="sticky top-0 z-20 bg-paper/95 backdrop-blur supports-[backdrop-filter]:bg-paper/80">
-      <div className="flex h-20 items-center gap-3 px-4 sm:gap-5 sm:px-6 lg:px-8">
+      <div className="flex h-16 items-center gap-2.5 px-4 sm:h-20 sm:gap-5 sm:px-6 lg:px-8">
         <button type="button" onClick={onMenu} aria-label={t('shell.openMenu')} className="grid size-11 shrink-0 place-items-center rounded-full bg-rail text-ink hover:bg-tint-sand focus-visible:focus-ring lg:hidden">
           <Menu className="size-5" />
         </button>

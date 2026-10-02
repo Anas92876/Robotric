@@ -46,7 +46,7 @@ export default function GalleryPage() {
       </div>
       <Panel className="flex flex-wrap items-center gap-3 py-4 sm:py-4">
         <label htmlFor="gal-group" className="text-sm font-medium text-ink">{t('tk.group')}</label>
-        <SelectInput id="gal-group" value={groupId} onChange={(e) => { setParams({ group: e.target.value }); setType('all'); }} className="w-auto min-w-52">
+        <SelectInput id="gal-group" value={groupId} onChange={(e) => { setParams({ group: e.target.value }); setType('all'); }} className="w-full sm:w-auto sm:min-w-52">
           {!options.length && <option value="">{t('tk.noGroups')}</option>}
           {options.map((g) => <option key={g._id} value={g._id}>{g.name}{g.courseId?.title ? ` — ${g.courseId.title}` : ''}</option>)}
         </SelectInput>

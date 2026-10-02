@@ -48,10 +48,10 @@ export default function CtoTasksPage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('work.searchTasks')} /></div>
-          <SelectInput aria-label={t('work.project')} value={project} onChange={(e) => setProject(e.target.value)} className="w-auto min-w-40"><option value="">{t('work.allProjects')}</option>{(projects.data ?? []).filter((p) => !p.parentProject).map((p) => <option key={p._id} value={p._id}>{p.name}</option>)}</SelectInput>
-          <SelectInput aria-label={t('work.assignees')} value={person} onChange={(e) => setPerson(e.target.value)} className="w-auto min-w-40"><option value="">{t('work.everyone')}</option>{(staff.data ?? []).map((p) => <option key={p._id} value={p._id}>{p.name}</option>)}</SelectInput>
-          <SelectInput aria-label={t('work.priority')} value={priority} onChange={(e) => setPriority(e.target.value)} className="w-auto min-w-32"><option value="">{t('work.anyPriority')}</option>{[1, 2, 3].map((p) => <option key={p} value={p}>{t(`myTasks.priority.${p}`)}</option>)}</SelectInput>
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('work.searchTasks')} /></div>
+          <SelectInput aria-label={t('work.project')} value={project} onChange={(e) => setProject(e.target.value)} className="w-full sm:w-auto sm:min-w-40"><option value="">{t('work.allProjects')}</option>{(projects.data ?? []).filter((p) => !p.parentProject).map((p) => <option key={p._id} value={p._id}>{p.name}</option>)}</SelectInput>
+          <SelectInput aria-label={t('work.assignees')} value={person} onChange={(e) => setPerson(e.target.value)} className="w-full sm:w-auto sm:min-w-40"><option value="">{t('work.everyone')}</option>{(staff.data ?? []).map((p) => <option key={p._id} value={p._id}>{p.name}</option>)}</SelectInput>
+          <SelectInput aria-label={t('work.priority')} value={priority} onChange={(e) => setPriority(e.target.value)} className="w-full sm:w-auto sm:min-w-32"><option value="">{t('work.anyPriority')}</option>{[1, 2, 3].map((p) => <option key={p} value={p}>{t(`myTasks.priority.${p}`)}</option>)}</SelectInput>
         </div>
         {q.isError ? <EmptyState icon={<ListTodo />} title={readApiError(q.error).message} /> : <TaskTable tasks={rows} loading={q.isLoading} empty={view === 'requests' ? t('work.noRequests') : undefined} />}
       </Panel>

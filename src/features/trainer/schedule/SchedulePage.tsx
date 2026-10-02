@@ -100,7 +100,7 @@ export default function SchedulePage() {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             {groups.length > 1 && (
-              <SelectInput aria-label={t('grp.groups')} value={group} onChange={(e) => setGroup(e.target.value)} className="h-10 w-auto min-w-40">
+              <SelectInput aria-label={t('grp.groups')} value={group} onChange={(e) => setGroup(e.target.value)} className="h-10 w-full sm:w-auto sm:min-w-40">
                 <option value="">{t('ses.allGroups')}</option>
                 {groups.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
               </SelectInput>

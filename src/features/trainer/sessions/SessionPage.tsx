@@ -29,7 +29,7 @@ export default function SessionPage() {
   const back = { to: `${r.base}/sessions`, label: t('ses.title') };
 
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('sp.one')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).status === 404 ? t('sp.notFound') : t('ses.loadError')} /></Panel></div>;
-  if (!s) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!s) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
 
   const plan = s.lessonPlan ?? {};
   const run = () => {

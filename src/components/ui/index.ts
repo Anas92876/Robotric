@@ -1,6 +1,5 @@
 // Legacy exports
 export { GridView } from "./GridView";
-export { ListView } from "./ListView";
 
 // Core Components
 export { Button } from './Button';

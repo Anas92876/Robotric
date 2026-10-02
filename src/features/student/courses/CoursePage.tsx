@@ -43,7 +43,7 @@ export default function CoursePage() {
     <div className="space-y-5">
       <PageHeader
         back={back}
-        title={c?.title ?? <span className="inline-block h-8 w-64 animate-pulse rounded-md bg-rail" />}
+        title={c?.title ?? <span className="inline-block h-8 w-64 max-w-full animate-pulse rounded-md bg-rail" />}
         description={c?.description || undefined}
         actions={
           <>

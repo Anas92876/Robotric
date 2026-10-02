@@ -123,7 +123,7 @@ export default function MyHoursPage() {
           </span>
           <div>
             {status.isLoading ? (
-              <span className="block h-10 w-48 animate-pulse rounded-md bg-white/10" />
+              <span className="block h-10 w-48 max-w-full animate-pulse rounded-md bg-white/10" />
             ) : active ? (
               <>
                 <p className="flex items-center justify-center gap-2 text-sm text-frost/80 sm:justify-start">

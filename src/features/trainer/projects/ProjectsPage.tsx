@@ -78,11 +78,11 @@ export default function ProjectsPage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <SelectInput aria-label={t('tk.group')} value={groupId} onChange={(e) => { setParams({ group: e.target.value }); setView(''); }} className="w-auto min-w-52">
+          <SelectInput aria-label={t('tk.group')} value={groupId} onChange={(e) => { setParams({ group: e.target.value }); setView(''); }} className="w-full sm:w-auto sm:min-w-52">
             {!options.length && <option value="">{t('tk.noGroups')}</option>}
             {options.map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}
           </SelectInput>
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('pjt.search')} /></div>
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('pjt.search')} /></div>
         </div>
         {q.isError ? <EmptyState icon={<FolderKanban />} title={readApiError(q.error).message} action={<Button variant="secondary" onClick={() => void q.refetch()}>{t('grp.retry')}</Button>} /> : (
           <DataTable label={t('pjt.title')} columns={columns} rows={rows} rowKey={(p) => p._id} loading={q.isLoading || groups.isLoading} empty={<EmptyState icon={<FolderKanban />} title={t('pjt.none')} description={t('pjt.noneHint')} />} />

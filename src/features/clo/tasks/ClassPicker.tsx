@@ -21,7 +21,7 @@ export function ClassPicker({ value, onChange }: { value: string[]; onChange: (i
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
-        <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="h-10 w-auto min-w-48">
+        <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="h-10 w-full sm:w-auto sm:min-w-48">
           <option value="">{t('gr.allCourses')}</option>
           {courses.map(([id, n]) => <option key={id} value={id}>{n}</option>)}
         </SelectInput>

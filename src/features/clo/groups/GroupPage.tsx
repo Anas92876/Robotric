@@ -33,7 +33,7 @@ export default function GroupPage() {
   const g = q.data;
 
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('gr.one')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).message} /></Panel></div>;
-  if (!g) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!g) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
 
   const columns: Column<Student>[] = [
     { key: 'name', header: t('gr.col.student'), cell: (s) => <span className="block max-w-xs"><span className="block truncate font-medium text-ink" dir="auto">{s.name}</span><span className="block truncate text-xs text-ink-4" dir="ltr">{s.email}</span></span> },

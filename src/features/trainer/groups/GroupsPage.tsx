@@ -133,7 +133,7 @@ export function GroupPage() {
     <div className="space-y-5">
       <PageHeader
         back={{ to: '/trainer/groups', label: t('grp.title') }}
-        title={g?.name ?? <span className="inline-block h-8 w-64 animate-pulse rounded-md bg-rail" />}
+        title={g?.name ?? <span className="inline-block h-8 w-64 max-w-full animate-pulse rounded-md bg-rail" />}
         description={g ? [g.courseId?.title, g.schedule.map((sl) => `${day(sl.day)} ${sl.startTime}`).join(' · ')].filter(Boolean).join(' — ') : undefined}
         actions={<>
           {g?.boardEnabled && <Link to={`/trainer/groups/${groupId}/board`} className="inline-flex h-11 items-center gap-2 rounded-pill border border-ink px-5 text-sm font-medium text-ink hover:bg-ink hover:text-white focus-visible:focus-ring"><ClipboardList className="size-[18px]" aria-hidden />{t('grp.board')}</Link>}

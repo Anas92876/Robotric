@@ -139,10 +139,10 @@ export default function LeadsPage() {
 
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1">
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56">
             <SearchInput value={filters.search} onChange={(search) => patch({ search })} placeholder={t('leads.search')} />
           </div>
-          <SelectInput aria-label={t('leads.col.status')} value={filters.status} onChange={(e) => patch({ status: e.target.value as LeadFilters['status'] })} className="w-auto min-w-40">
+          <SelectInput aria-label={t('leads.col.status')} value={filters.status} onChange={(e) => patch({ status: e.target.value as LeadFilters['status'] })} className="w-full sm:w-auto sm:min-w-40">
             <option value="">{t('leads.allStatuses')}</option>
             {(['interest', 'waiting', 'student', 'blacklist'] as const).map((st) => (
               <option key={st} value={st}>
@@ -150,7 +150,7 @@ export default function LeadsPage() {
               </option>
             ))}
           </SelectInput>
-          <SelectInput aria-label={t('leads.col.interest')} value={filters.interest} onChange={(e) => patch({ interest: e.target.value })} className="w-auto min-w-40">
+          <SelectInput aria-label={t('leads.col.interest')} value={filters.interest} onChange={(e) => patch({ interest: e.target.value })} className="w-full sm:w-auto sm:min-w-40">
             <option value="">{t('leads.allInterests')}</option>
             {(interests.data ?? []).map((i) => (
               <option key={i._id} value={i.name}>
@@ -158,7 +158,7 @@ export default function LeadsPage() {
               </option>
             ))}
           </SelectInput>
-          <SelectInput aria-label={t('leads.sortLabel')} value={filters.sort} onChange={(e) => patch({ sort: e.target.value as LeadFilters['sort'] })} className="w-auto min-w-44">
+          <SelectInput aria-label={t('leads.sortLabel')} value={filters.sort} onChange={(e) => patch({ sort: e.target.value as LeadFilters['sort'] })} className="w-full sm:w-auto sm:min-w-44">
             {SORTS.map((o) => (
               <option key={o} value={o}>
                 {t(`leads.sort.${o.replace(':', '_')}`)}

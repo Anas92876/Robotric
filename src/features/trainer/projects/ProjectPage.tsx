@@ -40,7 +40,7 @@ export default function ProjectPage() {
   const groupId = p ? (typeof p.groupId === 'object' ? p.groupId._id : p.groupId) : '';
   const back = { to: `/trainer/projects${groupId ? `?group=${groupId}` : ''}`, label: t('pjt.title') };
   if (q.isError) return <div className="space-y-5"><PageHeader back={back} title={t('pjt.one')} /><Panel><EmptyState icon={<AlertCircle />} title={readApiError(q.error).message} /></Panel></div>;
-  if (!p) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!p) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-72 animate-pulse rounded-panel bg-rail" /></div>;
 
   const name = (ar && p.titleAr) || p.title;
   const desc = (ar && p.descriptionAr) || p.description;

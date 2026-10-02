@@ -159,8 +159,8 @@ export default function ResourcesPage() {
       <PageHeader title={t('res.title')} description={t('res.subtitle')} actions={<Button icon={<Upload />} onClick={() => setUploading(true)}>{t('res.upload')}</Button>} />
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('res.search')} /></div>
-          <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="w-auto min-w-48"><option value="">{t('gr.allCourses')}</option>{(courses.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}</SelectInput>
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('res.search')} /></div>
+          <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="w-full sm:w-auto sm:min-w-48"><option value="">{t('gr.allCourses')}</option>{(courses.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}</SelectInput>
         </div>
         {q.isError ? <EmptyState icon={<FileText />} title={readApiError(q.error).message} action={<Button variant="secondary" onClick={() => void q.refetch()}>{t('tr.retry')}</Button>} />
           : q.isLoading ? <div className="space-y-3 p-4">{[0, 1, 2].map((i) => <div key={i} className="h-16 animate-pulse rounded-card bg-rail" />)}</div>

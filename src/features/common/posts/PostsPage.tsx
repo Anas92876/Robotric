@@ -125,10 +125,10 @@ export default function PostsPage() {
 
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1">
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56">
             <SearchInput value={search} onChange={setSearch} placeholder={t('posts.search')} />
           </div>
-          <SelectInput aria-label={t('posts.sort')} value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="w-auto min-w-40">
+          <SelectInput aria-label={t('posts.sort')} value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="w-full sm:w-auto sm:min-w-40">
             <option value="recent">{t('posts.sortRecent')}</option>
             <option value="title">{t('posts.sortTitle')}</option>
           </SelectInput>

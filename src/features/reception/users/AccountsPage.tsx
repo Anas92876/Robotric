@@ -168,10 +168,10 @@ export default function AccountsPage() {
 
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1">
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56">
             <SearchInput value={filters.search} onChange={(search) => patch({ search })} placeholder={t('users.search')} />
           </div>
-          <SelectInput aria-label={t('users.col.role')} value={filters.role} onChange={(e) => patch({ role: e.target.value })} className="w-auto min-w-44">
+          <SelectInput aria-label={t('users.col.role')} value={filters.role} onChange={(e) => patch({ role: e.target.value })} className="w-full sm:w-auto sm:min-w-44">
             <option value="">{t('users.allRoles')}</option>
             {filterableRoles(me?.role).map((r) => (
               <option key={r} value={r}>

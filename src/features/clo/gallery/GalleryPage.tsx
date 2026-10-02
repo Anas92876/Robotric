@@ -40,8 +40,8 @@ export default function GalleryPage() {
             <button key={v || 'all'} type="button" role="tab" aria-selected={type === v} onClick={() => reset(setType)(v)} className={cn('h-8 rounded-pill px-3.5 text-sm font-medium focus-visible:focus-ring', type === v ? 'bg-ink text-white' : 'text-ink-3 hover:text-ink')}>{t(`gal.types.${v || 'all'}`)}</button>
           ))}
         </div>
-        <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => { reset(setCourse)(e.target.value); setGroup(''); }} className="w-auto min-w-44"><option value="">{t('gr.allCourses')}</option>{(courses.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}</SelectInput>
-        <SelectInput aria-label={t('gr.one')} value={group} onChange={(e) => reset(setGroup)(e.target.value)} className="w-auto min-w-44"><option value="">{t('att.allGroups')}</option>{(groups.data ?? []).filter((g) => !course || g.courseId?._id === course).map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}</SelectInput>
+        <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => { reset(setCourse)(e.target.value); setGroup(''); }} className="w-full sm:w-auto sm:min-w-44"><option value="">{t('gr.allCourses')}</option>{(courses.data ?? []).map((c) => <option key={c._id} value={c._id}>{c.title}</option>)}</SelectInput>
+        <SelectInput aria-label={t('gr.one')} value={group} onChange={(e) => reset(setGroup)(e.target.value)} className="w-full sm:w-auto sm:min-w-44"><option value="">{t('att.allGroups')}</option>{(groups.data ?? []).filter((g) => !course || g.courseId?._id === course).map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}</SelectInput>
         {q.data && <span className="ms-auto text-sm text-ink-3">{t('gal.count', { count: q.data.pagination.total })}</span>}
       </Panel>
       {q.isError ? <Panel><EmptyState icon={<Images />} title={readApiError(q.error).message} action={<Button variant="secondary" onClick={() => void q.refetch()}>{t('tr.retry')}</Button>} /></Panel>

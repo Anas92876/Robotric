@@ -93,7 +93,7 @@ export default function QuizPage() {
       </div>
     );
   }
-  if (!q) return <div className="space-y-4"><div className="h-10 w-72 animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
+  if (!q) return <div className="space-y-4"><div className="h-10 w-72 max-w-full animate-pulse rounded-md bg-rail" /><div className="h-48 animate-pulse rounded-panel bg-rail" /></div>;
 
   const pick = (qq: Question, idx: number) =>
     setAnswers((cur) => {

@@ -76,9 +76,9 @@ export default function TasksPage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('tk.search')} /></div>
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('tk.search')} /></div>
           {courses.length > 1 && (
-            <SelectInput aria-label={t('tk.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="w-auto min-w-44">
+            <SelectInput aria-label={t('tk.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="w-full sm:w-auto sm:min-w-44">
               <option value="">{t('courses.all')}</option>
               {courses.map(([id, title]) => <option key={id} value={id}>{title}</option>)}
             </SelectInput>

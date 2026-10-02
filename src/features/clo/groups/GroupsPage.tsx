@@ -97,9 +97,9 @@ export default function GroupsPage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('gr.search')} /></div>
-          {courses.length > 1 && <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="w-auto min-w-44"><option value="">{t('gr.allCourses')}</option>{courses.map(([id, n]) => <option key={id} value={id}>{n}</option>)}</SelectInput>}
-          {trainers.length > 1 && <SelectInput aria-label={t('gr.trainer')} value={trainer} onChange={(e) => setTrainer(e.target.value)} className="w-auto min-w-44"><option value="">{t('gr.allTrainers')}</option>{trainers.map(([id, n]) => <option key={id} value={id}>{n}</option>)}</SelectInput>}
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('gr.search')} /></div>
+          {courses.length > 1 && <SelectInput aria-label={t('gr.course')} value={course} onChange={(e) => setCourse(e.target.value)} className="w-full sm:w-auto sm:min-w-44"><option value="">{t('gr.allCourses')}</option>{courses.map(([id, n]) => <option key={id} value={id}>{n}</option>)}</SelectInput>}
+          {trainers.length > 1 && <SelectInput aria-label={t('gr.trainer')} value={trainer} onChange={(e) => setTrainer(e.target.value)} className="w-full sm:w-auto sm:min-w-44"><option value="">{t('gr.allTrainers')}</option>{trainers.map(([id, n]) => <option key={id} value={id}>{n}</option>)}</SelectInput>}
         </div>
         {q.isError ? <EmptyState icon={<UsersRound />} title={readApiError(q.error).message} action={<Button variant="secondary" onClick={() => void q.refetch()}>{t('tr.retry')}</Button>} /> : (
           <DataTable label={t('gr.title')} columns={columns} rows={rows} rowKey={(g) => g._id} loading={q.isLoading} empty={<EmptyState icon={<UsersRound />} title={t('gr.none')} />} />

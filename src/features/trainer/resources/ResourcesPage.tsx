@@ -42,9 +42,9 @@ export default function ResourcesPage() {
       <PageHeader title={t('res.title')} description={t('res.subtitle')} />
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="min-w-56 flex-1"><SearchInput value={search} onChange={setSearch} placeholder={t('res.search')} /></div>
+          <div className="w-full flex-1 sm:w-auto sm:min-w-56"><SearchInput value={search} onChange={setSearch} placeholder={t('res.search')} /></div>
           {(groups.data?.length ?? 0) > 1 && (
-            <SelectInput aria-label={t('tk.group')} value={group} onChange={(e) => setGroup(e.target.value)} className="w-auto min-w-48">
+            <SelectInput aria-label={t('tk.group')} value={group} onChange={(e) => setGroup(e.target.value)} className="w-full sm:w-auto sm:min-w-48">
               <option value="">{t('ses.allGroups')}</option>
               {groups.data!.map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}
             </SelectInput>

@@ -20,12 +20,12 @@ interface StatTileProps {
 export function StatTile({ icon, tint, label, value, loading, to, onClick, active }: StatTileProps) {
   const body = (
     <>
-      <span className={cn('mx-auto grid size-10 place-items-center rounded-input text-ink [&_svg]:size-5', tint)}>{icon}</span>
-      {loading ? <span className="mx-auto mt-3 block h-7 w-10 animate-pulse rounded-md bg-rail" /> : <span className="mt-2 block text-2xl font-bold tabular-nums text-ink" dir="ltr">{value ?? 0}</span>}
-      <span className="mt-0.5 block text-xs text-ink-3">{label}</span>
+      <span className={cn('mx-auto grid size-9 place-items-center rounded-input text-ink sm:size-10 [&_svg]:size-[18px] sm:[&_svg]:size-5', tint)}>{icon}</span>
+      {loading ? <span className="mx-auto mt-3 block h-7 w-10 animate-pulse rounded-md bg-rail" /> : <span className="mt-2 block truncate text-xl font-bold tabular-nums text-ink sm:text-2xl" dir="ltr">{value ?? 0}</span>}
+      <span className="mt-0.5 block text-[11px] leading-tight text-ink-3 [overflow-wrap:anywhere] sm:text-xs">{label}</span>
     </>
   );
-  const base = 'block rounded-card border bg-paper px-3 py-4 text-center shadow-card';
+  const base = 'block min-w-0 rounded-card border bg-paper px-2 py-3 text-center shadow-card sm:px-3 sm:py-4';
   const interactive = 'transition-colors hover:border-ink focus-visible:focus-ring';
   if (to)
     return (

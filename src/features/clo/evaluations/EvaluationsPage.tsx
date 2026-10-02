@@ -93,8 +93,8 @@ export default function EvaluationsPage() {
       </div>
       <Panel className="p-0 sm:p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <SelectInput aria-label={t('gr.one')} value={group} onChange={(e) => setFilter('group', e.target.value)} className="w-auto min-w-48"><option value="">{t('att.allGroups')}</option>{(groups.data ?? []).map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}</SelectInput>
-          <SelectInput aria-label={t('gr.trainer')} value={trainer} onChange={(e) => setFilter('trainer', e.target.value)} className="w-auto min-w-48"><option value="">{t('gr.allTrainers')}</option>{(trainers.data ?? []).map((x) => <option key={x._id} value={x._id}>{x.name}</option>)}</SelectInput>
+          <SelectInput aria-label={t('gr.one')} value={group} onChange={(e) => setFilter('group', e.target.value)} className="w-full sm:w-auto sm:min-w-48"><option value="">{t('att.allGroups')}</option>{(groups.data ?? []).map((g) => <option key={g._id} value={g._id}>{g.name}</option>)}</SelectInput>
+          <SelectInput aria-label={t('gr.trainer')} value={trainer} onChange={(e) => setFilter('trainer', e.target.value)} className="w-full sm:w-auto sm:min-w-48"><option value="">{t('gr.allTrainers')}</option>{(trainers.data ?? []).map((x) => <option key={x._id} value={x._id}>{x.name}</option>)}</SelectInput>
           {rating && <Button size="sm" variant="ghost" onClick={() => setFilter('rating', '')}>{t('ev.clearRating', { n: rating })}</Button>}
         </div>
         {list.isError ? <EmptyState icon={<Star />} title={readApiError(list.error).message} action={<Button variant="secondary" onClick={() => void list.refetch()}>{t('tr.retry')}</Button>} /> : (
