@@ -123,7 +123,7 @@ const CTOProjects = lazyImport(() => import("./features/cto/ProjectsPages"));
 const CTOProjectDetail = lazyImport(() => import("./features/cto/CtoProjectPage"));
 const CTOTasks = lazyImport(() => import("./features/cto/TasksPages"));
 const CTODeadlines = lazyImport(() => import("./features/cto/CtoDeadlinesPage"));
-const CTOTransport = lazyImport(() => import("./pages/cto/CTOTransport"));
+const CTOTransport = lazyImport(() => import("./features/cto/TransportPage"));
 const CTOWorkHours = lazyImport(() => import("./features/cto/WorkHoursPage"));
 
 // Engineer pages
