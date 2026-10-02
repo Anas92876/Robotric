@@ -1015,5 +1015,10 @@
     "toast": {
       "saved": "App version saved"
     }
+  },
+  "nf": {
+    "title": "This page does not exist",
+    "text": "The link may be old, or the page has moved.",
+    "home": "Go to my dashboard"
   }
 }

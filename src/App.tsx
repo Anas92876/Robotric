@@ -32,7 +32,7 @@ const Competitions = lazyImport(() => import("./features/ops/CompetitionsPages")
 const Teams = lazyImport(() => import("./features/ops/TeamsPage"));
 const Posts = lazyImport(() => import("./features/common/posts/PostsPage"));
 const Inventory = lazyImport(() => import("./features/ops/InventoryPage"));
-const NotFound = lazyImport(() => import("./pages/common/NotFound"));
+const NotFound = lazyImport(() => import("./features/common/notfound/NotFoundPage"));
 
 // Student pages
 const StudentDashboard = lazyImport(() => import("./features/student/overview/StudentOverviewPage"));
