@@ -463,5 +463,29 @@
       "reopened": "Group reopened",
       "deleted": "Group deleted"
     }
+  },
+  "cs": {
+    "subtitle": "Every class of every group — what is coming and what is done."
+  },
+  "mat": {
+    "title": "Class materials",
+    "add": "Add",
+    "none": "No PDFs for this class yet.",
+    "open": "Open {{name}}",
+    "remove": "Remove {{name}}",
+    "removeShort": "Remove",
+    "removeTitle": "Remove this PDF from the class?",
+    "removeText": "\"{{name}}\" stays in the library; only this class loses it.",
+    "pickTitle": "Add PDFs to this class",
+    "pickText": "From the course library. Students of the group see them on the class page.",
+    "noneLeft": "Nothing more to add",
+    "noneLeftHint": "Upload PDFs for this course in Resources first.",
+    "addN_one": "Add {{count}} PDF",
+    "addN_other": "Add {{count}} PDFs",
+    "toast": {
+      "added_one": "PDF added to the class",
+      "added_other": "{{count}} PDFs added to the class",
+      "removed": "PDF removed from the class"
+    }
   }
 }

@@ -7,7 +7,7 @@ import { useToast } from '../../../components/ui/Toast';
 import { cn } from '../../../lib/utils';
 import { Button, Field, PageHeader, Panel, PanelTitle, SelectInput, TextArea, TextInput } from '../../../ui';
 import { useDayName } from '../groups/GroupsPage';
-import { useSessionMutations, useTrainerGroupOptions, useTrainerSession } from './api';
+import { useSessionMutations, useSessionRole, useTrainerGroupOptions, useTrainerSession } from './api';
 
 /** A growing list of short lines (objectives, materials). */
 function Lines({ label, values, onChange, placeholder, addLabel }: { label: string; values: string[]; onChange: (v: string[]) => void; placeholder: string; addLabel: string }) {
@@ -30,7 +30,7 @@ function Lines({ label, values, onChange, placeholder, addLabel }: { label: stri
 
 const youtubeId = (v: string) => v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/)?.[1] ?? (/^[\w-]{11}$/.test(v.trim()) ? v.trim() : '');
 
-/** New class or edit a class: what, which group, when, lesson plan and video. */
+/** New class or edit a class: what, which group, when, lesson plan and (for the CLO) video. */
 export default function SessionFormPage() {
   const { sessionId } = useParams();
   const [params] = useSearchParams();
@@ -39,6 +39,9 @@ export default function SessionFormPage() {
   const day = useDayName();
   const navigate = useNavigate();
   const toast = useToast();
+  const r = useSessionRole();
+  // Only the CLO's video is saved; the backend ignores it from trainers
+  const withVideo = r.role === 'clo';
   const groups = useTrainerGroupOptions();
   const current = useTrainerSession(sessionId ?? '');
   const { save } = useSessionMutations();
@@ -75,7 +78,7 @@ export default function SessionFormPage() {
   }, [current.data]);
 
   const group = groups.data?.find((g) => g._id === groupId);
-  const back = editing ? { to: `/trainer/sessions/${sessionId}`, label: current.data?.title ?? t('ses.title') } : { to: '/trainer/sessions', label: t('ses.title') };
+  const back = editing ? { to: `${r.base}/sessions/${sessionId}`, label: current.data?.title ?? t('ses.title') } : { to: `${r.base}/sessions`, label: t('ses.title') };
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -83,8 +86,8 @@ export default function SessionFormPage() {
     if (!groupId) return setError(t('sf.errGroup'));
     if (custom && (!date || !start || !end)) return setError(t('sf.errWhen'));
     if (custom && end <= start) return setError(t('sf.errOrder'));
-    const yt = video.trim() ? youtubeId(video) : '';
-    if (video.trim() && !yt) return setError(t('sf.errVideo'));
+    const yt = withVideo && video.trim() ? youtubeId(video) : '';
+    if (withVideo && video.trim() && !yt) return setError(t('sf.errVideo'));
     setError('');
     save.mutate(
       {
@@ -96,11 +99,11 @@ export default function SessionFormPage() {
           overrideSchedule: custom,
           ...(custom ? { scheduledDate: date, startTime: start, endTime: end } : {}),
           lessonPlan: { objectives: objectives.map((x) => x.trim()).filter(Boolean), materialsNeeded: materials.map((x) => x.trim()).filter(Boolean), notes: notes.trim() },
-          video: { hasVideo: !!yt, youtubeId: yt },
+          ...(withVideo ? { video: { hasVideo: !!yt, youtubeId: yt } } : {}),
         },
       },
       {
-        onSuccess: (s) => { toast.success(t(editing ? 'sf.toast.saved' : 'sf.toast.created')); navigate(`/trainer/sessions/${s?._id ?? sessionId}`); },
+        onSuccess: (s) => { toast.success(t(editing ? 'sf.toast.saved' : 'sf.toast.created')); navigate(`${r.base}/sessions/${s?._id ?? sessionId}`); },
         onError: (err) => setError(readApiError(err).message),
       },
     );
@@ -160,10 +163,12 @@ export default function SessionFormPage() {
               </div>
             )}
           </Panel>
-          <Panel>
-            <PanelTitle title={t('sf.video')} />
-            <Field label={t('sf.youtube')} hint={t('sf.youtubeHint')}>{(c) => <TextInput {...c} value={video} onChange={(e) => setVideo(e.target.value)} dir="ltr" placeholder="https://youtu.be/…" />}</Field>
-          </Panel>
+          {withVideo && (
+            <Panel>
+              <PanelTitle title={t('sf.video')} />
+              <Field label={t('sf.youtube')} hint={t('sf.youtubeHint')}>{(c) => <TextInput {...c} value={video} onChange={(e) => setVideo(e.target.value)} dir="ltr" placeholder="https://youtu.be/…" />}</Field>
+            </Panel>
+          )}
           {error && <p role="alert" className="rounded-input bg-danger-soft px-3 py-2 text-sm text-danger">{error}</p>}
           <div className="flex justify-end gap-2">
             <Button variant="ghost" onClick={() => navigate(back.to)}>{t('sf.cancel')}</Button>
