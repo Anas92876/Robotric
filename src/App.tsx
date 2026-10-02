@@ -119,10 +119,10 @@ const CLOStudentDocuments = lazyImport(() => import("./features/clo/documents/Do
 
 // CTO pages
 const CTODashboard = lazyImport(() => import("./features/cto/CtoOverviewPage"));
-const CTOProjects = lazyImport(() => import("./pages/cto/CTOProjects"));
-const CTOProjectDetail = lazyImport(() => import("./pages/cto/CTOProjectDetail"));
-const CTOTasks = lazyImport(() => import("./pages/cto/CTOTasks"));
-const CTODeadlines = lazyImport(() => import("./pages/cto/CTODeadlines"));
+const CTOProjects = lazyImport(() => import("./features/cto/ProjectsPages"));
+const CTOProjectDetail = lazyImport(() => import("./features/cto/CtoProjectPage"));
+const CTOTasks = lazyImport(() => import("./features/cto/TasksPages"));
+const CTODeadlines = lazyImport(() => import("./features/cto/CtoDeadlinesPage"));
 const CTOTransport = lazyImport(() => import("./pages/cto/CTOTransport"));
 const CTOWorkHours = lazyImport(() => import("./pages/cto/CTOWorkHours"));
 
