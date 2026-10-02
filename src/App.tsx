@@ -94,7 +94,7 @@ const TransportManagement = lazyImport(() => import("./features/reception/transp
 
 // CLO pages
 const CLODashboard = lazyImport(() => import("./features/clo/overview/CloOverviewPage"));
-const CLOTrainers = lazyImport(() => import("./pages/clo/CLOTrainers"));
+const CLOTrainers = lazyImport(() => import("./features/clo/trainers/TrainersPage"));
 const CLOCourses = lazyImport(() => import("./pages/clo/CLOCourses"));
 const CLOGroups = lazyImport(() => import("./pages/clo/CLOGroups"));
 const CLOSessions = lazyImport(() => import("./pages/clo/CLOSessions"));
