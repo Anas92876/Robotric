@@ -675,5 +675,27 @@
       "failed": "Failed",
       "refunded": "Refunded"
     }
+  },
+  "att": {
+    "title": "Attendance",
+    "subtitle": "How often you came to class, per course.",
+    "courseSubtitle": "Every class of this course and how you were marked.",
+    "average": "Average attendance",
+    "rate": "Attendance",
+    "present": "Present",
+    "late": "Late",
+    "absent": "Absent",
+    "recent": "Latest classes",
+    "byCourse": "By course",
+    "none": "No attendance recorded yet.",
+    "loadError": "We couldn't load your attendance.",
+    "counts": "{{present}} present · {{late}} late · {{absent}} absent",
+    "col": {
+      "date": "Date",
+      "class": "Class",
+      "time": "Time",
+      "checkIn": "Checked in",
+      "status": "Status"
+    }
   }
 }

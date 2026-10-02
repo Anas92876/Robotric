@@ -43,7 +43,7 @@ export default function StudentOverviewPage() {
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <StatTile icon={<BookOpen />} tint="bg-tint-leaf" label={t('ov.courses')} value={s?.activeCourses ?? 0} loading={stats.isLoading} to="/student/courses" />
         <StatTile icon={<CheckCircle2 />} tint="bg-tint-straw" label={t('ov.sessionsDone')} value={s?.totalSessionsCompleted ?? 0} loading={stats.isLoading} />
-        <StatTile icon={<CalendarCheck />} tint="bg-tint-sage" label={t('ov.attendance')} value={`${Math.round(s?.averageAttendance ?? 0)}%`} loading={stats.isLoading} to="/student/attendance" />
+        <StatTile icon={<CalendarCheck />} tint="bg-tint-sage" label={t('ov.attendance')} value={`${Math.round(s?.averageAttendance ?? 0)}%`} loading={stats.isLoading} />
         <StatTile icon={<Clock />} tint="bg-tint-sand" label={t('ov.hours')} value={s?.totalSessionHours ?? 0} loading={stats.isLoading} />
       </div>
 

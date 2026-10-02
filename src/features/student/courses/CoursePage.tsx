@@ -62,7 +62,7 @@ export default function CoursePage() {
 
       <div className="grid grid-cols-3 gap-3">
         <StatTile icon={<BookOpen />} tint="bg-tint-leaf" label={t('crs.progress', { done, total })} value={`${pct}%`} loading={info.isLoading} />
-        <StatTile icon={<CalendarCheck />} tint="bg-tint-straw" label={t('ov.attendance')} value={c?.studentStats.attendanceAverage != null ? `${Math.round(c.studentStats.attendanceAverage)}%` : '—'} loading={info.isLoading} to="/student/attendance" />
+        <StatTile icon={<CalendarCheck />} tint="bg-tint-straw" label={t('ov.attendance')} value={c?.studentStats.attendanceAverage != null ? `${Math.round(c.studentStats.attendanceAverage)}%` : '—'} loading={info.isLoading} />
         <StatTile icon={<Star />} tint="bg-tint-sage" label={t('crs.evaluation')} value={c?.studentStats.evaluationAverage != null ? `${Math.round(c.studentStats.evaluationAverage)}%` : '—'} loading={info.isLoading} to="/student/evaluations" />
       </div>
 

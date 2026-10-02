@@ -42,8 +42,8 @@ const StudentSessionDetails = lazyImport(() => import("./features/student/sessio
 const StudentModuleViewer = lazyImport(() => import("./features/student/modules/ModulePage"));
 const StudentQuiz = lazyImport(() => import("./features/student/quizzes/QuizPage"));
 const StudentAssignment = lazyImport(() => import("./features/student/modules/AssignmentPage"));
-const StudentAttendanceOverview = lazyImport(() => import("./pages/student/StudentAttendanceOverview"));
-const StudentCourseAttendance = lazyImport(() => import("./pages/student/StudentCourseAttendance"));
+const StudentAttendanceOverview = lazyImport(() => import("./features/student/attendance/AttendancePage"));
+const StudentCourseAttendance = lazyImport(() => import("./features/student/attendance/CourseAttendancePage"));
 const StudentPayments = lazyImport(() => import("./features/student/payments/PaymentsPage"));
 const StudentSubscriptions = lazyImport(() => import("./pages/student/StudentSubscriptions"));
 const StudentGroupBoard = lazyImport(() => import("./pages/student/StudentGroupBoard"));
@@ -477,6 +477,7 @@ const App = () => {
                 <Route path="/student/projects/:projectId" element={<StudentProjectDetail />} />
                 <Route path="/student/gallery" element={<StudentGallery />} />
                 <Route path="/student/evaluations" element={<StudentEvaluations />} />
+                {/* Student attendance pages were switched off before the redesign; the new ones are ready in features/student/attendance */}
                 {/* <Route path="/student/attendance" element={<StudentAttendanceOverview />} /> */}
                 {/* <Route path="/student/attendance/:courseId" element={<StudentCourseAttendance />} /> */}
                 <Route path="/student/payments" element={<StudentPayments />} />
