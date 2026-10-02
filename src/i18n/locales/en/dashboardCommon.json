@@ -378,5 +378,38 @@
       "noteDeleted": "Note deleted",
       "taskDeleted": "Task deleted"
     }
+  },
+  "qe": {
+    "none": "No questions yet. Add the first one below.",
+    "question": "Question {{n}}",
+    "add": "Add a question:",
+    "total": "Total: {{points}} points",
+    "type": {
+      "mcq": "Multiple choice",
+      "text": "Written answer",
+      "image": "Photo answer"
+    },
+    "up": "Move up",
+    "down": "Move down",
+    "remove": "Remove question {{n}}",
+    "text": "Question (English)",
+    "textAr": "Question (Arabic, optional)",
+    "options": "Choices",
+    "kind": "Kind of question",
+    "single": "One right answer",
+    "multiple": "Several right answers",
+    "markRight": "Tap the circle of each right answer.",
+    "isRight": "Choice {{n}} is right",
+    "option": "Choice {{n}}",
+    "removeOption": "Remove choice {{n}}",
+    "addOption": "Add choice",
+    "points": "Points",
+    "maxLength": "Max characters",
+    "maxImages": "Max photos",
+    "maxSize": "Max MB per photo",
+    "required": "Required",
+    "errText": "Question {{n}} has no text.",
+    "errOptions": "Question {{n}} needs at least two choices.",
+    "errCorrect": "Question {{n}} needs a right answer."
   }
 }

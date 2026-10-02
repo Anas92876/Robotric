@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { api } from "../../lib/api";
-import Posts from "../common/Posts";
+import Posts from "../../features/common/posts/PostsPage";
 import Projects from "../common/Projects";
 import Teams from "../common/Teams";
 import Competitions from "../common/Competitions";

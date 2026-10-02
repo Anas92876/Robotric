@@ -574,5 +574,116 @@
       "excelling": "Excelling",
       "needsAttention": "Needs attention"
     }
+  },
+  "tk": {
+    "title": "Tasks",
+    "subtitle": "Homework for your groups: write it, publish it, grade it.",
+    "new": "New task",
+    "group": "Group",
+    "noGroups": "No groups yet",
+    "search": "Search tasks…",
+    "col": {
+      "task": "Task",
+      "deadline": "Deadline",
+      "score": "Max score",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "state": {
+      "open": "Open",
+      "past": "Past deadline",
+      "draft": "Drafts"
+    },
+    "questions_one": "{{count}} question",
+    "questions_other": "{{count}} questions",
+    "noQuestions": "No questions — free answer",
+    "none": "No tasks here yet.",
+    "noneHint": "Create a task and publish it when it is ready.",
+    "actionsFor": "Actions for {{name}}",
+    "submissions": "Submissions",
+    "publish": "Publish",
+    "delete": "Delete task",
+    "backClass": "Back to the class",
+    "publishTitle": "Publish this task?",
+    "publishText": "The students of the group will see \"{{name}}\" and can start answering.",
+    "deleteTitle": "Delete this task?",
+    "deleteText": "\"{{name}}\" and every answer students sent for it will be deleted.",
+    "toast": {
+      "published": "Task published",
+      "deleted": "Task deleted"
+    }
+  },
+  "tb": {
+    "newTitle": "New task",
+    "editTitle": "Edit task",
+    "subtitle": "Save as a draft while you work, publish when it is ready.",
+    "details": "What students need to do",
+    "title": "Title (English)",
+    "titleAr": "Title (Arabic, optional)",
+    "description": "Instructions",
+    "descriptionHint": "Explain the task clearly; students see this first.",
+    "descriptionAr": "Instructions (Arabic, optional)",
+    "questions": "Questions",
+    "questionsHint": "Optional. Without questions, students answer freely and may attach files.",
+    "settings": "Settings",
+    "maxScore": "Max score",
+    "late": "Accept late answers",
+    "lateHint": "Students can still submit after the deadline; it is marked late.",
+    "saveDraft": "Save draft",
+    "publish": "Publish",
+    "liveNote": "This task is already published. Once students have answered, it can no longer be changed.",
+    "errTitle": "Give the task a title.",
+    "errGroup": "Choose a group.",
+    "errDescription": "Write the instructions.",
+    "errDeadline": "Set a deadline.",
+    "errPast": "The deadline has already passed.",
+    "toast": {
+      "draft": "Draft saved",
+      "published": "Task published",
+      "saved": "Task saved"
+    }
+  },
+  "ts": {
+    "title": "Submissions",
+    "handedIn": "Handed in",
+    "toGrade": "To grade",
+    "graded": "Graded",
+    "returned": "Returned",
+    "col": {
+      "student": "Student",
+      "submitted": "Handed in"
+    },
+    "late": "Late",
+    "status": {
+      "not_submitted": "Not handed in",
+      "pending_review": "To grade",
+      "graded": "Graded",
+      "returned": "Returned"
+    },
+    "grade": "Grade",
+    "view": "Open",
+    "none": "Nobody has handed this in yet.",
+    "draftNone": "This task is still a draft. Publish it so students can answer.",
+    "submittedOn": "Handed in {{date}}",
+    "nothing": "The student sent no answers.",
+    "noAnswer": "No answer",
+    "picked": "Chosen",
+    "right": "Right answer",
+    "points_one": "{{count}} point",
+    "points_other": "{{count}} points",
+    "photo": "Photo {{n}}",
+    "files": "Attached files",
+    "download": "Download",
+    "score": "Score (out of {{max}})",
+    "mcqHint": "Choice questions: {{got}} of {{of}} points right.",
+    "feedback": "Feedback",
+    "feedbackHint": "The student sees this.",
+    "errScore": "Enter a score from 0 to {{max}}.",
+    "return": "Return for changes",
+    "save": "Save grade",
+    "toast": {
+      "graded": "Grade saved",
+      "returned": "Returned to the student"
+    }
   }
 }
