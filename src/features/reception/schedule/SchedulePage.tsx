@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Calendar, dayjsLocalizer, Views, type Formats, type View } from 'react-big-calendar';
 import dayjs from 'dayjs';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import './calendar.css';
+import '../../../ui/calendar.css';
 import { CalendarDays, CalendarRange, ChevronLeft, ChevronRight, GraduationCap, Plus } from 'lucide-react';
 import { useToast } from '../../../components/ui/Toast';
 import { useFormat } from '../../../app/format';

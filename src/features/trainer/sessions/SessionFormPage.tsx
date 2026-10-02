@@ -46,10 +46,12 @@ export default function SessionFormPage() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [groupId, setGroupId] = useState(params.get('group') ?? '');
-  const [custom, setCustom] = useState(false);
-  const [date, setDate] = useState('');
-  const [start, setStart] = useState('16:00');
-  const [end, setEnd] = useState('18:00');
+  // A slot clicked on the schedule arrives as ?date=YYYY-MM-DD&start=HH:mm (two hours long)
+  const slotStart = params.get('start');
+  const [custom, setCustom] = useState(!!params.get('date'));
+  const [date, setDate] = useState(params.get('date') ?? '');
+  const [start, setStart] = useState(slotStart ?? '16:00');
+  const [end, setEnd] = useState(slotStart ? `${String(Math.min(Number(slotStart.slice(0, 2)) + 2, 23)).padStart(2, '0')}${slotStart.slice(2)}` : '18:00');
   const [objectives, setObjectives] = useState<string[]>(['']);
   const [materials, setMaterials] = useState<string[]>(['']);
   const [notes, setNotes] = useState('');

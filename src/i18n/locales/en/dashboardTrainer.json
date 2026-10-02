@@ -685,5 +685,31 @@
       "graded": "Grade saved",
       "returned": "Returned to the student"
     }
+  },
+  "sch": {
+    "title": "Schedule",
+    "subtitle": "Your classes on a calendar. Click a class to open it, or an empty time to plan a new one.",
+    "today": "Classes today",
+    "thisWeek": "Classes this week",
+    "hours": "Teaching hours this week",
+    "prev": "Previous",
+    "next": "Next",
+    "goToday": "Today",
+    "views": "Calendar view",
+    "legend": "Groups",
+    "view": {
+      "month": "Month",
+      "week": "Week",
+      "day": "Day",
+      "agenda": "List"
+    },
+    "more_one": "+{{count}} more",
+    "more_other": "+{{count}} more",
+    "noneInRange": "No classes in this period.",
+    "col": {
+      "date": "Date",
+      "time": "Time",
+      "class": "Class"
+    }
   }
 }

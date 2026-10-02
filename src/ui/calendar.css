@@ -1,6 +1,6 @@
 /*
  * react-big-calendar in the dashboard look: white paper, thin lines, navy text, flat colours.
- * Everything is scoped to .rt-cal (the trainer page loads unscoped .rbc-* rules of its own).
+ * Everything is scoped to .rt-cal (shared by the reception and trainer calendars).
  */
 .rt-cal .rbc-calendar {
   color: var(--color-ink);
