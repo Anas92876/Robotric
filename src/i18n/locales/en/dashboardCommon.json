@@ -328,5 +328,55 @@
       "moment": "Moment",
       "project": "Project"
     }
+  },
+  "board": {
+    "title": "Group board",
+    "subtitle": "Tasks and notes shared by your group.",
+    "subtitleFor": "Tasks and notes shared by your group in {{course}}.",
+    "backCourses": "My courses",
+    "disabled": "The board is off for this group",
+    "disabledHint": "It is switched on by the learning team (CLO).",
+    "tasks": "Tasks",
+    "notes": "Notes",
+    "newTask": "New task",
+    "editTask": "Edit task",
+    "emptyCol": "Nothing here",
+    "you": "You",
+    "moveTo": "Move to",
+    "taskActions": "Actions for {{title}}",
+    "noteActions": "Note actions",
+    "status": {
+      "todo": "To do",
+      "in_progress": "Doing",
+      "done": "Done"
+    },
+    "priority": {
+      "1": "Urgent",
+      "2": "Important",
+      "3": "Normal"
+    },
+    "f": {
+      "title": "Title",
+      "description": "Details",
+      "priority": "Priority",
+      "due": "Due date",
+      "assign": "Assign to"
+    },
+    "noMembers": "No students in this group yet.",
+    "errTitle": "Please write a title.",
+    "newNote": "New note",
+    "notePlaceholder": "Share an idea, a link or a reminder with the group…",
+    "post": "Post",
+    "noNotes": "No notes yet.",
+    "pinned": "Pinned",
+    "pin": "Pin to top",
+    "unpin": "Unpin",
+    "deleteTask": "Delete this task?",
+    "deleteNote": "Delete this note?",
+    "deleteText": "It will be removed for everyone in the group.",
+    "toast": {
+      "noteDeleted": "Note deleted",
+      "taskDeleted": "Task deleted"
+    }
   }
 }
