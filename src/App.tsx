@@ -96,7 +96,8 @@ const TransportManagement = lazyImport(() => import("./features/reception/transp
 const CLODashboard = lazyImport(() => import("./features/clo/overview/CloOverviewPage"));
 const CLOTrainers = lazyImport(() => import("./features/clo/trainers/TrainersPage"));
 const CLOCourses = lazyImport(() => import("./pages/clo/CLOCourses"));
-const CLOGroups = lazyImport(() => import("./pages/clo/CLOGroups"));
+const CLOGroups = lazyImport(() => import("./features/clo/groups/GroupsPage"));
+const CLOGroupPage = lazyImport(() => import("./features/clo/groups/GroupPage"));
 const CLOSessions = lazyImport(() => import("./pages/clo/CLOSessions"));
 const CLOCreateSession = lazyImport(() => import("./pages/clo/CLOCreateSession"));
 const CLOEditSession = lazyImport(() => import("./pages/clo/CLOEditSession"));
@@ -540,6 +541,7 @@ const App = () => {
                 <Route path="/clo/courses/:courseId" element={<CLOCourses />} />
                 <Route path="/clo/courses/:courseId/:groupId" element={<CLOCourses />} />
                 <Route path="/clo/groups" element={<CLOGroups />} />
+                <Route path="/clo/groups/:groupId" element={<CLOGroupPage />} />
                 <Route path="/clo/sessions" element={<CLOSessions />} />
                 <Route path="/clo/sessions/new" element={<CLOCreateSession />} />
                 <Route path="/clo/sessions/:sessionId/edit" element={<CLOEditSession />} />
