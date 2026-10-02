@@ -423,7 +423,7 @@ export default function EnrollmentsPage() {
         onStudentSearch={loadStudents}
         exchangeRate={exchangeRate}
       />
-      <BundleEnrollmentModal isOpen={bundleOpen} onClose={() => setBundleOpen(false)} onSuccess={() => { setBundleOpen(false); m.refresh(); }} />
+      <BundleEnrollmentModal isOpen={bundleOpen} onClose={() => setBundleOpen(false)} onSuccess={() => { setBundleOpen(false); m.refresh(); toast.success(t('enrollments.toast.bundle')); }} />
       <EnrollmentDetailsModal
         isOpen={!!detailsId}
         onClose={() => setDetailsId(null)}

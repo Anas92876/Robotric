@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { useToast } from '../../../components/ui/Toast';
 import { AlertCircle, ArrowLeft, ArrowRight, CheckCircle2, ClipboardList, ExternalLink, FileText } from 'lucide-react';
 import { api } from '../../../lib/api';
 import { readApiError } from '../../../app/apiError';
@@ -27,6 +28,7 @@ const youTube = (url: string) => url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11}
 export default function ModulePage() {
   const { moduleId = '' } = useParams();
   const { t } = useTranslation('dashboardStudent');
+  const toast = useToast();
   const navigate = useNavigate();
   const qc = useQueryClient();
   const q = useQuery({
@@ -42,7 +44,7 @@ export default function ModulePage() {
   });
   const complete = useMutation({
     mutationFn: () => api.post(`/student/modules/${moduleId}/complete`),
-    onSuccess: () => void qc.invalidateQueries({ queryKey: ['student'] }),
+    onSuccess: () => { void qc.invalidateQueries({ queryKey: ['student'] }); toast.success(t('mod.toast.done')); },
   });
 
   // Opening a module marks it started (once)

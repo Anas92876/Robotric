@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { useToast } from '../../../components/ui/Toast';
 import { AlertCircle, CalendarClock, Download, FileUp, Paperclip, Star, Trash2, X } from 'lucide-react';
 import { api } from '../../../lib/api';
 import { useFormat } from '../../../app/format';
@@ -26,6 +27,7 @@ const mb = (b: number) => (b < 1048576 ? `${Math.round(b / 1024)} KB` : `${(b / 
 export default function AssignmentPage() {
   const { assignmentId = '' } = useParams();
   const { t } = useTranslation('dashboardStudent');
+  const toast = useToast();
   const f = useFormat();
   const qc = useQueryClient();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -41,10 +43,10 @@ export default function AssignmentPage() {
       files.forEach((x) => form.append('files', x));
       return api.post(`/student/assignments/${assignmentId}/submit`, form, { headers: { 'Content-Type': 'multipart/form-data' } });
     },
-    onSuccess: () => { setFiles([]); refresh(); },
+    onSuccess: () => { setFiles([]); refresh(); toast.success(t('asg.toast.sent')); },
     onError: (err) => setProblem(readApiError(err).message),
   });
-  const remove = useMutation({ mutationFn: (id: string) => api.delete(`/student/assignments/submissions/${id}`), onSuccess: () => { setRemoving(false); refresh(); } });
+  const remove = useMutation({ mutationFn: (id: string) => api.delete(`/student/assignments/submissions/${id}`), onSuccess: () => { setRemoving(false); refresh(); toast.success(t('asg.toast.withdrawn')); } });
 
   const back = { to: '/student/courses', label: t('courses.title') };
   if (q.isError) {

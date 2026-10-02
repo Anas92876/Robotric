@@ -508,7 +508,10 @@
     "empty": "This lesson has no content yet.",
     "prev": "Previous lesson",
     "next": "Next lesson",
-    "markDone": "Mark as done"
+    "markDone": "Mark as done",
+    "toast": {
+      "done": "Lesson marked as done"
+    }
   },
   "asg": {
     "title": "Assignment",
@@ -539,7 +542,11 @@
     "send": "Send my work",
     "tooMany_one": "You can send {{count}} file.",
     "tooMany_other": "You can send up to {{count}} files.",
-    "tooBig": "{{name}} is larger than {{size}}."
+    "tooBig": "{{name}} is larger than {{size}}.",
+    "toast": {
+      "sent": "Your work was handed in",
+      "withdrawn": "Your hand-in was removed"
+    }
   },
   "tk": {
     "title": "Tasks",

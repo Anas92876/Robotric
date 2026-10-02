@@ -7,7 +7,6 @@ import { UserRole } from "./types/auth.types";
 import MainLayout from "./layouts/MainLayout";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
 import { lazyImport } from "./utils/lazyImport";
-import { ToastProvider } from "./components/ui/Toast";
 import { loadDashboardTranslations } from "./i18n";
 import { ExternalRedirect } from "./components/auth/ExternalRedirect";
 import { publicSite } from "./lib/publicSite";
@@ -445,7 +444,6 @@ const ClientRoute = () => {
 const App = () => {
   return (
     <ErrorBoundary>
-      <ToastProvider>
         <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
         <Routes>
@@ -607,7 +605,6 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-      </ToastProvider>
     </ErrorBoundary>
   );
 };

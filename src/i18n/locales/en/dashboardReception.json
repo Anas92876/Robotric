@@ -361,7 +361,8 @@
       "activated": "Enrollment made active",
       "transportAdded": "Transportation added",
       "transportPaid": "Transportation payment of {{amount}} recorded",
-      "deleted": "Enrollment deleted"
+      "deleted": "Enrollment deleted",
+      "bundle": "Student enrolled in the bundle"
     },
     "errorTitle": "Could not complete that",
     "receiptLater": "Saved. The receipt could not be downloaded; get it later from the row menu.",
