@@ -67,7 +67,7 @@ const TrainerCreateSession = lazyImport(() => import("./features/trainer/session
 const TrainerEditSession = lazyImport(() => import("./features/trainer/sessions/SessionFormPage"));
 const TrainerSessionDetail = lazyImport(() => import("./features/trainer/sessions/SessionPage"));
 const TrainerTakeAttendance = lazyImport(() => import("./features/trainer/attendance/AttendancePage"));
-const TrainerSessionEvaluations = lazyImport(() => import("./pages/trainer/TrainerSessionEvaluations"));
+const TrainerSessionEvaluations = lazyImport(() => import("./features/trainer/evaluations/SessionEvaluationsPage"));
 const TrainerTasks = lazyImport(() => import("./pages/trainer/TrainerTasks"));
 const TrainerTaskBuilder = lazyImport(() => import("./pages/trainer/TrainerTaskBuilder"));
 const TrainerTaskSubmissions = lazyImport(() => import("./pages/trainer/TrainerTaskSubmissions"));

@@ -540,5 +540,39 @@
     "statusFor": "Attendance of {{name}}",
     "noteFor": "Note about {{name}}",
     "notePlaceholder": "e.g. came with a parent, left early…"
+  },
+  "evp": {
+    "title": "Evaluate students",
+    "done": "Evaluated",
+    "left": "Still to do",
+    "toDo": "To evaluate",
+    "evaluated": "Evaluated",
+    "evaluate": "Evaluate",
+    "allDone": "Everyone is evaluated.",
+    "none": "No evaluations yet.",
+    "actionsFor": "Actions for {{name}}",
+    "delete": "Delete evaluation",
+    "deleteTitle": "Delete this evaluation?",
+    "deleteText": "The evaluation of {{name}} will be removed.",
+    "saved": "Evaluation saved",
+    "deleted": "Evaluation deleted"
+  },
+  "evd": {
+    "title": "Evaluate {{name}}",
+    "criteria": "Criteria (from the learning team)",
+    "noCriteria": "No criteria are set for this group, so just give an overall rating.",
+    "overall": "Overall rating",
+    "fromCriteria": "Worked out from the criteria you used.",
+    "pick": "Choose 1 to 5 stars.",
+    "notes": "Notes",
+    "notesHint": "The student sees these notes.",
+    "yes": "Yes",
+    "no": "No",
+    "required": "\"{{name}}\" needs a value.",
+    "save": "Save evaluation",
+    "flag": {
+      "excelling": "Excelling",
+      "needsAttention": "Needs attention"
+    }
   }
 }
