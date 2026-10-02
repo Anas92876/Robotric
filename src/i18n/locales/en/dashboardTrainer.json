@@ -796,5 +796,33 @@
       "status": "Status updated",
       "graded": "Grade saved"
     }
+  },
+  "gal": {
+    "title": "Gallery",
+    "subtitle": "Photos of your groups: class moments and student projects.",
+    "upload": "Upload a moment",
+    "all": "All photos",
+    "moments": "Moments",
+    "projects": "Projects",
+    "empty": "No photos in this group yet",
+    "emptyHint": "Share a moment from class; the group's students and parents see it.",
+    "deleteTitle": "Delete this photo?",
+    "deleteText": "The photo will be removed from the gallery for good.",
+    "delete": "Delete photo",
+    "toast": {
+      "uploaded": "Photo uploaded",
+      "deleted": "Photo deleted"
+    }
+  },
+  "res": {
+    "title": "Resources",
+    "subtitle": "Teaching material from the learning team for your groups.",
+    "search": "Search resources…",
+    "none": "No resources yet",
+    "noneHint": "The learning team has not shared material with your groups yet.",
+    "noneFiltered": "Try another search or group.",
+    "classN": "Class {{n}}",
+    "wholeGroup": "Whole group",
+    "open": "Open"
   }
 }

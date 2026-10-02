@@ -74,8 +74,8 @@ const TrainerTaskSubmissions = lazyImport(() => import("./features/trainer/tasks
 const TrainerProjects = lazyImport(() => import("./features/trainer/projects/ProjectsPage"));
 const TrainerProjectDetail = lazyImport(() => import("./features/trainer/projects/ProjectPage"));
 const TrainerProjectForm = lazyImport(() => import("./features/trainer/projects/ProjectFormPage"));
-const TrainerGallery = lazyImport(() => import("./pages/trainer/TrainerGallery"));
-const TrainerResources = lazyImport(() => import("./pages/trainer/TrainerResources"));
+const TrainerGallery = lazyImport(() => import("./features/trainer/gallery/GalleryPage"));
+const TrainerResources = lazyImport(() => import("./features/trainer/resources/ResourcesPage"));
 const TrainerGroupBoard = lazyImport(() => import("./features/trainer/board/BoardPage"));
 
 // Reception pages
