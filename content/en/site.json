@@ -379,7 +379,17 @@
     "seoDescription": "Call +963 942 060 440, email robotrick.co@gmail.com or visit us at Baghdad Station - Al-Shallal Street, Aleppo. Open Saturday to Thursday, 11am–7pm."
   },
   "blogPage": {
-    "seoTitle": "Blog | Robotrick"
+    "seoTitle": "Blog | Robotrick",
+    "empty": "No articles yet",
+    "emptyLead": "Our first articles about robotics and technology are on the way. Meanwhile, follow us for news and photos.",
+    "error": "We couldn’t load the articles right now. Please try again in a few minutes.",
+    "read": "Read article",
+    "minRead": "{n} min read",
+    "allPosts": "All articles",
+    "postPage": "Article",
+    "published": "Published {date}",
+    "latest": "Latest",
+    "more": "More articles"
   },
   "auth": {
     "seoLoginTitle": "Sign In | Robotrick",

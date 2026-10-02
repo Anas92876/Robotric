@@ -57,3 +57,24 @@ export const pick = (obj: object | undefined, base: string, lang: 'en' | 'ar') =
   const a = o?.[base + (lang === 'ar' ? 'Ar' : 'En')], b = o?.[base + (lang === 'ar' ? 'En' : 'Ar')];
   return (typeof a === 'string' && a.trim()) || (typeof b === 'string' && b.trim()) || '';
 };
+
+// Blog posts are written in the dashboard (one language per post) and published there
+export type Post = { _id: string; slug: string; title: string; body: string; tags?: string[]; publishedAt?: string | null };
+
+export async function getPosts(): Promise<Post[] | null> {
+  try {
+    const res = await fetch(`${SITE.apiBase}/posts`, { next: { revalidate: 300 } });
+    if (!res.ok) return null;
+    return ((await res.json()) as Post[]).filter((p) => p.slug && p.title);
+  } catch { return null; }
+}
+
+export async function getPost(slug: string): Promise<Post | null | 'error'> {
+  try {
+    const res = await fetch(`${SITE.apiBase}/posts/slug/${encodeURIComponent(slug)}`, { next: { revalidate: 300 } });
+    if (res.status === 404) return null;
+    if (!res.ok) return 'error';
+    const post = (await res.json()) as Post;
+    return post?.slug ? post : null;
+  } catch { return 'error'; }
+}

@@ -386,6 +386,29 @@ html[lang="ar"] .closer h2 { letter-spacing: 0; line-height: 1.3; }
 .program small { color: var(--color-text-3); font-size: 13px; grid-column: 1; }
 .program .chip { grid-row: 1 / span 2; grid-column: 2; background: var(--color-canvas); }
 
+/* ---- Blog ------------------------------------------------------------------------ */
+.posts { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.post-card { background: var(--color-paper); border-radius: var(--radius-feature); box-shadow: var(--shadow-md); padding: 26px; display: grid; gap: 12px; align-content: start; text-decoration: none; color: inherit; transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out); }
+.post-card:hover { transform: translateY(-6px); box-shadow: 0 20px 36px -18px rgba(0, 51, 0, .24), var(--shadow-md); }
+.post-card:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+.post-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-3); }
+.post-card h2, .post-card h3 { font-size: var(--text-heading-sm); line-height: 1.25; }
+.post-card p { color: var(--color-text-2); line-height: 1.55; }
+.post-card__foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 6px; }
+.post-card__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.post-card--lead { grid-column: 1 / -1; padding: 36px; }
+.post-card--lead h2 { font-size: 36px; letter-spacing: -0.02em; }
+html[lang="ar"] .post-card--lead h2 { letter-spacing: 0; line-height: 1.35; }
+.article { max-width: 760px; margin-inline: auto; display: grid; gap: 28px; }
+.article__head { display: grid; gap: 14px; }
+.article__head h1 { font-size: 48px; line-height: 1.08; letter-spacing: -0.024em; }
+html[lang="ar"] .article__head h1 { letter-spacing: 0; line-height: 1.3; }
+.article__meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--color-text-3); font-size: 15px; }
+.article__body p { white-space: pre-line; }
+.article__back { justify-self: start; }
+.article__more { font-size: var(--text-heading-sm); margin-bottom: 20px; }
+@media (max-width: 720px) { .post-card--lead { padding: 26px; } .post-card--lead h2 { font-size: 26px; } .article__head h1 { font-size: 34px; } }
+
 /* ---- Jobs --------------------------------------------------------------- */
 .job { display: grid; gap: 14px; }
 .job__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
