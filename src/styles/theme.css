@@ -177,8 +177,3 @@
   box-shadow: 0 0 0 3px rgb(204 204 153 / 0.7);
 }
 
-/* Time left on a notification: the thin line under it shrinks to nothing */
-.rt-toast-timer { transform-origin: left; animation-name: rt-toast-shrink; animation-timing-function: linear; animation-fill-mode: forwards; }
-[dir='rtl'] .rt-toast-timer { transform-origin: right; }
-@keyframes rt-toast-shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }
-@media (prefers-reduced-motion: reduce) { .rt-toast-timer { animation: none; } }

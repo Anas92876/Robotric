@@ -74,7 +74,6 @@ export function ConfirmDialog({ open, onClose, onConfirm, title, message, confir
       <DialogBackdrop transition className="fixed inset-0 bg-ink-deep/45 backdrop-blur-[2px] transition-opacity duration-150 data-[closed]:opacity-0" />
       <div className="fixed inset-0 flex items-end justify-center overflow-y-auto p-4 sm:items-center">
         <DialogPanel transition className="rt-app w-full max-w-sm overflow-hidden rounded-feature bg-paper text-center shadow-pop transition duration-150 data-[closed]:scale-95 data-[closed]:opacity-0">
-          <span className={cn('block h-1.5', danger ? 'bg-danger' : 'bg-ink')} aria-hidden />
           <div className="px-6 pb-2 pt-6">
             <span className={cn('mx-auto grid size-14 place-items-center rounded-full ring-8', danger ? 'bg-danger-soft text-danger ring-danger-soft/50' : 'bg-frost text-ink ring-frost/50')}>
               <Icon className="size-7" aria-hidden />
