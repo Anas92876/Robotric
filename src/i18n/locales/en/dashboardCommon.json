@@ -514,5 +514,41 @@
     "toast": {
       "sent": "Request sent"
     }
+  },
+  "cto": {
+    "hello": "Welcome back,",
+    "note": "How internal work is going: projects, tasks, deadlines and the team.",
+    "goTasks": "Open tasks",
+    "error": "That did not work",
+    "cancel": "Cancel",
+    "projects": "Projects",
+    "open": "Open tasks",
+    "overdue": "Past due date",
+    "breached": "Hard deadline missed",
+    "monthly": "Tasks finished per month",
+    "noDone": "No finished tasks in the last six months.",
+    "leaderboard": "Team this month",
+    "scoreHint": "Points per finished task: high priority 15, medium 10, low 5, plus 5 when finished on time.",
+    "noScores": "Nobody has finished a task this month yet.",
+    "tasksDone_one": "{{count}} task done",
+    "tasksDone_other": "{{count}} tasks done",
+    "eom": "Employee of the month",
+    "eomStats_one": "{{score}} points · {{count}} task",
+    "eomStats_other": "{{score}} points · {{count}} tasks",
+    "eomManual": "Chosen by you",
+    "eomAuto": "Picked automatically (top score)",
+    "eomNone": "No one yet this month.",
+    "choose": "Choose",
+    "auto": "Back to automatic",
+    "chooseTitle": "Choose the employee of the month",
+    "chooseText": "Your choice replaces the automatic pick for this month.",
+    "pickPerson": "Choose a person",
+    "status": "Tasks by status",
+    "totalTasks_one": "{{count}} task in total",
+    "totalTasks_other": "{{count}} tasks in total",
+    "toast": {
+      "picked": "Employee of the month chosen",
+      "auto": "Back to the automatic pick"
+    }
   }
 }

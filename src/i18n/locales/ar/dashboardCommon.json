@@ -550,5 +550,53 @@
     "toast": {
       "sent": "أُرسل الطلب"
     }
+  },
+  "cto": {
+    "hello": "مرحباً بعودتك،",
+    "note": "كيف يسير العمل الداخلي: المشاريع والمهام والمواعيد والفريق.",
+    "goTasks": "فتح المهام",
+    "error": "لم تنجح العملية",
+    "cancel": "إلغاء",
+    "projects": "المشاريع",
+    "open": "مهام مفتوحة",
+    "overdue": "تجاوزت موعدها",
+    "breached": "تجاوزت الموعد النهائي الصارم",
+    "monthly": "المهام المنجزة شهرياً",
+    "noDone": "لا مهام منجزة في الأشهر الستة الأخيرة.",
+    "leaderboard": "الفريق هذا الشهر",
+    "scoreHint": "نقاط كل مهمة منجزة: أولوية عالية 15، متوسطة 10، منخفضة 5، و5 إضافية عند الإنجاز في الموعد.",
+    "noScores": "لم ينجز أحد مهمة هذا الشهر بعد.",
+    "tasksDone_zero": "لا مهام منجزة",
+    "tasksDone_one": "مهمة واحدة منجزة",
+    "tasksDone_two": "مهمتان منجزتان",
+    "tasksDone_few": "{{count}} مهام منجزة",
+    "tasksDone_many": "{{count}} مهمة منجزة",
+    "tasksDone_other": "{{count}} مهمة منجزة",
+    "eom": "موظف الشهر",
+    "eomStats_zero": "{{score}} نقطة · لا مهام",
+    "eomStats_one": "{{score}} نقطة · مهمة واحدة",
+    "eomStats_two": "{{score}} نقطة · مهمتان",
+    "eomStats_few": "{{score}} نقطة · {{count}} مهام",
+    "eomStats_many": "{{score}} نقطة · {{count}} مهمة",
+    "eomStats_other": "{{score}} نقطة · {{count}} مهمة",
+    "eomManual": "اخترته أنت",
+    "eomAuto": "اختير تلقائياً (أعلى نقاط)",
+    "eomNone": "لا أحد بعد هذا الشهر.",
+    "choose": "اختيار",
+    "auto": "العودة للاختيار التلقائي",
+    "chooseTitle": "اختر موظف الشهر",
+    "chooseText": "اختيارك يحل محل الاختيار التلقائي لهذا الشهر.",
+    "pickPerson": "اختر شخصاً",
+    "status": "المهام حسب الحالة",
+    "totalTasks_zero": "لا مهام",
+    "totalTasks_one": "مهمة واحدة إجمالاً",
+    "totalTasks_two": "مهمتان إجمالاً",
+    "totalTasks_few": "{{count}} مهام إجمالاً",
+    "totalTasks_many": "{{count}} مهمة إجمالاً",
+    "totalTasks_other": "{{count}} مهمة إجمالاً",
+    "toast": {
+      "picked": "اختير موظف الشهر",
+      "auto": "عاد الاختيار التلقائي"
+    }
   }
 }

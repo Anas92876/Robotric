@@ -118,7 +118,7 @@ const CLOTrainingContent = lazyImport(() => import("./pages/clo/CLOTrainingConte
 const CLOStudentDocuments = lazyImport(() => import("./features/clo/documents/DocumentsPage"));
 
 // CTO pages
-const CTODashboard = lazyImport(() => import("./pages/cto/CTODashboard"));
+const CTODashboard = lazyImport(() => import("./features/cto/CtoOverviewPage"));
 const CTOProjects = lazyImport(() => import("./pages/cto/CTOProjects"));
 const CTOProjectDetail = lazyImport(() => import("./pages/cto/CTOProjectDetail"));
 const CTOTasks = lazyImport(() => import("./pages/cto/CTOTasks"));
