@@ -864,5 +864,43 @@
     "noMatch": "لا توجد صور مطابقة",
     "loadError": "تعذّر تحميل الصور.",
     "pageSummary": "{{from}}–{{to}} من {{total}}"
+  },
+  "doc": {
+    "title": "وثائق WRO",
+    "subtitle": "الأوراق التي تطلبها أولمبياد الروبوت العالمية من كل عضو في الفريق.",
+    "notNeeded": "لا حاجة لوثائق",
+    "notNeededHint": "دوراتك لا تشارك في WRO، لذلك لا يوجد ما ترسله هنا.",
+    "sent": "المرسلة",
+    "rules": "صور (JPG أو PNG أو WebP) أو PDF، بحجم أقصى 10 ميغابايت لكل ملف. لا يمكن تغيير الوثائق المقبولة.",
+    "loadError": "تعذّر تحميل وثائقك.",
+    "missing": "لم تُرسل",
+    "needed": "ما زالت مطلوبة.",
+    "sentOn": "أُرسلت في {{date}}",
+    "upload": "رفع",
+    "replace": "استبدال",
+    "view": "عرض",
+    "delete": "حذف",
+    "deleteTitle": "حذف هذه الوثيقة؟",
+    "deleteText": "ستُحذف وثيقة {{type}}، ويمكنك إرسال غيرها.",
+    "badType": "الصور (JPG أو PNG أو WebP) أو ملفات PDF فقط",
+    "tooBig": "حجم الملف أكبر من 10 ميغابايت",
+    "uploadError": "تعذّر رفع الوثيقة",
+    "deleteError": "تعذّر حذف الوثيقة",
+    "status": {
+      "pending": "قيد التدقيق",
+      "verified": "مقبولة",
+      "rejected": "تحتاج نسخة جديدة"
+    },
+    "type": {
+      "national_id": "الهوية الشخصية",
+      "official_photo": "صورة رسمية",
+      "civil_registry": "إخراج قيد",
+      "family_record": "دفتر العائلة",
+      "travel_permission": "إذن السفر"
+    },
+    "toast": {
+      "uploaded": "أُرسلت الوثيقة",
+      "deleted": "حُذفت الوثيقة"
+    }
   }
 }

@@ -792,5 +792,43 @@
     "noMatch": "No photos match",
     "loadError": "We couldn't load the photos.",
     "pageSummary": "{{from}}–{{to}} of {{total}}"
+  },
+  "doc": {
+    "title": "WRO documents",
+    "subtitle": "Papers the World Robot Olympiad needs from every team member.",
+    "notNeeded": "No documents needed",
+    "notNeededHint": "Your courses do not take part in the WRO, so there is nothing to send here.",
+    "sent": "Sent",
+    "rules": "Photos (JPG, PNG, WebP) or PDF, up to 10 MB each. Accepted documents can no longer be changed.",
+    "loadError": "We couldn't load your documents.",
+    "missing": "Not sent",
+    "needed": "Still needed.",
+    "sentOn": "Sent on {{date}}",
+    "upload": "Upload",
+    "replace": "Replace",
+    "view": "View",
+    "delete": "Delete",
+    "deleteTitle": "Delete this document?",
+    "deleteText": "Your {{type}} will be removed; you can send a new one.",
+    "badType": "Only photos (JPG, PNG, WebP) or PDF files",
+    "tooBig": "The file is larger than 10 MB",
+    "uploadError": "The document couldn't upload",
+    "deleteError": "The document couldn't be deleted",
+    "status": {
+      "pending": "Being checked",
+      "verified": "Accepted",
+      "rejected": "Needs a new copy"
+    },
+    "type": {
+      "national_id": "National ID",
+      "official_photo": "Official photo",
+      "civil_registry": "Civil registry extract",
+      "family_record": "Family record book",
+      "travel_permission": "Travel permission"
+    },
+    "toast": {
+      "uploaded": "Document sent",
+      "deleted": "Document deleted"
+    }
   }
 }
