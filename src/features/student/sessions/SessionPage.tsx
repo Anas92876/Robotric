@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { AlertCircle, CalendarClock, CheckCircle2, ChevronRight, Clock, Eye, FileText, ListTodo, Lock, MessageSquareText, PlayCircle, Star } from 'lucide-react';
+import { AlertCircle, CalendarClock, ClipboardList, CheckCircle2, ChevronRight, Clock, Eye, FileText, ListTodo, Lock, MessageSquareText, PlayCircle, Star } from 'lucide-react';
 import { api } from '../../../lib/api';
 import { useFormat } from '../../../app/format';
 import { readApiError } from '../../../app/apiError';
 import { PDFViewer } from '../../../components/ui/PDFViewer';
 import { Badge, Button, EmptyState, PageHeader, Panel, PanelTitle, type BadgeTone } from '../../../ui';
+import { useCourse } from '../courses/api';
 
 type Att = 'present' | 'late' | 'absent' | 'excused';
 interface Session {
@@ -104,6 +105,9 @@ export default function SessionPage() {
   const q = useSession(sessionId);
   const [pdf, setPdf] = useState<string | null>(null);
   const s = q.data;
+  // The quiz of a class comes with the course's class list (already loaded on the course page)
+  const { sessions: courseSessions } = useCourse(s && !('locked' in s) ? s.courseId?._id ?? '' : '');
+  const quiz = courseSessions.data?.find((x) => x._id === sessionId);
   const courseBack = s && !('locked' in s) && s.courseId ? { to: `/student/courses/${s.courseId._id}`, label: s.courseId.title } : { to: '/student/courses', label: t('courses.title') };
   const timeRange = (a?: string, b?: string) => (a ? <bdi dir="ltr">{a}{b ? `–${b}` : ''}</bdi> : null);
 
@@ -215,6 +219,15 @@ export default function SessionPage() {
           )}
         </div>
 
+        <div className="space-y-5">
+        {quiz?.quiz && (
+          <Link to={`/student/quizzes/${quiz.quiz._id}`} className="block rounded-panel bg-ink p-5 text-white focus-visible:focus-ring">
+            <p className="flex items-center gap-2 text-sm text-glow"><ClipboardList className="size-4" aria-hidden />{t('cls.quiz')}</p>
+            <p className="mt-1 truncate text-lg font-semibold" dir="auto">{quiz.quiz.title}</p>
+            <p className="mt-1 text-sm text-frost/75">{quiz.quizAttempt ? t(quiz.quizAttempt.passed ? 'cls.quizPassed' : 'cls.quizTried', { score: Math.round(quiz.quizAttempt.score ?? 0) }) : t('cls.quizNew')}</p>
+            <p className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-glow">{t(quiz.quizAttempt ? 'cls.quizOpen' : 'cls.quizStart')} <ChevronRight className="size-4 rtl:rotate-180" aria-hidden /></p>
+          </Link>
+        )}
         <Panel>
           <PanelTitle title={t('cls.evaluation')} />
           {!ev ? (
@@ -246,6 +259,7 @@ export default function SessionPage() {
             </div>
           )}
         </Panel>
+        </div>
       </div>
 
       <PDFViewer resourceId={pdf} isOpen={!!pdf} onClose={() => setPdf(null)} />

@@ -194,7 +194,21 @@ export function navigationFor(role: string | undefined, opts: { wroAccess?: bool
 }
 
 /** The longest menu path that the current URL is inside (so /reception/users doesn't also light up /reception). */
+/** Pages that sit outside their menu item's path, mapped to the item that should stay highlighted. */
+const PARENT: [prefix: string, item: string][] = [
+  ['/student/sessions', '/student/courses'],
+  ['/student/modules', '/student/courses'],
+  ['/student/quizzes', '/student/courses'],
+  ['/student/assignments', '/student/courses'],
+  ['/student/groups', '/student/courses'],
+  ['/student/attendance', '/student/courses'],
+  ['/trainer/session/', '/trainer/sessions'],
+  ['/trainer/attendance', '/trainer/sessions'],
+];
+
 export function activePath(pathname: string, sections: NavSection[]): string | undefined {
+  const parent = PARENT.find(([p]) => pathname.startsWith(p))?.[1];
+  if (parent && sections.some((s) => s.items.some((i) => i.path === parent))) pathname = parent;
   return sections
     .flatMap((s) => s.items.map((i) => i.path))
     .filter((p) => pathname === p || pathname.startsWith(p + '/'))
