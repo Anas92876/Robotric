@@ -129,7 +129,7 @@
   "loadingTaskBuilder": "Loading task builder...",
   "taskTitle": "Task Title",
   "taskTitleAr": "Task Title (Arabic)",
-  "taskDescription": "Task Description",
+  "taskDescription": "Description (optional)",
   "taskDescriptionAr": "Task Description (Arabic)",
   "selectGroup": "Select Group",
   "selectCourse": "Select Course",
@@ -269,7 +269,6 @@
   "allEvaluatedDesc": "Great job! You've completed evaluations for all students in this session.",
   "failedLoadEvals": "Failed to load evaluations",
   "backToSchedule": "Back to Schedule",
-  "totalStudents": "Total Students",
   "gallerySubtitle": "Manage gallery images for your groups",
   "deleteImageTitle": "Delete Image",
   "deleteImageConfirmText": "Are you sure you want to delete this image? This action cannot be undone.",
@@ -350,9 +349,6 @@
   "boardNotEnabledDesc": "The board feature is not enabled for this group yet",
   "noteWritePlaceholder": "Write a note...",
   "saveNote": "Save",
-  "createTask": "Create Task",
-  "taskTitle": "Task Title",
-  "taskDescription": "Description (optional)",
   "taskPriority": "Priority",
   "taskPriority1": "Critical",
   "taskPriority2": "High",
@@ -363,10 +359,37 @@
   "dueDate": "Due Date",
   "assignMembers": "Assign Members",
   "deleteTask": "Delete Task",
-  "editTask": "Edit Task",
   "taskCreated": "Task created",
   "taskDeleted": "Task deleted",
   "notePosted": "Note posted",
   "notePinned": "Note pinned",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "ov": {
+    "hello": "Welcome back",
+    "note": "Here is your teaching day at a glance.",
+    "goSchedule": "Open my schedule",
+    "today": "Today's classes",
+    "week": "Classes this week",
+    "groups": "Active groups",
+    "students": "Students",
+    "todayClasses": "Today's classes",
+    "schedule": "Schedule",
+    "noClassesToday": "No classes today",
+    "upcoming_one": "{{count}} class coming up",
+    "upcoming_other": "{{count}} classes coming up",
+    "status": {
+      "scheduled": "Scheduled",
+      "in_progress": "Now",
+      "completed": "Done",
+      "cancelled": "Cancelled"
+    },
+    "rating": "Average rating you gave",
+    "ratingNote": "Across your latest student evaluations.",
+    "recent": "Recent activity",
+    "noActivity": "Nothing yet.",
+    "act": {
+      "session_completed": "Class finished",
+      "evaluation_submitted": "Evaluation saved"
+    }
+  }
 }

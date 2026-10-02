@@ -58,7 +58,7 @@ const StudentDocuments = lazyImport(() => import("./features/student/documents/D
 const StudentMissionPlanner = lazyImport(() => import("./features/student/mission/MissionPlannerPage"));
 
 // Trainer pages
-const TrainerDashboard = lazyImport(() => import("./pages/trainer/TrainerDashboard"));
+const TrainerDashboard = lazyImport(() => import("./features/trainer/overview/TrainerOverviewPage"));
 const TrainerSchedule = lazyImport(() => import("./pages/trainer/TrainerSchedule"));
 const TrainerGroups = lazyImport(() => import("./pages/trainer/TrainerGroups"));
 const TrainerGroupDetail = lazyImport(() => import("./pages/trainer/TrainerGroupDetail"));
