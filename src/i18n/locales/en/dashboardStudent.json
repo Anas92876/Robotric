@@ -830,5 +830,15 @@
       "uploaded": "Document sent",
       "deleted": "Document deleted"
     }
+  },
+  "mp": {
+    "title": "Mission planner",
+    "subtitle": "Plan your robot’s path on the WRO field instead of guessing distances and angles.",
+    "origin": "Origin (0,0) is the bottom-left corner of the field. Heading 0° faces up (+Y) and positive angles turn clockwise — the same as OdomIni(x, y, theta).",
+    "fullScreen": "Full screen",
+    "exitFull": "Exit full screen",
+    "mapTitle": "WRO field map",
+    "locked": "Not available for your courses",
+    "lockedHint": "The mission planner is for students in a WRO course."
   }
 }

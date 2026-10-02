@@ -55,7 +55,7 @@ const StudentGallery = lazyImport(() => import("./features/student/gallery/Galle
 const StudentEvaluations = lazyImport(() => import("./features/student/evaluations/EvaluationsPage"));
 const StudentCertificates = lazyImport(() => import("./features/student/certificates/CertificatesPage"));
 const StudentDocuments = lazyImport(() => import("./features/student/documents/DocumentsPage"));
-const StudentMissionPlanner = lazyImport(() => import("./pages/student/StudentMissionPlanner"));
+const StudentMissionPlanner = lazyImport(() => import("./features/student/mission/MissionPlannerPage"));
 
 // Trainer pages
 const TrainerDashboard = lazyImport(() => import("./pages/trainer/TrainerDashboard"));
