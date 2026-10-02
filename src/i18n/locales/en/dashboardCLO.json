@@ -532,5 +532,76 @@
     "yes": "Yes",
     "no": "No",
     "on": "Evaluated {{date}}"
+  },
+  "cr": {
+    "title": "Evaluation criteria",
+    "subtitle": "What trainers rate when they evaluate a student after class.",
+    "new": "New criteria",
+    "none": "No criteria yet",
+    "noneHint": "Without criteria, trainers only give an overall star rating.",
+    "status": {
+      "active": "Active",
+      "inactive": "Paused",
+      "archived": "Archived"
+    },
+    "pause": "Pause",
+    "resume": "Use again",
+    "delete": "Delete criteria",
+    "plusOverall": "+ overall star rating",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteText": "Trainers stop seeing these criteria. Evaluations already made keep their answers.",
+    "newTitle": "New evaluation criteria",
+    "editTitle": "Edit evaluation criteria",
+    "name": "Name",
+    "description": "Short description",
+    "courses": "Courses",
+    "appliesTo": "Applies to",
+    "scope": {
+      "course": "Every group of these courses",
+      "groups": "Only some groups"
+    },
+    "scopeHint": {
+      "course": "New groups get it automatically.",
+      "groups": "Pick the groups below."
+    },
+    "pickCoursesFirst": "Choose the courses first.",
+    "noGroups": "These courses have no groups yet.",
+    "params": "What trainers rate",
+    "weightTotal": "Weights: {{n}}%",
+    "paramName": "Name of item {{n}}",
+    "paramNameHint": "e.g. Teamwork",
+    "paramType": "Type of item {{n}}",
+    "paramWeight": "Weight of item {{n}}",
+    "weight": "Weight (%)",
+    "paramDesc": "Description of item {{n}}",
+    "paramDescHint": "What to look for (optional)",
+    "scale": "Scale",
+    "required": "Required",
+    "up": "Move up",
+    "down": "Move down",
+    "removeParam": "Remove item {{n}}",
+    "addParam": "Add item",
+    "type": {
+      "rating": "Stars",
+      "percentage": "Percent",
+      "grade": "Grade A–F",
+      "boolean": "Yes / no",
+      "text": "Comment"
+    },
+    "overall": "Also ask for an overall star rating",
+    "overallHint": "Recommended: it is the rating students and the reports use.",
+    "create": "Create criteria",
+    "errName": "Give the criteria a name.",
+    "errCourses": "Choose at least one course.",
+    "errGroups": "Choose at least one group.",
+    "errParam": "Every item needs a name.",
+    "errEmpty": "Add an item or keep the overall rating.",
+    "toast": {
+      "created": "Criteria created",
+      "saved": "Criteria saved",
+      "paused": "Criteria paused",
+      "resumed": "Criteria in use again",
+      "deleted": "Criteria deleted"
+    }
   }
 }
