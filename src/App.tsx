@@ -47,8 +47,8 @@ const StudentCourseAttendance = lazyImport(() => import("./pages/student/Student
 const StudentPayments = lazyImport(() => import("./pages/student/StudentPayments"));
 const StudentSubscriptions = lazyImport(() => import("./pages/student/StudentSubscriptions"));
 const StudentGroupBoard = lazyImport(() => import("./pages/student/StudentGroupBoard"));
-const StudentTasks = lazyImport(() => import("./pages/student/StudentTasks"));
-const StudentTaskDetail = lazyImport(() => import("./pages/student/StudentTaskDetail"));
+const StudentTasks = lazyImport(() => import("./features/student/tasks/TasksPage"));
+const StudentTaskDetail = lazyImport(() => import("./features/student/tasks/TaskPage"));
 const StudentProjects = lazyImport(() => import("./pages/student/StudentProjects"));
 const StudentProjectDetail = lazyImport(() => import("./pages/student/StudentProjectDetail"));
 const StudentGallery = lazyImport(() => import("./pages/student/StudentGallery"));
