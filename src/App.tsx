@@ -127,9 +127,7 @@ const CTOTransport = lazyImport(() => import("./pages/cto/CTOTransport"));
 const CTOWorkHours = lazyImport(() => import("./pages/cto/CTOWorkHours"));
 
 // Engineer pages
-const EngineerDashboard = lazyImport(() => import("./pages/engineer/EngineerDashboard"));
-const EngineerTasks = lazyImport(() => import("./pages/engineer/EngineerTasks"));
-const EngineerDeadlines = lazyImport(() => import("./pages/engineer/EngineerDeadlines"));
+const EngineerDashboard = lazyImport(() => import("./features/engineer/EngineerOverviewPage"));
 const MyTasks = lazyImport(() => import("./features/common/tasks/MyTasksPage"));
 const MyWorkHours = lazyImport(() => import("./features/common/hours/MyHoursPage"));
 
@@ -585,8 +583,9 @@ const App = () => {
               {/* Engineer routes */}
               <Route element={<EngineerRoute />}>
                 <Route path="/engineer/dashboard" element={<EngineerDashboard />} />
-                <Route path="/engineer/tasks" element={<EngineerTasks />} />
-                <Route path="/engineer/deadlines" element={<EngineerDeadlines />} />
+                {/* Tasks and deadlines live on the shared My tasks page */}
+                <Route path="/engineer/tasks" element={<Navigate to="/my-tasks" replace />} />
+                <Route path="/engineer/deadlines" element={<Navigate to="/my-tasks" replace />} />
               </Route>
 
               {/* Client routes */}

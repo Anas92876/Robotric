@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { AlarmClock, CheckCircle2, CircleDot, Eye, Flame, ListTodo, Play, RotateCcw } from 'lucide-react';
 import { useAuth } from '../../../providers/AuthProvider';
 import { useToast } from '../../../components/ui/Toast';
@@ -27,7 +28,9 @@ export default function MyTasksPage() {
   const [search, setSearch] = useState('');
   const [priority, setPriority] = useState('');
   const [project, setProject] = useState('');
-  const [openId, setOpenId] = useState<string | null>(null);
+  // ?task=<id> opens that task (links from the overview pages)
+  const [params] = useSearchParams();
+  const [openId, setOpenId] = useState<string | null>(() => params.get('task'));
 
   const all = tasks.data ?? [];
   const open = all.find((x) => x._id === openId) ?? null;

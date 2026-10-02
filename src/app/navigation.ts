@@ -166,7 +166,7 @@ export const NAVIGATION: Record<string, NavSection[]> = {
     section('more', 'More', [L.studentGallery, L.studentDocuments, L.missionPlanner]),
   ],
   engineer: [
-    section('overview', 'Overview', [L.engineerHome, L.engineerTasks, L.engineerDeadlines]),
+    section('overview', 'Overview', [L.engineerHome]),
     section('my-work', 'My work', [L.myTasks, L.myHours]),
   ],
   client: [section('overview', 'Overview', [L.clientHome, L.clientTasks])],

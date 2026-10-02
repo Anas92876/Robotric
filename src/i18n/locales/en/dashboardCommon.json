@@ -411,5 +411,24 @@
     "errText": "Question {{n}} has no text.",
     "errOptions": "Question {{n}} needs at least two choices.",
     "errCorrect": "Question {{n}} needs a right answer."
+  },
+  "eng": {
+    "hello": "Welcome back,",
+    "note": "Here is what is due and what you are working on.",
+    "noteLate_one": "{{count}} task is past its deadline.",
+    "noteLate_other": "{{count}} tasks are past their deadline.",
+    "goTasks": "Open my tasks",
+    "todo": "To do",
+    "doing": "In progress",
+    "overdue": "Overdue",
+    "projects": "Projects",
+    "next": "Next deadlines",
+    "allTasks": "All my tasks",
+    "nothingDue": "No deadlines coming up.",
+    "hours": "Work hours",
+    "working": "You are clocked in",
+    "startWork": "Start work",
+    "myProjects": "My projects",
+    "noProjects": "You are not on any project yet."
   }
 }
