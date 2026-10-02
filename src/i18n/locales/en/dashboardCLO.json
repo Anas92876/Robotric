@@ -280,5 +280,41 @@
   "enableBoard": "Enable Board",
   "disableBoard": "Disable Board",
   "boardEnabledTooltip": "Board is enabled — students and trainer can access the group board",
-  "boardDisabledTooltip": "Board is disabled — click to enable"
+  "boardDisabledTooltip": "Board is disabled — click to enable",
+  "ov": {
+    "hello": "Welcome back,",
+    "note": "Here is how courses, groups and trainers are doing.",
+    "goSessions": "See classes",
+    "courses": "Published courses",
+    "groups": "Active groups",
+    "trainers": "Active trainers",
+    "students": "Students",
+    "loadError": "The overview could not be loaded.",
+    "recentGroups": "Newest groups",
+    "allGroups": "All groups",
+    "noGroups": "No groups yet.",
+    "recentCourses": "Newest courses",
+    "allCourses": "All courses",
+    "noCourses": "No courses yet.",
+    "added": "Added {{date}}",
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "archived": "Archived",
+      "cancelled": "Cancelled",
+      "draft": "Draft",
+      "published": "Published"
+    },
+    "attendance": "Attendance",
+    "attendanceHint": "Share of marked students who came to class.",
+    "completion": "Course completion",
+    "completionHint": "Share of enrollments that finished the course.",
+    "newEnrollments_one": "{{count}} new enrollment in the last 30 days",
+    "newEnrollments_other": "{{count}} new enrollments in the last 30 days",
+    "topTrainers": "Best attendance",
+    "allTrainers": "All trainers",
+    "noTrainers": "No attendance marked yet.",
+    "groupsCount_one": "{{count}} active group",
+    "groupsCount_other": "{{count}} active groups"
+  }
 }

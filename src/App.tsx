@@ -93,7 +93,7 @@ const JobApplications = lazyImport(() => import("./features/reception/jobs/JobAp
 const TransportManagement = lazyImport(() => import("./features/reception/transport/TransportPage"));
 
 // CLO pages
-const CLODashboard = lazyImport(() => import("./pages/clo/CLODashboard"));
+const CLODashboard = lazyImport(() => import("./features/clo/overview/CloOverviewPage"));
 const CLOTrainers = lazyImport(() => import("./pages/clo/CLOTrainers"));
 const CLOCourses = lazyImport(() => import("./pages/clo/CLOCourses"));
 const CLOGroups = lazyImport(() => import("./pages/clo/CLOGroups"));
