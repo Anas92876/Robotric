@@ -709,5 +709,63 @@
     "loadError": "We couldn't load your evaluations.",
     "scored": "{{n}} of {{total}} classes rated",
     "hasNotes": "Has notes from the trainer"
+  },
+  "sub": {
+    "title": "Subscriptions",
+    "subtitle": "Your monthly hours for private sessions, and your requests.",
+    "request": "Request a session",
+    "active": "Active subscription",
+    "plan": "Hour package",
+    "period": "{{from}} – {{to}}",
+    "hoursLeft": "hours left of {{total}}",
+    "none": "No active subscription",
+    "noneHint": "Private sessions need an hour package. Ask the reception team to set one up for you.",
+    "requests": "My session requests",
+    "noRequests": "No requests yet",
+    "noRequestsHint": "Pick a day and time and the reception team will confirm it.",
+    "loadError": "We couldn't load your requests.",
+    "col": {
+      "when": "When",
+      "length": "Length",
+      "note": "Note",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "pending": "Waiting for reply",
+      "approved": "Approved",
+      "completed": "Done",
+      "declined": "Declined",
+      "canceled": "Canceled",
+      "no_show": "Missed"
+    },
+    "reason": "Reason: {{reason}}",
+    "actionsFor": "Request actions",
+    "cancelRequest": "Cancel request",
+    "keep": "Keep it",
+    "cancelTitle": "Cancel this request?",
+    "cancelText": "Your request for {{date}} at {{time}} will be canceled.",
+    "cancelError": "Couldn't cancel the request",
+    "requestTitle": "Request a private session",
+    "requestHint": "Sessions run between {{open}} and {{close}}.",
+    "cancelForm": "Cancel",
+    "send": "Send request",
+    "date": "Day",
+    "start": "Start",
+    "length": "Length",
+    "hours_one": "{{count}} hour",
+    "hours_other": "{{count}} hours",
+    "endsAt": "Ends at",
+    "uses_one": "uses {{count}} of your {{left}} hours",
+    "uses_other": "uses {{count}} of your {{left}} hours",
+    "note": "What do you want to work on? (optional)",
+    "notePlaceholder": "e.g. finishing my line-follower robot",
+    "errDate": "Please choose a day.",
+    "errPast": "The day cannot be in the past.",
+    "errLate": "The session must end by {{close}}.",
+    "toast": {
+      "sent": "Request sent — reception will confirm it",
+      "canceled": "Request canceled"
+    }
   }
 }

@@ -45,7 +45,7 @@ const StudentAssignment = lazyImport(() => import("./features/student/modules/As
 const StudentAttendanceOverview = lazyImport(() => import("./features/student/attendance/AttendancePage"));
 const StudentCourseAttendance = lazyImport(() => import("./features/student/attendance/CourseAttendancePage"));
 const StudentPayments = lazyImport(() => import("./features/student/payments/PaymentsPage"));
-const StudentSubscriptions = lazyImport(() => import("./pages/student/StudentSubscriptions"));
+const StudentSubscriptions = lazyImport(() => import("./features/student/subscriptions/SubscriptionsPage"));
 const StudentGroupBoard = lazyImport(() => import("./pages/student/StudentGroupBoard"));
 const StudentTasks = lazyImport(() => import("./features/student/tasks/TasksPage"));
 const StudentTaskDetail = lazyImport(() => import("./features/student/tasks/TaskPage"));
