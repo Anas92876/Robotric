@@ -603,5 +603,34 @@
     "missed": "The deadline has passed for this task.",
     "closed": "This task is closed.",
     "cancelEdit": "Keep my sent answers"
+  },
+  "pj": {
+    "title": "Projects",
+    "subtitle": "What you and your group-mates built in class.",
+    "all": "All projects",
+    "mine": "Mine",
+    "group": "From my groups",
+    "one": "Project",
+    "search": "Search by project or student…",
+    "none": "No projects yet",
+    "noneHint": "Your trainer adds projects with photos as you build them.",
+    "noMatch": "No projects match",
+    "loadError": "We couldn't load the projects.",
+    "notFound": "This project does not exist or is not in your groups.",
+    "status": {
+      "in_progress": "Building",
+      "submitted": "Handed in",
+      "completed": "Finished"
+    },
+    "byYou": "By you",
+    "by": "By {{name}}",
+    "grade": "Grade: {{grade}}",
+    "gradeTitle": "Grade",
+    "photo": "Photo {{n}}",
+    "noPhotos": "No photos yet.",
+    "about": "About the project",
+    "components": "Parts used",
+    "technologies": "Tools and skills",
+    "created": "Added {{date}} by {{name}}"
   }
 }
