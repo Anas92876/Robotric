@@ -4,6 +4,7 @@
  * Modal form for creating/editing leads with all required fields
  */
 
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Input, ConfirmDialog } from '../ui';
 import { Plus, Trash2 } from 'lucide-react';

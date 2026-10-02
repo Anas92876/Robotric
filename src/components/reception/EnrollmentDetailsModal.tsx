@@ -4,6 +4,7 @@
  * Displays comprehensive enrollment information including payment history
  */
 
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Tabs, LoadingState, useToast, Button, ConfirmDialog } from '../ui';
