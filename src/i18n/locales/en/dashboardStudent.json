@@ -632,5 +632,48 @@
     "components": "Parts used",
     "technologies": "Tools and skills",
     "created": "Added {{date}} by {{name}}"
+  },
+  "pay": {
+    "title": "Payments",
+    "titleFor": "Payments · {{course}}",
+    "subtitle": "What your courses cost and what you paid. Payments are made at the centre.",
+    "total": "Total",
+    "paid": "Paid",
+    "left": "Left to pay",
+    "leftShort": "left",
+    "overdue_one": "{{count}} payment is overdue",
+    "overdue_other": "{{count}} payments are overdue",
+    "nextDue": "Next payment",
+    "dueLine": "{{amount}} due {{date}}",
+    "atCentre": "Pay at the reception desk; your receipt appears here.",
+    "history": "Payment history",
+    "none": "No payments yet.",
+    "loadError": "We couldn't load your payments.",
+    "byCourse": "By course",
+    "fullyPaid": "Fully paid",
+    "ofTotal": "{{paid}} of {{total}} paid",
+    "transport": "Transport",
+    "course": "Course",
+    "receipt": "Receipt",
+    "receiptError": "The receipt couldn't download",
+    "col": {
+      "date": "Date",
+      "for": "For",
+      "method": "Method",
+      "amount": "Amount",
+      "status": "Status"
+    },
+    "method": {
+      "cash": "Cash",
+      "card": "Card",
+      "bank_transfer": "Bank transfer",
+      "online": "Online"
+    },
+    "status": {
+      "completed": "Paid",
+      "pending": "Pending",
+      "failed": "Failed",
+      "refunded": "Refunded"
+    }
   }
 }

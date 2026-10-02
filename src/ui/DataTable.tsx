@@ -31,7 +31,7 @@ export function DataTable<T>({ columns, rows, rowKey, loading, empty, label }: D
   if (!loading && rows.length === 0 && empty) return <>{empty}</>;
 
   return (
-    <div className="overflow-x-auto">
+    <div className="relative overflow-x-auto">
       <table className="w-full border-collapse text-sm" aria-label={label} aria-busy={loading || undefined}>
         <thead>
           <tr className="border-b border-line">

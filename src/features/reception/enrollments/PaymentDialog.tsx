@@ -139,7 +139,7 @@ export function PaymentDialog({ enrollment, onClose, exchangeRate, onPay }: Paym
           </fieldset>
         )}
 
-        <div className="grid gap-4 sm:grid-cols-[1fr_auto]">
+        <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto]">
           <Field label={t('enrollments.pay.amount')} required error={error || undefined}>
             {(p) => (
               <TextInput

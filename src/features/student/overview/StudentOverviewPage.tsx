@@ -47,7 +47,7 @@ export default function StudentOverviewPage() {
         <StatTile icon={<Clock />} tint="bg-tint-sand" label={t('ov.hours')} value={s?.totalSessionHours ?? 0} loading={stats.isLoading} />
       </div>
 
-      <div className="grid gap-5 xl:grid-cols-[1fr_340px]">
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
         <Panel>
           <PanelTitle title={t('ov.myCourses')} link={{ to: '/student/courses', label: t('ov.viewAll') }} />
           {progress.isLoading ? (

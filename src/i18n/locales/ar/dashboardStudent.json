@@ -688,5 +688,52 @@
     "components": "القطع المستخدمة",
     "technologies": "الأدوات والمهارات",
     "created": "أُضيف في {{date}} بواسطة {{name}}"
+  },
+  "pay": {
+    "title": "الدفعات",
+    "titleFor": "الدفعات · {{course}}",
+    "subtitle": "تكلفة دوراتك وما دفعته. يتم الدفع في المركز.",
+    "total": "الإجمالي",
+    "paid": "المدفوع",
+    "left": "المتبقي للدفع",
+    "leftShort": "متبقٍ",
+    "overdue_zero": "لا دفعات متأخرة",
+    "overdue_one": "دفعة واحدة متأخرة",
+    "overdue_two": "دفعتان متأخرتان",
+    "overdue_few": "{{count}} دفعات متأخرة",
+    "overdue_many": "{{count}} دفعة متأخرة",
+    "overdue_other": "{{count}} دفعة متأخرة",
+    "nextDue": "الدفعة القادمة",
+    "dueLine": "{{amount}} مستحقة في {{date}}",
+    "atCentre": "ادفع في مكتب الاستقبال، وسيظهر إيصالك هنا.",
+    "history": "سجل الدفعات",
+    "none": "لا توجد دفعات بعد.",
+    "loadError": "تعذّر تحميل دفعاتك.",
+    "byCourse": "حسب الدورة",
+    "fullyPaid": "مدفوعة بالكامل",
+    "ofTotal": "دُفع {{paid}} من {{total}}",
+    "transport": "النقل",
+    "course": "دورة",
+    "receipt": "الإيصال",
+    "receiptError": "تعذّر تنزيل الإيصال",
+    "col": {
+      "date": "التاريخ",
+      "for": "عن",
+      "method": "طريقة الدفع",
+      "amount": "المبلغ",
+      "status": "الحالة"
+    },
+    "method": {
+      "cash": "نقداً",
+      "card": "بطاقة",
+      "bank_transfer": "تحويل بنكي",
+      "online": "عبر الإنترنت"
+    },
+    "status": {
+      "completed": "مدفوعة",
+      "pending": "قيد الانتظار",
+      "failed": "فشلت",
+      "refunded": "مستردّة"
+    }
   }
 }

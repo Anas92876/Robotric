@@ -122,7 +122,7 @@ export function ProjectPage() {
     <div className="space-y-5">
       <PageHeader back={back} title={text.title(p)} description={[owner?._id === (user?._id || user?.id) ? t('pj.byYou') : t('pj.by', { name: owner?.name ?? '' }), p.groupId?.name, p.courseId?.title].filter(Boolean).join(' · ')} actions={<Badge tone={TONE[p.status]}>{t(`pj.status.${p.status}`)}</Badge>} />
 
-      <div className="grid gap-5 lg:grid-cols-[1fr_340px]">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="space-y-5">
           {imgs.length > 0 ? (
             <Panel className="p-3 sm:p-3">

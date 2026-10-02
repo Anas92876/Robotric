@@ -83,7 +83,7 @@ export default function AssignmentPage() {
         </span>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
         <Panel>
           <PanelTitle title={t('asg.brief')} />
           {a.instructions ? <p className="whitespace-pre-line text-[15px] leading-relaxed text-ink-2" dir="auto">{a.instructions}</p> : <p className="text-sm text-ink-4">{t('asg.noBrief')}</p>}
