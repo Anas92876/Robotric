@@ -702,5 +702,47 @@
       "resumed": "Plan offered again",
       "deleted": "Plan deleted"
     }
+  },
+  "res": {
+    "title": "Resources",
+    "subtitle": "The PDF library of each course. Give a PDF to classes and their students can read it on the class page.",
+    "upload": "Upload PDF",
+    "search": "Search PDFs…",
+    "empty": "No PDFs yet",
+    "emptyHint": "Upload course material to share it with classes.",
+    "emptyFiltered": "Try another search or course.",
+    "usedIn": "Classes: {{classes}} · groups: {{groups}}",
+    "notUsed": "Not given to any class",
+    "open": "Open",
+    "assign": "Give to classes",
+    "rename": "Rename",
+    "delete": "Remove PDF",
+    "uploadTitle": "Upload a PDF",
+    "drop": "Choose a PDF or drop it here",
+    "dropHint": "PDF only, up to 25 MB.",
+    "titleLabel": "Title",
+    "description": "Description",
+    "errType": "Only PDF files can be uploaded.",
+    "errSize": "The file is bigger than 25 MB.",
+    "errFile": "Choose a PDF.",
+    "errTitle": "The title needs at least 3 characters.",
+    "errCourse": "Choose the course.",
+    "assignTitle": "Give this PDF to classes",
+    "pickGroup": "Choose a group",
+    "noClasses": "This group has no classes yet.",
+    "classes": "Classes",
+    "all": "Select all",
+    "none": "Clear",
+    "assignHint": "Saving replaces this group's classes for this PDF.",
+    "saveClasses": "Save classes",
+    "renameTitle": "Rename PDF",
+    "deleteTitle": "Remove {{name}}?",
+    "deleteText": "It leaves the library and the classes that had it.",
+    "toast": {
+      "uploaded": "PDF uploaded",
+      "assigned": "Classes saved",
+      "renamed": "PDF renamed",
+      "deleted": "PDF removed"
+    }
   }
 }
