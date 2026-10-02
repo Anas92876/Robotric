@@ -510,5 +510,27 @@
     "range": "{{from}}–{{to}} of {{total}}",
     "prev": "Previous",
     "next": "Next"
+  },
+  "ev": {
+    "title": "Evaluations",
+    "subtitle": "How trainers rated each student after class.",
+    "total": "Evaluations",
+    "average": "Average rating",
+    "spread": "Ratings",
+    "clearRating": "Show all ratings (now {{n}} ★)",
+    "col": {
+      "student": "Student",
+      "rating": "Rating",
+      "flags": "Flags"
+    },
+    "excelling": "Excelling",
+    "attention": "Needs attention",
+    "none": "No evaluations here yet.",
+    "noneHint": "Trainers evaluate students from the class page.",
+    "by": "by {{name}}",
+    "notes": "Trainer notes",
+    "yes": "Yes",
+    "no": "No",
+    "on": "Evaluated {{date}}"
   }
 }
