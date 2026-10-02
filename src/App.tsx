@@ -105,7 +105,7 @@ const CLOSessionDetail = lazyImport(() => import("./features/trainer/sessions/Se
 const CLOEvaluations = lazyImport(() => import("./features/clo/evaluations/EvaluationsPage"));
 const CLOEvaluationCriteria = lazyImport(() => import("./features/clo/criteria/CriteriaPage"));
 const CLOAttendance = lazyImport(() => import("./features/clo/attendance/AttendancePage"));
-const CLOInterests = lazyImport(() => import("./pages/clo/CLOInterests"));
+const CLOInterests = lazyImport(() => import("./features/clo/interests/InterestsPage"));
 const CLOResourceManagement = lazyImport(() => import("./pages/clo/CLOResourceManagement"));
 const CLOSubscriptionPlans = lazyImport(() => import("./pages/clo/CLOSubscriptionPlans"));
 const CLOTasks = lazyImport(() => import("./features/clo/tasks/CloTasksPage"));

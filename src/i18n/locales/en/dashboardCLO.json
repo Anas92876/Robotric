@@ -637,5 +637,35 @@
     "count_other": "{{count}} photos",
     "none": "No photos here yet",
     "noneHint": "Trainers and reception share photos from their groups."
+  },
+  "int": {
+    "title": "Interests",
+    "subtitle": "What people can say they are interested in when they leave their details. Reception sees it on each lead.",
+    "new": "Add interest",
+    "search": "Search interests…",
+    "name": "Name",
+    "nameHint": "Short, e.g. Robotics.",
+    "description": "Description",
+    "added": "Added",
+    "status": {
+      "active": "In use",
+      "archived": "Archived"
+    },
+    "archive": "Archive",
+    "restore": "Use again",
+    "delete": "Delete interest",
+    "none": "No interests here.",
+    "newTitle": "Add an interest",
+    "editTitle": "Edit interest",
+    "errName": "Enter a name.",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteText": "It is removed for good. Archive it instead to keep it on old leads.",
+    "toast": {
+      "created": "Interest added",
+      "saved": "Interest saved",
+      "archived": "Interest archived",
+      "restored": "Interest in use again",
+      "deleted": "Interest deleted"
+    }
   }
 }
