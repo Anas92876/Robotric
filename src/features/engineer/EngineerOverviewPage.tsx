@@ -58,13 +58,13 @@ export default function EngineerOverviewPage() {
             <PanelTitle title={t('eng.myProjects')} />
             {projects.isLoading ? <div className="h-20 animate-pulse rounded-card bg-rail" /> : !projects.data?.length ? <p className="py-3 text-center text-sm text-ink-4">{t('eng.noProjects')}</p> : (
               <ul className="space-y-2">
-                {projects.data.slice(0, 6).map((p) => (
+                {projects.data.slice(0, 6).map((p) => ({ p, c: (p as { myTaskCounts?: typeof p.taskCounts }).myTaskCounts ?? p.taskCounts })).map(({ p, c }) => (
                   <li key={p._id} className="rounded-card border border-line p-3">
                     <p className="truncate text-sm font-medium text-ink" dir="auto">{p.name}</p>
-                    {p.taskCounts && (
+                    {c && (
                       <div className="mt-2 flex items-center gap-2">
-                        <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-rail"><span className="block h-full rounded-full bg-success" style={{ width: `${p.taskCounts.total ? (p.taskCounts.done / p.taskCounts.total) * 100 : 0}%` }} /></span>
-                        <span className="text-xs tabular-nums text-ink-3" dir="ltr">{p.taskCounts.done}/{p.taskCounts.total}</span>
+                        <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-rail"><span className="block h-full rounded-full bg-success" style={{ width: `${c.total ? (c.done / c.total) * 100 : 0}%` }} /></span>
+                        <span className="text-xs tabular-nums text-ink-3" dir="ltr">{c.done}/{c.total}</span>
                       </div>
                     )}
                   </li>
