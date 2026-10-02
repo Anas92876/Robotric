@@ -386,5 +386,34 @@
     "noMatch": "No courses match",
     "loadError": "We couldn't load your courses.",
     "retry": "Try again"
+  },
+  "crs": {
+    "notFound": "Course",
+    "loadError": "We couldn't load this course.",
+    "trainer": "Trainer: {{name}}",
+    "board": "Group board",
+    "payments": "Payments",
+    "progress": "{{done}} of {{total}} classes",
+    "evaluation": "Evaluation average",
+    "today": "Your class is today",
+    "next": "Next class",
+    "open": "Open the class",
+    "todayShort": "Today",
+    "soon": "Coming up",
+    "classes_one": "{{count}} class",
+    "classes_other": "{{count}} classes",
+    "noClasses": "No classes yet",
+    "noClassesHint": "Your trainer will add the classes soon.",
+    "online": "Online",
+    "quiz": "Quiz",
+    "quizPassed": "Quiz passed",
+    "cancelled": "Cancelled",
+    "locked": "Opens when your trainer unlocks it",
+    "att": {
+      "present": "Present",
+      "late": "Late",
+      "absent": "Absent",
+      "excused": "Excused"
+    }
   }
 }

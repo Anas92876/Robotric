@@ -394,5 +394,38 @@
     "noMatch": "لا توجد دورات مطابقة",
     "loadError": "تعذّر تحميل دوراتك.",
     "retry": "حاول مجدداً"
+  },
+  "crs": {
+    "notFound": "الدورة",
+    "loadError": "تعذّر تحميل هذه الدورة.",
+    "trainer": "المدرب: {{name}}",
+    "board": "لوحة المجموعة",
+    "payments": "الدفعات",
+    "progress": "{{done}} من {{total}} حصص",
+    "evaluation": "متوسط التقييم",
+    "today": "حصتك اليوم",
+    "next": "الحصة القادمة",
+    "open": "افتح الحصة",
+    "todayShort": "اليوم",
+    "soon": "قادمة",
+    "classes_zero": "لا حصص",
+    "classes_one": "حصة واحدة",
+    "classes_two": "حصتان",
+    "classes_few": "{{count}} حصص",
+    "classes_many": "{{count}} حصة",
+    "classes_other": "{{count}} حصة",
+    "noClasses": "لا توجد حصص بعد",
+    "noClassesHint": "سيضيف مدربك الحصص قريباً.",
+    "online": "عن بُعد",
+    "quiz": "اختبار",
+    "quizPassed": "نجحت في الاختبار",
+    "cancelled": "ملغاة",
+    "locked": "تُفتح عندما يتيحها مدربك",
+    "att": {
+      "present": "حاضر",
+      "late": "متأخر",
+      "absent": "غائب",
+      "excused": "معذور"
+    }
   }
 }
