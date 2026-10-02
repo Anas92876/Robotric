@@ -25,13 +25,13 @@ const DashboardLayout = () => {
 };
 
 // Common (shared authenticated) pages
-const Dashboard = lazyImport(() => import("./pages/common/Dashboard"));
-const Orders = lazyImport(() => import("./pages/common/Orders"));
-const Projects = lazyImport(() => import("./pages/common/Projects"));
-const Competitions = lazyImport(() => import("./pages/common/Competitions"));
-const Teams = lazyImport(() => import("./pages/common/Teams"));
+const Dashboard = lazyImport(() => import("./features/ops/OverviewPages"));
+const Orders = lazyImport(() => import("./features/ops/OrdersPage"));
+const Projects = lazyImport(() => import("./features/ops/OpsProjectsPage"));
+const Competitions = lazyImport(() => import("./features/ops/CompetitionsPages"));
+const Teams = lazyImport(() => import("./features/ops/TeamsPage"));
 const Posts = lazyImport(() => import("./features/common/posts/PostsPage"));
-const Inventory = lazyImport(() => import("./pages/common/Inventory"));
+const Inventory = lazyImport(() => import("./features/ops/InventoryPage"));
 const NotFound = lazyImport(() => import("./pages/common/NotFound"));
 
 // Student pages
@@ -138,7 +138,7 @@ const ClientTasks = lazyImport(() => import("./features/client/ClientRequestsPag
 const ClientTaskDetail = lazyImport(() => import("./features/client/ClientRequestPage"));
 
 // Admin pages
-const AdminDashboard = lazyImport(() => import("./pages/admin/AdminDashboard"));
+const AdminDashboard = lazyImport(() => import("./features/ops/AdminPanelPage"));
 
 /**
  * Component to show while loading a page
