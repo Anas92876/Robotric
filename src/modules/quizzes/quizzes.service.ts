@@ -113,7 +113,7 @@ export class QuizService {
     private readonly quizzes: QuizRepository,
     private readonly courses: CourseAccessLookup,
     private readonly groups: Pick<GroupRepository, 'list'>,
-    private readonly modules: Pick<CourseModuleRepository, 'findRow' | 'create'>,
+    private readonly modules: Pick<CourseModuleRepository, 'findRow' | 'create' | 'deleteUnusedQuizModule'>,
     private readonly enrollments: Pick<EnrollmentRepository, 'findForStudentCourse'>,
     private readonly notifier: QuizNotifier,
     private readonly logger: Logger,
@@ -211,8 +211,10 @@ export class QuizService {
   }
 
   async delete(id: string, trainerId: string): Promise<void> {
-    await this.requireOwned(id, trainerId);
+    const quiz = await this.requireOwned(id, trainerId);
     await this.quizzes.delete(id);
+    // The module made for the quiz would otherwise stay behind with nothing in it
+    if (quiz.moduleId) await this.modules.deleteUnusedQuizModule(quiz.moduleId);
   }
 
   async duplicate(id: string, trainerId: string): Promise<Quiz> {

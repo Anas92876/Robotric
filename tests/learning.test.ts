@@ -1,6 +1,8 @@
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { eq } from 'drizzle-orm';
 import { assignments } from '../src/modules/assignments/assignments.table';
+import { courseModules } from '../src/modules/course-modules/course-modules.table';
 import { signIn } from './helpers/auth';
 import { createTestApp, type TestContext } from './helpers/test-app';
 
@@ -66,6 +68,16 @@ describe('trainer quizzes', () => {
     expect(dup.body.data.title).toBe('Motors quiz (Copy)');
     expect(dup.body.data.questions[0]._id).not.toBe(quiz.questions[0]._id);
     await api().delete(`/api/trainer/quizzes/${dup.body.data._id}`).set(trainer.headers).expect(200);
+
+    // The copy shares the module with the original, so the module stays
+    const moduleOf = async (m: string | { _id: string }) => (await t.db.select().from(courseModules).where(eq(courseModules.id, typeof m === "string" ? m : m._id))).length;
+    expect(await moduleOf(quiz.module)).toBe(1);
+
+    // A quiz alone in its automatic module takes the module with it
+    const alone = (await api().post('/api/trainer/quizzes').set(trainer.headers).send(quizBody({ title: 'Alone' }))).body.data;
+    expect(await moduleOf(alone.module)).toBe(1);
+    await api().delete(`/api/trainer/quizzes/${alone._id}`).set(trainer.headers).expect(200);
+    expect(await moduleOf(alone.module)).toBe(0);
   });
 });
 

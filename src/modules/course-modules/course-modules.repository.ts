@@ -19,6 +19,8 @@ export interface CourseModuleRepository {
   /** Module ids per course, in order (the old `course.modules` array). */
   idsByCourse(courseIds: string[]): Promise<Map<string, string[]>>;
   findByCourse(courseId: string): Promise<CourseModuleRow[]>;
+  /** Deletes a quiz module made automatically for a quiz, once no quiz or assignment uses it. */
+  deleteUnusedQuizModule(id: string): Promise<boolean>;
 }
 
 export interface ModuleProgressRepository {
@@ -96,6 +98,14 @@ export class DrizzleCourseModuleRepository implements CourseModuleRepository {
 
   findByCourse(courseId: string) {
     return this.db.select().from(courseModules).where(eq(courseModules.courseId, courseId)).orderBy(asc(courseModules.order));
+  }
+
+  async deleteUnusedQuizModule(id: string) {
+    const [q] = await this.db.select({ n: count() }).from(quizzes).where(eq(quizzes.moduleId, id));
+    const [a] = await this.db.select({ n: count() }).from(assignments).where(eq(assignments.moduleId, id));
+    if ((q?.n ?? 0) > 0 || (a?.n ?? 0) > 0) return false;
+    const rows = await this.db.delete(courseModules).where(and(eq(courseModules.id, id), eq(courseModules.type, 'quiz'))).returning({ id: courseModules.id });
+    return rows.length > 0;
   }
 }
 
