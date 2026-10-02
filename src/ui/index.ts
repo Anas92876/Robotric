@@ -17,3 +17,4 @@ export { SearchInput } from './SearchInput';
 export { DataTable, type Column } from './DataTable';
 export { Pagination } from './Pagination';
 export { Dialog, ConfirmDialog } from './Dialog';
+export { WelcomeBanner } from './WelcomeBanner';

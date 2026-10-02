@@ -4,9 +4,8 @@ import { ArrowRight, BookOpen, GraduationCap, Plus, RefreshCw, Users, UsersRound
 import { useAuth } from '../../../providers';
 import { cn } from '../../../lib/utils';
 import { useFormat } from '../../../app/format';
-import { Panel, PanelTitle, StatTile } from '../../../ui';
+import { Panel, PanelTitle, StatTile, WelcomeBanner } from '../../../ui';
 import { useEvents, useLeadStats, useOverviewStats, usePendingSessionRequests, usePendingTransport, useRecentEnrollments, type LeadStats, type RecentEnrollment } from './api';
-import { WelcomeBanner } from './WelcomeBanner';
 import { CalendarCard } from './CalendarCard';
 import { ConversionGauge } from './ConversionGauge';
 
@@ -22,7 +21,7 @@ export default function ReceptionOverviewPage() {
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
       <div className="min-w-0 space-y-5">
-        <WelcomeBanner name={user?.name ?? ''} attention={(leads.data?.needsFollowUp ?? 0) > 0} />
+        <WelcomeBanner greeting={t('overview.welcomeBack')} name={user?.name ?? ''} note={t('overview.heroNote')} link={{ to: '/reception/enrollments', label: t('overview.goEnrollments') }} attention={(leads.data?.needsFollowUp ?? 0) > 0} />
 
         {stats.isError && (
           <div className="flex items-center justify-between gap-3 rounded-card bg-danger-soft px-4 py-3 text-sm text-danger">

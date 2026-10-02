@@ -35,7 +35,7 @@ const Inventory = lazyImport(() => import("./pages/common/Inventory"));
 const NotFound = lazyImport(() => import("./pages/common/NotFound"));
 
 // Student pages
-const StudentDashboard = lazyImport(() => import("./pages/student/StudentDashboard"));
+const StudentDashboard = lazyImport(() => import("./features/student/overview/StudentOverviewPage"));
 const StudentCourses = lazyImport(() => import("./pages/student/StudentCourses"));
 const StudentCourseDetails = lazyImport(() => import("./pages/student/StudentCourseDetails"));
 const StudentSessionDetails = lazyImport(() => import("./pages/student/StudentSessionDetails"));
