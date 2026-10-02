@@ -711,5 +711,90 @@
       "time": "Time",
       "class": "Class"
     }
+  },
+  "pjt": {
+    "title": "Projects",
+    "one": "Project",
+    "subtitle": "What your students are building, and where each project stands.",
+    "new": "New project",
+    "search": "Search projects or students…",
+    "col": {
+      "project": "Project",
+      "grade": "Grade"
+    },
+    "status": {
+      "in_progress": "In progress",
+      "submitted": "Handed in",
+      "completed": "Completed"
+    },
+    "open": "Open",
+    "delete": "Delete project",
+    "none": "No projects in this group yet.",
+    "noneHint": "Give a student a project to build; they can follow it from their dashboard.",
+    "deleteTitle": "Delete this project?",
+    "deleteText": "\"{{name}}\" and all its photos will be deleted.",
+    "toast": {
+      "deleted": "Project deleted"
+    }
+  },
+  "pjf": {
+    "newTitle": "New project",
+    "editTitle": "Edit project",
+    "subtitle": "The student sees this project on their dashboard.",
+    "about": "About the project",
+    "description": "Description (English)",
+    "descriptionAr": "Description (Arabic, optional)",
+    "parts": "What it is made of",
+    "components": "Components",
+    "componentsHint": "Type a part and press Enter, e.g. Arduino Uno, servo motor.",
+    "technologies": "Technologies",
+    "technologiesHint": "Type a tool or skill and press Enter, e.g. C++, 3D printing.",
+    "add": "Add",
+    "remove": "Remove {{name}}",
+    "who": "Who builds it",
+    "student": "Student",
+    "pickStudent": "Choose a student",
+    "noStudents": "This group has no students",
+    "studentLocked": "The student cannot be changed.",
+    "photosLater": "You can add photos after the project is created.",
+    "create": "Create project",
+    "errStudent": "Choose the student.",
+    "errTitle": "Give the project a title.",
+    "toast": {
+      "created": "Project created",
+      "saved": "Project saved"
+    }
+  },
+  "pjd": {
+    "photos": "Photos",
+    "addPhotos": "Add photos",
+    "noPhotos": "No photos yet.",
+    "noPhotosHint": "JPEG, PNG or WebP, up to {{mb}} MB each.",
+    "unavailable": "Photo unavailable",
+    "removePhoto": "Remove photo {{n}}",
+    "removeTitle": "Remove this photo?",
+    "removeText": "The photo will be deleted from the project.",
+    "remove": "Remove photo",
+    "badFile": "This file cannot be added",
+    "badFileText": "{{name}} must be a JPEG, PNG or WebP photo up to {{mb}} MB.",
+    "statusHint": {
+      "in_progress": "The student is still building it.",
+      "submitted": "The student has handed it in for review.",
+      "completed": "Finished and reviewed."
+    },
+    "grade": "Grade",
+    "gradeLabel": "Grade (0–100)",
+    "saveGrade": "Save grade",
+    "errGrade": "Enter a grade from 0 to 100.",
+    "gradedOn": "Graded {{date}}",
+    "notGraded": "Not graded yet",
+    "created": "Created {{date}}",
+    "toast": {
+      "uploaded_one": "Photo added",
+      "uploaded_other": "{{count}} photos added",
+      "removed": "Photo removed",
+      "status": "Status updated",
+      "graded": "Grade saved"
+    }
   }
 }

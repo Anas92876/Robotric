@@ -727,5 +727,94 @@
       "time": "الوقت",
       "class": "الحصة"
     }
+  },
+  "pjt": {
+    "title": "المشاريع",
+    "one": "مشروع",
+    "subtitle": "ما يبنيه طلابك، وأين وصل كل مشروع.",
+    "new": "مشروع جديد",
+    "search": "ابحث في المشاريع أو الطلاب…",
+    "col": {
+      "project": "المشروع",
+      "grade": "الدرجة"
+    },
+    "status": {
+      "in_progress": "قيد العمل",
+      "submitted": "سُلِّم",
+      "completed": "مكتمل"
+    },
+    "open": "فتح",
+    "delete": "حذف المشروع",
+    "none": "لا توجد مشاريع في هذه المجموعة بعد.",
+    "noneHint": "أعطِ طالباً مشروعاً ليبنيه؛ ويمكنه متابعته من لوحته.",
+    "deleteTitle": "حذف هذا المشروع؟",
+    "deleteText": "سيُحذف «{{name}}» مع كل صوره.",
+    "toast": {
+      "deleted": "حُذف المشروع"
+    }
+  },
+  "pjf": {
+    "newTitle": "مشروع جديد",
+    "editTitle": "تعديل المشروع",
+    "subtitle": "يرى الطالب هذا المشروع في لوحته.",
+    "about": "عن المشروع",
+    "description": "الوصف (بالإنجليزية)",
+    "descriptionAr": "الوصف (بالعربية، اختياري)",
+    "parts": "مما يتكوّن",
+    "components": "المكوّنات",
+    "componentsHint": "اكتب قطعة واضغط Enter، مثل Arduino Uno أو محرك سيرفو.",
+    "technologies": "التقنيات",
+    "technologiesHint": "اكتب أداة أو مهارة واضغط Enter، مثل C++ أو الطباعة ثلاثية الأبعاد.",
+    "add": "إضافة",
+    "remove": "حذف {{name}}",
+    "who": "من يبنيه",
+    "student": "الطالب",
+    "pickStudent": "اختر طالباً",
+    "noStudents": "لا يوجد طلاب في هذه المجموعة",
+    "studentLocked": "لا يمكن تغيير الطالب.",
+    "photosLater": "يمكنك إضافة الصور بعد إنشاء المشروع.",
+    "create": "إنشاء المشروع",
+    "errStudent": "اختر الطالب.",
+    "errTitle": "اكتب عنواناً للمشروع.",
+    "toast": {
+      "created": "أُنشئ المشروع",
+      "saved": "حُفظ المشروع"
+    }
+  },
+  "pjd": {
+    "photos": "الصور",
+    "addPhotos": "إضافة صور",
+    "noPhotos": "لا توجد صور بعد.",
+    "noPhotosHint": "JPEG أو PNG أو WebP، حتى {{mb}} MB لكل صورة.",
+    "unavailable": "الصورة غير متاحة",
+    "removePhoto": "حذف الصورة {{n}}",
+    "removeTitle": "حذف هذه الصورة؟",
+    "removeText": "ستُحذف الصورة من المشروع.",
+    "remove": "حذف الصورة",
+    "badFile": "لا يمكن إضافة هذا الملف",
+    "badFileText": "يجب أن يكون {{name}} صورة JPEG أو PNG أو WebP حتى {{mb}} MB.",
+    "statusHint": {
+      "in_progress": "ما زال الطالب يبنيه.",
+      "submitted": "سلّمه الطالب للمراجعة.",
+      "completed": "انتهى وتمت مراجعته."
+    },
+    "grade": "الدرجة",
+    "gradeLabel": "الدرجة (0–100)",
+    "saveGrade": "حفظ الدرجة",
+    "errGrade": "أدخل درجة من 0 إلى 100.",
+    "gradedOn": "قُيّم في {{date}}",
+    "notGraded": "لم يُقيَّم بعد",
+    "created": "أُنشئ في {{date}}",
+    "toast": {
+      "uploaded_zero": "لم تُضف صور",
+      "uploaded_one": "أُضيفت صورة",
+      "uploaded_two": "أُضيفت صورتان",
+      "uploaded_few": "أُضيفت {{count}} صور",
+      "uploaded_many": "أُضيفت {{count}} صورة",
+      "uploaded_other": "أُضيفت {{count}} صورة",
+      "removed": "حُذفت الصورة",
+      "status": "حُدّثت الحالة",
+      "graded": "حُفظت الدرجة"
+    }
   }
 }

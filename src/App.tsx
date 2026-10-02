@@ -71,8 +71,9 @@ const TrainerSessionEvaluations = lazyImport(() => import("./features/trainer/ev
 const TrainerTasks = lazyImport(() => import("./features/trainer/tasks/TasksPage"));
 const TrainerTaskBuilder = lazyImport(() => import("./features/trainer/tasks/TaskBuilderPage"));
 const TrainerTaskSubmissions = lazyImport(() => import("./features/trainer/tasks/TaskSubmissionsPage"));
-const TrainerProjects = lazyImport(() => import("./pages/trainer/TrainerProjects"));
-const TrainerProjectDetail = lazyImport(() => import("./pages/trainer/TrainerProjectDetail"));
+const TrainerProjects = lazyImport(() => import("./features/trainer/projects/ProjectsPage"));
+const TrainerProjectDetail = lazyImport(() => import("./features/trainer/projects/ProjectPage"));
+const TrainerProjectForm = lazyImport(() => import("./features/trainer/projects/ProjectFormPage"));
 const TrainerGallery = lazyImport(() => import("./pages/trainer/TrainerGallery"));
 const TrainerResources = lazyImport(() => import("./pages/trainer/TrainerResources"));
 const TrainerGroupBoard = lazyImport(() => import("./features/trainer/board/BoardPage"));
@@ -507,7 +508,8 @@ const App = () => {
                 <Route path="/trainer/tasks/:taskId/edit" element={<TrainerTaskBuilder />} />
                 <Route path="/trainer/tasks/:taskId/submissions" element={<TrainerTaskSubmissions />} />
                 <Route path="/trainer/projects" element={<TrainerProjects />} />
-                <Route path="/trainer/projects/new" element={<TrainerProjectDetail />} />
+                <Route path="/trainer/projects/new" element={<TrainerProjectForm />} />
+                <Route path="/trainer/projects/:projectId/edit" element={<TrainerProjectForm />} />
                 <Route path="/trainer/projects/:projectId" element={<TrainerProjectDetail />} />
                 <Route path="/trainer/gallery" element={<TrainerGallery />} />
                 <Route path="/trainer/resources" element={<TrainerResources />} />
