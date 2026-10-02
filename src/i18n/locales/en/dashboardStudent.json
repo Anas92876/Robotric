@@ -697,5 +697,17 @@
       "checkIn": "Checked in",
       "status": "Status"
     }
+  },
+  "ev": {
+    "title": "Evaluations",
+    "subtitle": "How your trainers rated you in each class.",
+    "overall": "Overall",
+    "count": "Classes rated",
+    "best": "Best course",
+    "none": "No evaluations yet",
+    "noneHint": "After a class, your trainer rates how you did. It shows up here.",
+    "loadError": "We couldn't load your evaluations.",
+    "scored": "{{n}} of {{total}} classes rated",
+    "hasNotes": "Has notes from the trainer"
   }
 }

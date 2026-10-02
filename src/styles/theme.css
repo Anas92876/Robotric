@@ -166,6 +166,10 @@
 .rt-app[dir='rtl'] [class*='tracking-'] {
   letter-spacing: 0 !important;
 }
+/* English names inside Arabic screens (dir=auto) would align left; one-line labels and headings keep the page's side */
+:is(.rt-app[dir='rtl'], [dir='rtl'] .rt-app) :is(h1, h2, h3, .truncate, .line-clamp-1, .line-clamp-2)[dir='auto'] {
+  text-align: right;
+}
 
 /* Focus ring shared by every interactive element in the new kit */
 @utility focus-ring {
