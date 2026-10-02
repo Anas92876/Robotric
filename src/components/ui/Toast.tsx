@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
+import { MotionConfig, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/utils';
@@ -16,6 +16,8 @@ interface Toast {
   description?: string;
   duration?: number;
   action?: ToastAction;
+  /** Sliding back up; removed from the list when the slide ends. */
+  leaving?: boolean;
 }
 
 interface ToastContextType {
@@ -33,6 +35,9 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 /** How long each kind stays: problems stay longer so they can be read. */
 const DURATION: Record<ToastType, number> = { success: 3200, info: 4500, warning: 6000, error: 7000 };
 const MAX_VISIBLE = 3;
+/** How long the slide up takes before the banner is removed. */
+const LEAVE_MS = 320;
+const GAP = 8;
 
 // English and Arabic words that tell what a success message is about
 const WORDS: [ToastAction, RegExp][] = [
@@ -50,18 +55,32 @@ function actionOf(t: Omit<Toast, 'id'>): ToastAction {
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const timers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
 
+  /** Slides a banner up, then takes it out of the page for good. */
   const removeToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
+    if (timers.current.has(id)) return;
+    setToasts((prev) => prev.map((t) => (t.id === id ? { ...t, leaving: true } : t)));
+    timers.current.set(id, setTimeout(() => {
+      timers.current.delete(id);
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, LEAVE_MS));
   }, []);
 
   const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
+    const id = Math.random().toString(36).slice(2);
     setToasts((prev) => {
       // The same message again (a double click, or the API layer and the page reporting one error) shows once
-      const rest = prev.filter((t) => !(t.type === toast.type && (t.title === toast.title || (toast.type === 'error' && !!toast.description)) && t.description === toast.description));
-      return [...rest, { ...toast, id: Math.random().toString(36).slice(2) }].slice(-MAX_VISIBLE);
+      const same = (t: Toast) => !t.leaving && t.type === toast.type && (t.title === toast.title || (toast.type === 'error' && !!toast.description)) && t.description === toast.description;
+      return [...prev.filter((t) => !same(t)), { ...toast, id }];
     });
   }, []);
+
+  // The oldest banners beyond the limit slide away
+  useEffect(() => {
+    const showing = toasts.filter((t) => !t.leaving);
+    showing.slice(0, Math.max(0, showing.length - MAX_VISIBLE)).forEach((t) => removeToast(t.id));
+  }, [toasts, removeToast]);
 
   const success = useCallback((title: string, description?: string) => addToast({ type: 'success', title, description }), [addToast]);
   const error = useCallback((title: string, description?: string) => addToast({ type: 'error', title, description }), [addToast]);
@@ -88,12 +107,27 @@ export function useToast() {
 /** Notifications drop down from the top centre like phone banners; the page behind stays usable. */
 function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast: (id: string) => void }) {
   const { i18n } = useTranslation();
+  const [heights, setHeights] = useState<Record<string, number>>({});
+  const onHeight = useCallback((id: string, h: number) => setHeights((prev) => (prev[id] === h ? prev : { ...prev, [id]: h })), []);
+  // Newest first; banners on their way out keep the place they had
+  const order = [...toasts].reverse();
+  let y = 0;
+  const offsets: Record<string, number> = {};
+  for (const t of order) {
+    if (t.leaving) continue;
+    offsets[t.id] = y;
+    y += (heights[t.id] ?? 64) + GAP;
+  }
+  const lastOffset = useRef<Record<string, number>>({});
+  for (const id of Object.keys(offsets)) lastOffset.current[id] = offsets[id];
   return (
-    <div dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} className="rt-app pointer-events-none fixed inset-x-0 top-0 z-[9999] flex flex-col items-center gap-2 px-3 pt-3 sm:pt-4">
+    <div dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} className="rt-app pointer-events-none fixed inset-x-0 top-0 z-[9999] px-3 pt-3 sm:pt-4">
       <MotionConfig reducedMotion="user">
-        <AnimatePresence initial={false}>
-          {[...toasts].reverse().map((t) => <ToastItem key={t.id} toast={t} onClose={() => removeToast(t.id)} />)}
-        </AnimatePresence>
+        <div className="relative mx-auto w-full max-w-[420px]">
+          {order.map((t) => (
+            <ToastItem key={t.id} toast={t} offset={offsets[t.id] ?? lastOffset.current[t.id] ?? 0} onHeight={onHeight} onClose={() => removeToast(t.id)} />
+          ))}
+        </div>
       </MotionConfig>
     </div>
   );
@@ -164,7 +198,7 @@ function ActionIcon({ action }: { action: ToastAction }) {
   );
 }
 
-function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
+function ToastItem({ toast, offset, onHeight, onClose }: { toast: Toast; offset: number; onHeight: (id: string, h: number) => void; onClose: () => void }) {
   const { t } = useTranslation('dashboardCommon');
   const action = actionOf(toast);
   const look = LOOK[action];
@@ -174,51 +208,68 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   const started = useRef(Date.now());
   const close = useRef(onClose);
   close.current = onClose;
+  const box = useRef<HTMLDivElement>(null);
 
-  // Counts down while visible; hovering or focusing the card pauses it
+  // Counts down while visible; hovering or focusing the banner pauses it
   useEffect(() => {
-    if (paused) return;
+    if (paused || toast.leaving) return;
     started.current = Date.now();
-    const id = setTimeout(() => close.current(), left.current);
+    const id = setTimeout(() => close.current(), Math.max(0, left.current));
     return () => { clearTimeout(id); left.current -= Date.now() - started.current; };
-  }, [paused]);
+  }, [paused, toast.leaving]);
+
+  // Tells the stack how tall this banner is, so the next one sits right under it
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const report = () => onHeight(toast.id, el.offsetHeight);
+    report();
+    const ro = new ResizeObserver(report);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [toast.id, onHeight]);
 
   const problem = toast.type === 'error' || toast.type === 'warning';
   return (
     <motion.div
-      layout
+      className="absolute inset-x-0 top-0"
+      style={{ pointerEvents: toast.leaving ? 'none' : undefined, zIndex: toast.leaving ? 0 : 1 }}
       initial={{ opacity: 0, y: -110, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -110, scale: 0.96, transition: { duration: 0.28, ease: [0.4, 0, 1, 1] } }}
-      transition={{ type: 'spring', damping: 24, stiffness: 300, mass: 0.9 }}
-      drag="y"
-      dragConstraints={{ top: 0, bottom: 0 }}
-      dragElastic={{ top: 0.6, bottom: 0.08 }}
-      onDragEnd={(_e, info) => { if (info.offset.y < -24 || info.velocity.y < -300) onClose(); }}
-      role={problem ? 'alert' : 'status'}
-      aria-live={problem ? 'assertive' : 'polite'}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-      className="pointer-events-auto relative flex w-full max-w-[420px] cursor-grab touch-pan-x items-center gap-3 rounded-[22px] border border-line/70 bg-paper/95 pb-3.5 pt-2.5 pe-3 ps-2.5 shadow-pop backdrop-blur-md active:cursor-grabbing"
+      animate={toast.leaving ? { opacity: 0, y: offset - 110, scale: 0.96 } : { opacity: 1, y: offset, scale: 1 }}
+      transition={toast.leaving ? { duration: LEAVE_MS / 1000, ease: [0.4, 0, 1, 1] } : { type: 'spring', damping: 24, stiffness: 300, mass: 0.9 }}
     >
-      <ActionIcon action={action} />
-      <div className="min-w-0 flex-1">
-        <motion.p className={cn('text-sm font-semibold leading-snug', look.title)} initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}>
-          {toast.title}
-        </motion.p>
-        {toast.description && (
-          <motion.p className="mt-0.5 line-clamp-2 text-[13px] leading-snug text-ink-3" dir="auto" initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.22 }}>
-            {toast.description}
+      <motion.div
+        ref={box}
+        drag="y"
+        dragSnapToOrigin
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={{ top: 0.6, bottom: 0.08 }}
+        onDragEnd={(_e, info) => { if (info.offset.y < -24 || info.velocity.y < -300) onClose(); }}
+        role={problem ? 'alert' : 'status'}
+        aria-live={problem ? 'assertive' : 'polite'}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+        className="pointer-events-auto relative flex w-full cursor-grab touch-pan-x items-center gap-3 rounded-[22px] border border-line/70 bg-paper/95 pb-3.5 pe-3 ps-2.5 pt-2.5 shadow-pop backdrop-blur-md active:cursor-grabbing"
+      >
+        <ActionIcon action={action} />
+        <div className="min-w-0 flex-1">
+          <motion.p className={cn('text-sm font-semibold leading-snug', look.title)} initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}>
+            {toast.title}
           </motion.p>
-        )}
-      </div>
-      <button type="button" onClick={onClose} aria-label={t('toastClose')} className="grid size-8 shrink-0 place-items-center rounded-full text-ink-4 hover:bg-ink/5 hover:text-ink focus-visible:focus-ring">
-        <X className="size-4" />
-      </button>
-      {/* the little grab handle phones show under a banner */}
-      <span className="absolute bottom-1 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-line-strong/70" aria-hidden />
+          {toast.description && (
+            <motion.p className="mt-0.5 line-clamp-2 text-[13px] leading-snug text-ink-3" dir="auto" initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.22 }}>
+              {toast.description}
+            </motion.p>
+          )}
+        </div>
+        <button type="button" onClick={onClose} aria-label={t('toastClose')} className="grid size-8 shrink-0 place-items-center rounded-full text-ink-4 hover:bg-ink/5 hover:text-ink focus-visible:focus-ring">
+          <X className="size-4" />
+        </button>
+        {/* the little grab handle phones show under a banner */}
+        <span className="absolute bottom-1 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-line-strong/70" aria-hidden />
+      </motion.div>
     </motion.div>
   );
 }
