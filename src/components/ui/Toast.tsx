@@ -31,7 +31,7 @@ interface ToastContextType {
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 /** How long each kind stays: problems stay longer so they can be read. */
-const DURATION: Record<ToastType, number> = { success: 2600, info: 4000, warning: 6000, error: 7000 };
+const DURATION: Record<ToastType, number> = { success: 3200, info: 4500, warning: 6000, error: 7000 };
 const MAX_VISIBLE = 3;
 
 // English and Arabic words that tell what a success message is about
@@ -85,14 +85,14 @@ export function useToast() {
   return context;
 }
 
-/** Notifications rise in the middle of the screen; the page behind stays usable. */
+/** Notifications drop down from the top centre like phone banners; the page behind stays usable. */
 function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast: (id: string) => void }) {
   const { i18n } = useTranslation();
   return (
-    <div dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} className="rt-app pointer-events-none fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-3 px-4">
+    <div dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} className="rt-app pointer-events-none fixed inset-x-0 top-0 z-[9999] flex flex-col items-center gap-2 px-3 pt-3 sm:pt-4">
       <MotionConfig reducedMotion="user">
-        <AnimatePresence initial={false} mode="popLayout">
-          {toasts.map((t) => <ToastItem key={t.id} toast={t} onClose={() => removeToast(t.id)} />)}
+        <AnimatePresence initial={false}>
+          {[...toasts].reverse().map((t) => <ToastItem key={t.id} toast={t} onClose={() => removeToast(t.id)} />)}
         </AnimatePresence>
       </MotionConfig>
     </div>
@@ -115,16 +115,16 @@ const draw = (delay: number, duration = 0.35) => ({ initial: { pathLength: 0, op
 /** The moving picture of what happened. */
 function ActionIcon({ action }: { action: ToastAction }) {
   const look = LOOK[action];
-  const svg = { width: 34, height: 34, viewBox: '0 0 24 24', fill: 'none', stroke: look.stroke, strokeWidth: 2.4, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  const svg = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: look.stroke, strokeWidth: 2.4, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
-    <div className="relative grid size-20 place-items-center" aria-hidden>
+    <div className="relative grid size-12 shrink-0 place-items-center" aria-hidden>
       {/* soft halo that breathes out once */}
       <motion.span className={cn('absolute inset-0 rounded-full', look.ring)} initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: [0.4, 1.15, 1], opacity: 1 }} transition={{ duration: 0.5, ease: 'easeOut' }} />
       {action === 'created' && [0, 1, 2, 3, 4, 5].map((i) => (
-        <motion.span key={i} className="absolute size-1.5 rounded-full bg-glow"
-          initial={{ x: 0, y: 0, opacity: 0 }} animate={{ x: Math.cos((i * Math.PI) / 3) * 44, y: Math.sin((i * Math.PI) / 3) * 44, opacity: [0, 1, 0] }} transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }} />
+        <motion.span key={i} className="absolute size-1 rounded-full bg-glow"
+          initial={{ x: 0, y: 0, opacity: 0 }} animate={{ x: Math.cos((i * Math.PI) / 3) * 26, y: Math.sin((i * Math.PI) / 3) * 26, opacity: [0, 1, 0] }} transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }} />
       ))}
-      <motion.span className={cn('relative grid size-14 place-items-center rounded-full', look.fill)}
+      <motion.span className={cn('relative grid size-10 place-items-center rounded-full', look.fill)}
         initial={{ scale: 0 }} animate={action === 'error' ? { scale: 1, x: [0, -6, 6, -4, 4, 0] } : { scale: 1 }}
         transition={action === 'error' ? { scale: { type: 'spring', stiffness: 420, damping: 18 }, x: { delay: 0.3, duration: 0.45 } } : { type: 'spring', stiffness: 420, damping: 16, delay: 0.08 }}>
         {action === 'saved' && (
@@ -187,30 +187,38 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.85, y: 24 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.92, y: -16, transition: { duration: 0.18 } }}
-      transition={{ type: 'spring', damping: 22, stiffness: 320 }}
+      initial={{ opacity: 0, y: -110, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -110, scale: 0.96, transition: { duration: 0.28, ease: [0.4, 0, 1, 1] } }}
+      transition={{ type: 'spring', damping: 24, stiffness: 300, mass: 0.9 }}
+      drag="y"
+      dragConstraints={{ top: 0, bottom: 0 }}
+      dragElastic={{ top: 0.6, bottom: 0.08 }}
+      onDragEnd={(_e, info) => { if (info.offset.y < -24 || info.velocity.y < -300) onClose(); }}
       role={problem ? 'alert' : 'status'}
       aria-live={problem ? 'assertive' : 'polite'}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
-      className="pointer-events-auto relative w-full max-w-[340px] rounded-feature border border-line bg-paper px-6 pb-6 pt-7 text-center shadow-pop"
+      className="pointer-events-auto relative flex w-full max-w-[420px] cursor-grab touch-pan-x items-center gap-3 rounded-[22px] border border-line/70 bg-paper/95 pb-3.5 pt-2.5 pe-3 ps-2.5 shadow-pop backdrop-blur-md active:cursor-grabbing"
     >
-      <button type="button" onClick={onClose} aria-label={t('toastClose')} className="absolute end-2.5 top-2.5 grid size-8 place-items-center rounded-full text-ink-4 hover:bg-ink/5 hover:text-ink focus-visible:focus-ring">
+      <ActionIcon action={action} />
+      <div className="min-w-0 flex-1">
+        <motion.p className={cn('text-sm font-semibold leading-snug', look.title)} initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}>
+          {toast.title}
+        </motion.p>
+        {toast.description && (
+          <motion.p className="mt-0.5 line-clamp-2 text-[13px] leading-snug text-ink-3" dir="auto" initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.22 }}>
+            {toast.description}
+          </motion.p>
+        )}
+      </div>
+      <button type="button" onClick={onClose} aria-label={t('toastClose')} className="grid size-8 shrink-0 place-items-center rounded-full text-ink-4 hover:bg-ink/5 hover:text-ink focus-visible:focus-ring">
         <X className="size-4" />
       </button>
-      <div className="flex justify-center"><ActionIcon action={action} /></div>
-      <motion.p className={cn('mt-4 text-base font-semibold leading-snug', look.title)} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-        {toast.title}
-      </motion.p>
-      {toast.description && (
-        <motion.p className="mt-1.5 text-sm leading-snug text-ink-3" dir="auto" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }}>
-          {toast.description}
-        </motion.p>
-      )}
+      {/* the little grab handle phones show under a banner */}
+      <span className="absolute bottom-1 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-line-strong/70" aria-hidden />
     </motion.div>
   );
 }
