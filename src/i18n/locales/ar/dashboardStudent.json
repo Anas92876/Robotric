@@ -363,5 +363,36 @@
       "payment": "دفعة لدورة {{course}}",
       "paymentOf": "دفعت {{amount}} لدورة {{course}}"
     }
+  },
+  "courses": {
+    "title": "دوراتي",
+    "subtitle": "دوراتك، ومدى تقدّمك، وما تبقى للدفع.",
+    "all": "كل الدورات",
+    "activeMany": "جارية الآن",
+    "endedMany": "منتهية",
+    "search": "ابحث بالدورة أو المدرب…",
+    "active": "جارية",
+    "ended": "منتهية",
+    "level": {
+      "beginner": "مبتدئ",
+      "intermediate": "متوسط",
+      "advanced": "متقدم"
+    },
+    "classes": "{{done}} من {{total}} حصص",
+    "attendance": "الحضور {{pct}}%",
+    "toPay": "متبقٍ {{amount}}",
+    "certReady": "الشهادة جاهزة {{date}}",
+    "certPending": "شهادتك قيد التحضير",
+    "bundle_zero": "حزمة",
+    "bundle_one": "حزمة · دورة واحدة",
+    "bundle_two": "حزمة · دورتان",
+    "bundle_few": "حزمة · {{count}} دورات",
+    "bundle_many": "حزمة · {{count}} دورة",
+    "bundle_other": "حزمة · {{count}} دورة",
+    "none": "لست مسجلاً في دورة بعد",
+    "noneHint": "اطلب من فريق الاستقبال تسجيلك في دورة.",
+    "noMatch": "لا توجد دورات مطابقة",
+    "loadError": "تعذّر تحميل دوراتك.",
+    "retry": "حاول مجدداً"
   }
 }

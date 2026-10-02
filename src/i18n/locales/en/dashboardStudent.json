@@ -359,5 +359,32 @@
       "payment": "Payment for {{course}}",
       "paymentOf": "Paid {{amount}} for {{course}}"
     }
+  },
+  "courses": {
+    "title": "My courses",
+    "subtitle": "Your courses, how far you got, and anything left to pay.",
+    "all": "All courses",
+    "activeMany": "Running now",
+    "endedMany": "Finished",
+    "search": "Search by course or trainer…",
+    "active": "Running",
+    "ended": "Finished",
+    "level": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "classes": "{{done}} of {{total}} classes",
+    "attendance": "Attendance {{pct}}%",
+    "toPay": "{{amount}} to pay",
+    "certReady": "Certificate ready {{date}}",
+    "certPending": "Your certificate is being prepared",
+    "bundle_one": "Bundle · {{count}} course",
+    "bundle_other": "Bundle · {{count}} courses",
+    "none": "You are not in a course yet",
+    "noneHint": "Ask the reception team to enrol you in a course.",
+    "noMatch": "No courses match",
+    "loadError": "We couldn't load your courses.",
+    "retry": "Try again"
   }
 }
