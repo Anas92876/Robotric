@@ -57,6 +57,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
   initialData,
   mode = 'create'
 }) => {
+  const { t: tConfirm } = useTranslation('dashboardCommon');
   const todayStr = new Date().toISOString().split('T')[0];
 
   const [formData, setFormData] = useState<FormData>({
@@ -779,10 +780,10 @@ export const LeadForm: React.FC<LeadFormProps> = ({
         setShowConfirmClose(false);
         onClose();
       }}
-      title="Discard Changes?"
-      description="You have unsaved changes. Are you sure you want to discard them?"
-      confirmText="Discard"
-      cancelText="Keep Editing"
+      title={tConfirm('discard.title')}
+      description={tConfirm('discard.text')}
+      confirmText={tConfirm('discard.confirm')}
+      cancelText={tConfirm('discard.keep')}
       variant="danger"
       primaryAction="cancel"
     />

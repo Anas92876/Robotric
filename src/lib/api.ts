@@ -88,9 +88,10 @@ const createApiClient = (): AxiosInstance => {
       
       // Skip error toast if explicitly requested
       const shouldShowToast = errorConfig?.skipErrorToast !== true;
-      const errorMessage = response?.data?.message || 
-                         error.message || 
-                         'An unexpected error occurred';
+      // No response at all means the server could not be reached
+      const errorMessage = response
+        ? response.data?.message || error.message || i18n.t('dashboardCommon:unexpected', { defaultValue: 'Something went wrong' })
+        : i18n.t('dashboardCommon:offline', { defaultValue: 'The server could not be reached. Check the connection and try again.' });
 
       if (shouldShowToast) {
         // Log error to console

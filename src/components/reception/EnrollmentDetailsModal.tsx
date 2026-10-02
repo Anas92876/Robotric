@@ -49,6 +49,7 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
   onDeleteTransportation,
   onRefresh
 }) => {
+  const { t: tConfirm } = useTranslation('dashboardCommon');
   const toast = useToast();
   const { getEnrollmentById } = useReceptionEnrollments();
   const [enrollment, setEnrollment] = useState<Enrollment | null>(null);
@@ -696,34 +697,18 @@ export const EnrollmentDetailsModal: React.FC<EnrollmentDetailsModalProps> = ({
         isOpen={showDeleteConfirm}
         onClose={() => setShowDeleteConfirm(false)}
         onConfirm={handleDeleteTransportation}
-        title="Delete Transportation"
+        title={tConfirm('trDel.title')}
         description={
-          <div className="space-y-2">
-            <p className="text-ink">
-              Are you sure you want to delete all transportation data for this enrollment?
-            </p>
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-3">
-              <p className="text-sm text-red-800 font-semibold mb-1">This will permanently delete:</p>
-              <ul className="text-sm text-red-700 list-disc list-inside space-y-1">
-                <li>All transportation payment records</li>
-                <li>All transportation receipts (PDF files)</li>
-                <li>All transportation installments</li>
-                <li>All transportation payment history</li>
-              </ul>
-            </div>
-            {displayEnrollment?.transportation?.paidAmount && displayEnrollment.transportation.paidAmount > 0 && (
-              <p className="text-sm text-orange-600 font-semibold mt-2">
-                Warning: This enrollment has {displayEnrollment.transportation.paidAmount.toLocaleString()} S.P. in paid transportation fees.
-              </p>
-            )}
-            <p className="text-sm text-ink/70 mt-2">
-              This action cannot be undone.
-            </p>
-      </div>
+          <>
+            {tConfirm('trDel.text')}
+            {displayEnrollment?.transportation?.paidAmount && displayEnrollment.transportation.paidAmount > 0 ? (
+              <span className="mt-2 block font-semibold text-danger">{tConfirm('trDel.paid', { amount: displayEnrollment.transportation.paidAmount.toLocaleString('en-US') })}</span>
+            ) : null}
+          </>
         }
         variant="danger"
-        confirmText="Delete Transportation"
-        cancelText="Cancel"
+        confirmText={tConfirm('trDel.confirm')}
+        cancelText={tConfirm('cto.cancel')}
       />
     </Modal>
   );

@@ -1020,5 +1020,30 @@
     "title": "This page does not exist",
     "text": "The link may be old, or the page has moved.",
     "home": "Go to my dashboard"
+  },
+  "toastClose": "Close notification",
+  "files": {
+    "onlyPdf": "Only PDF files can be uploaded",
+    "tooBig": "The file is bigger than {{mb}} MB"
+  },
+  "contactDelete": {
+    "title": "Delete this contact?",
+    "text": "The contact note and its calendar event will be deleted.",
+    "confirm": "Delete"
+  },
+  "offline": "The server could not be reached. Check the connection and try again.",
+  "unexpected": "Something went wrong. Please try again.",
+  "confirmYes": "Yes, continue",
+  "trDel": {
+    "title": "Delete transport for this enrollment?",
+    "text": "All transport payments, receipts, instalments and their history are deleted for good.",
+    "paid": "{{amount}} S.P. of transport fees were already paid.",
+    "confirm": "Delete transport"
+  },
+  "discard": {
+    "title": "Discard your changes?",
+    "text": "What you typed in this form will be lost.",
+    "confirm": "Discard",
+    "keep": "Keep editing"
   }
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Dialog as HDialog, DialogBackdrop, DialogPanel, DialogTitle, Description } from '@headlessui/react';
-import { AlertTriangle, X } from 'lucide-react';
+import { AlertTriangle, HelpCircle, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Button } from './Button';
 
@@ -62,29 +62,32 @@ interface ConfirmDialogProps {
   loading?: boolean;
 }
 
-/** "Are you sure?" dialog for actions that need a second click. */
+/**
+ * "Are you sure?" card for actions that need a second click (delete, publish, close…).
+ * Danger actions get a red icon and button; everything else the navy question mark.
+ */
 export function ConfirmDialog({ open, onClose, onConfirm, title, message, confirmLabel, cancelLabel, tone = 'default', loading }: ConfirmDialogProps) {
+  const danger = tone === 'danger';
+  const Icon = danger ? AlertTriangle : HelpCircle;
   return (
-    <Dialog
-      open={open}
-      onClose={loading ? () => {} : onClose}
-      title={title}
-      size="sm"
-      footer={
-        <>
-          <Button variant="ghost" onClick={onClose} disabled={loading}>{cancelLabel}</Button>
-          <Button variant={tone === 'danger' ? 'danger' : 'primary'} onClick={onConfirm} loading={loading}>{confirmLabel}</Button>
-        </>
-      }
-    >
-      <div className="flex gap-3">
-        {tone === 'danger' && (
-          <div className="grid size-10 shrink-0 place-items-center rounded-full bg-danger-soft text-danger">
-            <AlertTriangle className="size-5" />
+    <HDialog open={open} onClose={loading ? () => {} : onClose} className="relative z-50" role="alertdialog">
+      <DialogBackdrop transition className="fixed inset-0 bg-ink-deep/45 backdrop-blur-[2px] transition-opacity duration-150 data-[closed]:opacity-0" />
+      <div className="fixed inset-0 flex items-end justify-center overflow-y-auto p-4 sm:items-center">
+        <DialogPanel transition className="rt-app w-full max-w-sm overflow-hidden rounded-feature bg-paper text-center shadow-pop transition duration-150 data-[closed]:scale-95 data-[closed]:opacity-0">
+          <span className={cn('block h-1.5', danger ? 'bg-danger' : 'bg-ink')} aria-hidden />
+          <div className="px-6 pb-2 pt-6">
+            <span className={cn('mx-auto grid size-14 place-items-center rounded-full ring-8', danger ? 'bg-danger-soft text-danger ring-danger-soft/50' : 'bg-frost text-ink ring-frost/50')}>
+              <Icon className="size-7" aria-hidden />
+            </span>
+            <DialogTitle className="mt-4 text-lg font-semibold text-ink">{title}</DialogTitle>
+            <Description as="div" className="mt-2 text-sm leading-relaxed text-ink-3">{message}</Description>
           </div>
-        )}
-        <div className="text-sm leading-relaxed text-ink-2">{message}</div>
+          <div className="grid grid-cols-2 gap-2 px-6 pb-6 pt-4">
+            <Button variant="secondary" onClick={onClose} disabled={loading} className="w-full" data-autofocus={danger || undefined}>{cancelLabel}</Button>
+            <Button variant={danger ? 'danger' : 'primary'} onClick={onConfirm} loading={loading} className="w-full" data-autofocus={!danger || undefined}>{confirmLabel}</Button>
+          </div>
+        </DialogPanel>
       </div>
-    </Dialog>
+    </HDialog>
   );
 }

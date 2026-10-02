@@ -10,6 +10,8 @@
 import React, { useState, useRef } from 'react';
 import { Upload, X, FileText, CheckCircle, XCircle } from 'lucide-react';
 import { Modal, Button } from '../ui';
+import { useTranslation } from 'react-i18next';
+import { useToast } from '../ui/Toast';
 import type { SessionRequest } from '../../services/subscription.service';
 
 export interface SessionReportFormData {
@@ -39,6 +41,8 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
     pdf: undefined,
   });
 
+  const { t } = useTranslation('dashboardCommon');
+  const toast = useToast();
   const [errors, setErrors] = useState<Partial<Record<keyof SessionReportFormData, string>>>({});
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -74,13 +78,13 @@ const SessionReportModal: React.FC<SessionReportModalProps> = ({
 
     // Validate file type
     if (file.type !== 'application/pdf') {
-      alert('Please upload a PDF file only');
+      toast.error(t('files.onlyPdf'), file.name);
       return;
     }
 
     // Validate file size (max 10MB)
     if (file.size > 10 * 1024 * 1024) {
-      alert('File size must be less than 10MB');
+      toast.error(t('files.tooBig', { mb: 10 }), file.name);
       return;
     }
 

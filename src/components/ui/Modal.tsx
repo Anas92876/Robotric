@@ -1,8 +1,10 @@
 import { Fragment, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { X, AlertTriangle } from 'lucide-react';
+import { X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/utils';
+import { ConfirmDialog as NewConfirmDialog } from '../../ui/Dialog';
 
 export interface ModalProps {
   isOpen: boolean;
@@ -174,8 +176,8 @@ export interface ConfirmDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
-  title: string;
-  description: string;
+  title: ReactNode;
+  description: ReactNode;
   confirmText?: string;
   cancelText?: string;
   variant?: 'danger' | 'warning' | 'info';
@@ -183,111 +185,12 @@ export interface ConfirmDialogProps {
   primaryAction?: 'confirm' | 'cancel';
 }
 
-function ConfirmDialog({
-  isOpen,
-  onClose,
-  onConfirm,
-  title,
-  description,
-  confirmText = 'Confirm',
-  cancelText = 'Cancel',
-  variant = 'danger',
-  isLoading = false,
-  primaryAction = 'confirm',
-}: ConfirmDialogProps) {
-
-
-  const iconStyles = {
-    danger: 'bg-red-100 text-red-600',
-    warning: 'bg-amber-100 text-amber-600',
-    info: 'bg-cyan-100 text-cyan-600',
-  };
-
+/** Old call style kept for the remaining older forms; it shows the new confirm card. */
+function ConfirmDialog({ isOpen, onClose, onConfirm, title, description, confirmText, cancelText, variant = 'danger', isLoading }: ConfirmDialogProps) {
+  const { t } = useTranslation('dashboardCommon');
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="sm" showCloseButton={false}>
-      <div className="text-center p-2">
-        <div className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full ${iconStyles[variant]} mb-4`}>
-          <AlertTriangle className="h-6 w-6" aria-hidden="true" />
-        </div>
-        <h3 className="text-lg font-semibold mb-2" style={{ color: '#0f1f33' }}>{title}</h3>
-        <p className="text-sm mb-6" style={{ color: '#0f1f33' + 'CC' }}>{description}</p>
-        <div className="flex gap-3 w-full">
-           {/* Primary Button */}
-           {primaryAction === 'confirm' ? (
-             <button
-               type="button"
-               onClick={onConfirm}
-               disabled={isLoading}
-               className={cn(
-                 'flex-1 px-4 py-2 rounded-lg text-white transition-all shadow-sm hover:shadow-md disabled:opacity-50 font-medium justify-center',
-                 variant === 'danger' ? 'bg-red-600 hover:bg-red-700' : 'bg-green-500 hover:bg-green-600'
-               )}
-             >
-               {isLoading ? 'Loading...' : confirmText}
-             </button>
-           ) : (
-             <button
-               type="button"
-               onClick={onClose}
-               disabled={isLoading}
-               className="flex-1 px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white transition-all shadow-sm hover:shadow-md disabled:opacity-50 font-medium justify-center"
-             >
-               {cancelText}
-             </button>
-           )}
-
-           {/* Secondary Button */}
-           {primaryAction === 'confirm' ? (
-             <button
-               type="button"
-               onClick={onClose}
-               disabled={isLoading}
-               className="flex-1 px-4 py-2 rounded-lg border transition-colors disabled:opacity-50 font-medium justify-center"
-               style={{ 
-                 borderColor: '#0f1f33' + '30',
-                 color: '#0f1f33',
-                 backgroundColor: 'transparent'
-               }}
-               onMouseEnter={(e) => {
-                 e.currentTarget.style.backgroundColor = '#0f1f33' + '10';
-               }}
-               onMouseLeave={(e) => {
-                 e.currentTarget.style.backgroundColor = 'transparent';
-               }}
-             >
-               {cancelText}
-             </button>
-           ) : (
-             <button
-               type="button"
-               onClick={onConfirm}
-               disabled={isLoading}
-               className={cn(
-                 'flex-1 px-4 py-2 rounded-lg border transition-colors disabled:opacity-50 font-medium justify-center',
-                 variant === 'danger' ? 'border-red-200 text-red-600 hover:bg-red-50' : ''
-               )}
-               style={variant !== 'danger' ? {
-                 borderColor: '#0f1f33' + '30',
-                 color: '#0f1f33',
-                 backgroundColor: 'transparent'
-               } : {}}
-               onMouseEnter={(e) => {
-                 if (variant !== 'danger') {
-                   e.currentTarget.style.backgroundColor = '#0f1f33' + '10';
-                 }
-               }}
-               onMouseLeave={(e) => {
-                 if (variant !== 'danger') {
-                   e.currentTarget.style.backgroundColor = 'transparent';
-                 }
-               }}
-             >
-               {isLoading ? 'Loading...' : confirmText}
-             </button>
-           )}
-        </div>
-      </div>
-    </Modal>
+    <NewConfirmDialog open={isOpen} onClose={onClose} onConfirm={onConfirm} title={title} message={description} tone={variant === 'danger' ? 'danger' : 'default'} loading={isLoading}
+      confirmLabel={confirmText ?? t('confirmYes')} cancelLabel={cancelText ?? t('cto.cancel')} />
   );
 }
 

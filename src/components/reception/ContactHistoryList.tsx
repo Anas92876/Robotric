@@ -4,7 +4,9 @@
  * Displays contact history in a timeline format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ConfirmDialog } from '../../ui';
 import { Phone, Mail, Users as UsersIcon, MoreHorizontal, Clock, Calendar, Edit, Trash2, CheckCircle, XCircle, PhoneOff, PhoneMissed, UserCheck } from 'lucide-react';
 import type { ContactHistory } from '../../hooks/reception/useContactHistory';
 import { LoadingState } from '../ui';
@@ -62,6 +64,8 @@ export const ContactHistoryList: React.FC<ContactHistoryListProps> = ({
   onDelete,
   isLoading
 }) => {
+  const { t } = useTranslation('dashboardCommon');
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const formatDateTime = (date: string) => {
     return new Date(date).toLocaleString('en-US', {
       year: 'numeric',
@@ -151,9 +155,7 @@ export const ContactHistoryList: React.FC<ContactHistoryListProps> = ({
                     {onDelete && (
                       <button
                         onClick={() => {
-                          if (window.confirm('Are you sure you want to delete this contact history? This will also delete the associated calendar event.')) {
-                            onDelete(history._id);
-                          }
+                          setDeletingId(history._id);
                         }}
                         className="p-2 text-white/60 hover:text-red-400 hover:bg-white/5 rounded-lg transition-colors"
                         title="Delete"
@@ -205,6 +207,11 @@ export const ContactHistoryList: React.FC<ContactHistoryListProps> = ({
           </div>
         );
       })}
+      <ConfirmDialog
+        open={!!deletingId} onClose={() => setDeletingId(null)} tone="danger"
+        title={t('contactDelete.title')} message={t('contactDelete.text')} confirmLabel={t('contactDelete.confirm')} cancelLabel={t('cto.cancel')}
+        onConfirm={() => { if (deletingId && onDelete) onDelete(deletingId); setDeletingId(null); }}
+      />
     </div>
   );
 };
