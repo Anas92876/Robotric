@@ -30,7 +30,7 @@ const Orders = lazyImport(() => import("./pages/common/Orders"));
 const Projects = lazyImport(() => import("./pages/common/Projects"));
 const Competitions = lazyImport(() => import("./pages/common/Competitions"));
 const Teams = lazyImport(() => import("./pages/common/Teams"));
-const Posts = lazyImport(() => import("./pages/common/Posts"));
+const Posts = lazyImport(() => import("./features/common/posts/PostsPage"));
 const Inventory = lazyImport(() => import("./pages/common/Inventory"));
 const NotFound = lazyImport(() => import("./pages/common/NotFound"));
 
@@ -126,8 +126,8 @@ const CTOWorkHours = lazyImport(() => import("./pages/cto/CTOWorkHours"));
 const EngineerDashboard = lazyImport(() => import("./pages/engineer/EngineerDashboard"));
 const EngineerTasks = lazyImport(() => import("./pages/engineer/EngineerTasks"));
 const EngineerDeadlines = lazyImport(() => import("./pages/engineer/EngineerDeadlines"));
-const MyTasks = lazyImport(() => import("./pages/common/MyTasks"));
-const MyWorkHours = lazyImport(() => import("./pages/common/MyWorkHours"));
+const MyTasks = lazyImport(() => import("./features/common/tasks/MyTasksPage"));
+const MyWorkHours = lazyImport(() => import("./features/common/hours/MyHoursPage"));
 
 // Client pages
 const ClientDashboard = lazyImport(() => import("./pages/client/ClientDashboard"));
