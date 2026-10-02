@@ -667,5 +667,40 @@
       "restored": "Interest in use again",
       "deleted": "Interest deleted"
     }
+  },
+  "pl": {
+    "title": "Subscription plans",
+    "subtitle": "Monthly plans for private sessions: hours per month and price. Reception offers the plans that are on.",
+    "new": "New plan",
+    "none": "No plans yet",
+    "noneHint": "Add a plan so reception can subscribe students to private sessions.",
+    "active": "Offered",
+    "paused": "Not offered",
+    "pause": "Stop offering",
+    "resume": "Offer again",
+    "delete": "Delete plan",
+    "month": "month",
+    "hours_one": "{{count}} hour a month",
+    "hours_other": "{{count}} hours a month",
+    "newTitle": "New plan",
+    "editTitle": "Edit plan",
+    "name": "Plan name",
+    "hoursLabel": "Hours per month",
+    "price": "Price per month ($)",
+    "description": "Description",
+    "offer": "Offer this plan",
+    "offerHint": "Reception can only choose plans that are offered.",
+    "errName": "Give the plan a name.",
+    "errHours": "Hours must be 1 to 1000.",
+    "errPrice": "Enter a price (0 or more).",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteText": "It is removed for good. A plan that active subscriptions still use cannot be deleted; stop offering it instead.",
+    "toast": {
+      "created": "Plan created",
+      "saved": "Plan saved",
+      "paused": "Plan no longer offered",
+      "resumed": "Plan offered again",
+      "deleted": "Plan deleted"
+    }
   }
 }
