@@ -391,5 +391,48 @@
       "session_completed": "Class finished",
       "evaluation_submitted": "Evaluation saved"
     }
+  },
+  "grp": {
+    "title": "My groups",
+    "subtitle": "The groups you teach, their students and classes.",
+    "one": "Group",
+    "groups": "Groups",
+    "avgAttendance": "Average attendance",
+    "search": "Search by group or course…",
+    "loadError": "We couldn't load your groups.",
+    "retry": "Try again",
+    "none": "No groups yet",
+    "noneHint": "The learning team (CLO) gives you groups to teach.",
+    "noMatch": "No groups match",
+    "status": {
+      "active": "Active",
+      "completed": "Finished",
+      "archived": "Archived",
+      "cancelled": "Cancelled"
+    },
+    "classesDone": "{{done}} of {{total}} classes done",
+    "seats": "{{count}} / {{max}} students",
+    "attendance": "Attendance {{pct}}%",
+    "board": "Group board",
+    "takeAttendance": "Take attendance",
+    "done": "Classes done",
+    "upcoming": "Coming up",
+    "next": "Next class",
+    "students": "Students",
+    "classes": "Classes",
+    "allClasses": "All classes",
+    "noStudents": "No students in this group yet.",
+    "noClasses": "No classes yet.",
+    "col": {
+      "student": "Student",
+      "phone": "Phone",
+      "attendance": "Attendance"
+    },
+    "attCounts": "{{present}} present · {{late}} late · {{absent}} absent",
+    "pickTitle": "Which class?",
+    "pickToday": "There is more than one class today.",
+    "pickAny": "No class today — choose one of the open classes.",
+    "noOpen": "This group has no open classes.",
+    "close": "Close"
   }
 }

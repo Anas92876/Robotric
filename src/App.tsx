@@ -60,8 +60,8 @@ const StudentMissionPlanner = lazyImport(() => import("./features/student/missio
 // Trainer pages
 const TrainerDashboard = lazyImport(() => import("./features/trainer/overview/TrainerOverviewPage"));
 const TrainerSchedule = lazyImport(() => import("./pages/trainer/TrainerSchedule"));
-const TrainerGroups = lazyImport(() => import("./pages/trainer/TrainerGroups"));
-const TrainerGroupDetail = lazyImport(() => import("./pages/trainer/TrainerGroupDetail"));
+const TrainerGroups = lazyImport(() => import("./features/trainer/groups/GroupsPage"));
+const TrainerGroupDetail = lazyImport(() => import("./features/trainer/groups/GroupPage"));
 const TrainerSessions = lazyImport(() => import("./pages/trainer/TrainerSessions"));
 const TrainerCreateSession = lazyImport(() => import("./pages/trainer/TrainerCreateSession"));
 const TrainerEditSession = lazyImport(() => import("./pages/trainer/TrainerEditSession"));

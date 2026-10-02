@@ -395,5 +395,48 @@
       "session_completed": "انتهت حصة",
       "evaluation_submitted": "حُفظ تقييم"
     }
+  },
+  "grp": {
+    "title": "مجموعاتي",
+    "subtitle": "المجموعات التي تدرّسها وطلابها وحصصها.",
+    "one": "المجموعة",
+    "groups": "المجموعات",
+    "avgAttendance": "متوسط الحضور",
+    "search": "ابحث بالمجموعة أو الدورة…",
+    "loadError": "تعذّر تحميل مجموعاتك.",
+    "retry": "حاول مجدداً",
+    "none": "لا توجد مجموعات بعد",
+    "noneHint": "يسند إليك فريق التعليم (CLO) المجموعات.",
+    "noMatch": "لا توجد مجموعات مطابقة",
+    "status": {
+      "active": "نشطة",
+      "completed": "منتهية",
+      "archived": "مؤرشفة",
+      "cancelled": "ملغاة"
+    },
+    "classesDone": "{{done}} من {{total}} حصص منجزة",
+    "seats": "{{count}} / {{max}} طلاب",
+    "attendance": "الحضور {{pct}}%",
+    "board": "لوحة المجموعة",
+    "takeAttendance": "تسجيل الحضور",
+    "done": "حصص منجزة",
+    "upcoming": "قادمة",
+    "next": "الحصة القادمة",
+    "students": "الطلاب",
+    "classes": "الحصص",
+    "allClasses": "كل الحصص",
+    "noStudents": "لا يوجد طلاب في هذه المجموعة بعد.",
+    "noClasses": "لا توجد حصص بعد.",
+    "col": {
+      "student": "الطالب",
+      "phone": "الهاتف",
+      "attendance": "الحضور"
+    },
+    "attCounts": "{{present}} حضور · {{late}} تأخر · {{absent}} غياب",
+    "pickTitle": "أي حصة؟",
+    "pickToday": "هناك أكثر من حصة اليوم.",
+    "pickAny": "لا حصة اليوم — اختر إحدى الحصص المفتوحة.",
+    "noOpen": "لا توجد حصص مفتوحة لهذه المجموعة.",
+    "close": "إغلاق"
   }
 }
