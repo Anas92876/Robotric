@@ -780,5 +780,17 @@
     "pdf": "PDF to print",
     "image": "Image to share",
     "verify": "Check it on the website"
+  },
+  "gal": {
+    "title": "Gallery",
+    "subtitle": "Photos from your groups — class moments and finished projects.",
+    "all": "All",
+    "moments": "Moments",
+    "projects": "Projects",
+    "none": "No photos yet",
+    "noneHint": "Your trainers add photos from class here.",
+    "noMatch": "No photos match",
+    "loadError": "We couldn't load the photos.",
+    "pageSummary": "{{from}}–{{to}} of {{total}}"
   }
 }

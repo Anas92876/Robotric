@@ -341,5 +341,16 @@
       "started": "سُجّل دخولك — يوماً موفقاً!",
       "stopped": "سُجّل خروجك"
     }
+  },
+  "photoGrid": {
+    "open": "فتح {{title}}",
+    "photo": "صورة",
+    "untitled": "بلا عنوان",
+    "delete": "حذف {{title}}",
+    "none": "لا توجد صور بعد.",
+    "type": {
+      "moment": "لحظة",
+      "project": "مشروع"
+    }
   }
 }

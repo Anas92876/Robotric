@@ -317,5 +317,16 @@
       "started": "Clocked in — have a good day!",
       "stopped": "Clocked out"
     }
+  },
+  "photoGrid": {
+    "open": "Open {{title}}",
+    "photo": "Photo",
+    "untitled": "Untitled",
+    "delete": "Delete {{title}}",
+    "none": "No photos yet.",
+    "type": {
+      "moment": "Moment",
+      "project": "Project"
+    }
   }
 }
