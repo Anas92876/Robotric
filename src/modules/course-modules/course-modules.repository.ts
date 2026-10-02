@@ -1,4 +1,4 @@
-import { and, asc, count, desc, eq, gt, inArray, lt } from 'drizzle-orm';
+import { and, asc, count, desc, eq, gt, inArray, lt, or } from 'drizzle-orm';
 import type { DbExecutor } from '../../shared/db/client';
 import { assignments } from '../assignments/assignments.table';
 import { quizzes } from '../quizzes/quizzes.table';
@@ -50,8 +50,9 @@ export class DrizzleCourseModuleRepository implements CourseModuleRepository {
         },
       })
       .from(courseModules)
-      .leftJoin(quizzes, eq(quizzes.id, courseModules.quizId))
-      .leftJoin(assignments, eq(assignments.id, courseModules.assignmentId))
+      // Quizzes made by trainers point at their module (quizzes.module_id); older data points the other way
+      .leftJoin(quizzes, or(eq(quizzes.id, courseModules.quizId), eq(quizzes.moduleId, courseModules.id)))
+      .leftJoin(assignments, or(eq(assignments.id, courseModules.assignmentId), eq(assignments.moduleId, courseModules.id)))
       .where(eq(courseModules.id, id))
       .limit(1);
     if (!row) return null;

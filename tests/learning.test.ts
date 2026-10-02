@@ -128,6 +128,8 @@ describe('student modules', () => {
 
     const content = await api().get(`/api/student/modules/${moduleId}`).set(student.headers);
     expect(content.body.data.module).toMatchObject({ _id: moduleId, type: 'quiz', course: courseId });
+    // The module knows its quiz (the quiz points at the module, not the other way round)
+    expect(content.body.data.module.quiz).toMatchObject({ _id: quiz._id, title: 'Mod quiz' });
     expect(content.body.data.progress.status).toBe('not_started');
 
     expect((await api().post(`/api/student/modules/${moduleId}/start`).set(student.headers)).body.data.status).toBe('in_progress');
