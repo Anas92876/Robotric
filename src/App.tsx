@@ -132,10 +132,10 @@ const MyTasks = lazyImport(() => import("./features/common/tasks/MyTasksPage"));
 const MyWorkHours = lazyImport(() => import("./features/common/hours/MyHoursPage"));
 
 // Client pages
-const ClientDashboard = lazyImport(() => import("./pages/client/ClientDashboard"));
-const ClientProjectDetail = lazyImport(() => import("./pages/client/ClientProjectDetail"));
-const ClientTasks = lazyImport(() => import("./pages/client/ClientTasks"));
-const ClientTaskDetail = lazyImport(() => import("./pages/client/ClientTaskDetail"));
+const ClientDashboard = lazyImport(() => import("./features/client/ClientPages"));
+const ClientProjectDetail = lazyImport(() => import("./features/client/ClientProjectPage"));
+const ClientTasks = lazyImport(() => import("./features/client/ClientRequestsPage"));
+const ClientTaskDetail = lazyImport(() => import("./features/client/ClientRequestPage"));
 
 // Admin pages
 const AdminDashboard = lazyImport(() => import("./pages/admin/AdminDashboard"));

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -14,6 +15,7 @@ interface MediaLightboxProps {
 }
 
 export function MediaLightbox({ items, index, isOpen, onClose, onIndexChange }: MediaLightboxProps) {
+  const { t } = useTranslation("dashboardCommon");
   const current = items[index];
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export function MediaLightbox({ items, index, isOpen, onClose, onIndexChange }: 
       >
         <div className="flex items-center justify-between px-4 py-3 text-white/80 text-sm">
           <span className="truncate">{current.name}</span>
-          <button onClick={onClose} className="p-1.5 rounded-full hover:bg-white/10" aria-label="Close">
+          <button onClick={onClose} className="p-1.5 rounded-full hover:bg-white/10" aria-label={t("media.close")}>
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -50,7 +52,7 @@ export function MediaLightbox({ items, index, isOpen, onClose, onIndexChange }: 
             <button
               onClick={() => onIndexChange(index - 1)}
               className="absolute left-2 sm:left-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white"
-              aria-label="Previous"
+              aria-label={t("media.prev")}
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -73,7 +75,7 @@ export function MediaLightbox({ items, index, isOpen, onClose, onIndexChange }: 
             <button
               onClick={() => onIndexChange(index + 1)}
               className="absolute right-2 sm:right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white"
-              aria-label="Next"
+              aria-label={t("media.next")}
             >
               <ChevronRight className="w-5 h-5" />
             </button>

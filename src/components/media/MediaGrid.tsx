@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Play, Music } from "lucide-react";
 import { MediaLightbox } from "./MediaLightbox";
 import type { RemoteMediaItem } from "./types";
@@ -9,11 +10,12 @@ interface MediaGridProps {
   emptyLabel?: string;
 }
 
-export default function MediaGrid({ items, emptyLabel = "No attachments" }: MediaGridProps) {
+export default function MediaGrid({ items, emptyLabel }: MediaGridProps) {
+  const { t } = useTranslation("dashboardCommon");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (items.length === 0) {
-    return <p className="text-xs text-ink/40 italic">{emptyLabel}</p>;
+    return <p className="text-xs text-ink/40 italic">{emptyLabel ?? t("media.none")}</p>;
   }
 
   return (

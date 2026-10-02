@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Mic, Square, RotateCcw, Check, AlertTriangle } from "lucide-react";
 import { Button } from "../ui";
 import { formatDuration } from "./types";
@@ -20,6 +21,7 @@ function pickMimeType(): string | undefined {
 }
 
 export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, disabled }: VoiceRecorderProps) {
+  const { t } = useTranslation("dashboardCommon");
   const [supported] = useState(() => typeof window !== 'undefined' && !!window.MediaRecorder && !!navigator.mediaDevices?.getUserMedia);
   const [isRecording, setIsRecording] = useState(false);
   const [elapsed, setElapsed] = useState(0);
@@ -104,7 +106,7 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
         if (secs >= maxDurationSeconds) stopRecording();
       }, 200);
     } catch {
-      setError("Couldn't access your microphone. Check your browser's permission settings and try again.");
+      setError(t("media.micError"));
       cleanupStream();
     }
   };
@@ -133,7 +135,7 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
     return (
       <div className="flex items-start gap-2 text-xs text-ink/60 bg-ink/5 border border-ink/15 rounded-lg px-3 py-2">
         <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-        <span>Voice recording isn't supported in this browser — try Chrome, Firefox, or Edge.</span>
+        <span>{t("media.noVoice")}</span>
       </div>
     );
   }
@@ -144,10 +146,10 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
         <audio src={recordedUrl} controls className="h-8 flex-1 min-w-0" />
         <span className="text-xs text-ink/60 flex-shrink-0 tabular-nums">{formatDuration(elapsed)}</span>
         <Button type="button" variant="ghost" size="sm" onClick={reRecord} leftIcon={<RotateCcw className="w-3.5 h-3.5" />}>
-          Re-record
+          {t("media.reRecord")}
         </Button>
         <Button type="button" variant="primary" size="sm" onClick={attach} leftIcon={<Check className="w-3.5 h-3.5" />} disabled={disabled}>
-          Attach
+          {t("media.attach")}
         </Button>
       </div>
     );
@@ -169,15 +171,15 @@ export default function VoiceRecorder({ onRecorded, maxDurationSeconds = 300, di
             </div>
             <span className="text-xs font-medium text-red-600 tabular-nums flex-1">{formatDuration(elapsed)}</span>
             <Button type="button" variant="danger" size="sm" onClick={stopRecording} leftIcon={<Square className="w-3.5 h-3.5" />}>
-              Stop
+              {t("media.stop")}
             </Button>
           </>
         ) : (
           <>
             <Mic className="w-4 h-4 text-ink/50 flex-shrink-0" />
-            <span className="text-xs text-ink/60 flex-1">Record a voice note</span>
+            <span className="text-xs text-ink/60 flex-1">{t("media.record")}</span>
             <Button type="button" variant="outline" size="sm" onClick={startRecording} disabled={disabled} leftIcon={<Mic className="w-3.5 h-3.5" />}>
-              Start Recording
+              {t("media.start")}
             </Button>
           </>
         )}

@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { DragEvent, ChangeEvent, Dispatch, SetStateAction } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, Image as ImageIcon, Film, Music, X, AlertTriangle } from "lucide-react";
@@ -30,6 +31,7 @@ function probeDuration(file: File, kind: 'video' | 'audio'): Promise<number | un
 }
 
 export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disabled }: MediaDropzoneProps) {
+  const { t } = useTranslation("dashboardCommon");
   const [isDragging, setIsDragging] = useState(false);
   const [dropError, setDropError] = useState<string | null>(null);
   const dragCounter = useRef(0);
@@ -41,7 +43,7 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
     const room = maxFiles - files.length;
 
     if (room <= 0) {
-      setDropError(`You can attach up to ${maxFiles} files.`);
+      setDropError(t("media.max", { n: maxFiles }));
       return;
     }
 
@@ -51,12 +53,12 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
     for (const file of list.slice(0, room)) {
       const kind = kindOfMime(file.type);
       if (!kind) {
-        rejected.push(`${file.name} — unsupported file type`);
+        rejected.push(t("media.badType", { name: file.name }));
         continue;
       }
       const limit = MEDIA_LIMITS[kind];
       if (file.size > limit) {
-        rejected.push(`${file.name} — over the ${formatBytes(limit)} limit`);
+        rejected.push(t("media.tooBig", { name: file.name, size: formatBytes(limit) }));
         continue;
       }
       accepted.push({
@@ -70,7 +72,7 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
     }
 
     if (list.length > room) {
-      rejected.push(`Only ${room} more file${room === 1 ? '' : 's'} can be added (max ${maxFiles}).`);
+      rejected.push(t("media.room", { count: room, max: maxFiles }));
     }
 
     if (rejected.length > 0) setDropError(rejected.join(' · '));
@@ -158,10 +160,10 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
         />
         <Upload className="w-6 h-6 mx-auto mb-2 text-ink/50" />
         <p className="text-sm font-medium text-ink">
-          Drag files here, or click to browse
+          {t("media.drop")}
         </p>
         <p className="text-xs text-ink/50 mt-1">
-          Images, video, or audio — up to {formatBytes(MEDIA_LIMITS.video)} for video
+          {t("media.dropHint", { size: formatBytes(MEDIA_LIMITS.video) })}
         </p>
       </div>
 
@@ -193,7 +195,7 @@ export default function MediaDropzone({ files, onFilesChange, maxFiles = 8, disa
                 type="button"
                 onClick={(e) => { e.stopPropagation(); removeFile(f.id); }}
                 className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label={`Remove ${f.file.name}`}
+                aria-label={t("media.remove", { name: f.file.name })}
               >
                 <X className="w-3.5 h-3.5" />
               </button>
