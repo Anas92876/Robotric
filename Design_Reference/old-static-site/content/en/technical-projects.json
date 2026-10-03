@@ -1,0 +1,132 @@
+{
+ "seo": {
+  "title": "Technical Projects",
+  "description": "Custom robotics and automation solutions for businesses. Transform your ideas into reality with cutting-edge technology from Robotrick."
+ },
+ "hero": {
+  "badge": "Custom Solutions",
+  "headline": "Technical Projects",
+  "headlineHighlight": "",
+  "description": "Bring your idea... and we'll take care of turning it into a tangible technical reality. Integrated engineering solutions including design, programming, and implementation."
+ },
+ "heroCta": {
+  "startProject": "Start Your Project",
+  "viewWork": "View Our Work"
+ },
+ "capabilities": {
+  "badge": "Our Expertise",
+  "title": "What We",
+  "titleHighlight": "Deliver",
+  "description": "Professional technical solutions powered by robotics, automation, and IoT technologies.",
+  "items": [
+   {
+    "title": "Custom Robotics",
+    "description": "Tailored robotic solutions designed to meet your specific automation needs and business requirements."
+   },
+   {
+    "title": "Automation Systems",
+    "description": "Intelligent automation systems that streamline operations and increase productivity across industries."
+   },
+   {
+    "title": "IoT Solutions",
+    "description": "Connected devices and smart systems that bring the power of Internet of Things to your projects."
+   }
+  ]
+ },
+ "projects": {
+  "title": "Project",
+  "titleHighlight": "Examples",
+  "description": "See how we've helped businesses transform their operations with custom technical solutions.",
+  "items": [
+   {
+    "title": "Industrial Automation",
+    "description": "Advanced manufacturing automation systems with real-time monitoring and control."
+   },
+   {
+    "title": "Smart Agriculture",
+    "description": "IoT-powered agricultural solutions for precision farming and resource optimization."
+   },
+   {
+    "title": "Educational Robotics",
+    "description": "Interactive robotic systems designed for hands-on STEM education and research."
+   }
+  ]
+ },
+ "journey": {
+  "badge": "Project Journey",
+  "title": "Project",
+  "titleHighlight": "Journey",
+  "description": "We follow a systematic approach to transform your ideas into working technical solutions.",
+  "steps": [
+   {
+    "title": "Analysis & Engineering",
+    "subtitle": "Architecture & Consultation",
+    "items": [
+     "Brainstorming session: Understanding project requirements, required functions, and technical constraints.",
+     "Technical feasibility study: Selecting the most suitable components (Hardware) and optimal programming languages (Software) to ensure highest performance at lowest cost."
+    ]
+   },
+   {
+    "title": "Digital Design & Modeling",
+    "subtitle": "Design Digital",
+    "items": [
+     "Mechanical design: Building structures and parts using SolidWorks, considering strength and weight.",
+     "Electronic design: Drawing electrical circuits (PCB Design) and selecting sensors and controllers.",
+     "User interface design: (UX/UI) If the project includes screens or control applications."
+    ]
+   },
+   {
+    "title": "Software Development",
+    "subtitle": "Development Software",
+    "items": [
+     "Embedded programming: (Embedded Systems) Writing code for controllers (Arduino, ESP32, STM32, Raspberry Pi).",
+     "Algorithm programming: Integrating artificial intelligence or data processing if the project requires it.",
+     "Control application development: Connecting the project to mobile apps or computer programs."
+    ]
+   },
+   {
+    "title": "Manufacturing & Assembly",
+    "subtitle": "Assembly & Manufacturing",
+    "items": [
+     "Digital manufacturing: Printing parts using 3D technology or laser cutting.",
+     "Engineering assembly: Installing mechanical parts, soldering circuits, and assembling the prototype."
+    ]
+   },
+   {
+    "title": "Testing & Quality Control",
+    "subtitle": "Control Quality & Testing",
+    "items": [
+     "Stress testing: Ensuring the project withstands different working conditions.",
+     "System calibration: Adjusting sensors and software to achieve the required accuracy."
+    ]
+   }
+  ]
+ },
+ "features": {
+  "badge": "What Distinguishes Us",
+  "title": "What Distinguishes Us",
+  "items": [
+   {
+    "title": "Complete Integration (One-in-All)",
+    "description": "No need to search for a designer, programmer, and technician separately; we provide all specialties under one roof."
+   },
+   {
+    "title": "Technical Documentation",
+    "description": "We deliver a complete file containing (schematics, source code, and operation manual)."
+   },
+   {
+    "title": "Post-Delivery Support",
+    "description": "Technical and technical warranty for projects for a specified period to ensure performance stability."
+   },
+   {
+    "title": "Data Confidentiality",
+    "description": "We commit to non-disclosure agreements (NDA) to protect your ideas and innovations."
+   }
+  ]
+ },
+ "cta": {
+  "title": "Ready to Start Your Project?",
+  "description": "Let's discuss your technical challenges and build a custom solution together.",
+  "button": "Get In Touch"
+ }
+}

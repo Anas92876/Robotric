@@ -1,0 +1,20 @@
+{
+ "seo": {
+  "title": "Technical Consultation",
+  "description": "Have an idea and need a roadmap? Robotrick's expert team is ready to turn your questions into tangible reality."
+ },
+ "hero": {
+  "badge": "Technical Consultation",
+  "headline": "Technical",
+  "headlineHighlight": "Consultation",
+  "description": "Have an idea and need a roadmap? Or facing a technical challenge looking for a solution? Robotrick's expert team is ready to turn your questions into tangible reality. Tell us what's on your mind, and we'll take care of the rest."
+ },
+ "heroCta": {
+  "bookConsultation": "Book a Consultation"
+ },
+ "cta": {
+  "title": "Ready to Start Your Consultation?",
+  "description": "Tell us what's on your mind, and we'll take care of the rest.",
+  "button": "Book a Consultation"
+ }
+}

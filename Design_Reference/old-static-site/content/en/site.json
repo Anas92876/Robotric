@@ -1,0 +1,387 @@
+{
+  "_note": "Shared UI text + pages whose copy lives inside the old site's page code (About, Gallery, Join Us, Verify). Everything is taken from robotrick.net unless a key starts with 'fix' or is listed under _sources.",
+  "_sources": {
+    "achievements": "All Data Needed/02-services-and-programs.md (not shown on the live site; owner brief marks them as real and verifiable)",
+    "fixFaq": "Live English FAQ answers 1 and 4 did not match the Arabic (primary) version; these are faithful translations of the Arabic answers",
+    "fixExcellence": "Live copy said '3 years' and '2,200+ students' while other live pages say '6 years' and '2,600+'; conflicting numbers removed",
+    "stats": "Home stats bar values from the live site; the 'years' value is computed from the 2022 founding year instead of the live site's '6'"
+  },
+  "nav": {
+    "about": "About Us",
+    "services": "Services",
+    "gallery": "Gallery",
+    "blog": "Blog",
+    "joinUs": "Join Us",
+    "contact": "Contact Us",
+    "cta": "Book Consultation",
+    "login": "Log in",
+    "menu": "Menu",
+    "otherLang": "العربية",
+    "home": "Home",
+    "skip": "Skip to content"
+  },
+  "announce": {
+    "text": "Free trial session for all new students",
+    "cta": "Book on WhatsApp",
+    "message": "Hello, I would like to book a free trial session"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contactInfo": "Contact Info",
+    "hours": "Sat–Thu from 11am to 7pm",
+    "verify": "Verify a Certificate",
+    "whatsappFloat": "WhatsApp us"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "chatWhatsapp": "Chat on WhatsApp",
+    "whatsappHello": "Hello Robotrick",
+    "years": "Years of Experience",
+    "since": "since 2022"
+  },
+  "home": {
+    "stats": [
+      {
+        "value": "12,000+",
+        "key": "trainingHours"
+      },
+      {
+        "value": "30+",
+        "key": "projects"
+      },
+      {
+        "value": "15+",
+        "key": "technicalStudies"
+      }
+    ],
+    "fixExcellence": "Since 2022, delivering quality results with national championship wins and dozens of successful projects.",
+    "fixFaq": {
+      "0": {
+        "answer": "We offer innovative educational programs and training kits, set up educational labs, and provide schools with custom technical curricula. We also support university students and institutions with technical consultations and professional automation solutions that serve their projects and grow their work."
+      },
+      "3": {
+        "question": "How does Robotrick support graduation and innovation projects?",
+        "answer": "We provide specialized engineering consultations, supply electronic parts and prototypes (Prototyping), and train students to turn the idea into a real project."
+      }
+    },
+    "galleryIds": [
+      3,
+      14,
+      17
+    ]
+  },
+  "trainingStats": [
+    {
+      "value": "25+",
+      "key": "programTracks"
+    },
+    {
+      "value": "100%",
+      "key": "handsOnLearning"
+    }
+  ],
+  "about": {
+    "seoTitle": "About Robotrick — Our Story, Vision & Values",
+    "seoDescription": "Robotrick began in Aleppo in 2022 with one goal: deliver robotics science to our community the right way, academically and not superficially.",
+    "badge": "About Us",
+    "storyTitle": "When & How Did We Begin?",
+    "story": [
+      "Our journey began in Aleppo in 2022 — literally from nothing, with zero resources but a vision that refused the impossible. One goal: deliver robotics science to our community the right way, academically and not superficially.",
+      "Today, challenges have refined our expertise into maturity. That passion grew into a full institution. Robotrick is proud of its equipped lab and advanced tools — a free space for every innovator, a destination for every creator looking to turn ideas into reality, always aiming to be the first partner in building tomorrow's innovators."
+    ],
+    "buildingAlt": "Robotrick's equipped lab in Aleppo with advanced tools and technology",
+    "vmTitle": "Vision & Mission",
+    "visionTitle": "Our Vision",
+    "vision": "A society that creates technology, not just consumes it. We envision a generation that leads technology instead of being led by it.",
+    "missionTitle": "Our Mission",
+    "mission": "Harnessing technology to serve the human mind through applied education and smart management systems that give every student and manager the tools to move from spectator to creator.",
+    "spaceTitle": "Our Space",
+    "space": [
+      {
+        "img": "images/about/image_2026-02-24_03-39-25.webp",
+        "caption": "Your first destination.. here we welcome you as a partner and draw the future with you"
+      },
+      {
+        "img": "images/about/image_2026-02-24_03-11-56.webp",
+        "caption": "Our lab.. here we meet with technology; advanced equipment and free spaces that give your creativity power."
+      },
+      {
+        "img": "images/about/image_2026-02-24_03-38-57.webp",
+        "caption": "Interactive spaces equipped with the latest tools, designed to transfer your skills from theory to professionalism"
+      },
+      {
+        "img": "images/about/image_2026-02-24_03-44-03.webp",
+        "caption": "Air-conditioned halls equipped with all comfort for an exceptional educational experience"
+      }
+    ],
+    "valuesTitle": "Our Values",
+    "values": [
+      "Passion",
+      "Empowerment",
+      "Growth",
+      "Challenge",
+      "Impact"
+    ],
+    "achievementsBadge": "Achievements",
+    "achievementsTitle": "Competition Results",
+    "achievementsLead": "Our teams compete in and place at the National Robotics Olympiad in Syria.",
+    "achievements": [
+      {
+        "year": "2025",
+        "stat": "2nd",
+        "title": "2nd Place",
+        "event": "National Robotics Olympiad Syria"
+      },
+      {
+        "year": "2025",
+        "stat": "3",
+        "title": "3 Bronze Medals",
+        "event": "Team Strategy & Innovation"
+      },
+      {
+        "year": "2024",
+        "stat": "2nd",
+        "title": "2nd Place",
+        "event": "National Robotics Olympiad Syria"
+      },
+      {
+        "year": "2024",
+        "stat": "3rd",
+        "title": "3rd Place",
+        "event": "National Robotics Olympiad Syria"
+      },
+      {
+        "year": "2024",
+        "stat": "6",
+        "title": "6 Silver Medals",
+        "event": "Individual Technical Excellence"
+      }
+    ]
+  },
+  "gallery": {
+    "seoTitle": "Gallery | Robotrick",
+    "seoDescription": "Explore Robotrick's gallery showcasing our robotics training sessions, technical projects, 3D printing work, and competition achievements in Aleppo, Syria.",
+    "items": [
+      {
+        "id": 1,
+        "title": "Student Workshop Session",
+        "category": "training"
+      },
+      {
+        "id": 2,
+        "title": "Robotrick Team Photo",
+        "category": "training"
+      },
+      {
+        "id": 3,
+        "title": "Lab Session - Learning Robotics",
+        "category": "training"
+      },
+      {
+        "id": 5,
+        "title": "Awards and Achievements",
+        "category": "competitions"
+      },
+      {
+        "id": 6,
+        "title": "Competition Day",
+        "category": "competitions"
+      },
+      {
+        "id": 7,
+        "title": "Students Building Robots",
+        "category": "training"
+      },
+      {
+        "id": 8,
+        "title": "Robotics Workshop",
+        "category": "training"
+      },
+      {
+        "id": 9,
+        "title": "Technical Project",
+        "category": "projects"
+      },
+      {
+        "id": 10,
+        "title": "3D Printing Creation",
+        "category": "3dPrinting"
+      },
+      {
+        "id": 11,
+        "title": "Training Session",
+        "category": "training"
+      },
+      {
+        "id": 12,
+        "title": "Competition Preparation",
+        "category": "competitions"
+      },
+      {
+        "id": 13,
+        "title": "Custom Robot Project",
+        "category": "projects"
+      },
+      {
+        "id": 14,
+        "title": "3D Printed Model",
+        "category": "3dPrinting"
+      },
+      {
+        "id": 15,
+        "title": "Student Achievement",
+        "category": "training"
+      },
+      {
+        "id": 16,
+        "title": "Innovation Showcase",
+        "category": "projects"
+      },
+      {
+        "id": 17,
+        "title": "Advanced Training",
+        "category": "training"
+      }
+    ],
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "training": {
+    "departmentImages": {
+      "0": "images/training/image-kids.webp",
+      "1": "images/training/image-drone.webp",
+      "4": "images/training/image-vr.webp",
+      "5": "images/training/image-eng.webp"
+    },
+    "whatYouLearn": "What you'll learn",
+    "prerequisite": "Prerequisite",
+    "hoursPerLevel": "Per level",
+    "faqTitle": "Year-Round Programs FAQ",
+    "departments": "Departments",
+    "programs": "Programs",
+    "fixCtaDescription": "Choose your program and book a free trial session on WhatsApp.",
+    "program": "Program"
+  },
+  "join": {
+    "seoTitle": "Join Us — Careers at Robotrick",
+    "seoDescription": "Explore Robotrick career opportunities and open each role on its own shareable page.",
+    "badge": "Career Opportunities",
+    "openTitle": "Open Positions",
+    "openLead": "Each card opens a dedicated role page with full details",
+    "empty": "No open positions right now",
+    "emptyLead": "Check back soon — new openings are posted here first.",
+    "loading": "Loading open positions…",
+    "error": "We couldn't load the open positions right now.",
+    "retry": "Try again",
+    "new": "NEW",
+    "viaWhatsapp": "WhatsApp",
+    "viaForm": "Online Form",
+    "openPage": "Open Page",
+    "howTitle": "How to Apply",
+    "howSteps": [
+      "Open the role page that fits you, review the details, and apply directly from that page.",
+      "Open the position page through its direct URL so you can share or save it easily.",
+      "Send us your resume and tell us why you'd be a great fit for Robotrick."
+    ]
+  },
+  "job": {
+    "seoTitle": "Position | Robotrick Careers",
+    "allPositions": "All Positions",
+    "positionPage": "Position Page",
+    "applyWhatsapp": "Apply via WhatsApp",
+    "applyNow": "Apply Now",
+    "whatsappMessage": "Hello, I would like to apply for:",
+    "duties": "Duties & Responsibilities",
+    "requirements": "Requirements",
+    "perks": "Perks & Benefits",
+    "details": "Work Details",
+    "notFound": "Position not found",
+    "notFoundLead": "This position may have been filled or removed.",
+    "form": {
+      "title": "Application",
+      "personal": "Personal Information",
+      "fullName": "Full Name",
+      "fullNamePh": "Enter your full name",
+      "phone": "Phone",
+      "email": "Email",
+      "optional": "Optional",
+      "age": "Age",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "select": "Select",
+      "location": "Location",
+      "locationPh": "e.g. Aleppo",
+      "experience": "Experience & Skills",
+      "experienceLevel": "Experience Level",
+      "levels": {
+        "none": "No Experience",
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "professional": "Professional"
+      },
+      "experienceDetails": "Describe your experience",
+      "experienceDetailsPh": "Describe your previous work...",
+      "skills": "Skills",
+      "skillsPh": "e.g. C++, Python... (press Enter to add)",
+      "work": "Work Details",
+      "availability": "Availability",
+      "availabilityOptions": {
+        "full_time": "Full Time",
+        "part_time": "Part Time",
+        "flexible": "Flexible"
+      },
+      "portfolio": "Portfolio Link",
+      "portfolioPh": "Instagram, YouTube, Drive...",
+      "cv": "CV / Resume",
+      "cvHint": "Upload PDF (optional) · Max 10 MB",
+      "cvTooBig": "File exceeds 10 MB",
+      "about": "About You",
+      "whyUs": "Why do you want to join us?",
+      "whyUsPh": "Share your motivation...",
+      "additional": "Anything else to add?",
+      "submit": "Submit Application",
+      "submitting": "Sending...",
+      "success": "Application Submitted",
+      "successLead": "Thank you for your interest. We will be in touch soon.",
+      "error": "Something went wrong",
+      "nameRequired": "Name is required",
+      "phoneInvalid": "Invalid phone number",
+      "emailInvalid": "Invalid email"
+    }
+  },
+  "verify": {
+    "seoTitle": "Verify a Certificate | Robotrick",
+    "seoDescription": "Check that a Robotrick training certificate is authentic by entering its certificate number.",
+    "badge": "Certificate Verification",
+    "title": "Verify a",
+    "titleHighlight": "Certificate",
+    "lead": "Students who complete a training level and pass its practical assessment receive an official, numbered Robotrick certificate. Enter the number to confirm it is authentic.",
+    "label": "Certificate number",
+    "placeholder": "Enter the certificate number",
+    "button": "Verify",
+    "checking": "Verifying certificate…",
+    "verified": "Certificate Verified ✓",
+    "notFound": "Certificate Not Found",
+    "notFoundLead": "could not be verified. It may be invalid or does not exist in our system.",
+    "idPrefix": "The certificate ID",
+    "error": "We couldn't reach the verification service. Please try again shortly.",
+    "completed": "has successfully completed the",
+    "course": "course",
+    "totaling": "totaling",
+    "hours": "training hours",
+    "number": "Certificate No.",
+    "issued": "Issued",
+    "issuer": "Issued by",
+    "issuerName": "Robotrick · Aleppo, Syria"
+  },
+  "contactPage": {
+    "seoTitle": "Contact Robotrick — Aleppo, Syria",
+    "seoDescription": "Call +963 942 060 440, email robotrick.co@gmail.com or visit us at Baghdad Station - Al-Shallal Street, Aleppo. Open Saturday to Thursday, 11am–7pm."
+  },
+  "blogPage": {
+    "seoTitle": "Blog | Robotrick"
+  }
+}

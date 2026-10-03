@@ -1,0 +1,103 @@
+{
+ "seo": {
+  "title": "Integrated STEM Lab Setup",
+  "description": "We don't just equip a room, we build an environment that inspires young innovators. Transform your institution into the future through our comprehensive 4-step process."
+ },
+ "hero": {
+  "badge": "Complete Lab Solutions",
+  "headline": "Integrated STEM Lab",
+  "headlineHighlight": "Setup Service",
+  "description": "We don't just equip a room, we build an environment that inspires young innovators. Here's how we transform your institution into the future in 4 steps:"
+ },
+ "stats": {
+  "steps": "Step Process",
+  "customized": "Customized",
+  "support": "Support",
+  "investment": "Long-term Investment"
+ },
+ "process": {
+  "badge": "Our Process",
+  "title": "4-Step",
+  "titleHighlight": "Transformation",
+  "subtitle": "From assessment to empowerment - a complete journey to building your STEM lab",
+  "steps": [
+   {
+    "title": "Assessment & Needs Analysis (Consultation)",
+    "description": "Before placing any nail, we understand your institution's 'identity':",
+    "items": [
+     "Age group identification: Customizing tools to fit (Early Childhood, Elementary, or Secondary)",
+     "Space analysis: Utilizing available space to provide areas (brainstorming, manufacturing, testing)",
+     "Educational objectives: Is the focus on Robotics, Programming, Sustainability, or Digital Manufacturing?"
+    ]
+   },
+   {
+    "title": "Engineering Design & Educational Environment (Design Lab)",
+    "description": "We design a place that stimulates creativity, not just a traditional classroom:",
+    "items": [
+     "Flexible furniture: Movable tables and organized shelves that serve teamwork",
+     "Technical distribution: Securing power points, internet, and smart display means",
+     "Visual identity: Inspiring decorations that reflect the spirit of engineering and innovation"
+    ]
+   },
+   {
+    "title": "Equipment & Technical Solutions (Hard & Soft Solutions)",
+    "description": "We provide the latest global technologies carefully selected:",
+    "items": [
+     "Digital Manufacturing: 3D Printers and Laser Cutting Machines",
+     "Robotics & Artificial Intelligence: Customized educational kits",
+     "Related logistics: High-spec computers or tablets equipped with simulation software"
+    ]
+   },
+   {
+    "title": "Empowerment & Support (Training & Support)",
+    "description": "A lab doesn't work without qualified staff, so we commit to:",
+    "items": [
+     "Teacher training: Intensive workshops on how to integrate STEM tools into curricula",
+     "Educational content: Providing ready-to-implement training packages and practical projects",
+     "Maintenance & technical support: Ensuring continuity of work and periodic software updates"
+    ]
+   }
+  ]
+ },
+ "features": {
+  "title": "Why Choose",
+  "titleHighlight": "Our Service?",
+  "items": [
+   {
+    "title": "Custom Solutions",
+    "description": "Tailored to fit your budget and specific goals. Every lab is unique and designed for your institution's needs."
+   },
+   {
+    "title": "Global Quality Standards",
+    "description": "We rely on the best standards in equipment selection. Quality that meets international benchmarks."
+   },
+   {
+    "title": "Long-term Investment",
+    "description": "We guarantee you transform education from theoretical to an excellent real-world experience."
+   }
+  ]
+ },
+ "whyChoose": {
+  "title": "Why Choose",
+  "titleHighlight": "Our Service?",
+  "items": [
+   {
+    "title": "Custom Solutions",
+    "description": "Tailored to fit your budget and specific goals. Every lab is unique and designed for your institution's needs."
+   },
+   {
+    "title": "Global Quality Standards",
+    "description": "We rely on the best standards in equipment selection. Quality that meets international benchmarks."
+   },
+   {
+    "title": "Long-term Investment",
+    "description": "We guarantee you transform education from theoretical to an excellent real-world experience."
+   }
+  ]
+ },
+ "cta": {
+  "title": "Ready to Transform Your Institution?",
+  "description": "Contact us to discuss your STEM lab setup needs and get a customized quote for your project.",
+  "button": "Get Started"
+ }
+}

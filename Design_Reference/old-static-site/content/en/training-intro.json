@@ -1,0 +1,27 @@
+{
+ "seo": {
+  "title": "Training Programs",
+  "description": "Comprehensive robotics and AI training programs for all ages at Robotrick. From beginner to professional level courses."
+ },
+ "breadcrumb": {
+  "services": "Services",
+  "training": "Training Services"
+ },
+ "hero": {
+  "badge": "Professional Training",
+  "headline": "Transform Your Future with",
+  "headlineHighlight": "Expert Training",
+  "description": "Discover our comprehensive training programs in Robotics, AI, VR, 3D Printing, Drones, and Web Development. Designed for all skill levels, from beginners to professionals."
+ },
+ "stats": {
+  "studentsTrained": "Students Trained",
+  "programTracks": "Program Tracks",
+  "yearsExperience": "Years Experience",
+  "handsOnLearning": "Hands-On Learning"
+ },
+ "cta": {
+  "title": "Ready to Start Your Learning Journey?",
+  "description": "Join 2,200+ students who have transformed their future with Robotrick training programs.",
+  "button": "Enroll Now"
+ }
+}
