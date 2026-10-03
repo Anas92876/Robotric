@@ -1,0 +1,105 @@
+{
+ "seo": {
+  "title": "3D Printing Services",
+  "description": "Professional 3D printing and design services. From prototyping to production, we transform your digital designs into physical reality."
+ },
+ "hero": {
+  "badge": "Professional Printing",
+  "headline": "3D Printing",
+  "headlineHighlight": "",
+  "description": "First: We don't just wait for your ready file, we help you build it. Integrated engineering solutions including design, programming, and implementation."
+ },
+ "stats": {
+  "materialTypes": "Material Types",
+  "typicalTurnaround": "Typical Turnaround",
+  "layerPrecision": "Layer Precision"
+ },
+ "design": {
+  "badge": "Design Capabilities",
+  "title": "Design Engineering",
+  "titleHighlight": "Capabilities",
+  "items": [
+   {
+    "title": "CAD Modeling",
+    "description": "Converting paper ideas into 3D models (CAD Modeling). Processing ready files and preparing them for printing (File Optimization)."
+   },
+   {
+    "title": "Reverse Engineering",
+    "description": "Redesigning broken or missing parts and manufacturing them anew."
+   },
+   {
+    "title": "File Optimization",
+    "description": "We don't just wait for your ready file, we help you build it from scratch."
+   }
+  ]
+ },
+ "materials": {
+  "badge": "Material Library",
+  "title": "Diverse Materials for",
+  "titleHighlight": "Every Need",
+  "items": [
+   {
+    "name": "PLA",
+    "description": "For educational models and decoration (eco-friendly and various colors)."
+   },
+   {
+    "name": "PETG / ABS",
+    "description": "For mechanical parts that need durability and heat resistance."
+   },
+   {
+    "name": "TPU (Flexible)",
+    "description": "For flexible and rubber-like parts."
+   }
+  ]
+ },
+ "projects": {
+  "badge": "End-to-End Projects",
+  "title": "Integrated",
+  "titleHighlight": "Projects",
+  "items": [
+   {
+    "title": "Prototyping",
+    "description": "Printing prototypes (Prototyping) for inventors and students."
+   },
+   {
+    "title": "Small Batch Production",
+    "description": "Small batch production without the need for expensive molds."
+   },
+   {
+    "title": "Engineering Graduation Projects",
+    "description": "Complete execution of complex mechanical structures."
+   }
+  ]
+ },
+ "features": {
+  "badge": "What Distinguishes Us",
+  "title": "What Distinguishes Our Service?",
+  "items": [
+   {
+    "title": "Free DFM Consultation",
+    "description": "We inform the customer before printing if their design needs modification to be stronger or less costly."
+   },
+   {
+    "title": "Post-Processing Service",
+    "description": "You don't receive the part 'raw', but with options (sanding, painting, or assembly) to appear as a professional final product."
+   },
+   {
+    "title": "Technical Specifications Report",
+    "description": "We provide the customer with a document explaining the infill percentage and layer height that was used for their part."
+   },
+   {
+    "title": "Fair Pricing System",
+    "description": "We provide a price calculator based on (weight + printing time) to ensure cost transparency."
+   },
+   {
+    "title": "Express Printing Option",
+    "description": "For those with urgent project deliveries (within 24 hours)."
+   }
+  ]
+ },
+ "cta": {
+  "title": "Ready to Bring Your Design to Life?",
+  "description": "Contact us to discuss your 3D printing needs and get a quote for your project.",
+  "button": "Get Started"
+ }
+}

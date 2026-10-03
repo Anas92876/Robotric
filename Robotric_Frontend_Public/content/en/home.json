@@ -1,0 +1,663 @@
+{
+ "hero": {
+  "badge": "Syria's Leading Robotics & Tech Hub",
+  "headline": "Turn Curiosity",
+  "headlineHighlight": "Into Innovation",
+  "typingSentences": [
+   "Launch into the Smart Future",
+   "Start Your Journey in Robotics",
+   "Launch by Building Educational Labs",
+   "Adopt Technology in Your Educational System"
+  ],
+  "description": "At Robotrick, we build robotics solutions for education and industry, combining smart systems with advanced training for the next generation of innovators.",
+  "ctaExplore": "Book a Consultation",
+  "ctaWatch": "Watch Video",
+  "videoTitle": "Introduction Video",
+  "training": "Training",
+  "projects": "Projects",
+  "printing": "3D Printing",
+  "quoteTitle": "Future Innovator",
+  "quoteText": "\"Robotrick gave me the tools to turn my ideas into reality.\"",
+  "statSuccess": "Success",
+  "statSuccessLabel": "Rate",
+  "statGlobal": "Global",
+  "statGlobalLabel": "Competitions"
+ },
+ "about": {
+  "badge": "About Us",
+  "title": "Syria's Complete",
+  "titleHighlight": "Robotics & Tech Solution",
+  "description": "",
+  "additionalDescription": "At Robotrick, we develop integrated robotic and technical solutions that combine education, design, and manufacturing. We provide ready-made and customized systems for educational and industrial institutions, alongside advanced training programs that prepare the next generation to lead digital transformation and technical innovation.",
+  "statYears": "3 Years",
+  "statLabel": "Leading Innovation"
+ },
+ "services": {
+  "badge": "What We Offer",
+  "title": "Our",
+  "titleHighlight": "Services",
+  "description": "From education to innovation - discover how we can help you achieve your goals in robotics and technology.",
+  "training": {
+   "title": "Training Programs",
+   "description": "Comprehensive robotics and AI training for all ages. From beginner to professional level courses in Robotics, AI, VR, Drones, and Web Development.",
+   "features": [
+    "6+ Program Tracks",
+    "2200+ Students Trained",
+    "Certified Courses"
+   ],
+   "cta": "Learn More"
+  },
+  "projects": {
+   "title": "Technical Projects",
+   "description": "Custom robotics and automation solutions for businesses and individuals. We bring your technical ideas to life with cutting-edge technology.",
+   "features": [
+    "Custom Robotics",
+    "Automation Systems",
+    "IoT Solutions"
+   ],
+   "cta": "Learn More"
+  },
+  "printing": {
+   "title": "3D Printing Services",
+   "description": "Professional 3D printing and design services. From prototyping to production, we transform your digital designs into physical reality.",
+   "features": [
+    "Design to Print",
+    "Multiple Materials",
+    "Fast Turnaround"
+   ],
+   "cta": "Learn More"
+  },
+  "consultation": {
+   "title": "Technical Consultation",
+   "description": "Have an idea and need a roadmap? Or facing a technical challenge looking for a solution? Robotrick's expert team is ready to turn your questions into tangible reality.",
+   "features": [
+    "Roadmap",
+    "Technical Solutions",
+    "Expert Team"
+   ],
+   "cta": "Book a Consultation"
+  },
+  "curriculumDesign": {
+   "title": "Educational Technical Curriculum Design",
+   "description": "Integrated engineering and technical education solutions for institutions and schools. Robotrick curricula build the next generation of innovators.",
+   "features": [
+    "Syrian curriculum alignment",
+    "STEAM",
+    "Learning by doing"
+   ],
+   "cta": "Learn More"
+  },
+  "stemLabSetup": {
+   "title": "Integrated STEM Lab Setup",
+   "description": "We don't just equip a room, we build an environment that inspires young innovators. Transform your institution into the future through our comprehensive 4-step process.",
+   "features": [
+    "Custom Solutions",
+    "Global Quality Standards",
+    "Long-term Investment"
+   ],
+   "cta": "Learn More"
+  },
+  "ctaText": "Have a unique project in mind?",
+  "ctaButton": "Get in Touch"
+ },
+ "whyChooseUs": {
+  "badge": "Our Strengths",
+  "title": "Why Choose",
+  "titleHighlight": "Robotrick",
+  "description": "We combine expertise, technology, and passion to deliver exceptional results across training, projects, and manufacturing.",
+  "excellence": {
+   "title": "Proven Excellence",
+   "description": "3 years of delivering quality results with national championship wins, 2,200+ trained students, and dozens of successful projects."
+  },
+  "team": {
+   "title": "Expert Team",
+   "description": "Our experienced trainers, engineers, and designers bring deep expertise across robotics, AI, programming, and 3D manufacturing."
+  },
+  "technology": {
+   "title": "Cutting-Edge Technology",
+   "description": "Access to the latest tools, platforms, and equipment — from advanced robotics kits to professional-grade 3D printers."
+  },
+  "results": {
+   "title": "Results-Driven Approach",
+   "description": "Whether you're learning, building a custom solution, or creating prototypes — we focus on delivering tangible outcomes."
+  }
+ },
+ "gallery": {
+  "title": "Our",
+  "titleHighlight": "Work",
+  "description": "From training sessions to custom projects and 3D prints — see what we create.",
+  "cta": "View All Gallery",
+  "pageTitle": "Explore Our Gallery",
+  "pageSubtitle": "A visual journey through our training sessions, competitions, technical projects, and innovations.",
+  "badge": "Our Work",
+  "categories": {
+   "all": "All",
+   "training": "Training",
+   "projects": "Projects",
+   "3dPrinting": "3D Printing",
+   "competitions": "Competitions"
+  },
+  "emptyState": "No items found in this category.",
+  "ctaTitle": "Want to Be Featured?",
+  "ctaDescription": "Join our training programs or work with us on your next project.",
+  "ctaButton": "Get In Touch"
+ },
+ "faq": {
+  "title": "Common",
+  "titleHighlight": "Questions",
+  "items": [
+   {
+    "question": "What services does Robotrick offer?",
+    "answer": "We provide three main services: Professional training programs in robotics, AI, and technology; custom technical projects including robotics and automation solutions; and professional 3D printing services from prototyping to production."
+   },
+   {
+    "question": "Do I need prior experience for training programs?",
+    "answer": "Not at all! Our training courses are designed for all levels, from complete beginners (ages 6+) to advanced learners. We start from the fundamentals and build up systematically."
+   },
+   {
+    "question": "Can you build custom technical projects for businesses?",
+    "answer": "Absolutely! We specialize in custom robotics solutions, automation systems, and IoT projects. Contact us to discuss your specific requirements and we'll design a solution tailored to your needs."
+   },
+   {
+    "question": "What 3D printing materials do you work with?",
+    "answer": "We work with PLA, ABS, PETG, TPU, and specialty filaments. Our services range from rapid prototyping to production runs, with typical turnaround times of 24-48 hours."
+   },
+   {
+    "question": "Do students receive certificates upon course completion?",
+    "answer": "Yes! Students who successfully complete their training program and final project receive an official Robotrick certificate recognized across Syria."
+   }
+  ]
+ },
+ "testimonials": {
+  "label": "What Our Members Say",
+  "title": "Opinions",
+  "titleHighlight": "and Reviews",
+  "subtitle": "How was your experience with Robotrick? Your opinion matters and makes a difference.",
+  "testimonial1": {
+   "name": "Ahmad AlHassan",
+   "role": "Robotics Student",
+   "content": "Robotrick gave me the tools to turn my ideas into reality. The hands-on approach and expert guidance helped me build my first robot and compete in national competitions."
+  },
+  "testimonial2": {
+   "name": "Sara Mahmoud",
+   "role": "Parent",
+   "content": "My son's confidence and technical skills have grown tremendously since joining Robotrick. The trainers are patient, knowledgeable, and truly care about each student's progress."
+  },
+  "testimonial3": {
+   "name": "Mohammed Ali",
+   "role": "Engineering Student",
+   "content": "Robotrick transformed our technical project idea into a fully functional automation system. Their expertise in robotics and IoT integration helped us build a smart solution that exceeded our expectations. The team's attention to detail and technical excellence made all the difference."
+  },
+  "stats": {
+   "happyMembers": "2600",
+   "happyMembersLabel": "Students",
+   "memberRating": "4.9/5",
+   "memberRatingLabel": "Rating"
+  },
+  "addButton": "Add Your Opinion"
+ },
+ "contact": {
+  "title": "Get in",
+  "titleHighlight": "Touch",
+  "description": "Have questions about our courses? Want to visit our lab? We're here to help.",
+  "callTitle": "Call Us",
+  "callHours": "Sat-Thur from 11am to 7pm",
+  "visitTitle": "Visit Our Company",
+  "visitLocation": "Syria - Aleppo<br />Baghdad Station - Al-Shallal Street",
+  "emailTitle": "Email Us",
+  "form": {
+   "nameLabel": "Full Name",
+   "namePlaceholder": "Ahmad AlHassan",
+   "phoneLabel": "Phone Number",
+   "phonePlaceholder": "09xx xxx xxx",
+   "subjectLabel": "Subject",
+   "subjectOptions": {
+    "inquiry": "Course Inquiry",
+    "partnership": "Partnership Proposal",
+    "general": "General Question",
+    "consultation": "Technical Consultation",
+    "other": "Other"
+   },
+   "customSubjectPlaceholder": "Write your subject here...",
+   "messageLabel": "Message (Optional)",
+   "messagePlaceholder": "Tell us more about your interests...",
+   "submit": "Send Message",
+   "submitting": "Sending...",
+   "orConnect": "or connect instantly",
+   "whatsapp": "Chat on WhatsApp"
+  },
+  "validation": {
+   "nameRequired": "Name is required",
+   "nameMinLength": "Name must be at least 2 characters",
+   "phoneRequired": "Phone number is required",
+   "phoneInvalid": "Please enter a valid phone number",
+   "formError": "Please check the form for errors.",
+   "success": "Message Sent!",
+   "successMessage": "We will contact you shortly."
+  },
+  "mapLoading": "Loading map..."
+ },
+ "socialProof": {
+  "students": "Students",
+  "trainingHours": "Training Hours",
+  "trainingPrograms": "Training Programs",
+  "yearsExperience": "Years of Experience",
+  "projects": "Projects",
+  "technicalStudies": "Technical Studies & Consultations"
+ },
+ "navigation": {
+  "about": "About Us",
+  "services": "Services",
+  "portfolio": "Portfolio",
+  "blog": "Blog",
+  "joinUs": "Join Us",
+  "whyUs": "Why Us",
+  "gallery": "Gallery",
+  "faq": "FAQ",
+  "contact": "Contact Us",
+  "followUs": "Book Consultation",
+  "dashboard": "Dashboard",
+  "servicesDropdown": {
+   "training": "Training Programs",
+   "trainingDesc": "Learn robotics, AI, and cutting-edge tech",
+   "projects": "Technical Projects",
+   "projectsDesc": "Custom robotics and automation solutions",
+   "printing": "3D Printing",
+   "printingDesc": "Professional printing from design to production",
+   "consultation": "Technical Consultation",
+   "consultationDesc": "Roadmap and technical solutions from Robotrick's expert team",
+   "curriculumDesign": "Educational Technical Curriculum Design",
+   "curriculumDesignDesc": "Integrated education solutions and STEAM curricula for institutions and schools",
+   "stemLabSetup": "Integrated STEM Lab Setup",
+   "stemLabSetupDesc": "Complete STEM lab design, equipment, and training solutions for educational institutions"
+  }
+ },
+ "contactCTA": {
+  "title1": "We Put Our Expertise at Your Disposal",
+  "title2": "Our Team is Ready to Help",
+  "contactBtn": "Contact Us",
+  "profileBtn": "Request Company Profile"
+ },
+ "footer": {
+  "tagline": "Leading the future of robotics and artificial intelligence with innovative solutions that transform industries and empower human potential.",
+  "address": "Baghdad Station, Aleppo, Syrian Arab Republic",
+  "quickLinks": "Quick Links",
+  "contactInfo": "Contact Info",
+  "copyright": "All rights reserved.",
+  "craftedBy": "Crafted with",
+  "by": "by"
+ },
+ "blog": {
+  "title": "Blog",
+  "subtitle": "Stay updated with the latest news and articles in robotics and technology",
+  "comingSoon": "Coming soon: Educational articles and content about robotics and technology"
+ },
+ "joinUs": {
+  "title": "Join Us",
+  "subtitle": "Join our innovative community and be part of the future of technology",
+  "hero": {
+   "title": "Your Future Starts Here: Be Part of Our Team",
+   "subtitle": "Join Robotrick and help shape the future of robotics and technology in Syria"
+  },
+  "jobOpportunities": {
+   "title": "Job Opportunities",
+   "description": "Explore available career opportunities in various fields"
+  },
+  "jobs": {
+   "applyButton": "Join Now",
+   "applyMessage": "Hello, I'm interested in applying for the position: {{position}}",
+   "receptionist": {
+    "title": "Receptionist",
+    "department": "Administration",
+    "description": "Be the first point of contact for our clients. Manage inquiries, schedule appointments, and provide excellent customer service in a dynamic technology environment.",
+    "avatarName": "Reception Team"
+   },
+   "roboticsCoachAssistant": {
+    "title": "Robotics Coach Assistant",
+    "department": "Education",
+    "description": "Support our robotics trainers in delivering exceptional educational experiences. Help students learn robotics, AI, and technology through hands-on activities and mentorship.",
+    "avatarName": "Coach Team"
+   }
+  },
+  "benefits": {
+   "title": "Why Join Robotrick?",
+   "subtitle": "We offer an environment where you can grow, innovate, and make a real impact",
+   "creativeEnvironment": {
+    "title": "Creative Environment",
+    "description": "Join a team that values creativity, innovation, and out-of-the-box thinking"
+   },
+   "growth": {
+    "title": "Growth & Development",
+    "description": "Continuous learning opportunities, mentorship, and career advancement paths"
+   },
+   "innovativeProjects": {
+    "title": "Innovative Projects",
+    "description": "Work on cutting-edge robotics and AI projects that make a real difference"
+   }
+  },
+  "apply": {
+   "title": "How to Apply",
+   "description": "Ready to join our team? Follow these simple steps",
+   "step1": "Review the available positions above and find the role that matches your skills",
+   "step2": "Click 'Join Now' on the position you're interested in to contact us via WhatsApp",
+   "step3": "Send us your resume and tell us why you'd be a great fit for Robotrick",
+   "cta": "Contact Us on WhatsApp"
+  }
+ },
+ "programs": {
+  "badge": "6 Specialized Tracks",
+  "title": "Our Training",
+  "titleHighlight": "Programs",
+  "description": "From Robotics to AI, VR to Web Development - hands-on courses designed to turn passion into expertise.",
+  "filterLabel": "Filter by Category",
+  "categories": {
+   "Robotics": "Robotics",
+   "AI": "AI",
+   "VR": "VR",
+   "3D Printing": "3D Printing",
+   "Drones": "Drones",
+   "Web Dev": "Web Dev",
+   "Competitions": "Local & Global Competitions",
+   "EngineeringDesign": "Engineering Design"
+  },
+  "categoryCards": {
+   "Robotics": {
+    "shortDesc": "Integrated training paths that take you from a passion for building to professional programming and global competitions, whatever your age.",
+    "ageGroup": "Children - Youth - Young adults"
+   },
+   "AI": {
+    "shortDesc": "Program 1 (ages 10-14), Program 2 (ages 15-18).",
+    "ageGroup": "Children - Youth"
+   },
+   "VR": {
+    "shortDesc": "Virtual reality section suitable for all ages.",
+    "ageGroup": "Youth"
+   },
+   "3D Printing": {
+    "shortDesc": "From screen to reality; learn 3D modeling and printing skills to create your first prototypes with high engineering precision.",
+    "ageGroup": "Youth - Young adults"
+   },
+   "Drones": {
+    "shortDesc": "Master drone piloting and programming skills and own tomorrow's technology today.",
+    "ageGroup": "Youth"
+   },
+   "Web Dev": {
+    "shortDesc": "Web design and programming.",
+    "ageGroup": "Youth"
+   },
+   "Competitions": {
+    "shortDesc": "Preparation and qualification for local and global robotics and innovation competitions.",
+    "ageGroup": "Youth"
+   },
+   "EngineeringDesign": {
+    "shortDesc": "Engineering and mechanical design and product prototyping.",
+    "ageGroup": "Youth"
+   }
+  },
+  "levels": {
+   "Beginner": "Beginner",
+   "Intermediate": "Intermediate",
+   "Advanced": "Advanced",
+   "Professional": "Professional",
+   "Beginner to Advanced": "Beginner to Advanced"
+  },
+  "labels": {
+   "Age": "Age group:",
+   "Duration": "Duration:",
+   "Level": "Level:",
+   "Popular": "Popular",
+   "showMore": "Show more",
+   "showLess": "Show less"
+  },
+  "cta": {
+   "question": "Can't find what you're looking for?",
+   "button": "Contact Us for Custom Programs"
+  },
+  "robotics": [
+   {
+    "title": "ALPHA ROBOTICS",
+    "age": "6-8 years",
+    "desc": "Play turns into invention! Kids learn robotics through building and block-based programming across 3 progressive levels.",
+    "duration": "A: 12h, B: 18h, C: 18h",
+    "level": "Beginner",
+    "features": [
+     "Robot Building",
+     "Block Programming",
+     "Engineering Concepts"
+    ]
+   },
+   {
+    "title": "BLOCKS KIDS",
+    "age": "6-8 years",
+    "desc": "100-hour comprehensive journey combining mechanical projects and visual programming tailored for young minds.",
+    "duration": "100 hours",
+    "level": "Beginner",
+    "features": [
+     "Mechanical Building",
+     "Age-Appropriate Coding",
+     "Full-Year Program"
+    ]
+   },
+   {
+    "title": "BLOCKS TEENS",
+    "age": "9-15 years",
+    "desc": "Winter program applying STEM concepts from school curriculum, prepares students for National Robotics Olympiad.",
+    "duration": "5 months",
+    "level": "Intermediate",
+    "features": [
+     "STEM Integration",
+     "Competition Prep",
+     "School-Aligned Schedule"
+    ]
+   },
+   {
+    "title": "ROBOTICS PYTHON (Teens)",
+    "age": "9-12 years",
+    "desc": "Two-level program teaching Python for robot programming plus mechanical construction.",
+    "duration": "L1: 20h, L2: 24h",
+    "level": "Intermediate",
+    "features": [
+     "Python Programming",
+     "Robot Building",
+     "Integrated Projects"
+    ]
+   },
+   {
+    "title": "Comprehensive Youth Robotics",
+    "age": "12-16 years",
+    "desc": "130-hour intensive program from hobby to professional level. Covers mechanical design, Arduino programming, and ESP32 IoT integration.",
+    "duration": "130 hours / 5 months",
+    "level": "Advanced",
+    "features": [
+     "Mechanical Design",
+     "Arduino & ESP32",
+     "IoT Integration"
+    ]
+   },
+   {
+    "title": "Engineering Robotics Camp",
+    "age": "18+ & University Students",
+    "desc": "125-hour practical intensive in mechatronics and embedded systems. Master Arduino IDE, IoT with ESP32, and complete system integration.",
+    "duration": "125 hours",
+    "level": "Professional",
+    "features": [
+     "Mechatronics",
+     "IoT with ESP32",
+     "Industrial Projects"
+    ]
+   }
+  ],
+  "ai": [
+   {
+    "title": "AI for Young Learners",
+    "age": "10-14 years",
+    "desc": "Interactive introduction to AI! Students teach robots to recognize faces, colors, and respond to voice commands using smart modules.",
+    "duration": "16-20 hours",
+    "level": "Beginner",
+    "features": [
+     "Face Recognition",
+     "Color Detection",
+     "Voice Commands"
+    ]
+   },
+   {
+    "title": "AI Engineering Projects",
+    "age": "15-18 years",
+    "desc": "Advanced AI applications using smart sensors and cameras. Build autonomous systems with image/audio processing and intelligent decision-making.",
+    "duration": "24-32 hours",
+    "level": "Advanced",
+    "features": [
+     "Image Processing",
+     "Audio Recognition",
+     "Autonomous Systems"
+    ]
+   }
+  ],
+  "vr": [
+   {
+    "title": "Virtual & Augmented Reality",
+    "age": "10-15 years",
+    "desc": "Explore VR (complete immersion) and AR (digital overlays) technologies. Conduct safe chemistry experiments, visualize physics forces, and explore 3D geometry.",
+    "duration": "20-24 hours",
+    "level": "Intermediate",
+    "features": [
+     "VR Experience",
+     "AR Applications",
+     "Science Visualization"
+    ]
+   }
+  ],
+  "3dPrinting": [
+   {
+    "title": "Innovators Program",
+    "age": "10-14 years",
+    "desc": "Master 3D design from Tinkercad to professional Fusion 360, then bring creations to life with hands-on 3D printing technology.",
+    "duration": "20 hours",
+    "level": "Beginner",
+    "features": [
+     "Tinkercad to Fusion 360",
+     "Print Settings",
+     "Design to Reality"
+    ]
+   },
+   {
+    "title": "Professional 3D Printing",
+    "age": "18+ & University Students",
+    "desc": "Specialized deep-dive into 3D printing technology: material science, advanced slicing, printer calibration, troubleshooting, and maintenance.",
+    "duration": "16 hours",
+    "level": "Professional",
+    "features": [
+     "Material Science",
+     "Advanced Slicing",
+     "Maintenance & Repair"
+    ]
+   }
+  ],
+  "drones": [
+   {
+    "title": "DRONE BLOCKS",
+    "age": "6-9 years",
+    "desc": "Safe introduction to drones and flight principles using visual block programming to control educational drones indoors.",
+    "duration": "12-16 hours",
+    "level": "Beginner",
+    "features": [
+     "Flight Basics",
+     "Block Coding",
+     "Safe Indoor Flight"
+    ]
+   },
+   {
+    "title": "DRONE PYTHON",
+    "age": "10-15 years",
+    "desc": "Advanced drone programming with Python. Code autonomous missions, aerial maneuvers, and data processing for algorithmic thinking.",
+    "duration": "20-24 hours",
+    "level": "Intermediate",
+    "features": [
+     "Python Coding",
+     "Autonomous Flight",
+     "Data Processing"
+    ]
+   }
+  ],
+  "webDev": [
+   {
+    "title": "WordPress Mastery (3 Levels)",
+    "age": "12-16 years",
+    "desc": "Complete WordPress journey from infrastructure setup to professional site launch. Build personal, commercial, or news websites ready for market.",
+    "duration": "L1: 24h, L2: 32h, L3: 32h",
+    "level": "Beginner to Advanced",
+    "features": [
+     "WordPress Fundamentals",
+     "Page Building",
+     "Security & Launch"
+    ]
+   }
+  ],
+  "competitions": [
+   {
+    "title": "National Robotics Olympiad Prep",
+    "age": "9-16 years",
+    "desc": "Structured preparation for national and regional robotics competitions. Build competition-ready robots and practice timed challenges.",
+    "duration": "Seasonal / 3-5 months",
+    "level": "Intermediate",
+    "features": [
+     "Competition Rules",
+     "Strategy & Time Management",
+     "Team Coordination"
+    ]
+   },
+   {
+    "title": "World Robotics Challenge Track",
+    "age": "12-18 years",
+    "desc": "Advanced track for international competitions. Focus on innovation, presentation, and technical excellence for global stages.",
+    "duration": "4-6 months",
+    "level": "Advanced",
+    "features": [
+     "International Standards",
+     "Innovation & Presentation",
+     "Mentorship"
+    ]
+   }
+  ],
+  "engineeringDesign": [
+   {
+    "title": "ROBOCAD Robotics Design",
+    "age": "Youth",
+    "desc": "Advanced robotics design program covering mechanical structures, motion simulation, and engineering analysis to build a fully integrated robot ready for manufacturing.",
+    "duration": "30 training hours | 20 sessions",
+    "level": "Advanced",
+    "features": [
+     "Designing mechanical robot parts: frames, arms, and mounts for motors and sensors",
+     "Assembly and motion simulation to ensure full-system performance",
+     "Stress, loads, center-of-mass, and inertia analysis for stability",
+     "Engineering drawings for manufacturing using CNC or 3D printing plus a full robot team project"
+    ]
+   }
+  ],
+  "popular": [
+   0,
+   1,
+   2,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   14
+  ]
+ },
+ "progressSteps": {
+  "title": "Your Learning Journey with Us",
+  "steps": [
+   "Choose Your Program",
+   "Register & Get Started",
+   "Learn with Hands-On Practice",
+   "Complete Projects & Challenges",
+   "Get Certified & Launch Your Career"
+  ]
+ }
+}

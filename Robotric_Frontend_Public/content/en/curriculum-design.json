@@ -1,0 +1,94 @@
+{
+ "seo": {
+  "title": "Educational Technical Curriculum Design",
+  "description": "Integrated engineering and technical education solutions for institutions and schools. Robotrick curricula build the next generation of innovators."
+ },
+ "hero": {
+  "badge": "Educational Curricula",
+  "headline": "Educational Technical",
+  "headlineHighlight": "Curriculum Design",
+  "tagline": "We don't just design curricula.. We build a generation of innovators in your institution.",
+  "description": "We offer educational institutions and schools integrated engineering and technical solutions that combine advanced academic content with hands-on application, placing your school at the forefront of institutions adopting modern education (STEAM)."
+ },
+ "heroCta": {
+  "bookConsultation": "Book a Consultation"
+ },
+ "why": {
+  "badge": "Why Us",
+  "title": "Why Robotrick",
+  "titleHighlight": "Curricula?",
+  "items": [
+   {
+    "title": "Alignment with Syrian Curriculum",
+    "description": "Our unique advantage is tailoring technical content to integrate with physics, mathematics, and science concepts in the official Syrian curriculum for each grade."
+   },
+   {
+    "title": "Full Age Range Coverage",
+    "description": "Carefully designed programs that start from early childhood and progress through to secondary level."
+   },
+   {
+    "title": "Learning by Doing",
+    "description": "Project-Based Learning curricula where students apply what they learn immediately."
+   }
+  ]
+ },
+ "methodology": {
+  "badge": "From Idea to Launch",
+  "title": "Our Methodology",
+  "titleHighlight": "",
+  "description": "We follow a precise system to ensure the success of the technical experience in your institution through 5 key phases:",
+  "steps": [
+   {
+    "title": "Needs Analysis",
+    "description": "Studying the school's direction, target age groups, and defining required educational objectives."
+   },
+   {
+    "title": "Engineering & Logistics Setup",
+    "description": "Assessing current labs or equipping the school with the latest equipment (robots, training kits, 3D printers) with guaranteed maintenance and support."
+   },
+   {
+    "title": "Educational Content Engineering",
+    "description": "Building a custom curriculum that links technical tools with theoretical lessons, with clear lesson plans for teachers."
+   },
+   {
+    "title": "Training & Qualification",
+    "description": "Intensive training courses for school staff to enable them to deliver the material with high professionalism."
+   },
+   {
+    "title": "Implementation & Follow-up",
+    "description": "Field pilot experiments and periodic follow-up to ensure the educational process runs smoothly and the curriculum evolves based on results."
+   }
+  ]
+ },
+ "staff": {
+  "badge": "Teaching Staff",
+  "title": "Teaching Staff",
+  "titleHighlight": "Solutions",
+  "description": "We understand the difficulty of finding specialized staff, so we offer two options to ensure continuity of the educational process:",
+  "items": [
+   {
+    "title": "Train Your Staff",
+    "description": "Training teachers from within your school and turning them into certified technical trainers."
+   },
+   {
+    "title": "Dedicated Trainers",
+    "description": "We can provide specialized trainers from our team for full supervision of the training material and management of technical labs within your school."
+   }
+  ]
+ },
+ "results": {
+  "badge": "Results",
+  "title": "Results We Guarantee",
+  "titleHighlight": "For Your Institution",
+  "items": [
+   "Raising student academic achievement through hands-on application.",
+   "Institution excellence in local and international competitions (WRO and others).",
+   "Building a leading reputation for the school as an environment that fosters technology and innovation."
+  ]
+ },
+ "cta": {
+  "title": "Ready to Start Robotrick Curricula at Your Institution?",
+  "description": "Contact us to analyze your needs and create a custom action plan.",
+  "button": "Book a Consultation"
+ }
+}

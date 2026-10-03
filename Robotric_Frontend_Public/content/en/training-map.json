@@ -1,0 +1,468 @@
+{
+ "title": "Our Training",
+ "titleHighlight": "Program Map",
+ "subtitle": "Four training tracks designed for every stage and every season — choose what works for you",
+ "openLabel": "View Programs",
+ "closeLabel": "Hide Programs",
+ "whatsappPrefix": "Hello, I'm interested in",
+ "whatsappSuffix": ". Could you please provide more details?",
+ "enrollCta": "Enroll Now",
+ "comingSoon": "Coming Soon",
+ "ageLabel": "Age Group",
+ "hoursLabel": "Duration",
+ "levelsLabel": "Levels",
+ "tracks": {
+  "summer": {
+   "id": "summer",
+   "emoji": "☀️",
+   "title": "Summer Programs",
+   "subtitle": "Tech summer activities for kids & teens",
+   "color": "#f59e0b",
+   "description": "Intensive programs during the summer holiday combining learning and fun in a creative tech environment.",
+   "programs": [
+    {
+     "title": "Comprehensive Tech Club for Kids",
+     "age": "6 – 9 years",
+     "description": "A comprehensive summer program covering robotics, visual programming, and creative activities in a fun interactive atmosphere.",
+     "available": true,
+     "whatYouLearn": [
+      "Build and program robots using visual block coding",
+      "Design and print simple 3D models",
+      "Fly and control educational drones",
+      "Explore basic electronics and circuits",
+      "Collaborate on team engineering challenges"
+     ]
+    },
+    {
+     "title": "Comprehensive Tech Club for Teens",
+     "age": "10 – 15 years",
+     "description": "An advanced summer program for teens including robotics, AI, and Python programming.",
+     "available": false,
+     "whatYouLearn": [
+      "Program robots using Python and advanced logic",
+      "Build and train basic AI models",
+      "Design mechanical structures with CAD tools",
+      "Work on real-world engineering mini-projects",
+      "Develop teamwork and presentation skills"
+     ]
+    }
+   ]
+  },
+  "winter": {
+   "id": "winter",
+   "emoji": "❄️",
+   "title": "Winter Programs",
+   "subtitle": "Runs during the school year",
+   "color": "#3b82f6",
+   "description": "Specialized programs running during the academic year, applying STEM concepts and preparing students for national and international competitions.",
+   "programs": [
+    {
+     "title": "Specialized Robotics Program for Kids",
+     "age": "6 – 8 years",
+     "description": "A comprehensive 100-hour journey combining mechanical projects and visual programming designed for young minds.",
+     "hours": "100 hours",
+     "available": true,
+     "whatYouLearn": [
+      "Assemble and wire robotic mechanisms",
+      "Program using visual block-based environments",
+      "Understand sensors and actuators",
+      "Complete structured engineering challenges",
+      "Build confidence through hands-on projects"
+     ]
+    },
+    {
+     "title": "Microbot Teens + Full Robotics + Specialized Robotics",
+     "age": "9 – 15 years",
+     "description": "Applies STEM concepts from the school curriculum and prepares students for the national robotics olympiad.",
+     "available": true,
+     "whatYouLearn": [
+      "Connect STEM theory to real engineering practice",
+      "Program autonomous robots for missions",
+      "Prepare competition-ready robot strategies",
+      "Learn team coordination and time management",
+      "Qualify for national robotics olympiad rounds"
+     ]
+    },
+    {
+     "title": "Robotics Engineering Camp",
+     "age": "12 – 16 years",
+     "description": "An intensive engineering camp combining mechanical design, advanced programming, and real project building.",
+     "available": true,
+     "whatYouLearn": [
+      "Design mechanical systems with CAD software",
+      "Program complex multi-sensor robots",
+      "Build and test a full engineering project from scratch",
+      "Apply the engineering design process",
+      "Present and defend engineering solutions"
+     ]
+    },
+    {
+     "title": "Youth Engineering Camp",
+     "age": "17 years and above",
+     "description": "An advanced engineering program for youth covering embedded systems and professional engineering design.",
+     "available": true,
+     "whatYouLearn": [
+      "Program embedded systems with Arduino and C++",
+      "Design PCB schematics and electronics",
+      "Build professional-grade engineering prototypes",
+      "Apply industry-standard design methodologies",
+      "Develop a portfolio-ready capstone project"
+     ]
+    }
+   ]
+  },
+  "yearRound": {
+   "id": "yearRound",
+   "emoji": "📅",
+   "title": "Year-Round Programs",
+   "subtitle": "8 specialized departments available all year",
+   "color": "#003300",
+   "description": "Ongoing specialized tracks in the depths of technology — start anytime and progress at your own pace.",
+   "faq": [
+    {
+     "question": "Does my child need prior experience to enroll?",
+     "answer": "No prior experience is needed for entry-level programs. Each department has beginner tracks designed to start from zero. If your child has some background, we assess them and place them in the right level."
+    },
+    {
+     "question": "How many hours per week and what is the schedule?",
+     "answer": "Most programs run 2 sessions per week, each 1.5 to 2 hours. You can choose morning or evening slots. The schedule is flexible and can be arranged at enrollment."
+    },
+    {
+     "question": "How long does each level take to complete?",
+     "answer": "Each level is approximately 12–16 hours of instruction, which takes around 6–8 weeks at 2 sessions per week. Students progress to the next level after passing a practical assessment."
+    },
+    {
+     "question": "Is there a certificate at the end?",
+     "answer": "Yes. Students who complete each level and pass the practical assessment receive an official Robotrick certificate for that level."
+    },
+    {
+     "question": "What does my child need to bring?",
+     "answer": "Nothing — all equipment, kits, and materials are provided at the center. Just bring a notebook if they like taking notes."
+    }
+   ],
+   "departments": [
+    {
+     "name": "Robotics Department",
+     "tagline": "Build real robots from day one",
+     "description": "Our most popular department — students design, build, and program working robots using LEGO-compatible and custom hardware. Three distinct tracks cover all ages from 6 to 15 years.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "Alpha Robot",
+       "age": "6 – 8 years",
+       "levels": "3 levels",
+       "hoursPerLevel": "~12 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "Young learners build colorful robots using visual drag-and-drop programming. Each level introduces new sensors and mechanics.",
+       "whatYouLearn": [
+        "Assemble robot structures with guided building kits",
+        "Program movement and reactions using visual blocks",
+        "Use light, distance, and touch sensors",
+        "Complete increasingly complex missions at each level"
+       ]
+      },
+      {
+       "title": "Robotics for Teens",
+       "age": "9 – 15 years",
+       "levels": "5 levels",
+       "hoursPerLevel": "~14 hours",
+       "prerequisite": "None for Level 1",
+       "certificate": true,
+       "description": "A complete robotics journey from basic mechanics through advanced autonomous programming. The most comprehensive robotics path we offer.",
+       "whatYouLearn": [
+        "Build and wire custom robot hardware",
+        "Progress from block coding to text-based programming",
+        "Program sensors, motors, and autonomous navigation",
+        "Prepare robot missions and compete internally"
+       ]
+      },
+      {
+       "title": "Python Robotics for Teens",
+       "age": "9 – 12 years",
+       "levels": "2 levels",
+       "hoursPerLevel": "~16 hours",
+       "prerequisite": "Basic coding experience recommended",
+       "certificate": true,
+       "description": "Combines Python programming with physical robotics — students write real code that drives real hardware.",
+       "whatYouLearn": [
+        "Write Python scripts to control robot movement",
+        "Use loops, conditionals, and functions in real projects",
+        "Interface with sensors through code",
+        "Build a final autonomous robot project"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Educational Drone Department",
+     "tagline": "Learn to fly and code in the air",
+     "description": "Students pilot, program, and understand educational drones. From simple flight commands to Python-controlled autonomous missions.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "Drone Blocks",
+       "age": "6 – 9 years",
+       "levels": "1 level",
+       "hoursPerLevel": "~12 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "Children learn the basics of drone flight and control using visual block programming in a safe indoor environment.",
+       "whatYouLearn": [
+        "Understand how drones generate lift and navigate",
+        "Program takeoff, landing, and directional movement",
+        "Complete simple aerial missions with block commands",
+        "Learn drone safety rules and best practices"
+       ]
+      },
+      {
+       "title": "Drone Python",
+       "age": "10 – 15 years",
+       "levels": "1 level",
+       "hoursPerLevel": "~16 hours",
+       "prerequisite": "Basic Python knowledge helpful",
+       "certificate": true,
+       "description": "Teens write Python scripts to fly drones autonomously, plan flight paths, and execute programmed missions.",
+       "whatYouLearn": [
+        "Connect and control a drone via Python SDK",
+        "Program autonomous flight paths and patterns",
+        "Use drone camera and sensor data in code",
+        "Design and execute a full autonomous mission"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Artificial Intelligence Department",
+     "tagline": "Train machines to think",
+     "description": "Students explore real AI concepts — image recognition, machine learning, and data — using tools designed for young learners.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "AI for Teens",
+       "age": "10 – 14 years",
+       "levels": "1 level",
+       "hoursPerLevel": "~18 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "A hands-on introduction to AI — students train their own image classifiers, build chatbots, and understand how AI makes decisions.",
+       "whatYouLearn": [
+        "Understand what AI and machine learning actually are",
+        "Train an image recognition model with real data",
+        "Build a simple chatbot using AI tools",
+        "Explore bias, ethics, and how AI affects daily life"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "3D Printing Department",
+     "tagline": "Design it, print it, hold it",
+     "description": "From digital sketch to physical object — students learn 3D design software and operate professional FDM printers.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "Innovators Program",
+       "age": "10 – 14 years",
+       "levels": "1 level",
+       "hoursPerLevel": "~14 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "Students design objects in 3D modeling software and print them. Projects range from simple shapes to functional gadget parts.",
+       "whatYouLearn": [
+        "Navigate a 3D modeling environment from scratch",
+        "Design objects with precise dimensions",
+        "Prepare files and operate an FDM printer",
+        "Design and print a personal final project"
+       ]
+      },
+      {
+       "title": "Professional Printing",
+       "age": "15 years and above",
+       "levels": "1 level",
+       "hoursPerLevel": "~16 hours",
+       "prerequisite": "Basic 3D design exposure helpful",
+       "certificate": true,
+       "description": "Advanced parametric design and print optimization — for students who want professional-grade output and technical depth.",
+       "whatYouLearn": [
+        "Use parametric and assembly design techniques",
+        "Optimize models for strength and print quality",
+        "Troubleshoot common printing failures",
+        "Produce a multi-part functional assembly"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Virtual Reality Department",
+     "tagline": "Build worlds others can step into",
+     "description": "Students create their own interactive VR and AR experiences — from concept to a working scene others can explore.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "VR & Augmented Reality",
+       "age": "10 – 15 years",
+       "levels": "1 level",
+       "hoursPerLevel": "~16 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "Students design and build immersive virtual reality scenes and AR overlays using beginner-friendly game engine tools.",
+       "whatYouLearn": [
+        "Understand how VR and AR technology works",
+        "Build a navigable 3D environment from scratch",
+        "Add interactive objects and logic to a VR scene",
+        "Create an AR overlay triggered by a real-world marker"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Engineering Design Department",
+     "tagline": "Design like a professional engineer",
+     "description": "Industry-standard CAD tools used by real engineers — students learn SolidWorks and specialized robot design with RoboCAD.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "SolidWorks for Youth & Engineers",
+       "age": "15 years and above",
+       "levels": "2 levels",
+       "hoursPerLevel": "~18 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "A professional CAD course using SolidWorks — the industry standard in mechanical engineering. Both levels build toward a complete product design.",
+       "whatYouLearn": [
+        "Create precise 2D sketches and 3D solid models",
+        "Apply constraints, dimensions, and design intent",
+        "Build multi-part assemblies with mates",
+        "Generate engineering drawings from 3D models"
+       ]
+      },
+      {
+       "title": "RoboCAD for Robot Design",
+       "age": "12 years and above",
+       "levels": "1 level",
+       "hoursPerLevel": "~14 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "Focused on designing robot chassis and mechanisms — students learn CAD specifically applied to robotics competition builds.",
+       "whatYouLearn": [
+        "Design robot frame structures in CAD",
+        "Model wheels, gears, and mechanical linkages",
+        "Export designs ready for 3D printing or cutting",
+        "Build a complete robot chassis design project"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Web & Apps Department",
+     "tagline": "Build websites that go live",
+     "description": "Students build and publish real websites. Starting with WordPress and expanding to customization and deployment.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "WordPress Mastery",
+       "age": "12 – 16 years",
+       "levels": "1 level",
+       "hoursPerLevel": "~14 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "Students build a complete website from scratch — choosing themes, adding pages, installing plugins, and publishing live.",
+       "whatYouLearn": [
+        "Set up and configure a WordPress site",
+        "Design pages with a block editor",
+        "Add contact forms, galleries, and media",
+        "Publish a live personal or portfolio website"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Embedded Systems Department",
+     "tagline": "Program the hardware around you",
+     "description": "Students write code that controls physical electronics — LEDs, sensors, motors — using Arduino, the world's most popular maker platform.",
+     "coverImage": {
+      "url": "",
+      "publicId": ""
+     },
+     "programs": [
+      {
+       "title": "Arduino for Teens",
+       "age": "10 years and above",
+       "levels": "1 level",
+       "hoursPerLevel": "~16 hours",
+       "prerequisite": "None",
+       "certificate": true,
+       "description": "An introduction to electronics and embedded programming — students wire circuits and write C++ code to control real hardware.",
+       "whatYouLearn": [
+        "Understand circuits, voltage, and current basics",
+        "Write and upload Arduino sketches",
+        "Control LEDs, buzzers, and servo motors",
+        "Read sensor data and react to the environment"
+       ]
+      },
+      {
+       "title": "Arduino for Specialists",
+       "age": "15 years and above",
+       "levels": "1 level",
+       "hoursPerLevel": "~18 hours",
+       "prerequisite": "Arduino for Teens or equivalent",
+       "certificate": true,
+       "description": "Advanced embedded systems — students build multi-component projects involving wireless communication, displays, and real-time data.",
+       "whatYouLearn": [
+        "Use I2C and SPI to connect multiple components",
+        "Build projects with displays and wireless modules",
+        "Apply interrupt-driven and timer-based programming",
+        "Design and build a complete embedded system project"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "competitions": {
+   "id": "competitions",
+   "emoji": "🏆",
+   "title": "Competition Programs",
+   "subtitle": "World Robot Olympiad WRO",
+   "color": "#7c3aed",
+   "description": "Programs specifically designed to qualify and excel in local and international robotics competitions.",
+   "programs": [
+    {
+     "title": "World Robot Olympiad (WRO)",
+     "age": "All age groups",
+     "description": "Specialized training for WRO world championship participation — covering competition strategies, robot programming, and team building.",
+     "available": true,
+     "whatYouLearn": [
+      "Master WRO competition rules and scoring strategy",
+      "Program autonomous mission-solving robots",
+      "Build robust and reliable robot mechanisms",
+      "Develop teamwork under competitive pressure",
+      "Compete at national and international WRO events"
+     ]
+    }
+   ]
+  }
+ }
+}
