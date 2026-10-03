@@ -1,0 +1,171 @@
+import type { RequestHandler } from 'express';
+import multer from 'multer';
+import { BadRequestError } from './errors';
+
+/**
+ * Upload validation, ported from the old fileValidation.js:
+ *  1. mimetype AND filename extension must both be on the allowlist
+ *     (both are client-chosen, so either alone proves nothing);
+ *  2. once in memory, the file's leading bytes must match the claimed format,
+ *     so a renamed executable cannot get through.
+ */
+type Signature = (number | null)[];
+
+const SIGNATURES: Record<string, Signature[]> = {
+  'image/jpeg': [[0xff, 0xd8, 0xff]],
+  'image/png': [[0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]],
+  'image/gif': [[0x47, 0x49, 0x46, 0x38]],
+  'image/webp': [[0x52, 0x49, 0x46, 0x46, null, null, null, null, 0x57, 0x45, 0x42, 0x50]],
+  'application/pdf': [[0x25, 0x50, 0x44, 0x46]],
+  // Legacy Office (.doc) is an OLE2 compound file; .docx is a zip container.
+  'application/msword': [[0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
+    [0x50, 0x4b, 0x03, 0x04],
+    [0x50, 0x4b, 0x05, 0x06],
+  ],
+  'application/zip': [
+    [0x50, 0x4b, 0x03, 0x04],
+    [0x50, 0x4b, 0x05, 0x06],
+    [0x50, 0x4b, 0x07, 0x08],
+  ],
+  'application/vnd.rar': [
+    [0x52, 0x61, 0x72, 0x21, 0x1a, 0x07, 0x00],
+    [0x52, 0x61, 0x72, 0x21, 0x1a, 0x07, 0x01, 0x00],
+  ],
+  'video/mp4': [[null, null, null, null, 0x66, 0x74, 0x79, 0x70]],
+  'video/quicktime': [[null, null, null, null, 0x66, 0x74, 0x79, 0x70]],
+  'audio/mp4': [[null, null, null, null, 0x66, 0x74, 0x79, 0x70]],
+  'video/webm': [[0x1a, 0x45, 0xdf, 0xa3]],
+  'audio/webm': [[0x1a, 0x45, 0xdf, 0xa3]],
+  'audio/ogg': [[0x4f, 0x67, 0x67, 0x53]],
+  'audio/mpeg': [[0x49, 0x44, 0x33], [0xff, 0xfb], [0xff, 0xf3], [0xff, 0xf2]],
+};
+
+const MIME_ALIASES: Record<string, string> = {
+  'image/jpg': 'image/jpeg',
+  'application/x-zip-compressed': 'application/zip',
+  'application/x-rar-compressed': 'application/vnd.rar',
+  'audio/x-m4a': 'audio/mp4',
+};
+
+export const normalizeMime = (mime: string): string => {
+  const m = mime.toLowerCase();
+  return MIME_ALIASES[m] ?? m;
+};
+
+const extensionOf = (filename: string): string => {
+  const parts = filename.toLowerCase().split('.');
+  return parts.length > 1 ? (parts.pop() ?? '') : '';
+};
+
+export function bufferMatchesMime(buffer: Buffer, mime: string): boolean {
+  // Plain text has no signature; accept it only if it contains no NUL bytes (i.e. is not binary).
+  if (normalizeMime(mime) === 'text/plain') return !buffer.includes(0);
+  const candidates = SIGNATURES[normalizeMime(mime)];
+  if (!candidates) return false;
+  return candidates.some((sig) => buffer.length >= sig.length && sig.every((byte, i) => byte === null || buffer[i] === byte));
+}
+
+export interface UploadPolicy {
+  mimes: string[];
+  extensions: string[];
+  /** Shown to the user, e.g. "JPEG, PNG, WebP". */
+  label: string;
+  maxBytes: number;
+  maxFiles?: number;
+}
+
+export const IMAGE_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/png', 'image/webp'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp'],
+  label: 'JPEG, PNG, WebP',
+  maxBytes: 15 * 1024 * 1024,
+};
+
+export interface Uploader {
+  single(field: string): RequestHandler[];
+  array(field: string, maxCount?: number): RequestHandler[];
+}
+
+export function createUploader(policy: UploadPolicy): Uploader {
+  const mimes = new Set(policy.mimes.map(normalizeMime));
+  const extensions = new Set(policy.extensions);
+  const invalid = () => new BadRequestError(`Invalid file type. Allowed: ${policy.label}.`, 'INVALID_FILE_TYPE');
+
+  const parser = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: policy.maxBytes, files: policy.maxFiles ?? 10 },
+    fileFilter: (_req, file, cb) => {
+      if (mimes.has(normalizeMime(file.mimetype)) && extensions.has(extensionOf(file.originalname))) cb(null, true);
+      else cb(invalid());
+    },
+  });
+
+  const verifyBytes: RequestHandler = (req, _res, next) => {
+    const files: Express.Multer.File[] = [];
+    if (req.file) files.push(req.file);
+    if (Array.isArray(req.files)) files.push(...req.files);
+    for (const f of files) if (!bufferMatchesMime(f.buffer, f.mimetype)) throw invalid();
+    next();
+  };
+
+  return {
+    single: (field) => [parser.single(field), verifyBytes],
+    array: (field, maxCount) => [parser.array(field, maxCount), verifyBytes],
+  };
+}
+
+export const PDF_POLICY: UploadPolicy = {
+  mimes: ['application/pdf'],
+  extensions: ['pdf'],
+  label: 'PDF',
+  maxBytes: 25 * 1024 * 1024,
+  maxFiles: 1,
+};
+
+/** Client request media: photos, videos (e.g. iPhone .mov) and voice notes. Per-kind size limits are checked by the service. */
+export const CLIENT_MEDIA_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/webm', 'audio/mp4', 'audio/x-m4a', 'audio/mpeg', 'audio/ogg'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp', 'mp4', 'mov', 'webm', 'm4a', 'mp3', 'ogg', 'oga'],
+  label: 'images, MP4/MOV/WebM video, or audio',
+  maxBytes: 300 * 1024 * 1024,
+  maxFiles: 1,
+};
+
+/** WRO documents: a scan or a photo. */
+export const DOCUMENT_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp', 'pdf'],
+  label: 'JPEG, PNG, WebP, PDF',
+  maxBytes: 10 * 1024 * 1024,
+  maxFiles: 1,
+};
+
+export const ASSIGNMENT_POLICY: UploadPolicy = {
+  mimes: [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'text/plain',
+    'image/jpeg',
+    'image/png',
+    'application/zip',
+    'application/x-zip-compressed',
+    'application/vnd.rar',
+    'application/x-rar-compressed',
+  ],
+  extensions: ['pdf', 'doc', 'docx', 'txt', 'jpg', 'jpeg', 'png', 'zip', 'rar'],
+  label: 'PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR',
+  maxBytes: 10 * 1024 * 1024,
+  maxFiles: 10,
+};
+
+/** Task submissions: image answers plus optional zip/rar attachments. */
+export const TASK_SUBMISSION_POLICY: UploadPolicy = {
+  mimes: ['image/jpeg', 'image/png', 'image/webp', 'application/zip', 'application/x-zip-compressed', 'application/vnd.rar', 'application/x-rar-compressed'],
+  extensions: ['jpg', 'jpeg', 'png', 'webp', 'zip', 'rar'],
+  label: 'JPEG, PNG, WebP, ZIP, RAR',
+  maxBytes: 15 * 1024 * 1024,
+  // Files are buffered in memory: 10 × 15 MB caps one request's RAM use (old limit).
+  maxFiles: 10,
+};

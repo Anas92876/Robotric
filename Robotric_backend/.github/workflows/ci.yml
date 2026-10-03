@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      # Tests run on in-process Postgres (PGlite): no database service needed.
+      - name: Tests
+        run: npm test
+
+      # Fails if the new app serves a route the old API never had.
+      - name: Route parity
+        run: npm run routes:check
+
+      - name: Migrations are up to date with the schema
+        run: npx drizzle-kit check

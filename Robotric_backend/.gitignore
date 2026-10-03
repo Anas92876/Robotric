@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+firebase-service-account.json
+*-service-account.json
+*.pem
+*.key
+
+# Build output
+dist
+build
+*.tsbuildinfo
+
+# Runtime artifacts
+/logs/
+/uploads/
+*.log
+
+# Editor / tooling
+.cursorignore
+.claude
+.cursor
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+coverage
+.nyc_output
+
+# Demo data manifest (scripts/demo-data.ts)
+scripts/.demo-data.json
