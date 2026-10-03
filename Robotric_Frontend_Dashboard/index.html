@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Private dashboard: the public, indexable site is the Next.js app on the same domain -->
+    <title>Robotrick Dashboard</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0f1f33" />
+    <link rel="icon" type="image/png" href="/dash-assets/favicon.png" />
+
+    <!-- Google Fonts: Inter (old pages). Arabic uses self-hosted Cairo (src/styles/theme.css). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Inline critical CSS: a spinner shows before any JS executes. -->
+    <style>
+      /* Font-face fallback metrics — no layout shift when Inter / Cairo load. */
+      @font-face {
+        font-family: 'Inter-Fallback';
+        src: local('Arial');
+        ascent-override: 90%;
+        descent-override: 22%;
+        line-gap-override: 0%;
+        size-adjust: 107%;
+      }
+      @font-face {
+        font-family: 'Cairo-Fallback';
+        src: local('Arial');
+        ascent-override: 88%;
+        descent-override: 20%;
+        line-gap-override: 0%;
+        size-adjust: 110%;
+      }
+
+      html, body { margin: 0; padding: 0; background: #ffffff; }
+      #app-shell {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+      }
+      #app-shell-spinner {
+        width: 48px;
+        height: 48px;
+        border: 3px solid #0f1f33;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: shell-spin 0.8s linear infinite;
+      }
+      @keyframes shell-spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Replaced by React when it mounts -->
+      <div id="app-shell"><div id="app-shell-spinner"></div></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

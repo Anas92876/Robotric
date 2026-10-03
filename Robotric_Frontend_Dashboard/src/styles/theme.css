@@ -1,0 +1,179 @@
+/*
+ * Robotrick design tokens for the dashboard, built from Lori's colours (the
+ * Robotrick robot): navy ink, green glow accent, cool metal greys, soft mint and
+ * steel tints, Inter + Cairo. Flat colours only, no gradients.
+ *
+ * Tailwind v4 turns each token into utilities: --color-ink → text-ink / bg-ink /
+ * border-ink, --radius-card → rounded-card, --shadow-card → shadow-card…
+ * The names are new on purpose, so pages that aren't redesigned yet don't change.
+ */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/dash-assets/fonts/inter-latin.woff2') format('woff2');
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/dash-assets/fonts/cairo-arabic.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@theme {
+  /* ---- Brand: Lori's colours ------------------------------------------
+     The dashboard follows Lori, the Robotrick robot: his navy screen, his
+     green glow and his grey metal. (The public site keeps the forest green.) */
+  --color-ink: #0f1f33;          /* Lori's screen navy: text, primary buttons, dark cards */
+  --color-ink-deep: #081424;     /* hover on primary, darkest surfaces */
+  --color-glow: #3fd360;         /* Lori's green glow: accent fills, highlights on dark */
+  --color-glow-deep: #15803d;    /* the green as readable text on white */
+  --color-frost: #eefcf1;        /* near-white with a hint of green, for text on navy */
+
+  /* ---- Surfaces (Lori's metal) ------------------------------------------ */
+  --color-canvas: #f3f5f7;       /* cool light grey */
+  --color-paper: #ffffff;        /* page, cards, tables, dialogs */
+  --color-rail: #eef1f4;         /* sidebar and quiet fills (light metal) */
+  --color-line: rgb(15 31 51 / 0.1);
+  --color-line-strong: rgb(15 31 51 / 0.18);
+
+  /* ---- Text (slate greys) ----------------------------------------------- */
+  --color-ink-2: #3a4657;        /* body copy */
+  --color-ink-3: #5a6576;        /* secondary */
+  --color-ink-4: #8a93a0;        /* captions, placeholders */
+
+  /* ---- Soft tints (tiles, highlights): greens and metal greys ----------- */
+  --color-tint-leaf: #e1f7e6;    /* mint */
+  --color-tint-khaki: #e8ecf1;   /* steel */
+  --color-tint-moss: #cdeed5;    /* deeper mint */
+  --color-tint-sand: #eef1f4;    /* light metal */
+  --color-tint-sage: #e6f4ea;    /* pale green */
+  --color-tint-straw: #e5eefa;   /* pale sky */
+  --color-tint-fern: #d8efdf;    /* fern */
+
+  /* ---- Status (readable on white; each has a soft background) ----------- */
+  --color-success: #1e7a3c;
+  --color-success-soft: #e3f1e6;
+  --color-warning: #8a5a00;
+  --color-warning-soft: #fbf0d6;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbe4e1;
+  --color-info: #1f4e79;
+  --color-info-soft: #e1ecf6;
+
+  /* ---- Type ------------------------------------------------------------- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: 'Cairo', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius-input: 12px;
+  --radius-card: 14px;
+  --radius-feature: 22px;
+  --radius-panel: 20px;          /* large bordered page sections */
+
+  /* ---- Motion: Lori ----------------------------------------------------
+     Each animation uses its own CSS property (translate / rotate / filter /
+     opacity) on its own wrapper, so they combine with the RTL mirror. */
+  --animate-lori: lori-bob 3.4s ease-in-out infinite;
+  @keyframes lori-bob {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+  }
+  /* Rises into place when the page opens */
+  --animate-lori-in: lori-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+  @keyframes lori-in {
+    from { opacity: 0; translate: 0 70px; rotate: 6deg; }
+    to { opacity: 1; translate: 0 0; rotate: 0deg; }
+  }
+  /* A happy hop with a little wobble (hover, click, or something needs attention) */
+  --animate-lori-hop: lori-hop 0.8s ease-out;
+  @keyframes lori-hop {
+    0% { translate: 0 0; rotate: 0deg; }
+    30% { translate: 0 -22px; rotate: -5deg; }
+    55% { translate: 0 0; rotate: 3deg; }
+    75% { translate: 0 -6px; rotate: -2deg; }
+    100% { translate: 0 0; rotate: 0deg; }
+  }
+  /* Waving hello: the forearm swings around the elbow, twice, then rests */
+  --animate-lori-wave: lori-wave 1.6s ease-in-out;
+  @keyframes lori-wave {
+    0%, 100% { rotate: 0deg; }
+    16% { rotate: 14deg; }
+    33% { rotate: -10deg; }
+    50% { rotate: 14deg; }
+    67% { rotate: -10deg; }
+    84% { rotate: 6deg; }
+  }
+  /* His own green glow breathes (Lori's colours stay untouched) */
+  --animate-lori-glow: lori-glow 3.2s ease-in-out infinite;
+  @keyframes lori-glow {
+    0%, 100% { filter: drop-shadow(0 18px 24px rgb(8 20 36 / 0.35)) drop-shadow(0 0 0 rgb(60 242 60 / 0)); }
+    50% { filter: drop-shadow(0 18px 24px rgb(8 20 36 / 0.35)) drop-shadow(0 0 14px rgb(60 242 60 / 0.55)); }
+  }
+  /* Eyelids close for a moment every few seconds, sometimes twice */
+  --animate-lori-blink: lori-blink 5.5s ease-in-out infinite;
+  @keyframes lori-blink {
+    0%, 88%, 100% { scale: 1 0; }
+    90% { scale: 1 1; }
+    92% { scale: 1 0; }
+    94% { scale: 1 1; }
+    96% { scale: 1 0; }
+  }
+  --radius-pill: 999px;
+
+  --shadow-card:
+    rgb(15 31 51 / 0.04) 0 12px 12px -6px,
+    rgb(15 31 51 / 0.04) 0 6px 6px -3px,
+    rgb(15 31 51 / 0.04) 0 3px 3px -1.5px,
+    rgb(15 31 51 / 0.08) 0 1px 1px -0.5px,
+    rgb(15 31 51 / 0.05) 0 0 0 1px;
+  --shadow-pop: 0 24px 48px -12px rgb(8 20 36 / 0.25), 0 0 0 1px rgb(15 31 51 / 0.06);
+
+  /* ---- Legacy names (pages not yet redesigned) -------------------------- */
+  /* Old pages use primary/secondary/accent; map them to the brand until each
+     page moves to the ink/glow tokens above. */
+  --color-primary: #0f1f33;
+  --color-primary-dark: #081424;
+  --color-accent: #1d3a5c;
+  --color-secondary: #eefcf1;
+  --color-background: #ffffff;
+  --color-surface: #f3f5f7;
+}
+
+/* ---- Arabic typography ---------------------------------------------------
+   Arabic uses Cairo (Latin words inside it use Inter). Arabic letters look
+   smaller and lighter than Latin at the same size, so in RTL the type scale is
+   one step up, lines are taller, and body text is a touch heavier. */
+[dir='rtl'] .rt-app, .rt-app[dir='rtl'], .rt-app [dir='rtl'] {
+  font-family: var(--font-arabic);
+}
+.rt-app[dir='rtl'] {
+  font-weight: 500;
+  --text-xs: 0.8125rem;              /* 13px (12 in English) */
+  --text-xs--line-height: 1.6;
+  --text-sm: 0.9375rem;              /* 15px (14) */
+  --text-sm--line-height: 1.65;
+  --text-base: 1.0625rem;            /* 17px (16) */
+  --text-base--line-height: 1.7;
+  --text-lg: 1.1875rem;              /* 19px (18) */
+  --text-lg--line-height: 1.6;
+  --text-xl: 1.3125rem;              /* 21px (20) */
+  --text-xl--line-height: 1.5;
+}
+/* Letter-spacing breaks how Arabic letters join */
+.rt-app[dir='rtl'] [class*='tracking-'] {
+  letter-spacing: 0 !important;
+}
+/* English names inside Arabic screens (dir=auto) would align left; one-line labels and headings keep the page's side */
+:is(.rt-app[dir='rtl'], [dir='rtl'] .rt-app) :is(h1, h2, h3, .truncate, .line-clamp-1, .line-clamp-2)[dir='auto'] {
+  text-align: right;
+}
+
+/* Focus ring shared by every interactive element in the new kit */
+@utility focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(204 204 153 / 0.7);
+}
+
